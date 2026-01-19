@@ -1,0 +1,27 @@
+# ======================
+# Documentation & Tests
+# ======================
+docs
+tests
+
+# ======================
+# Writable
+# ======================
+writable/cache
+writable/debugbar
+writable/logs
+writable/session
+
+# ======================
+# Git & CI Pipeline
+# ======================
+.git
+.gitignore
+.gitattributes
+.github
+
+# ======================
+# Dev tools
+# ======================
+phpunit.xml.dist
+phpstan.neon
