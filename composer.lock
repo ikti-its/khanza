@@ -4,27 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0b2927d8078f4366374062f5b66a2fd",
+    "content-hash": "6920cc24fe3128539b2df15857ff0daa",
     "packages": [
         {
             "name": "codeigniter4/framework",
-            "version": "v4.6.4",
+            "version": "v4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/framework.git",
-                "reference": "e4d3702037a34549582453dbf59b7b67877ae82e"
+                "reference": "e7753bc03f8b74af428f46b5e2bb74925487c930"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/e4d3702037a34549582453dbf59b7b67877ae82e",
-                "reference": "e4d3702037a34549582453dbf59b7b67877ae82e",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/e7753bc03f8b74af428f46b5e2bb74925487c930",
+                "reference": "e7753bc03f8b74af428f46b5e2bb74925487c930",
                 "shasum": ""
             },
             "require": {
                 "ext-intl": "*",
                 "ext-mbstring": "*",
-                "laminas/laminas-escaper": "^2.17",
-                "php": "^8.1",
+                "laminas/laminas-escaper": "^2.18",
+                "php": "^8.2",
                 "psr/log": "^3.0"
             },
             "require-dev": {
@@ -38,6 +38,7 @@
                 "predis/predis": "^3.0"
             },
             "suggest": {
+                "ext-apcu": "If you use Cache class ApcuHandler",
                 "ext-curl": "If you use CURLRequest class",
                 "ext-dom": "If you use TestResponse",
                 "ext-exif": "If you run Image class tests",
@@ -49,7 +50,9 @@
                 "ext-memcached": "If you use Cache class MemcachedHandler with Memcached",
                 "ext-mysqli": "If you use MySQL",
                 "ext-oci8": "If you use Oracle Database",
+                "ext-pcntl": "If you use Signals",
                 "ext-pgsql": "If you use PostgreSQL",
+                "ext-posix": "If you use Signals",
                 "ext-readline": "Improves CLI::input() usability",
                 "ext-redis": "If you use Cache class RedisHandler",
                 "ext-simplexml": "If you format XML",
@@ -78,7 +81,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
-            "time": "2025-12-12T10:37:42+00:00"
+            "time": "2026-02-01T20:39:35+00:00"
         },
         {
             "name": "dompdf/dompdf",
@@ -146,16 +149,16 @@
         },
         {
             "name": "dompdf/php-font-lib",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/php-font-lib.git",
-                "reference": "6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d"
+                "reference": "a6e9a688a2a80016ac080b97be73d3e10c444c9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d",
-                "reference": "6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d",
+                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/a6e9a688a2a80016ac080b97be73d3e10c444c9a",
+                "reference": "a6e9a688a2a80016ac080b97be73d3e10c444c9a",
                 "shasum": ""
             },
             "require": {
@@ -163,7 +166,7 @@
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "symfony/phpunit-bridge": "^3 || ^4 || ^5 || ^6"
+                "phpunit/phpunit": "^7.5 || ^8 || ^9 || ^10 || ^11 || ^12"
             },
             "type": "library",
             "autoload": {
@@ -185,9 +188,9 @@
             "homepage": "https://github.com/dompdf/php-font-lib",
             "support": {
                 "issues": "https://github.com/dompdf/php-font-lib/issues",
-                "source": "https://github.com/dompdf/php-font-lib/tree/1.0.1"
+                "source": "https://github.com/dompdf/php-font-lib/tree/1.0.2"
             },
-            "time": "2024-12-02T14:37:59+00:00"
+            "time": "2026-01-20T14:10:26+00:00"
         },
         {
             "name": "dompdf/php-svg-lib",
@@ -628,6 +631,65 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "carthage-software/mago",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/carthage-software/mago.git",
+                "reference": "5dc25ee2667b88743a9532748fe191188ddb54f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/carthage-software/mago/zipball/5dc25ee2667b88743a9532748fe191188ddb54f5",
+                "reference": "5dc25ee2667b88743a9532748fe191188ddb54f5",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2.6",
+                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4 || ~8.5 || ~8.6"
+            },
+            "require-dev": {
+                "composer/composer": "^2.8"
+            },
+            "bin": [
+                "composer/bin/mago"
+            ],
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Mago\\MagoPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mago\\": "composer/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT OR Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Saif Eddin Gmati",
+                    "email": "azjezz@carthage.software"
+                }
+            ],
+            "description": "Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code.",
+            "keywords": [
+                "dev"
+            ],
+            "support": {
+                "issues": "https://github.com/carthage-software/mago/issues",
+                "source": "https://github.com/carthage-software/mago/tree/1.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/azjezz",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-01-29T11:53:10+00:00"
+        },
         {
             "name": "codeigniter/phpstan-codeigniter",
             "version": "v1.5.4",
@@ -1164,11 +1226,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.1.33",
+            "version": "2.1.38",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9e800e6bee7d5bd02784d4c6069b48032d16224f",
-                "reference": "9e800e6bee7d5bd02784d4c6069b48032d16224f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/dfaf1f530e1663aa167bc3e52197adb221582629",
+                "reference": "dfaf1f530e1663aa167bc3e52197adb221582629",
                 "shasum": ""
             },
             "require": {
@@ -1213,7 +1275,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-12-05T10:24:31+00:00"
+            "time": "2026-01-30T17:12:46+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1551,16 +1613,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.5.6",
+            "version": "12.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ab8e4374264bc65523d1458d14bf80261577e01f"
+                "reference": "37ddb96c14bfee10304825edbb7e66d341ec6889"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ab8e4374264bc65523d1458d14bf80261577e01f",
-                "reference": "ab8e4374264bc65523d1458d14bf80261577e01f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/37ddb96c14bfee10304825edbb7e66d341ec6889",
+                "reference": "37ddb96c14bfee10304825edbb7e66d341ec6889",
                 "shasum": ""
             },
             "require": {
@@ -1580,7 +1642,7 @@
                 "phpunit/php-text-template": "^5.0.0",
                 "phpunit/php-timer": "^8.0.0",
                 "sebastian/cli-parser": "^4.2.0",
-                "sebastian/comparator": "^7.1.3",
+                "sebastian/comparator": "^7.1.4",
                 "sebastian/diff": "^7.0.0",
                 "sebastian/environment": "^8.0.3",
                 "sebastian/exporter": "^7.0.2",
@@ -1628,7 +1690,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.6"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.8"
             },
             "funding": [
                 {
@@ -1652,7 +1714,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-16T16:28:10+00:00"
+            "time": "2026-01-27T06:12:29+00:00"
         },
         {
             "name": "psr/container",
@@ -1778,16 +1840,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "7.1.3",
+            "version": "7.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "dc904b4bb3ab070865fa4068cd84f3da8b945148"
+                "reference": "6a7de5df2e094f9a80b40a522391a7e6022df5f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/dc904b4bb3ab070865fa4068cd84f3da8b945148",
-                "reference": "dc904b4bb3ab070865fa4068cd84f3da8b945148",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/6a7de5df2e094f9a80b40a522391a7e6022df5f6",
+                "reference": "6a7de5df2e094f9a80b40a522391a7e6022df5f6",
                 "shasum": ""
             },
             "require": {
@@ -1846,7 +1908,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/comparator/issues",
                 "security": "https://github.com/sebastianbergmann/comparator/security/policy",
-                "source": "https://github.com/sebastianbergmann/comparator/tree/7.1.3"
+                "source": "https://github.com/sebastianbergmann/comparator/tree/7.1.4"
             },
             "funding": [
                 {
@@ -1866,7 +1928,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-20T11:27:00+00:00"
+            "time": "2026-01-24T09:28:48+00:00"
         },
         {
             "name": "sebastian/complexity",
