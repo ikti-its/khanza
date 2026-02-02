@@ -314,7 +314,7 @@ abstract class BaseController extends Controller
         ];
         $breadcrumbs = [
             ['title' => 'Audit', 'icon', 'audit']
-        ];;
+        ];
         return view('/layouts/audit', [
             'judul'       => 'Audit ' . $this->judul,
             'breadcrumbs' => array_merge($this->getBreadcrumbs(), $breadcrumbs),

@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 class StokObatPasien extends BaseController
 {
     public function dataStokObatPasien()
@@ -43,9 +41,9 @@ class StokObatPasien extends BaseController
 
         // Optional: inject default value for missing nama_brng to avoid view errors
         foreach ($stokObatData as &$item) {
-            if (!isset($item['nama_brng'])) {
-                $item['nama_brng'] = '';
-            }
+            if (isset($item['nama_brng'])) { continue; }
+
+$item['nama_brng'] = '';
         }
 
         $this->addBreadcrumb('User', 'user');
@@ -327,7 +325,7 @@ class StokObatPasien extends BaseController
         }
     }
 
-    private function getStokObatPasienListFromAPI($token)
+    private function getStokObatPasienListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/stok-obat-pasien';
         $ch = curl_init($url);

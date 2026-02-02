@@ -104,7 +104,7 @@ class PHK extends BaseController
         for($i = 0; $i < count($results); $i++){
             $results[$i] = json_decode(json_encode($results[$i]), true);
         }
-        ;
+        
         return view('/layouts/audit', [
             'judul'       => 'Audit ' . $this->judul,
             'breadcrumbs' => array_merge($this->getBreadcrumbs(), $breadcrumbs),

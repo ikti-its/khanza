@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
-
 class Tagihan extends BaseController
 {
     public function dataTagihanMedis()
@@ -325,9 +322,9 @@ class Tagihan extends BaseController
                     // Decode responses
                     $pengajuan_data = json_decode($response_pengajuan, true);
                     foreach ($pengajuan_data['data'] as $pengajuan) {
-                        if ($pengajuan['id']===$idpengajuan && $pengajuan['status_pesanan'] !== '5') {
-                            return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terlebih dahulu agar bisa melakukan pembayaran');
-                        }
+                        if (!($pengajuan['id']===$idpengajuan && $pengajuan['status_pesanan'] !== '5')) { continue; }
+
+return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terlebih dahulu agar bisa melakukan pembayaran');
                     }
 
                     $pemesanan_data = json_decode($response_pemesanan, true);

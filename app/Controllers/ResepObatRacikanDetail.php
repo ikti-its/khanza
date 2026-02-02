@@ -3,10 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use App\Models\ResepDokterModel;
-use App\Models\RawatInapModel;
-
 class ResepObatRacikan extends BaseController
 {
     public function dataResepObatRacikanDetail($noResep)
@@ -443,7 +439,7 @@ class ResepObatRacikan extends BaseController
         }
     }
 
-    private function getObatListFromAPI($token)
+    private function getObatListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/pemberian-obat/databarang';
         $ch = curl_init($url);

@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 class CatatanObservasiKebidanan extends BaseController
 {
     protected array $breadcrumbs = [];
@@ -513,7 +511,7 @@ class CatatanObservasiKebidanan extends BaseController
         }
 
         // Filter hanya data dengan no_rawat yang cocok
-        $filtered = array_filter($data['data'], function ($item) use ($no_rawat) {
+        $filtered = array_filter($data['data'], static function ($item) use ($no_rawat) {
             return $item['no_rawat'] === $no_rawat;
         });
 

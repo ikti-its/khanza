@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 class Tindakan extends BaseController
 {
 
@@ -171,7 +169,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         $jenis_all = $jenis_data['data'] ?? [];
 
         // 🔹 Filter jenis tindakan
-        $jenis_tindakan = array_filter($jenis_all, function ($item) use ($normalizedBangsal) {
+        $jenis_tindakan = array_filter($jenis_all, static function ($item) use ($normalizedBangsal) {
             $kode = strtoupper(trim($item['kode_bangsal'] ?? ''));
             return $kode === $normalizedBangsal || $kode === '-';
         });
@@ -275,10 +273,10 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         // ✅ Find the tindakan with the correct jam_rawat
         if (isset($data['data']) && is_array($data['data'])) {
             foreach ($data['data'] as $t) {
-                if ($t['jam_rawat'] === $jamRawat) {
-                    $selectedTindakan = $t;
+                if ($t['jam_rawat'] !== $jamRawat) { continue; }
+
+$selectedTindakan = $t;
                     break;
-                }
             }
         }
 
@@ -525,7 +523,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             $normalizedBangsal = $kodeBangsalRaw;
         }
 
-        $jenis_tindakan = array_filter($jenis_all, function ($item) use ($normalizedBangsal) {
+        $jenis_tindakan = array_filter($jenis_all, static function ($item) use ($normalizedBangsal) {
             $kode = strtoupper(trim($item['kode_bangsal'] ?? ''));
             return $kode === $normalizedBangsal || $kode === '-';
         });
@@ -588,7 +586,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         ]);
     }
 
-    private function getJenisTindakan($token)
+    private function getJenisTindakan(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/tindakan/jenis'; // ✅ correct route from Go backend
         $ch = curl_init($url);
@@ -635,10 +633,10 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         $selectedUGD = null;
 
         foreach ($ugdList as $ugd) {
-            if (isset($ugd['nomor_rawat']) && $ugd['nomor_rawat'] === $nomor_rawat) {
-                $selectedUGD = $ugd;
+            if (!(isset($ugd['nomor_rawat']) && $ugd['nomor_rawat'] === $nomor_rawat)) { continue; }
+
+$selectedUGD = $ugd;
                 break;
-            }
         }
 
         if (!$selectedUGD) {

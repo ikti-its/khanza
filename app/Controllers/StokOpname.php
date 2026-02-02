@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
-
 class StokOpname extends BaseController
 {
      public function sisastok()
@@ -320,8 +317,9 @@ class StokOpname extends BaseController
 
                     $gudang_items = $gudang_data['data'];
                     foreach ($gudang_items as $gudang) {
-                         if ($gudang['id_ruangan'] === $lokasi) {
-                              $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
+                         if ($gudang['id_ruangan'] !== $lokasi) { continue; }
+
+$gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                               $postGudangMedis = [
                                    'id_barang_medis' => $idbrgmedis[$j],
                                    'id_ruangan' => $lokasi,
@@ -348,7 +346,6 @@ class StokOpname extends BaseController
                               if ($http_status_code_gudang_put !== 200) {
                                    return $response_gudang_put;
                               }
-                         }
                     }
                }
 
@@ -394,8 +391,9 @@ class StokOpname extends BaseController
                $gudang_items = $gudang_data['data'];
 
                foreach ($gudang_items as $gudang) {
-                    if ($gudang['id_ruangan'] === $opname_data['data']['id_ruangan']) {
-                         $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
+                    if ($gudang['id_ruangan'] !== $opname_data['data']['id_ruangan']) { continue; }
+
+$gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                          $postGudangMedis = [
                               'id_barang_medis' => $opname_data['data']['id_barang_medis'],
                               'id_ruangan' => $opname_data['data']['id_ruangan'],
@@ -422,7 +420,6 @@ class StokOpname extends BaseController
                          if ($http_status_code_gudang_update !== 200) {
                               return $this->renderErrorView($http_status_code_gudang_update);
                          }
-                    }
                }
 
                $ch_opname_delete = curl_init($opname_url);

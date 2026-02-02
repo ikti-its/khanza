@@ -1,6 +1,7 @@
 <td class="size-px whitespace-nowrap">
     <div class="px-3 py-1.5 text-center inline-flex">
         <?php
+        declare(strict_types=1);
         $data = [
             'id'         => $id,
             'modul_path' => $modul_path,

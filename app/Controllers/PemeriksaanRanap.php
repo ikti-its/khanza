@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
-
 class PemeriksaanRanap extends BaseController
 {
 
@@ -109,10 +106,10 @@ class PemeriksaanRanap extends BaseController
                 $item['nama_pasien'] = $reg_data['data']['nama_pasien'] ?? '';
                 $item['umur'] = $reg_data['data']['umur'] ?? '';
                 $item['jenis_kelamin'] = $reg_data['data']['jenis_kelamin'] ?? '';
-                $item['penilaian'] = $item['penilaian'] ?? '-';
-                $item['rtl'] = $item['rtl'] ?? '-';
-                $item['keluhan'] = $item['keluhan'] ?? '-';
-                $item['pemeriksaan'] = $item['pemeriksaan'] ?? '-';
+                $item['penilaian'] ??= '-';
+                $item['rtl'] ??= '-';
+                $item['keluhan'] ??= '-';
+                $item['pemeriksaan'] ??= '-';
             }
 
                 // ✅ Fetch nama petugas based on NIP
@@ -194,7 +191,7 @@ class PemeriksaanRanap extends BaseController
         }
     // dd($data);
         // 🔍 Filter only entries with matching no_rawat
-        $filtered = array_filter($data['data'], fn($item) => $item['no_rawat'] === $noRawat);
+        $filtered = array_filter($data['data'], static fn($item) => $item['no_rawat'] === $noRawat);
 
         // 🧩 Enrich each item
         foreach ($filtered as &$item) {
@@ -212,10 +209,10 @@ class PemeriksaanRanap extends BaseController
             $item['nama_pasien'] = $reg_data['data']['nama_pasien'] ?? '';
             $item['umur'] = $reg_data['data']['umur'] ?? '';
             $item['jenis_kelamin'] = $reg_data['data']['jenis_kelamin'] ?? '';
-            $item['penilaian'] = $item['penilaian'] ?? '-';
-            $item['rtl'] = $item['rtl'] ?? '-';
-            $item['keluhan'] = $item['keluhan'] ?? '-';
-            $item['pemeriksaan'] = $item['pemeriksaan'] ?? '-';
+            $item['penilaian'] ??= '-';
+            $item['rtl'] ??= '-';
+            $item['keluhan'] ??= '-';
+            $item['pemeriksaan'] ??= '-';
 
             // Pegawai
             if (!empty($item['nip'])) {
@@ -279,9 +276,9 @@ class PemeriksaanRanap extends BaseController
 
         if (isset($pegawaiData['data']) && is_array($pegawaiData['data'])) {
             foreach ($pegawaiData['data'] as $pegawai) {
-                if (!empty($pegawai['nip'])) {
-                    $pegawaiNips[] = $pegawai['nip'];
-                }
+                if (empty($pegawai['nip'])) { continue; }
+
+$pegawaiNips[] = $pegawai['nip'];
             }
         }
 
@@ -300,9 +297,9 @@ class PemeriksaanRanap extends BaseController
 
         if (isset($dokterData['data']) && is_array($dokterData['data'])) {
             foreach ($dokterData['data'] as $dokter) {
-                if (!empty($dokter['kd_dokter'])) {
-                    $dokterNips[] = $dokter['kd_dokter'];
-                }
+                if (empty($dokter['kd_dokter'])) { continue; }
+
+$dokterNips[] = $dokter['kd_dokter'];
             }
         }
 
@@ -664,9 +661,9 @@ class PemeriksaanRanap extends BaseController
 
         if (isset($pegawai_data['data']) && is_array($pegawai_data['data'])) {
             foreach ($pegawai_data['data'] as $pegawai) {
-                if (!empty($pegawai['nip'])) {
-                    $nip_list[] = $pegawai['nip'];
-                }
+                if (empty($pegawai['nip'])) { continue; }
+
+$nip_list[] = $pegawai['nip'];
             }
         }
 
@@ -683,9 +680,9 @@ class PemeriksaanRanap extends BaseController
 
         if (isset($dokter_data['data']) && is_array($dokter_data['data'])) {
             foreach ($dokter_data['data'] as $dokter) {
-                if (!empty($dokter['kd_dokter'])) {
-                    $nip_list[] = $dokter['kd_dokter'];
-                }
+                if (empty($dokter['kd_dokter'])) { continue; }
+
+$nip_list[] = $dokter['kd_dokter'];
             }
         }
 
@@ -762,9 +759,9 @@ class PemeriksaanRanap extends BaseController
 
         if (isset($pegawai_data['data']) && is_array($pegawai_data['data'])) {
             foreach ($pegawai_data['data'] as $pegawai) {
-                if (!empty($pegawai['nip'])) {
-                    $nip_list[] = $pegawai['nip'];
-                }
+                if (empty($pegawai['nip'])) { continue; }
+
+$nip_list[] = $pegawai['nip'];
             }
         }
 
@@ -781,9 +778,9 @@ class PemeriksaanRanap extends BaseController
 
         if (isset($dokter_data['data']) && is_array($dokter_data['data'])) {
             foreach ($dokter_data['data'] as $dokter) {
-                if (!empty($dokter['kd_dokter'])) {
-                    $nip_list[] = $dokter['kd_dokter'];
-                }
+                if (empty($dokter['kd_dokter'])) { continue; }
+
+$nip_list[] = $dokter['kd_dokter'];
             }
         }
 

@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Libraries\JWT;
-
 class authController extends BaseController
 {
 

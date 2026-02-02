@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
-
 class StokKeluar extends BaseController
 {
     public function dataStokKeluarMedis()
@@ -558,8 +555,9 @@ class StokKeluar extends BaseController
             $stokData = json_decode($responseStok, true);
 
             foreach ($tr as $transaksi) {
-                if ($transaksi['id_stok_keluar'] === $stokKeluarId) {
-                    $gudangUrl = $this->api_url . '/inventory/gudang/barang/' . $transaksi['id_barang_medis'];
+                if ($transaksi['id_stok_keluar'] !== $stokKeluarId) { continue; }
+
+$gudangUrl = $this->api_url . '/inventory/gudang/barang/' . $transaksi['id_barang_medis'];
 
                     $chGudang = curl_init($gudangUrl);
                     curl_setopt($chGudang, CURLOPT_RETURNTRANSFER, true);
@@ -576,8 +574,9 @@ class StokKeluar extends BaseController
                     }
                     $gudang_items = $gudangData['data'];
                     foreach ($gudang_items as $gudang) {
-                        if ($gudang['id_ruangan'] === $stokData['data']['id_ruangan']) {
-                            $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
+                        if ($gudang['id_ruangan'] !== $stokData['data']['id_ruangan']) { continue; }
+
+$gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                             $postGudangMedis = [
                                 'id_barang_medis' => $transaksi['id_barang_medis'],
                                 'id_ruangan' => $stokData['data']['id_ruangan'],
@@ -605,7 +604,6 @@ class StokKeluar extends BaseController
                             if ($httpStatusCodeGudangUpdate !== 200) {
                                 return "Error updating gudang: " . $responseGudangUpdate;
                             }
-                        }
                     }
                     $deleteTransaksiUrl = $this->api_url . '/inventory/transaksi/' . $transaksi['id'];
                     $chTransaksiDelete = curl_init($deleteTransaksiUrl);
@@ -622,7 +620,6 @@ class StokKeluar extends BaseController
                     if ($httpStatusCodeDeleteTransaksi !== 204) {
                         return "Error deleting transaksi: " . $responseDeleteTransaksi;
                     }
-                }
             }
             $chStokDelete = curl_init($stokUrl);
             curl_setopt($chStokDelete, CURLOPT_CUSTOMREQUEST, "DELETE");

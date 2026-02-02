@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
-
 class RujukanMasuk extends BaseController
 {
 
@@ -81,7 +78,7 @@ protected array $breadcrumbs = [];
                 $meta_data = ['page' => 1, 'size' => 10, 'total' => 1];
             } else {
                 $meta_data = $rujukan_data['meta_data'];
-                $meta_data['total'] = $meta_data['total'] ?? 1;
+                $meta_data['total'] ??= 1;
             }
 
             // Return the view with rujukan data

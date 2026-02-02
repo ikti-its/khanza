@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
-
 class Kamar extends BaseController
 {
 
@@ -81,7 +78,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
                 $meta_data = ['page' => 1, 'size' => 10, 'total' => 1]; // Provide default values
             } else {
                 $meta_data = $kamar_data['meta_data'];
-                $meta_data['total'] = $meta_data['total'] ?? 1; // Set a default value for 'total' if missing
+                $meta_data['total'] ??= 1; // Set a default value for 'total' if missing
             }
     
             // Return the view with Kamar data

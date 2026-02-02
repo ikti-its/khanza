@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 class PermintaanStokObat extends BaseController
 {
     public function dataPermintaanStokObat()
@@ -184,9 +182,9 @@ class PermintaanStokObat extends BaseController
         // Normalize each field in stok_obat
         foreach ($stokObat as &$item) {
             foreach ($item as $key => $val) {
-                if ($val === '') {
-                    $item[$key] = null;
-                }
+                if ($val !== '') { continue; }
+
+$item[$key] = null;
             }
         }
         unset($item);
@@ -224,9 +222,9 @@ class PermintaanStokObat extends BaseController
 
         // Replace any remaining empty strings with null
         foreach ($postData as $key => $val) {
-            if ($val === '') {
-                $postData[$key] = null;
-            }
+            if ($val !== '') { continue; }
+
+$postData[$key] = null;
         }
 
         // merge header and details into one array
@@ -449,7 +447,7 @@ class PermintaanStokObat extends BaseController
             return $this->renderErrorView(500);
         }
     }
-    private function getPermintaanStokObatListFromAPI($token)
+    private function getPermintaanStokObatListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/permintaan-stok-obat';
         $ch = curl_init($url);
@@ -561,10 +559,10 @@ class PermintaanStokObat extends BaseController
 
         if (is_array($barangList)) {
             foreach ($barangList as $b) {
-                if (isset($b['kode_obat'], $b['nama_obat'])) {
-                    $kode = trim((string)$b['kode_obat']);
+                if (!(isset($b['kode_obat'], $b['nama_obat']))) { continue; }
+
+$kode = trim((string)$b['kode_obat']);
                     $barangMap[$kode] = $b['nama_obat'];
-                }
             }
         }
 
@@ -582,7 +580,7 @@ class PermintaanStokObat extends BaseController
         return $stokObat;
     }
 
-    private function getDokterListFromAPI($token)
+    private function getDokterListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/dokter';
         $ch = curl_init($url);
@@ -604,7 +602,7 @@ class PermintaanStokObat extends BaseController
         return $data['data'];
     }
 
-    private function getObatListFromAPI($token)
+    private function getObatListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/pemberian-obat/databarang'; // adjust path if needed
         $ch = curl_init($url);

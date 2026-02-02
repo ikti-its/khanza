@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 class ResepDokter extends BaseController
 {
 
@@ -174,10 +172,10 @@ protected array $breadcrumbs = [];
         // Temukan entry yang cocok dengan kode_barang
         if (isset($data['data']) && is_array($data['data'])) {
             foreach ($data['data'] as $item) {
-                if ($item['kode_barang'] === $kodeBarang) {
-                    $selectedResep = $item;
+                if ($item['kode_barang'] !== $kodeBarang) { continue; }
+
+$selectedResep = $item;
                     break;
-                }
             }
         }
 
@@ -414,12 +412,12 @@ protected array $breadcrumbs = [];
         $harga_lookup = [];
 
         foreach ($barang_data['data'] ?? [] as $item) {
-            if (isset($item['kode_obat'], $item['nama_obat'])) {
-                $barang_lookup[$item['kode_obat']] = $item['nama_obat'];
+            if (!(isset($item['kode_obat'], $item['nama_obat']))) { continue; }
+
+$barang_lookup[$item['kode_obat']] = $item['nama_obat'];
 
                 // choose desired class pricing, e.g. Dasar
                 $harga_lookup[$item['kode_obat']] = $item['Dasar'] ?? 0;
-            }
         }
 
 

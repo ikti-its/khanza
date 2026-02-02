@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 class PermintaanResepPulang extends BaseController
 {
 
@@ -175,7 +173,7 @@ protected array $breadcrumbs = [];
     }
     
     // Utility to avoid repetition
-    private function callApi($endpoint, $token)
+    private function callApi($endpoint, #[\SensitiveParameter] $token)
     {
         $url = $this->api_url . $endpoint;
         $ch = curl_init($url);
@@ -424,7 +422,7 @@ protected array $breadcrumbs = [];
         ]);
     }
 
-    private function getDokterListFromAPI($token)
+    private function getDokterListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/dokter'; // your API endpoint for dokter list
         $ch = curl_init($url);
@@ -441,7 +439,7 @@ protected array $breadcrumbs = [];
         return $data['data'] ?? []; // assume your API returns { "data": [...] }
     }
 
-    private function getObatListFromAPI($token)
+    private function getObatListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/pemberian-obat/databarang'; // adjust path if your API uses /v1/obat or something else
 

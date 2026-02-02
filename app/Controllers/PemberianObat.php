@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 class PemberianObat extends BaseController
 {
 
@@ -178,7 +176,7 @@ class PemberianObat extends BaseController
 
 
 
-        $putUrl = $this->api_url . '/gudang-barang/' . $gudangData['id'];;
+        $putUrl = $this->api_url . '/gudang-barang/' . $gudangData['id'];
         $putPayload = json_encode($putData);
     // dd($putUrl);
         $ch = curl_init($putUrl);
@@ -267,10 +265,10 @@ class PemberianObat extends BaseController
         // ✅ Temukan data sesuai jam_beri
         if (isset($data['data']) && is_array($data['data'])) {
             foreach ($data['data'] as $item) {
-                if ($item['jam_beri'] === $jamBeri) {
-                    $selectedObat = $item;
+                if ($item['jam_beri'] !== $jamBeri) { continue; }
+
+$selectedObat = $item;
                     break;
-                }
             }
         }
 
@@ -487,7 +485,7 @@ class PemberianObat extends BaseController
         ]);
     }
 
-    private function getObatListFromAPI($token)
+    private function getObatListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/pemberian-obat/databarang';
         $ch = curl_init($url);

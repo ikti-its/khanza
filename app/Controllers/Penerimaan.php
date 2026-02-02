@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
-use DateTime;
 
 class Penerimaan extends BaseController
 {
@@ -530,8 +527,9 @@ class Penerimaan extends BaseController
                         }
 
                         foreach ($gudang_data['data'] as $gudang) {
-                            if ($gudang['id_ruangan'] === intval($idruangan)) {
-                                $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
+                            if ($gudang['id_ruangan'] !== intval($idruangan)) { continue; }
+
+$gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                                 $postGudangMedis = [
                                     'id_barang_medis' => $idbrgmedis[$i],
                                     'id_ruangan' => intval($idruangan),
@@ -558,7 +556,6 @@ class Penerimaan extends BaseController
                                 if ($http_status_code_gudang_put !== 200) {
                                     return $this->renderErrorView($http_status_code_gudang_put);
                                 }
-                            }
                         }
                     }
                     return redirect()->to(base_url('penerimaanmedis'));
@@ -870,8 +867,9 @@ class Penerimaan extends BaseController
                         }
 
                         foreach ($gudang_data['data'] as $gudang) {
-                            if ($gudang['id_ruangan'] === intval($idruangan)) {
-                                $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
+                            if ($gudang['id_ruangan'] !== intval($idruangan)) { continue; }
+
+$gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                                 $postGudangMedis = [
                                     'id_barang_medis' => $idbrgmedis[$i],
                                     'id_ruangan' => intval($idruangan),
@@ -898,7 +896,6 @@ class Penerimaan extends BaseController
                                 if ($http_status_code_gudang_put !== 200) {
                                     return $this->renderErrorView($http_status_code_gudang_put);
                                 }
-                            }
                         }
                     }
                     return redirect()->to(base_url('penerimaanmedis'));
@@ -951,8 +948,9 @@ class Penerimaan extends BaseController
             $detailData = json_decode($responseDetail, true);
             $detail = $detailData['data'];
             foreach ($detail as $dtl) {
-                if ($dtl['id_penerimaan'] === $penerimaanId) {
-                    $gudangUrl = $this->api_url . '/inventory/gudang/barang/' . $dtl['id_barang_medis'];
+                if ($dtl['id_penerimaan'] !== $penerimaanId) { continue; }
+
+$gudangUrl = $this->api_url . '/inventory/gudang/barang/' . $dtl['id_barang_medis'];
 
                     $chGudang = curl_init($gudangUrl);
                     curl_setopt($chGudang, CURLOPT_RETURNTRANSFER, true);
@@ -969,8 +967,9 @@ class Penerimaan extends BaseController
                     }
                     $gudang_items = $gudangData['data'];
                     foreach ($gudang_items as $gudang) {
-                        if ($gudang['id_ruangan'] === $penerimaanData['data']['id_ruangan']) {
-                            $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
+                        if ($gudang['id_ruangan'] !== $penerimaanData['data']['id_ruangan']) { continue; }
+
+$gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                             $postGudangMedis = [
                                 'id_barang_medis' => $dtl['id_barang_medis'],
                                 'id_ruangan' => $penerimaanData['data']['id_ruangan'],
@@ -998,7 +997,6 @@ class Penerimaan extends BaseController
                             if ($httpStatusCodeGudangUpdate !== 200) {
                                 return "Error updating gudang: " . $responseGudangUpdate;
                             }
-                        }
                     }
                     $deleteDetailUrl = $this->api_url . '/inventory/detail/' . $dtl['id_penerimaan'] . "/" . $dtl['id_barang_medis'];
                     $chDetailDelete = curl_init($deleteDetailUrl);
@@ -1015,7 +1013,6 @@ class Penerimaan extends BaseController
                     if ($httpStatusCodeDeleteDetail !== 204) {
                         return "Error deleting detail: " . $responseDeleteDetail;
                     }
-                }
             }
             $chPenerimaanDelete = curl_init($penerimaanUrl);
             curl_setopt($chPenerimaanDelete, CURLOPT_CUSTOMREQUEST, "DELETE");

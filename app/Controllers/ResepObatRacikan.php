@@ -3,10 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use App\Models\ResepDokterModel;
-use App\Models\RawatInapModel;
-
 class ResepObatRacikan extends BaseController
 {
 
@@ -147,7 +143,7 @@ protected array $breadcrumbs = [];
     }
 
     // Optional helper to avoid repeating curl code
-    private function curlGet(string $url, string $token): string
+    private function curlGet(string $url, #[\SensitiveParameter] string $token): string
     {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -552,7 +548,7 @@ protected array $breadcrumbs = [];
         }
     }
 
-    private function getObatListFromAPI($token)
+    private function getObatListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/pemberian-obat/databarang';
         $ch = curl_init($url);

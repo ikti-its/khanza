@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 class ResepPulang extends BaseController
 {
 
@@ -595,7 +593,7 @@ public function editResepPulang($no_rawat, $kode_brng, $tanggal, $jam)
         ]);
     }
     
-    private function getObatListFromAPI($token)
+    private function getObatListFromAPI(#[\SensitiveParameter] $token)
     {
         $url = $this->api_url . '/pemberian-obat/databarang'; // ✅ Perbaiki di sini
         $ch = curl_init($url);
