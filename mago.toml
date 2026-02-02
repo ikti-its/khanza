@@ -1,0 +1,52 @@
+# Welcome to Mago!
+# For full documentation, see https://mago.carthage.software/tools/overview
+php-version = "8.5.0"
+threads = 8
+stack-size = 8388608
+
+[source]
+workspace = "."
+paths = ["app", "tests"]
+includes = ["vendor"]
+excludes = []
+extensions = ["php"]
+
+[formatter]
+preset = "default"
+print-width = 120
+tab-width = 8
+use-tabs = true
+single-quote = true
+trailing-comma = true
+inline-empty-control-braces = true
+inline-empty-closure-braces = true
+inline-empty-function-braces = true
+inline-empty-method-braces = true
+empty-line-after-opening-tag = false
+
+align-assignment-like = true
+null-type-hint = "null_pipe"
+parentheses-around-new-in-member-access = true
+
+[linter]
+integrations = ["phpunit"]
+
+[linter.rules]
+ambiguous-function-call = { enabled = false }
+literal-named-argument = { enabled = false }
+halstead = { effort-threshold = 7000 }
+
+[analyzer]
+plugins = []
+find-unused-definitions = true
+find-unused-expressions = true
+analyze-dead-code = true
+memoize-properties = true
+allow-possibly-undefined-array-keys = false
+check-throws = true
+check-missing-override = true
+find-unused-parameters = true
+strict-list-index-checks = true
+no-boolean-literal-comparison = true
+check-missing-type-hints = true
+register-super-globals = true
