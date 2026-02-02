@@ -69,7 +69,7 @@ protected array $breadcrumbs = [];
 
         // Step 2: Loop through each permintaan and fetch rawat inap details
         foreach ($permintaan_list as &$item) {
-            $no_rawat = $item['no_rawat'] ?? null;
+            $no_rawat = $item['no_rawat'];
 
             $item['nama_pasien'] = '-';
             $item['kamar'] = '-';

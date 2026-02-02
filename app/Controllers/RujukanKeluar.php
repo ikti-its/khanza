@@ -309,7 +309,7 @@ protected array $breadcrumbs = [];
         }
 
         $data = json_decode($response, true);
-        $rujukan = $data['data'] ?? null;
+        $rujukan = $data['data'];
 
         if (is_string($rujukan)) {
             $rujukan = json_decode($rujukan, true);
@@ -331,7 +331,7 @@ protected array $breadcrumbs = [];
         curl_close($ch_org);
 
         $data_org = json_decode($response_org, true);
-        $organisasi = $data_org['data'] ?? null;
+        $organisasi = $data_org['data'];
 
         if (is_string($organisasi)) {
             $organisasi = json_decode($organisasi, true);
@@ -349,7 +349,7 @@ protected array $breadcrumbs = [];
         curl_close($ch_rawat);
 
         $data_rawat = json_decode($response_rawat, true);
-        $rawatinap = $data_rawat['data'] ?? null;
+        $rawatinap = $data_rawat['data'];
 
         if (is_string($rawatinap)) {
             $rawatinap = json_decode($rawatinap, true);

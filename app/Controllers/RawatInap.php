@@ -88,8 +88,8 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
     $rawatinapList = $data['data'];
 
     foreach ($rawatinapList as &$ri) {
-        $tanggalMasuk = is_array($ri['tanggal_masuk']) ? $ri['tanggal_masuk']['date'] ?? null : $ri['tanggal_masuk'];
-        $tanggalKeluar = is_array($ri['tanggal_keluar']) ? $ri['tanggal_keluar']['date'] ?? null : $ri['tanggal_keluar'];
+        $tanggalMasuk = is_array($ri['tanggal_masuk']) ? $ri['tanggal_masuk']['date'] : $ri['tanggal_masuk'];
+        $tanggalKeluar = is_array($ri['tanggal_keluar']) ? $ri['tanggal_keluar']['date'] : $ri['tanggal_keluar'];
         $tarifKamar = floatval($ri['tarif_kamar'] ?? 0);
 
         if ($tanggalMasuk) {
@@ -312,7 +312,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
         $ri = $data['data'];
 
         // Hitung lama ranap dan total biaya kamar
-        $tanggalMasuk = $ri['tanggal_masuk'] ?? null;
+        $tanggalMasuk = $ri['tanggal_masuk'];
         $tarifKamar = floatval($ri['tarif_kamar'] ?? 0);
         if ($tanggalMasuk) {
             $tanggalKeluar = ($ri['tanggal_keluar'] === '0001-01-01' || empty($ri['tanggal_keluar']))

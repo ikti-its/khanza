@@ -159,7 +159,7 @@ class PemberianObat extends BaseController
             return $this->renderErrorView($status);
         }
 
-        $gudangData = json_decode($getResponse, true)['data'] ?? null;
+        $gudangData = json_decode($getResponse, true)['data'];
         if (!$gudangData) {
             return $this->renderErrorView(500);
         }

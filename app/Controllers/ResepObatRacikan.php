@@ -81,7 +81,7 @@ protected array $breadcrumbs = [];
 
         $obatMap = [];
         foreach ($obatList as $obat) {
-            $kode = $obat['kode_obat'] ?? null;
+            $kode = $obat['kode_obat'];
             if ($kode !== null) {
                 $obatMap[$kode] = [
                     'nama_barang' => $obat['nama_brng'] ?? '-',

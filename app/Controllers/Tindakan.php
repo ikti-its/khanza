@@ -130,7 +130,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         curl_close($ch_ranap);
 
         $ranap_data = json_decode($ranap_response, true);
-        $nomor_bed = $ranap_data['data']['kamar'] ?? null;
+        $nomor_bed = $ranap_data['data']['kamar'];
 
         $kodeBangsal = null;
 
@@ -146,7 +146,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             curl_close($ck);
 
             $data_kamar = json_decode($res_kamar, true);
-            $kodeBangsalRaw = $data_kamar['data']['kelas'] ?? null;
+            $kodeBangsalRaw = $data_kamar['data']['kelas'];
         }
 
         // 🔹 Normalize kode_bangsal
@@ -408,7 +408,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         curl_close($ch3);
 
         $ranap_data = json_decode($ranap_response, true);
-        $nomor_bed = $ranap_data['data']['kamar'] ?? null;
+        $nomor_bed = $ranap_data['data']['kamar'];
     // dd($nomor_bed);
         $kelas = null;
 
@@ -425,7 +425,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             curl_close($ch4);
 
             $kamar_data = json_decode($kamar_response, true);
-            $kelas = $kamar_data['data']['kelas'] ?? null;
+            $kelas = $kamar_data['data']['kelas'];
         }
 
         $this->addBreadcrumb('User', 'user');
@@ -472,7 +472,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         }
 
         // 🔹 Step 2: Get nomor_bed to fetch kamar
-        $nomor_bed = $rawatinap['kamar'] ?? null;
+        $nomor_bed = $rawatinap['kamar'];
         $kodeBangsal = null;
 
         if ($nomor_bed) {
@@ -487,7 +487,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             curl_close($ck);
 
             $data_kamar = json_decode($res_kamar, true);
-            $kodeBangsal = $data_kamar['data']['kelas'] ?? null;
+            $kodeBangsal = $data_kamar['data']['kelas'];
         }
 
 

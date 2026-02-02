@@ -739,7 +739,7 @@ class Medis extends BaseController
     //     }
 
     //     $medis_data = json_decode($response_medis, true);
-    //     $medis = $medis_data['data'] ?? null;
+    //     $medis = $medis_data['data'];
 
     //     // Retrieve gudang data
     //     $gudang_url = $this->api_url . '/inventory/gudang/barang/' . $medisId;
@@ -753,7 +753,7 @@ class Medis extends BaseController
     //     }
 
     //     $gudang_data = json_decode($response_gudang, true);
-    //     $gudang = $gudang_data['data'] ?? null;
+    //     $gudang = $gudang_data['data'];
 
     //     // Retrieve ruangan data
     //     $ch_ruangan = initCurl($ruangan_url, $token);
@@ -766,7 +766,7 @@ class Medis extends BaseController
     //     }
 
     //     $ruangan_data = json_decode($response_ruangan, true);
-    //     $ruangan = $ruangan_data['data'] ?? null;
+    //     $ruangan = $ruangan_data['data'];
 
     //     // Delete gudang data
     //     $http_status_code_gudang_final = 204;

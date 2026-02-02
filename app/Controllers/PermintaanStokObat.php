@@ -54,7 +54,7 @@ class PermintaanStokObat extends BaseController
                 }
             }
 
-            $no_rawat = $permintaan['no_rawat'] ?? null;
+            $no_rawat = $permintaan['no_rawat'];
 
             $rawatinap = [];
             if ($no_rawat) {
@@ -617,6 +617,6 @@ class PermintaanStokObat extends BaseController
         curl_close($ch);
 
         $data = json_decode($response, true);
-        return is_array($data['data'] ?? null) ? $data['data'] : [];
+        return is_array($data['data']) ? $data['data'] : [];
     }
 }

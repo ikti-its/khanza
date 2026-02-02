@@ -72,7 +72,7 @@ protected array $breadcrumbs = [];
     
         // Fetch nama_pasien for each no_rawat
         foreach ($reseppulang_data as &$item) {
-            $noRawat = $item['no_rawat'] ?? null;
+            $noRawat = $item['no_rawat'];
             if ($noRawat) {
                 $rawatUrl = $this->api_url . '/rawatinap/' . $noRawat;
                 $ch = curl_init($rawatUrl);
@@ -284,7 +284,7 @@ if ($noPermintaan) {
                 'jam'          => date('H:i:s')
             ]);
 
-            $kamar = $this->request->getGet('kamar') ?? $rawatinap['kamar'] ?? null;
+            $kamar = $this->request->getGet('kamar') ?? $rawatinap['kamar'];
         } else {
             log_message('error', '❌ Gagal mengambil data rawatinap (' . $httpCode . '): ' . $response);
         }

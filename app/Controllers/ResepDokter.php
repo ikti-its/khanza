@@ -369,7 +369,7 @@ protected array $breadcrumbs = [];
 
         if ($http_status_racikan === 200) {
             $racikan_data = json_decode($response_racikan, true);
-            $racikan_list = is_array($racikan_data['data'] ?? null) ? $racikan_data['data'] : [];
+            $racikan_list = is_array($racikan_data['data']) ? $racikan_data['data'] : [];
         } else {
             log_message('error', "Failed to fetch racikan data for no_resep $noResep. HTTP status: $http_status_racikan");
             $racikan_list = [];

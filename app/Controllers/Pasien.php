@@ -171,7 +171,7 @@ class Pasien extends BaseController
 
             if ($http_status === 200 && $response) {
                 $data = json_decode($response, true);
-                $pasienData = $data['data'] ?? null;
+                $pasienData = $data['data'];
             } else {
                 return redirect()->to('/pasien')->with('error', 'Pasien tidak ditemukan.');
             }
@@ -210,7 +210,7 @@ class Pasien extends BaseController
         }
 
         $data = json_decode($response, true);
-        $pasienData = $data['data'] ?? null;
+        $pasienData = $data['data'];
 
         $this->addBreadcrumb('Pasien', 'pasien_data');
         $this->addBreadcrumb('Edit', '');

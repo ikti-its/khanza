@@ -82,7 +82,7 @@ protected array $breadcrumbs = [];
 
     // Enrich with registrasi info
     foreach ($resep_list as &$resep) {
-        $no_rawat = $resep['no_rawat'] ?? null;
+        $no_rawat = $resep['no_rawat'];
         if ($no_rawat) {
             $registrasi_url = $this->api_url . '/registrasi/by-no-rawat/' . urlencode($no_rawat);
             $rch = curl_init($registrasi_url);
@@ -97,10 +97,10 @@ protected array $breadcrumbs = [];
             $registrasi_data = json_decode($rresponse, true);
             $data = $registrasi_data['data'] ?? [];
 
-            $resep['nomor_rm']    = $data['nomor_rm'] ?? null;
-            $resep['nama_pasien'] = $data['nama_pasien'] ?? null;
-            $resep['poli']        = $data['poli'] ?? null;
-            $resep['jenis_bayar'] = $data['jenis_bayar'] ?? null;
+            $resep['nomor_rm']    = $data['nomor_rm'];
+            $resep['nama_pasien'] = $data['nama_pasien'];
+            $resep['poli']        = $data['poli'];
+            $resep['jenis_bayar'] = $data['jenis_bayar'];
         }
     }
 

@@ -427,7 +427,7 @@ class CatatanObservasiPostpartum extends BaseController
         }
 
         // Step 2: Ambil tgl_lahir dari data pasien
-        $nomor_rm = $rawatinap['nomor_rm'] ?? null;
+        $nomor_rm = $rawatinap['nomor_rm'];
         $tgl_lahir = null;
 
         if ($nomor_rm) {
