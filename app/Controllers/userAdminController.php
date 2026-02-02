@@ -46,7 +46,7 @@ class userAdminController extends BaseController
 
                     // Filter cuti_data to only include entries with status 'Diproses'
                     $cuti_entries_diproses = array_filter($cuti_data['data']['cuti'], function ($cutiEntry) {
-                        return $cutiEntry['status'] == 'Diproses';
+                        return $cutiEntry['status'] === 'Diproses';
                     });
 
                     // Fetch employee names and append to $cuti_entries_diproses

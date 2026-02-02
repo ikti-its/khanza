@@ -63,7 +63,7 @@ class KelahiranBayiForm extends BaseController
             return redirect()->back()->withInput()->with('error', 'Tanggal tidak valid.');
         }
 
-        if ($tgl_lahir_raw == $now && strtotime($jam_lahir) > strtotime($currentTime)) {
+        if ($tgl_lahir_raw === $now && strtotime($jam_lahir) > strtotime($currentTime)) {
             return redirect()->back()->withInput()->with('error', 'Jam lahir tidak boleh melebihi waktu sekarang.');
         }
 
@@ -249,7 +249,7 @@ class KelahiranBayiForm extends BaseController
             return redirect()->back()->withInput()->with('error', 'Tanggal tidak valid.');
         }
 
-        if ($tgl_lahir_raw == $now && strtotime($jam_lahir) > strtotime($currentTime)) {
+        if ($tgl_lahir_raw === $now && strtotime($jam_lahir) > strtotime($currentTime)) {
             return redirect()->back()->withInput()->with('error', 'Jam lahir tidak boleh melebihi waktu sekarang.');
         }
 

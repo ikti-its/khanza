@@ -63,7 +63,7 @@ class PasienMeninggalForm extends BaseController
             return redirect()->back()->withInput()->with('error', 'Tanggal kematian tidak boleh lebih awal dari tanggal lahir.');
         }
 
-        if ($tanggal_meninggal == $now && $jam_meninggal > $currentTime) {
+        if ($tanggal_meninggal === $now && $jam_meninggal > $currentTime) {
             return redirect()->back()->withInput()->with('error', 'Jam kematian tidak boleh melebihi waktu saat ini.');
         }
 

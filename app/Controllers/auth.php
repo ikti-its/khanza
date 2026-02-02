@@ -114,7 +114,7 @@ class auth extends BaseController
                         curl_close($user_details_ch);
 // dd($user_details);
                         // Check if the user role is 2 or 1
-                        if ($user_details['data']['role'] == 2 || $user_details['data']['role'] == 1) {
+                        if ($user_details['data']['role'] === 2 || $user_details['data']['role'] === 1) {
                             // If the user role is 2 or 1, make another API request
                             $tanggal = date('Y-m-d');
                             $user_specific_url = $this->api_url . '/w/home/pegawai?tanggal=' . $tanggal;

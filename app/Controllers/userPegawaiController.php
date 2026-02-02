@@ -982,7 +982,7 @@ public function tambahPresensi()
 
                     // Find the schedule data for today (id_hari = $currentDay)
                     $jadwal_today = array_values(array_filter($jadwal_data, function ($item) use ($currentDay) {
-                        return $item['id_hari'] == $currentDay;
+                        return $item['id_hari'] === $currentDay;
                     }));
 
                     // Check if there is a schedule for today
@@ -1156,7 +1156,7 @@ public function tambahPresensi()
 
                     // Find the schedule data for today (id_hari = $currentDay)
                     $jadwal_today = array_values(array_filter($jadwal_data, function ($item) use ($currentDay) {
-                        return $item['id_hari'] == $currentDay;
+                        return $item['id_hari'] === $currentDay;
                     }));
 
                     // Check if there is a schedule for today
@@ -1338,7 +1338,7 @@ public function tambahPresensi()
 
                     // Find the schedule data for today (id_hari = $currentDay)
                     $jadwal_today = array_values(array_filter($jadwal_data, function ($item) use ($currentDay) {
-                        return $item['id_hari'] == $currentDay;
+                        return $item['id_hari'] === $currentDay;
                     }));
 
                     // Check if there is a schedule for today

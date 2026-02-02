@@ -635,7 +635,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         $selectedUGD = null;
 
         foreach ($ugdList as $ugd) {
-            if (isset($ugd['nomor_rawat']) && $ugd['nomor_rawat'] == $nomor_rawat) {
+            if (isset($ugd['nomor_rawat']) && $ugd['nomor_rawat'] === $nomor_rawat) {
                 $selectedUGD = $ugd;
                 break;
             }
