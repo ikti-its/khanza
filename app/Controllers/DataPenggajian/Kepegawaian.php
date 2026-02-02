@@ -55,7 +55,7 @@ class Kepegawaian extends BaseController
         $query = $db->query("SELECT a.*, b.nama as nama_pegawai FROM sik.kepegawaian a JOIN sik.pegawai  b ON a.no_pegawai =  b.id");
         $results = $query->getResult();
 
-        for($i = 0; $i < sizeof($results); $i++){
+        for($i = 0; $i < count($results); $i++){
             $results[$i] = json_decode(json_encode($results[$i]), true);
         }
         return view('/layouts/data', [
@@ -78,7 +78,7 @@ class Kepegawaian extends BaseController
         $query = $db->query("SELECT * FROM sik.kepegawaian WHERE no_pegawai = " . "'$id'");
         $results = $query->getResult();
 
-        for($i = 0; $i < sizeof($results); $i++){
+        for($i = 0; $i < count($results); $i++){
             $results[$i] = json_decode(json_encode($results[$i]), true);
         }
         return view('/layouts/tambah_ubah', [
@@ -109,7 +109,7 @@ class Kepegawaian extends BaseController
         $query = $db->query("SELECT a.*, b.nama as nama_pegawai FROM sik.kepegawaian a JOIN sik.pegawai  b ON a.no_pegawai =  b.id");
         $results = $query->getResult();
 
-        for($i = 0; $i < sizeof($results); $i++){
+        for($i = 0; $i < count($results); $i++){
             $results[$i] = json_decode(json_encode($results[$i]), true);
         }
         return view('/layouts/audit', [

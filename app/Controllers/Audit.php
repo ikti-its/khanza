@@ -19,7 +19,7 @@ class Audit extends BaseController
             ORDER BY changed_by DESC");
         $results = $query->getResult();
 
-        for($i = 0; $i < sizeof($results); $i++){
+        for($i = 0; $i < count($results); $i++){
             $results[$i] = json_decode(json_encode($results[$i]), true);
         }
         return $results;

@@ -47,7 +47,7 @@ class PHK extends BaseController
         $query = $db->query("SELECT a.*, b.nama as nama_pegawai FROM sik.data_phk a JOIN sik.pegawai  b ON a.no_pegawai =  b.id");
         $results = $query->getResult();
 
-        for($i = 0; $i < sizeof($results); $i++){
+        for($i = 0; $i < count($results); $i++){
             $results[$i] = json_decode(json_encode($results[$i]), true);
         }
         return view('/layouts/data', [
@@ -70,7 +70,7 @@ class PHK extends BaseController
         $query = $db->query("SELECT a.*, b.nama as nama_pegawai FROM sik.data_phk a JOIN sik.pegawai  b ON a.no_pegawai =  b.id WHERE no_pegawai = ". "'$id'");
         $results = $query->getResult();
 
-        for($i = 0; $i < sizeof($results); $i++){
+        for($i = 0; $i < count($results); $i++){
             $results[$i] = json_decode(json_encode($results[$i]), true);
         }
         return view('/layouts/tambah_ubah', [
@@ -101,7 +101,7 @@ class PHK extends BaseController
         $query = $db->query("SELECT a.*, b.nama as nama_pegawai FROM sik.data_phk a JOIN sik.pegawai  b ON a.no_pegawai =  b.id");
         $results = $query->getResult();
 
-        for($i = 0; $i < sizeof($results); $i++){
+        for($i = 0; $i < count($results); $i++){
             $results[$i] = json_decode(json_encode($results[$i]), true);
         }
         ;
