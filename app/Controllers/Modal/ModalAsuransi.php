@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\Modal;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class ModalAsuransi extends BaseController
+class ModalAsuransi extends ControllerTemplate
 {
     public function listAsuransi()
     {

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Medis extends BaseController
+class Medis extends ControllerTemplate
 {
     public function dataMedis()
     {

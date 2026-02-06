@@ -8,7 +8,7 @@ require_once FCPATH . '../vendor/autoload.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-class Pemesanan extends BaseController
+class Pemesanan extends ControllerTemplate
 {
     public function dataPemesananMedis()
     {

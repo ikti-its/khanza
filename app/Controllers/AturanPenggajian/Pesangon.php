@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class Pesangon extends BaseController
+class Pesangon extends ControllerTemplate
 {   
     protected string $judul = 'Aturan Uang Pesangon';
     protected array $breadcrumbs = [

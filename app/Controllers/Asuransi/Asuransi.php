@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\Asuransi;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class Asuransi extends BaseController
+class Asuransi extends ControllerTemplate
 {
     protected string $judul = 'Asuransi / Askes';
     protected array $breadcrumbs = [

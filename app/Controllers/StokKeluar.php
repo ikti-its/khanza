@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class StokKeluar extends BaseController
+class StokKeluar extends ControllerTemplate
 {
     public function dataStokKeluarMedis()
     {

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class admin extends BaseController
+class admin extends ControllerTemplate
 {
     
     // public function dataPegawai()

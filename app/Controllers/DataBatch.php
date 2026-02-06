@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class DataBatch extends BaseController
+class DataBatch extends ControllerTemplate
 {
     public function data()
     {

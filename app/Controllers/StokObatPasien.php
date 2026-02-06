@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class StokObatPasien extends BaseController
+class StokObatPasien extends ControllerTemplate
 {
     public function dataStokObatPasien()
     {

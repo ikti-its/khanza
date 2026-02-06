@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class MutasiGudang extends BaseController
+class MutasiGudang extends ControllerTemplate
 {
     public function data()
     {

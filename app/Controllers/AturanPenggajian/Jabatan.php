@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class Jabatan extends BaseController
+class Jabatan extends ControllerTemplate
 {
     protected string $judul = 'Aturan Jabatan Pegawai';
     protected array $breadcrumbs = [

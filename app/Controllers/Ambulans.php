@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Ambulans extends BaseController
+class Ambulans extends ControllerTemplate
 {
     protected string $judul = 'Data Ambulans';
     protected string $modul_path = '/ambulans';

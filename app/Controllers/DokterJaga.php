@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class DokterJaga extends BaseController
+class DokterJaga extends ControllerTemplate
 {
 
 protected array $breadcrumbs = [];

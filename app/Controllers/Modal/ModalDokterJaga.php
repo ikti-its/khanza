@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\Modal;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class ModalDokterJaga extends BaseController
+class ModalDokterJaga extends ControllerTemplate
 {
     public function listDokterJaga()
     {

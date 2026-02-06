@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class UPMK extends BaseController
+class UPMK extends ControllerTemplate
 {   
     protected string $judul = 'Aturan Uang Penghargaan Masa Kerja';
     protected array $breadcrumbs = [

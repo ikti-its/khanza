@@ -5,9 +5,9 @@ namespace App\Filters;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class Ijin extends BaseController implements FilterInterface
+class Ijin extends ControllerTemplate implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {

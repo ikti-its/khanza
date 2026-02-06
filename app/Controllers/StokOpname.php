@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class StokOpname extends BaseController
+class StokOpname extends ControllerTemplate
 {
      public function sisastok()
      {

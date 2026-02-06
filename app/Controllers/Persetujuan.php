@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Persetujuan extends BaseController
+class Persetujuan extends ControllerTemplate
 {
     public function dataPersetujuan()
     {

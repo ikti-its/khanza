@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class CatatanObservasiKebidanan extends BaseController
+class CatatanObservasiKebidanan extends ControllerTemplate
 {
     protected array $breadcrumbs = [];
     protected string $judul = 'Catatan Observasi Kebidanan';

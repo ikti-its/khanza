@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class PermintaanStokObat extends BaseController
+class PermintaanStokObat extends ControllerTemplate
 {
     public function dataPermintaanStokObat()
     {

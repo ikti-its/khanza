@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\DataPenggajian;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class THR extends BaseController
+class THR extends ControllerTemplate
 {
     protected string $judul = 'Data THR';
     protected array $breadcrumbs = [

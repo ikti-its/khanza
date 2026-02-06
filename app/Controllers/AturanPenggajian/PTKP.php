@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class PTKP extends BaseController
+class PTKP extends ControllerTemplate
 {   
     protected string $judul = 'Aturan Penghasilan Tidak Kena Pajak';
     protected array $breadcrumbs = [

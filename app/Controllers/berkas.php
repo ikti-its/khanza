@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 
-class berkas extends BaseController
+class berkas extends ControllerTemplate
 {
     protected $api_url;
 

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\Modal;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class ModalInstansi extends BaseController
+class ModalInstansi extends ControllerTemplate
 {
     public function listInstansi()
     {

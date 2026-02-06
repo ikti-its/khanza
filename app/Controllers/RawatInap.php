@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class RawatInap extends BaseController
+class RawatInap extends ControllerTemplate
 {
 
 protected array $breadcrumbs = [];

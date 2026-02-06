@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class ErrorController extends BaseController
+class ErrorController extends ControllerTemplate
 {
     public function noAccess403()
     {

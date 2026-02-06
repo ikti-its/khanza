@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Controllers\MasterPasien;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 use App\Services\NomorGeneratorService;
 
-class MasterPasienForm extends BaseController
+class MasterPasienForm extends ControllerTemplate
 {
     public function tampilTambah()
     {

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class THR extends BaseController
+class THR extends ControllerTemplate
 {   
     protected string $judul = 'Aturan Tunjangan Hari Raya';
     protected array $breadcrumbs = [

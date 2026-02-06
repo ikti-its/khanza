@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\DataPenggajian;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class Kepegawaian extends BaseController
+class Kepegawaian extends ControllerTemplate
 {
     protected string $judul = 'Data Kepegawaian';
     protected array $breadcrumbs = [

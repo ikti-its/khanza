@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\Dokter;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class Dokter extends BaseController
+class Dokter extends ControllerTemplate
 {
     protected string $judul = 'Daftar Dokter';
     protected array $breadcrumbs = [

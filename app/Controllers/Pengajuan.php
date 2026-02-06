@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Pengajuan extends BaseController
+class Pengajuan extends ControllerTemplate
 {
     public function dashboardPengadaan()
     {

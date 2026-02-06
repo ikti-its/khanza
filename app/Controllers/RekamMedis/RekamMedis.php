@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\RekamMedis;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class RekamMedis extends BaseController
+class RekamMedis extends ControllerTemplate
 {
     protected string $registrasi_api_url = 'http://localhost:8080/v1';
     protected string $judul = 'Rekam Medis Pasien';

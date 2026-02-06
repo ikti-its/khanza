@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Kamar extends BaseController
+class Kamar extends ControllerTemplate
 {
 
 protected array $breadcrumbs = [];

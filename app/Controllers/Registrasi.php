@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Registrasi extends BaseController
+class Registrasi extends ControllerTemplate
 {
     protected array $breadcrumbs = [];
     protected string $judul = 'Registrasi';

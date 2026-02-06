@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 
-class userAdmin extends BaseController
+class userAdmin extends ControllerTemplate
 {
 
     public function lihatStatusCuti()

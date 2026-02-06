@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 
-class pegawai extends BaseController
+class pegawai extends ControllerTemplate
 {
 
     protected $api_url;

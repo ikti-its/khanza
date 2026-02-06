@@ -5,7 +5,7 @@ namespace App\Controllers;
 
 use DateTime;
 
-class userPegawaiController extends BaseController
+class userPegawaiController extends ControllerTemplate
 {
 
 

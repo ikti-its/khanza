@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class auth extends BaseController
+class auth extends ControllerTemplate
 {
     protected $api_url;
     public function __construct()

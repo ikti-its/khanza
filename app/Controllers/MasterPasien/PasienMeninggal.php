@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\MasterPasien;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class PasienMeninggal extends BaseController
+class PasienMeninggal extends ControllerTemplate
 {
     protected string $judul = 'Data Pasien Meninggal';
     protected array $breadcrumbs = [

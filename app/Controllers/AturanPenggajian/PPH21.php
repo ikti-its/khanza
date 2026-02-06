@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class PPH21 extends BaseController
+class PPH21 extends ControllerTemplate
 {   
     protected string $judul = 'Aturan Pajak Penghasilan (PPH 21)';
     protected array $breadcrumbs = [

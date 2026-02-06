@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Tagihan extends BaseController
+class Tagihan extends ControllerTemplate
 {
     public function dataTagihanMedis()
     {

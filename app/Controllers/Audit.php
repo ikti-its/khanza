@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Audit extends BaseController
+class Audit extends ControllerTemplate
 {
     public static function GetAuditData($tabel){
         $tabel = str_replace('/', '', $tabel);

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class RujukanKeluar extends BaseController
+class RujukanKeluar extends ControllerTemplate
 {
 
 protected array $breadcrumbs = [];

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\DataPenggajian;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class PHK extends BaseController
+class PHK extends ControllerTemplate
 {
     protected string $judul = 'Data PHK';
     protected array $breadcrumbs = [

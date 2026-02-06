@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class CatatanObservasiRanap extends BaseController
+class CatatanObservasiRanap extends ControllerTemplate
 {
 
 protected array $breadcrumbs = [];

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\Modal;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class ModalPasien extends BaseController
+class ModalPasien extends ControllerTemplate
 {
     public function listPasien()
     {

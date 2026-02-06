@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Pasien extends BaseController
+class Pasien extends ControllerTemplate
 {
     protected $api_url;
 

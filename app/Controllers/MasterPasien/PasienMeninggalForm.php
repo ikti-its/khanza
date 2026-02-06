@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controllers\MasterPasien;
 
-use App\Controllers\BaseController;
+use App\Controllers\ControllerTemplate;
 
-class PasienMeninggalForm extends BaseController
+class PasienMeninggalForm extends ControllerTemplate
 {
 
     protected $api_url = 'http://localhost:8080';
