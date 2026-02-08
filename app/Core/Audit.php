@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controllers;
+namespace App\Core;
 use App\Core\ControllerTemplate;
 
 class Audit extends ControllerTemplate
