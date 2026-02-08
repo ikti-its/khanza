@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-
-use DateTime;
+use App\Core\ControllerTemplate;
 
 class userPegawai extends ControllerTemplate
 {

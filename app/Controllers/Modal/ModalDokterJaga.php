@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers\Modal;
-
-use App\Controllers\ControllerTemplate;
+use App\Core\ControllerTemplate;
 
 class ModalDokterJaga extends ControllerTemplate
 {

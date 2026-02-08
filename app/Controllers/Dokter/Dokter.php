@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers\Dokter;
-
-use App\Controllers\ControllerTemplate;
+use App\Core\ControllerTemplate;
 
 class Dokter extends ControllerTemplate
 {

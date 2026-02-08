@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers\MasterPasien;
-
-use App\Controllers\ControllerTemplate;
+use App\Core\ControllerTemplate;
 
 class Instansi extends ControllerTemplate
 {

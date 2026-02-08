@@ -2,9 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers\MasterPasien;
-
-use App\Controllers\ControllerTemplate;
-use App\Services\NomorGeneratorService;
+use App\Core\ControllerTemplate;
 
 class MasterPasienForm extends ControllerTemplate
 {
