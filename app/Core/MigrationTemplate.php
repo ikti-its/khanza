@@ -33,7 +33,7 @@ class MigrationTemplate extends Migration
         parent::__construct();
     }
     
-    final public function setup(){
+    final private function setup(){
          
         foreach ($this->fields as $name => $type) {
             $this->fields[$name] = $type->definition();
@@ -42,6 +42,7 @@ class MigrationTemplate extends Migration
 
     final public function up(): void
     {
+        echo "HALO";
         $this->setup();
         
         $this->db->query("CREATE SCHEMA IF NOT EXISTS " . $this->schema);
@@ -63,6 +64,7 @@ class MigrationTemplate extends Migration
 
     final public function down(): void
     {
-        $this->forge->dropTable($this->schema . $this->table);
+        $this->db->query("SET search_path TO " . $this->schema . ", public");
+        $this->forge->dropTable($this->table);
     }
 }

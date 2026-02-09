@@ -20,6 +20,8 @@ class CreateBPJSTable extends MigrationTemplate
                 'batas_bawah'   => T::F64(),
             ],
             ['no_bpjs'],
+            ['nama_program'],
+
         );
     }
 }
