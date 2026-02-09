@@ -67,6 +67,7 @@ final class DBType
     public static function F32(): self { return new self(['type' => 'REAL']);}
     public static function F64(): self { return new self(['type' => 'DOUBLE PRECISION']);}
     public static function TEXT(): self { return new self(['type' => 'TEXT']);}
+    public static function BOOL(): self { return new self(['type' => 'BOOLEAN']);}
 
     public static function DATE(): self { return new self(['type' => 'DATE']);}
     public static function TIME(): self { return new self(['type' => 'TIME']);}
