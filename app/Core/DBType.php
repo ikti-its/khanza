@@ -13,6 +13,11 @@ final class DBType
         $this->definition['null'] ??= false;
     }
 
+    public function definition(): array
+    {
+        return $this->definition;
+    }
+
     public function nullable(): self
     {
         return new self([

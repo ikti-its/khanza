@@ -10,7 +10,7 @@ class MigrationTemplate extends Migration
         protected string $schema,
         protected string $table,
         /**
-         * @var array<string, mixed>
+         * @var array<string, string>
          */
         protected array $fields,
         /**
@@ -28,13 +28,25 @@ class MigrationTemplate extends Migration
         /**
          * @var array<string>
          */
-        protected array $index = []
-    ){
+        protected array $index = [],
+    ) {
         parent::__construct();
+    }
+    
+    final public function setup(){
+         
+        foreach ($this->fields as $name => $type) {
+            $this->fields[$name] = $type->definition();
+        }
     }
 
     final public function up(): void
     {
+        $this->setup();
+        
+        $this->db->query("CREATE SCHEMA IF NOT EXISTS " . $this->schema);
+        $this->db->query("SET search_path TO " . $this->schema . ", public");
+
         $this->forge->addField($this->fields);
         if($this->primary_key !== [])
             $this->forge->addPrimaryKey($this->primary_key);
@@ -45,7 +57,8 @@ class MigrationTemplate extends Migration
         if($this->index !== [])
             $this->forge->addKey($this->index);
 
-        $this->forge->createTable($this->schema . '.' . $this->table);
+        // dd($this->fields);
+        $this->forge->createTable($this->table);
     }
 
     final public function down(): void
