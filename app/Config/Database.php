@@ -29,7 +29,7 @@ class Database extends Config
         'hostname'     => 'localhost',
         'username'     => 'postgres',
         'password'     => 'postgres',
-        'database'     => 'khanza_dev',
+        'database'     => 'khanza_db',
         'DBDriver'     => 'Postgre',
         'DBPrefix'     => '',
         'pConnect'     => false,
