@@ -1,66 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 17.4
--- Dumped by pg_dump version 17.4
-
--- Started on 2025-06-02 11:41:12
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- TOC entry 7 (class 2615 OID 16602)
--- Name: ref; Type: SCHEMA; Schema: -; Owner: postgres
---
-
-CREATE SCHEMA ref;
-
-
-ALTER SCHEMA ref OWNER TO postgres;
-
---
--- TOC entry 6 (class 2615 OID 16601)
--- Name: sik; Type: SCHEMA; Schema: -; Owner: postgres
---
-
-CREATE SCHEMA sik;
-
-
-ALTER SCHEMA sik OWNER TO postgres;
-
---
--- TOC entry 2 (class 3079 OID 50639)
--- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA sik;
-
-
---
--- TOC entry 5697 (class 0 OID 0)
--- Dependencies: 2
--- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
-
-
---
--- TOC entry 1071 (class 1247 OID 17052)
--- Name: agama; Type: TYPE; Schema: sik; Owner: postgres
---
-
 CREATE TYPE sik.agama AS ENUM (
     'Islam',
     'Kristen',
@@ -71,14 +8,6 @@ CREATE TYPE sik.agama AS ENUM (
     'Lainnya'
 );
 
-
-ALTER TYPE sik.agama OWNER TO postgres;
-
---
--- TOC entry 1224 (class 1247 OID 50721)
--- Name: cara_keluar_enum; Type: TYPE; Schema: sik; Owner: postgres
---
-
 CREATE TYPE sik.cara_keluar_enum AS ENUM (
     'Atas Izin Dokter',
     'Pulang Sendiri',
@@ -87,14 +16,6 @@ CREATE TYPE sik.cara_keluar_enum AS ENUM (
     'Lain-lain'
 );
 
-
-ALTER TYPE sik.cara_keluar_enum OWNER TO postgres;
-
---
--- TOC entry 1230 (class 1247 OID 50742)
--- Name: dilanjutkan_enum; Type: TYPE; Schema: sik; Owner: postgres
---
-
 CREATE TYPE sik.dilanjutkan_enum AS ENUM (
     'Kembali Ke RS',
     'Kontrol di RS',
@@ -102,26 +23,10 @@ CREATE TYPE sik.dilanjutkan_enum AS ENUM (
     'Lain-lain'
 );
 
-
-ALTER TYPE sik.dilanjutkan_enum OWNER TO postgres;
-
---
--- TOC entry 1059 (class 1247 OID 16976)
--- Name: jenis_kelamin; Type: TYPE; Schema: sik; Owner: postgres
---
-
 CREATE TYPE sik.jenis_kelamin AS ENUM (
     'L',
     'P'
 );
-
-
-ALTER TYPE sik.jenis_kelamin OWNER TO postgres;
-
---
--- TOC entry 1062 (class 1247 OID 16982)
--- Name: jenis_pegawai; Type: TYPE; Schema: sik; Owner: postgres
---
 
 CREATE TYPE sik.jenis_pegawai AS ENUM (
     'Tetap',
@@ -130,28 +35,12 @@ CREATE TYPE sik.jenis_pegawai AS ENUM (
     'Istimewa'
 );
 
-
-ALTER TYPE sik.jenis_pegawai OWNER TO postgres;
-
---
--- TOC entry 1227 (class 1247 OID 50732)
--- Name: keadaan_enum; Type: TYPE; Schema: sik; Owner: postgres
---
-
 CREATE TYPE sik.keadaan_enum AS ENUM (
     'Membaik',
     'Sembuh',
     'Meninggal',
     'Lain-lain'
 );
-
-
-ALTER TYPE sik.keadaan_enum OWNER TO postgres;
-
---
--- TOC entry 1074 (class 1247 OID 17068)
--- Name: pendidikan; Type: TYPE; Schema: sik; Owner: postgres
---
 
 CREATE TYPE sik.pendidikan AS ENUM (
     'Tidak Sekolah',
@@ -165,27 +54,11 @@ CREATE TYPE sik.pendidikan AS ENUM (
     'S3'
 );
 
-
-ALTER TYPE sik.pendidikan OWNER TO postgres;
-
---
--- TOC entry 1131 (class 1247 OID 17461)
--- Name: status_asal; Type: TYPE; Schema: sik; Owner: postgres
---
-
 CREATE TYPE sik.status_asal AS ENUM (
     'Penerimaan',
     'Pengadaan',
     'Hibah'
 );
-
-
-ALTER TYPE sik.status_asal OWNER TO postgres;
-
---
--- TOC entry 1095 (class 1247 OID 17218)
--- Name: status_cuti; Type: TYPE; Schema: sik; Owner: postgres
---
 
 CREATE TYPE sik.status_cuti AS ENUM (
     'Ditolak',
@@ -193,39 +66,15 @@ CREATE TYPE sik.status_cuti AS ENUM (
     'Diterima'
 );
 
-
-ALTER TYPE sik.status_cuti OWNER TO postgres;
-
---
--- TOC entry 1215 (class 1247 OID 50706)
--- Name: status_enum; Type: TYPE; Schema: sik; Owner: postgres
---
-
 CREATE TYPE sik.status_enum AS ENUM (
     'Ralan',
     'Ranap'
 );
 
-
-ALTER TYPE sik.status_enum OWNER TO postgres;
-
---
--- TOC entry 1218 (class 1247 OID 50712)
--- Name: status_penyakit_enum; Type: TYPE; Schema: sik; Owner: postgres
---
-
 CREATE TYPE sik.status_penyakit_enum AS ENUM (
     'Lama',
     'Baru'
 );
-
-
-ALTER TYPE sik.status_penyakit_enum OWNER TO postgres;
-
---
--- TOC entry 1086 (class 1247 OID 17154)
--- Name: status_tukar; Type: TYPE; Schema: sik; Owner: postgres
---
 
 CREATE TYPE sik.status_tukar AS ENUM (
     'Ditolak',
@@ -233,26 +82,10 @@ CREATE TYPE sik.status_tukar AS ENUM (
     'Diterima'
 );
 
-
-ALTER TYPE sik.status_tukar OWNER TO postgres;
-
---
--- TOC entry 1125 (class 1247 OID 17429)
--- Name: status_ubah_master; Type: TYPE; Schema: sik; Owner: postgres
---
-
 CREATE TYPE sik.status_ubah_master AS ENUM (
     '0',
     '1'
 );
-
-
-ALTER TYPE sik.status_ubah_master OWNER TO postgres;
-
---
--- TOC entry 298 (class 1255 OID 17540)
--- Name: default_jadwal_pegawai(uuid); Type: FUNCTION; Schema: sik; Owner: postgres
---
 
 CREATE FUNCTION sik.default_jadwal_pegawai(new_id uuid) RETURNS void
     LANGUAGE plpgsql
@@ -267,11 +100,6 @@ $$;
 
 ALTER FUNCTION sik.default_jadwal_pegawai(new_id uuid) OWNER TO postgres;
 
---
--- TOC entry 299 (class 1255 OID 17541)
--- Name: trigger_init_jadwal_pegawai(); Type: FUNCTION; Schema: sik; Owner: postgres
---
-
 CREATE FUNCTION sik.trigger_init_jadwal_pegawai() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
@@ -283,11 +111,6 @@ $$;
 
 
 ALTER FUNCTION sik.trigger_init_jadwal_pegawai() OWNER TO postgres;
-
---
--- TOC entry 301 (class 1255 OID 17543)
--- Name: trigger_update_jadwal_pegawai_on_delete(); Type: FUNCTION; Schema: sik; Owner: postgres
---
 
 CREATE FUNCTION sik.trigger_update_jadwal_pegawai_on_delete() RETURNS trigger
     LANGUAGE plpgsql
@@ -301,10 +124,6 @@ $$;
 
 ALTER FUNCTION sik.trigger_update_jadwal_pegawai_on_delete() OWNER TO postgres;
 
---
--- TOC entry 300 (class 1255 OID 17542)
--- Name: update_jadwal_pegawai_on_delete(uuid); Type: FUNCTION; Schema: sik; Owner: postgres
---
 
 CREATE FUNCTION sik.update_jadwal_pegawai_on_delete(pegawai_id uuid) RETURNS void
     LANGUAGE plpgsql
@@ -323,10 +142,6 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
---
--- TOC entry 226 (class 1259 OID 16782)
--- Name: alasan_cuti; Type: TABLE; Schema: ref; Owner: postgres
---
 
 CREATE TABLE ref.alasan_cuti (
     id character varying(2) NOT NULL,
@@ -335,28 +150,12 @@ CREATE TABLE ref.alasan_cuti (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE ref.alasan_cuti OWNER TO postgres;
-
---
--- TOC entry 222 (class 1259 OID 16754)
--- Name: departemen; Type: TABLE; Schema: ref; Owner: postgres
---
-
 CREATE TABLE ref.departemen (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE ref.departemen OWNER TO postgres;
-
---
--- TOC entry 231 (class 1259 OID 16821)
--- Name: golongan_barang_medis; Type: TABLE; Schema: ref; Owner: postgres
---
 
 CREATE TABLE ref.golongan_barang_medis (
     id integer NOT NULL,
@@ -365,28 +164,12 @@ CREATE TABLE ref.golongan_barang_medis (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE ref.golongan_barang_medis OWNER TO postgres;
-
---
--- TOC entry 225 (class 1259 OID 16775)
--- Name: hari; Type: TABLE; Schema: ref; Owner: postgres
---
-
 CREATE TABLE ref.hari (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE ref.hari OWNER TO postgres;
-
---
--- TOC entry 227 (class 1259 OID 16789)
--- Name: industri_farmasi; Type: TABLE; Schema: ref; Owner: postgres
---
 
 CREATE TABLE ref.industri_farmasi (
     id integer NOT NULL,
@@ -399,28 +182,12 @@ CREATE TABLE ref.industri_farmasi (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE ref.industri_farmasi OWNER TO postgres;
-
---
--- TOC entry 221 (class 1259 OID 16747)
--- Name: jabatan; Type: TABLE; Schema: ref; Owner: postgres
---
-
 CREATE TABLE ref.jabatan (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE ref.jabatan OWNER TO postgres;
-
---
--- TOC entry 229 (class 1259 OID 16807)
--- Name: jenis_barang_medis; Type: TABLE; Schema: ref; Owner: postgres
---
 
 CREATE TABLE ref.jenis_barang_medis (
     id integer NOT NULL,
@@ -429,28 +196,12 @@ CREATE TABLE ref.jenis_barang_medis (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE ref.jenis_barang_medis OWNER TO postgres;
-
---
--- TOC entry 230 (class 1259 OID 16814)
--- Name: kategori_barang_medis; Type: TABLE; Schema: ref; Owner: postgres
---
-
 CREATE TABLE ref.kategori_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE ref.kategori_barang_medis OWNER TO postgres;
-
---
--- TOC entry 220 (class 1259 OID 16737)
--- Name: organisasi; Type: TABLE; Schema: ref; Owner: postgres
---
 
 CREATE TABLE ref.organisasi (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -463,28 +214,12 @@ CREATE TABLE ref.organisasi (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE ref.organisasi OWNER TO postgres;
-
---
--- TOC entry 219 (class 1259 OID 16730)
--- Name: role; Type: TABLE; Schema: ref; Owner: postgres
---
-
 CREATE TABLE ref.role (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE ref.role OWNER TO postgres;
-
---
--- TOC entry 232 (class 1259 OID 16828)
--- Name: ruangan; Type: TABLE; Schema: ref; Owner: postgres
---
 
 CREATE TABLE ref.ruangan (
     id integer NOT NULL,
@@ -493,28 +228,12 @@ CREATE TABLE ref.ruangan (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE ref.ruangan OWNER TO postgres;
-
---
--- TOC entry 228 (class 1259 OID 16800)
--- Name: satuan_barang_medis; Type: TABLE; Schema: ref; Owner: postgres
---
-
 CREATE TABLE ref.satuan_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE ref.satuan_barang_medis OWNER TO postgres;
-
---
--- TOC entry 224 (class 1259 OID 16768)
--- Name: shift; Type: TABLE; Schema: ref; Owner: postgres
---
 
 CREATE TABLE ref.shift (
     id character varying(2) NOT NULL,
@@ -525,28 +244,12 @@ CREATE TABLE ref.shift (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE ref.shift OWNER TO postgres;
-
---
--- TOC entry 223 (class 1259 OID 16761)
--- Name: status_aktif_pegawai; Type: TABLE; Schema: ref; Owner: postgres
---
-
 CREATE TABLE ref.status_aktif_pegawai (
     id character varying(2) NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE ref.status_aktif_pegawai OWNER TO postgres;
-
---
--- TOC entry 233 (class 1259 OID 16835)
--- Name: supplier_barang_medis; Type: TABLE; Schema: ref; Owner: postgres
---
 
 CREATE TABLE ref.supplier_barang_medis (
     id integer NOT NULL,
@@ -560,14 +263,6 @@ CREATE TABLE ref.supplier_barang_medis (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE ref.supplier_barang_medis OWNER TO postgres;
-
---
--- TOC entry 249 (class 1259 OID 16958)
--- Name: akun; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.akun (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     email character varying(255) NOT NULL,
@@ -580,14 +275,6 @@ CREATE TABLE sik.akun (
     updater uuid
 );
 
-
-ALTER TABLE sik.akun OWNER TO postgres;
-
---
--- TOC entry 251 (class 1259 OID 17030)
--- Name: alamat; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.alamat (
     id_akun uuid NOT NULL,
     alamat character varying(255) NOT NULL,
@@ -599,14 +286,6 @@ CREATE TABLE sik.alamat (
     updater uuid
 );
 
-
-ALTER TABLE sik.alamat OWNER TO postgres;
-
---
--- TOC entry 241 (class 1259 OID 16896)
--- Name: alasan_cuti; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.alasan_cuti (
     id character varying(2) NOT NULL,
     nama character varying(50) NOT NULL,
@@ -614,27 +293,11 @@ CREATE TABLE sik.alasan_cuti (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE sik.alasan_cuti OWNER TO postgres;
-
---
--- TOC entry 274 (class 1259 OID 25985)
--- Name: ambulans; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.ambulans (
     no_ambulans character varying(20) NOT NULL,
     status character varying(20) DEFAULT 'available'::character varying NOT NULL,
     supir character varying(50)
 );
-
-
-ALTER TABLE sik.ambulans OWNER TO postgres;
-
---
--- TOC entry 259 (class 1259 OID 17269)
--- Name: barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.barang_medis (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -665,14 +328,6 @@ CREATE TABLE sik.barang_medis (
     id_golongan integer
 );
 
-
-ALTER TABLE sik.barang_medis OWNER TO postgres;
-
---
--- TOC entry 252 (class 1259 OID 17087)
--- Name: berkas_pegawai; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.berkas_pegawai (
     id_pegawai uuid NOT NULL,
     nik character varying(16) NOT NULL,
@@ -694,14 +349,6 @@ CREATE TABLE sik.berkas_pegawai (
     updater uuid
 );
 
-
-ALTER TABLE sik.berkas_pegawai OWNER TO postgres;
-
---
--- TOC entry 293 (class 1259 OID 50702)
--- Name: catatan_observasi_ranap; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.catatan_observasi_ranap (
     no_rawat character varying(17) NOT NULL,
     tgl_perawatan date NOT NULL,
@@ -714,14 +361,6 @@ CREATE TABLE sik.catatan_observasi_ranap (
     spo2 character varying(3) NOT NULL,
     nip character varying(20) NOT NULL
 );
-
-
-ALTER TABLE sik.catatan_observasi_ranap OWNER TO postgres;
-
---
--- TOC entry 291 (class 1259 OID 50694)
--- Name: catatan_observasi_ranap_kebidanan; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.catatan_observasi_ranap_kebidanan (
     no_rawat character varying(17) NOT NULL,
@@ -740,14 +379,6 @@ CREATE TABLE sik.catatan_observasi_ranap_kebidanan (
     nip character varying(20) NOT NULL
 );
 
-
-ALTER TABLE sik.catatan_observasi_ranap_kebidanan OWNER TO postgres;
-
---
--- TOC entry 292 (class 1259 OID 50699)
--- Name: catatan_observasi_ranap_postpartum; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.catatan_observasi_ranap_postpartum (
     no_rawat character varying(17) NOT NULL,
     tgl_perawatan date NOT NULL,
@@ -765,14 +396,6 @@ CREATE TABLE sik.catatan_observasi_ranap_postpartum (
     nip character varying(20) NOT NULL
 );
 
-
-ALTER TABLE sik.catatan_observasi_ranap_postpartum OWNER TO postgres;
-
---
--- TOC entry 257 (class 1259 OID 17225)
--- Name: cuti; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.cuti (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_pegawai uuid NOT NULL,
@@ -785,14 +408,6 @@ CREATE TABLE sik.cuti (
     deleted_at timestamp with time zone,
     updater uuid
 );
-
-
-ALTER TABLE sik.cuti OWNER TO postgres;
-
---
--- TOC entry 267 (class 1259 OID 17467)
--- Name: data_batch; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.data_batch (
     no_batch character varying(20) NOT NULL,
@@ -816,14 +431,6 @@ CREATE TABLE sik.data_batch (
     jumlahbeli integer NOT NULL,
     sisa integer NOT NULL
 );
-
-
-ALTER TABLE sik.data_batch OWNER TO postgres;
-
---
--- TOC entry 282 (class 1259 OID 34241)
--- Name: databarang; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.databarang (
     kode_brng character varying(15) DEFAULT ''::character varying NOT NULL,
@@ -854,28 +461,12 @@ CREATE TABLE sik.databarang (
     kode_golongan character(4)
 );
 
-
-ALTER TABLE sik.databarang OWNER TO postgres;
-
---
--- TOC entry 237 (class 1259 OID 16868)
--- Name: departemen; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.departemen (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.departemen OWNER TO postgres;
-
---
--- TOC entry 266 (class 1259 OID 17433)
--- Name: detail_penerimaan_barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.detail_penerimaan_barang_medis (
     id_penerimaan uuid NOT NULL,
@@ -893,14 +484,6 @@ CREATE TABLE sik.detail_penerimaan_barang_medis (
     no_batch character varying(20)
 );
 
-
-ALTER TABLE sik.detail_penerimaan_barang_medis OWNER TO postgres;
-
---
--- TOC entry 294 (class 1259 OID 50717)
--- Name: diagnosa_pasien; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.diagnosa_pasien (
     no_rawat character varying(17) NOT NULL,
     kd_penyakit character varying(10) NOT NULL,
@@ -908,14 +491,6 @@ CREATE TABLE sik.diagnosa_pasien (
     prioritas smallint NOT NULL,
     status_penyakit sik.status_penyakit_enum
 );
-
-
-ALTER TABLE sik.diagnosa_pasien OWNER TO postgres;
-
---
--- TOC entry 268 (class 1259 OID 17754)
--- Name: dokter; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.dokter (
     kode_dokter character varying(10) NOT NULL,
@@ -927,14 +502,6 @@ CREATE TABLE sik.dokter (
     izin_praktik character varying(50) NOT NULL
 );
 
-
-ALTER TABLE sik.dokter OWNER TO postgres;
-
---
--- TOC entry 277 (class 1259 OID 34195)
--- Name: dokter_jaga; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.dokter_jaga (
     kode_dokter character varying(20),
     nama_dokter character varying(50),
@@ -945,14 +512,6 @@ CREATE TABLE sik.dokter_jaga (
     status character varying(50)
 );
 
-
-ALTER TABLE sik.dokter_jaga OWNER TO postgres;
-
---
--- TOC entry 253 (class 1259 OID 17108)
--- Name: foto_pegawai; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.foto_pegawai (
     id_pegawai uuid NOT NULL,
     foto character varying(255) NOT NULL,
@@ -962,28 +521,12 @@ CREATE TABLE sik.foto_pegawai (
     updater uuid
 );
 
-
-ALTER TABLE sik.foto_pegawai OWNER TO postgres;
-
---
--- TOC entry 246 (class 1259 OID 16935)
--- Name: golongan_barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.golongan_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.golongan_barang_medis OWNER TO postgres;
-
---
--- TOC entry 261 (class 1259 OID 17341)
--- Name: gudang_barang; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.gudang_barang (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -994,28 +537,12 @@ CREATE TABLE sik.gudang_barang (
     no_faktur character varying(20)
 );
 
-
-ALTER TABLE sik.gudang_barang OWNER TO postgres;
-
---
--- TOC entry 240 (class 1259 OID 16889)
--- Name: hari; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.hari (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.hari OWNER TO postgres;
-
---
--- TOC entry 242 (class 1259 OID 16903)
--- Name: industri_farmasi; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.industri_farmasi (
     id integer NOT NULL,
@@ -1028,28 +555,12 @@ CREATE TABLE sik.industri_farmasi (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE sik.industri_farmasi OWNER TO postgres;
-
---
--- TOC entry 236 (class 1259 OID 16861)
--- Name: jabatan; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.jabatan (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.jabatan OWNER TO postgres;
-
---
--- TOC entry 254 (class 1259 OID 17125)
--- Name: jadwal_pegawai; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.jadwal_pegawai (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -1062,28 +573,12 @@ CREATE TABLE sik.jadwal_pegawai (
     updater uuid
 );
 
-
-ALTER TABLE sik.jadwal_pegawai OWNER TO postgres;
-
---
--- TOC entry 244 (class 1259 OID 16921)
--- Name: jenis_barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.jenis_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.jenis_barang_medis OWNER TO postgres;
-
---
--- TOC entry 280 (class 1259 OID 34214)
--- Name: jenis_tindakan; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.jenis_tindakan (
     kode text NOT NULL,
@@ -1104,24 +599,8 @@ CREATE TABLE sik.jenis_tindakan (
     kelas text
 );
 
-
-ALTER TABLE sik.jenis_tindakan OWNER TO postgres;
-
---
--- TOC entry 279 (class 1259 OID 34208)
--- Name: jns_perawatan_inap; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.jns_perawatan_inap (
 );
-
-
-ALTER TABLE sik.jns_perawatan_inap OWNER TO postgres;
-
---
--- TOC entry 270 (class 1259 OID 25942)
--- Name: kamar; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.kamar (
     nomor_bed character varying(20) NOT NULL,
@@ -1132,28 +611,12 @@ CREATE TABLE sik.kamar (
     status_kamar character varying(20)
 );
 
-
-ALTER TABLE sik.kamar OWNER TO postgres;
-
---
--- TOC entry 245 (class 1259 OID 16928)
--- Name: kategori_barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.kategori_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.kategori_barang_medis OWNER TO postgres;
-
---
--- TOC entry 262 (class 1259 OID 17357)
--- Name: mutasi_barang; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.mutasi_barang (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -1168,14 +631,6 @@ CREATE TABLE sik.mutasi_barang (
     no_faktur character varying(20)
 );
 
-
-ALTER TABLE sik.mutasi_barang OWNER TO postgres;
-
---
--- TOC entry 258 (class 1259 OID 17249)
--- Name: notifikasi; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.notifikasi (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     sender uuid NOT NULL,
@@ -1185,14 +640,6 @@ CREATE TABLE sik.notifikasi (
     pesan character varying(255) NOT NULL,
     read boolean DEFAULT false
 );
-
-
-ALTER TABLE sik.notifikasi OWNER TO postgres;
-
---
--- TOC entry 260 (class 1259 OID 17322)
--- Name: opname; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.opname (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -1207,14 +654,6 @@ CREATE TABLE sik.opname (
     no_faktur character varying(20)
 );
 
-
-ALTER TABLE sik.opname OWNER TO postgres;
-
---
--- TOC entry 235 (class 1259 OID 16851)
--- Name: organisasi; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.organisasi (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     nama character varying(255) NOT NULL,
@@ -1225,14 +664,6 @@ CREATE TABLE sik.organisasi (
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.organisasi OWNER TO postgres;
-
---
--- TOC entry 290 (class 1259 OID 50676)
--- Name: pasien; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.pasien (
     no_rkm_medis character varying(15) NOT NULL,
@@ -1278,14 +709,6 @@ CREATE TABLE sik.pasien (
     CONSTRAINT pasien_stts_nikah_check CHECK (((stts_nikah)::text = ANY ((ARRAY['BELUM MENIKAH'::character varying, 'MENIKAH'::character varying, 'DUDA'::character varying, 'JANDA'::character varying])::text[])))
 );
 
-
-ALTER TABLE sik.pasien OWNER TO postgres;
-
---
--- TOC entry 250 (class 1259 OID 16991)
--- Name: pegawai; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.pegawai (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_akun uuid NOT NULL,
@@ -1304,14 +727,6 @@ CREATE TABLE sik.pegawai (
     updater uuid
 );
 
-
-ALTER TABLE sik.pegawai OWNER TO postgres;
-
---
--- TOC entry 281 (class 1259 OID 34223)
--- Name: pemberian_obat; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.pemberian_obat (
     tanggal_beri date,
     jam_beri time without time zone,
@@ -1329,14 +744,6 @@ CREATE TABLE sik.pemberian_obat (
     no_faktur character varying(50),
     kelas character varying(20) DEFAULT 'kelas1'::character varying
 );
-
-
-ALTER TABLE sik.pemberian_obat OWNER TO postgres;
-
---
--- TOC entry 289 (class 1259 OID 42447)
--- Name: pemeriksaan_ranap; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.pemeriksaan_ranap (
     no_rawat character varying(17) NOT NULL,
@@ -1361,14 +768,6 @@ CREATE TABLE sik.pemeriksaan_ranap (
     nip character varying(20) NOT NULL
 );
 
-
-ALTER TABLE sik.pemeriksaan_ranap OWNER TO postgres;
-
---
--- TOC entry 265 (class 1259 OID 17412)
--- Name: penerimaan_barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.penerimaan_barang_medis (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     no_faktur character varying(20) NOT NULL,
@@ -1385,14 +784,6 @@ CREATE TABLE sik.penerimaan_barang_medis (
     materai double precision NOT NULL
 );
 
-
-ALTER TABLE sik.penerimaan_barang_medis OWNER TO postgres;
-
---
--- TOC entry 285 (class 1259 OID 42398)
--- Name: permintaan_resep_pulang; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.permintaan_resep_pulang (
     no_permintaan character varying(20) NOT NULL,
     tgl_permintaan date,
@@ -1408,14 +799,6 @@ CREATE TABLE sik.permintaan_resep_pulang (
     CONSTRAINT permintaan_resep_pulang_status_check CHECK (((status)::text = ANY ((ARRAY['Sudah'::character varying, 'Belum'::character varying])::text[])))
 );
 
-
-ALTER TABLE sik.permintaan_resep_pulang OWNER TO postgres;
-
---
--- TOC entry 287 (class 1259 OID 42411)
--- Name: permintaan_stok_obat; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.permintaan_stok_obat (
     no_permintaan character varying(30) NOT NULL,
     tgl_permintaan date,
@@ -1426,14 +809,6 @@ CREATE TABLE sik.permintaan_stok_obat (
     tgl_validasi date,
     jam_validasi time without time zone
 );
-
-
-ALTER TABLE sik.permintaan_stok_obat OWNER TO postgres;
-
---
--- TOC entry 256 (class 1259 OID 17193)
--- Name: presensi; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.presensi (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -1449,14 +824,6 @@ CREATE TABLE sik.presensi (
     deleted_at timestamp with time zone,
     updater uuid
 );
-
-
-ALTER TABLE sik.presensi OWNER TO postgres;
-
---
--- TOC entry 273 (class 1259 OID 25963)
--- Name: rawat_inap; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.rawat_inap (
     nomor_rawat character varying(20) NOT NULL,
@@ -1480,14 +847,6 @@ CREATE TABLE sik.rawat_inap (
     status_bayar character varying(20),
     jam_masuk time without time zone
 );
-
-
-ALTER TABLE sik.rawat_inap OWNER TO postgres;
-
---
--- TOC entry 269 (class 1259 OID 17759)
--- Name: registrasi; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.registrasi (
     nomor_reg character varying(20) NOT NULL,
@@ -1515,14 +874,6 @@ CREATE TABLE sik.registrasi (
     nomor_bed character varying(20)
 );
 
-
-ALTER TABLE sik.registrasi OWNER TO postgres;
-
---
--- TOC entry 283 (class 1259 OID 42376)
--- Name: resep_dokter; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.resep_dokter (
     no_resep character varying(20),
     kode_barang character varying(20),
@@ -1531,14 +882,6 @@ CREATE TABLE sik.resep_dokter (
     embalase numeric DEFAULT 0,
     tuslah numeric DEFAULT 0
 );
-
-
-ALTER TABLE sik.resep_dokter OWNER TO postgres;
-
---
--- TOC entry 296 (class 1259 OID 50783)
--- Name: resep_dokter_racikan; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.resep_dokter_racikan (
     no_resep character varying(20) NOT NULL,
@@ -1550,14 +893,6 @@ CREATE TABLE sik.resep_dokter_racikan (
     keterangan character varying(50) NOT NULL
 );
 
-
-ALTER TABLE sik.resep_dokter_racikan OWNER TO postgres;
-
---
--- TOC entry 297 (class 1259 OID 50788)
--- Name: resep_dokter_racikan_detail; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.resep_dokter_racikan_detail (
     no_resep character varying(20) NOT NULL,
     no_racik character varying(20) NOT NULL,
@@ -1567,14 +902,6 @@ CREATE TABLE sik.resep_dokter_racikan_detail (
     kandungan character varying(10),
     jml double precision
 );
-
-
-ALTER TABLE sik.resep_dokter_racikan_detail OWNER TO postgres;
-
---
--- TOC entry 284 (class 1259 OID 42381)
--- Name: resep_obat; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.resep_obat (
     no_resep character varying(20) DEFAULT ''::character varying NOT NULL,
@@ -1591,14 +918,6 @@ CREATE TABLE sik.resep_obat (
     CONSTRAINT resep_obat_status_check CHECK (((status)::text = ANY ((ARRAY['ralan'::character varying, 'ranap'::character varying])::text[])))
 );
 
-
-ALTER TABLE sik.resep_obat OWNER TO postgres;
-
---
--- TOC entry 286 (class 1259 OID 42406)
--- Name: resep_pulang; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.resep_pulang (
     no_rawat character varying(17) NOT NULL,
     kode_brng character varying(15) NOT NULL,
@@ -1612,14 +931,6 @@ CREATE TABLE sik.resep_pulang (
     no_batch character varying(20) NOT NULL,
     no_faktur character varying(20) NOT NULL
 );
-
-
-ALTER TABLE sik.resep_pulang OWNER TO postgres;
-
---
--- TOC entry 295 (class 1259 OID 50751)
--- Name: resume_pasien_ranap; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.resume_pasien_ranap (
     no_rawat character varying(17) NOT NULL,
@@ -1665,14 +976,6 @@ CREATE TABLE sik.resume_pasien_ranap (
     obat_pulang text NOT NULL
 );
 
-
-ALTER TABLE sik.resume_pasien_ranap OWNER TO postgres;
-
---
--- TOC entry 234 (class 1259 OID 16844)
--- Name: role; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.role (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
@@ -1680,28 +983,12 @@ CREATE TABLE sik.role (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE sik.role OWNER TO postgres;
-
---
--- TOC entry 247 (class 1259 OID 16942)
--- Name: ruangan; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.ruangan (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.ruangan OWNER TO postgres;
-
---
--- TOC entry 272 (class 1259 OID 25956)
--- Name: rujukan_keluar; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.rujukan_keluar (
     nomor_rujuk character varying(20),
@@ -1718,14 +1005,6 @@ CREATE TABLE sik.rujukan_keluar (
     keterangan character varying(60)
 );
 
-
-ALTER TABLE sik.rujukan_keluar OWNER TO postgres;
-
---
--- TOC entry 271 (class 1259 OID 25949)
--- Name: rujukan_masuk; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.rujukan_masuk (
     nomor_rujuk character varying(20),
     perujuk character varying(255),
@@ -1740,28 +1019,12 @@ CREATE TABLE sik.rujukan_masuk (
     diagnosa_awal character varying(255)
 );
 
-
-ALTER TABLE sik.rujukan_masuk OWNER TO postgres;
-
---
--- TOC entry 243 (class 1259 OID 16914)
--- Name: satuan_barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.satuan_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.satuan_barang_medis OWNER TO postgres;
-
---
--- TOC entry 239 (class 1259 OID 16882)
--- Name: shift; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.shift (
     id character varying(2) NOT NULL,
@@ -1772,28 +1035,12 @@ CREATE TABLE sik.shift (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE sik.shift OWNER TO postgres;
-
---
--- TOC entry 238 (class 1259 OID 16875)
--- Name: status_aktif_pegawai; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.status_aktif_pegawai (
     id character varying(2) NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
-
-
-ALTER TABLE sik.status_aktif_pegawai OWNER TO postgres;
-
---
--- TOC entry 263 (class 1259 OID 17379)
--- Name: stok_keluar_barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.stok_keluar_barang_medis (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -1803,14 +1050,6 @@ CREATE TABLE sik.stok_keluar_barang_medis (
     id_ruangan integer NOT NULL,
     keterangan character varying(255)
 );
-
-
-ALTER TABLE sik.stok_keluar_barang_medis OWNER TO postgres;
-
---
--- TOC entry 288 (class 1259 OID 42416)
--- Name: stok_obat_pasien; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.stok_obat_pasien (
     no_permintaan character varying(30) NOT NULL,
@@ -1849,14 +1088,6 @@ CREATE TABLE sik.stok_obat_pasien (
     jam23 boolean DEFAULT false NOT NULL
 );
 
-
-ALTER TABLE sik.stok_obat_pasien OWNER TO postgres;
-
---
--- TOC entry 248 (class 1259 OID 16949)
--- Name: supplier_barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.supplier_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
@@ -1869,14 +1100,6 @@ CREATE TABLE sik.supplier_barang_medis (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-
-ALTER TABLE sik.supplier_barang_medis OWNER TO postgres;
-
---
--- TOC entry 278 (class 1259 OID 34198)
--- Name: tarif_tindakan; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.tarif_tindakan (
     kode character varying(20) NOT NULL,
     nama_perawatan character varying(255),
@@ -1884,14 +1107,6 @@ CREATE TABLE sik.tarif_tindakan (
     tarif numeric,
     kelas character varying(20)
 );
-
-
-ALTER TABLE sik.tarif_tindakan OWNER TO postgres;
-
---
--- TOC entry 276 (class 1259 OID 26005)
--- Name: tindakan; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.tindakan (
     nomor_rawat character varying(20) NOT NULL,
@@ -1907,14 +1122,6 @@ CREATE TABLE sik.tindakan (
     biaya numeric
 );
 
-
-ALTER TABLE sik.tindakan OWNER TO postgres;
-
---
--- TOC entry 264 (class 1259 OID 17396)
--- Name: transaksi_keluar_barang_medis; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.transaksi_keluar_barang_medis (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_stok_keluar uuid NOT NULL,
@@ -1923,14 +1130,6 @@ CREATE TABLE sik.transaksi_keluar_barang_medis (
     no_faktur character varying(20),
     jumlah_keluar integer NOT NULL
 );
-
-
-ALTER TABLE sik.transaksi_keluar_barang_medis OWNER TO postgres;
-
---
--- TOC entry 255 (class 1259 OID 17161)
--- Name: tukar_jadwal; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.tukar_jadwal (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -1941,14 +1140,6 @@ CREATE TABLE sik.tukar_jadwal (
     id_shift_recipient character varying(2) NOT NULL,
     status sik.status_tukar DEFAULT 'Menunggu'::sik.status_tukar
 );
-
-
-ALTER TABLE sik.tukar_jadwal OWNER TO postgres;
-
---
--- TOC entry 275 (class 1259 OID 25998)
--- Name: ugd; Type: TABLE; Schema: sik; Owner: postgres
---
 
 CREATE TABLE sik.ugd (
     nomor_reg character varying(20) NOT NULL,
@@ -1972,15 +1163,6 @@ CREATE TABLE sik.ugd (
     status_bayar character varying(50)
 );
 
-
-ALTER TABLE sik.ugd OWNER TO postgres;
-
---
--- TOC entry 5620 (class 0 OID 16782)
--- Dependencies: 226
--- Data for Name: alasan_cuti; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.alasan_cuti (id, nama, created_at, updated_at) FROM stdin;
 S	Sakit	2025-05-15 23:07:10.313595+07	2025-05-15 23:07:10.313595+07
 I	Izin	2025-05-15 23:07:10.313595+07	2025-05-15 23:07:10.313595+07
@@ -1990,13 +1172,6 @@ CM	Cuti Melahirkan	2025-05-15 23:07:10.313595+07	2025-05-15 23:07:10.313595+07
 CU	Cuti karena Alasan Penting	2025-05-15 23:07:10.313595+07	2025-05-15 23:07:10.313595+07
 \.
 
-
---
--- TOC entry 5616 (class 0 OID 16754)
--- Dependencies: 222
--- Data for Name: departemen; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.departemen (id, nama, created_at, updated_at) FROM stdin;
 2	Petugas	2025-05-15 18:33:07.921616+07	2025-05-15 18:33:07.921616+07
 3	Dokter	2025-05-15 18:33:15.989844+07	2025-05-15 18:33:15.989844+07
@@ -2004,22 +1179,8 @@ COPY ref.departemen (id, nama, created_at, updated_at) FROM stdin;
 1000	Testing	2025-05-20 15:23:03.025262+07	2025-05-20 15:23:03.025262+07
 \.
 
-
---
--- TOC entry 5625 (class 0 OID 16821)
--- Dependencies: 231
--- Data for Name: golongan_barang_medis; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.golongan_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 \.
-
-
---
--- TOC entry 5619 (class 0 OID 16775)
--- Dependencies: 225
--- Data for Name: hari; Type: TABLE DATA; Schema: ref; Owner: postgres
---
 
 COPY ref.hari (id, nama, created_at, updated_at) FROM stdin;
 1	Senin	2025-05-15 20:05:08.34462+07	2025-05-15 20:05:08.34462+07
@@ -2031,22 +1192,8 @@ COPY ref.hari (id, nama, created_at, updated_at) FROM stdin;
 7	Minggu	2025-05-15 20:05:08.34462+07	2025-05-15 20:05:08.34462+07
 \.
 
-
---
--- TOC entry 5621 (class 0 OID 16789)
--- Dependencies: 227
--- Data for Name: industri_farmasi; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.industri_farmasi (id, kode, nama, alamat, kota, telepon, created_at, updated_at) FROM stdin;
 \.
-
-
---
--- TOC entry 5615 (class 0 OID 16747)
--- Dependencies: 221
--- Data for Name: jabatan; Type: TABLE DATA; Schema: ref; Owner: postgres
---
 
 COPY ref.jabatan (id, nama, created_at, updated_at) FROM stdin;
 2	Petugas	2025-05-15 18:31:32.497043+07	2025-05-15 18:31:32.497043+07
@@ -2055,43 +1202,15 @@ COPY ref.jabatan (id, nama, created_at, updated_at) FROM stdin;
 1000	Testing	2025-05-20 15:23:30.917849+07	2025-05-20 15:23:30.917849+07
 \.
 
-
---
--- TOC entry 5623 (class 0 OID 16807)
--- Dependencies: 229
--- Data for Name: jenis_barang_medis; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.jenis_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 \.
-
-
---
--- TOC entry 5624 (class 0 OID 16814)
--- Dependencies: 230
--- Data for Name: kategori_barang_medis; Type: TABLE DATA; Schema: ref; Owner: postgres
---
 
 COPY ref.kategori_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 \.
 
-
---
--- TOC entry 5614 (class 0 OID 16737)
--- Dependencies: 220
--- Data for Name: organisasi; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.organisasi (id, nama, alamat, latitude, longitude, radius, created_at, updated_at) FROM stdin;
 2e8ecec0-5f4d-4dbe-a74d-0f014718b68d	Apartemen Puncak Kertajaya	apartemen puncak kertajaya, Kertajaya Indah Regency, Keputih, Kec. Sukolilo, Surabaya, Jawa Timur 60111	-7.288022143772514	112.78670386466561	50	2025-05-24 19:39:07.031719+07	2025-05-24 19:39:07.031719+07
 \.
-
-
---
--- TOC entry 5613 (class 0 OID 16730)
--- Dependencies: 219
--- Data for Name: role; Type: TABLE DATA; Schema: ref; Owner: postgres
---
 
 COPY ref.role (id, nama, created_at, updated_at) FROM stdin;
 1	Admin	2025-03-17 20:07:31.216018+07	2025-03-17 20:07:31.216018+07
@@ -2100,33 +1219,12 @@ COPY ref.role (id, nama, created_at, updated_at) FROM stdin;
 3	Dokter	2025-05-15 18:28:20.633803+07	2025-05-15 18:28:20.633803+07
 \.
 
-
---
--- TOC entry 5626 (class 0 OID 16828)
--- Dependencies: 232
--- Data for Name: ruangan; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.ruangan (id, nama, created_at, updated_at) FROM stdin;
 1000	Gudang	2025-05-29 13:09:48.514221+07	2025-05-29 13:09:48.514221+07
 \.
 
-
---
--- TOC entry 5622 (class 0 OID 16800)
--- Dependencies: 228
--- Data for Name: satuan_barang_medis; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.satuan_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 \.
-
-
---
--- TOC entry 5618 (class 0 OID 16768)
--- Dependencies: 224
--- Data for Name: shift; Type: TABLE DATA; Schema: ref; Owner: postgres
---
 
 COPY ref.shift (id, nama, jam_masuk, jam_pulang, created_at, updated_at) FROM stdin;
 1	Pagi	07:00:00+07	15:00:00+07	2025-05-15 20:07:39.729729+07	2025-05-15 20:07:39.729729+07
@@ -2134,35 +1232,14 @@ COPY ref.shift (id, nama, jam_masuk, jam_pulang, created_at, updated_at) FROM st
 3	Malam	23:00:00+07	07:00:00+07	2025-05-15 20:07:39.729729+07	2025-05-15 20:07:39.729729+07
 \.
 
-
---
--- TOC entry 5617 (class 0 OID 16761)
--- Dependencies: 223
--- Data for Name: status_aktif_pegawai; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.status_aktif_pegawai (id, nama, created_at, updated_at) FROM stdin;
 1	Aktif	2025-05-15 18:34:01.681741+07	2025-05-15 18:34:01.681741+07
 2	Tidak Aktif	2025-05-15 18:34:14.510827+07	2025-05-15 18:34:14.510827+07
 A	Aktif	2025-05-20 15:24:09.796286+07	2025-05-20 15:24:09.796286+07
 \.
 
-
---
--- TOC entry 5627 (class 0 OID 16835)
--- Dependencies: 233
--- Data for Name: supplier_barang_medis; Type: TABLE DATA; Schema: ref; Owner: postgres
---
-
 COPY ref.supplier_barang_medis (id, nama, alamat, no_telp, kota, nama_bank, no_rekening, created_at, updated_at) FROM stdin;
 \.
-
-
---
--- TOC entry 5643 (class 0 OID 16958)
--- Dependencies: 249
--- Data for Name: akun; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.akun (id, email, password, foto, role, created_at, updated_at, deleted_at, updater) FROM stdin;
 83e0f2ba-9b19-439e-a448-97338eea7ff8	admin123@fathoor.dev	$2a$10$LcvwwjdpGUz3LmKLOa9Yy.Oqs0DAsquurYYMAWA8n0eO3uPX0ibrW	/img/default.png	1	2025-03-17 20:35:20.555048+07	2025-03-17 20:35:20.555048+07	\N	\N
@@ -2172,25 +1249,11 @@ b9b1ad6c-c41b-446a-b00e-f56684663c56	aziz@fathoor.dev	$2a$12$GmKnyhdJVTC424cvJFg
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	admin@fathoor.dev	$2a$10$8jI.qKrVbXQjNzYX6KOIvukkYkNcmfYyPWiv9tuHE8vdg5EhjQBzy	/img/default.png	1	2025-03-17 20:07:40.473102+07	2025-03-17 20:07:40.473102+07	\N	bd0b4833-510c-4c29-a3a4-e08e9a0a5955
 \.
 
-
---
--- TOC entry 5645 (class 0 OID 17030)
--- Dependencies: 251
--- Data for Name: alamat; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.alamat (id_akun, alamat, alamat_lat, alamat_lon, created_at, updated_at, deleted_at, updater) FROM stdin;
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	Jl. Mawar No. 123, Surabaya	-7.257472	112.752088	2025-05-15 20:12:31.655792+07	2025-05-15 20:12:31.655792+07	\N	\N
 933568d5-982a-43c3-a4aa-3177bab10f07	Jl. Kertajaya No. 5	-7.257472	112.752088	2025-05-19 20:18:04.722652+07	2025-05-19 20:18:04.722652+07	\N	\N
 b9b1ad6c-c41b-446a-b00e-f56684663c56	Jl. Keputih Tegal Timur II	-7.257472	112.752088	2025-05-19 20:18:43.649155+07	2025-05-19 20:18:43.649155+07	\N	\N
 \.
-
-
---
--- TOC entry 5635 (class 0 OID 16896)
--- Dependencies: 241
--- Data for Name: alasan_cuti; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.alasan_cuti (id, nama, created_at, updated_at) FROM stdin;
 S	Sakit	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -2200,13 +1263,6 @@ CB	Cuti Besar	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 CM	Cuti Melahirkan	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 CU	Cuti Karena Alasan Penting	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
-
-
---
--- TOC entry 5668 (class 0 OID 25985)
--- Dependencies: 274
--- Data for Name: ambulans; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.ambulans (no_ambulans, status, supir) FROM stdin;
 AMB-003	accepted	Supri
@@ -2218,35 +1274,14 @@ AMB-001	accepted	Sopir Uji
 AMB-002	pending	Supri
 \.
 
-
---
--- TOC entry 5653 (class 0 OID 17269)
--- Dependencies: 259
--- Data for Name: barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.barang_medis (id, kode_barang, kandungan, id_industri, nama, id_satbesar, id_satuan, h_dasar, h_beli, h_ralan, h_kelas1, h_kelas2, h_kelas3, h_utama, h_vip, h_vvip, h_beliluar, h_jualbebas, h_karyawan, stok_minimum, id_jenis, isi, kapasitas, kadaluwarsa, id_kategori, id_golongan) FROM stdin;
 \.
-
-
---
--- TOC entry 5646 (class 0 OID 17087)
--- Dependencies: 252
--- Data for Name: berkas_pegawai; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.berkas_pegawai (id_pegawai, nik, tempat_lahir, tanggal_lahir, agama, pendidikan, ktp, kk, npwp, bpjs, ijazah, skck, str, serkom, created_at, updated_at, deleted_at, updater) FROM stdin;
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	3210112345678901	Jakarta	1995-01-01	Islam	S1	ktp_admin.pdf	kk_admin.pdf	npwp_admin.pdf	bpjs_admin.pdf	ijazah_admin.pdf	skck_admin.pdf	str_admin.pdf	serkom_admin.pdf	2025-05-19 22:27:04.917087+07	2025-05-19 22:27:04.917087+07	\N	bd0b4833-510c-4c29-a3a4-e08e9a0a5955
 b9b1ad6c-c41b-446a-b00e-f56684663c56	3210223456789012	Bandung	1994-02-02	Kristen	S2	ktp_aziz.pdf	kk_aziz.pdf	npwp_aziz.pdf	bpjs_aziz.pdf	ijazah_aziz.pdf	skck_aziz.pdf	str_aziz.pdf	serkom_aziz.pdf	2025-05-19 22:27:04.917087+07	2025-05-19 22:27:04.917087+07	\N	b9b1ad6c-c41b-446a-b00e-f56684663c56
 933568d5-982a-43c3-a4aa-3177bab10f07	3210334567890123	Surabaya	1993-03-03	Hindu	D3	ktp_eric.pdf	kk_eric.pdf	npwp_eric.pdf	bpjs_eric.pdf	ijazah_eric.pdf	skck_eric.pdf	str_eric.pdf	serkom_eric.pdf	2025-05-19 22:27:04.917087+07	2025-05-19 22:27:04.917087+07	\N	933568d5-982a-43c3-a4aa-3177bab10f07
 \.
-
-
---
--- TOC entry 5687 (class 0 OID 50702)
--- Dependencies: 293
--- Data for Name: catatan_observasi_ranap; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.catatan_observasi_ranap (no_rawat, tgl_perawatan, jam_rawat, gcs, td, hr, rr, suhu, spo2, nip) FROM stdin;
 20240501000001	2025-05-25	08:00:00	15-15-15	120/80	78	20	36.8	98	1234567890
@@ -2257,13 +1292,6 @@ COPY sik.catatan_observasi_ranap (no_rawat, tgl_perawatan, jam_rawat, gcs, td, h
 202505284371	2025-05-31	16:49:27	1	2	3	4	5	6	1987123456
 \.
 
-
---
--- TOC entry 5685 (class 0 OID 50694)
--- Dependencies: 291
--- Data for Name: catatan_observasi_ranap_kebidanan; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.catatan_observasi_ranap_kebidanan (no_rawat, tgl_perawatan, jam_rawat, gcs, td, hr, rr, suhu, spo2, kontraksi, bjj, ppv, vt, nip) FROM stdin;
 20240501000001	2025-05-26	08:00:00	15-15-15	120/80	80	18	36.5	98	3x/10mnt	140	tidak ada	5cm	1234567890
 20240501000002	2025-05-26	09:30:00	14-14-14	110/70	78	20	36.8	97	2x/10mnt	135	manual	4cm	1987654321
@@ -2272,13 +1300,6 @@ COPY sik.catatan_observasi_ranap_kebidanan (no_rawat, tgl_perawatan, jam_rawat, 
 20240501000005	2025-05-26	12:00:00	14-13-15	118/76	82	21	37.0	95	1x/10mnt	132	manual	4.5cm	4455667788
 202505284371	2025-05-31	17:26:19	1	2	3	4	5	6	7	8	9	10	1987123457
 \.
-
-
---
--- TOC entry 5686 (class 0 OID 50699)
--- Dependencies: 292
--- Data for Name: catatan_observasi_ranap_postpartum; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.catatan_observasi_ranap_postpartum (no_rawat, tgl_perawatan, jam_rawat, gcs, td, hr, rr, suhu, spo2, tfu, kontraksi, perdarahan, keterangan, nip) FROM stdin;
 20240501000011	2025-05-25	06:30:00	15-15-15	120/80	78	20	36.8	98	2j bawah pusat	baik	sedikit	Kondisi stabil	10000000001
@@ -2289,34 +1310,13 @@ COPY sik.catatan_observasi_ranap_postpartum (no_rawat, tgl_perawatan, jam_rawat,
 202505284371	2025-05-31	18:10:46	1	2	3	4	5	6	7	8	9	10	1987123456
 \.
 
-
---
--- TOC entry 5651 (class 0 OID 17225)
--- Dependencies: 257
--- Data for Name: cuti; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.cuti (id, id_pegawai, tanggal_mulai, tanggal_selesai, id_alasan_cuti, status, created_at, updated_at, deleted_at, updater) FROM stdin;
 cb38e8cb-cbbe-4708-b9fe-8fb2cb06d7b0	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	2025-05-16	2025-05-17	S	Ditolak	2025-05-15 23:07:43.915708+07	2025-06-01 17:25:17.032598+07	\N	bd0b4833-510c-4c29-a3a4-e08e9a0a5955
 fda80261-207d-4afc-bc9f-e8cd0d49771e	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	2025-06-02	2025-06-03	CT	Diproses	2025-06-01 17:26:20.331472+07	2025-06-01 17:26:20.331472+07	\N	\N
 \.
 
-
---
--- TOC entry 5661 (class 0 OID 17467)
--- Dependencies: 267
--- Data for Name: data_batch; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.data_batch (no_batch, no_faktur, id_barang_medis, tanggal_datang, kadaluwarsa, asal, h_dasar, h_beli, h_ralan, h_kelas1, h_kelas2, h_kelas3, h_utama, h_vip, h_vvip, h_beliluar, h_jualbebas, h_karyawan, jumlahbeli, sisa) FROM stdin;
 \.
-
-
---
--- TOC entry 5676 (class 0 OID 34241)
--- Dependencies: 282
--- Data for Name: databarang; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.databarang (kode_brng, nama_brng, kode_satbesar, kode_sat, letak_barang, dasar, h_beli, ralan, kelas1, kelas2, kelas3, utama, vip, vvip, beliluar, jualbebas, karyawan, stokminimal, kdjns, isi, kapasitas, expire, status, kode_industri, kode_kategori, kode_golongan) FROM stdin;
 2018001	AB-Vask 10mg (Otsus)	AMP5	AMP5		21259	21259	25511	25511	25511	25511	25511	25511	25511	40392	25511	25511	0	JB02	1	10	2020-02-27	1	-    	-   	-   
@@ -3615,7 +2615,7 @@ B000001345	Atramat PGA 4/0 Tapper	PCS 	PCS 		110000	110000	132000	132000	132000	
 B000001346	Atramat Polypropylene 6/0 Cutting	PCS 	PCS 		114000	114000	136800	136800	136800	136800	136800	136800	136800	216600	136800	136800	0	JB02	1	0	\N	1	-    	-   	-   
 B000001347	Atramat PGA 2/0 Tapper	PCS 	PCS 		129000	129000	154800	154800	154800	154800	154800	154800	154800	245100	154800	154800	0	JB02	1	0	\N	1	-    	-   	-   
 B000001348	COverplast Transparent 24mm	BOX 	BOX 		34375	34375	41250	41250	41250	41250	41250	41250	41250	65312	41250	41250	0	JB02	1	0	\N	1	-    	-   	-   
-B000001349	Leukomed IV box 50"s	PCS 	PCS 		2800	2800	3360	3360	3360	3360	3360	3360	3360	5320	3360	3360	0	JB02	1	0	\N	1	-    	-   	-   
+B000001349	Leukomed IV box 50 s	PCS 	PCS 		2800	2800	3360	3360	3360	3360	3360	3360	3360	5320	3360	3360	0	JB02	1	0	\N	1	-    	-   	-   
 B000001350	Metronidazole Infus 	BTL 	BTL 		22000	22000	26400	26400	26400	26400	26400	26400	26400	41800	26400	26400	0	JB02	1	0	\N	1	-    	-   	-   
 B000001350s	Suction Catheter All Size (New)	PCS 	PCS 		6600	6600	7920	7920	7920	7920	7920	7920	7920	12540	7920	7920	0	JB02	1	0	\N	1	-    	-   	-   
 B000001351	Ventolin Inhaler	PCS 	PCS 		98868	98868	118642	118642	118642	118642	118642	118642	118642	187849	118642	118642	0	JB01	1	0	\N	1	-    	-   	-   
@@ -3824,7 +2824,7 @@ B000001555	Inf Martos	INF 	INF 		88000	88000	105600	105600	105600	105600	105600	
 B000001556	Atramat Polypropylene 3/0	PCS 	PCS 		129000	129000	154800	154800	154800	154800	154800	154800	154800	245100	154800	154800	0	JB02	1	0	\N	1	-    	-   	-   
 B000001557	Threeway Buntut	PCS 	PCS 		32000	32000	38400	38400	38400	38400	38400	38400	38400	60800	38400	38400	0	JB02	1	0	\N	1	-    	-   	-   
 B000001558	Chlor ethyl spray kaleng	KAL 	KAL 		123750	123750	148500	148500	148500	148500	148500	148500	148500	235125	148500	148500	0	JB03	1	5	2015-12-15	1	-    	-   	-   
-B000001559	Rifampicin 450 mg (San"a)	CAP 	CAP 		851	851	1021	1021	1021	1021	1021	1021	1021	1617	1021	1021	0	JB01	1	0	2015-12-16	1	-    	-   	-   
+B000001559	Rifampicin 450 mg (San a)	CAP 	CAP 		851	851	1021	1021	1021	1021	1021	1021	1021	1617	1021	1021	0	JB01	1	0	2015-12-16	1	-    	-   	-   
 B000001560	ERICAP (BELI)	TAB 	TAB 		6000	6000	7200	7200	7200	7200	7200	7200	7200	11400	7200	7200	0	JB01	1	0	2015-12-16	1	-    	-   	-   
 B000001561	THYROZOL 10 MG Tablet	TAB 	TAB 		1650	1650	1980	1980	1980	1980	1980	1980	1980	3135	1980	1980	0	JB01	1	0	2015-12-18	1	-    	-   	-   
 B000001562	Simfix 200 mg	TAB 	TAB 		24750	24750	29700	29700	29700	29700	29700	29700	29700	47025	29700	29700	0	JB01	1	20	2019-06-01	1	-    	-   	-   
@@ -4008,7 +3008,7 @@ B000001739	KETESSE INJ BELI MAWAR	AMP5	AMP5		70300	70300	84360	84360	84360	84360
 B000001740	XX	BTL 	BTL 		78000	78000	93600	93600	93600	93600	93600	93600	93600	148200	93600	93600	0	JB01	1	0	2016-05-21	1	-    	-   	-   
 B000001741	Sanmino Sirup (beli Deborah,global health)	BTL 	BTL 		60000	60000	72000	72000	72000	72000	72000	72000	72000	114000	72000	72000	0	JB01	1	0	\N	1	-    	-   	-   
 B000001742	OXOPECT SYR	BTL 	BTL 		41200	41200	49440	49440	49440	49440	49440	49440	49440	78280	49440	49440	0	JB01	1	1	2016-05-21	1	-    	-   	-   
-B000001743	BAMGETOL 200 (SAN"A)	TAB 	TAB 		2045	2045	2454	2454	2454	2454	2454	2454	2454	3886	2454	2454	0	JB01	1	0	2016-05-22	1	-    	-   	-   
+B000001743	BAMGETOL 200 (SAN A)	TAB 	TAB 		2045	2045	2454	2454	2454	2454	2454	2454	2454	3886	2454	2454	0	JB01	1	0	2016-05-22	1	-    	-   	-   
 B000001744	Biodiar (beli di Mawar)	TAB 	TAB 		2500	2500	3000	3000	3000	3000	3000	3000	3000	4750	3000	3000	0	JB01	1	0	\N	1	-    	-   	-   
 B000001745	MINYAK TELON PER ML	ML  	ML  		680	680	816	816	816	816	816	816	816	1292	816	816	0	JB02	1	0	2016-05-27	1	-    	-   	-   
 B000001746	BABY OIL PER ML	ML  	ML  		680	680	816	816	816	816	816	816	816	1292	816	816	0	JB02	1	0	2016-05-27	1	-    	-   	-   
@@ -4245,7 +3245,7 @@ B000001975	RL WIDA BELI	BTL 	BTL 		9300	9300	11160	11160	11160	11160	11160	11160
 B000001976	KALNEX INJ BELI (NIRWANA)	AMP5	AMP5		17500	17500	21000	21000	21000	21000	21000	21000	21000	33250	21000	21000	0	JB02	1	0	2017-02-14	1	-    	-   	-   
 B000001977	NUTRI BABY BELI	BOX 	BOX 		97500	97500	117000	117000	117000	117000	117000	117000	117000	185250	117000	117000	0	JB01	1	0	2017-02-14	1	-    	-   	-   
 B000001978	Tranexid inj beli (lembayung)	AMP5	AMP5		19500	19500	23400	23400	23400	23400	23400	23400	23400	37050	23400	23400	0	JB02	1	0	2017-02-14	1	-    	-   	-   
-B000001979	Infus RL Widatra (SAN"A)	BTL 	BTL 		8000	8000	9600	9600	9600	9600	9600	9600	9600	15200	9600	9600	0	JB02	1	0	2017-02-14	1	-    	-   	-   
+B000001979	Infus RL Widatra (SAN A)	BTL 	BTL 		8000	8000	9600	9600	9600	9600	9600	9600	9600	15200	9600	9600	0	JB02	1	0	2017-02-14	1	-    	-   	-   
 B000001980	Infus RL Widatra (ALISAH) 	BTL 	BTL 		14500	14500	17400	17400	17400	17400	17400	17400	17400	27550	17400	17400	0	JB02	1	0	2017-02-14	1	-    	-   	-   
 B000001981	PUMPISEL	S38 	S38 		196500	196500	235800	235800	235800	235800	235800	235800	235800	373350	235800	235800	0	JB02	1	0	2017-02-16	1	-    	-   	-   
 B000001982	Aminosteril Infant	BTL 	BTL 		75900	75900	91080	91080	91080	91080	91080	91080	91080	144210	91080	91080	0	JB02	1	2	2018-07-21	1	-    	-   	-   
@@ -4270,7 +3270,7 @@ B000002000	Q 10 PLUS (BELI KF)	CAP 	CAP 		15500	15500	18600	18600	18600	18600	18
 B000002001	ns 100 cc/ml	ML  	ML  		170	170	204	204	204	204	204	204	204	323	204	204	0	JB02	1	0	2017-02-26	1	-    	-   	-   
 B000002002	PRANZA INJ MAWAR	S38 	S38 		195000	195000	234000	234000	234000	234000	234000	234000	234000	370500	234000	234000	0	JB02	1	0	2017-02-27	1	-    	-   	-   
 B000002003	LAMINARIA ( BELI DI LEMBAYUNG )	SET 	SET 		200000	200000	240000	240000	240000	240000	240000	240000	240000	380000	240000	240000	0	JB03	1	1	2017-02-28	1	-    	-   	-   
-B000002004	Johnson"s baby top to toe	BKS 	BKS 		17203	17203	20644	20644	20644	20644	20644	20644	20644	32686	20644	20644	0	JB05	1	0	2017-02-28	1	-    	-   	-   
+B000002004	Johnsons baby top to toe	BKS 	BKS 		17203	17203	20644	20644	20644	20644	20644	20644	20644	32686	20644	20644	0	JB05	1	0	2017-02-28	1	-    	-   	-   
 B000002005	Laminaria uk M	PCS 	PCS 		183000	183000	219600	219600	219600	219600	219600	219600	219600	347700	219600	219600	0	JB04	1	1	2017-02-28	1	-    	-   	-   
 B000002006	PEMBALUT BELI	BKS 	BKS 		8000	8000	9600	9600	9600	9600	9600	9600	9600	15200	9600	9600	0	JB03	1	0	2017-02-28	1	-    	-   	-   
 B000002007	THROMBOPOP K24	GEL 	GEL 		50000	50000	60000	60000	60000	60000	60000	60000	60000	95000	60000	60000	0	J008	1	0	2017-02-28	1	-    	-   	-   
@@ -4333,43 +3333,15 @@ C000000007	Iol PMMA Power 20,5	PCS 	PCS 		195834	195834	235001	235001	235001	235
 VAK001	Vaksin Hepatitis B Recombinant 20 ug/1 mL Suspensi Injeksi (Umum)	-   	-   	-	1	1	1	1	1	1	1	1	1	1	1	1	0	-   	1	1	2023-01-23	1	-    	-   	-   
 \.
 
-
---
--- TOC entry 5631 (class 0 OID 16868)
--- Dependencies: 237
--- Data for Name: departemen; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.departemen (id, nama, created_at, updated_at) FROM stdin;
 1000	Testing	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-
---
--- TOC entry 5660 (class 0 OID 17433)
--- Dependencies: 266
--- Data for Name: detail_penerimaan_barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.detail_penerimaan_barang_medis (id_penerimaan, id_barang_medis, id_satuan, ubah_master, jumlah, h_pesan, subtotal_per_item, diskon_persen, diskon_jumlah, total_per_item, jumlah_diterima, kadaluwarsa, no_batch) FROM stdin;
 \.
 
-
---
--- TOC entry 5688 (class 0 OID 50717)
--- Dependencies: 294
--- Data for Name: diagnosa_pasien; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.diagnosa_pasien (no_rawat, kd_penyakit, status, prioritas, status_penyakit) FROM stdin;
 \.
-
-
---
--- TOC entry 5662 (class 0 OID 17754)
--- Dependencies: 268
--- Data for Name: dokter; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.dokter (kode_dokter, nama_dokter, jenis_kelamin, alamat_tinggal, no_telp, spesialis, izin_praktik) FROM stdin;
 D001	Dr. Ahmad	L	Keputih	081234565789	Jantung	123456789
@@ -4383,13 +3355,6 @@ D008	Dr. Hadi	L	Mulyorejo	08123456782	Kulit	123456782
 D009	Dr. Intan	P	Wiyung	08123456781	Paru	123456781
 D010	Dr. Johan	L	Gubeng	08123456780	Bedah	123456780
 \.
-
-
---
--- TOC entry 5671 (class 0 OID 34195)
--- Dependencies: 277
--- Data for Name: dokter_jaga; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.dokter_jaga (kode_dokter, nama_dokter, hari_kerja, jam_mulai, jam_selesai, poliklinik, status) FROM stdin;
 D001	Dr. Andi Wijaya	2025-04-15	08:00:00	14:00:00	Poli Umum	
@@ -4429,25 +3394,11 @@ D035	Dr. Taufik Hidayat	Minggu	14:00:00	20:00:00	Poli Dalam	aktif
 D036	Dr. Umi Zakiyah	Minggu	20:00:00	08:00:00	Poli Saraf	aktif
 \.
 
-
---
--- TOC entry 5647 (class 0 OID 17108)
--- Dependencies: 253
--- Data for Name: foto_pegawai; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.foto_pegawai (id_pegawai, foto, created_at, updated_at, deleted_at, updater) FROM stdin;
 933568d5-982a-43c3-a4aa-3177bab10f07	/img/default.png	2025-05-19 20:20:06.601437+07	2025-05-19 20:20:06.601437+07	\N	\N
 b9b1ad6c-c41b-446a-b00e-f56684663c56	/img/default.png	2025-05-19 20:20:06.601437+07	2025-05-19 20:20:06.601437+07	\N	\N
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	/img/default.png	2025-05-15 20:14:12.663592+07	2025-05-15 20:14:12.663592+07	\N	\N
 \.
-
-
---
--- TOC entry 5640 (class 0 OID 16935)
--- Dependencies: 246
--- Data for Name: golongan_barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.golongan_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 1000	Analgesik	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -4456,13 +3407,6 @@ COPY sik.golongan_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 4000	Antivirus	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 5000	Antasida	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
-
-
---
--- TOC entry 5655 (class 0 OID 17341)
--- Dependencies: 261
--- Data for Name: gudang_barang; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.gudang_barang (id, id_barang_medis, id_ruangan, stok, no_batch, no_faktur) FROM stdin;
 de82172e-80d6-4a06-95a0-cfce4f66d71c	B000000980	1000	1000	BATCH001	FAKTUR001
@@ -6479,13 +5423,6 @@ d3545eba-6474-456e-81d3-9808f58708fc	B000000611	1000	1000	BATCH001	FAKTUR001
 202321fd-7d1f-42f3-a9a4-0d1b069e899b	A000000801	1000	1000	BATCH001	FAKTUR001
 \.
 
-
---
--- TOC entry 5634 (class 0 OID 16889)
--- Dependencies: 240
--- Data for Name: hari; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.hari (id, nama, created_at, updated_at) FROM stdin;
 1	Senin	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2	Selasa	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -6496,34 +5433,13 @@ COPY sik.hari (id, nama, created_at, updated_at) FROM stdin;
 7	Minggu	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-
---
--- TOC entry 5636 (class 0 OID 16903)
--- Dependencies: 242
--- Data for Name: industri_farmasi; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.industri_farmasi (id, kode, nama, alamat, kota, telepon, created_at, updated_at) FROM stdin;
 1000	KLBF	Kalbe Farma	Jln. jalan	Jakarta	0812312312	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-
---
--- TOC entry 5630 (class 0 OID 16861)
--- Dependencies: 236
--- Data for Name: jabatan; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.jabatan (id, nama, created_at, updated_at) FROM stdin;
 1000	Testing	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
-
-
---
--- TOC entry 5648 (class 0 OID 17125)
--- Dependencies: 254
--- Data for Name: jadwal_pegawai; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.jadwal_pegawai (id, id_pegawai, id_hari, id_shift, created_at, updated_at, deleted_at, updater) FROM stdin;
 c951ca8b-9879-4188-810c-36f9924fd7c5	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	1	1	2025-05-15 20:08:17.888268+07	2025-05-15 20:08:17.888268+07	\N	\N
@@ -6591,13 +5507,6 @@ ca8eb8e3-9461-4e76-81c6-5fb00ef28d4c	b9b1ad6c-c41b-446a-b00e-f56684663c56	7	2	20
 f819d5b5-cca3-446c-aab8-e13fa828ed00	b9b1ad6c-c41b-446a-b00e-f56684663c56	7	3	2025-05-19 20:06:58.501942+07	2025-05-19 20:06:58.501942+07	\N	\N
 \.
 
-
---
--- TOC entry 5638 (class 0 OID 16921)
--- Dependencies: 244
--- Data for Name: jenis_barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.jenis_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 1000	Obat Oral	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2000	Obat Topikal	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -6605,13 +5514,6 @@ COPY sik.jenis_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 4000	Obat Sublingual	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 5000	Obat Infus	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
-
-
---
--- TOC entry 5674 (class 0 OID 34214)
--- Dependencies: 280
--- Data for Name: jenis_tindakan; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.jenis_tindakan (kode, nama_tindakan, kode_kategori, material, bhp, tarif_tindakan_dokter, tarif_tindakan_perawat, kso, manajemen, total_bayar_dokter, total_bayar_perawat, total_bayar_dokter_perawat, kode_pj, kode_bangsal, status, kelas) FROM stdin;
 001.ICU	Ruang Operasi	OP33	2200000	0	0	250000	0	0	0	2450000	2450000	A09	ICU	1	-
@@ -9909,22 +8811,8 @@ UMM.VVIP.113	Jasa Asisten Anestesi	OV	0	0	0	500000	0	0	0	500000	0	A09	VVIP	1	-
 UMM.VVIP.68	Visite dokter spesialis (dr. ATJO ADHMART P, SpOG)	RI2	0	0	200000	0	0	0	200000	0	200000	A09	VVIP	1	-
 \.
 
-
---
--- TOC entry 5673 (class 0 OID 34208)
--- Dependencies: 279
--- Data for Name: jns_perawatan_inap; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.jns_perawatan_inap  FROM stdin;
 \.
-
-
---
--- TOC entry 5664 (class 0 OID 25942)
--- Dependencies: 270
--- Data for Name: kamar; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.kamar (nomor_bed, kode_kamar, nama_kamar, kelas, tarif_kamar, status_kamar) FROM stdin;
 1	bcd	anggrek	1	50000	available
@@ -9945,13 +8833,6 @@ VUP-02	VIP	melati	VIP	500000	available
 VUP-03	VIP	kenanga	VIP	500000	available
 \.
 
-
---
--- TOC entry 5639 (class 0 OID 16928)
--- Dependencies: 245
--- Data for Name: kategori_barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.kategori_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 1000	Obat Paten	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2000	Obat Generik	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -9960,53 +8841,18 @@ COPY sik.kategori_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 5000	Obat Bebas Paten	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-
---
--- TOC entry 5656 (class 0 OID 17357)
--- Dependencies: 262
--- Data for Name: mutasi_barang; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.mutasi_barang (id, id_barang_medis, jumlah, harga, id_ruangandari, id_ruanganke, tanggal, keterangan, no_batch, no_faktur) FROM stdin;
 \.
-
-
---
--- TOC entry 5652 (class 0 OID 17249)
--- Dependencies: 258
--- Data for Name: notifikasi; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.notifikasi (id, sender, recipient, tanggal, judul, pesan, read) FROM stdin;
 2eb3e845-f0d2-4ab3-b599-dd91a6799438	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	933568d5-982a-43c3-a4aa-3177bab10f07	2025-06-01	INI JUDUL	INI PESAN	f
 \.
 
-
---
--- TOC entry 5654 (class 0 OID 17322)
--- Dependencies: 260
--- Data for Name: opname; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.opname (id, id_barang_medis, id_ruangan, h_beli, tanggal, "real", stok, keterangan, no_batch, no_faktur) FROM stdin;
 \.
 
-
---
--- TOC entry 5629 (class 0 OID 16851)
--- Dependencies: 235
--- Data for Name: organisasi; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.organisasi (id, nama, alamat, latitude, longitude, radius, created_at, updated_at) FROM stdin;
 \.
-
-
---
--- TOC entry 5684 (class 0 OID 50676)
--- Dependencies: 290
--- Data for Name: pasien; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.pasien (no_rkm_medis, nm_pasien, no_ktp, jk, tmp_lahir, tgl_lahir, nm_ibu, alamat, gol_darah, pekerjaan, stts_nikah, agama, tgl_daftar, no_tlp, umur, pnd, keluarga, namakeluarga, kd_pj, no_peserta, kd_kel, kd_kec, kd_kab, pekerjaanpj, alamatpj, kelurahanpj, kecamatanpj, kabupatenpj, perusahaan_pasien, suku_bangsa, bahasa_pasien, cacat_fisik, email, nip, kd_prop, propinsipj) FROM stdin;
 000002	Siti Nurhaliza	3175080101010002	P	Bandung	1992-06-15	Rina Marlina	Jl. Cendana No.2	A	Guru	MENIKAH	ISLAM	2025-05-21	082345678901	32 Th 0 Bl 0 Hr	S2	IBU	Maman Sutarman	A01 	BPJS0002	2	2	2	PNS	Jl. Melati No. 20	Kelurahan B	Kecamatan B	Kabupaten B	PRSH002	2	2	0	siti@example.com	1989002	2	Propinsi B
@@ -10019,25 +8865,11 @@ RM2025052859642	Indira	15	P	Bandung	2004-01-01	Seruni	Jakarta	O	14	BELUM MENIKAH
 RM2025052882024	Indira	15	P	Bandung	2004-01-01	Seruni	Jakarta	O	14	BELUM MENIKAH	ISLAM	2025-05-28	08123456789	21 Th 4 Bl 27 Hr	SMA	SAUDARA	Putri	9   	10	17	18	19	5	21	22	23	24	26	6	7	8	indira@gmail.com	27	20	25
 \.
 
-
---
--- TOC entry 5644 (class 0 OID 16991)
--- Dependencies: 250
--- Data for Name: pegawai; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.pegawai (id, id_akun, nip, nama, jenis_kelamin, id_jabatan, id_departemen, id_status_aktif, jenis_pegawai, telepon, tanggal_masuk, created_at, updated_at, deleted_at, updater) FROM stdin;
 933568d5-982a-43c3-a4aa-3177bab10f07	933568d5-982a-43c3-a4aa-3177bab10f07	1987123456	Eric	L	2	2	1	Tetap	081234567890	2020-01-01	2025-05-15 18:35:47.617694+07	2025-05-15 18:35:47.617694+07	\N	933568d5-982a-43c3-a4aa-3177bab10f07
 b9b1ad6c-c41b-446a-b00e-f56684663c56	b9b1ad6c-c41b-446a-b00e-f56684663c56	1987123457	Aziz	L	3	3	1	Kontrak	082345678901	2021-05-15	2025-05-15 18:35:47.617694+07	2025-05-15 18:35:47.617694+07	\N	b9b1ad6c-c41b-446a-b00e-f56684663c56
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	1987123455	Admin	L	1000	1000	A	Tetap	081234567890	2020-01-01	2025-05-15 20:01:08.381723+07	2025-05-20 15:24:14.18878+07	\N	bd0b4833-510c-4c29-a3a4-e08e9a0a5955
 \.
-
-
---
--- TOC entry 5675 (class 0 OID 34223)
--- Dependencies: 281
--- Data for Name: pemberian_obat; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.pemberian_obat (tanggal_beri, jam_beri, nomor_rawat, nama_pasien, kode_obat, nama_obat, embalase, tuslah, jumlah, biaya_obat, total, gudang, no_batch, no_faktur, kelas) FROM stdin;
 2025-04-16	09:15:00	RW002	Siti Aminah	OB002	Amoxicillin 250mg	1500	2500	1	7000.00	11000.00	Gudang B	BATCH002	FAKTUR002	kelas1
@@ -10052,13 +8884,6 @@ COPY sik.pemberian_obat (tanggal_beri, jam_beri, nomor_rawat, nama_pasien, kode_
 2025-05-31	18:10:03		Indira			\N	\N	\N	\N	\N	\N	\N	\N	\N
 \.
 
-
---
--- TOC entry 5683 (class 0 OID 42447)
--- Dependencies: 289
--- Data for Name: pemeriksaan_ranap; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.pemeriksaan_ranap (no_rawat, tgl_perawatan, jam_rawat, suhu_tubuh, tensi, nadi, respirasi, tinggi, berat, spo2, gcs, kesadaran, keluhan, pemeriksaan, alergi, penilaian, rtl, instruksi, evaluasi, nip) FROM stdin;
 202504244462	2025-05-12	08:30:00	36.5	120/80	75	16	170	65	98	15	Compos Mentis	Headache	Normal	None	Stable	Follow up in 2 weeks	Take paracetamol	Satisfactory	1987123456
 202504167258	2025-05-12	09:00:00	37.2	130/85	80	18	165	70	97	15	Compos Mentis	Fever and cough	Inflamed throat	Penicillin	Needs rest	Monitor symptoms	Take rest and fluids	Improvement expected	1987123456
@@ -10068,22 +8893,8 @@ RW001	2025-05-14	14:00:00	37.0	140/90	85	19	160	60	96	15	Compos Mentis	Abdominal
 202505284371	2025-05-29	19:39:12	37.0	2	3	4	7	8	6	1	11	9	10	12	13	14	15	16	1987123456
 \.
 
-
---
--- TOC entry 5659 (class 0 OID 17412)
--- Dependencies: 265
--- Data for Name: penerimaan_barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.penerimaan_barang_medis (id, no_faktur, no_pemesanan, id_supplier, tanggal_datang, tanggal_faktur, tanggal_jthtempo, id_pegawai, id_ruangan, pajak_persen, pajak_jumlah, tagihan, materai) FROM stdin;
 \.
-
-
---
--- TOC entry 5679 (class 0 OID 42398)
--- Dependencies: 285
--- Data for Name: permintaan_resep_pulang; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.permintaan_resep_pulang (no_permintaan, tgl_permintaan, jam, no_rawat, kd_dokter, status, tgl_validasi, jam_validasi, kode_brng, jumlah, aturan_pakai) FROM stdin;
 PRP202505071001	2025-05-07	10:00:00	RW20250427001	D001	Sudah	2025-05-07	10:05:00	OBT001	10	3x1 sesudah makan
@@ -10097,13 +8908,6 @@ PRP202505062704	2025-05-06	23:32:40	202504254997	D003	Sudah	2025-05-06	23:32:40	
 PRP202505069177	2025-05-06	21:57:54	202504232512	D008	Sudah	2025-05-06	21:57:54	B000001294	100	2x1
 PRP202505311745	2025-05-31	00:23:07	202504232661		Sudah	2025-05-31	00:23:07	2018003	1	3x1
 \.
-
-
---
--- TOC entry 5681 (class 0 OID 42411)
--- Dependencies: 287
--- Data for Name: permintaan_stok_obat; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.permintaan_stok_obat (no_permintaan, tgl_permintaan, jam, no_rawat, kd_dokter, status, tgl_validasi, jam_validasi) FROM stdin;
 P001202504	2025-04-29	08:30:00	RW20250429001	D001	Belum	2025-04-29	09:00:00
@@ -10128,22 +8932,8 @@ SOP202505316071	2025-05-31	00:03:50	202505284371	D004	Belum	\N	\N
 SOP202506011656	2025-06-01	15:21:57	202504164239	D001	Belum	2025-06-01	15:22:22
 \.
 
-
---
--- TOC entry 5650 (class 0 OID 17193)
--- Dependencies: 256
--- Data for Name: presensi; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.presensi (id, id_pegawai, id_jadwal_pegawai, tanggal, jam_masuk, jam_pulang, keterangan, foto, created_at, updated_at, deleted_at, updater) FROM stdin;
 \.
-
-
---
--- TOC entry 5667 (class 0 OID 25963)
--- Dependencies: 273
--- Data for Name: rawat_inap; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.rawat_inap (nomor_rawat, nomor_rm, nama_pasien, alamat_pasien, penanggung_jawab, hubungan_pj, jenis_bayar, kamar, tarif_kamar, diagnosa_awal, diagnosa_akhir, tanggal_masuk, tanggal_keluar, jam_keluar, total_biaya, status_pulang, lama_ranap, dokter_pj, status_bayar, jam_masuk) FROM stdin;
 202504254997	300	Mae	Jl. Merpati	Meri	Diri Sendiri	BPJS	VUP.01	500	Diare	\N	2025-04-06	0001-01-01	0001-01-01	0	\N	0	Dr. Elsa	\N	14:55:32
@@ -10156,13 +8946,6 @@ COPY sik.rawat_inap (nomor_rawat, nomor_rm, nama_pasien, alamat_pasien, penanggu
 202505284371	RM2025052859642	Indira	21	Putri	SAUDARA	BPJS	K3-02	100	DBD	\N	2025-04-04	0001-01-01	0001-01-01	0	\N	0	Dr. Intan	\N	21:23:04
 202504168143	123	Andi	Jl. Merpati	Eric	Diri Sendiri	BPJS	VUP.04	0	Influenza	\N	2025-04-19	0001-01-01	0001-01-01 BC	0	Belum	0	Dr. Ahmad	Belum Bayar	16:59:25
 \.
-
-
---
--- TOC entry 5663 (class 0 OID 17759)
--- Dependencies: 269
--- Data for Name: registrasi; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.registrasi (nomor_reg, nomor_rawat, tanggal, jam, kode_dokter, nama_dokter, nomor_rm, nama_pasien, jenis_kelamin, umur, poliklinik, jenis_bayar, penanggung_jawab, alamat_pj, hubungan_pj, biaya_registrasi, status_registrasi, no_telepon, status_rawat, status_poli, status_bayar, status_kamar, nomor_bed) FROM stdin;
 19	RW001	2024-03-26	00:00:00	D001		RM001	John Doe	L	30	Poli Umum	BPJS	Jane Doe	Jl. Test No. 1	Istri	50000	pending	08123456789	rawat jalan	aktif	belum bayar	true	\N
@@ -10182,13 +8965,6 @@ REG202504049127	456	2025-04-04	00:00:00	D001	Dr. Ahmad	123	Eric	L	22	Poli Umum	B
 REG202504167709	202504167258	2025-04-16	00:00:00	D009	Dr. Intan	125	Don	L	35	Poli Umum	BPJS	Budi	Jl. Merpati	Diri Sendiri	123000	Baru	08123456789	Belum	Baru	Belum Bayar	menunggu	\N
 REG202504247426	202504244462	2025-04-24	00:00:00	D008	Dr. Hadi	300	Mae	L	35	Poli Umum	BPJS	Meri	Jl. Merpati	Diri Sendiri	123000	Baru	08123456789	Belum	Baru	Belum Bayar		\N
 \.
-
-
---
--- TOC entry 5677 (class 0 OID 42376)
--- Dependencies: 283
--- Data for Name: resep_dokter; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.resep_dokter (no_resep, kode_barang, jumlah, aturan_pakai, embalase, tuslah) FROM stdin;
 RSP20250421001	OBT001	22.17	3x1 sesudah makan	0	0
@@ -10231,13 +9007,6 @@ RSP202505316952	B000000003	10	3x1	0	0
 RSP202505316952	B000001547	20	3x1	0	0
 \.
 
-
---
--- TOC entry 5690 (class 0 OID 50783)
--- Dependencies: 296
--- Data for Name: resep_dokter_racikan; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.resep_dokter_racikan (no_resep, no_racik, nama_racik, kd_racik, jml_dr, aturan_pakai, keterangan) FROM stdin;
 RSP202505294923	RC01	Racikan Batuk	PCT	10	3x1 sesudah makan	Obat campuran batuk
 RSP202505297596	1	Flu	PCT	10	3x1	Sesudah makan
@@ -10246,13 +9015,6 @@ RSP202505297487	3	Flu	PCT	10	3x1	Sesudah makan
 RSP202505304793	4	Flu	PCT	10	3x1	Sesudah makan
 RSP202505316952	5	Flu	PCT	10	3x1	Sesudah makan
 \.
-
-
---
--- TOC entry 5691 (class 0 OID 50788)
--- Dependencies: 297
--- Data for Name: resep_dokter_racikan_detail; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.resep_dokter_racikan_detail (no_resep, no_racik, kode_brng, p1, p2, kandungan, jml) FROM stdin;
 RSP202505294923	RC01	2018001	1	2	250	3
@@ -10267,13 +9029,6 @@ RSP202505304793	4	B000000572	1	2	500	5
 RSP202505316952	5	B000000003	1	2	100	10
 RSP202505316952	5	B000001547	1	2	200	20
 \.
-
-
---
--- TOC entry 5678 (class 0 OID 42381)
--- Dependencies: 284
--- Data for Name: resep_obat; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.resep_obat (no_resep, tgl_perawatan, jam, no_rawat, kd_dokter, tgl_peresepan, jam_peresepan, status, tgl_penyerahan, jam_penyerahan, validasi) FROM stdin;
 RSP202504229734	2025-04-22	15:08:55	RW202504169001	D004	2025-04-22	15:08:55	ranap	2025-04-22	15:08:55	t
@@ -10293,13 +9048,6 @@ RSP202504238226	2025-04-23	16:26:25	202504199396	D004	2025-04-23	16:26:25	ranap	
 RSP202504237598	2025-04-23	16:24:18	202504199396	D004	2025-04-23	16:24:18	ranap	2025-04-23	16:24:18	t
 \.
 
-
---
--- TOC entry 5680 (class 0 OID 42406)
--- Dependencies: 286
--- Data for Name: resep_pulang; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.resep_pulang (no_rawat, kode_brng, jml_barang, harga, total, dosis, tanggal, jam, kd_bangsal, no_batch, no_faktur) FROM stdin;
 RW20250428001	OBT001	2	15000	30000	3x1 sesudah makan	2025-04-28	08:00:00	B001	BT001	FKT001
 RW20250428002	OBT002	1	20000	20000	2x1 sebelum makan	2025-04-28	09:30:00	B002	BT002	FKT002
@@ -10314,13 +9062,6 @@ RW20250428005	OBT005	4	12000	48000	3x1 setelah makan	2025-04-28	13:00:00	B005	BT
 202504232661	2018003	1	0	0	3x1	2025-04-16	23:01:37	K1.02	1	1
 \.
 
-
---
--- TOC entry 5689 (class 0 OID 50751)
--- Dependencies: 295
--- Data for Name: resume_pasien_ranap; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.resume_pasien_ranap (no_rawat, kd_dokter, diagnosa_awal, alasan, keluhan_utama, pemeriksaan_fisik, jalannya_penyakit, pemeriksaan_penunjang, hasil_laborat, tindakan_dan_operasi, obat_di_rs, diagnosa_utama, kd_diagnosa_utama, diagnosa_sekunder, kd_diagnosa_sekunder, diagnosa_sekunder2, kd_diagnosa_sekunder2, diagnosa_sekunder3, kd_diagnosa_sekunder3, diagnosa_sekunder4, kd_diagnosa_sekunder4, prosedur_utama, kd_prosedur_utama, prosedur_sekunder, kd_prosedur_sekunder, prosedur_sekunder2, kd_prosedur_sekunder2, prosedur_sekunder3, kd_prosedur_sekunder3, alergi, diet, lab_belum, edukasi, cara_keluar, ket_keluar, keadaan, ket_keadaan, dilanjutkan, ket_dilanjutkan, kontrol, obat_pulang) FROM stdin;
 RW001	D001	Demam Berdarah	Panas tinggi dan lemas	Demam selama 3 hari	TD: 120/80, N: 90x/mnt	Demam disertai nyeri kepala dan mual	USG Abdomen, Rontgen Thorax	Trombosit menurun	Transfusi cairan	Paracetamol, Ringer Laktat	Dengue Fever	A91	Dehidrasi Ringan	E86	Hipotensi	I95	Nyeri Perut	R10	Batuk Ringan	R05	Infus Cairan	99.15	Pemberian Obat	99.29	Pemantauan Vital Sign	89.52	Konsultasi Gizi	88.78	Tidak ada	Cair, rendah garam	Sedang diproses	Telah diberikan	Atas Izin Dokter	\N	Membaik	\N	Kembali Ke RS	\N	2024-08-01 10:00:00	Parasetamol 3x sehari
 RW002	D002	Asma Akut	Sesak napas mendadak	Sesak berat	Wheezing terdengar jelas	Riwayat asma sejak kecil	Spirometri, Foto Thorax	Normal, eosinofil meningkat	Inhalasi bronkodilator	Salbutamol, Oksigen	Asma	J45	Infeksi Saluran Nafas Atas	J00	Alergi Debu	T78	Bronkospasme	J98	Hipoksia	R09	Nebulizer	93.93	Oksigenasi	93.94	Pemeriksaan Darah	90.59	Pendidikan Pasien	94.01	Alergi debu rumah	Tinggi kalori, rendah lemak	Sudah dilakukan	Edukasi penggunaan inhaler	Atas Izin Dokter	\N	Sembuh	\N	Kontrol di RS	Poli Paru	2024-08-03 14:00:00	Salbutamol 2x sehari
@@ -10329,26 +9070,12 @@ RW004	D004	Demensia	Penurunan daya ingat	Lupa nama anak sendiri	TD: 130/80, MMSE
 RW005	D005	TBC Paru	Batuk lama dan berat badan turun	Batuk >2 minggu, BB turun	Ronki basah bilateral	Didiagnosis TBC sejak 1 bulan lalu	Rontgen Thorax, Sputum BTA	BTA positif	Terapi OAT	HRZE, vitamin B6	Tuberculosis Paru	A15	Anemia Ringan	D50	Malnutrisi	E46	Gastritis	K29	Hipoglikemia	E16	Terapi OAT	99.24	Konseling	94.12	Tes HIV	90.61	Pendidikan TB	94.01	Tidak ada	Tinggi protein	Pending pengambilan ulang	Edukasi kepatuhan OAT	Atas Izin Dokter	\N	Membaik	\N	Kembali Ke RS	\N	2024-08-10 10:00:00	HRZE selama 2 bulan
 \.
 
-
---
--- TOC entry 5628 (class 0 OID 16844)
--- Dependencies: 234
--- Data for Name: role; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.role (id, nama, created_at, updated_at) FROM stdin;
 1337	Developer	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 1	Admin	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2	Pegawai	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 3	Dokter	2025-05-15 18:24:16.375191+07	2025-05-15 18:24:16.375191+07
 \.
-
-
---
--- TOC entry 5641 (class 0 OID 16942)
--- Dependencies: 247
--- Data for Name: ruangan; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.ruangan (id, nama, created_at, updated_at) FROM stdin;
 1000	Gudang	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -10366,24 +9093,10 @@ COPY sik.ruangan (id, nama, created_at, updated_at) FROM stdin;
 13000	VVIP	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-
---
--- TOC entry 5666 (class 0 OID 25956)
--- Dependencies: 272
--- Data for Name: rujukan_keluar; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.rujukan_keluar (nomor_rujuk, nomor_rawat, nomor_rm, nama_pasien, tempat_rujuk, tanggal_rujuk, jam_rujuk, keterangan_diagnosa, dokter_perujuk, kategori_rujuk, pengantaran, keterangan) FROM stdin;
 1	2	3	eric	rsud	2025-05-05	2025-05-05	sakit	eric	bedah	ambulans	-
 50	202504066965	789	Jaya	rsud	2025-04-06	0001-01-01 BC	sakit	ahmad	bedah	sendiri	
 \.
-
-
---
--- TOC entry 5665 (class 0 OID 25949)
--- Dependencies: 271
--- Data for Name: rujukan_masuk; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.rujukan_masuk (nomor_rujuk, perujuk, alamat_perujuk, nomor_rawat, nomor_rm, nama_pasien, alamat, umur, tanggal_masuk, tanggal_keluar, diagnosa_awal) FROM stdin;
 1	RSUD	keputih	456	789	Eric	keputih	22	2025-04-04	2025-04-05	Sakit
@@ -10391,13 +9104,6 @@ COPY sik.rujukan_masuk (nomor_rujuk, perujuk, alamat_perujuk, nomor_rawat, nomor
 51	RSUD	keputih	202504066408	15615634	Jaya	keputih	23	2025-04-06	2025-04-05	Sakit
 			202504148176	55	Don			2025-04-06	2025-04-10	Sakit
 \.
-
-
---
--- TOC entry 5637 (class 0 OID 16914)
--- Dependencies: 243
--- Data for Name: satuan_barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.satuan_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 1	-	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -10412,26 +9118,12 @@ COPY sik.satuan_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 10	item	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-
---
--- TOC entry 5633 (class 0 OID 16882)
--- Dependencies: 239
--- Data for Name: shift; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.shift (id, nama, jam_masuk, jam_pulang, created_at, updated_at) FROM stdin;
 NA	Belum Ditentukan	07:00:00+07	07:00:00+07	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 P	Pagi	07:00:00+07	15:00:00+07	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 S	Sore	15:00:00+07	23:00:00+07	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 M	Malam	23:00:00+07	07:00:00+07	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
-
-
---
--- TOC entry 5632 (class 0 OID 16875)
--- Dependencies: 238
--- Data for Name: status_aktif_pegawai; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.status_aktif_pegawai (id, nama, created_at, updated_at) FROM stdin;
 A	Aktif	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -10443,22 +9135,8 @@ P	Pensiun	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 W	Wafat	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-
---
--- TOC entry 5657 (class 0 OID 17379)
--- Dependencies: 263
--- Data for Name: stok_keluar_barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.stok_keluar_barang_medis (id, no_keluar, id_pegawai, tanggal_stok_keluar, id_ruangan, keterangan) FROM stdin;
 \.
-
-
---
--- TOC entry 5682 (class 0 OID 42416)
--- Dependencies: 288
--- Data for Name: stok_obat_pasien; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.stok_obat_pasien (no_permintaan, tanggal, jam, no_rawat, kode_brng, jumlah, kd_bangsal, no_batch, no_faktur, aturan_pakai, jam00, jam01, jam02, jam03, jam04, jam05, jam06, jam07, jam08, jam09, jam10, jam11, jam12, jam13, jam14, jam15, jam16, jam17, jam18, jam19, jam20, jam21, jam22, jam23) FROM stdin;
 SP202504290001	2025-04-29	08:00:00	2025/04/29/000001	B000000556	3	101  	B123	F001	3x1	f	f	f	f	f	f	f	f	t	f	f	f	f	f	t	f	f	f	f	f	t	f	f	f
@@ -10476,33 +9154,12 @@ SOP202505057213	2025-05-05	14:23:38	202504254997	B000002026	50	B001 	BTCH001	FKT
 SOP202505316071	2025-05-31	00:03:50	202505284371	2018003	10	B001 	BTCH001	FKT20250502	3x1	f	f	f	f	f	f	f	f	f	f	t	f	t	f	f	f	f	f	f	f	f	f	f	f
 \.
 
-
---
--- TOC entry 5642 (class 0 OID 16949)
--- Dependencies: 248
--- Data for Name: supplier_barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.supplier_barang_medis (id, nama, alamat, no_telp, kota, nama_bank, no_rekening, created_at, updated_at) FROM stdin;
 1	Mitra	Jln. Benar	08234234	Jakarta	BCA	8123123	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-
---
--- TOC entry 5672 (class 0 OID 34198)
--- Dependencies: 278
--- Data for Name: tarif_tindakan; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.tarif_tindakan (kode, nama_perawatan, kategori_perawatan, tarif, kelas) FROM stdin;
 \.
-
-
---
--- TOC entry 5670 (class 0 OID 26005)
--- Dependencies: 276
--- Data for Name: tindakan; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.tindakan (nomor_rawat, nomor_rm, nama_pasien, tindakan, kode_dokter, nama_dokter, nip, nama_petugas, tanggal_rawat, jam_rawat, biaya) FROM stdin;
 40	2	Aziz	suntik	D001	Dr. Ahmad	75	Agus	2025-06-01	20:20:00	100000
@@ -10519,1601 +9176,499 @@ RW202504169001	123	Eric	OG.I.102	D001	D001	\N	\N	2025-05-26	18:50:23	4500000
 202504254997	300	Mae	UM.HT.041	\N	D001	\N	Acil	2025-05-31	12:39:29	\N
 \.
 
-
---
--- TOC entry 5658 (class 0 OID 17396)
--- Dependencies: 264
--- Data for Name: transaksi_keluar_barang_medis; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.transaksi_keluar_barang_medis (id, id_stok_keluar, id_barang_medis, no_batch, no_faktur, jumlah_keluar) FROM stdin;
 \.
 
-
---
--- TOC entry 5649 (class 0 OID 17161)
--- Dependencies: 255
--- Data for Name: tukar_jadwal; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.tukar_jadwal (id, id_sender, id_recipient, id_hari, id_shift_sender, id_shift_recipient, status) FROM stdin;
 \.
-
-
---
--- TOC entry 5669 (class 0 OID 25998)
--- Dependencies: 275
--- Data for Name: ugd; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.ugd (nomor_reg, nomor_rawat, tanggal, jam, kode_dokter, dokter_dituju, nomor_rm, nama_pasien, jenis_kelamin, umur, poliklinik, penanggung_jawab, alamat_pj, hubungan_pj, biaya_registrasi, status, jenis_bayar, status_rawat, status_bayar) FROM stdin;
 1	20250412256	2025-04-12	20:20:20	D001	Dr. Ahmad	1	Aziz	L	22	Poli Jantung	Jaya	Keputih	Diri Sendiri	100000	Lama	BPJS	Belum	Belum Bayar
 UGD1001	RW1001	2025-04-12	14:00:00	D001	dr. Rina	RM1001	Andi	L	35	Poli Umum	Budi	Jl. Merpati	Suami	50000		Tunai	rawat	belum
 \.
 
-
---
--- TOC entry 5226 (class 2606 OID 16788)
--- Name: alasan_cuti alasan_cuti_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
-
 ALTER TABLE ONLY ref.alasan_cuti
     ADD CONSTRAINT alasan_cuti_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5218 (class 2606 OID 16760)
--- Name: departemen departemen_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
 
 ALTER TABLE ONLY ref.departemen
     ADD CONSTRAINT departemen_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5238 (class 2606 OID 16827)
--- Name: golongan_barang_medis golongan_barang_medis_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
-
 ALTER TABLE ONLY ref.golongan_barang_medis
     ADD CONSTRAINT golongan_barang_medis_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5224 (class 2606 OID 16781)
--- Name: hari hari_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
 
 ALTER TABLE ONLY ref.hari
     ADD CONSTRAINT hari_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5228 (class 2606 OID 16799)
--- Name: industri_farmasi industri_farmasi_kode_key; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
-
 ALTER TABLE ONLY ref.industri_farmasi
     ADD CONSTRAINT industri_farmasi_kode_key UNIQUE (kode);
 
-
---
--- TOC entry 5230 (class 2606 OID 16797)
--- Name: industri_farmasi industri_farmasi_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
-
 ALTER TABLE ONLY ref.industri_farmasi
     ADD CONSTRAINT industri_farmasi_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5216 (class 2606 OID 16753)
--- Name: jabatan jabatan_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
 
 ALTER TABLE ONLY ref.jabatan
     ADD CONSTRAINT jabatan_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5234 (class 2606 OID 16813)
--- Name: jenis_barang_medis jenis_barang_medis_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
-
 ALTER TABLE ONLY ref.jenis_barang_medis
     ADD CONSTRAINT jenis_barang_medis_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5236 (class 2606 OID 16820)
--- Name: kategori_barang_medis kategori_barang_medis_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
 
 ALTER TABLE ONLY ref.kategori_barang_medis
     ADD CONSTRAINT kategori_barang_medis_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5214 (class 2606 OID 16746)
--- Name: organisasi organisasi_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
-
 ALTER TABLE ONLY ref.organisasi
     ADD CONSTRAINT organisasi_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5212 (class 2606 OID 16736)
--- Name: role role_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
 
 ALTER TABLE ONLY ref.role
     ADD CONSTRAINT role_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5240 (class 2606 OID 16834)
--- Name: ruangan ruangan_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
-
 ALTER TABLE ONLY ref.ruangan
     ADD CONSTRAINT ruangan_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5232 (class 2606 OID 16806)
--- Name: satuan_barang_medis satuan_barang_medis_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
 
 ALTER TABLE ONLY ref.satuan_barang_medis
     ADD CONSTRAINT satuan_barang_medis_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5222 (class 2606 OID 16774)
--- Name: shift shift_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
-
 ALTER TABLE ONLY ref.shift
     ADD CONSTRAINT shift_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5220 (class 2606 OID 16767)
--- Name: status_aktif_pegawai status_aktif_pegawai_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
 
 ALTER TABLE ONLY ref.status_aktif_pegawai
     ADD CONSTRAINT status_aktif_pegawai_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5242 (class 2606 OID 16843)
--- Name: supplier_barang_medis supplier_barang_medis_pkey; Type: CONSTRAINT; Schema: ref; Owner: postgres
---
-
 ALTER TABLE ONLY ref.supplier_barang_medis
     ADD CONSTRAINT supplier_barang_medis_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5276 (class 2606 OID 16969)
--- Name: akun akun_email_key; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.akun
     ADD CONSTRAINT akun_email_key UNIQUE (email);
 
-
---
--- TOC entry 5278 (class 2606 OID 16967)
--- Name: akun akun_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.akun
     ADD CONSTRAINT akun_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5298 (class 2606 OID 17040)
--- Name: alamat alamat_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.alamat
     ADD CONSTRAINT alamat_pkey PRIMARY KEY (id_akun);
 
-
---
--- TOC entry 5258 (class 2606 OID 16902)
--- Name: alasan_cuti alasan_cuti_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.alasan_cuti
     ADD CONSTRAINT alasan_cuti_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5386 (class 2606 OID 25989)
--- Name: ambulans ambulans_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.ambulans
     ADD CONSTRAINT ambulans_pkey PRIMARY KEY (no_ambulans);
 
-
---
--- TOC entry 5354 (class 2606 OID 17291)
--- Name: barang_medis barang_medis_kode_barang_key; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.barang_medis
     ADD CONSTRAINT barang_medis_kode_barang_key UNIQUE (kode_barang);
-
-
---
--- TOC entry 5356 (class 2606 OID 17289)
--- Name: barang_medis barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.barang_medis
     ADD CONSTRAINT barang_medis_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5305 (class 2606 OID 17097)
--- Name: berkas_pegawai berkas_pegawai_nik_key; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.berkas_pegawai
     ADD CONSTRAINT berkas_pegawai_nik_key UNIQUE (nik);
-
-
---
--- TOC entry 5307 (class 2606 OID 17095)
--- Name: berkas_pegawai berkas_pegawai_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.berkas_pegawai
     ADD CONSTRAINT berkas_pegawai_pkey PRIMARY KEY (id_pegawai);
 
-
---
--- TOC entry 5410 (class 2606 OID 50698)
--- Name: catatan_observasi_ranap_kebidanan catatan_observasi_ranap_kebidanan_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.catatan_observasi_ranap_kebidanan
     ADD CONSTRAINT catatan_observasi_ranap_kebidanan_pkey PRIMARY KEY (no_rawat, tgl_perawatan, jam_rawat);
-
-
---
--- TOC entry 5343 (class 2606 OID 17233)
--- Name: cuti cuti_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.cuti
     ADD CONSTRAINT cuti_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5372 (class 2606 OID 17483)
--- Name: data_batch data_batch_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.data_batch
     ADD CONSTRAINT data_batch_pkey PRIMARY KEY (no_batch, id_barang_medis, no_faktur);
-
-
---
--- TOC entry 5396 (class 2606 OID 34246)
--- Name: databarang databarang_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.databarang
     ADD CONSTRAINT databarang_pkey PRIMARY KEY (kode_brng);
 
-
---
--- TOC entry 5250 (class 2606 OID 16874)
--- Name: departemen departemen_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.departemen
     ADD CONSTRAINT departemen_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5370 (class 2606 OID 50778)
--- Name: detail_penerimaan_barang_medis detail_penerimaan_barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.detail_penerimaan_barang_medis
     ADD CONSTRAINT detail_penerimaan_barang_medis_pkey PRIMARY KEY (id_penerimaan, id_barang_medis);
 
-
---
--- TOC entry 5412 (class 2606 OID 50757)
--- Name: resume_pasien_ranap discharge_summary_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.resume_pasien_ranap
     ADD CONSTRAINT discharge_summary_pkey PRIMARY KEY (no_rawat);
-
-
---
--- TOC entry 5374 (class 2606 OID 17758)
--- Name: dokter dokter_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.dokter
     ADD CONSTRAINT dokter_pkey PRIMARY KEY (kode_dokter);
 
-
---
--- TOC entry 5319 (class 2606 OID 17114)
--- Name: foto_pegawai foto_pegawai_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.foto_pegawai
     ADD CONSTRAINT foto_pegawai_pkey PRIMARY KEY (id_pegawai);
-
-
---
--- TOC entry 5270 (class 2606 OID 16941)
--- Name: golongan_barang_medis golongan_barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.golongan_barang_medis
     ADD CONSTRAINT golongan_barang_medis_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5360 (class 2606 OID 17346)
--- Name: gudang_barang gudang_barang_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.gudang_barang
     ADD CONSTRAINT gudang_barang_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5256 (class 2606 OID 16895)
--- Name: hari hari_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.hari
     ADD CONSTRAINT hari_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5260 (class 2606 OID 16913)
--- Name: industri_farmasi industri_farmasi_kode_key; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.industri_farmasi
     ADD CONSTRAINT industri_farmasi_kode_key UNIQUE (kode);
-
-
---
--- TOC entry 5262 (class 2606 OID 16911)
--- Name: industri_farmasi industri_farmasi_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.industri_farmasi
     ADD CONSTRAINT industri_farmasi_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5248 (class 2606 OID 16867)
--- Name: jabatan jabatan_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.jabatan
     ADD CONSTRAINT jabatan_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5329 (class 2606 OID 17132)
--- Name: jadwal_pegawai jadwal_pegawai_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.jadwal_pegawai
     ADD CONSTRAINT jadwal_pegawai_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5266 (class 2606 OID 16927)
--- Name: jenis_barang_medis jenis_barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.jenis_barang_medis
     ADD CONSTRAINT jenis_barang_medis_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5392 (class 2606 OID 34220)
--- Name: jenis_tindakan jenis_tindakan_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.jenis_tindakan
     ADD CONSTRAINT jenis_tindakan_pkey PRIMARY KEY (kode);
 
-
---
--- TOC entry 5378 (class 2606 OID 25948)
--- Name: kamar kamar_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.kamar
     ADD CONSTRAINT kamar_pkey PRIMARY KEY (nomor_bed);
-
-
---
--- TOC entry 5268 (class 2606 OID 16934)
--- Name: kategori_barang_medis kategori_barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.kategori_barang_medis
     ADD CONSTRAINT kategori_barang_medis_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5362 (class 2606 OID 17363)
--- Name: mutasi_barang mutasi_barang_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.mutasi_barang
     ADD CONSTRAINT mutasi_barang_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5352 (class 2606 OID 17258)
--- Name: notifikasi notifikasi_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.notifikasi
     ADD CONSTRAINT notifikasi_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5358 (class 2606 OID 17330)
--- Name: opname opname_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.opname
     ADD CONSTRAINT opname_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5246 (class 2606 OID 16860)
--- Name: organisasi organisasi_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.organisasi
     ADD CONSTRAINT organisasi_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5408 (class 2606 OID 50687)
--- Name: pasien pasien_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.pasien
     ADD CONSTRAINT pasien_pkey PRIMARY KEY (no_rkm_medis);
-
-
---
--- TOC entry 5292 (class 2606 OID 17002)
--- Name: pegawai pegawai_id_akun_key; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.pegawai
     ADD CONSTRAINT pegawai_id_akun_key UNIQUE (id_akun);
 
-
---
--- TOC entry 5294 (class 2606 OID 17004)
--- Name: pegawai pegawai_nip_key; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.pegawai
     ADD CONSTRAINT pegawai_nip_key UNIQUE (nip);
-
-
---
--- TOC entry 5296 (class 2606 OID 17000)
--- Name: pegawai pegawai_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.pegawai
     ADD CONSTRAINT pegawai_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5406 (class 2606 OID 42453)
--- Name: pemeriksaan_ranap pemeriksaan_ranap_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.pemeriksaan_ranap
     ADD CONSTRAINT pemeriksaan_ranap_pkey PRIMARY KEY (no_rawat, tgl_perawatan, jam_rawat);
-
-
---
--- TOC entry 5368 (class 2606 OID 17417)
--- Name: penerimaan_barang_medis penerimaan_barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.penerimaan_barang_medis
     ADD CONSTRAINT penerimaan_barang_medis_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5400 (class 2606 OID 42405)
--- Name: permintaan_resep_pulang permintaan_resep_pulang_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.permintaan_resep_pulang
     ADD CONSTRAINT permintaan_resep_pulang_pkey PRIMARY KEY (no_permintaan);
-
-
---
--- TOC entry 5404 (class 2606 OID 42444)
--- Name: permintaan_stok_obat permintaan_stok_obat_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.permintaan_stok_obat
     ADD CONSTRAINT permintaan_stok_obat_pkey PRIMARY KEY (no_permintaan);
 
-
---
--- TOC entry 5341 (class 2606 OID 17201)
--- Name: presensi presensi_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.presensi
     ADD CONSTRAINT presensi_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5384 (class 2606 OID 25969)
--- Name: rawat_inap rawat_inap_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.rawat_inap
     ADD CONSTRAINT rawat_inap_pkey PRIMARY KEY (nomor_rawat);
 
-
---
--- TOC entry 5376 (class 2606 OID 17765)
--- Name: registrasi registrasi_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.registrasi
     ADD CONSTRAINT registrasi_pkey PRIMARY KEY (nomor_reg);
-
-
---
--- TOC entry 5416 (class 2606 OID 50800)
--- Name: resep_dokter_racikan_detail resep_dokter_racikan_d_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.resep_dokter_racikan_detail
     ADD CONSTRAINT resep_dokter_racikan_d_pkey PRIMARY KEY (no_resep, no_racik, kode_brng);
 
-
---
--- TOC entry 5414 (class 2606 OID 50798)
--- Name: resep_dokter_racikan resep_dokter_racikan_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.resep_dokter_racikan
     ADD CONSTRAINT resep_dokter_racikan_pkey PRIMARY KEY (no_resep, no_racik);
-
-
---
--- TOC entry 5398 (class 2606 OID 42393)
--- Name: resep_obat resep_obat_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.resep_obat
     ADD CONSTRAINT resep_obat_pkey PRIMARY KEY (no_resep);
 
-
---
--- TOC entry 5402 (class 2606 OID 42410)
--- Name: resep_pulang resep_pulang_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.resep_pulang
     ADD CONSTRAINT resep_pulang_pkey PRIMARY KEY (no_rawat, kode_brng, tanggal, jam);
-
-
---
--- TOC entry 5244 (class 2606 OID 16850)
--- Name: role role_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.role
     ADD CONSTRAINT role_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5272 (class 2606 OID 16948)
--- Name: ruangan ruangan_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.ruangan
     ADD CONSTRAINT ruangan_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5382 (class 2606 OID 25962)
--- Name: rujukan_keluar rujukan_keluar_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.rujukan_keluar
     ADD CONSTRAINT rujukan_keluar_pkey PRIMARY KEY (nomor_rawat);
 
-
---
--- TOC entry 5380 (class 2606 OID 25955)
--- Name: rujukan_masuk rujukan_masuk_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.rujukan_masuk
     ADD CONSTRAINT rujukan_masuk_pkey PRIMARY KEY (nomor_rawat);
-
-
---
--- TOC entry 5264 (class 2606 OID 16920)
--- Name: satuan_barang_medis satuan_barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.satuan_barang_medis
     ADD CONSTRAINT satuan_barang_medis_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5254 (class 2606 OID 16888)
--- Name: shift shift_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.shift
     ADD CONSTRAINT shift_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5252 (class 2606 OID 16881)
--- Name: status_aktif_pegawai status_aktif_pegawai_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.status_aktif_pegawai
     ADD CONSTRAINT status_aktif_pegawai_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5364 (class 2606 OID 17385)
--- Name: stok_keluar_barang_medis stok_keluar_barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.stok_keluar_barang_medis
     ADD CONSTRAINT stok_keluar_barang_medis_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5274 (class 2606 OID 16957)
--- Name: supplier_barang_medis supplier_barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.supplier_barang_medis
     ADD CONSTRAINT supplier_barang_medis_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5390 (class 2606 OID 34204)
--- Name: tarif_tindakan tarif_tindakan_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.tarif_tindakan
     ADD CONSTRAINT tarif_tindakan_pkey PRIMARY KEY (kode);
-
-
---
--- TOC entry 5366 (class 2606 OID 17401)
--- Name: transaksi_keluar_barang_medis transaksi_keluar_barang_medis_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.transaksi_keluar_barang_medis
     ADD CONSTRAINT transaksi_keluar_barang_medis_pkey PRIMARY KEY (id);
 
-
---
--- TOC entry 5331 (class 2606 OID 17167)
--- Name: tukar_jadwal tukar_jadwal_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.tukar_jadwal
     ADD CONSTRAINT tukar_jadwal_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 5388 (class 2606 OID 26004)
--- Name: ugd ugd_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.ugd
     ADD CONSTRAINT ugd_pkey PRIMARY KEY (nomor_reg);
 
-
---
--- TOC entry 5394 (class 2606 OID 42375)
--- Name: pemberian_obat unique_nomor_rawat_tanggal_jam; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.pemberian_obat
     ADD CONSTRAINT unique_nomor_rawat_tanggal_jam UNIQUE (nomor_rawat, tanggal_beri, jam_beri);
 
-
---
--- TOC entry 5279 (class 1259 OID 17700)
--- Name: idx_akun_deleted_at; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_akun_deleted_at ON sik.akun USING btree (deleted_at);
-
-
---
--- TOC entry 5280 (class 1259 OID 17697)
--- Name: idx_akun_foto; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_akun_foto ON sik.akun USING btree (foto);
 
-
---
--- TOC entry 5281 (class 1259 OID 17698)
--- Name: idx_akun_role; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_akun_role ON sik.akun USING btree (role);
-
-
---
--- TOC entry 5282 (class 1259 OID 17699)
--- Name: idx_akun_updated_at; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_akun_updated_at ON sik.akun USING btree (updated_at);
 
-
---
--- TOC entry 5299 (class 1259 OID 17709)
--- Name: idx_alamat_alamat; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_alamat_alamat ON sik.alamat USING btree (alamat);
-
-
---
--- TOC entry 5300 (class 1259 OID 17710)
--- Name: idx_alamat_alamat_lat; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_alamat_alamat_lat ON sik.alamat USING btree (alamat_lat);
 
-
---
--- TOC entry 5301 (class 1259 OID 17711)
--- Name: idx_alamat_alamat_lon; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_alamat_alamat_lon ON sik.alamat USING btree (alamat_lon);
-
-
---
--- TOC entry 5302 (class 1259 OID 17713)
--- Name: idx_alamat_deleted_at; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_alamat_deleted_at ON sik.alamat USING btree (deleted_at);
 
-
---
--- TOC entry 5303 (class 1259 OID 17712)
--- Name: idx_alamat_updated_at; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_alamat_updated_at ON sik.alamat USING btree (updated_at);
-
-
---
--- TOC entry 5308 (class 1259 OID 17714)
--- Name: idx_berkas_pegawai_agama; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_berkas_pegawai_agama ON sik.berkas_pegawai USING btree (agama);
 
-
---
--- TOC entry 5309 (class 1259 OID 17719)
--- Name: idx_berkas_pegawai_bpjs; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_berkas_pegawai_bpjs ON sik.berkas_pegawai USING btree (bpjs);
-
-
---
--- TOC entry 5310 (class 1259 OID 17720)
--- Name: idx_berkas_pegawai_ijazah; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_berkas_pegawai_ijazah ON sik.berkas_pegawai USING btree (ijazah);
 
-
---
--- TOC entry 5311 (class 1259 OID 17717)
--- Name: idx_berkas_pegawai_kk; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_berkas_pegawai_kk ON sik.berkas_pegawai USING btree (kk);
-
-
---
--- TOC entry 5312 (class 1259 OID 17716)
--- Name: idx_berkas_pegawai_ktp; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_berkas_pegawai_ktp ON sik.berkas_pegawai USING btree (ktp);
 
-
---
--- TOC entry 5313 (class 1259 OID 17718)
--- Name: idx_berkas_pegawai_npwp; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_berkas_pegawai_npwp ON sik.berkas_pegawai USING btree (npwp);
-
-
---
--- TOC entry 5314 (class 1259 OID 17715)
--- Name: idx_berkas_pegawai_pendidikan; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_berkas_pegawai_pendidikan ON sik.berkas_pegawai USING btree (pendidikan);
 
-
---
--- TOC entry 5315 (class 1259 OID 17723)
--- Name: idx_berkas_pegawai_serkom; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_berkas_pegawai_serkom ON sik.berkas_pegawai USING btree (serkom);
-
-
---
--- TOC entry 5316 (class 1259 OID 17721)
--- Name: idx_berkas_pegawai_skck; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_berkas_pegawai_skck ON sik.berkas_pegawai USING btree (skck);
 
-
---
--- TOC entry 5317 (class 1259 OID 17722)
--- Name: idx_berkas_pegawai_str; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_berkas_pegawai_str ON sik.berkas_pegawai USING btree (str);
-
-
---
--- TOC entry 5344 (class 1259 OID 17746)
--- Name: idx_cuti_deleted_at; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_cuti_deleted_at ON sik.cuti USING btree (deleted_at);
 
-
---
--- TOC entry 5345 (class 1259 OID 17743)
--- Name: idx_cuti_id_alasan_cuti; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_cuti_id_alasan_cuti ON sik.cuti USING btree (id_alasan_cuti);
-
-
---
--- TOC entry 5346 (class 1259 OID 17740)
--- Name: idx_cuti_id_pegawai; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_cuti_id_pegawai ON sik.cuti USING btree (id_pegawai);
 
-
---
--- TOC entry 5347 (class 1259 OID 17744)
--- Name: idx_cuti_status; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_cuti_status ON sik.cuti USING btree (status);
-
-
---
--- TOC entry 5348 (class 1259 OID 17741)
--- Name: idx_cuti_tanggal_mulai; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_cuti_tanggal_mulai ON sik.cuti USING btree (tanggal_mulai);
 
-
---
--- TOC entry 5349 (class 1259 OID 17742)
--- Name: idx_cuti_tanggal_selesai; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_cuti_tanggal_selesai ON sik.cuti USING btree (tanggal_selesai);
-
-
---
--- TOC entry 5350 (class 1259 OID 17745)
--- Name: idx_cuti_updated_at; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_cuti_updated_at ON sik.cuti USING btree (updated_at);
 
-
---
--- TOC entry 5320 (class 1259 OID 17726)
--- Name: idx_foto_pegawai_deleted_at; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_foto_pegawai_deleted_at ON sik.foto_pegawai USING btree (deleted_at);
-
-
---
--- TOC entry 5321 (class 1259 OID 17724)
--- Name: idx_foto_pegawai_foto; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_foto_pegawai_foto ON sik.foto_pegawai USING btree (foto);
 
-
---
--- TOC entry 5322 (class 1259 OID 17725)
--- Name: idx_foto_pegawai_updated_at; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_foto_pegawai_updated_at ON sik.foto_pegawai USING btree (updated_at);
-
-
---
--- TOC entry 5323 (class 1259 OID 17731)
--- Name: idx_jadwal_pegawai_deleted_at; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_jadwal_pegawai_deleted_at ON sik.jadwal_pegawai USING btree (deleted_at);
 
-
---
--- TOC entry 5324 (class 1259 OID 17729)
--- Name: idx_jadwal_pegawai_id_hari; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_jadwal_pegawai_id_hari ON sik.jadwal_pegawai USING btree (id_hari);
-
-
---
--- TOC entry 5325 (class 1259 OID 17727)
--- Name: idx_jadwal_pegawai_id_pegawai; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_jadwal_pegawai_id_pegawai ON sik.jadwal_pegawai USING btree (id_pegawai);
 
-
---
--- TOC entry 5326 (class 1259 OID 17728)
--- Name: idx_jadwal_pegawai_id_shift; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_jadwal_pegawai_id_shift ON sik.jadwal_pegawai USING btree (id_shift);
-
-
---
--- TOC entry 5327 (class 1259 OID 17730)
--- Name: idx_jadwal_pegawai_updated_at; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_jadwal_pegawai_updated_at ON sik.jadwal_pegawai USING btree (updated_at);
 
-
---
--- TOC entry 5283 (class 1259 OID 17708)
--- Name: idx_pegawai_deleted_at; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_pegawai_deleted_at ON sik.pegawai USING btree (deleted_at);
-
-
---
--- TOC entry 5284 (class 1259 OID 17703)
--- Name: idx_pegawai_id_departemen; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_pegawai_id_departemen ON sik.pegawai USING btree (id_departemen);
 
-
---
--- TOC entry 5285 (class 1259 OID 17702)
--- Name: idx_pegawai_id_jabatan; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_pegawai_id_jabatan ON sik.pegawai USING btree (id_jabatan);
-
-
---
--- TOC entry 5286 (class 1259 OID 17704)
--- Name: idx_pegawai_id_status_aktif; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_pegawai_id_status_aktif ON sik.pegawai USING btree (id_status_aktif);
 
-
---
--- TOC entry 5287 (class 1259 OID 17701)
--- Name: idx_pegawai_jenis_kelamin; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_pegawai_jenis_kelamin ON sik.pegawai USING btree (jenis_kelamin);
-
-
---
--- TOC entry 5288 (class 1259 OID 17705)
--- Name: idx_pegawai_jenis_pegawai; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_pegawai_jenis_pegawai ON sik.pegawai USING btree (jenis_pegawai);
 
-
---
--- TOC entry 5289 (class 1259 OID 17706)
--- Name: idx_pegawai_tanggal_masuk; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_pegawai_tanggal_masuk ON sik.pegawai USING btree (tanggal_masuk);
-
-
---
--- TOC entry 5290 (class 1259 OID 17707)
--- Name: idx_pegawai_updated_at; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_pegawai_updated_at ON sik.pegawai USING btree (updated_at);
 
-
---
--- TOC entry 5332 (class 1259 OID 17739)
--- Name: idx_presensi_deleted_at; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_presensi_deleted_at ON sik.presensi USING btree (deleted_at);
-
-
---
--- TOC entry 5333 (class 1259 OID 17733)
--- Name: idx_presensi_id_jadwal_pegawai; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_presensi_id_jadwal_pegawai ON sik.presensi USING btree (id_jadwal_pegawai);
 
-
---
--- TOC entry 5334 (class 1259 OID 17732)
--- Name: idx_presensi_id_pegawai; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_presensi_id_pegawai ON sik.presensi USING btree (id_pegawai);
-
-
---
--- TOC entry 5335 (class 1259 OID 17735)
--- Name: idx_presensi_jam_masuk; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_presensi_jam_masuk ON sik.presensi USING btree (jam_masuk);
 
-
---
--- TOC entry 5336 (class 1259 OID 17736)
--- Name: idx_presensi_jam_pulang; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_presensi_jam_pulang ON sik.presensi USING btree (jam_pulang);
-
-
---
--- TOC entry 5337 (class 1259 OID 17737)
--- Name: idx_presensi_keterangan; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_presensi_keterangan ON sik.presensi USING btree (keterangan);
 
-
---
--- TOC entry 5338 (class 1259 OID 17734)
--- Name: idx_presensi_tanggal; Type: INDEX; Schema: sik; Owner: postgres
---
-
 CREATE INDEX idx_presensi_tanggal ON sik.presensi USING btree (tanggal);
-
-
---
--- TOC entry 5339 (class 1259 OID 17738)
--- Name: idx_presensi_updated_at; Type: INDEX; Schema: sik; Owner: postgres
---
 
 CREATE INDEX idx_presensi_updated_at ON sik.presensi USING btree (updated_at);
 
-
---
--- TOC entry 5466 (class 2620 OID 17544)
--- Name: pegawai init_jadwal_pegawai; Type: TRIGGER; Schema: sik; Owner: postgres
---
-
 CREATE TRIGGER init_jadwal_pegawai AFTER INSERT ON sik.pegawai FOR EACH ROW EXECUTE FUNCTION sik.trigger_init_jadwal_pegawai();
 
-
---
--- TOC entry 5467 (class 2620 OID 17545)
--- Name: pegawai update_jadwal_pegawai_on_delete; Type: TRIGGER; Schema: sik; Owner: postgres
---
-
 CREATE TRIGGER update_jadwal_pegawai_on_delete BEFORE UPDATE ON sik.pegawai FOR EACH ROW WHEN (((old.deleted_at IS NULL) AND (new.deleted_at IS NOT NULL))) EXECUTE FUNCTION sik.trigger_update_jadwal_pegawai_on_delete();
-
-
---
--- TOC entry 5417 (class 2606 OID 16970)
--- Name: akun akun_role_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.akun
     ADD CONSTRAINT akun_role_fkey FOREIGN KEY (role) REFERENCES ref.role(id);
 
-
---
--- TOC entry 5423 (class 2606 OID 17041)
--- Name: alamat alamat_id_akun_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.alamat
     ADD CONSTRAINT alamat_id_akun_fkey FOREIGN KEY (id_akun) REFERENCES sik.akun(id);
-
-
---
--- TOC entry 5424 (class 2606 OID 17046)
--- Name: alamat alamat_updater_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.alamat
     ADD CONSTRAINT alamat_updater_fkey FOREIGN KEY (updater) REFERENCES sik.akun(id);
 
-
---
--- TOC entry 5446 (class 2606 OID 17317)
--- Name: barang_medis barang_medis_id_golongan_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.barang_medis
     ADD CONSTRAINT barang_medis_id_golongan_fkey FOREIGN KEY (id_golongan) REFERENCES ref.golongan_barang_medis(id);
-
-
---
--- TOC entry 5447 (class 2606 OID 17292)
--- Name: barang_medis barang_medis_id_industri_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.barang_medis
     ADD CONSTRAINT barang_medis_id_industri_fkey FOREIGN KEY (id_industri) REFERENCES ref.industri_farmasi(id);
 
-
---
--- TOC entry 5448 (class 2606 OID 17307)
--- Name: barang_medis barang_medis_id_jenis_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.barang_medis
     ADD CONSTRAINT barang_medis_id_jenis_fkey FOREIGN KEY (id_jenis) REFERENCES ref.jenis_barang_medis(id);
-
-
---
--- TOC entry 5449 (class 2606 OID 17312)
--- Name: barang_medis barang_medis_id_kategori_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.barang_medis
     ADD CONSTRAINT barang_medis_id_kategori_fkey FOREIGN KEY (id_kategori) REFERENCES ref.kategori_barang_medis(id);
 
-
---
--- TOC entry 5450 (class 2606 OID 17297)
--- Name: barang_medis barang_medis_id_satbesar_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.barang_medis
     ADD CONSTRAINT barang_medis_id_satbesar_fkey FOREIGN KEY (id_satbesar) REFERENCES ref.satuan_barang_medis(id);
-
-
---
--- TOC entry 5451 (class 2606 OID 17302)
--- Name: barang_medis barang_medis_id_satuan_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.barang_medis
     ADD CONSTRAINT barang_medis_id_satuan_fkey FOREIGN KEY (id_satuan) REFERENCES ref.satuan_barang_medis(id);
 
-
---
--- TOC entry 5425 (class 2606 OID 17098)
--- Name: berkas_pegawai berkas_pegawai_id_pegawai_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.berkas_pegawai
     ADD CONSTRAINT berkas_pegawai_id_pegawai_fkey FOREIGN KEY (id_pegawai) REFERENCES sik.pegawai(id);
-
-
---
--- TOC entry 5426 (class 2606 OID 17103)
--- Name: berkas_pegawai berkas_pegawai_updater_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.berkas_pegawai
     ADD CONSTRAINT berkas_pegawai_updater_fkey FOREIGN KEY (updater) REFERENCES sik.akun(id);
 
-
---
--- TOC entry 5441 (class 2606 OID 17239)
--- Name: cuti cuti_id_alasan_cuti_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.cuti
     ADD CONSTRAINT cuti_id_alasan_cuti_fkey FOREIGN KEY (id_alasan_cuti) REFERENCES ref.alasan_cuti(id);
-
-
---
--- TOC entry 5442 (class 2606 OID 17234)
--- Name: cuti cuti_id_pegawai_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.cuti
     ADD CONSTRAINT cuti_id_pegawai_fkey FOREIGN KEY (id_pegawai) REFERENCES sik.pegawai(id);
 
-
---
--- TOC entry 5443 (class 2606 OID 17244)
--- Name: cuti cuti_updater_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.cuti
     ADD CONSTRAINT cuti_updater_fkey FOREIGN KEY (updater) REFERENCES sik.akun(id);
-
-
---
--- TOC entry 5464 (class 2606 OID 17484)
--- Name: data_batch data_batch_id_barang_medis_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.data_batch
     ADD CONSTRAINT data_batch_id_barang_medis_fkey FOREIGN KEY (id_barang_medis) REFERENCES sik.barang_medis(id);
 
-
---
--- TOC entry 5465 (class 2606 OID 17766)
--- Name: registrasi fk_kode_dokter; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.registrasi
     ADD CONSTRAINT fk_kode_dokter FOREIGN KEY (kode_dokter) REFERENCES sik.dokter(kode_dokter);
-
-
---
--- TOC entry 5427 (class 2606 OID 17115)
--- Name: foto_pegawai foto_pegawai_id_pegawai_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.foto_pegawai
     ADD CONSTRAINT foto_pegawai_id_pegawai_fkey FOREIGN KEY (id_pegawai) REFERENCES sik.pegawai(id);
 
-
---
--- TOC entry 5428 (class 2606 OID 17120)
--- Name: foto_pegawai foto_pegawai_updater_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.foto_pegawai
     ADD CONSTRAINT foto_pegawai_updater_fkey FOREIGN KEY (updater) REFERENCES sik.akun(id);
-
-
---
--- TOC entry 5454 (class 2606 OID 17352)
--- Name: gudang_barang gudang_barang_id_ruangan_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.gudang_barang
     ADD CONSTRAINT gudang_barang_id_ruangan_fkey FOREIGN KEY (id_ruangan) REFERENCES ref.ruangan(id);
 
-
---
--- TOC entry 5429 (class 2606 OID 17138)
--- Name: jadwal_pegawai jadwal_pegawai_id_hari_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.jadwal_pegawai
     ADD CONSTRAINT jadwal_pegawai_id_hari_fkey FOREIGN KEY (id_hari) REFERENCES ref.hari(id);
-
-
---
--- TOC entry 5430 (class 2606 OID 17133)
--- Name: jadwal_pegawai jadwal_pegawai_id_pegawai_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.jadwal_pegawai
     ADD CONSTRAINT jadwal_pegawai_id_pegawai_fkey FOREIGN KEY (id_pegawai) REFERENCES sik.pegawai(id);
 
-
---
--- TOC entry 5431 (class 2606 OID 17143)
--- Name: jadwal_pegawai jadwal_pegawai_id_shift_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.jadwal_pegawai
     ADD CONSTRAINT jadwal_pegawai_id_shift_fkey FOREIGN KEY (id_shift) REFERENCES ref.shift(id);
-
-
---
--- TOC entry 5432 (class 2606 OID 17148)
--- Name: jadwal_pegawai jadwal_pegawai_updater_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.jadwal_pegawai
     ADD CONSTRAINT jadwal_pegawai_updater_fkey FOREIGN KEY (updater) REFERENCES sik.akun(id);
 
-
---
--- TOC entry 5455 (class 2606 OID 17364)
--- Name: mutasi_barang mutasi_barang_id_barang_medis_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.mutasi_barang
     ADD CONSTRAINT mutasi_barang_id_barang_medis_fkey FOREIGN KEY (id_barang_medis) REFERENCES sik.barang_medis(id);
-
-
---
--- TOC entry 5456 (class 2606 OID 17369)
--- Name: mutasi_barang mutasi_barang_id_ruangandari_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.mutasi_barang
     ADD CONSTRAINT mutasi_barang_id_ruangandari_fkey FOREIGN KEY (id_ruangandari) REFERENCES ref.ruangan(id);
 
-
---
--- TOC entry 5457 (class 2606 OID 17374)
--- Name: mutasi_barang mutasi_barang_id_ruanganke_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.mutasi_barang
     ADD CONSTRAINT mutasi_barang_id_ruanganke_fkey FOREIGN KEY (id_ruanganke) REFERENCES ref.ruangan(id);
-
-
---
--- TOC entry 5444 (class 2606 OID 17264)
--- Name: notifikasi notifikasi_recipient_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.notifikasi
     ADD CONSTRAINT notifikasi_recipient_fkey FOREIGN KEY (recipient) REFERENCES sik.akun(id);
 
-
---
--- TOC entry 5445 (class 2606 OID 17259)
--- Name: notifikasi notifikasi_sender_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.notifikasi
     ADD CONSTRAINT notifikasi_sender_fkey FOREIGN KEY (sender) REFERENCES sik.akun(id);
-
-
---
--- TOC entry 5452 (class 2606 OID 17331)
--- Name: opname opname_id_barang_medis_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.opname
     ADD CONSTRAINT opname_id_barang_medis_fkey FOREIGN KEY (id_barang_medis) REFERENCES sik.barang_medis(id);
 
-
---
--- TOC entry 5453 (class 2606 OID 17336)
--- Name: opname opname_id_ruangan_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.opname
     ADD CONSTRAINT opname_id_ruangan_fkey FOREIGN KEY (id_ruangan) REFERENCES ref.ruangan(id);
-
-
---
--- TOC entry 5418 (class 2606 OID 17005)
--- Name: pegawai pegawai_id_akun_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.pegawai
     ADD CONSTRAINT pegawai_id_akun_fkey FOREIGN KEY (id_akun) REFERENCES sik.akun(id);
 
-
---
--- TOC entry 5419 (class 2606 OID 17015)
--- Name: pegawai pegawai_id_departemen_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.pegawai
     ADD CONSTRAINT pegawai_id_departemen_fkey FOREIGN KEY (id_departemen) REFERENCES ref.departemen(id);
-
-
---
--- TOC entry 5420 (class 2606 OID 17010)
--- Name: pegawai pegawai_id_jabatan_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.pegawai
     ADD CONSTRAINT pegawai_id_jabatan_fkey FOREIGN KEY (id_jabatan) REFERENCES ref.jabatan(id);
 
-
---
--- TOC entry 5421 (class 2606 OID 17020)
--- Name: pegawai pegawai_id_status_aktif_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.pegawai
     ADD CONSTRAINT pegawai_id_status_aktif_fkey FOREIGN KEY (id_status_aktif) REFERENCES ref.status_aktif_pegawai(id);
-
-
---
--- TOC entry 5422 (class 2606 OID 17025)
--- Name: pegawai pegawai_updater_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.pegawai
     ADD CONSTRAINT pegawai_updater_fkey FOREIGN KEY (updater) REFERENCES sik.akun(id);
 
-
---
--- TOC entry 5462 (class 2606 OID 17418)
--- Name: penerimaan_barang_medis penerimaan_barang_medis_id_pegawai_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.penerimaan_barang_medis
     ADD CONSTRAINT penerimaan_barang_medis_id_pegawai_fkey FOREIGN KEY (id_pegawai) REFERENCES sik.pegawai(id);
-
-
---
--- TOC entry 5463 (class 2606 OID 17423)
--- Name: penerimaan_barang_medis penerimaan_barang_medis_id_ruangan_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.penerimaan_barang_medis
     ADD CONSTRAINT penerimaan_barang_medis_id_ruangan_fkey FOREIGN KEY (id_ruangan) REFERENCES ref.ruangan(id);
 
-
---
--- TOC entry 5438 (class 2606 OID 17207)
--- Name: presensi presensi_id_jadwal_pegawai_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.presensi
     ADD CONSTRAINT presensi_id_jadwal_pegawai_fkey FOREIGN KEY (id_jadwal_pegawai) REFERENCES sik.jadwal_pegawai(id);
-
-
---
--- TOC entry 5439 (class 2606 OID 17202)
--- Name: presensi presensi_id_pegawai_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.presensi
     ADD CONSTRAINT presensi_id_pegawai_fkey FOREIGN KEY (id_pegawai) REFERENCES sik.pegawai(id);
 
-
---
--- TOC entry 5440 (class 2606 OID 17212)
--- Name: presensi presensi_updater_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.presensi
     ADD CONSTRAINT presensi_updater_fkey FOREIGN KEY (updater) REFERENCES sik.akun(id);
-
-
---
--- TOC entry 5458 (class 2606 OID 17386)
--- Name: stok_keluar_barang_medis stok_keluar_barang_medis_id_pegawai_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.stok_keluar_barang_medis
     ADD CONSTRAINT stok_keluar_barang_medis_id_pegawai_fkey FOREIGN KEY (id_pegawai) REFERENCES sik.pegawai(id);
 
-
---
--- TOC entry 5459 (class 2606 OID 17391)
--- Name: stok_keluar_barang_medis stok_keluar_barang_medis_id_ruangan_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.stok_keluar_barang_medis
     ADD CONSTRAINT stok_keluar_barang_medis_id_ruangan_fkey FOREIGN KEY (id_ruangan) REFERENCES ref.ruangan(id);
-
-
---
--- TOC entry 5460 (class 2606 OID 17407)
--- Name: transaksi_keluar_barang_medis transaksi_keluar_barang_medis_id_barang_medis_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.transaksi_keluar_barang_medis
     ADD CONSTRAINT transaksi_keluar_barang_medis_id_barang_medis_fkey FOREIGN KEY (id_barang_medis) REFERENCES sik.barang_medis(id);
 
-
---
--- TOC entry 5461 (class 2606 OID 17402)
--- Name: transaksi_keluar_barang_medis transaksi_keluar_barang_medis_id_stok_keluar_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.transaksi_keluar_barang_medis
     ADD CONSTRAINT transaksi_keluar_barang_medis_id_stok_keluar_fkey FOREIGN KEY (id_stok_keluar) REFERENCES sik.stok_keluar_barang_medis(id);
-
-
---
--- TOC entry 5433 (class 2606 OID 17178)
--- Name: tukar_jadwal tukar_jadwal_id_hari_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.tukar_jadwal
     ADD CONSTRAINT tukar_jadwal_id_hari_fkey FOREIGN KEY (id_hari) REFERENCES ref.hari(id);
 
-
---
--- TOC entry 5434 (class 2606 OID 17173)
--- Name: tukar_jadwal tukar_jadwal_id_recipient_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.tukar_jadwal
     ADD CONSTRAINT tukar_jadwal_id_recipient_fkey FOREIGN KEY (id_recipient) REFERENCES sik.pegawai(id);
-
-
---
--- TOC entry 5435 (class 2606 OID 17168)
--- Name: tukar_jadwal tukar_jadwal_id_sender_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
 
 ALTER TABLE ONLY sik.tukar_jadwal
     ADD CONSTRAINT tukar_jadwal_id_sender_fkey FOREIGN KEY (id_sender) REFERENCES sik.pegawai(id);
 
-
---
--- TOC entry 5436 (class 2606 OID 17188)
--- Name: tukar_jadwal tukar_jadwal_id_shift_recipient_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.tukar_jadwal
     ADD CONSTRAINT tukar_jadwal_id_shift_recipient_fkey FOREIGN KEY (id_shift_recipient) REFERENCES ref.shift(id);
 
-
---
--- TOC entry 5437 (class 2606 OID 17183)
--- Name: tukar_jadwal tukar_jadwal_id_shift_sender_fkey; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.tukar_jadwal
     ADD CONSTRAINT tukar_jadwal_id_shift_sender_fkey FOREIGN KEY (id_shift_sender) REFERENCES ref.shift(id);
-
-
--- Completed on 2025-06-02 11:41:13
-
---
--- PostgreSQL database dump complete
---
 
