@@ -32,7 +32,7 @@ class CreateProvinsiTable extends MigrationTemplate
                 'nama_provinsi' => T::TEXT(),
             ],
             ['id_provinsi'],
-            ['nama_provinsi'],
+            [['nama_provinsi']],
         );
     }
 }

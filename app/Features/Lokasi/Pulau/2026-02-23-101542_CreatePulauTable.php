@@ -39,7 +39,7 @@ class CreatePulauTable extends MigrationTemplate
                 'nama_pulau' => T::TEXT(),
             ],
             ['id_pulau'],
-            ['nama_pulau'],
+            [['nama_pulau']],
         );
     }
 }

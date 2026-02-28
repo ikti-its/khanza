@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database\Migrations;
+namespace App\DonorDarah\GolonganDarah;;
 
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;

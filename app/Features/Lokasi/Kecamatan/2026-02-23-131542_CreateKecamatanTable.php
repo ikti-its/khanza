@@ -37,6 +37,10 @@ class CreateKecamatanTable extends MigrationTemplate
                 'nama_kecamatan'    => T::TEXT(),
             ],
             ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'],
+            [],
+            [
+                [['id_provinsi', 'id_kota_lokal'], 'kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
+            ]
         );
     }
 }

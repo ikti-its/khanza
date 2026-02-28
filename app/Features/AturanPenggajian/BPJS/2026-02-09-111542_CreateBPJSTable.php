@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database\Migrations;
+namespace App\Features\AturanPenggajian\BPJS;
 
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;
@@ -20,7 +20,7 @@ class CreateBPJSTable extends MigrationTemplate
                 'batas_bawah'   => T::F64(),
             ],
             ['no_bpjs'],
-            ['nama_program'],
+            [['nama_program']],
 
         );
     }
