@@ -1,33 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 17.5
--- Dumped by pg_dump version 17.5
-
--- Started on 2025-08-20 14:53:10
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
---
--- TOC entry 314 (class 1259 OID 30520)
--- Name: pasien_structure; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.pasien_structure (
     no_rkm_medis character varying(15) NOT NULL,
     nm_pasien character varying(40),
@@ -61,14 +31,6 @@ CREATE TABLE sik.pasien_structure (
 );
 
 
-ALTER TABLE sik.pasien_structure OWNER TO postgres;
-
---
--- TOC entry 6815 (class 0 OID 30520)
--- Dependencies: 314
--- Data for Name: pasien_structure; Type: TABLE DATA; Schema: sik; Owner: postgres
---
-
 COPY sik.pasien_structure (no_rkm_medis, nm_pasien, no_ktp, jk, tmp_lahir, tgl_lahir, nm_ibu, alamat, gol_darah, pekerjaan, stts_nikah, agama, tgl_daftar, no_tlp, umur, pnd, asuransi, no_asuransi, suku_bangsa, bahasa_pasien, perusahaan_pasien, nip, email, cacat_fisik, kd_kel, kd_kec, kd_kab, kd_prop, stts_pasien) FROM stdin;
 RM000001	Fitria Nur Azzahra	3512051806990003	P	Surabaya	1999-06-18	Sulastri	Jl. Kenanga Raya No.12, Surabaya	A	Pegawai Negeri Sipil	MENIKAH	ISLAM	2025-07-13	082145673829	26 Th 0 Bl 25 Hr	S2	UMUM		Jawa	Indonesia			fitria.azzahra99@gmail.com	Tidak Ada	Wonokromo	Wonokromo	Surabaya	Jawa Timur	Aktif
 RM000002	I Putu Adhitya Pratama Mangku Purnama	5108061602030006	L	Singaraja	2003-02-16	Evi Tri Kustinawati	JL. Gebang Wetan 5b	O	Mahasiswa	BELUM MENIKAH	HINDU	2025-07-14	083192925747	22 Th 4 Bl 28 Hr	S1	UMUM		Bali	Indonesia	I003	5026211037	portodit@gmail.com	Tidak Ada	Gebang Putih	Sukolilo	Surabaya	Jawa Timur	Aktif
@@ -81,19 +43,5 @@ RM000008	Rayyan Maulana	9986806623215593	L	Surabaya	2000-02-11	Nanik Partiningru
 RM000009	Ucok Subejo	3525141404030001	L	Gresik	2003-04-14	Nurhayati	Perumahan Petrokimia Gresik	A	Mahasiswa	BELUM MENIKAH	ISLAM	2025-07-20	082337441736	22 Th 3 Bl 6 Hr	S1	UMUM		Jawa	Indonesia	PG	199310030924	didin6428@gmail.com	Tidak Ada	Sukodono	Gresik	Gresik	East Java	Aktif
 \.
 
-
---
--- TOC entry 6475 (class 2606 OID 30526)
--- Name: pasien_structure pasien_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.pasien_structure
     ADD CONSTRAINT pasien_pkey PRIMARY KEY (no_rkm_medis);
-
-
--- Completed on 2025-08-20 14:53:10
-
---
--- PostgreSQL database dump complete
---
-

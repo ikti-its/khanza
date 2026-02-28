@@ -1,33 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 17.5
--- Dumped by pg_dump version 17.5
-
--- Started on 2025-08-20 14:51:48
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
---
--- TOC entry 311 (class 1259 OID 28905)
--- Name: dokter_structure; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.dokter_structure (
     kode_dokter character varying(10) NOT NULL,
     nama_dokter character varying(50) NOT NULL,
@@ -38,14 +8,6 @@ CREATE TABLE sik.dokter_structure (
     izin_praktik character varying(50)
 );
 
-
-ALTER TABLE sik.dokter_structure OWNER TO postgres;
-
---
--- TOC entry 6815 (class 0 OID 28905)
--- Dependencies: 311
--- Data for Name: dokter_structure; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.dokter_structure (kode_dokter, nama_dokter, jenis_kelamin, alamat_tinggal, no_telp, spesialis, izin_praktik) FROM stdin;
 D011	Dr. Maya Kusuma	P	Jl. Bougenville No.4, Palembang	084812345678	Saraf	SIP-05724
@@ -86,19 +48,5 @@ D001	Dr. Andi Wijaya	L	Jl. Merpati No.12, Surabaya	081234567890	Umum	SIP-63670
 D003	Dr. Budi Santoso	L	Jl. Kenanga No.45, Jakarta Selatan	081298765432	Gigi	SIP-63430
 \.
 
-
---
--- TOC entry 6475 (class 2606 OID 28909)
--- Name: dokter_structure dokter_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.dokter_structure
     ADD CONSTRAINT dokter_pkey PRIMARY KEY (kode_dokter);
-
-
--- Completed on 2025-08-20 14:51:48
-
---
--- PostgreSQL database dump complete
---
-

@@ -1,33 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 17.5
--- Dumped by pg_dump version 17.5
-
--- Started on 2025-08-20 14:52:27
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
---
--- TOC entry 312 (class 1259 OID 28910)
--- Name: dokter_jaga_structure; Type: TABLE; Schema: sik; Owner: postgres
---
-
 CREATE TABLE sik.dokter_jaga_structure (
     kode_dokter character varying(20) NOT NULL,
     nama_dokter character varying(50),
@@ -38,14 +8,6 @@ CREATE TABLE sik.dokter_jaga_structure (
     status character varying(50)
 );
 
-
-ALTER TABLE sik.dokter_jaga_structure OWNER TO postgres;
-
---
--- TOC entry 6816 (class 0 OID 28910)
--- Dependencies: 312
--- Data for Name: dokter_jaga_structure; Type: TABLE DATA; Schema: sik; Owner: postgres
---
 
 COPY sik.dokter_jaga_structure (kode_dokter, nama_dokter, hari_kerja, jam_mulai, jam_selesai, poliklinik, status) FROM stdin;
 D001	Dr. Andi Wijaya	2025-04-15	08:00:00	14:00:00	Poli Umum	
@@ -87,27 +49,9 @@ D004	Dr. Daniel	Selasa	21:17:21	03:17:23	Poli Umum	aktif
 \.
 
 
---
--- TOC entry 6475 (class 2606 OID 49498)
--- Name: dokter_jaga_structure dokter_jaga_structure_pkey; Type: CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.dokter_jaga_structure
     ADD CONSTRAINT dokter_jaga_structure_pkey PRIMARY KEY (kode_dokter);
 
 
---
--- TOC entry 6476 (class 2606 OID 28913)
--- Name: dokter_jaga_structure fk_dokterjaga_kode; Type: FK CONSTRAINT; Schema: sik; Owner: postgres
---
-
 ALTER TABLE ONLY sik.dokter_jaga_structure
     ADD CONSTRAINT fk_dokterjaga_kode FOREIGN KEY (kode_dokter) REFERENCES sik.dokter_structure(kode_dokter) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
--- Completed on 2025-08-20 14:52:28
-
---
--- PostgreSQL database dump complete
---
-
