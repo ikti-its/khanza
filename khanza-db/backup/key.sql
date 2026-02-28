@@ -752,3 +752,31 @@ ALTER TABLE ONLY sik.tukar_jadwal_structure
 
 ALTER TABLE ONLY sik.tukar_jadwal_structure
     ADD CONSTRAINT tukar_jadwal_id_shift_sender_fkey FOREIGN KEY (id_shift_sender) REFERENCES ref.shift_structure(id);
+
+
+
+
+
+ALTER TABLE ONLY sik.data_instansi_structure
+    ADD CONSTRAINT data_instansi_pkey PRIMARY KEY (kode_instansi);
+
+ALTER TABLE ONLY sik.dokter_jaga_structure
+    ADD CONSTRAINT dokter_jaga_structure_pkey PRIMARY KEY (kode_dokter);
+
+ALTER TABLE ONLY sik.dokter_jaga_structure
+    ADD CONSTRAINT fk_dokterjaga_kode FOREIGN KEY (kode_dokter) REFERENCES sik.dokter_structure(kode_dokter) ON UPDATE CASCADE ON DELETE CASCADE;
+
+ALTER TABLE ONLY sik.dokter_structure
+    ADD CONSTRAINT dokter_pkey PRIMARY KEY (kode_dokter);
+
+ALTER TABLE ONLY sik.kelahiran_bayi_structure
+    ADD CONSTRAINT kelahiran_bayi_pkey PRIMARY KEY (no_rkm_medis);
+
+ALTER TABLE ONLY sik.pasien_meninggal_structure
+    ADD CONSTRAINT pasien_meninggal_pkey PRIMARY KEY (no_rkm_medis);
+
+ALTER TABLE ONLY sik.pasien_structure
+    ADD CONSTRAINT pasien_pkey PRIMARY KEY (no_rkm_medis);
+
+ALTER TABLE ONLY sik.registrasi_structure
+    ADD CONSTRAINT registrasi_pkey PRIMARY KEY (nomor_reg);

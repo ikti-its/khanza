@@ -8000,3 +8000,126 @@ COPY sik.upmk_structure (no_upmk, masa_kerja, pengali_upah) FROM stdin;
 8	24	9
 9	27	10
 \.
+
+
+
+
+
+COPY sik.data_instansi_structure (kode_instansi, nama_instansi, alamat_instansi, kota, no_telp) FROM stdin;
+ITS	Institut Teknologi Sepuluh Nopember	Jl. Teknik Kimia, Keputih, Kec. Sukolilo, Surabaya, Jawa Timur 60111	Surabaya	(031) 5994251
+PG	PT Petrokimia Gresik 	 Jl. Jend Ahmad Yani, Gresik 61119, Jawa Timur-Indonesia	Gresik	0811 9918 001
+TELKOM	PT Telkom Indonesia (Persero) Tbk	Jl. Japati No.1, Bandung 40133, Jawa Barat, Indonesia	Bandung	(022) 4521451
+PERTA	PT Pertamina (Persero)	Jl. Medan Merdeka Timur No.1A, Jakarta 10110	Jakarta	(021) 3815111
+BRI	PT Bank Rakyat Indonesia (Persero) Tbk	Jl. Jend. Sudirman Kav. 44-46, Jakarta 10210	Jakarta	(021) 2510244
+UNILEV	PT Unilever Indonesia Tbk	Jl. BSD Boulevard Barat, BSD Green Office Park, Tangerang 15345	Tangerang	(021) 80827000
+ASTRA	PT Astra International Tbk	Jl. Gaya Motor Raya No.8, Sunter II, Jakarta Utara 14330	Jakarta Utara	(021) 65307000
+\.
+
+COPY sik.dokter_jaga_structure (kode_dokter, nama_dokter, hari_kerja, jam_mulai, jam_selesai, poliklinik, status) FROM stdin;
+D001	Dr. Andi Wijaya	2025-04-15	08:00:00	14:00:00	Poli Umum	
+D003	Dr. Budi Santoso	2025-04-16	10:00:00	16:00:00	Poli Gigi	
+D006	Dr. Hadi Permana	Senin	08:00:00	14:00:00	Poli Umum	
+D007	Dr. Rina Lestari	Selasa	09:00:00	15:00:00	Poli Gigi	
+D008	Dr. Joko Prabowo	Rabu	07:30:00	13:30:00	Poli Anak	
+D009	Dr. Siti Aminah	Kamis	10:00:00	16:00:00	Poli Kandungan	
+D010	Dr. Bambang Yuwono	Jumat	08:30:00	14:30:00	Poli Dalam	
+D011	Dr. Maya Kusuma	Senin	07:45:00	13:45:00	Poli Saraf	
+D012	Dr. Agus Riyanto	Selasa	08:15:00	14:15:00	Poli THT	
+D013	Dr. Nina Fadhilah	Rabu	09:30:00	15:30:00	Poli Kulit	
+D014	Dr. Wahyu Adi	Kamis	10:15:00	16:15:00	Poli Jantung	
+D015	Dr. Lina Hartati	Jumat	07:00:00	13:00:00	Poli Gigi	
+D016	Dr. Arif Setiawan	Senin	08:00:00	14:00:00	Poli Umum	aktif
+D017	Dr. Bella Pratiwi	Senin	14:00:00	20:00:00	Poli Gigi	aktif
+D018	Dr. Citra Ramadhan	Senin	20:00:00	08:00:00	Poli Anak	aktif
+D019	Dr. Dimas Rasyid	Selasa	08:00:00	14:00:00	Poli Umum	aktif
+D020	Dr. Erna Wahyuni	Selasa	14:00:00	20:00:00	Poli Kandungan	aktif
+D021	Dr. Farhan Maulana	Selasa	20:00:00	08:00:00	Poli THT	aktif
+D022	Dr. Gina Yuliana	Rabu	08:00:00	14:00:00	Poli Umum	aktif
+D023	Dr. Hendra Saputra	Rabu	14:00:00	20:00:00	Poli Kulit	aktif
+D024	Dr. Intan Saraswati	Rabu	20:00:00	08:00:00	Poli Gigi	aktif
+D025	Dr. Joko Santosa	Kamis	08:00:00	14:00:00	Poli Umum	aktif
+D026	Dr. Karina Dewi	Kamis	14:00:00	20:00:00	Poli Saraf	aktif
+D027	Dr. Lukman Fadillah	Kamis	20:00:00	08:00:00	Poli Dalam	aktif
+D028	Dr. Maya Rahmawati	Jumat	08:00:00	14:00:00	Poli Umum	aktif
+D029	Dr. Niko Pradipta	Jumat	14:00:00	20:00:00	Poli THT	aktif
+D030	Dr. Olivia Sari	Jumat	20:00:00	08:00:00	Poli Anak	aktif
+D031	Dr. Putra Wijaya	Sabtu	08:00:00	14:00:00	Poli Umum	aktif
+D032	Dr. Qory Nasution	Sabtu	14:00:00	20:00:00	Poli Gigi	aktif
+D033	Dr. Rudi Hartanto	Sabtu	20:00:00	08:00:00	Poli Jantung	aktif
+D034	Dr. Sinta Melati	Minggu	08:00:00	14:00:00	Poli Umum	aktif
+D035	Dr. Taufik Hidayat	Minggu	14:00:00	20:00:00	Poli Dalam	aktif
+D036	Dr. Umi Zakiyah	Minggu	20:00:00	08:00:00	Poli Saraf	aktif
+D005	Dr. Fahmi Rizal	Selasa	17:28:24	23:28:25	Poli Dalam	aktif
+D002	Dr. Andi Wicaksana	Sabtu	13:30:13	19:30:16	Poli Umum	aktif
+D004	Dr. Daniel	Selasa	21:17:21	03:17:23	Poli Umum	aktif
+\.
+
+COPY sik.dokter_structure (kode_dokter, nama_dokter, jenis_kelamin, alamat_tinggal, no_telp, spesialis, izin_praktik) FROM stdin;
+D011	Dr. Maya Kusuma	P	Jl. Bougenville No.4, Palembang	084812345678	Saraf	SIP-05724
+D012	Dr. Agus Riyanto	L	Jl. Kamboja No.6, Balikpapan	085345678901	THT	SIP-18586
+D004	Dr. Daniel	L	Jl. Anggrek No.33, Bandung	082112345678	Anak	SIP-90407
+D005	Dr. Fahmi Rizal	L	Jl. Melati No.7, Yogyakarta	083812345678	Penyakit Dalam	SIP-18895
+D006	Dr. Hadi Permana	L	Jl. Cemara No.91, Semarang	085212345678	Saraf	SIP-76972
+D007	Dr. Rina Lestari	P	Jl. Mawar No.3A, Malang	085612345432	Mata	SIP-36832
+D008	Dr. Joko Prabowo	L	Jl. Flamboyan No.17B, Medan	081345678901	THT	SIP-39631
+D009	Dr. Siti Aminah	P	Jl. Teratai No.29, Denpasar	082245678901	Kandungan	SIP-88406
+D010	Dr. Bambang Yuwono	L	Jl. Dahlia No.11, Makassar	083145678901	Kulit	SIP-55215
+D013	Dr. Nina Fadhilah	P	Jl. Wijaya Kusuma No.22, Pontianak	081876543210	Kulit	SIP-92379
+D014	Dr. Wahyu Adi	L	Jl. Kemuning No.15, Banjarmasin	082334455667	Jantung	SIP-61586
+D015	Dr. Lina Hartati	P	Jl. Sawo No.88, Serang	083812349876	Gigi	SIP-50643
+D016	Dr. Arif Setiawan	L	Jl. Durian No.5, Solo	085698765432	Umum	SIP-92510
+D017	Dr. Bella Pratiwi	P	Jl. Rambutan No.9, Batam	081367890123	Gigi	SIP-38525
+D018	Dr. Citra Ramadhan	P	Jl. Alpukat No.18, Cirebon	082289765432	Anak	SIP-73606
+D019	Dr. Dimas Rasyid	L	Jl. Nangka No.30, Pekanbaru	083199887766	Umum	SIP-87714
+D020	Dr. Erna Wahyuni	P	Jl. Jambu No.101, Padang	084733344455	Kandungan	SIP-07141
+D021	Dr. Farhan Maulana	L	Jl. Pisang No.202, Bandar Lampung	085223344556	THT	SIP-96975
+D022	Dr. Gina Yuliana	P	Jl. Pepaya No.12, Palu	081223344556	Umum	SIP-75293
+D023	Dr. Hendra Saputra	L	Jl. Apel No.66, Manado	082244556677	Kulit	SIP-63906
+D024	Dr. Intan Saraswati	P	Jl. Manggis No.44, Jayapura	083866778899	Gigi	SIP-28565
+D025	Dr. Joko Santosa	L	Jl. Cempaka No.14, Mataram	084877788899	Umum	SIP-30063
+D026	Dr. Karina Dewi	P	Jl. Beringin No.77, Kupang	085288899900	Saraf	SIP-47565
+D027	Dr. Lukman Fadillah	L	Jl. Sengon No.55, Ternate	081399988877	Penyakit Dalam	SIP-05522
+D028	Dr. Maya Rahmawati	P	Jl. Ketapang No.23, Ambon	082311223344	Umum	SIP-53369
+D029	Dr. Niko Pradipta	L	Jl. Jati No.9, Cimahi	083822334455	THT	SIP-46937
+D030	Dr. Olivia Sari	P	Jl. Akasia No.3, Tasikmalaya	084833445566	Anak	SIP-54591
+D031	Dr. Putra Wijaya	L	Jl. Kayu Manis No.7, Depok	085244556688	Umum	SIP-76626
+D032	Dr. Qory Nasution	P	Jl. Pinus No.100, Bogor	081255667788	Gigi	SIP-24809
+D033	Dr. Rudi Hartanto	L	Jl. Palem No.88, Bekasi	082266778899	Jantung	SIP-93916
+D034	Dr. Sinta Melati	P	Jl. Waru No.61, Tangerang	083277889900	Umum	SIP-23813
+D035	Dr. Taufik Hidayat	L	Jl. Gandaria No.50, Jakarta Timur	084288990011	Penyakit Dalam	SIP-25794
+D036	Dr. Umi Zakiyah	P	Jl. Seruni No.28, Jakarta Utara	085299001122	Saraf	SIP-10147
+D002	Dr. Andi Wicaksana	L	JL. Sistem Informasi	082337441736	Umum	SIP-63691
+D001	Dr. Andi Wijaya	L	Jl. Merpati No.12, Surabaya	081234567890	Umum	SIP-63670
+D003	Dr. Budi Santoso	L	Jl. Kenanga No.45, Jakarta Selatan	081298765432	Gigi	SIP-63430
+\.
+
+COPY sik.kelahiran_bayi_structure (no_rkm_medis, nm_pasien, jk, tmp_lahir, tgl_lahir, jam, umur, tgl_daftar, nm_ibu, umur_ibu, nm_ayah, umur_ayah, alamat, bb, pb, proses_lahir, kelahiran_ke, keterangan, diagnosa, penyulit_kehamilan, ketuban, lk_perut, lk_kepala, lk_dada, penolong, no_skl, gravida, para, abortus, f1, u1, t1, r1, w1, n1, f5, u5, t5, r5, w5, n5, f10, u10, t10, r10, w10, n10, resusitas, obat, mikasi, mikonium, no_rm_ibu) FROM stdin;
+\.
+
+COPY sik.pasien_meninggal_structure (no_rkm_medis, nm_pasien, jk, tgl_lahir, umur, gol_darah, stts_nikah, agama, tanggal, jam, icdx, icdx_antara1, icdx_antara2, icdx_langsung, keterangan, nama_dokter, kode_dokter) FROM stdin;
+001234	Budi Santoso	L	1970-05-12	53 Tahun	O	Menikah	Islam	2025-07-03	13:45:00	I21.9	I20.0	I50.1	I46.1	Pasien meninggal karena gagal jantung setelah serangan jantung.	dr. Andi Subagio	D001
+001999	Ani Wijaya	P	1980-10-15	43 Tahun	B	Menikah	Islam	2025-07-05	14:30:00	C34.1	J18.9	I50.0	R99	Meninggal karena komplikasi infeksi paru-paru.	dr. Budi Hermanto	D002
+\.
+
+COPY sik.pasien_structure (no_rkm_medis, nm_pasien, no_ktp, jk, tmp_lahir, tgl_lahir, nm_ibu, alamat, gol_darah, pekerjaan, stts_nikah, agama, tgl_daftar, no_tlp, umur, pnd, asuransi, no_asuransi, suku_bangsa, bahasa_pasien, perusahaan_pasien, nip, email, cacat_fisik, kd_kel, kd_kec, kd_kab, kd_prop, stts_pasien) FROM stdin;
+RM000001	Fitria Nur Azzahra	3512051806990003	P	Surabaya	1999-06-18	Sulastri	Jl. Kenanga Raya No.12, Surabaya	A	Pegawai Negeri Sipil	MENIKAH	ISLAM	2025-07-13	082145673829	26 Th 0 Bl 25 Hr	S2	UMUM		Jawa	Indonesia			fitria.azzahra99@gmail.com	Tidak Ada	Wonokromo	Wonokromo	Surabaya	Jawa Timur	Aktif
+RM000002	I Putu Adhitya Pratama Mangku Purnama	5108061602030006	L	Singaraja	2003-02-16	Evi Tri Kustinawati	JL. Gebang Wetan 5b	O	Mahasiswa	BELUM MENIKAH	HINDU	2025-07-14	083192925747	22 Th 4 Bl 28 Hr	S1	UMUM		Bali	Indonesia	I003	5026211037	portodit@gmail.com	Tidak Ada	Gebang Putih	Sukolilo	Surabaya	Jawa Timur	Aktif
+RM000003	Rifqi Naufal Luthfyardy	3578032804030003	L	Surabaya	2003-04-28	Ningsih	Wisma Medokan, G/13	A	Mahasiswa	BELUM MENIKAH	ISLAM	2025-07-14	087857097780	22 Th 2 Bl 16 Hr	S1	UMUM		Jawa	Indonesia	I003	5026211189	fyarrifqi5@gmail.com	Tidak Ada	Medokan Ayu	Rungkut	Surabaya	Jawa Timur	Aktif
+RM000004	Zizi Wulandari	6485946319523453	P	Mojokerto	1995-11-25	Bahuwirya Nasyidah	 Gang Joyoboyo No. 799, Lamongan, Jawa Timur 80368	B	Notaris	MENIKAH	ISLAM	2025-07-14	08788860561	29 Th 7 Bl 19 Hr	S1	BPJS	44574832397951	Jawa	Indonesia	I001	19931003092	warsariyanti@gmail.com	Tidak Ada	Paciran	Sukorejo	Lamongan	Jawa TImur	Aktif
+RM000005	Muhammad Fatchu Rozaq	3525160611030002	L	Gresik	2003-11-05	Ernita	Perum Banjarsari Permai Blok C	A	Mahasiswa	BELUM MENIKAH	ISLAM	2025-07-14	0895385132323	21 Th 8 Bl 9 Hr	S1	UMUM		Jawa	Indonesia			fatchu2003@gmail.com	Tidak Ada	Banjarsari	Manyar	Gresik	Jawa Timur	Aktif
+RM000006	Faris Santoso	2406888874359694	L	Kediri	2003-06-29	Yani Wasita	Jl. M.H Thamrin, Kel. Pare, Kabupaten Kediri, Jawa Timur	AB	Tidak Bekerja	BELUM MENIKAH	ISLAM	2025-07-14	08647855645	22 Th 0 Bl 15 Hr	SMA	BPJS	57234694305207	Jawa	Indonesia			santosofaris25@gmail.com	Tidak Ada	Pare	Kediri	Kediri	Jawa Timur	Aktif
+RM000007	Sri Wahyuningsih	8886210761972132	P	Malang	1975-02-16	Sarinah	Gg. Monginsidi, Kel. Manyar, Kabupaten Gresik, Jawa Timur	B	Ibu Rumah Tangga	MENIKAH	ISLAM	2025-07-14	085681331532	50 Th 4 Bl 28 Hr	D3	BPJS	23895314422088	Jawa	Indonesia			wahyuningsih75@gmail.com	Tidak Ada	Sidomukti	Manyar	Gresik	Jawa Timur	Aktif
+RM000008	Rayyan Maulana	9986806623215593	L	Surabaya	2000-02-11	Nanik Partiningrum	JL. Ruby No.5 PPS Gresik	A	Karyawan	BELUM MENIKAH	ISLAM	2025-07-14	086526746354	25 Th 5 Bl 3 Hr	D4	BPJS	02119375947252	Jawa	Indonesia			rayyganss@gmail.com	Tidak Ada	Suci	Manyar	Gresik	Jawa Timur	Aktif
+RM000009	Ucok Subejo	3525141404030001	L	Gresik	2003-04-14	Nurhayati	Perumahan Petrokimia Gresik	A	Mahasiswa	BELUM MENIKAH	ISLAM	2025-07-20	082337441736	22 Th 3 Bl 6 Hr	S1	UMUM		Jawa	Indonesia	PG	199310030924	didin6428@gmail.com	Tidak Ada	Sukodono	Gresik	Gresik	East Java	Aktif
+\.
+
+COPY sik.registrasi_structure (nomor_reg, nomor_rawat, tanggal, jam, kode_dokter, nama_dokter, nomor_rm, nama_pasien, jenis_kelamin, umur, poliklinik, jenis_bayar, penanggung_jawab, alamat_pj, hubungan_pj, biaya_registrasi, status_registrasi, no_telepon, status_rawat, status_poli, status_bayar, status_kamar, nomor_bed, pekerjaanpj, kelurahanpj, kecamatanpj, kabupatenpj, propinsipj, notelp_pj, no_asuransi) FROM stdin;
+REG202507147677	202507146641	2025-07-14	11:21:15	D1001	Dr. Ahmad Fauzi	RM000002	I Putu Adhitya Pratama Mangku Purnama	L	22	Poli Umum	BPJS	I Putu Adhitya Pratama Mangku Purnama	JL. Gebang Wetan 5b	DIRI SENDIRI	0	Lama	083192925747	Belum	Baru	Belum Bayar		\N	Mahasiswa	Gebang Putih	Sukolilo	Surabaya	Jawa Timur	083192925747	-
+REG202507140503	202507140039	2025-07-14	11:22:22	D006	Dr. Farhan	RM000005	Muhammad Fatchu Rozaq	L	21	Poli Umum	BPJS	Rifqi Naufal Luthfyardy	Wisma Medokan, G/13	LAIN-LAIN	0	Lama	0895385132323	Belum	Baru	Belum Bayar		\N	Mahasiswa	Medokan Ayu	Rungkut	Surabaya	Jawa Timur	082764536475	-
+REG202507143351	202507143148	2025-07-14	11:20:47	D006	Dr. Farhan	RM000001	Fitria Nur Azzahra	P	26	Poli Umum	BPJS	Ahmad Zulfikar	Jl. Kenanga Raya No.12, Surabaya	SUAMI	0	Lama	082145673829	Belum	Baru	Belum Bayar		\N	Dosen	Wonokromo	Wonokromo	Surabaya	Jawa Timur	087664758475	-
+REG202507143821	202507145994	2025-07-14	11:23:32	D1001	Dr. Ahmad Fauzi	RM000008	Rayyan Maulana	L	25	Poli Umum	BPJS	Nanik Partiningrum	JL. Ruby No.5 PPS Gresik	IBU	0	Lama	086526746354	Belum	Baru	Belum Bayar		\N	Ibu Rumah Tangga	Suci	Manyar	Gresik	Jawa Timur	082374657465	-
+REG202507144262	202507149548	2025-07-14	11:22:04	D1001	Dr. Ahmad Fauzi	RM000004	Zizi Wulandari	P	29	Poli Umum	BPJS	Maman Saptono	Gang Joyoboyo No. 799, Lamongan, Jawa Timur 80368	SUAMI	0	Lama	08788860561	Belum	Baru	Belum Bayar		\N	Karyawan Swasta	Paciran	Sukorejo	Lamongan	Jawa Timur	083764756453	-
+REG202507147930	202507140838	2025-07-14	11:22:41	D006	Dr. Farhan	RM000006	Faris Santoso	L	22	Poli Umum	BPJS	Ade Maheswara	Jl. M.H Thamrin, Kel. Pare, Kabupaten Kediri, Jawa Timur	SAUDARA	0	Lama	08647855645	Belum	Baru	Belum Bayar		\N	Pedagang	Pare	Kediri	Kediri	Jawa Timur	082746354019	-
+REG202507149203	202507144162	2025-07-14	11:21:42	D006	Dr. Farhan	RM000003	Rifqi Naufal Luthfyardy	L	22	Poli Umum	BPJS	Edi Hartono	Wisma Medokan, G/13	AYAH	0	Lama	087857097780	Belum	Baru	Belum Bayar		\N	Pengusaha	Medokan Ayu	Rungkut	Surabaya	Jawa Timur	082647163542	-
+REG202507149717	202507143783	2025-07-14	11:23:09	D006	Dr. Farhan	RM000007	Sri Wahyuningsih	P	50	Poli Umum	BPJS	Rayyan Pangestu	Gg. Monginsidi, Kel. Manyar, Kabupaten Gresik, Jawa Timur	ANAK	0	Lama	085681331532	Belum	Baru	Belum Bayar		\N	Karyawan Swasta	Sidomukti	Manyar	Gresik	Jawa Timur	082746354675	-
+\.
