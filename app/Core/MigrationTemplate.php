@@ -18,47 +18,107 @@ class MigrationTemplate extends Migration
          */
         protected array $primary_key = [],
         /**
-         * @var array<string>
+         * @var array<array<string>>
          */
         protected array $unique_key = [],
         /**
-         * @var array<string>
+         * @var array<array<string>, string, array<string>, string, string>>
+         * [
+         *    [
+         *      [Foreign key fields],
+         *      Referenced table,
+         *      [Referenced fields],
+         *      On update action,
+         *      On delete action
+         *   ]
+         * ]
          */
         protected array $foreign_key = [],
         /**
-         * @var array<string>
+         * @var array<array<string>>
          */
         protected array $index = [],
     ) {
         parent::__construct();
     }
     
-    final private function setup(){
+    private function setup(){
          
         foreach ($this->fields as $name => $type) {
             $this->fields[$name] = $type->definition();
         }
     }
+    private function add_primary_key(): void {
+        if($this->primary_key == [])
+            Assert::Unreachable("Primary key must be defined");
+        foreach ($this->primary_key as $field) {
+            if(!array_key_exists($field, $this->fields))
+                Assert::Unreachable("Primary key field '$field' is not defined in fields");
+            if(in_array($field, $this->unique_key))
+                Assert::Unreachable("Primary key field '$field' cannot be in unique key");
+            if(in_array($field, $this->index))
+                Assert::Unreachable("Primary key field '$field' cannot be in index");
+            if($this->fields[$field]['null'])
+                Assert::Unreachable("Primary key field '$field' cannot be nullable");
+            if(!$this->fields[$field]['auto_increment'] ?? false)
+                Assert::Unreachable("Primary key field '$field' must use IDx() type with auto_increment");
+        }
+        $this->forge->addPrimaryKey($this->primary_key);
+    }
+
+    private function add_unique_key(): void {
+        foreach ($this->unique_key as $keys) {
+            foreach ($keys as $field) {
+                if(!array_key_exists($field, $this->fields))
+                    Assert::Unreachable("Unique key field '$field' is not defined in fields");
+                if(in_array($field, $this->primary_key))
+                    Assert::Unreachable("Unique key field '$field' cannot be in primary key");
+                if(in_array($field, $this->index))
+                    Assert::Unreachable("Unique key field '$field' cannot be in index");
+            }
+            $this->forge->addUniqueKey($keys);
+        }
+    }
+
+    private function add_foreign_key(): void {
+        foreach ($this->foreign_key as $fk) {
+            [$fields, $referenced_table, $referenced_fields, $on_update, $on_delete] = $fk;
+            foreach ($fields as $field) {
+                if(!array_key_exists($field, $this->fields))
+                    Assert::Unreachable("Foreign key field '$field' is not defined in fields");
+            }
+            $this->forge->addForeignKey($fields, $referenced_table, $referenced_fields, $on_update, $on_delete);
+        }
+    }
+
+    private function add_index(): void {
+        foreach ($this->index as $keys) {
+            foreach ($keys as $field) {
+                if(!array_key_exists($field, $this->fields))
+                    Assert::Unreachable("Index field '$field' is not defined in fields");
+                if(in_array($field, $this->primary_key))
+                    Assert::Unreachable("Index field '$field' is already a primary key");
+                if(in_array($field, $this->unique_key))
+                    Assert::Unreachable("Index field '$field' is already a unique key");
+            }
+            $this->forge->addKey($keys);
+        }
+    }
 
     final public function up(): void
     {
-        echo "HALO";
         $this->setup();
         
         $this->db->query("CREATE SCHEMA IF NOT EXISTS " . $this->schema);
         $this->db->query("SET search_path TO " . $this->schema . ", public");
 
         $this->forge->addField($this->fields);
-        if($this->primary_key !== [])
-            $this->forge->addPrimaryKey($this->primary_key);
-        if($this->unique_key !== [])
-            $this->forge->addUniqueKey($this->unique_key);
-        if($this->foreign_key !== [])
-            $this->forge->addForeignKey($this->foreign_key);
-        if($this->index !== [])
-            $this->forge->addKey($this->index);
 
-        // dd($this->fields);
+        $this->add_primary_key();
+        $this->add_unique_key();
+        $this->add_foreign_key();
+        $this->add_index();
+
         $this->forge->createTable($this->table);
     }
 
