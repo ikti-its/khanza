@@ -20,7 +20,7 @@ class CreateLemburTable extends MigrationTemplate
             ['no_lembur'],
             [['jenis_lembur', 'jam_lembur']],
             [],
-            []
+            [],
         );
     }
 }

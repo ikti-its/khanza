@@ -21,7 +21,7 @@ class CreateJabatanTable extends MigrationTemplate
             ['no_jabatan'],
             [['nama_jabatan']],
             [],
-            []
+            [],
         );
     }
 }

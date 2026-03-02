@@ -12,9 +12,9 @@ class CreatePesangonTable extends MigrationTemplate
             'penggajian',
             'pesangon',
             [
-                'no_pesangon'   => T::ID8(),
-                'masa_kerja'    => T::ID8(),
-                'pengali_upah'  => T::F32(),
+                'no_pesangon'  => T::ID8(),
+                'masa_kerja'   => T::INT8(),
+                'pengali_upah' => T::F32(),
             ],
             ['no_pesangon'],
             [],

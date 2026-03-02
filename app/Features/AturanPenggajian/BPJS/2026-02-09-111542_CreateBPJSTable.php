@@ -15,13 +15,14 @@ class CreateBPJSTable extends MigrationTemplate
                 'no_bpjs'       => T::ID8(),
                 'nama_program'  => T::TEXT(),
                 'penyelenggara' => T::TEXT(),
-                'tarif'         => T::F64(),
-                'batas_atas'    => T::F64(),
-                'batas_bawah'   => T::F64(),
+                'tarif'         => T::F32(),
+                'batas_atas'    => T::INT32(),
+                'batas_bawah'   => T::INT32(),
             ],
             ['no_bpjs'],
             [['nama_program']],
-
+            [],
+            [],
         );
     }
 }

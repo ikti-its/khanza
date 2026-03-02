@@ -12,11 +12,14 @@ class CreateUPMKTable extends MigrationTemplate
             'penggajian',
             'upmk',
             [
-                'no_upmk'       => T::ID8(),
-                'masa_kerja'    => T::ID8(),
-                'pengali_upah'  => T::F32(),
+                'no_upmk'      => T::ID8(),
+                'masa_kerja'   => T::INT8(),
+                'pengali_upah' => T::F32(),
             ],
             ['no_upmk'],
+            [],
+            [],
+            [],
         );
     }
 }

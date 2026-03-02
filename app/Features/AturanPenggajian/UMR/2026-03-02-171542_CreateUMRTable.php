@@ -12,13 +12,18 @@ class CreateUMRTable extends MigrationTemplate
             'penggajian',
             'umr',
             [
-                'no_umr'        => T::ID8(),
-                'provinsi'      => T::ID8(),
-                'kotakab'       => T::ID8(),
-                'jenis'         => T::TEXT(),
-                'upah_minimum'  => T::INT32(),
+                'no_umr'       => T::ID8(),
+                'provinsi'     => T::ID8(),
+                'kotakab'      => T::ID8(),
+                'jenis'        => T::TEXT(),
+                'upah_minimum' => T::INT32(),
             ],
             ['no_umr'],
+            [],
+            [
+                [['provinsi', 'kotakab'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
+            ],
+            [],
         );
     }
 }

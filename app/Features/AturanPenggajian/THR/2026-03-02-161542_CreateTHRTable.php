@@ -12,9 +12,9 @@ class CreateTHRTable extends MigrationTemplate
             'penggajian',
             'thr',
             [
-                'no_thr'        => T::ID8(),
-                'masa_kerja'    => T::ID8(),
-                'pengali_upah'  => T::F32(),
+                'no_thr'       => T::ID8(),
+                'masa_kerja'   => T::INT8(),
+                'pengali_upah' => T::F32(),
             ],
             ['no_thr'],
             [],
