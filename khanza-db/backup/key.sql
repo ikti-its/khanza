@@ -179,9 +179,6 @@ ALTER TABLE ONLY sik.data_phk_structure
 ALTER TABLE ONLY sik.presensi_structure
     ADD CONSTRAINT presensi_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY sik.ptkp_structure
-    ADD CONSTRAINT ptkp_pkey PRIMARY KEY (no_ptkp);
-
 ALTER TABLE ONLY sik.rawat_inap_structure
     ADD CONSTRAINT rawat_inap_pkey PRIMARY KEY (nomor_rawat);
 

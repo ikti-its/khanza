@@ -679,14 +679,6 @@ CREATE TABLE sik.presensi_structure (
     updater uuid
 );
 
-CREATE TABLE sik.ptkp_structure (
-    no_ptkp smallint NOT NULL,
-    kode_ptkp character varying(255) NOT NULL,
-    perkawinan character varying(255) NOT NULL,
-    tanggungan smallint NOT NULL,
-    nilai_ptkp integer NOT NULL
-);
-
 CREATE TABLE sik.rawat_inap_structure (
     nomor_rawat character varying(20) NOT NULL,
     nomor_rm character varying(20),
