@@ -38,7 +38,7 @@ class CreateDesaTable extends MigrationTemplate
                 'id_kota_lokal'     => T::ID8(),
                 'id_kecamatan_lokal'=> T::ID8(),
                 'id_desa_lokal'     => T::ID16(),
-                'nama_kecamatan'    => T::TEXT(),
+                'nama_desa'         => T::TEXT(),
             ],
             ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal', 'id_desa_lokal'],
             [],
