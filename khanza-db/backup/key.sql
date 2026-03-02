@@ -236,9 +236,6 @@ ALTER TABLE ONLY sik.tukar_jadwal_structure
 ALTER TABLE ONLY sik.ugd_structure
     ADD CONSTRAINT ugd_pkey PRIMARY KEY (nomor_reg);
 
-ALTER TABLE ONLY sik.umr_structure
-    ADD CONSTRAINT umr_pkey PRIMARY KEY (no_umr);
-
 ALTER TABLE ONLY sik.upmk_structure
     ADD CONSTRAINT upmk_pkey PRIMARY KEY (no_upmk);
 

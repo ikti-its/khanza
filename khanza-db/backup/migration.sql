@@ -882,14 +882,6 @@ CREATE TABLE sik.ugd_structure (
     status_bayar character varying(50)
 );
 
-CREATE TABLE sik.umr_structure (
-    no_umr integer NOT NULL,
-    provinsi character varying(255) NOT NULL,
-    kotakab character varying(255) NOT NULL,
-    jenis character varying(255) NOT NULL,
-    upah_minimum integer NOT NULL
-);
-
 CREATE TABLE sik.upmk_structure (
     no_upmk smallint NOT NULL,
     masa_kerja smallint NOT NULL,
