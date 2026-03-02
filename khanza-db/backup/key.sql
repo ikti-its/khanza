@@ -236,9 +236,6 @@ ALTER TABLE ONLY sik.tukar_jadwal_structure
 ALTER TABLE ONLY sik.ugd_structure
     ADD CONSTRAINT ugd_pkey PRIMARY KEY (nomor_reg);
 
-ALTER TABLE ONLY sik.upmk_structure
-    ADD CONSTRAINT upmk_pkey PRIMARY KEY (no_upmk);
-
 ALTER TABLE ONLY sik.akun_structure
     ADD CONSTRAINT akun_role_fkey FOREIGN KEY (role) REFERENCES ref.role_structure(id);
 
