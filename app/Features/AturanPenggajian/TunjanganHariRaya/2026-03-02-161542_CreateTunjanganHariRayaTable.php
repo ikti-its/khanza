@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Features\AturanPenggajian\THR;
+namespace App\Features\AturanPenggajian\TunjanganHariRaya;
 
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;
 
-class CreateTHRTable extends MigrationTemplate
+class CreateTunjanganHariRayaTable extends MigrationTemplate
 {
     public function __construct(){
         parent::__construct(

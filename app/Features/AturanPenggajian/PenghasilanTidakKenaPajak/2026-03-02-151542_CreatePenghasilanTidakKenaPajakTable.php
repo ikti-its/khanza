@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Features\AturanPenggajian\PTKP;
+namespace App\Features\AturanPenggajian\PenghasilanTidakKenaPajak;
 
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;
 
-class CreatePTKPTable extends MigrationTemplate
+class CreatePenghasilanTidakKenaPajakTable extends MigrationTemplate
 {
     public function __construct(){
         parent::__construct(

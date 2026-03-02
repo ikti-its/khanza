@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Features\AturanPenggajian\PPH21;
+namespace App\Features\AturanPenggajian\PajakPenghasilan21;
 
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;
 
-class CreatePPH21Table extends MigrationTemplate
+class CreatePajakPenghasilan21Table extends MigrationTemplate
 {
     public function __construct(){
         parent::__construct(

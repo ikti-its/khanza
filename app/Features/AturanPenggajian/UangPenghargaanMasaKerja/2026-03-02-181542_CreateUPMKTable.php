@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Features\AturanPenggajian\UPMK;
+namespace App\Features\AturanPenggajian\UangPenghargaanMasaKerja;
 
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;
 
-class CreateUPMKTable extends MigrationTemplate
+class CreateUangPenghargaanMasaKerjaTable extends MigrationTemplate
 {
     public function __construct(){
         parent::__construct(
