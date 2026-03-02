@@ -77,6 +77,7 @@ final class DBType
     public static function DATE(): self { return new self(['type' => 'DATE']);}
     public static function TIME(): self { return new self(['type' => 'TIME']);}
     public static function DATETIME(): self { return new self(['type' => 'TIMESTAMPTZ']);}
+    public static function YEAR(): self { return new self(['type' => 'SMALLINT','check' => 'VALUE >= 1900 AND VALUE <= 2100']);}
 
     public static function IPV4(): self { return new self(['type' => 'INET','check' => 'family(VALUE) = 4']);}
     public static function IPV6() : self { return new self(['type' => 'INET','check' => 'family(VALUE) = 6']);}

@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Features\AturanPenggajian\UMR;
+namespace App\Features\AturanPenggajian\UpahMinimumProvinsi;
 
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;
 
-class CreateUMRTable extends MigrationTemplate
+class CreateUpahMinimumKotakabTable extends MigrationTemplate
 {
     public function __construct(){
         parent::__construct(
             'penggajian',
-            'umr',
+            'upah_minimum_kotakab',
             [
-                'no_umr'       => T::ID8(),
+                'no_ump'       => T::ID8(),
+                'tahun'        => T::YEAR(),
                 'provinsi'     => T::ID8(),
                 'kotakab'      => T::ID8(),
-                'jenis'        => T::TEXT(),
                 'upah_minimum' => T::INT32(),
             ],
-            ['no_umr'],
+            ['no_ump'],
             [],
             [
                 [['provinsi', 'kotakab'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
