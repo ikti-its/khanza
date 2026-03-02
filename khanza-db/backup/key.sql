@@ -227,9 +227,6 @@ ALTER TABLE ONLY sik.supplier_barang_medis_structure
 ALTER TABLE ONLY sik.tarif_tindakan_structure
     ADD CONSTRAINT tarif_tindakan_pkey PRIMARY KEY (kode);
 
-ALTER TABLE ONLY sik.thr_structure
-    ADD CONSTRAINT thr_pkey PRIMARY KEY (no_thr);
-
 ALTER TABLE ONLY sik.transaksi_keluar_barang_medis_structure
     ADD CONSTRAINT transaksi_keluar_barang_medis_pkey PRIMARY KEY (id);
 

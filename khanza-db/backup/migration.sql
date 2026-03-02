@@ -841,12 +841,6 @@ CREATE TABLE sik.tarif_tindakan_structure (
     kelas character varying(20)
 );
 
-CREATE TABLE sik.thr_structure (
-    no_thr smallint NOT NULL,
-    masa_kerja smallint NOT NULL,
-    pengali_upah numeric NOT NULL
-);
-
 CREATE TABLE sik.transaksi_keluar_barang_medis_structure (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_stok_keluar uuid NOT NULL,
