@@ -176,9 +176,6 @@ ALTER TABLE ONLY sik.permintaan_stok_obat_structure
 ALTER TABLE ONLY sik.data_phk_structure
     ADD CONSTRAINT phk_pkey PRIMARY KEY (no_pegawai);
 
-ALTER TABLE ONLY sik.pph21_structure
-    ADD CONSTRAINT pph21_pkey PRIMARY KEY (no_pph21);
-
 ALTER TABLE ONLY sik.presensi_structure
     ADD CONSTRAINT presensi_pkey PRIMARY KEY (id);
 

@@ -664,14 +664,6 @@ CREATE TABLE sik.permintaan_stok_obat_structure (
     jam_validasi time without time zone
 );
 
-
-CREATE TABLE sik.pph21_structure (
-    no_pph21 smallint NOT NULL,
-    pkp_bawah bigint NOT NULL,
-    pkp_atas bigint,
-    tarif_pajak numeric NOT NULL
-);
-
 CREATE TABLE sik.presensi_structure (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_pegawai uuid NOT NULL,
