@@ -664,11 +664,6 @@ CREATE TABLE sik.permintaan_stok_obat_structure (
     jam_validasi time without time zone
 );
 
-CREATE TABLE sik.pesangon_structure (
-    no_pesangon smallint NOT NULL,
-    masa_kerja smallint NOT NULL,
-    pengali_upah numeric NOT NULL
-);
 
 CREATE TABLE sik.pph21_structure (
     no_pph21 smallint NOT NULL,

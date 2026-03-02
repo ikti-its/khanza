@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\AturanPenggajian\Jabatan;
+namespace App\Features\AturanPenggajian\Lembur;
 
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;

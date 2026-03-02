@@ -173,9 +173,6 @@ ALTER TABLE ONLY sik.permintaan_resep_pulang_structure
 ALTER TABLE ONLY sik.permintaan_stok_obat_structure
     ADD CONSTRAINT permintaan_stok_obat_pkey PRIMARY KEY (no_permintaan);
 
-ALTER TABLE ONLY sik.pesangon_structure
-    ADD CONSTRAINT pesangon_pkey PRIMARY KEY (no_pesangon);
-
 ALTER TABLE ONLY sik.data_phk_structure
     ADD CONSTRAINT phk_pkey PRIMARY KEY (no_pegawai);
 
