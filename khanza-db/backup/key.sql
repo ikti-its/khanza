@@ -134,9 +134,6 @@ ALTER TABLE ONLY sik.kategori_barang_medis_structure
 ALTER TABLE ONLY sik.kepegawaian_structure
     ADD CONSTRAINT kepegawaian_pkey PRIMARY KEY (no_pegawai);
 
-ALTER TABLE ONLY sik.lembur_structure
-    ADD CONSTRAINT lembur_pkey PRIMARY KEY (no_lembur);
-
 ALTER TABLE ONLY sik.mutasi_barang_structure
     ADD CONSTRAINT mutasi_barang_pkey PRIMARY KEY (id);
 
@@ -589,7 +586,7 @@ ALTER TABLE ONLY sik.industri_farmasi_structure
 
 ALTER TABLE ONLY sik.industri_farmasi_structure
     ADD CONSTRAINT industri_farmasi_pkey PRIMARY KEY (id);
-    
+
 ALTER TABLE ONLY sik.jadwal_pegawai_structure
     ADD CONSTRAINT jadwal_pegawai_pkey PRIMARY KEY (id);
 

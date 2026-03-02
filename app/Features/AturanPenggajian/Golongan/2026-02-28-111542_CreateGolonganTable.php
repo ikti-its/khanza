@@ -20,6 +20,8 @@ class CreateGolonganTable extends MigrationTemplate
             ],
             ['no_golongan'],
             [['nama_golongan'], ['kode_golongan']],
+            [],
+            []
         );
     }
 }

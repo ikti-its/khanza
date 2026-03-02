@@ -489,13 +489,6 @@ CREATE TABLE sik.kepegawaian_structure (
     rekening text NOT NULL
 );
 
-CREATE TABLE sik.lembur_structure (
-    no_lembur smallint NOT NULL,
-    jenis_lembur character varying(255) NOT NULL,
-    jam_lembur smallint NOT NULL,
-    pengali_upah numeric NOT NULL
-);
-
 CREATE TABLE sik.mutasi_barang_structure (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_barang_medis uuid,
