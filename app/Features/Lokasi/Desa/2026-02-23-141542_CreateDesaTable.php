@@ -41,6 +41,11 @@ class CreateDesaTable extends MigrationTemplate
                 'nama_kecamatan'    => T::TEXT(),
             ],
             ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal', 'id_desa_lokal'],
+            [],
+            [
+                [['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'], 'kecamatan', ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'], 'CASCADE', 'CASCADE'],
+            ]
+        
         );
     }
 }

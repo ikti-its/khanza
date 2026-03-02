@@ -36,6 +36,10 @@ class CreateKotaTable extends MigrationTemplate
                 'nama_kota'     => T::TEXT(),
             ],
             ['id_provinsi', 'id_kota_lokal'],
+            [],
+            [
+                [['id_provinsi'], 'provinsi', ['id_provinsi'], 'CASCADE', 'CASCADE'],
+            ]
         );
     }
 }

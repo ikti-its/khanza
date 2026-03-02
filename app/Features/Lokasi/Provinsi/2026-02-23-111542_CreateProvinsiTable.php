@@ -33,6 +33,9 @@ class CreateProvinsiTable extends MigrationTemplate
             ],
             ['id_provinsi'],
             [['nama_provinsi']],
+            [
+                [['id_pulau'], 'pulau', ['id_pulau'], 'CASCADE', 'CASCADE'],
+            ]
         );
     }
 }
