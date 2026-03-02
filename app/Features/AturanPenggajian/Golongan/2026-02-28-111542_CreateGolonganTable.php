@@ -5,7 +5,7 @@ namespace App\Features\AturanPenggajian\Golongan;
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;
 
-class CreateBPJSTable extends MigrationTemplate
+class CreateGolonganTable extends MigrationTemplate
 {
     public function __construct(){
         parent::__construct(

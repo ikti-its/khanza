@@ -17,9 +17,6 @@ ALTER TABLE ONLY ref.industri_farmasi_structure
 ALTER TABLE ONLY ref.industri_farmasi_structure
     ADD CONSTRAINT industri_farmasi_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY ref.jabatan_structure
-    ADD CONSTRAINT jabatan_pkey PRIMARY KEY (id);
-
 ALTER TABLE ONLY ref.jenis_barang_medis_structure
     ADD CONSTRAINT jenis_barang_medis_pkey PRIMARY KEY (id);
 
@@ -118,9 +115,6 @@ ALTER TABLE ONLY sik.industri_farmasi_structure
 
 ALTER TABLE ONLY sik.jabatan_pegawai_structure
     ADD CONSTRAINT jabatan_pegawai_pkey PRIMARY KEY (no_jabatan);
-
-ALTER TABLE ONLY sik.jabatan_structure
-    ADD CONSTRAINT jabatan_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY sik.jadwal_pegawai_structure
     ADD CONSTRAINT jadwal_pegawai_pkey PRIMARY KEY (id);
@@ -452,9 +446,6 @@ ALTER TABLE ONLY public.industri_farmasi_structure
 ALTER TABLE ONLY public.industri_farmasi_structure
     ADD CONSTRAINT industri_farmasi_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY public.jabatan_structure
-    ADD CONSTRAINT jabatan_pkey PRIMARY KEY (id);
-
 ALTER TABLE ONLY public.jenis_barang_medis_structure
     ADD CONSTRAINT jenis_barang_medis_pkey PRIMARY KEY (id);
 
@@ -499,9 +490,6 @@ ALTER TABLE ONLY ref.industri_farmasi_structure
 
 ALTER TABLE ONLY ref.industri_farmasi_structure
     ADD CONSTRAINT industri_farmasi_pkey PRIMARY KEY (id);
-
-ALTER TABLE ONLY ref.jabatan_structure
-    ADD CONSTRAINT jabatan_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY ref.jenis_barang_medis_structure
     ADD CONSTRAINT jenis_barang_medis_pkey PRIMARY KEY (id);
@@ -601,10 +589,7 @@ ALTER TABLE ONLY sik.industri_farmasi_structure
 
 ALTER TABLE ONLY sik.industri_farmasi_structure
     ADD CONSTRAINT industri_farmasi_pkey PRIMARY KEY (id);
-
-ALTER TABLE ONLY sik.jabatan_structure
-    ADD CONSTRAINT jabatan_pkey PRIMARY KEY (id);
-
+    
 ALTER TABLE ONLY sik.jadwal_pegawai_structure
     ADD CONSTRAINT jadwal_pegawai_pkey PRIMARY KEY (id);
 

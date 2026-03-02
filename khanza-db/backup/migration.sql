@@ -434,14 +434,6 @@ CREATE TABLE sik.gudang_barang_structure (
     no_faktur character varying(20)
 );
 
-CREATE TABLE sik.jabatan_pegawai_structure (
-    no_jabatan smallint NOT NULL,
-    jenis_jabatan character varying(255) NOT NULL,
-    nama_jabatan character varying(255) NOT NULL,
-    jenjang character varying(255) NOT NULL,
-    tunjangan integer NOT NULL
-);
-
 CREATE TABLE sik.jadwal_pegawai_structure (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_pegawai uuid NOT NULL,
