@@ -25,6 +25,7 @@ class CreateOrangTable extends MigrationTemplate
                 'nama'               => T::TEXT(),
                 'id_jenis_kelamin'   => T::ID8(),
                 'id_agama'           => T::ID8(),
+                'id_pernikahan'      => T::ID8(),
                 'tempat_lahir_prov'  => T::ID8(),
                 'tempat_lahir_kota'  => T::ID8(),
                 'tanggal_lahir'      => T::DATE(),
@@ -37,6 +38,7 @@ class CreateOrangTable extends MigrationTemplate
             foreign_key: [
                 [['id_jenis_kelamin'], 'jenis_kelamin', ['id_jenis_kelamin'], 'CASCADE', 'CASCADE'],
                 [['id_agama'], 'agama', ['id_agama'], 'CASCADE', 'CASCADE'],
+                [['id_pernikahan'], 'pernikahan', ['id_pernikahan'], 'CASCADE', 'CASCADE'],
                 [['tempat_lahir_prov', 'tempat_lahir_kota'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
                 [['id_golongandarah'], 'darah.golongan_darah', ['id_golongandarah'], 'CASCADE', 'CASCADE'],
                 [['id_alamat'], 'lokasi.alamat', ['id_alamat'], 'CASCADE', 'CASCADE'],
