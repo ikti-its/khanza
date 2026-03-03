@@ -16,12 +16,14 @@ class CreateTeleponTable extends MigrationTemplate
                 'id_orang'      => T::ID32(),
                 'nomor_telepon' => T::TEXT(),
                 'jenis_telepon' => T::ID8(),
+                'id_provider'   => T::ID8(),
             ],
             ['id_telepon'],
             [['nomor_telepon']],
             [
                 [['id_orang'], 'person.orang', ['id_orang'], 'CASCADE', 'CASCADE'],
                 [['jenis_telepon'], 'jenis_telepon', ['id_jenis_telepon'], 'CASCADE', 'CASCADE'],
+                [['id_provider'], 'provider', ['id_provider'], 'CASCADE', 'CASCADE'],
             ],
             [],
         );
