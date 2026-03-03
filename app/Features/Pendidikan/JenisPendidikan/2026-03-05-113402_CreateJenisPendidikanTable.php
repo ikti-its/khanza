@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Features\Pendidikan\JenisPendidikan;
+
+use App\Core\MigrationTemplate;
+use App\Core\DBType as T;
+    
+/*
+* Tabel orang digunakan untuk menyimpan data identitas individu
+* yang terdaftar di dalam sistem.
+*
+* Data ini bersifat master dan dapat direlasikan dengan berbagai
+* fitur lain seperti donor, pasien, petugas, atau pengguna sistem.
+ */
+
+class CreateJenisPendidikanTable extends MigrationTemplate
+{
+    public function __construct(){
+        parent::__construct(
+            'pendidikan',
+            'jenis_pendidikan',
+            [
+                'id_jenis_pendidikan'   => T::ID8(),
+                'nama_jenis_pendidikan' => T::TEXT(),
+                'jenjang_pendidikan_id' => T::ID8(),
+                
+            ],
+            ['id_jenis_pendidikan'],
+            [['nama_jenis_pendidikan']],
+            [
+                [['jenjang_pendidikan_id'], 'jenjang_pendidikan', ['id_jenjang_pendidikan'], 'CASCADE', 'CASCADE'],
+            ],
+            [],
+        );
+    }
+}
