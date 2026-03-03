@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\Lokasi\Desa;
+namespace App\Features\Person\JenisKelamin;
 
 use App\Core\MigrationTemplate;
 use App\Core\DBType as T;
@@ -24,7 +24,7 @@ class CreateJenisKelaminTable extends MigrationTemplate
                 'nama_jenis_kelamin' => T::TEXT(),
             ],
             ['id_jenis_kelamin'],
-            unique_key: [['nama_jenis_kelamin']],
+            [['nama_jenis_kelamin']],
         );
     }
 }
