@@ -16,7 +16,7 @@ class CreateGolonganDarahTable extends MigrationTemplate
                 'nama_golongan_darah'    => T::TEXT(),
             ],
             ['id_golongan_darah'],
-            unique_key: [['nama_golongan_darah']],
+            [['nama_golongan_darah']],
         );
     }
 }
