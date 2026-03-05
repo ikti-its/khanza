@@ -2,10 +2,10 @@
 
 namespace App\Features\Kontak\Email;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateEmailTable extends MigrationTemplate
+class CreateEmailTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

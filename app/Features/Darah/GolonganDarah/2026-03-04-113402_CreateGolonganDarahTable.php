@@ -2,10 +2,10 @@
 
 namespace App\Features\Darah\GolonganDarah;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateGolonganDarahTable extends MigrationTemplate
+class CreateGolonganDarahTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

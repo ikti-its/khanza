@@ -2,10 +2,10 @@
 
 namespace App\Features\Pendidikan\Sekolah;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateSekolahTable extends MigrationTemplate
+class CreateSekolahTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

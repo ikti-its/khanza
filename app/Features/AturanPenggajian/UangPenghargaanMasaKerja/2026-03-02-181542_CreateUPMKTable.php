@@ -2,10 +2,10 @@
 
 namespace App\Features\AturanPenggajian\UangPenghargaanMasaKerja;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateUangPenghargaanMasaKerjaTable extends MigrationTemplate
+class CreateUangPenghargaanMasaKerjaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

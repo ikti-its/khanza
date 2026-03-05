@@ -2,10 +2,10 @@
 
 namespace App\Features\Kontak\Telepon;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateTeleponTable extends MigrationTemplate
+class CreateTeleponTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

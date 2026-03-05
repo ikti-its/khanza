@@ -2,7 +2,7 @@
 
 namespace App\Features\Lokasi\Provinsi;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
 /*
@@ -20,7 +20,7 @@ use App\Core\DBType as T;
  *  11 = Provinsi Aceh 
  */
 
-class CreateProvinsiTable extends MigrationTemplate
+class CreateProvinsiTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

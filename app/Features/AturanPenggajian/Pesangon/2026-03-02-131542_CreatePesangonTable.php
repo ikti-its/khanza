@@ -2,10 +2,10 @@
 
 namespace App\Features\AturanPenggajian\Pesangon;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreatePesangonTable extends MigrationTemplate
+class CreatePesangonTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

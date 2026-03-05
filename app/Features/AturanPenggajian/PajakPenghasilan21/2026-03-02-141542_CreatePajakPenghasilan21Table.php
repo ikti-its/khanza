@@ -2,10 +2,10 @@
 
 namespace App\Features\AturanPenggajian\PajakPenghasilan21;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreatePajakPenghasilan21Table extends MigrationTemplate
+class CreatePajakPenghasilan21Table extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

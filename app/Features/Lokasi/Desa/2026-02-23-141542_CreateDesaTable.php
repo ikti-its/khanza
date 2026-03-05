@@ -2,7 +2,7 @@
 
 namespace App\Features\Lokasi\Desa;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
     
 /*
@@ -27,7 +27,7 @@ use App\Core\DBType as T;
  *  35.78.09.1001   = Kelurahan Keputih
  */
 
-class CreateDesaTable extends MigrationTemplate
+class CreateDesaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

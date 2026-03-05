@@ -2,10 +2,10 @@
 
 namespace App\Features\AturanPenggajian\PenghasilanTidakKenaPajak;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreatePenghasilanTidakKenaPajakTable extends MigrationTemplate
+class CreatePenghasilanTidakKenaPajakTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

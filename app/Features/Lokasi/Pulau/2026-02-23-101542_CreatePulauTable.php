@@ -2,7 +2,7 @@
 
 namespace App\Features\Lokasi\Pulau;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
 /*
@@ -28,7 +28,7 @@ use App\Core\DBType as T;
  *  35 = Provinsi Jawa Timur
  */
 
-class CreatePulauTable extends MigrationTemplate
+class CreatePulauTable extends DatabaseTemplate
 {   
     public function __construct(){
         parent::__construct(

@@ -2,10 +2,10 @@
 
 namespace App\Features\AturanPenggajian\TunjanganHariRaya;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateTunjanganHariRayaTable extends MigrationTemplate
+class CreateTunjanganHariRayaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

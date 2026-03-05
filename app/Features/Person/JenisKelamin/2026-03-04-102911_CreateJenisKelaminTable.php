@@ -2,7 +2,7 @@
 
 namespace App\Features\Person\JenisKelamin;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
     
 /*
@@ -13,7 +13,7 @@ use App\Core\DBType as T;
  *  penyimpanan teks berulang seperti "Laki-laki" atau "Perempuan".
  */
 
-class CreateJenisKelaminTable extends MigrationTemplate
+class CreateJenisKelaminTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -2,7 +2,7 @@
 
 namespace App\Features\Lokasi\Kecamatan;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
 /*  Dalam 1 kota/kabupaten terdapat 1 atau lebih kecamatan
@@ -24,7 +24,7 @@ use App\Core\DBType as T;
  *  35.78.09 = Kecamatan Sukolilo
  */
 
-class CreateKecamatanTable extends MigrationTemplate
+class CreateKecamatanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

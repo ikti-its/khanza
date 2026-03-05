@@ -2,10 +2,10 @@
 
 namespace App\Features\Darah\Rhesus;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateRhesusTable extends MigrationTemplate
+class CreateRhesusTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

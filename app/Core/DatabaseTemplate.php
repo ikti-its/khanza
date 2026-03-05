@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Core;
 use CodeIgniter\Database\Migration;
 
-class MigrationTemplate extends Migration
+class DatabaseTemplate extends Migration
 {
     public function __construct(
         protected string $schema,

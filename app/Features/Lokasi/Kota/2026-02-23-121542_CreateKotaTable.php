@@ -2,7 +2,7 @@
 
 namespace App\Features\Lokasi\Kota;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
 /*  Dalam 1 provinsi terdapat 5 atau lebih kota/kabupaten
@@ -24,7 +24,7 @@ use App\Core\DBType as T;
  *  3515 = Kabupaten Sidoarjo
  */
 
-class CreateKotaTable extends MigrationTemplate
+class CreateKotaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

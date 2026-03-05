@@ -2,10 +2,10 @@
 
 namespace App\Features\AturanPenggajian\UpahMinimumProvinsi;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateUpahMinimumKotakabTable extends MigrationTemplate
+class CreateUpahMinimumKotakabTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -2,10 +2,10 @@
 
 namespace App\Features\Lokasi\Negara;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateNegaraTable extends MigrationTemplate
+class CreateNegaraTable extends DatabaseTemplate
 {   
     public function __construct(){
         parent::__construct(

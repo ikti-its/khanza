@@ -2,10 +2,10 @@
 
 namespace App\Features\AturanPenggajian\BPJS;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateBPJSTable extends MigrationTemplate
+class CreateBPJSTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

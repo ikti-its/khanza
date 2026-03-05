@@ -2,10 +2,10 @@
 
 namespace App\Features\AturanPenggajian\Lembur;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateLemburTable extends MigrationTemplate
+class CreateLemburTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

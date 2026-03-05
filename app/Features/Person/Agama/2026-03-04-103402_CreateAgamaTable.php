@@ -2,10 +2,10 @@
 
 namespace App\Features\Person\Agama;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateAgamaTable extends MigrationTemplate
+class CreateAgamaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

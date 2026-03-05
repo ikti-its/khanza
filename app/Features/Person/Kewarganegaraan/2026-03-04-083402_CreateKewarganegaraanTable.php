@@ -2,10 +2,10 @@
 
 namespace App\Features\Person\Kewarganegaraan;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateKewarganegaraanTable extends MigrationTemplate
+class CreateKewarganegaraanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

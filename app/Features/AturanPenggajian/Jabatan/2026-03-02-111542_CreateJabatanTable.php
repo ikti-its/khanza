@@ -2,10 +2,10 @@
 
 namespace App\Features\AturanPenggajian\Jabatan;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
 
-class CreateJabatanTable extends MigrationTemplate
+class CreateJabatanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

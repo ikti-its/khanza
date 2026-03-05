@@ -2,7 +2,7 @@
 
 namespace App\Features\Person\Orang;
 
-use App\Core\MigrationTemplate;
+use App\Core\DatabaseTemplate;
 use App\Core\DBType as T;
     
 /*
@@ -13,7 +13,7 @@ use App\Core\DBType as T;
 * fitur lain seperti donor, pasien, petugas, atau pengguna sistem.
  */
 
-class CreateOrangTable extends MigrationTemplate
+class CreateOrangTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
