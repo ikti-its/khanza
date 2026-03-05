@@ -22,22 +22,22 @@ class MigrationTemplate extends Migration
          */
         protected array $unique_key = [],
         /**
-         * @var array<array<string>, string, array<string>, string, string>>
-         * [
-         *    [
-         *      [Foreign key fields],
-         *      Referenced table,
-         *      [Referenced fields],
-         *      On update action,
-         *      On delete action
-         *   ]
-         * ]
+         * @var array<int, array{
+         *   0: array<string>,
+         *   1: string,
+         *   2: array<string>,
+         *   3: string,
+         *   4: string
+         * }>
          */
         protected array $foreign_key = [],
         /**
          * @var array<array<string>>
          */
         protected array $index = [],
+
+        protected bool $data_is_real = false,
+        protected string $source = '', 
     ) {
         parent::__construct();
     }
@@ -105,6 +105,41 @@ class MigrationTemplate extends Migration
         }
     }
 
+    private function read_csv(): void
+    {
+        $tmp = '/tmp/' . basename($this->source);
+        copy($this->source, $tmp);
+
+        $this->db->query("
+            COPY {$this->schema}.{$this->table}
+            FROM '{$tmp}'
+            WITH (FORMAT csv, HEADER true)
+        ");
+
+        unlink($tmp);
+    }
+
+    protected function generate_data() {
+        return null;
+    }
+
+    final public function seed(): void
+    {
+        if($this->data_is_real){
+            if(!file_exists($this->source)){
+                Assert::Unreachable("Data file '$this->source' does not exist");
+            }
+            $this->read_csv();
+            return;
+        } else {
+            if($this->source !== ''){
+                Assert::Unreachable("Source must be empty when data is fake");
+            }           
+            // $this->db->table($this->schema . "." . $this->table)
+            //     ->insertBatch($this->generate_data());
+        }
+    }
+
     final public function up(): void
     {
         $this->setup();
@@ -120,11 +155,16 @@ class MigrationTemplate extends Migration
         $this->add_index();
 
         $this->forge->createTable($this->table);
+        try {
+            $this->seed();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     final public function down(): void
     {
-        $this->db->query("SET search_path TO " . $this->schema . ", public");
+        $this->db->query("SET search_path TO public," . $this->schema);
         $this->forge->dropTable($this->table);
     }
 }
