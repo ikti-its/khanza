@@ -19,6 +19,8 @@ class CreateAgamaTable extends MigrationTemplate
             [['nama_agama']],
             [],
             [],
+            true,
+            __DIR__ . '/agama.csv'
         );
     }
 }
