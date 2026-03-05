@@ -3,7 +3,7 @@
 namespace App\Features\Lokasi\Kecamatan;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 /*  Dalam 1 kota/kabupaten terdapat 1 atau lebih kecamatan
  *  Di Indonesia, terdapat sekitar 7.000 kecamatan

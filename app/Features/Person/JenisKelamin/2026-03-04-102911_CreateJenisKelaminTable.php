@@ -3,7 +3,7 @@
 namespace App\Features\Person\JenisKelamin;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
     
 /*
  *  Tabel jenis_kelamin merupakan tabel referensi (master data)

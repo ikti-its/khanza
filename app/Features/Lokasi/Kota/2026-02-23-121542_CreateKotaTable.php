@@ -3,7 +3,7 @@
 namespace App\Features\Lokasi\Kota;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 /*  Dalam 1 provinsi terdapat 5 atau lebih kota/kabupaten
  *  Di Indonesia, terdapat 416 kabupaten dan 98 kota

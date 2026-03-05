@@ -3,7 +3,7 @@
 namespace App\Features\Person\Orang;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
     
 /*
 * Tabel orang digunakan untuk menyimpan data identitas individu

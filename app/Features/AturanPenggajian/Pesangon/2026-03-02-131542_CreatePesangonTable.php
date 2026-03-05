@@ -3,7 +3,7 @@
 namespace App\Features\AturanPenggajian\Pesangon;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 class CreatePesangonTable extends DatabaseTemplate
 {

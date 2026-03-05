@@ -3,7 +3,7 @@
 namespace App\Features\AturanPenggajian\UpahMinimumProvinsi;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 class CreateUpahMinimumKotakabTable extends DatabaseTemplate
 {

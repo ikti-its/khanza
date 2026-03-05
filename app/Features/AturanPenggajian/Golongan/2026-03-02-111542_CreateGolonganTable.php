@@ -3,7 +3,7 @@
 namespace App\Features\AturanPenggajian\Golongan;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 class CreateGolonganTable extends DatabaseTemplate
 {

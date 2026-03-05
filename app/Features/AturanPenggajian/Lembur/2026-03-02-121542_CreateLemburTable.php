@@ -3,7 +3,7 @@
 namespace App\Features\AturanPenggajian\Lembur;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 class CreateLemburTable extends DatabaseTemplate
 {

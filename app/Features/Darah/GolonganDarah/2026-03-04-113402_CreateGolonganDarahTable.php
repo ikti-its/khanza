@@ -3,7 +3,7 @@
 namespace App\Features\Darah\GolonganDarah;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 class CreateGolonganDarahTable extends DatabaseTemplate
 {

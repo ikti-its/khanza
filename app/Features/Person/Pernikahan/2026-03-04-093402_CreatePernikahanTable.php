@@ -3,7 +3,7 @@
 namespace App\Features\Person\Pernikahan;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 class CreatePernikahanTable extends DatabaseTemplate
 {

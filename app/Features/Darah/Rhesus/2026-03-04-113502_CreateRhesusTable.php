@@ -3,7 +3,7 @@
 namespace App\Features\Darah\Rhesus;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 class CreateRhesusTable extends DatabaseTemplate
 {

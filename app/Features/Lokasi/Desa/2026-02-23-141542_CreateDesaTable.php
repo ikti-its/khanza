@@ -3,7 +3,7 @@
 namespace App\Features\Lokasi\Desa;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
     
 /*
  *  Dalam 1 kecamatan terdapat 1 atau lebih desa

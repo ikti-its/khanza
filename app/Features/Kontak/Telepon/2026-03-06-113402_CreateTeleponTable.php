@@ -3,7 +3,7 @@
 namespace App\Features\Kontak\Telepon;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 class CreateTeleponTable extends DatabaseTemplate
 {

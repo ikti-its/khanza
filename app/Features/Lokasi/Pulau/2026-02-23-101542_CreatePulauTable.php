@@ -3,7 +3,7 @@
 namespace App\Features\Lokasi\Pulau;
 
 use App\Core\DatabaseTemplate;
-use App\Core\DBType as T;
+use App\Core\DatabaseType as T;
 
 /*
  *  Di Indonesia, 9 Kepulauan besar yang terdiri dari ribuan pulau kecil yaitu
