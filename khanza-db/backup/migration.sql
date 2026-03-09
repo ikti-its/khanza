@@ -1,13 +1,3 @@
-CREATE TYPE sik.agama AS ENUM (
-    'Islam',
-    'Kristen',
-    'Katolik',
-    'Hindu',
-    'Buddha',
-    'Konghucu',
-    'Lainnya'
-);
-
 CREATE TYPE sik.cara_keluar_enum AS ENUM (
     'Atas Izin Dokter',
     'Pulang Sendiri',
