@@ -1,0 +1,116 @@
+id,     kode,   nama,                           sebutan,    pemilik_id, prinsip_id, is_bank_devisa, mobile_app, link_playstore
+1,002,BANK RAKYAT INDONESIA,BRI,1,1,TRUE,BRImo,https://play.google.com/store/apps/details?id=id.co.bri.brimo&hl=id
+2,008,BANK MANDIRI,Mandiri,1,1,TRUE,Livin' by Mandiri,https://play.google.com/store/apps/details?id=id.bmri.livin&hl=id
+3,009,BANK NEGARA INDONESIA,BNI,1,1,TRUE,wondr by BNI,https://play.google.com/store/apps/details?id=id.bni.wondr&hl=id
+4,200,BANK TABUNGAN NEGARA,BTN,1,2,TRUE,bale by BTN,https://play.google.com/store/apps/details?id=id.co.btn.mobilebanking.android&hl=id
+5,011,BANK DANAMON INDONESIA,Danamon,4,2,TRUE,D-Bank PRO,https://play.google.com/store/apps/details?id=com.dbank.mobile&hl=id
+6,013,BANK PERMATA,Permata,4,2,TRUE,Permata ME,https://play.google.com/store/apps/details?id=net.myinfosys.PermataMobileX&hl=id
+7,014,BANK CENTRAL ASIA,BCA,3,1,TRUE,myBCA,https://play.google.com/store/apps/details?id=com.bca.mybca.omni.android&hl=id
+8,016,BANK MAYBANK INDONESIA,Maybank,4,2,TRUE,Maybank2u ID,https://play.google.com/store/apps/details?id=id.com.uiux.mobile&hl=id
+9,019,PAN INDONESIA BANK,Panin,3,1,TRUE,MobilePanin,https://play.google.com/store/apps/details?id=com.panin.mobilepanin&hl=id
+10,022,BANK CIMB NIAGA,CIMB,4,2,TRUE,OCTO Mobile by CIMB Niaga,https://play.google.com/store/apps/details?id=id.co.cimbniaga.mobile.android&hl=id
+11,023,BANK UOB INDONESIA,UOB,4,1,TRUE,UOB TMRW Indonesia,https://play.google.com/store/apps/details?id=com.uob.id.digitalbank&hl=id
+12,028,BANK OCBC NISP,OCBC,4,2,TRUE,OCBC mobile Indonesia,https://play.google.com/store/apps/details?id=com.ocbcnisp.onemobileapp&hl=id
+13,037,BANK ARTHA GRAHA INTERNASIONAL,,3,1,TRUE,agi,https://play.google.com/store/apps/details?id=id.co.bankarthagraha.mobile_banking&hl=id
+14,076,BANK BUMI ARTA,,3,1,TRUE,BBA Mobile,https://play.google.com/store/apps/details?id=mlpt.siemo.mobilebanking.bba&hl=id
+15,087,BANK HSBC INDONESIA,,4,1,TRUE,HSBC Indonesia,https://play.google.com/store/apps/details?id=id.hsbc.hsbcindonesia&hl=id
+16,095,BANK JTRUST INDONESIA,,4,1,TRUE,J MOBILE by J Trust Bank,https://play.google.com/store/apps/details?id=com.dwidasa.mb.jtrust&hl=id
+17,097,BANK MAYAPADA INTERNATIONAL,,3,1,TRUE,My Mobile Mayapada,https://play.google.com/store/apps/details?id=mayapada.mbank&hl=id
+18,146,BANK OF INDIA INDONESIA,Muamalat,4,1,TRUE,STARBOII Mobile,https://play.google.com/store/apps/details?id=com.dwi.boii.mb&hl=id
+19,147,BANK MUAMALAT INDONESIA,,3,3,TRUE,Muamalat DIN,https://play.google.com/store/apps/details?id=com.muamalatdin&hl=id
+20,151,BANK MESTIKA DHARMA,,3,1,TRUE,Mestika Mobile,https://play.google.com/store/apps/details?id=com.aprisma.product.primemobile.mestika&hl=id
+21,152,BANK SHINHAN INDONESIA,,4,1,TRUE,Bank Shinhan Indonesia SOL,https://play.google.com/store/apps/details?id=com.shinhan.global.id.bank&hl=id
+22,153,BANK SINARMAS,,3,1,TRUE,SimobiPlus Mobile Banking,https://play.google.com/store/apps/details?id=com.simas.mobile.SimobiPlus&hl=id
+23,157,BANK MASPION INDONESIA,,4,1,TRUE,Maspion Electronic Banking,https://play.google.com/store/apps/details?id=com.dwidasa.bmi.mb.android&hl=id
+24,161,BANK GANESHA,,3,1,TRUE,BANGGA,https://play.google.com/store/apps/details?id=com.bangga.ganesha.mb.android&hl=id
+25,164,BANK ICBC INDONESIA,,4,1,TRUE,ICBC Mobile Banking,https://play.google.com/store/apps/details/ICBC_Mobile_Banking?id=com.icbc.mobile.abroadbank&hl=id
+26,167,BANK QNB INDONESIA,,4,1,TRUE,QNB Indonesia Mobile Banking,https://play.google.com/store/apps/details?id=com.daksa.dooeet&hl=id
+27,212,BANK WOORI SAUDARA INDONESIA 1906,,4,1,TRUE,BWS Mobile,https://play.google.com/store/apps/details?id=com.dwidasa.bws.mb.android&hl=id
+28,426,BANK MEGA,,3,1,TRUE,M-Smile,https://play.google.com/store/apps/details?id=com.bankmega.msmile&hl=id
+29,451,BANK SYARIAH INDONESIA,BSI,3,3,TRUE,BYOND by BSI,https://play.google.com/store/apps/details?id=co.id.bankbsi.superapp&hl=id
+30,441,BANK KB BUKOPIN,,4,1,TRUE,KBstar,https://play.google.com/store/apps/details?id=com.kbBukopin.Kbstar&hl=id
+31,484,BANK KEB HANA INDONESIA,,4,1,TRUE,MyHana Mobile Banking,https://play.google.com/store/apps/details?id=co.id.myhana.app&hl=id
+32,485,BANK MNC INTERNASIONAL,,3,1,TRUE,MotionBank,https://play.google.com/store/apps/details?id=com.mnc.mbanking&hl=id
+33,494,BANK RAYA INDONESIA,,3,1,TRUE,Raya - Digital Bank,https://play.google.com/store/apps/details?id=id.co.bankraya.apps&hl=id
+34,498,BANK SBI INDONESIA,,4,1,TRUE,YONO SBI: Banking & Lifestyle,https://play.google.com/store/apps/details?id=com.sbi.lotusintouch&hl=id
+35,506,BANK MEGA SYARIAH,,3,3,TRUE,M-Syariah,https://play.google.com/store/apps/details?id=com.megasyariah&hl=id
+36,555,BANK INDEX SELINDO,,3,1,TRUE,INDEXQU,https://play.google.com/store/apps/details?id=com.dwidasa.index.mb.android&hl=id
+37,553,BANK HIBANK INDONESIA,,3,1,TRUE,hi by hibank,https://play.google.com/store/apps/details?id=com.hibank.mobile&hl=id
+38,036,BANK CHINA CONSTRUCTION BANK INDONESIA,,4,1,TRUE,CCB Indonesia Mobile,https://play.google.com/store/apps/details?id=com.dwidasa.bwk.mb.android&hl=id
+39,046,BANK DBS INDONESIA,,4,1,TRUE,digibank by DBS Indonesia,https://play.google.com/store/apps/details?id=com.dbs.id.pt.digitalbank&hl=id
+40,047,BANK RESONA PERDANIA,,4,1,TRUE,Resona Group app,https://play.google.com/store/apps/details?id=jp.co.resona_gr.ss.SmartApp&hl=en
+41,048,BANK MIZUHO INDONESIA,,4,1,TRUE,みずほWallet　電子マネーアプリ,https://play.google.com/store/apps/details?id=jp.co.mizuhobank.mizuhoapp&hl=id
+42,054,BANK CAPITAL INDONESIA,,3,1,TRUE,Capital Flex,https://play.google.com/store/apps/details?id=com.overo.capital.mb.bci&hl=id
+43,057,BANK BNP PARIBAS INDONESIA,,4,1,TRUE,BNP Paribas GOmobile,https://play.google.com/store/apps/details/BNP_Paribas_GOMobile?id=com.finanteq.finance.bgz&hl=id
+44,061,BANK ANZ INDONESIA,,4,1,TRUE,ANZ Pacific,https://play.google.com/store/apps/details?id=com.anz.anzpacific&hl=id
+45,945,BANK IBK INDONESIA,,4,1,TRUE,IBK Indonesia,https://play.google.com/store/apps/details?id=com.ibk.online.id&hl=id
+46,947,BANK ALADIN SYARIAH,,3,3,TRUE,Aladin : Bank Syariah Digital,https://play.google.com/store/apps/details?id=id.aladinbank.mobile&hl=id
+47,949,BANK CTBC INDONESIA,,4,1,TRUE,CTBC Mobile,https://play.google.com/store/apps/details?id=com.dwidasa.ctbc.mb.android&hl=id
+48,213,Bank SMBC Indonesia,,4,1,TRUE,Jenius,https://play.google.com/store/apps/details?id=com.btpn.dc&hl=id
+49,405,BANK VICTORIA SYARIAH,,3,3,FALSE,Victoria Mobile,https://play.google.com/store/apps/details?id=com.victoriamobilebvic&hl=id
+50,425,BANK JABAR BANTEN SYARIAH,,3,3,FALSE,Mobile Maslahah by bjb syariah,https://play.google.com/store/apps/details?id=com.mobilemaslahah&hl=id
+51,459,KROM BANK INDONESIA,,4,1,FALSE,Krom - Bank Digital,https://play.google.com/store/apps/details?id=com.krom.android&hl=id
+52,472,BANK JASA JAKARTA,,4,1,FALSE,Bank Saqu,https://play.google.com/store/apps/details?id=bjj.bank.digital.indo.prod&hl=id
+53,490,BANK NEO COMMERCE,,3,1,FALSE,neobank dari BNC Digital,https://play.google.com/store/apps/details?id=com.bnc.finance&hl=id
+54,501,BANK DIGITAL BCA,,3,1,FALSE,blu by BCA Digital,https://play.google.com/store/apps/details?id=com.bcadigital.blu&hl=id
+55,503,BANK NATIONALNOBU,,3,1,TRUE,nobu Go by Nobu Bank,https://play.google.com/store/apps/details?id=com.nobubank.now&hl=id
+56,513,BANK INA PERDANA,,3,1,TRUE,Binadigital dari Bank INA,https://play.google.com/store/apps/developer?id=BANK+INA&hl=id
+57,517,BANK PANIN DUBAI SYARIAH,,3,3,TRUE,PDSB Mobile Banking,https://play.google.com/store/apps/details?id=com.pactindo.mb.pdsb&hl=id
+58,521,BANK KB BUKOPIN SYARIAH,,4,3,FALSE,BISA Mobile by KBBS,https://play.google.com/store/apps/details?id=com.app.vioss4&hl=id
+59,523,BANK SAHABAT SAMPOERNA,,3,1,FALSE,Sampoerna Mobile Banking,https://play.google.com/store/apps/details?id=com.dwidasa.bss.mb.android&hl=id
+60,526,BANK OKE INDONESIA,,4,1,FALSE,OK Mobile Banking,https://play.google.com/store/apps/details?id=co.id.okbank.app&hl=id
+61,531,BANK AMAR INDONESIA,,4,1,FALSE,Amar Bank: Tabungan & Celengan,https://play.google.com/store/apps/details?id=com.senyumkubank.rekeningonline&hl=id
+62,535,BANK SEABANK INDONESIA,,4,1,FALSE,SeaBank,https://play.google.com/store/apps/details?id=id.co.bankbkemobile.digitalbank&hl=id
+63,536,BANK BCA SYARIAH,,3,3,FALSE,BSya by BCA Syariah,https://play.google.com/store/apps/details?id=id.co.bcasyariah.bsya&hl=id
+64,542,BANK JAGO,,3,2,FALSE,Bank Jago/Jago Syariah,https://play.google.com/store/apps/details?id=com.jago.digitalBanking&hl=id
+65,547,BANK BTPN SYARIAH,,4,3,FALSE,Sitepat,https://play.google.com/store/apps/details?id=com.btpns.individualfinancing&hl=id
+66,548,BANK MULTIARTA SENTOSA,,3,1,TRUE,Bebas by Bank MAS,https://play.google.com/store/apps/details?id=id.co.bankmas.bebas.retail&hl=id
+67,562,SUPER BANK INDONESIA,,3,1,FALSE,Superbank,https://play.google.com/store/apps/details?id=id.co.bankfama.android&hl=id
+68,564,BANK MANDIRI TASPEN,,3,1,FALSE,Movin by Mantap Mobile,https://play.google.com/store/apps/details?id=com.mantap.pac&hl=id
+69,566,BANK VICTORIA INTERNATIONAL,,3,1,TRUE,Victoria Mobile,https://play.google.com/store/apps/details?id=com.victoriamobilebvic&hl=id
+70,567,ALLO BANK INDONESIA,,3,1,FALSE,Allo Bank,https://play.google.com/store/apps/details?id=com.alloapp.yump&hl=id
+71,253,BANK NANO SYARIAH,,3,3,FALSE,Aira Mobile,https://play.google.com/store/apps/details?id=com.simas.mobile.SimobiPlusSyariah&hl=en
+72,110,BPD JAWA BARAT DAN BANTEN,,2,1,TRUE,DIGI bank bjb,https://play.google.com/store/apps/details?id=com.bjbsmb&hl=id
+73,111,BPD DKI,,2,2,TRUE,JakOne Mobile,https://play.google.com/store/apps/details?id=com.dev.jakone.mbanking&hl=id
+74,112,BPD DAERAH ISTIMEWA YOGYAKARTA,,2,2,FALSE,BPDDIY Mobile,https://play.google.com/store/apps/details?id=mbank.diy&hl=id
+75,113,BPD JAWA TENGAH,,2,2,TRUE,Bima Mobile,https://play.google.com/store/apps/details?id=id.co.bankjateng.bimamobile&hl=id
+76,114,BPD JAWA TIMUR,,2,2,TRUE,JConnect Mobile,https://play.google.com/store/apps/details?id=com.dwidasa.bjtm.mb.android&hl=en
+77,115,BPD JAMBI,,2,2,FALSE,Bank Jambi Mobile,https://play.google.com/store/apps/details?id=com.dwidasa.jambi.mb.android&hl=id
+78,116,BANK ACEH SYARIAH,,2,3,FALSE,Action Mobile,https://play.google.com/store/apps/details?id=com.aceh.action&hl=id
+79,117,BPD SUMATERA UTARA,,2,2,TRUE,SUMUT mobile,https://play.google.com/store/apps/details?id=mbank.sumut&hl=id
+80,118,BANK NAGARI,,2,2,TRUE,Ollin by Nagari,https://play.google.com/store/apps/details?id=com.bn.mobilebanking&hl=id
+81,119,BPD RIAU KEPRI SYARIAH,,2,3,TRUE,BRKS Mobile,https://play.google.com/store/apps/details?id=mlpt.siemo.mobilebanking.riau&hl=id
+82,120,BPD SUMATERA SELATAN DAN BANGKA BELITUNG,,2,2,TRUE,Bank SumselBabel Mobile,https://play.google.com/store/apps/details?id=mlpt.siemo.mobilebankingbsb&hl=id
+83,121,BPD LAMPUNG,,2,1,FALSE,Lampung Online - mBanking,https://play.google.com/store/apps/details?id=id.co.banklampung.banklampung_mbank_mobile&hl=id
+84,122,BPD KALIMANTAN SELATAN,,2,2,FALSE,Aksel by Bank Kalsel,https://play.google.com/store/apps/details?id=id.co.bankkalsel.mobile_banking&hl=id
+85,123,BPD KALIMANTAN BARAT,,2,2,FALSE,Mobile Banking Bank Kalbar,https://play.google.com/store/apps/details?id=com.xlink.xmobilebankingadkalbar&hl=id
+86,124,BPD KALIMANTAN TIMUR DAN KALIMANTAN UTARA,,2,2,TRUE,DG By Bankaltimtara,https://play.google.com/store/apps/details?id=com.lst.Kaltimtara&hl=id
+87,125,BPD KALIMANTAN TENGAH,,2,1,FALSE,Betang Mobile,https://play.google.com/store/apps/details?id=com.basys.kalteng&hl=id
+88,126,BPD SULAWESI SELATAN DAN SULAWESI BARAT,,2,2,TRUE,Sulselbar Mobile,https://play.google.com/store/apps/details?id=com.dwidasa.sulselbar.mb.android&hl=id
+89,127,BPD SULAWESI UTARA DAN GORONTALO,,2,1,FALSE,BSGtouch,https://play.google.com/store/apps/details?id=id.co.collega.mbanking.sulut&hl=id
+90,128,BANK NTB SYARIAH,,2,3,FALSE,Bank NTB Syariah mBanking,https://play.google.com/store/apps/details?id=com.bankntbsyariah.mobilebanking
+91,129,BPD BALI,,2,1,TRUE,BPD BALI Mobile,https://play.google.com/store/apps/details?id=com.dwidasa.bpdbali.mb.android&hl=id
+92,130,BPD NUSA TENGGARA TIMUR,,2,1,TRUE,Be Pung Mobile,https://play.google.com/store/apps/details?id=com.dwidasa.bankntt.mb.nttmobile&hl=id
+93,131,BPD MALUKU DAN MALUKU UTARA,,2,1,FALSE,Bank Maluku Malut Mobile,https://play.google.com/store/apps/details?id=mbank.maluku&hl=id
+94,132,BPD PAPUA,,2,1,FALSE,Papua Mobile,https://play.google.com/store/apps/details?id=com.bankpapua.mobilebanking&hl=id
+95,133,BPD BENGKULU,,2,1,FALSE,Mobile Bengkulu,https://play.google.com/store/apps/details?id=mbank.bengkulu&hl=id
+96,134,BPD SULAWESI TENGAH,,2,1,FALSE,Bank Sulteng Mobile,https://play.google.com/store/apps/details?id=com.banksulteng.mobilebanking&hl=id
+97,135,BPD SULAWESI TENGGARA,,2,1,FALSE,Mobile Banking Bank Sultra,https://play.google.com/store/apps/details?id=id.co.banksultra.mobilebanking&hl=id
+98,137,BPD BANTEN,,2,1,FALSE,Jawara Mobile,https://play.google.com/store/apps/details?id=id.co.bankbanten.mobile_banking&hl=id
+99,031,CITIBANK N.A.,,5,1,,Citi Mobile®,https://play.google.com/store/apps/details?id=com.citi.citimobile&hl=en
+100,032,JP MORGAN CHASE BANK NA,,5,1,,Chase Mobile,https://play.google.com/store/apps/details?id=com.chase.sig.android&hl=en
+101,033,BANK OF AMERICA N.A,,5,1,,Bank of America Mobile Banking,https://play.google.com/store/apps/details?id=com.infonow.bofa&hl=en
+102,042,MUFG BANK LTD,,5,1,,MUFG Bank Card Manager,https://play.google.com/store/apps/details?id=com.mufgbank.commercial.cardmanager&hl=en
+103,050,STANDARD CHARTERED BANK,,5,1,,SC Mobile Indonesia,https://play.google.com/store/apps/details?id=com.sc.breezeid.banking&hl=en
+104,067,DEUTSCHE BANK AG,,5,1,,Deutsche Bank Mobile,https://play.google.com/store/apps/details?id=com.db.pwcc.dbmobile&hl=en
+105,069,BANK OF CHINA (HONG KONG) LIMITED,,5,1,,BOCHK中銀香港,https://play.google.com/store/apps/details?id=com.bochk.app.aos&hl=en
+106,,DOMPET ANAK BANGSA,,4,4,,GoPay,https://play.google.com/store/apps/details?id=com.gojek.gopay&hl=id
+107,,AIRPAY INTERNATIONAL INDONESIA,,4,4,,ShopeePay,https://play.google.com/store/apps/details?id=com.shopeepay.id&hl=en
+108,,VISIONET INTERNASIONAL,,3,4,,OVO,https://play.google.com/store/apps/details?id=ovo.id&hl=en
+109,,FINTEK KARYA NUSANTARA ,,1,4,,LinkAja,https://play.google.com/store/apps/details?id=com.telkom.mwallet&hl=id&gl=id
+110,,ESPAY DEBIT INDONESIA KOE,,3,4,,Dana,https://play.google.com/store/apps/details?id=id.dana&hl=en
+111,,NUSA SATU INTI ARTHA,,3,4,,DOKU,https://play.google.com/store/apps/details?id=com.dokuwallet.android&hl=en
+112,,BANK CENTRAL ASIA.,,3,4,,Sakuku,https://play.google.com/store/apps/details?id=com.bca.sakuku&hl=en
+113,,INTI DUNIA SUKSES,,3,4,,i.saku,https://play.google.com/store/apps/details?id=com.isaku.app&hl=en
+114,,SOLUSI PASTI INDONESIA,,3,4,,KasPro,https://play.google.com/store/apps/details?id=com.psi.kaspro.app&hl=en
+115,,POS INDONESIA,,1,4,,POSPAY,https://play.google.com/store/apps/details?id=com.posindonesia.giropos&hl=en
