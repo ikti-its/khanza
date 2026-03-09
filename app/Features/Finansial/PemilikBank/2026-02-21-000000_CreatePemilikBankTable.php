@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Features\Finansial\PemilikBank;
+
+use App\Core\DatabaseTemplate;
+use App\Core\DatabaseType as T;
+
+class CreatePemilikBankTable extends DatabaseTemplate
+{
+    public function __construct(){
+        parent::__construct(
+            'finansial',
+            'pemilik_bank',
+            [
+                'id'      => T::ID8(),
+                'pemilik' => T::TEXT(),
+            ],
+            ['id'],
+            [['pemilik']],
+            [],
+            [],
+            true,
+            __DIR__ . '/pemilik_bank.csv'
+        );
+    }
+}
