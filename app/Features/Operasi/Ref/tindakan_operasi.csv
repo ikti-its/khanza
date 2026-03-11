@@ -1,0 +1,26 @@
+id_tindakan,kode_paket,nama_operasi,tarif
+1,OB01,Persalinan Normal Spontan tanpa Penyulit,3455000
+2,OB02,Persalinan Normal dengan Induksi,4680500
+3,OB03,Persalinan Pervaginam dengan Vakum Ekstraksi,6125000
+4,OB04,Sectio Caesarea (Operasi Caesar) CITO,15450500
+5,OB05,Sectio Caesarea (Operasi Caesar) Elektif,12245000
+6,OB06,Kuretase Abortus Inkomplit,4150500
+7,OB07,Histerektomi Total (Pengangkatan Rahim),25750000
+8,BD01,Appendiktomi (Operasi Usus Buntu) Terbuka,10355000
+9,BD02,Appendiktomi Laparoskopi,18455500
+10,BD03,Herniotomi + Mesh,9675500
+11,TH01,Tonsilektomi (Operasi Amandel),7680000
+12,MT01,Phacoemulsification (Operasi Katarak) + IOL,8780500
+13,OR01,ORIF Pemasangan Pen (Fraktur Femur),28450000
+14,BD04,Kolesistektomi Laparoskopi (Kantung Empedu),22890500
+15,UR01,URS + Litotripsi (Batu Saluran Kemih),15235000
+16,BD05,Haemorrhoidectomy (Operasi Wasir),7125500
+17,ON01,Mastektomi Radikal (Kanker Payudara),35650000
+18,SR01,Kraniotomi Evakuasi EDH/SDH,65800500
+19,OR02,Arthroscopy Lutut Rekonstruksi ACL,30455000
+20,UR02,Sirkumsisi Medis (Bedah Minor),2575500
+21,BD06,Eksisi Tumor Jinak / Lipoma,3120500
+22,JT01,CABG (Bypass Jantung),92450000
+23,MT02,Trabekulektomi (Operasi Glaukoma),12150000
+24,BD07,Laparotomi Eksplorasi Darurat,24560500
+25,GG01,Odontektomi (Gigi Bungsu) Impaksi,3675000
