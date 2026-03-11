@@ -1,0 +1,5 @@
+id_bromage,nama_skala,tingkat_blok,nilai,gambar
+1,Gerakan Penuh,Nihil 0%,0,
+2,Hanya Mampu Memfleksikan Lutut Dengan Gerakan Bebas Dari Kaki,Parsial 33%,1,
+3,Tidak Dapat Memfleksikan Lutut Tetapi Dapat Menggerakkan Bebas Dari Kaki,Hampir Lengkap 66%,2,
+4,Kaki Tidak Dapat Digerakkan Dan Lutut Tidak Bisa Difleksikan,Lengkap 100%,3,
