@@ -1,0 +1,5 @@
+id_status,nama_status
+1,Menunggu
+2,Proses Operasi
+3,Selesai
+4,Dibatalkan
