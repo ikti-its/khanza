@@ -5,7 +5,7 @@ namespace App\Features\Operasi\Ref;
 use App\Core\DatabaseTemplate;
 use App\Core\DatabaseType as T;
     
-class CreateRefAldretteAktivitasTable extends DatabaseTemplate
+class CreateRefBromageTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
