@@ -16,7 +16,7 @@ class CreateRefAldretteAktivitasTable extends DatabaseTemplate
             'nama_skala'   => T::TEXT(),
             'tingkat_blok' => T::TEXT(),
             'nilai'        => T::INT8(),
-            'gambar'       => T::TEXT(),
+            'gambar'       => T::TEXT()->nullable(),
         ],
         ['id_bromage'],
         [],
