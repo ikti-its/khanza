@@ -15,7 +15,7 @@ class CreateJadwalOperasiTable extends DatabaseTemplate
             'id_jadwal'          => T::ID8(),
             'id_permintaan'      => T::ID8(),
             'id_ruangan'         => T::ID8(),
-            'id_tindakan'        => T::ID8(),
+            'id_tindakan'        => T::TEXT(),
             'kode_dokter_bedah'  => T::TEXT(),
             'kode_dokter_anestesi' => T::TEXT(),
             'tanggal'            => T::DATE(),
@@ -28,7 +28,7 @@ class CreateJadwalOperasiTable extends DatabaseTemplate
         [
             [['id_permintaan'], 'operasi.permintaan_operasi', ['id_permintaan'], 'CASCADE', 'RESTRICT'],
             [['id_ruangan'], 'operasi.ref_ruangan_operasi', ['id_ruangan'], 'CASCADE', 'RESTRICT'],
-            [['id_tindakan'], 'operasi.ref_tindakan_operasi', ['id_tindakan'], 'CASCADE', 'RESTRICT'],
+            [['id_tindakan'], 'sik.jenis_tindakan_structure', ['kode'], 'CASCADE', 'RESTRICT'],
             [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['kode_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['id_status'], 'operasi.ref_status_operasi', ['id_status'], 'CASCADE', 'RESTRICT'],
