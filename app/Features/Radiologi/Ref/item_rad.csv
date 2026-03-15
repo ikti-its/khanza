@@ -1,0 +1,33 @@
+id_item,kode_periksa,nama_pemeriksaan,tarif_dasar
+1,RAD-001,Foto Thorax PA,154500
+2,RAD-002,Foto Thorax AP / Lateral,185000
+3,RAD-003,Foto Abdomen (BNO),152500
+4,RAD-004,Foto Ekstremitas Atas (Manus/Wrist/Antebrachii),128500
+5,RAD-005,Foto Ekstremitas Bawah (Pedis/Ankle/Cruris),128500
+6,RAD-006,Foto Vertebra Cervical,178000
+7,RAD-007,Foto Vertebra Thoracal/Lumbal,185500
+8,RAD-008,Foto Pelvis AP,154000
+9,RAD-009,Foto Skull (Kepala) AP / Lateral,165000
+10,RAD-010,Foto Panoramic (Gigi),175500
+11,RAD-011,USG Abdomen Atas / Bawah,215000
+12,RAD-012,USG Abdomen Whole (Lengkap),285500
+13,RAD-013,USG Obstetri (Kehamilan Dasar 2D),210500
+14,RAD-014,USG Obstetri (Kehamilan 4D),455000
+15,RAD-015,USG Mammae (Payudara),265000
+16,RAD-016,USG Thyroid / Leher,255500
+17,RAD-017,USG Urologi,225000
+18,RAD-018,CT Scan Kepala Non Kontras,785000
+19,RAD-019,CT Scan Kepala + Kontras,1150500
+20,RAD-020,CT Scan Thorax Non Kontras,875500
+21,RAD-021,CT Scan Thorax + Kontras,1355000
+22,RAD-022,CT Scan Abdomen Non Kontras,925000
+23,RAD-023,CT Scan Abdomen + Kontras,1550500
+24,RAD-024,CT Scan Pelvis,895000
+25,RAD-025,MRI Kepala Non Kontras,1585000
+26,RAD-026,MRI Kepala + Kontras,2150000
+27,RAD-027,MRI Vertebra (Cervical/Lumbal),1625500
+28,RAD-028,MRI Ekstremitas (Knee/Shoulder),1555000
+29,RAD-029,BNO IVP (Intravenous Pyelogram),485000
+30,RAD-030,Appendicogram,325500
+31,RAD-031,Mammografi Bilateral,375000
+32,RAD-032,Ekokardiografi (USG Jantung),455500
