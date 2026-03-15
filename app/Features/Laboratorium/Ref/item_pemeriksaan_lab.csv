@@ -1,0 +1,77 @@
+id_item_lab,id_kategori,kode_periksa,nama_item,tarif
+1,1,PK-001,Hematologi Darah Rutin,54500
+2,1,PK-002,Hematologi Darah Lengkap,82500
+3,1,PK-003,Golongan Darah,28500
+4,1,PK-004,CT,32500
+5,1,PK-005,BT,32500
+6,1,PK-006,MDT,45000
+7,1,PK-007,Sediaan Darah Tebal,42500
+8,1,PK-008,Urine Rutin,38500
+9,1,PK-009,Urine Lengkap,55000
+10,1,PK-010,Test Kehamilan,35500
+11,1,PK-011,SGOT,38500
+12,1,PK-012,SGPT,38500
+13,1,PK-013,Bilirubin Total,42500
+14,1,PK-014,Bilirubin Direct,42500
+15,1,PK-015,Bilirubin Indirect,42500
+16,1,PK-016,Glukosa Sewaktu,32500
+17,1,PK-017,Glukosa Puasa,32500
+18,1,PK-018,Glukosa 2 Jam PP,32500
+19,1,PK-019,Kolesterol,45000
+20,1,PK-020,Trigliserid,45000
+21,1,PK-021,HDL,48500
+22,1,PK-022,LDL,48500
+23,1,PK-023,Ureum,38500
+24,1,PK-024,Kreatinin,38500
+25,1,PK-025,Asam Urat,36500
+26,1,PK-026,Total Protein,42500
+27,1,PK-027,Albumin,42500
+28,1,PK-028,Globulin,42500
+29,1,PK-029,Elektrolit,85500
+30,1,PK-030,CKMB Massa,115000
+31,1,PK-031,HBs Ag,58500
+32,1,PK-032,Anti HBs Ag,62500
+33,1,PK-033,Widal,56500
+34,1,PK-034,Tubex,85000
+35,1,PK-035,CRP,65500
+36,1,PK-036,Dengue,115500
+37,1,PK-037,KOH,42500
+38,1,PK-038,Faeces Rutin,45500
+39,1,PK-039,Benzidin Test,42500
+40,1,PK-040,BTA,55500
+41,1,PK-041,Methamphetamine (MET),82500
+42,1,PK-042,APTT,85000
+43,1,PK-043,Kimia Darah,115000
+44,1,PK-044,NS-1,125500
+45,1,PK-045,ICT-Malaria,82500
+46,1,PK-046,HBe Ag,85500
+47,1,PK-047,Anti HBe Ag,85500
+48,1,PK-048,Anti-HAV,85500
+49,1,PK-049,Anti-HAV IgM,92500
+50,1,PK-050,Anti-HCV,95500
+51,1,PK-051,Dengue Rapid,118500
+52,1,PK-052,NAPSA,125000
+53,1,PK-053,FAAL Ginjal,112500
+54,1,PK-054,RT-PCR + Swab,275500
+55,1,PK-055,HbA1c,145500
+56,1,PK-056,D-Dimer,325000
+57,1,PK-057,TSH (Thyroid Stimulating Hormone),185000
+58,1,PK-058,Free T4,195500
+59,2,PA-001,Patologi Anatomi 1 Jaringan,215500
+60,2,PA-002,Patologi Anatomi 2 Jaringan,325000
+61,2,PA-003,Patologi Anatomi 3 Jaringan,455500
+62,2,PA-004,Histopatologi,185000
+63,2,PA-005,Histokimia,245500
+64,2,PA-006,Sitologi,165000
+65,2,PA-007,Pap Smear Konvensional,155500
+66,2,PA-008,FNAB (Fine Needle Aspiration Biopsy),245000
+67,2,PA-009,Sitologi Cairan Pleura / Asites,210500
+68,3,MB-001,Pewarnaan Gram,55500
+69,3,MB-002,Pewarnaan BTA (Ziehl-Neelsen),65000
+70,3,MB-003,Kultur Darah & Resistensi,415500
+71,3,MB-004,Kultur Urine & Resistensi,385000
+72,3,MB-005,Kultur Pus / Sekret & Resistensi,395500
+73,3,MB-006,TCM TB (Tes Cepat Molekuler),525000
+74,3,MB-007,PCR HPV (Human Papillomavirus),655500
+75,3,MB-008,Kultur Feses,355000
+76,3,MB-009,Kultur Jamur,225500
