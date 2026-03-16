@@ -107,7 +107,12 @@ class DatabaseTemplate extends Migration
 
     private function read_csv(): void
     {
-        $tmp = '/tmp/' . basename($this->source);
+        $tmp = match (getenv('platform')){
+            'windows' => $tmp = 'C:/tmp/',
+            'linux'   => $tmp = '//tmp/',
+            default   => Assert::Unreachable("Unsupported platform"),
+        };
+        $tmp .= basename($this->source);
         copy($this->source, $tmp);
 
         $this->db->query("
