@@ -1,0 +1,12 @@
+id_template,nama_template,isi_teks_ekspertise
+1,Blanko Thorax,"Klinis: ...\n\nCor: ...\n\nPulmo: ...\n\nSinus costophrenicus & Diafragma: ...\n\nSistem Tulang: ...\n\nKesan: ..."
+2,Blanko Abdomen (BNO),"Klinis: ...\n\nDistribusi udara usus: ...\n\nPsoas line & pre-peritoneal fat line: ...\n\nSistem Tulang: ...\n\nKesan: ..."
+3,Blanko Ekstremitas (Tulang),"Klinis: ...\n\nKedudukan tulang / Alignment: ...\n\nCelah Sendi: ...\n\nJaringan Lunak (Soft Tissue): ...\n\nKesan: ..."
+4,Blanko Vertebra,"Klinis: ...\n\nAlignment & Kurvatura: ...\n\nCorpus dan Discus Intervertebralis (DIV): ...\n\nPedikel dan Foramen: ...\n\nKesan: ..."
+5,Blanko Pelvis,"Klinis: ...\n\nAlignment: ...\n\nSymphysis Pubis & SI Joint: ...\n\nAcetabulum & Caput Femoris: ...\n\nKesan: ..."
+6,Blanko Skull (Kepala),"Klinis: ...\n\nTabula & Diploe: ...\n\nSutura & Vaskuler: ...\n\nSella Tursica: ...\n\nKesan: ..."
+7,Blanko USG Abdomen,"Klinis: ...\n\nHepar: ...\n\nVesica Fellea: ...\n\nLien & Pankreas: ...\n\nGinjal Kanan & Kiri: ...\n\nVesica Urinaria: ...\n\nKesan: ..."
+8,Blanko USG Obstetri,"Klinis: ...\n\nJanin (Tunggal/Gemelli, Hidup/Mati): ...\n\nPresentasi: ...\n\nBiometri (BPD, HC, AC, FL): ...\n\nPlasenta & Cairan Ketuban: ...\n\nUsia Kehamilan & Estimasi Berat Janin (EFW): ...\n\nKesan: ..."
+9,Blanko CT Scan Kepala,"Klinis: ...\n\nParenkim Otak: ...\n\nSistem Ventrikel & Sisterna: ...\n\nMidline Shift: ...\n\nTulang Calvaria: ...\n\nKesan: ..."
+10,Blanko CT Scan Thorax,"Klinis: ...\n\nParu & Pleura: ...\n\nMediastinum & Jantung: ...\n\nTrakea & Bronkus Utama: ...\n\nTulang & Dinding Dada: ...\n\nKesan: ..."
+11,Blanko MRI Kepala,"Klinis: ...\n\nIntensitas Sinyal Parenkim Otak: ...\n\nVentrikel & Ruang Subarachnoid: ...\n\nNervus Kranialis: ...\n\nStruktur Tulang & Ekstrakranial: ...\n\nKesan: ..."
