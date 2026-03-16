@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Features\Person\JenisKelamin;
 
@@ -25,6 +26,10 @@ class CreateJenisKelaminTable extends DatabaseTemplate
             ],
             ['id_jenis_kelamin'],
             [['nama_jenis_kelamin']],
+            [],
+            [],
+            true,
+            __DIR__ . '/jenis_kelamin.csv'
         );
     }
 }
