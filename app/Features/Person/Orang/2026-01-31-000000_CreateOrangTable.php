@@ -33,15 +33,16 @@ class CreateOrangTable extends DatabaseTemplate
                 'tanggal_lahir'      => T::DATE(),
             ],
             ['id_orang'],
-            unique_key: [['nik']],
-            foreign_key: [
+            [['nik']],
+            [
                 [['id_jenis_kelamin'], 'jenis_kelamin', ['id_jenis_kelamin'], 'CASCADE', 'CASCADE'],
                 [['id_agama'], 'agama', ['id_agama'], 'CASCADE', 'CASCADE'],
                 [['id_pernikahan'], 'pernikahan', ['id_pernikahan'], 'CASCADE', 'CASCADE'],
-                [['tempat_lahir_prov', 'tempat_lahir_kota'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
                 [['id_golongan_darah'], 'darah.golongan_darah', ['id_golongan_darah'], 'CASCADE', 'CASCADE'],
                 [['id_alamat'], 'lokasi.alamat', ['id_alamat'], 'CASCADE', 'CASCADE'],
-            ]
+                [['tempat_lahir_prov', 'tempat_lahir_kota'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
+            ],
+            [],
         );
     }
 }
