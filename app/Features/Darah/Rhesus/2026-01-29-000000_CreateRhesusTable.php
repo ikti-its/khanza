@@ -18,6 +18,10 @@ class CreateRhesusTable extends DatabaseTemplate
             ],
             ['id_rhesus'],
             [['kode_rhesus']],
+            [],
+            [],
+            true,
+            __DIR__ . '/rhesus.csv'
         );
     }
 }
