@@ -20,6 +20,8 @@ class CreateStatusPendonorTable extends DatabaseTemplate
             [['nama_status_pendonor']],
             [],
             [],
+            true,
+            __DIR__ . '/status_pendonor.csv'
         );
     }
 }
