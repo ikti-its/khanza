@@ -14,10 +14,10 @@ class CreateLokasiPengambilanDarahTable extends DatabaseTemplate
             'lokasi_pengambilan_darah',
             [
                 'id_lokasi_pengambilan'    => T::ID8(),
-                'nama_lokasi_pengambilan'  => T::TEXT(),
+                'nama_lokasi'              => T::TEXT(),
             ],
             ['id_lokasi_pengambilan'],
-            [['nama_lokasi_pengambilan']],
+            [['nama_lokasi']],
             [],
             [],
             true,
