@@ -14,7 +14,7 @@ class CreateShiftPengambilanDarahTable extends DatabaseTemplate
             'shift_pengambilan_darah',
             [
                 'id_shift_pengambilan'      => T::ID8(),
-                'nama_shift'    => T::TEXT(),
+                'nama_shift'                => T::TEXT(),
             ],
             ['id_shift_pengambilan'],
             [['nama_shift']],
