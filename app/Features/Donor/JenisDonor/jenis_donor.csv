@@ -1,0 +1,5 @@
+﻿id_jenis_donor,kode_jenis_donor,nama_jenis_donor
+1,DS,Donor Sukarela
+2,DP,Donor Keluarga/Pengganti
+3,DB,Donor Bayaran
+4,DPK,Donor Plasma Khusus
