@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\RawatJalan\SkriningRJ\Ref;
+namespace App\Features\RawatJalan\SkriningRJ\RefSkriningSkalaNyeri;
 
 use App\Core\DatabaseTemplate;
 use App\Core\DatabaseType as T;

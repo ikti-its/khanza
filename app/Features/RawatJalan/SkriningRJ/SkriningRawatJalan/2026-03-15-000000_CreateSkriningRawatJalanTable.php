@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\RawatJalan\SkriningRJ\Main;
+namespace App\Features\RawatJalan\SkriningRJ\SkriningRawatJalan;
 
 use App\Core\DatabaseTemplate;
 use App\Core\DatabaseType as T;
