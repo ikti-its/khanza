@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Features\Laboratorium\Mikrobiologi;
+namespace App\Features\Laboratorium\PermintaanLabPk;
 
 use App\Core\DatabaseTemplate;
 use App\Core\DatabaseType as T;
     
-class CreatePermintaanLabMikrobiologiTable extends DatabaseTemplate
+class CreatePermintaanLabKlinisTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
         'laboratorium',
-        'permintaan_lab_mb',
+        'permintaan_lab_pk',
         [
-            'id_permintaan_mb'          => T::ID32(),
+            'id_permintaan_pk'          => T::ID32(),
             'id_permintaan_lab'         => T::ID64(),
             'id_item_pemeriksaan'       => T::ID32(),
             'id_parameter_pemeriksaan'  => T::ID32(),
         ],
-        ['id_permintaan_mb'],
+        ['id_permintaan_pk'],
         [],
         [
             [['id_permintaan_lab'], 'laboratorium.permintaan_lab_header', ['id_permintaan'], 'CASCADE', 'CASCADE'],

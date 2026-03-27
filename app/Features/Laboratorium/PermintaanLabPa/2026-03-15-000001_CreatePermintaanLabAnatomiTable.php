@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\Laboratorium\Anatomi;
+namespace App\Features\Laboratorium\PermintaanLabPa;
 
 use App\Core\DatabaseTemplate;
 use App\Core\DatabaseType as T;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\Laboratorium\Ref;
+namespace App\Features\Laboratorium\RefKategoriLab;
 
 use App\Core\DatabaseTemplate;
 use App\Core\DatabaseType as T;
