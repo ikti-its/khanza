@@ -1,137 +1,467 @@
 id_parameter,id_item_lab,nama_parameter,satuan,nilai_rujukan,keterangan,biaya_item
-1,1,Hemoglobin,g/dL,L: 13-17 / P: 12-15,,54500
-2,1,Leukosit,10^3/uL,4.5-11.0,,54500
-3,1,Trombosit,10^3/uL,150-400,,54500
-4,1,Hematokrit,%,L: 40-52 / P: 36-47,,54500
-5,2,Hemoglobin,g/dL,L: 13-17 / P: 12-15,,82500
-6,2,Leukosit,10^3/uL,4.5-11.0,,82500
-7,2,Trombosit,10^3/uL,150-400,,82500
-8,2,Hematokrit,%,L: 40-52 / P: 36-47,,82500
-9,2,Eritrosit,10^6/uL,L: 4.5-5.5 / P: 4.0-5.0,,82500
-10,2,MCV,fL,80-100,,82500
-11,2,MCH,pg,27-34,,82500
-12,2,MCHC,g/dL,32-36,,82500
-13,2,Basofil,%,0-1,,82500
-14,2,Eosinofil,%,1-3,,82500
-15,2,Netrofil Batang,%,2-6,,82500
-16,2,Netrofil Segmen,%,50-70,,82500
-17,2,Limfosit,%,20-40,,82500
-18,2,Monosit,%,2-8,,82500
-19,3,Golongan Darah ABO,,-,,28500
-20,3,Rhesus,,-,Positif / Negatif,28500
-21,4,Clotting Time (CT),menit,2-6,,32500
-22,5,Bleeding Time (BT),menit,1-3,,32500
-23,8,Warna,,-,Kuning Jernih,38500
-24,8,Kejernihan,,-,Jernih,38500
-25,8,pH,,4.5-8.0,,38500
-26,8,Berat Jenis,,1.005-1.030,,38500
-27,8,Protein Urine,,-,Negatif,38500
-28,8,Glukosa Urine,,-,Negatif,38500
-29,9,Warna,,-,Kuning Jernih,55000
-30,9,Kejernihan,,-,Jernih,55000
-31,9,pH,,4.5-8.0,,55000
-32,9,Berat Jenis,,1.005-1.030,,55000
-33,9,Protein Urine,,-,Negatif,55000
-34,9,Glukosa Urine,,-,Negatif,55000
-35,9,Keton,,-,Negatif,55000
-36,9,Bilirubin Urine,,-,Negatif,55000
-37,9,Urobilinogen,,-,Normal,55000
-38,9,Nitrit,,-,Negatif,55000
-39,9,Leukosit Esterase,,-,Negatif,55000
-40,9,Sedimen Eritrosit,/LPB,< 3,,55000
-41,9,Sedimen Leukosit,/LPB,< 5,,55000
-42,9,Sedimen Epitel,,-,Positif,55000
-43,10,Test Kehamilan (HCG),,-,Negatif,35500
-44,11,SGOT (AST),U/L,L: < 35 / P: < 31,,38500
-45,12,SGPT (ALT),U/L,L: < 41 / P: < 31,,38500
-46,16,Glukosa Sewaktu,mg/dL,< 140,,32500
-47,17,Glukosa Puasa,mg/dL,70-100,Puasa 10-12 Jam,32500
-48,18,Glukosa 2 Jam PP,mg/dL,< 140,,32500
-49,19,Kolesterol Total,mg/dL,< 200,,45000
-50,20,Trigliserida,mg/dL,< 150,,45000
-51,21,HDL Kolesterol,mg/dL,> 40,,48500
-52,22,LDL Kolesterol,mg/dL,< 100,,48500
-53,23,Ureum,mg/dL,15-40,,38500
-54,24,Kreatinin,mg/dL,L: 0.9-1.3 / P: 0.6-1.1,,38500
-55,25,Asam Urat,mg/dL,L: 3.4-7.0 / P: 2.4-5.7,,36500
-56,29,Natrium (Na),mEq/L,135-145,,85500
-57,29,Kalium (K),mEq/L,3.5-5.0,,85500
-58,29,Klorida (Cl),mEq/L,98-106,,85500
-59,31,HBsAg,,-,Non-Reaktif,58500
-60,33,Salmonella Typhi O,,-,Negatif,56500
-61,33,Salmonella Typhi H,,-,Negatif,56500
-62,33,Salmonella Paratyphi A,,-,Negatif,56500
-63,33,Salmonella Paratyphi B,,-,Negatif,56500
-64,34,Tubex TF,skala,< 2,Negatif,85000
-65,35,CRP Kuantitatif,mg/L,< 5.0,,65500
-66,36,IgG Dengue,,-,Negatif,115500
-67,36,IgM Dengue,,-,Negatif,115500
-68,37,Jamur (KOH),,-,Negatif,42500
-69,38,Warna Feses,,-,Kuning Kecoklatan,45500
-70,38,Konsistensi,,-,Lembek,45500
-71,38,Eritrosit Feses,/LPB,Negatif,,45500
-72,38,Leukosit Feses,/LPB,Negatif,,45500
-73,38,Amoeba,,-,Negatif,45500
-74,38,Telur Cacing,,-,Negatif,45500
-75,39,Darah Samar (Benzidin),,-,Negatif,42500
-76,40,BTA 1 (Sewaktu),,-,Negatif,55500
-77,40,BTA 2 (Pagi),,-,Negatif,55500
-78,40,BTA 3 (Sewaktu),,-,Negatif,55500
-79,41,Methamphetamine (Urine),,-,Negatif,82500
-80,42,APTT,detik,25.0 - 35.0,,85000
-81,42,Kontrol APTT,detik,-,,85000
-82,44,NS-1 Antigen,,-,Negatif,125500
-83,45,Plasmodium Falciparum,,-,Negatif,82500
-84,45,Plasmodium Vivax,,-,Negatif,82500
-85,46,HBeAg,,-,Non-Reaktif,85500
-86,47,Anti-HBe,,-,Non-Reaktif,85500
-87,48,Anti-HAV Total,,-,Non-Reaktif,85500
-88,49,Anti-HAV IgM,,-,Non-Reaktif,92500
-89,50,Anti-HCV,,-,Non-Reaktif,95500
-90,52,Amphetamine (AMP),,-,Negatif,125000
-91,52,Cannabis (THC),,-,Negatif,125000
-92,52,Opiate (MOP),,-,Negatif,125000
-93,52,Benzodiazepine (BZO),,-,Negatif,125000
-94,54,SARS-CoV-2 (RT-PCR),,-,Negatif,275500
-95,54,CT Value (N Gene),,-,-,275500
-96,54,CT Value (ORF1ab),,-,-,275500
-97,55,HbA1c,%,< 5.7,,145500
-98,56,D-Dimer,ng/mL,< 500.0,,325000
-99,57,TSHs,uIU/mL,0.27 - 4.20,,185000
-100,58,Free T4 (FT4),ng/dL,0.93 - 1.70,,195500
-101,59,Makroskopis Jaringan,,-,-,215500
-102,59,Mikroskopis Jaringan,,-,-,215500
-103,59,Kesimpulan PA,,-,-,215500
-104,60,Makroskopis (2 Jaringan),,-,-,325000
-105,60,Mikroskopis (2 Jaringan),,-,-,325000
-106,60,Kesimpulan PA,,-,-,325000
-107,61,Makroskopis (3 Jaringan),,-,-,455500
-108,61,Mikroskopis (3 Jaringan),,-,-,455500
-109,61,Kesimpulan PA,,-,-,455500
-110,62,Makroskopis Histopatologi,,-,-,185000
-111,62,Mikroskopis Histopatologi,,-,-,185000
-112,62,Diagnosa Histopatologi,,-,-,185000
-113,64,Pemeriksaan Sitologi,,-,-,165000
-114,64,Kesimpulan Sitologi,,-,-,165000
-115,65,Kualitas Smear,,-,Adekuat,155500
-116,65,Kategori Umum (Bethesda),,-,NILM,155500
-117,65,Deskripsi Pap Smear,,-,-,155500
-118,66,Makroskopis FNAB,,-,-,245000
-119,66,Mikroskopis FNAB,,-,-,245000
-120,66,Kesimpulan FNAB,,-,-,245000
-121,68,Bakteri Gram Positif,,-,Negatif,55500
-122,68,Bakteri Gram Negatif,,-,Negatif,55500
-123,68,Epitel / Leukosit (Gram),,-,-,55500
-124,70,Hasil Kultur Darah,,-,Steril (Tidak ada pertumbuhan),415500
-125,70,Nama Bakteri,,-,-,415500
-126,70,Sensitivitas Antibiotik,,-,-,415500
-127,71,Hasil Kultur Urine,,-,Steril,385000
-128,71,Jumlah Koloni,CFU/mL,< 10^4,,385000
-129,72,Hasil Kultur Pus/Sekret,,-,Steril,395500
-130,73,MTB (Mycobacterium tb),,-,Negatif,525000
-131,73,Resistensi Rifampisin,,-,Indeterminate,525000
-132,74,HPV Tipe 16 (High Risk),,-,Negatif,655500
-133,74,HPV Tipe 18 (High Risk),,-,Negatif,655500
-134,74,HPV Other High Risk,,-,Negatif,655500
-135,75,Kultur Feses,,-,Flora Normal Usus,355000
-136,76,Hasil Kultur Jamur,,-,Negatif,225500
+1,1,G6PD Neonatus,U/gHb,> 7.0,Normal,125500
+2,2,TSH Neonatus,uIU/mL,< 20.0,Normal,185000
+3,3,ACA IgG,U/mL,< 15.0,Negatif,315500
+4,4,ACA IgM,U/mL,< 15.0,Negatif,315500
+5,5,Agregasi Trombosit (ADP),%,60 - 100,Normal,210000
+6,5,Agregasi Trombosit (Epinefrin),%,60 - 100,Normal,210000
+7,5,Agregasi Trombosit (Kolagen),%,60 - 100,Normal,210000
+8,6,Anti-Beta2-Glikoprotein 1 (IgG),U/mL,< 20.0,Negatif,325000
+9,6,Anti-Beta2-Glikoprotein 1 (IgM),U/mL,< 20.0,Negatif,325000
+10,7,APTT Pasien,detik,25.0 - 35.0,,85500
+11,7,APTT Kontrol,detik,-,,85500
+12,8,Antithrombin III (AT III),%,80 - 120,Normal,215000
+13,9,Badan Inklusi HbH,%,< 1.0,Negatif,125000
+14,10,Besi (Serum Iron),ug/dL,L: 65-175 / P: 50-170,,115500
+15,11,CD 34 Absolute,sel/uL,-,,450000
+16,11,CD 34 Persentase,%,-,,450000
+17,12,Direct Coombs Test,,-,Negatif,135500
+18,12,Indirect Coombs Test,,-,Negatif,135500
+19,13,D-Dimer,ng/mL,< 500.0,Normal,325500
+20,14,Faktor IX,%,60 - 150,,450500
+21,15,Faktor VIII,%,60 - 150,,450500
+22,16,Ferritin,ng/mL,L: 20-250 / P: 10-120,,215000
+23,17,Fibrinogen,mg/dL,200 - 400,,175500
+24,18,G6PD Darah,U/gHb,7.0 - 20.5,,125500
+25,19,Morfologi Eritrosit,,-,Normositik Normokrom,145500
+26,19,Morfologi Leukosit,,-,Jumlah dan morfologi normal,145500
+27,19,Morfologi Trombosit,,-,Jumlah normal penyebaran merata,145500
+28,19,Kesimpulan Darah Tepi,,-,-,145500
+29,20,Selularitas Sumsum Tulang,,-,Normoseluler,550000
+30,20,Sistem Eritropoiesis,,-,Normal,550000
+31,20,Sistem Granulopoiesis,,-,Normal,550000
+32,20,Sistem Megakariosit,,-,Normal,550000
+33,20,Kesimpulan BMP,,-,-,550000
+34,21,Golongan Darah ABO,,-,,35500
+35,21,Rhesus,,-,Positif / Negatif,35500
+36,22,Hemoglobin,g/dL,L: 13-17 / P: 12-15,,82500
+37,22,Leukosit,10^3/uL,4.5 - 11.0,,82500
+38,22,Trombosit,10^3/uL,150 - 400,,82500
+39,22,Hematokrit,%,L: 40-52 / P: 36-47,,82500
+40,22,Eritrosit,10^6/uL,L: 4.5-5.5 / P: 4.0-5.0,,82500
+41,22,MCV,fL,80 - 100,,82500
+42,22,MCH,pg,27 - 34,,82500
+43,22,MCHC,g/dL,32 - 36,,82500
+44,22,Basofil,%,0 - 1,,82500
+45,22,Eosinofil,%,1 - 3,,82500
+46,22,Netrofil Batang,%,2 - 6,,82500
+47,22,Netrofil Segmen,%,50 - 70,,82500
+48,22,Limfosit,%,20 - 40,,82500
+49,22,Monosit,%,2 - 8,,82500
+50,23,Hemoglobin,g/dL,L: 13-17 / P: 12-15,,54500
+51,23,Leukosit,10^3/uL,4.5 - 11.0,,54500
+52,23,Trombosit,10^3/uL,150 - 400,,54500
+53,23,Hematokrit,%,L: 40-52 / P: 36-47,,54500
+54,24,Hemoglobin,g/dL,L: 13-17 / P: 12-15,,32500
+55,25,Laju Endap Darah (LED),mm/jam,L: < 15 / P: < 20,,32500
+56,26,Interpretasi Imunofenotipe,,-,-,850000
+57,26,Kesimpulan Leukemia Phenotyping,,-,-,850000
+58,27,PRU (P2Y12 Reaction Units),PRU,< 208,,325000
+59,27,Persentase Inhibisi P2Y12,%,> 20,,325000
+60,28,ARU (Aspirin Reaction Units),ARU,< 550,,325000
+61,29,Aktivitas Protein C,%,70 - 140,,415500
+62,30,Aktivitas Protein S,%,60 - 130,,415500
+63,31,Retikulosit,%,0.5 - 1.5,,45500
+64,32,Retraksi Bekuan,%,40 - 60,,35500
+65,33,CD4 Absolut,sel/uL,410 - 1590,,525000
+66,33,CD8 Absolut,sel/uL,190 - 1140,,525000
+67,33,Rasio CD4/CD8,,-,1.0 - 2.5,,525000
+68,34,TIBC (Total Iron Binding Capacity),ug/dL,250 - 450,,135500
+69,35,Transferrin,mg/dL,200 - 360,,155500
+70,36,UIBC (Unsaturated Iron Binding Capacity),ug/dL,110 - 370,,135500
+71,37,Viskositas Darah,cP,3.5 - 5.5,,115000
+72,38,Von Willebrand Factor (vWF) Antigen,%,50 - 150,,455500
+73,39,Clotting Time (CT),menit,2 - 6,,32500
+74,40,Bleeding Time (BT) Duke,menit,1 - 3,,32500
+75,41,Bleeding Time (BT) Anak,menit,1 - 3,,32500
+76,42,PT Pasien,detik,9.8 - 12.6,,115000
+77,42,PT Kontrol,detik,-,,115000
+78,43,PT Pasien,detik,9.8 - 12.6,,125500
+79,43,PT Kontrol,detik,-,,125500
+80,43,INR,,-,0.8 - 1.2,,125500
+81,44,Thrombin Time (TT),detik,15.0 - 20.0,,115000
+82,45,Kalsium (Ca) Total,mg/dL,8.6 - 10.3,,85500
+83,46,Kalsium (Ca) Ion,mmol/L,1.15 - 1.35,,95500
+84,47,Kalsium (Ca) Urine 24 Jam,mg/24jam,100 - 300,,85500
+85,48,Klorida (Cl),mEq/L,98 - 106,,65500
+86,49,Klorida (Cl) Urine 24 Jam,mEq/24jam,110 - 250,,65500
+87,50,Fosfor Anorganik,mg/dL,2.5 - 4.5,,75500
+88,51,Fosfor Anorganik Urine 24 Jam,mg/24jam,400 - 1300,,75500
+89,52,Kalium (K),mEq/L,3.5 - 5.0,,65500
+90,53,Kalium Urine 24 Jam,mEq/24jam,25 - 125,,65500
+91,54,Magnesium (Mg),mg/dL,1.7 - 2.2,,85500
+92,55,Natrium (Na),mEq/L,135 - 145,,185500
+93,55,Kalium (K),mEq/L,3.5 - 5.0,,185500
+94,55,Klorida (Cl),mEq/L,98 - 106,,185500
+95,56,Natrium (Na),mEq/L,135 - 145,,65500
+96,57,Natrium Urine 24 Jam,mEq/24jam,40 - 220,,65500
+97,58,17-OH Progesterone,ng/dL,L: < 220 / P: < 285,,450000
+98,59,Anti Mullerian Hormone (AMH),ng/mL,1.0 - 4.0,Usia subur,655000
+99,60,Anti-Tiroglobulin (Anti-Tg),IU/mL,< 115,,285500
+100,61,Anti-TPO,IU/mL,< 34,,285500
+101,62,B-HCG Kuantitatif,mIU/mL,< 5.0,Tidak hamil,215500
+102,63,C-Peptide Puasa,ng/mL,1.1 - 4.4,,315000
+103,64,Calcitonin,pg/mL,L: < 8.4 / P: < 5.0,,355500
+104,65,Cortisol Pagi (Anak),ug/dL,5.0 - 25.0,,285000
+105,66,Free Cortisol Serum,ug/dL,0.04 - 0.45,,455500
+106,67,DHEA-S,ug/dL,35 - 430,Tergantung usia/gender,295000
+107,68,Estradiol (E2),pg/mL,L: 10-40 / P: 15-350,,315500
+108,69,Estradiol (E2) Anak,pg/mL,< 15,,315500
+109,70,Free Cortisol Urine 24 Jam,ug/24jam,4.0 - 50.0,,315500
+110,71,Free T3 (FT3),pg/mL,2.0 - 4.4,,195500
+111,72,Free T4 (FT4),ng/dL,0.93 - 1.70,,195500
+112,73,FSH,mIU/mL,L: 1.5-12.4 / P: 3.5-12.5,,225500
+113,74,Gastrin,pg/mL,13 - 115,,350000
+114,75,Anti-Gliadin IgG,U/mL,< 15,Negatif,415000
+115,75,Anti-Gliadin IgA,U/mL,< 15,Negatif,415000
+116,76,Glukosa 2 Jam PP,mg/dL,< 140,,32500
+117,77,Glukosa Puasa,mg/dL,70 - 100,Puasa 10-12 Jam,32500
+118,78,Glukosa Sewaktu,mg/dL,< 140,,32500
+119,79,Glycated Albumin,%,11.0 - 16.0,,215500
+120,80,Growth Hormone,ng/mL,L: < 3 / P: < 8,,315000
+121,81,Glukosa Puasa (GTT),mg/dL,70 - 100,,125000
+122,81,Glukosa Jam ke-1 (GTT),mg/dL,< 200,,125000
+123,81,Glukosa Jam ke-2 (GTT),mg/dL,< 140,,125000
+124,82,HbA1c,%,< 5.7,,145500
+125,83,IGF-1 (Somatomedin C),ng/mL,115 - 307,,355500
+126,84,Insulin Autoantibody (IAA),U/mL,< 0.4,Negatif,415500
+127,85,Insulin Puasa,uIU/mL,2.6 - 24.9,,225000
+128,86,Insulin Sewaktu,uIU/mL,2.6 - 24.9,,225000
+129,87,Islet Cell Antibody (ICA),JDF units,< 5.0,Negatif,525000
+130,88,Luteinizing Hormone (LH),mIU/mL,L: 1.7-8.6 / P: 2.4-12.6,,225500
+131,89,MS AFP (Maternal Serum AFP),ng/mL,10 - 150,Sesuai Usia Kehamilan,285000
+132,90,Progesteron,ng/mL,L: < 0.2 / P: 1.5-20.0,,295500
+133,91,Prolactin,ng/mL,L: 4-15 / P: 5-25,,215500
+134,92,PTH Intact,pg/mL,15 - 65,,385500
+135,93,sFlt-1,pg/mL,-,,850000
+136,93,PlGF,pg/mL,-,,850000
+137,93,Rasio sFlt-1/PlGF,,-,< 38,Normal,850000
+138,94,SHBG,nmol/L,L: 16-55 / P: 24-120,,285500
+139,95,T3 (Total),ng/dL,80 - 200,,175500
+140,96,T4 (Total),ug/dL,4.5 - 12.0,,175500
+141,97,Tes Kehamilan (HCG Urine),,-,Negatif,35500
+142,98,Testosteron Total,ng/dL,L: 280-1100 / P: 15-70,,310500
+143,99,Testosteron Total,ng/dL,L: 280-1100 / P: 15-70,,455000
+144,99,Testosteron Free,pg/mL,L: 35-155 / P: 1-5,,455000
+145,100,Tiroglobulin (Tg),ng/mL,1.4 - 78.0,,295000
+146,101,TRAb (TSH Receptor Antibody),IU/L,< 1.75,Negatif,415500
+147,102,TSHs (TSH Sensitive),uIU/mL,0.27 - 4.20,,185000
+148,103,Darah Samar (Benzidin),,-,Negatif,42500
+149,104,Warna Feses,,-,Kuning Kecoklatan,45500
+150,104,Konsistensi,,-,Lembek,45500
+151,104,Eritrosit Feses,/LPB,< 2,,45500
+152,104,Leukosit Feses,/LPB,< 5,,45500
+153,104,Amoeba/Kista,,-,Negatif,45500
+154,104,Telur Cacing,,-,Negatif,45500
+155,105,Skor Mikrobioma Usus,Skor,> 70,Baik,850000
+156,105,Bakteri Patogen,,-,Negatif,850000
+157,106,Hasil Karyotyping,,-,46 XX / 46 XY,Normal,1250000
+158,107,Alel APOE,,-,e3/e3,Risiko Standar,1455000
+159,108,Genotipe CYP2C19,,-,Extensive Metabolizer,Normal,1255000
+160,109,Panjang Telomer Rata-rata,kb,-,Normal sesuai usia,1850000
+161,110,Genotipe CYP2C9,,-,Normal Metabolizer,,1550000
+162,110,Genotipe VKORC1,,-,Normal Sensitivity,,1550000
+163,111,Volume Urine 24 Jam,mL,-,,125500
+164,111,Albumin Urine Kuantitatif,mg/24jam,< 30.0,,125500
+165,112,ACE (Angiotensin Converting Enzyme),U/L,8 - 52,,285500
+166,113,Asam Urat Serum,mg/dL,L: 3.4-7.0 / P: 2.4-5.7,,36500
+167,114,Volume Urine 24 Jam,mL,-,,36500
+168,114,Asam Urat Urine 24 Jam,mg/24jam,250 - 750,,36500
+169,115,Cystatin-C,mg/L,0.53 - 0.95,,215500
+170,116,Kreatinin Serum,mg/dL,L: 0.9-1.3 / P: 0.6-1.1,,38500
+171,117,Volume Urine 24 Jam,mL,-,,75500
+172,117,Kreatinin Serum (CCT),mg/dL,-,,75500
+173,117,Kreatinin Urine (CCT),mg/dL,-,,75500
+174,117,Kreatinin Clearance (CCT),mL/menit,75 - 125,,75500
+175,118,Kreatinin Urine Sewaktu,mg/dL,39 - 259,,38500
+176,119,Volume Urine 24 Jam,mL,-,,75500
+177,119,Kreatinin Urine 24 Jam,mg/24jam,1000 - 2000,,75500
+178,120,Renin Activity Plasma (PRA),ng/mL/jam,0.2 - 3.3,,550000
+179,121,BUN (Blood Urea Nitrogen),mg/dL,7 - 20,,38500
+180,122,Volume Urine 24 Jam,mL,-,,38500
+181,122,Urea N Urine 24 Jam,g/24jam,12 - 20,,38500
+182,123,Ureum,mg/dL,15 - 40,,38500
+183,124,Volume Urine 24 Jam,mL,-,,315500
+184,124,VMA Urine 24 Jam,mg/24jam,2 - 7,,315500
+185,125,Albumin Serum,g/dL,3.5 - 5.2,,42500
+186,126,Anti-HAV IgG,,-,Non-Reaktif,185500
+187,127,Anti-HAV IgM,,-,Non-Reaktif,215000
+188,128,Anti-HBc Total,,-,Non-Reaktif,195500
+189,129,Anti-HBc IgM,,-,Non-Reaktif,225000
+190,130,Anti-HBe,,-,Non-Reaktif,195500
+191,131,Anti-HBs,IU/L,< 10.0,Non-Reaktif,115500
+192,132,Anti-HBs (Pasca Vaksinasi),IU/L,> 10.0,Protektif,125000
+193,133,Anti-HCV,,-,Non-Reaktif,195500
+194,134,Bilirubin Direk,mg/dL,< 0.3,,42500
+195,135,Bilirubin Total,mg/dL,0.1 - 1.2,,42500
+196,136,Cholinesterase (CHE),U/L,5320 - 12920,,75500
+197,137,Alkali Fosfatase (ALP),U/L,42 - 128,,55500
+198,138,Gamma GT (GGT),U/L,L: < 60 / P: < 40,,55500
+199,139,SGOT (AST),U/L,L: < 35 / P: < 31,,38500
+200,140,SGPT (ALT),U/L,L: < 41 / P: < 31,,38500
+201,141,HBeAg,,-,Non-Reaktif,185500
+202,142,HBsAg Kualitatif,,-,Non-Reaktif,58500
+203,143,HBsAg Kuantitatif,IU/mL,< 0.05,Non-Reaktif,215500
+204,144,Prealbumin,mg/dL,20 - 40,,185000
+205,145,Total Protein,g/dL,6.6 - 8.7,,42500
+206,146,Anti-Mitochondrial Antibody (AMA),,-,Negatif,355000
+207,146,Anti-Smooth Muscle Antibody (ASMA),,-,Negatif,355000
+208,147,ANA (IF) Titer,Titer,< 1:100,Negatif,415500
+209,147,ANA (IF) Pattern,,-,-,415500
+210,148,Interpretasi ANA Profile,,-,Negatif,755000
+211,149,AChR Binding Antibody,nmol/L,<= 0.4,Negatif,525000
+212,150,Anti-CCP IgG,U/mL,< 20.0,Negatif,385500
+213,151,Anti-dsDNA-NcX,IU/mL,< 100,Negatif,415000
+214,152,ASTO (ASO) Kualitatif,IU/mL,< 200,Negatif,85500
+215,153,C3 Komplemen,mg/dL,90 - 180,,215500
+216,154,C4 Komplemen,mg/dL,10 - 40,,215500
+217,155,CRP Kualitatif,,-,Negatif,65500
+218,156,Eosinofil Absolut,sel/uL,50 - 300,,45500
+219,157,Interpretasi Panel Atopi (Indonesia),,-,-,855000
+220,158,Interpretasi Panel Atopi (Pediatri),,-,-,855000
+221,159,IgE Aspergillus fumigatus,kU/A,< 0.35,Kelas 0 (Negatif),155000
+222,160,IgE Cokelat,kU/A,< 0.35,Kelas 0 (Negatif),155000
+223,161,IgE Daging Ayam,kU/A,< 0.35,Kelas 0 (Negatif),155000
+224,162,IgE Debu Rumah,kU/A,< 0.35,Kelas 0 (Negatif),155000
+225,163,IgE Epitel Anjing,kU/A,< 0.35,Kelas 0 (Negatif),155000
+226,164,IgE Epitel Kucing,kU/A,< 0.35,Kelas 0 (Negatif),155000
+227,165,IgE Epitel Tikus,kU/A,< 0.35,Kelas 0 (Negatif),155000
+228,166,IgE Ikan Kod,kU/A,< 0.35,Kelas 0 (Negatif),155000
+229,167,IgE Jamur Penicillin,kU/A,< 0.35,Kelas 0 (Negatif),155000
+230,168,IgE Kacang Tanah,kU/A,< 0.35,Kelas 0 (Negatif),155000
+231,169,IgE Kapuk,kU/A,< 0.35,Kelas 0 (Negatif),155000
+232,170,IgE Kecoa,kU/A,< 0.35,Kelas 0 (Negatif),155000
+233,171,IgE Kepiting,kU/A,< 0.35,Kelas 0 (Negatif),155000
+234,172,IgE Kerang Tiram,kU/A,< 0.35,Kelas 0 (Negatif),155000
+235,173,IgE Kuning Telur,kU/A,< 0.35,Kelas 0 (Negatif),155000
+236,174,IgE Putih Telur,kU/A,< 0.35,Kelas 0 (Negatif),155000
+237,175,IgE Susu Sapi,kU/A,< 0.35,Kelas 0 (Negatif),155000
+238,176,IgE Tungau Debu Rumah,kU/A,< 0.35,Kelas 0 (Negatif),155000
+239,177,IgE Udang,kU/A,< 0.35,Kelas 0 (Negatif),155000
+240,178,IgE Total,IU/mL,< 100,,215500
+241,179,Interpretasi IgG Food Sensitivity,,-,-,1850000
+242,180,Rheumatoid Factor (RF),IU/mL,< 14,Negatif,85500
+243,181,Sel-LE,,-,Negatif,125500
+244,182,Interpretasi Systemic Sclerosis,,-,-,850000
+245,183,Anti Leptospira IgM,,-,Negatif,185500
+246,184,Anti SARS-CoV-2 IgG Kuantitatif,AU/mL,< 50.0,Non-Reaktif,215000
+247,185,Anti-Amoeba,,-,Negatif,175500
+248,186,Anti-Chikungunya IgM,,-,Negatif,195000
+249,187,Anti-Chlamydia trachomatis IgG,,-,Negatif,215500
+250,188,Anti-Chlamydia trachomatis IgM,,-,Negatif,215500
+251,189,Anti-Dengue IgG,,-,Negatif,215000
+252,189,Anti-Dengue IgM,,-,Negatif,215000
+253,190,Anti-EBV EA IgM,,-,Negatif,285000
+254,191,Anti-H. Pylori IgG,,-,Negatif,225500
+255,192,Anti-HIV (EIA),,-,Non-Reaktif,175500
+256,193,Tubex TF (Salmonella typhi IgM),Skala,<= 2,Negatif,125000
+257,194,Chlamydia Antibody Panel IgG,,-,Negatif,415500
+258,195,C. Difficile GDH Antigen,,-,Negatif,355000
+259,195,C. Difficile Toksin A/B,,-,Negatif,355000
+260,196,C. Difficile GDH Antigen,,-,Negatif,185500
+261,197,C. Difficile Toksin A/B,,-,Negatif,215000
+262,198,CMV-DNA (Kuantitatif PCR),kopi/mL,Tidak Terdeteksi,,855000
+263,199,Chlamydia trachomatis DNA,,-,Tidak Terdeteksi,755500
+264,199,Neisseria gonorrhoeae DNA,,-,Tidak Terdeteksi,755500
+265,200,Dengue NS1 Antigen,,-,Negatif,135500
+266,201,Dengue Virus RNA,,-,Tidak Terdeteksi,650000
+267,202,HBV-DNA Kuantitatif,IU/mL,Tidak Terdeteksi,,925000
+268,203,HCV-RNA Kuantitatif,IU/mL,Tidak Terdeteksi,,985000
+269,204,HIV-1-RNA Kuantitatif,kopi/mL,Tidak Terdeteksi,,985000
+270,205,H. pylori Stool Antigen (HpSA),,-,Negatif,215000
+271,206,HPV Tipe 16 (High Risk),,-,Negatif,655500
+272,206,HPV Tipe 18 (High Risk),,-,Negatif,655500
+273,206,HPV Other High Risk,,-,Negatif,655500
+274,207,Plasmodium falciparum,,-,Negatif,55500
+275,207,Plasmodium vivax,,-,Negatif,55500
+276,208,Mikrofilaria,,-,Negatif,55500
+277,209,Mycoplasma pneumoniae IgM,,-,Negatif,215500
+278,210,Mycoplasma pneumoniae IgG,,-,Negatif,215500
+279,211,Procalcitonin (PCT),ng/mL,< 0.05,,425500
+280,212,Rotavirus Antigen Feses,,-,Negatif,185000
+281,213,Anti-Pneumococcus IgG,ug/mL,> 1.3,Protektif,550000
+282,214,TPHA Kualitatif,,-,Non-Reaktif,85500
+283,214,TPHA Titer,Titer,-,,85500
+284,215,UBT H. pylori,,-,Negatif,450000
+285,216,VDRL Kualitatif,,-,Non-Reaktif,75500
+286,216,VDRL Titer,Titer,-,,75500
+287,217,S. Typhi O,Titer,< 1/160,,56500
+288,217,S. Typhi H,Titer,< 1/160,,56500
+289,217,S. Paratyphi A,Titer,< 1/160,,56500
+290,217,S. Paratyphi B,Titer,< 1/160,,56500
+291,218,Adiponektin,ug/mL,5.0 - 25.0,,315000
+292,219,ADMA,umol/L,0.3 - 0.7,,450000
+293,219,SDMA,umol/L,0.3 - 0.7,,450000
+294,220,Apolipoprotein A1 (Apo-A1),mg/dL,110 - 205,,145000
+295,221,Apolipoprotein B (Apo-B),mg/dL,55 - 130,,145000
+296,222,Kolesterol HDL,mg/dL,> 40,,48500
+297,223,Kolesterol LDL Direk,mg/dL,< 100,,75500
+298,224,Kolesterol Total,mg/dL,< 200,,45000
+299,225,Creatine Kinase (CK / CPK),U/L,L: 39-308 / P: 26-192,,125500
+300,226,CK-MB (Massa),ng/mL,< 5.0,,185500
+301,227,Homocysteine,umol/L,5.0 - 15.0,,315500
+302,228,hs-Troponin I (Kuantitatif),ng/L,L: < 34 / P: < 14,,285500
+303,229,LDH (Lactate Dehydrogenase),U/L,140 - 280,,115000
+304,230,Lipoprotein(a) / Lp(a),mg/dL,< 30,,185500
+305,231,NT-Pro BNP,pg/mL,< 125,Gagal Jantung: > 450,455500
+306,232,Trigliserida,mg/dL,< 150,,45000
+307,233,Anti-CMV IgG,IU/mL,< 6.0,Non-Reaktif,215000
+308,234,Anti-CMV IgM,Index,< 0.85,Non-Reaktif,215000
+309,235,Anti-HSV1 IgG,Index,< 0.9,Non-Reaktif,215000
+310,236,Anti-HSV1 IgM,Index,< 0.9,Non-Reaktif,215000
+311,237,Anti-HSV2 IgG,Index,< 0.9,Non-Reaktif,215000
+312,238,Anti-HSV2 IgM,Index,< 0.9,Non-Reaktif,215000
+313,239,Anti-Rubella IgG,IU/mL,< 10.0,Non-Reaktif,215000
+314,240,Anti-Rubella IgM,Index,< 0.8,Non-Reaktif,215000
+315,241,Anti-Toxoplasma IgG,IU/mL,< 4.0,Non-Reaktif,215000
+316,242,Anti-Toxoplasma IgM,Index,< 0.8,Non-Reaktif,215000
+317,243,Antibodi Sperma (ASA),Titer,< 1:32,Negatif,285500
+318,244,Aviditas Anti-CMV IgG,%,> 60,High Avidity,315000
+319,245,Aviditas Anti-Toxoplasma IgG,%,> 60,High Avidity,315000
+320,246,Toxoplasma IgA Antibody,Index,< 0.8,Non-Reaktif,255500
+321,247,Jamur Mikroskopis (KOH),,-,Negatif,55500
+322,248,Hasil Kultur Jamur,,-,Tidak ada pertumbuhan jamur,225500
+323,248,Identifikasi Spesies Jamur,,-,-,225500
+324,249,Hasil Kultur Anaerob,,-,Steril (Tidak ada pertumbuhan),455000
+325,249,Nama Bakteri Anaerob,,-,-,455000
+326,249,Sensitivitas Antibiotik Anaerob,,-,-,455000
+327,250,Hasil Kultur Cairan Tubuh,,-,Steril,395500
+328,250,Nama Bakteri,,-,-,395500
+329,250,Sensitivitas Antibiotik,,-,-,395500
+330,251,Hasil Kultur Darah,,-,Steril (Tidak ada pertumbuhan),415500
+331,251,Nama Bakteri,,-,-,415500
+332,251,Sensitivitas Antibiotik,,-,-,415500
+333,252,Hasil Kultur Feses,,-,Flora Normal Usus,355000
+334,252,Bakteri Patogen,,-,Negatif,355000
+335,252,Sensitivitas Antibiotik,,-,-,355000
+336,253,Hasil Kultur Gall,,-,Steril,385000
+337,253,Nama Bakteri,,-,-,385000
+338,253,Sensitivitas Antibiotik,,-,-,385000
+339,254,Neisseria gonorrhoeae,,-,Negatif,355000
+340,255,Hasil Kultur,,-,Steril,355000
+341,255,Nama Bakteri,,-,-,355000
+342,255,Sensitivitas Antibiotik,,-,-,355000
+343,256,Hasil Kultur Swab Rektal,,-,Flora Normal,355000
+344,256,Bakteri Patogen (VRE/MRSA),,-,Negatif,355000
+345,257,Hasil Kultur Urine,,-,Steril (< 10^4 CFU/mL),385000
+346,257,Jumlah Koloni,CFU/mL,-,,385000
+347,257,Nama Bakteri,,-,-,385000
+348,257,Sensitivitas Antibiotik,,-,-,385000
+349,258,Vibrio cholerae,,-,Negatif,385000
+350,259,Bakteri Gram Positif,,-,Negatif,55500
+351,259,Bakteri Gram Negatif,,-,Negatif,55500
+352,259,Epitel / Leukosit,,-,-,55500
+353,260,Clue Cells,,-,Negatif,55500
+354,260,Lactobacillus (Flora Normal),,-,Positif Dominan,55500
+355,260,Bakteri Patogen (BV),,-,Negatif,55500
+356,261,Trichomonas vaginalis,,-,Negatif,55500
+357,262,Kadar Carbamazepin,ug/mL,4.0 - 12.0,Rentang Terapeutik,325500
+358,263,Kadar Cyclosporin,ng/mL,100 - 400,Rentang Terapeutik,450000
+359,264,Kadar Digoxin,ng/mL,0.8 - 2.0,Rentang Terapeutik,315000
+360,265,Kadar Lithium,mEq/L,0.6 - 1.2,Rentang Terapeutik,285500
+361,266,Kadar Phenobarbital,ug/mL,15.0 - 40.0,Rentang Terapeutik,325500
+362,267,Kadar Phenytoin,ug/mL,10.0 - 20.0,Rentang Terapeutik,325500
+363,268,Kadar Tacrolimus,ng/mL,5.0 - 20.0,Rentang Terapeutik,450000
+364,269,Kadar Theophyllin,ug/mL,10.0 - 20.0,Rentang Terapeutik,315500
+365,270,Kadar Valproic Acid,ug/mL,50.0 - 100.0,Rentang Terapeutik,350000
+366,271,ADA Ascites,U/L,< 40,,285000
+367,272,ADA Cairan Pleura,U/L,< 40,,285000
+368,273,ADA Cairan Otak (CSF),U/L,< 9,,285000
+369,274,BTA 1 (Sewaktu),,-,Negatif,55500
+370,274,BTA 2 (Pagi),,-,Negatif,55500
+371,274,BTA 3 (Sewaktu),,-,Negatif,55500
+372,275,Amylase Pancreatic,U/L,13 - 53,,115000
+373,276,Fecal Calprotectin,ug/g,< 50,,385500
+374,277,Lipase,U/L,13 - 60,,125500
+375,278,Beta 2-Microglobulin,mg/L,0.8 - 2.2,,215000
+376,279,Ceruloplasmin,mg/dL,20 - 60,,285500
+377,280,Free Light Chain Kappa,mg/L,3.3 - 19.4,,450000
+378,280,Free Light Chain Lambda,mg/L,5.7 - 26.3,,450000
+379,280,Rasio Kappa/Lambda,,-,0.26 - 1.65,,450000
+380,281,hs-CRP,mg/L,< 3.0,,145500
+381,282,IgA,mg/dL,70 - 400,,185000
+382,283,IgG,mg/dL,700 - 1600,,185000
+383,284,IgM,mg/dL,40 - 230,,185000
+384,285,Hasil Immunotyping,,-,-,550000
+385,286,Imunofiksasi Serum,,-,-,650000
+386,287,Imunofiksasi Urine,,-,-,650000
+387,288,Interleukin 6 (IL-6),pg/mL,< 7.0,,485500
+388,289,Albumin (Elektroforesis),%,55.0 - 65.0,,450000
+389,289,Alpha-1 Globulin,%,2.0 - 5.0,,450000
+390,289,Alpha-2 Globulin,%,7.0 - 13.0,,450000
+391,289,Beta-1 Globulin,%,4.0 - 8.0,,450000
+392,289,Beta-2 Globulin,%,2.0 - 6.0,,450000
+393,289,Gamma Globulin,%,10.0 - 20.0,,450000
+394,289,Rasio Albumin/Globulin,,-,-,450000
+395,289,Kesimpulan Elektroforesis,,-,-,450000
+396,290,Pita Monoklonal (M-Spike),,-,-,450000
+397,290,Kesimpulan Elektroforesis Gel,,-,-,450000
+398,291,CTx (C-Telopeptide),ng/mL,L: < 0.584 / P: < 0.573,,315000
+399,292,N-MID Osteocalcin,ng/mL,L: 14-42 / P: 11-43,,315000
+400,293,AFP (Alpha-Fetoprotein),ng/mL,< 10.0,,245500
+401,294,Anti-EBV EA IgA,Index,< 0.8,Negatif,285000
+402,295,Anti-EBV VCA IgA,Index,< 0.8,Negatif,285000
+403,296,BCR-ABL (Kualitatif PCR),,-,Tidak Terdeteksi,1250000
+404,297,BCR-ABL Kuantitatif p210,%,Tidak Terdeteksi,,1850000
+405,298,CA 125,U/mL,< 35,,285000
+406,299,CA 15-3,U/mL,< 31,,285000
+407,300,CA 19-9,U/mL,< 37,,285000
+408,301,CA 72-4,U/mL,< 6.9,,285000
+409,302,CEA (Carcinoembryonic Antigen),ng/mL,< 5.0,,245500
+410,303,Cyfra 21-1,ng/mL,< 3.3,,315000
+411,304,Free PSA,ng/mL,-,,285500
+412,305,HE4,pmol/L,< 140,,355000
+413,306,Mutasi EGFR,,-,Tidak Terdeteksi,1855000
+414,307,Mutasi JAK2V617F,,-,Tidak Terdeteksi,1855000
+415,308,NSE (Neuron Specific Enolase),ng/mL,< 16.3,,315000
+416,309,PIVKA-II,mAU/mL,< 40,,450000
+417,310,PSA Total,ng/mL,< 4.0,,265500
+418,311,Nilai ROMA (Pre-menopause),%,< 11.4,,550000
+419,311,Nilai ROMA (Post-menopause),%,< 29.9,,550000
+420,312,SCC Antigen,ng/mL,< 2.0,,315500
+421,313,Volume Urine 24 Jam,mL,-,,85500
+422,313,Protein Total Urine 24 Jam,mg/24jam,< 150,,85500
+423,314,Protein Urine Sewaktu,mg/dL,< 15,,55500
+424,315,Warna,,-,Kuning,38500
+425,315,Kejernihan,,-,Jernih,38500
+426,315,Berat Jenis (BJ),,-,1.005 - 1.030,38500
+427,315,pH,,-,4.5 - 8.0,38500
+428,315,Leukosit Esterase,,-,Negatif,38500
+429,315,Nitrit,,-,Negatif,38500
+430,315,Protein,,-,Negatif,38500
+431,315,Glukosa,,-,Negatif,38500
+432,315,Keton,,-,Negatif,38500
+433,315,Urobilinogen,,-,Normal,38500
+434,315,Bilirubin,,-,Negatif,38500
+435,315,Darah / Eritrosit,,-,Negatif,38500
+436,315,Sedimen Eritrosit,/LPB,< 3,38500
+437,315,Sedimen Leukosit,/LPB,< 5,38500
+438,315,Sedimen Epitel,/LPK,Positif (+),38500
+439,315,Sedimen Kristal,,-,Negatif,38500
+440,315,Sedimen Silinder,,-,Negatif,38500
+441,315,Sedimen Bakteri,,-,Negatif,38500
+442,316,Hasil Amino Profile-Metabolic,,-,-,850000
+443,317,Hasil Amino Profile-Nutrition,,-,-,850000
+444,318,Asam Folat Serum,ng/mL,3.1 - 17.5,,285000
+445,319,Kadmium (Cd) Darah,ug/L,< 5.0,,315000
+446,320,Kobalt (Co) Plasma,ug/L,< 1.0,,315000
+447,321,Tembaga (Cu) Plasma,ug/dL,70 - 140,,315000
+448,322,Hasil Profil Asam Lemak,,-,-,1250000
+449,323,Besi (Fe) Plasma,ug/dL,L: 65-175 / P: 50-170,,115000
+450,324,Merkuri (Hg) Darah,ug/L,< 10.0,,350000
+451,325,Mangan (Mn) Plasma,ug/L,< 2.0,,315000
+452,326,Hasil Omega PROfile,,-,-,850000
+453,327,Hasil Panel Nutrisi dan Logam Berat,,-,-,1550000
+454,328,Hasil Panel Nutrisi & Logam Berat (Plasma/WB),,-,-,1850000
+455,329,Hasil Panel Nutrisi Plasma,,-,-,1250000
+456,330,Hasil Panel Toksik (Plasma/WB),,-,-,1850000
+457,331,Hasil Panel Toksik Urine,,-,-,1550000
+458,332,Vitamin B1,ug/L,2.0 - 5.0,,850000
+459,332,Vitamin B6,ug/L,5.0 - 50.0,,850000
+460,333,Timbal (Pb) Darah,ug/dL,< 5.0,,350000
+461,334,Selenium (Se) Plasma,ug/L,70 - 150,,315000
+462,335,Vitamin A,ug/dL,30 - 65,,550000
+463,335,Vitamin E,mg/L,5.5 - 17.0,,550000
+464,336,Vitamin B12,pg/mL,200 - 900,,285000
+465,337,Vitamin D 25-OH Total,ng/mL,30.0 - 100.0,Sufficiency,385000
+466,338,Zinc (Zn) Plasma,ug/dL,70 - 120,,315000
