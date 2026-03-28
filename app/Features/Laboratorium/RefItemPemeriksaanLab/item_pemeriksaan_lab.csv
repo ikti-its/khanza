@@ -1,77 +1,373 @@
 id_item_lab,id_kategori,kode_periksa,nama_item,tarif
-1,1,PK-001,Hematologi Darah Rutin,54500
-2,1,PK-002,Hematologi Darah Lengkap,82500
-3,1,PK-003,Golongan Darah,28500
-4,1,PK-004,CT,32500
-5,1,PK-005,BT,32500
-6,1,PK-006,MDT,45000
-7,1,PK-007,Sediaan Darah Tebal,42500
-8,1,PK-008,Urine Rutin,38500
-9,1,PK-009,Urine Lengkap,55000
-10,1,PK-010,Test Kehamilan,35500
-11,1,PK-011,SGOT,38500
-12,1,PK-012,SGPT,38500
-13,1,PK-013,Bilirubin Total,42500
-14,1,PK-014,Bilirubin Direct,42500
-15,1,PK-015,Bilirubin Indirect,42500
-16,1,PK-016,Glukosa Sewaktu,32500
-17,1,PK-017,Glukosa Puasa,32500
-18,1,PK-018,Glukosa 2 Jam PP,32500
-19,1,PK-019,Kolesterol,45000
-20,1,PK-020,Trigliserid,45000
-21,1,PK-021,HDL,48500
-22,1,PK-022,LDL,48500
-23,1,PK-023,Ureum,38500
-24,1,PK-024,Kreatinin,38500
-25,1,PK-025,Asam Urat,36500
-26,1,PK-026,Total Protein,42500
-27,1,PK-027,Albumin,42500
-28,1,PK-028,Globulin,42500
-29,1,PK-029,Elektrolit,85500
-30,1,PK-030,CKMB Massa,115000
-31,1,PK-031,HBs Ag,58500
-32,1,PK-032,Anti HBs Ag,62500
-33,1,PK-033,Widal,56500
-34,1,PK-034,Tubex,85000
-35,1,PK-035,CRP,65500
-36,1,PK-036,Dengue,115500
-37,1,PK-037,KOH,42500
-38,1,PK-038,Faeces Rutin,45500
-39,1,PK-039,Benzidin Test,42500
-40,1,PK-040,BTA,55500
-41,1,PK-041,Methamphetamine (MET),82500
-42,1,PK-042,APTT,85000
-43,1,PK-043,Kimia Darah,115000
-44,1,PK-044,NS-1,125500
-45,1,PK-045,ICT-Malaria,82500
-46,1,PK-046,HBe Ag,85500
-47,1,PK-047,Anti HBe Ag,85500
-48,1,PK-048,Anti-HAV,85500
-49,1,PK-049,Anti-HAV IgM,92500
-50,1,PK-050,Anti-HCV,95500
-51,1,PK-051,Dengue Rapid,118500
-52,1,PK-052,NAPSA,125000
-53,1,PK-053,FAAL Ginjal,112500
-54,1,PK-054,RT-PCR + Swab,275500
-55,1,PK-055,HbA1c,145500
-56,1,PK-056,D-Dimer,325000
-57,1,PK-057,TSH (Thyroid Stimulating Hormone),185000
-58,1,PK-058,Free T4,195500
-59,2,PA-001,Patologi Anatomi 1 Jaringan,215500
-60,2,PA-002,Patologi Anatomi 2 Jaringan,325000
-61,2,PA-003,Patologi Anatomi 3 Jaringan,455500
-62,2,PA-004,Histopatologi,185000
-63,2,PA-005,Histokimia,245500
-64,2,PA-006,Sitologi,165000
-65,2,PA-007,Pap Smear Konvensional,155500
-66,2,PA-008,FNAB (Fine Needle Aspiration Biopsy),245000
-67,2,PA-009,Sitologi Cairan Pleura / Asites,210500
-68,3,MB-001,Pewarnaan Gram,55500
-69,3,MB-002,Pewarnaan BTA (Ziehl-Neelsen),65000
-70,3,MB-003,Kultur Darah & Resistensi,415500
-71,3,MB-004,Kultur Urine & Resistensi,385000
-72,3,MB-005,Kultur Pus / Sekret & Resistensi,395500
-73,3,MB-006,TCM TB (Tes Cepat Molekuler),525000
-74,3,MB-007,PCR HPV (Human Papillomavirus),655500
-75,3,MB-008,Kultur Feses,355000
-76,3,MB-009,Kultur Jamur,225500
+1,1,PK-001,G6PD Neonatus,125500
+2,1,PK-002,TSH Neonatus,185000
+3,1,PK-003,ACA IgG,315500
+4,1,PK-004,ACA IgM,315500
+5,1,PK-005,Agregasi Trombosit,210000
+6,1,PK-006,Anti-Beta2-Glikoprotein 1,325000
+7,1,PK-007,APTT,85500
+8,1,PK-008,AT III,215000
+9,1,PK-009,Badan Inklusi HbH,125000
+10,1,PK-010,Besi,115500
+11,1,PK-011,CD 34,450000
+12,1,PK-012,Coombs' Test,135500
+13,1,PK-013,D-Dimer,325500
+14,1,PK-014,Faktor IX,450500
+15,1,PK-015,Faktor VIII,450500
+16,1,PK-016,Ferritin,215000
+17,1,PK-017,Fibrinogen,175500
+18,1,PK-018,G6PD,125500
+19,1,PK-019,Gambaran Darah Tepi,145500
+20,1,PK-020,Gambaran Sumsum Tulang,550000
+21,1,PK-021,Golongan Darah A B O dan Rhesus,35500
+22,1,PK-022,Hematologi Lengkap,82500
+23,1,PK-023,Hematologi Rutin,54500
+24,1,PK-024,Hemoglobin,32500
+25,1,PK-025,LED,32500
+26,1,PK-026,Leukemia Phenotyping,850000
+27,1,PK-027,Platelet Function Test Anti P2Y12,325000
+28,1,PK-028,Platelet Function Test Aspirin,325000
+29,1,PK-029,Protein C,415500
+30,1,PK-030,Protein S,415500
+31,1,PK-031,Retikulosit,45500
+32,1,PK-032,Retraksi Bekuan,35500
+33,1,PK-033,Subtipe Limfosit (CD4 & CD8),525000
+34,1,PK-034,TIBC,135500
+35,1,PK-035,Transferrin,155500
+36,1,PK-036,UIBC,135500
+37,1,PK-037,Viskositas Darah,115000
+38,1,PK-038,Von Willebrand Factor Antigen,455500
+39,1,PK-039,Waktu Pembekuan,32500
+40,1,PK-040,Waktu Perdarahan,32500
+41,1,PK-041,Waktu Perdarahan (Anak),32500
+42,1,PK-042,Waktu Protrombin,115000
+43,1,PK-043,Waktu Protrombin + INR,125500
+44,1,PK-044,Waktu Trombin,115000
+45,1,PK-045,Calcium,85500
+46,1,PK-046,Calcium Ion,95500
+47,1,PK-047,Calcium Urine,85500
+48,1,PK-048,Chlorida,65500
+49,1,PK-049,Chlorida Urine,65500
+50,1,PK-050,Fosfor Anorganik,75500
+51,1,PK-051,Fosfor Anorganik Urine,75500
+52,1,PK-052,Kalium,65500
+53,1,PK-053,Kalium (Urine 24 jam),65500
+54,1,PK-054,Magnesium,85500
+55,1,PK-055,Na K Cl,185500
+56,1,PK-056,Natrium,65500
+57,1,PK-057,Natrium Urine,65500
+58,1,PK-058,17-OH Progesterone (LC-MS/MS),450000
+59,1,PK-059,Anti Mullerian Hormone (AMH),655000
+60,1,PK-060,Anti-Tiroglobulin,285500
+61,1,PK-061,Anti-TPO,285500
+62,1,PK-062,B-HCG,215500
+63,1,PK-063,C-Peptide,315000
+64,1,PK-064,Calcitonin,355500
+65,1,PK-065,Cortisol (Anak),285000
+66,1,PK-066,Cortisol Free LC/MS Serum,455500
+67,1,PK-067,DHEA-S,295000
+68,1,PK-068,Estradiol,315500
+69,1,PK-069,Estradiol (Anak),315500
+70,1,PK-070,Free Cortisol Urine,315500
+71,1,PK-071,Free T3 (FT3),195500
+72,1,PK-072,Free T4 (FT4),195500
+73,1,PK-073,FSH,225500
+74,1,PK-074,Gastrin,350000
+75,1,PK-075,Gliadin (Deamidated) Antibodies (IgG IgA),415000
+76,1,PK-076,Glukosa 2 jam PP,32500
+77,1,PK-077,Glukosa Puasa,32500
+78,1,PK-078,Glukosa Sewaktu,32500
+79,1,PK-079,Glycated Albumin,215500
+80,1,PK-080,Growth Hormone,315000
+81,1,PK-081,GTT Puasa,125000
+82,1,PK-082,HbA1c,145500
+83,1,PK-083,IGF-1,355500
+84,1,PK-084,Insulin Autoantibody,415500
+85,1,PK-085,Insulin Puasa,225000
+86,1,PK-086,Insulin Sewaktu,225000
+87,1,PK-087,Islet Cell Antibody Screen with Reflex to Titer,525000
+88,1,PK-088,LH,225500
+89,1,PK-089,MS AFP,285000
+90,1,PK-090,Progesteron,295500
+91,1,PK-091,Prolactin,215500
+92,1,PK-092,PTH Intact,385500
+93,1,PK-093,Rasio sFlT-1/PlGF,850000
+94,1,PK-094,SHBG,285500
+95,1,PK-095,T3 (Total),175500
+96,1,PK-096,T4 (Total),175500
+97,1,PK-097,Tes Kehamilan,35500
+98,1,PK-098,Testosteron,310500
+99,1,PK-099,Testosteron Free & Total,455000
+100,1,PK-100,Tiroglobulin,295000
+101,1,PK-101,TRAb,415500
+102,1,PK-102,TSHs,185000
+103,1,PK-103,Darah Samar,42500
+104,1,PK-104,Faeces Rutin,45500
+105,1,PK-105,ProHealthy Gut,850000
+106,3,MB-001,Analisis Kromosom Darah (G-banding),1250000
+107,3,MB-002,APOE-Genotipe,1455000
+108,3,MB-003,Clopidogrel Genotipe (CYP2C19*2 *3),1255000
+109,3,MB-004,Telomere Analysis,1850000
+110,3,MB-005,Warfarin IndivTest (CYP2C9 & VKORC1 Genotipe),1550000
+111,1,PK-106,Albumin Urine Kuantitatif (24 jam),125500
+112,1,PK-107,Angiotensin Converting Enzyme,285500
+113,1,PK-108,Asam Urat,36500
+114,1,PK-109,Asam Urat Urine,36500
+115,1,PK-110,Cystatin-C,215500
+116,1,PK-111,Kreatinin,38500
+117,1,PK-112,Kreatinin Clearance,75500
+118,1,PK-113,Kreatinin Urine,38500
+119,1,PK-114,Kreatinin Urine 24 Jam,75500
+120,1,PK-115,Renin Activity Plasma LC/MS/MS,550000
+121,1,PK-116,Urea N,38500
+122,1,PK-117,Urea N Urine,38500
+123,1,PK-118,Ureum,38500
+124,1,PK-119,VMA Urine,315500
+125,1,PK-120,Albumin,42500
+126,1,PK-121,Anti-HAV IgG,185500
+127,1,PK-122,Anti-HAV IgM,215000
+128,1,PK-123,Anti-HBc,195500
+129,1,PK-124,Anti-HBc IgM,225000
+130,1,PK-125,Anti-HBe,195500
+131,1,PK-126,Anti-HBs,115500
+132,1,PK-127,Anti-HBs pasca vaksinasi,125000
+133,1,PK-128,Anti-HCV,195500
+134,1,PK-129,Bilirubin Direk,42500
+135,1,PK-130,Bilirubin Total,42500
+136,1,PK-131,CHE,75500
+137,1,PK-132,Fosfatase Alkali,55500
+138,1,PK-133,Gamma GT,55500
+139,1,PK-134,GOT,38500
+140,1,PK-135,GPT,38500
+141,1,PK-136,HBeAg,185500
+142,1,PK-137,HBsAg,58500
+143,1,PK-138,HBsAg Kuantitatif,215500
+144,1,PK-139,Prealbumin (Transthyretin),185000
+145,1,PK-140,Protein Total,42500
+146,1,PK-141,AMA dan ASMA IF,355000
+147,1,PK-142,ANA (IF),415500
+148,1,PK-143,ANA Profile,755000
+149,1,PK-144,Anti-Acetylcholine Receptor (Binding),525000
+150,1,PK-145,Anti-CCP IgG,385500
+151,1,PK-146,Anti-dsDNA-NcX,415000
+152,1,PK-147,ASTO,85500
+153,1,PK-148,C3 Komplemen,215500
+154,1,PK-149,C4 Komplemen,215500
+155,1,PK-150,CRP Kualitatif,65500
+156,1,PK-151,Eosinofil Absolut,45500
+157,1,PK-152,IgE Atopy (Panel Indonesia),855000
+158,1,PK-153,IgE Atopy (panel pediatri),855000
+159,1,PK-154,IgE Spesifik Aspergillus fumigatus,155000
+160,1,PK-155,IgE Spesifik Cokelat,155000
+161,1,PK-156,IgE Spesifik Daging Ayam,155000
+162,1,PK-157,IgE Spesifik Debu Rumah,155000
+163,1,PK-158,IgE Spesifik Epitel Anjing,155000
+164,1,PK-159,IgE Spesifik Epitel Kucing,155000
+165,1,PK-160,IgE Spesifik Epitel Tikus,155000
+166,1,PK-161,IgE Spesifik Ikan Kod,155000
+167,1,PK-162,IgE Spesifik Jamur Penicillin,155000
+168,1,PK-163,IgE Spesifik Kacang Tanah,155000
+169,1,PK-164,IgE Spesifik Kapuk,155000
+170,1,PK-165,IgE Spesifik Kecoa,155000
+171,1,PK-166,IgE Spesifik Kepiting,155000
+172,1,PK-167,IgE Spesifik Kerang Tiram,155000
+173,1,PK-168,IgE Spesifik Kuning Telur,155000
+174,1,PK-169,IgE Spesifik Putih Telur,155000
+175,1,PK-170,IgE Spesifik Susu Sapi,155000
+176,1,PK-171,IgE Spesifik Tungau Debu Rumah,155000
+177,1,PK-172,IgE Spesifik Udang,155000
+178,1,PK-173,IgE Total,215500
+179,1,PK-174,IgG Food Sensitivity Profile,1850000
+180,1,PK-175,RF,85500
+181,1,PK-176,Sel-LE,125500
+182,1,PK-177,Systemic Sclerosis Profile,850000
+183,1,PK-178,Anti Leptospira IgM,185500
+184,1,PK-179,Anti SARS-CoV-2 IgG Kuantitatif,215000
+185,1,PK-180,Anti-Amoeba,175500
+186,1,PK-181,Anti-Chikungunya IgM,195000
+187,1,PK-182,Anti-Chlamydia trachomatis IgG,215500
+188,1,PK-183,Anti-Chlamydia trachomatis IgM,215500
+189,1,PK-184,Anti-Dengue IgG & IgM,215000
+190,1,PK-185,Anti-EBV EA IgM,285000
+191,1,PK-186,Anti-H. Pylori IgG,225500
+192,1,PK-187,Anti-HIV,175500
+193,1,PK-188,Anti-Salmonella typhi IgM,125000
+194,1,PK-189,Chlamydia and Chlamydophila Antibody Panel 1 (IgG),415500
+195,1,PK-190,Clostridium Difficile (GDH & Toksin A/B),355000
+196,1,PK-191,Clostridium Difficile (GDH),185500
+197,1,PK-192,Clostridium Difficile (Toksin A/B),215000
+198,3,MB-006,CMV-DNA (Real Time PCR),855000
+199,3,MB-007,CT/NG-DNA (Real Time PCR),755500
+200,1,PK-193,Dengue NS1 Antigen,135500
+201,3,MB-008,Dengue Virus RNA Qualitative Real-time PCR,650000
+202,3,MB-009,HBV-DNA,925000
+203,3,MB-010,HCV-RNA (Real Time PCR),985000
+204,3,MB-011,HIV-1-RNA (Real Time PCR),985000
+205,1,PK-194,HpSA,215000
+206,3,MB-012,HPV Genotipe,655500
+207,3,MB-013,Malaria (Mikroskopik),55500
+208,3,MB-014,Mikrofilaria (mikroskopik),55500
+209,1,PK-195,Mycoplasma IgM Ab,215500
+210,1,PK-196,Mycoplasma IgG Ab,215500
+211,1,PK-197,Procalcitonin (PCT),425500
+212,1,PK-198,Rotavirus Antigen,185000
+213,1,PK-199,Streptococcus pneumoniae Antibody (IgG) (14 Serotype) MAID,550000
+214,1,PK-200,TPHA,85500
+215,1,PK-201,Urea Breath Test (UBT),450000
+216,1,PK-202,VDRL/RPR,75500
+217,1,PK-203,WIDAL,56500
+218,1,PK-204,Adiponektin,315000
+219,1,PK-205,ADMA & SDMA,450000
+220,1,PK-206,Apo-A1,145000
+221,1,PK-207,Apo-B,145000
+222,1,PK-208,Cholesterol HDL,48500
+223,1,PK-209,Cholesterol LDL Direk,75500
+224,1,PK-210,Cholesterol Total,45000
+225,1,PK-211,CK,125500
+226,1,PK-212,CK-MB (Massa),185500
+227,1,PK-213,Homocysteine,315500
+228,1,PK-214,hs-Troponin I (Kuantitatif),285500
+229,1,PK-215,LDH,115000
+230,1,PK-216,Lp(a),185500
+231,1,PK-217,NT-Pro BNP,455500
+232,1,PK-218,Trigliserida,45000
+233,1,PK-219,Anti-CMV IgG,215000
+234,1,PK-220,Anti-CMV IgM,215000
+235,1,PK-221,Anti-HSV1 IgG,215000
+236,1,PK-222,Anti-HSV1 IgM,215000
+237,1,PK-223,Anti-HSV2 IgG,215000
+238,1,PK-224,Anti-HSV2 IgM,215000
+239,1,PK-225,Anti-Rubella IgG,215000
+240,1,PK-226,Anti-Rubella IgM,215000
+241,1,PK-227,Anti-Toxoplasma IgG,215000
+242,1,PK-228,Anti-Toxoplasma IgM,215000
+243,1,PK-229,Antibodi Sperma,285500
+244,1,PK-230,Aviditas Anti-CMV IgG,315000
+245,1,PK-231,Aviditas Anti-Toxoplasma IgG,315000
+246,1,PK-232,Toxoplasma Gondii IgA Antibody,255500
+247,3,MB-015,Jamur Mikroskopis,55500
+248,3,MB-016,Kultur & Resistensi Jamur,225500
+249,3,MB-017,Kultur Anaerob,455000
+250,3,MB-018,Kultur Cairan Tubuh,395500
+251,3,MB-019,Kultur Darah,415500
+252,3,MB-020,Kultur Feces,355000
+253,3,MB-021,Kultur Gall,385000
+254,3,MB-022,Kultur GO,355000
+255,3,MB-023,Kultur Lain-lain,355000
+256,3,MB-024,Kultur Swab Rektal,355000
+257,3,MB-025,Kultur Urine,385000
+258,3,MB-026,Kultur Vibrio,385000
+259,3,MB-027,Pengecatan Gram,55500
+260,3,MB-028,Pengecatan Gram (bacterial vaginosis),55500
+261,3,MB-029,Trichomonas Mikroskopis,55500
+262,1,PK-233,Carbamazepin,325500
+263,1,PK-234,Cyclosporin Parent,450000
+264,1,PK-235,Digoxin,315000
+265,1,PK-236,Lithium,285500
+266,1,PK-237,Phenobarbital,325500
+267,1,PK-238,Phenytoin,325500
+268,1,PK-239,Tacrolimus,450000
+269,1,PK-240,Theophyllin,315500
+270,1,PK-241,Valproic Acid,350000
+271,1,PK-242,Adenosine Deaminase (ADA) Ascites,285000
+272,1,PK-243,Adenosine Deaminase (ADA) Cairan Pleura,285000
+273,1,PK-244,Adenosine Deaminase (ADA) CSF,285000
+274,3,MB-030,BTA (Mikroskopik),55500
+275,1,PK-245,Amylase Pancreatic,115000
+276,1,PK-246,Fecal Calprotectin,385500
+277,1,PK-247,Lipase,125500
+278,1,PK-248,Beta 2-Microglobulin,215000
+279,1,PK-249,Ceruloplasmin,285500
+280,1,PK-250,Free Light Chain,450000
+281,1,PK-251,hs-CRP,145500
+282,1,PK-252,IgA,185000
+283,1,PK-253,IgG,185000
+284,1,PK-254,IgM,185000
+285,1,PK-255,Immunotyping,550000
+286,1,PK-256,Imunofiksasi Serum,650000
+287,1,PK-257,Imunofiksasi Urine,650000
+288,1,PK-258,Interleukin 6 (IL-6),485500
+289,1,PK-259,Protein Elektroforesis Capillary,450000
+290,1,PK-260,Protein Elektroforesis Gel Agarosa,450000
+id_item_lab,id_kategori,kode_periksa,nama_item,tarif
+291,1,PK-261,CTx (C-Telopeptide),315000
+292,1,PK-262,N-MID Osteocalcin,315000
+293,1,PK-263,AFP,245500
+294,1,PK-264,Anti-EBV EA IgA,285000
+295,1,PK-265,Anti-EBV VCA IgA,285000
+296,3,MB-031,BCR ABL,1250000
+297,3,MB-032,BCR-ABL Kuantitatif p210,1850000
+298,1,PK-266,CA 125,285000
+299,1,PK-267,CA 15-3,285000
+300,1,PK-268,CA 19-9,285000
+301,1,PK-269,CA 72-4,285000
+302,1,PK-270,CEA,245500
+303,1,PK-271,Cyfra 21-1,315000
+304,1,PK-272,Free PSA,285500
+305,1,PK-273,HE4,355000
+306,3,MB-033,Mutasi EGFR,1855000
+307,3,MB-034,Mutasi JAK2V617F,1855000
+308,1,PK-274,NSE,315000
+309,1,PK-275,PIVKA-II,450000
+310,1,PK-276,PSA,265500
+311,1,PK-277,ROMA,550000
+312,1,PK-278,SCC,315500
+313,1,PK-279,Protein Total (Urine 24 jam),85500
+314,1,PK-280,Protein Total (Urine sewaktu),55500
+315,1,PK-281,Urine Rutin,38500
+316,1,PK-282,Amino Profile-Metabolic,850000
+317,1,PK-283,Amino Profile-Nutrition,850000
+318,1,PK-284,Asam Folat,285000
+319,1,PK-285,Cd Blood,315000
+320,1,PK-286,Co Plasma,315000
+321,1,PK-287,Cu Plasma,315000
+322,1,PK-288,Fatty Acid PROfile,1250000
+323,1,PK-289,Fe Plasma,115000
+324,1,PK-290,Hg Blood,350000
+325,1,PK-291,Mn Plasma,315000
+326,1,PK-292,Omega PROfile,850000
+327,1,PK-293,Panel Nutrisi dan Logam Berat,1550000
+328,1,PK-294,Panel Nutrisi dan Logam Berat Plasma & Whole Blood,1850000
+329,1,PK-295,Panel Nutrisi Plasma,1250000
+330,1,PK-296,Panel Toksik Plasma & Whole Blood,1850000
+331,1,PK-297,Panel Toksik Urine,1550000
+332,1,PK-298,Panel Vitamin B1 dan B6 LC-MS/MS,850000
+333,1,PK-299,Pb Blood,350000
+334,1,PK-300,Se Plasma,315000
+335,1,PK-301,Vitamin A & E,550000
+336,1,PK-302,Vitamin B12,285000
+337,1,PK-303,Vitamin D 25-OH Total,385000
+338,1,PK-304,Zn Plasma,315000
+339,2,PA-001,FNAC Test,245500
+340,2,PA-002,HER2 Test,855000
+341,2,PA-003,Pax8 Test,755500
+342,2,PA-004,Biopsy,355000
+343,2,PA-005,Surgical Resection,1250500
+344,2,PA-006,H&E Staining,155500
+345,2,PA-007,Immunohistochemistry (IHC),850500
+346,2,PA-008,In Situ Hybridization (ISH),1155000
+347,2,PA-009,Frozen Section,955000
+348,2,PA-010,Special Stains,255500
+349,2,PA-011,Bone Marrow Biopsy,655000
+350,2,PA-012,Lymph Node Biopsy,455500
+351,2,PA-013,Liver Biopsy,555000
+352,2,PA-014,Kidney Biopsy,555000
+353,2,PA-015,Lung Biopsy,655500
+354,2,PA-016,Breast Biopsy,455000
+355,2,PA-017,Prostate Biopsy,555500
+356,2,PA-018,Skin Biopsy,355000
+357,2,PA-019,Colon Biopsy,455500
+358,2,PA-020,Gastrointestinal Biopsy,455000
+359,2,PA-021,Bladder Biopsy,455500
+360,2,PA-022,Thyroid Biopsy,455000
+361,2,PA-023,Ovarian Biopsy,555500
+362,2,PA-024,Testicular Biopsy,555000
+363,2,PA-025,CNS Biopsy,855500
+364,2,PA-026,Pancreatic Biopsy,655000
+365,2,PA-027,Soft Tissue Biopsy,455500
+366,2,PA-028,Muscle Biopsy,555000
+367,2,PA-029,Adrenal Biopsy,655500
+368,2,PA-030,Thymus Biopsy,655000
+369,2,PA-031,Uterine Biopsy,455500
+370,2,PA-032,Eye Biopsy,655500
+371,2,PA-033,Vascular Biopsy,555000
