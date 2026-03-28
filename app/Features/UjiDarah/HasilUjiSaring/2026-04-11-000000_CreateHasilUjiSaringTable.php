@@ -1,0 +1,32 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\UjiDarah\HasilUjiSaring;
+
+use App\Core\DatabaseTemplate;
+use App\Core\DatabaseType as T;
+
+class CreateHasilUjiSaringTable extends DatabaseTemplate
+{
+    public function __construct(){
+        parent::__construct(
+            'uji_darah',
+            'hasil_uji_saring',
+            [
+                'id_uji_saring'         => T::ID32(),
+                'id_kantong'            => T::ID32(),
+                'id_metode_uji'         => T::ID8(),
+                'tanggal_uji'           => T::DATETIME(),
+                // 'id_petugas'            => T::ID32(),
+            ],
+            ['id_uji_saring'],
+            [['id_kantong']],
+            [
+                [['id_kantong'], 'inventori.kantong_darah_utama', ['id_kantong'], 'CASCADE', 'CASCADE'],
+                [['id_metode_uji'], 'metode_uji', ['id_metode_uji'], 'CASCADE', 'CASCADE'],
+                // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
+            ],
+            [],
+        );
+    }
+}
