@@ -117,8 +117,6 @@ abstract class ControllerTemplate extends Controller
     //     session()->set('notif_data', $data['data']);
     // }
 
-
-
     protected string $api_url;
 
     public function __construct(
@@ -131,13 +129,11 @@ abstract class ControllerTemplate extends Controller
         protected array $aksi,
         protected array $konfig,
         protected array $meta_data,
-    )
-    {
+    ) {
         $this->api_url = getenv('api_URL');
         // Check notifications and set session variable
         // $this->checkNotifications();
     }
-    
 
     protected function addBreadcrumb($title, $icon = '')
     {
@@ -159,7 +155,6 @@ abstract class ControllerTemplate extends Controller
         }
     }
 
-
     protected function fetchDataUsingCurl($method, $path, $data = null, $redirect_url = null, $redirect_msg = null)
     {
         $allowed_methods = ['GET', 'POST', 'PUT', 'DELETE'];
@@ -172,7 +167,7 @@ abstract class ControllerTemplate extends Controller
         }
 
         $token = session()->get('jwt_token');
-        $full_url = ($custom_base_url ?? $this->api_url) . $path;
+        $full_url = $this->api_url . $path;
         $ch = curl_init($full_url);
 
         $headers = [
@@ -188,7 +183,7 @@ abstract class ControllerTemplate extends Controller
         }
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // ✅ set merged headers
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         // Set method
         if ($method === 'POST') {
