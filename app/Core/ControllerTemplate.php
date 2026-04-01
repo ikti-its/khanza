@@ -250,37 +250,37 @@ abstract class ControllerTemplate extends Controller
             case 400:
                 $data['title'] = 'Bad Request';
                 $data['errorTitle'] = 'Oops! ada kesalahan pada permintaan Anda';
-                $data['message'] = $custom_message ?? 'Permintaan yang anda buat tidak dapat diproses. Pastikan Anda telah memasukkan informasi dengan benar. Coba periksa kembali dan kirim ulang';
+                $data['message'] ??= 'Permintaan yang anda buat tidak dapat diproses. Pastikan Anda telah memasukkan informasi dengan benar. Coba periksa kembali dan kirim ulang';
                 break;
             case 401:
                 $data['title'] = 'Unauthorized';
                 $data['errorTitle'] = 'Akses terbatas';
-                $data['message'] = $custom_message ?? 'Anda harus login untuk mengakses halaman ini';
+                $data['message'] ??= 'Anda harus login untuk mengakses halaman ini';
                 break;
             case 403:
                 $data['title'] = 'Forbidden';
                 $data['errorTitle'] = 'Access ditolak';
-                $data['message'] = $custom_message ?? 'Anda tidak memiliki izin untuk melihat halaman ini. Kalau Anda merasa ini salah, hubungi admin.';
+                $data['message'] ??= 'Anda tidak memiliki izin untuk melihat halaman ini. Kalau Anda merasa ini salah, hubungi admin.';
                 break;
             case 404:
                 $data['title'] = 'Not Found';
                 $data['errorTitle'] = 'Halaman tidak ditemukan';
-                $data['message'] = $custom_message ?? 'Kami tidak dapat menemukan halaman yang Anda cari. Periksa URL atau kembali ke halaman utama';
+                $data['message'] ??= 'Kami tidak dapat menemukan halaman yang Anda cari. Periksa URL atau kembali ke halaman utama';
                 break;
             case 405:
                 $data['title'] = 'Method Not Allowed ';
                 $data['errorTitle'] = 'Method HTTP yang Anda gunakan tidak tersedia';
-                $data['message'] = $custom_message ?? 'Kami tidak menyediakan method HTTP tersebut. Periksa kembali URL dan method http Anda';
+                $data['message'] ??= 'Kami tidak menyediakan method HTTP tersebut. Periksa kembali URL dan method http Anda';
                 break;
             case 500:
                 $data['title'] = 'Internal Server Error';
                 $data['errorTitle'] = 'Kesalahan Server';
-                $data['message'] = $custom_message ?? 'Terjadi masalah pada server kami. Silakan coba lagi nanti atau hubungi dukungan teknis jika masalah berlanjut';
+                $data['message'] ??= 'Terjadi masalah pada server kami. Silakan coba lagi nanti atau hubungi dukungan teknis jika masalah berlanjut';
                 break;
             default:
                 $data['title'] = 'Error';
                 $data['errorTitle'] = 'Unexpected Error';
-                $data['message'] = $custom_message ?? "Error fetching data. HTTP Status Code: $status_code";
+                $data['message'] ??= "Error fetching data. HTTP Status Code: $status_code";
                 break;
         }
 
