@@ -119,23 +119,25 @@ abstract class ControllerTemplate extends Controller
 
 
 
-    protected $api_url;
+    protected string $api_url;
 
-    public function __construct()
+    public function __construct(
+        protected array $breadcrumbs = [],
+        protected string $judul,
+        protected string $modul_path,
+        protected string $api_path,
+        protected string $nama_tabel,
+        protected string $kolom_id,
+        protected array $aksi,
+        protected array $konfig,
+        protected array $meta_data,
+    )
     {
         $this->api_url = getenv('api_URL');
         // Check notifications and set session variable
         // $this->checkNotifications();
     }
-    protected array $breadcrumbs = [];
-    protected string $judul;
-    protected string $modul_path;
-    protected string $api_path;
-    protected string $nama_tabel;
-    protected string $kolom_id;
-    protected array $aksi;
-    protected array $konfig;
-    protected array $meta_data;
+    
 
     protected function addBreadcrumb($title, $icon = '')
     {
@@ -197,7 +199,6 @@ abstract class ControllerTemplate extends Controller
 
         $response = curl_exec($ch);
         $http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
 
         $return_data = json_decode($response, true);
         if ($method !== 'GET') {
