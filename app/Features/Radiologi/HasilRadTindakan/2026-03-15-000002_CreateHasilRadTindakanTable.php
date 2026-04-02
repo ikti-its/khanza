@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\Radiolgi\Main;
+namespace App\Features\Radiolgi\HasilRadTindakan;
 
 use App\Core\DatabaseTemplate;
 use App\Core\DatabaseType as T;

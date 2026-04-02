@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\Radiolgi\Ref;
+namespace App\Features\Radiolgi\RefItemRad;
 
 use App\Core\DatabaseTemplate;
 use App\Core\DatabaseType as T;
