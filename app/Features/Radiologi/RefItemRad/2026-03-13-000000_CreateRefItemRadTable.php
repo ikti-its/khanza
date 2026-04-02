@@ -21,7 +21,7 @@ class CreateRefItemRadTable extends DatabaseTemplate
         [['kode_periksa']],
         [],
         [],
-        false,
+        true,
         __DIR__ . '/item_rad.csv'
     );
 }

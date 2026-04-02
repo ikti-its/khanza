@@ -24,7 +24,7 @@ class CreateRefItemPemeriksaanLabTable extends DatabaseTemplate
             [['id_kategori'], 'laboratorium.ref_kategori_lab', ['id_kategori'], 'CASCADE', 'RESTRICT'],
         ],
         [],
-        false,
+        true,
         __DIR__ . '/item_pemeriksaan_lab.csv'
     );
 }
