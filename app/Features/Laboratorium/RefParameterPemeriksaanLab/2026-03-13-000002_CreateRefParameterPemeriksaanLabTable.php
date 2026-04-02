@@ -16,7 +16,7 @@ class CreateRefParameterPemeriksaanLabTable extends DatabaseTemplate
             'id_item_lab'   => T::ID32(),
             'nama_parameter'=> T::TEXT(),
             'satuan'        => T::TEXT()->nullable(),
-            'nilai_rujukan' => T::TEXT(),
+            'nilai_rujukan' => T::TEXT()->nullable(),
             'keterangan'    => T::TEXT()->nullable(),
             'biaya_item'    => T::F32(),
         ],
@@ -26,7 +26,7 @@ class CreateRefParameterPemeriksaanLabTable extends DatabaseTemplate
             [['id_item_lab'], 'laboratorium.ref_item_pemeriksaan_lab', ['id_item_lab'], 'CASCADE', 'RESTRICT'],
         ],
         [],
-        false,
+        true,
         __DIR__ . '/parameter_pemeriksaan_lab.csv'
     );
 }
