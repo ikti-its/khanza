@@ -26,7 +26,7 @@ class CreateRefParameterPemeriksaanLabTable extends DatabaseTemplate
             [['id_item_lab'], 'laboratorium.ref_item_pemeriksaan_lab', ['id_item_lab'], 'CASCADE', 'RESTRICT'],
         ],
         [],
-        true,
+        false,
         __DIR__ . '/parameter_pemeriksaan_lab.csv'
     );
 }

@@ -20,7 +20,7 @@ class CreateRefRuanganOperasiTable extends DatabaseTemplate
         [['kode_ruangan']],
         [],
         [],
-        true,
+        false,
         __DIR__ . '/ruangan_operasi.csv'
     );
 }
