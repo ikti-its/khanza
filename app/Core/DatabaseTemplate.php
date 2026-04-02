@@ -130,19 +130,21 @@ class DatabaseTemplate extends Migration
 
     final public function seed(): void
     {
-        if($this->data_is_real){
-            if(!file_exists($this->source)){
-                Assert::Unreachable("Data file '$this->source' does not exist");
-            }
-            $this->read_csv();
+        if($this->source === '')
             return;
-        } else {
-            if($this->source !== ''){
-                Assert::Unreachable("Source must be empty when data is fake");
-            }           
-            // $this->db->table($this->schema . "." . $this->table)
-            //     ->insertBatch($this->generate_data());
+        if(!file_exists($this->source)){
+            Assert::Unreachable("Data file '$this->source' does not exist");
         }
+        $this->read_csv();
+        // if($this->data_is_real){ 
+        //     return;
+        // }  else {
+        //     if($this->source !== ''){
+        //         Assert::Unreachable("Source must be empty when data is fake");
+        //     }           
+        //     // $this->db->table($this->schema . "." . $this->table)
+        //     //     ->insertBatch($this->generate_data());
+        // }
     }
 
     final public function up(): void

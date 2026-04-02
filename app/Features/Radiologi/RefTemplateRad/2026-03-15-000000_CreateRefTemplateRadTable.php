@@ -20,7 +20,7 @@ class CreateRefTemplateRadTable extends DatabaseTemplate
         [],
         [],
         [],
-        false,
+        true,
         __DIR__ . '/template_rad.csv'
     );
 }
