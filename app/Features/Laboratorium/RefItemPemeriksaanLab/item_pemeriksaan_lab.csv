@@ -289,7 +289,6 @@ id_item_lab,id_kategori,kode_periksa,nama_item,tarif
 288,1,PK-258,Interleukin 6 (IL-6),485500
 289,1,PK-259,Protein Elektroforesis Capillary,450000
 290,1,PK-260,Protein Elektroforesis Gel Agarosa,450000
-id_item_lab,id_kategori,kode_periksa,nama_item,tarif
 291,1,PK-261,CTx (C-Telopeptide),315000
 292,1,PK-262,N-MID Osteocalcin,315000
 293,1,PK-263,AFP,245500
