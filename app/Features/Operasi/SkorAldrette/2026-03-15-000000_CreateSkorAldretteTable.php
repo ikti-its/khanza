@@ -30,9 +30,9 @@ class CreateSkorAldretteTable extends DatabaseTemplate
         ['id_skor_aldrette'],
         [],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            [['id_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // [['id_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['skor_aktivitas'], 'operasi.ref_aldrette_aktivitas', ['id_aktivitas'], 'CASCADE', 'RESTRICT'],
             [['skor_respirasi'], 'operasi.ref_aldrette_respirasi', ['id_respirasi'], 'CASCADE', 'RESTRICT'],
             [['skor_tekanan_darah'], 'operasi.ref_aldrette_tekanan_darah', ['id_td'], 'CASCADE', 'RESTRICT'],

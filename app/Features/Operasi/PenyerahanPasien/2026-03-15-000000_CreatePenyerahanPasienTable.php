@@ -49,16 +49,16 @@ class CreatePenyerahanPasienTable extends DatabaseTemplate
         ['id_penyerahan'],
         [],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
             [['id_indikasi'], 'operasi.ref_indikasi_pindah', ['id_indikasi'], 'CASCADE', 'RESTRICT'],
             [['id_ruang_asal'], 'operasi.ref_ruangan_operasi', ['id_ruangan'], 'CASCADE', 'RESTRICT'],
-            [['id_ruang_selanjutnya'], 'sik.ruangan_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // [['id_ruang_selanjutnya'], 'sik.ruangan_structure', ['id'], 'CASCADE', 'RESTRICT'],
             [['id_metode'], 'operasi.ref_metode_transfer', ['id_metode'], 'CASCADE', 'RESTRICT'],
             [['id_hubungan'], 'operasi.ref_hubungan_keluarga', ['id_hubungan_keluarga'], 'CASCADE', 'RESTRICT'],
             [['asal_id_keadaan'], 'operasi.ref_keadaan_umum_transfer', ['id_keadaan_umum'], 'CASCADE', 'RESTRICT'],
             [['tiba_id_keadaan'], 'operasi.ref_keadaan_umum_transfer', ['id_keadaan_umum'], 'CASCADE', 'RESTRICT'],
-            [['id_perawat_menyerahkan'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            [['id_perawat_menerima'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // [['id_perawat_menyerahkan'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // [['id_perawat_menerima'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
         ],
         [['nomor_reg'], ['waktu_pindah']]
     );

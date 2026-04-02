@@ -58,8 +58,8 @@ class CreatePengkajianPreAnestesiTable extends DatabaseTemplate
         ['id_pre_anestesi'],
         [],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['id_obat_bebas'], 'operasi.ref_obat_bebas', ['id_obat_bebas'], 'CASCADE', 'RESTRICT'],
             [['id_rencana_anestesi'], 'operasi.ref_rencana_anestesi', ['id_rencana_anestesi'], 'CASCADE', 'RESTRICT'],
             [['id_asa'], 'operasi.ref_angka_asa', ['id_asa'], 'CASCADE', 'RESTRICT'],

@@ -27,8 +27,8 @@ class CreatePengkajianPreopTable extends DatabaseTemplate
         ['id_pengkajian_pre'],
         [],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
         ],
         [['nomor_reg'], ['waktu_pengkajian']]
     );

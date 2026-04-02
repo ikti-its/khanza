@@ -25,9 +25,9 @@ class CreateSkorBromageTable extends DatabaseTemplate
         ['id_skor_bromage'],
         [],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            [['id_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // [['id_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['skor_bromage'], 'operasi.ref_bromage', ['id_bromage'], 'CASCADE', 'RESTRICT'],
         ],
         [['nomor_reg'], ['waktu_penilaian']]

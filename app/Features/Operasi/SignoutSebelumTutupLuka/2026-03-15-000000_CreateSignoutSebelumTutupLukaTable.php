@@ -34,12 +34,12 @@ class CreateSignoutSebelumTutupLukaTable extends DatabaseTemplate
         ['id_signout'],
         [],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['id_label_spesimen'], 'operasi.ref_status_spesimen', ['id_status_spesimen'], 'CASCADE', 'RESTRICT'],
             [['id_formulir_spesimen'], 'operasi.ref_status_spesimen', ['id_status_spesimen'], 'CASCADE', 'RESTRICT'],
-            [['id_perawat_ok'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // [['id_perawat_ok'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
         ],
         [['nomor_reg'], ['waktu_signout']]
     );

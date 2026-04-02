@@ -29,8 +29,8 @@ class CreateJadwalOperasiTable extends DatabaseTemplate
             [['id_permintaan'], 'operasi.permintaan_operasi', ['id_permintaan'], 'CASCADE', 'RESTRICT'],
             [['id_ruangan'], 'operasi.ref_ruangan_operasi', ['id_ruangan'], 'CASCADE', 'RESTRICT'],
             [['id_tindakan'], 'sik.jenis_tindakan_structure', ['kode'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['id_status'], 'operasi.ref_status_operasi', ['id_status'], 'CASCADE', 'RESTRICT'],
         ],
         [['tanggal'], ['kode_dokter_bedah'], ['kode_dokter_anestesi']]

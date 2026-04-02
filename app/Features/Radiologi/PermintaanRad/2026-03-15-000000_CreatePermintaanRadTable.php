@@ -25,8 +25,8 @@ class CreatePermintaanRadTable extends DatabaseTemplate
         ['id_permintaan'],
         [['no_permintaan']],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter_perujuk'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter_perujuk'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['id_status_permintaan'], 'radiologi.ref_status_permintaan_rad', ['id_status'], 'CASCADE', 'RESTRICT'],
             [['id_item_rad'], 'radiologi.ref_item_rad', ['id_item'], 'CASCADE', 'RESTRICT'],
         ],

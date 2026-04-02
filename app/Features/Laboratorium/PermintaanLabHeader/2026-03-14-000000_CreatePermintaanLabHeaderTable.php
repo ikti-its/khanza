@@ -25,9 +25,9 @@ class CreatePermintaanLabHeaderTable extends DatabaseTemplate
         ['id_permintaan'],
         [['no_permintaan']],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
             [['id_kategori_lab'], 'laboratorium.ref_kategori_lab', ['id_kategori'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter_perujuk'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter_perujuk'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['id_status_permintaan'], 'laboratorium.ref_status_permintaan', ['id_status'], 'CASCADE', 'RESTRICT'],
         ],
         [['nomor_reg'], ['tgl_permintaan'], ['id_kategori_lab']]

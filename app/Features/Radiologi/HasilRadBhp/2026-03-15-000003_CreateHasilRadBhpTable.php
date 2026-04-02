@@ -23,7 +23,7 @@ class CreateHasilRadBhpTable extends DatabaseTemplate
         [],
         [
             [['id_hasil_rad'], 'radiologi.hasil_rad', ['id_hasil_rad'], 'CASCADE', 'CASCADE'],
-            [['id_barang_medis'], 'sik.barang_medis_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // [['id_barang_medis'], 'sik.barang_medis_structure', ['id'], 'CASCADE', 'RESTRICT'],
         ],
         [['id_hasil_rad']]
     );

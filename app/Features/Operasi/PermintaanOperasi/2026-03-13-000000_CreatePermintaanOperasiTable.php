@@ -21,8 +21,8 @@ class CreatePermintaanOperasiTable extends DatabaseTemplate
         ['id_permintaan'],
         [],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
         ],
         [['nomor_reg'], ['is_cito']]
     );

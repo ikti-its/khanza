@@ -51,8 +51,8 @@ class CreatePengkajianPreInduksiTable extends DatabaseTemplate
         ['id_pengkajian'],
         [],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            [['kode_dokter'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['kode_dokter'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['id_posisi'], 'operasi.ref_posisi_pasien', ['id_posisi'], 'CASCADE', 'RESTRICT'],
             [['id_premedikasi'], 'operasi.ref_premedikasi', ['id_premedikasi'], 'CASCADE', 'RESTRICT'],
             [['id_induksi'], 'operasi.ref_induksi', ['id_induksi'], 'CASCADE', 'RESTRICT'],

@@ -28,9 +28,9 @@ class CreateSkorStewardTable extends DatabaseTemplate
         ['id_skor_steward'],
         [],
         [
-            [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            [['id_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
+            // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // [['id_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
             [['skor_kesadaran'], 'operasi.ref_steward_kesadaran', ['id_kesadaran'], 'CASCADE', 'RESTRICT'],
             [['skor_respirasi'], 'operasi.ref_steward_respirasi', ['id_respirasi'], 'CASCADE', 'RESTRICT'],
             [['skor_motorik'], 'operasi.ref_steward_motorik', ['id_motorik'], 'CASCADE', 'RESTRICT'],
