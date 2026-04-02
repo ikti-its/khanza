@@ -16,7 +16,7 @@ class CreateRefParameterPemeriksaanLabTable extends DatabaseTemplate
             'id_item_lab'   => T::ID32(),
             'nama_parameter'=> T::TEXT(),
             'satuan'        => T::TEXT()->nullable(),
-            'nilai_rujukan' => T::TEXT(),
+            'nilai_rujukan' => T::TEXT()->nullable(),
             'keterangan'    => T::TEXT()->nullable(),
             'biaya_item'    => T::F32(),
         ],
