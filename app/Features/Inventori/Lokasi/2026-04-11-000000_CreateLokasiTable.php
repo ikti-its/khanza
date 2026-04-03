@@ -21,8 +21,8 @@ class CreateLokasiTable extends DatabaseTemplate
             [],
             [],
             [],
-            false,
-            ''
+            true,
+            __DIR__ . '/lokasi.csv'
         );
     }
 }
