@@ -1,0 +1,6 @@
+id_barang,nama_barang,id_kategori,id_supplier,id_unit,id_lokasi,stok
+1,Paracetamol 500mg,1,1,3,2,150
+2,Amoxicillin 500mg,1,2,3,2,300
+3,Masker Medis 3 Ply,2,3,1,1,50
+4,Syringe 3cc,2,4,2,1,500
+5,Hand Sanitizer 500ml,3,5,4,2,20

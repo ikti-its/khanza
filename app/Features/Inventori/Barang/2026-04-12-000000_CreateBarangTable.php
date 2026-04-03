@@ -35,8 +35,8 @@ class CreateBarangTable extends DatabaseTemplate
             [
                 ['nama_barang']
             ],
-            false,
-            ''
+            true,
+            __DIR__ . '/barang.csv'
         );
     }
 }
