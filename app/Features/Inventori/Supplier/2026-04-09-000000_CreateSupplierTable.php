@@ -20,8 +20,8 @@ class CreateSupplierTable extends DatabaseTemplate
                 'alamat'        => T::TEXT()->nullable(),
             ],
             ['id_supplier'],
-            [], // No Unique key since kode_supplier is omitted
-            [], // No Foreign key
+            [],
+            [],
             [
                 ['nama_supplier']
             ],
