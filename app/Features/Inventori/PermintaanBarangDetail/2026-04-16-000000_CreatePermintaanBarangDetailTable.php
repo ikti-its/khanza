@@ -26,8 +26,8 @@ class CreatePermintaanBarangDetailTable extends DatabaseTemplate
                 [['id_barang'], 'barang', ['id_barang'], 'CASCADE', 'RESTRICT'],
             ],
             [],
-            false,
-            ''
+            true,
+            __DIR__ . '/permintaan_barang_detail.csv'
         );
     }
 }
