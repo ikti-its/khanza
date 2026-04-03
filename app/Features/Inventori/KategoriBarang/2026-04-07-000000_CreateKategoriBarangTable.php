@@ -30,8 +30,8 @@ class CreateKategoriBarangTable extends DatabaseTemplate
                 ['nama_kategori_barang']
             ],
 
-            false,
-            ''
+            true,
+            __DIR__ . '/kategori_barang.csv'
         );
     }
 }

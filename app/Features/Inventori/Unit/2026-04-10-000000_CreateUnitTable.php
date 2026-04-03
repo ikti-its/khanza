@@ -19,7 +19,6 @@ class CreateUnitTable extends DatabaseTemplate
             ],
             ['id_unit'],
             [
-                // Constraint: nama_unit UNIQUE
                 ['nama_unit']
             ],
             [],
