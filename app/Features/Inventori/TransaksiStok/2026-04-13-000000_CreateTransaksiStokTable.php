@@ -16,11 +16,8 @@ class CreateTransaksiStokTable extends DatabaseTemplate
             [
                 'id_transaksi'   => T::ID32(),
                 'id_barang'      => T::ID32(),
-                
                 'tipe_transaksi' => T::TEXT(), 
-                
                 'qty'            => T::F64(),
-                
                 'tanggal'        => T::DATETIME(),
             ],
             ['id_transaksi'],
