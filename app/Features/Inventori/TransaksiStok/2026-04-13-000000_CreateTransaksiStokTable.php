@@ -29,8 +29,8 @@ class CreateTransaksiStokTable extends DatabaseTemplate
                 ['tanggal'],
                 ['tipe_transaksi']
             ],
-            false,
-            ''
+            true,
+            __DIR__ . '/transaksi_stok.csv'
         );
     }
 }
