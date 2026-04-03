@@ -22,8 +22,8 @@ class CreatePermintaanBarangTable extends DatabaseTemplate
             [],
             [],
             [],
-            false,
-            ''
+            true,
+            __DIR__ . '/permintaan_barang.csv'
         );
     }
 }
