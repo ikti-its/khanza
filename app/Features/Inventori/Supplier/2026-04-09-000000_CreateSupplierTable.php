@@ -25,8 +25,8 @@ class CreateSupplierTable extends DatabaseTemplate
             [
                 ['nama_supplier']
             ],
-            false,
-            ''
+            true,
+            __DIR__ . '/supplier.csv'
         );
     }
 }
