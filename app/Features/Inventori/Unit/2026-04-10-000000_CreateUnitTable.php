@@ -23,8 +23,8 @@ class CreateUnitTable extends DatabaseTemplate
             ],
             [],
             [],
-            false,
-            ''
+            true,
+            __DIR__ . '/unit.csv'
         );
     }
 }
