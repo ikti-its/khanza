@@ -1,6 +1,6 @@
 id_kategori,kode_kategori_barang,nama_kategori_barang
-1,OBT,Obat-obatan
-2,ALK,Alat Kesehatan
-3,BHP,Bahan Habis Pakai
-4,LAB,Reagen Laboratorium
-5,GIG,Perlengkapan Gigi
+1,ATK,Alat Tulis Kantor
+2,KEBERSIHAN,Peralatan Kebersihan
+3,LAB_UMUM,Bahan Penunjang Laboratorium
+4,ELEKTRONIK,Peralatan Elektronik
+5,UMUM,Barang Umum Penunjang

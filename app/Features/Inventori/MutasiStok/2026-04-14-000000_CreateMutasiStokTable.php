@@ -19,6 +19,7 @@ class CreateMutasiStokTable extends DatabaseTemplate
                 'dari_lokasi' => T::ID32(),
                 'ke_lokasi'   => T::ID32(),
                 'qty'         => T::F64(),
+                'tanggal'     => T::DATETIME(),
             ],
             ['id_mutasi'],
             [],
@@ -28,8 +29,9 @@ class CreateMutasiStokTable extends DatabaseTemplate
                 [['ke_lokasi'], 'lokasi', ['id_lokasi'], 'CASCADE', 'RESTRICT'],
             ],
             [],
-            false,
-            ''
+            
+            true,
+            __DIR__ . '/mutasi_stok.csv'
         );
     }
 }
