@@ -1,4 +1,4 @@
-id_mutasi,id_barang,dari_lokasi,ke_lokasi,qty,tanggal
+id_mutasi,id_barang,lokasi_sumber,lokasi_tujuan,qty,tanggal
 1,1,1,2,50,2026-04-01
 2,2,1,3,20,2026-04-01
 3,3,2,4,5,2026-04-02

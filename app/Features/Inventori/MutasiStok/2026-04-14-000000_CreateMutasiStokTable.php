@@ -16,8 +16,8 @@ class CreateMutasiStokTable extends DatabaseTemplate
             [
                 'id_mutasi'   => T::ID32(),
                 'id_barang'   => T::ID32(),
-                'dari_lokasi' => T::ID32(),
-                'ke_lokasi'   => T::ID32(),
+                'lokasi_sumber' => T::ID32(),
+                'lokasi_tujuan'   => T::ID32(),
                 'qty'         => T::F64(),
                 'tanggal'     => T::DATETIME(),
             ],
@@ -25,8 +25,8 @@ class CreateMutasiStokTable extends DatabaseTemplate
             [],
             [
                 [['id_barang'], 'barang', ['id_barang'], 'CASCADE', 'RESTRICT'],
-                [['dari_lokasi'], 'lokasi', ['id_lokasi'], 'CASCADE', 'RESTRICT'],
-                [['ke_lokasi'], 'lokasi', ['id_lokasi'], 'CASCADE', 'RESTRICT'],
+                [['lokasi_sumber'], 'lokasi', ['id_lokasi'], 'CASCADE', 'RESTRICT'],
+                [['lokasi_tujuan'], 'lokasi', ['id_lokasi'], 'CASCADE', 'RESTRICT'],
             ],
             [],
             
