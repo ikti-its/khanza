@@ -15,7 +15,7 @@ class BPJSModel extends ModelTemplate
             'no_bpjs',
             [
                 'no_bpjs' => [
-                    'allowed' => true,
+                    'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ], 
