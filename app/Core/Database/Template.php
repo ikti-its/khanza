@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core;
+namespace App\Core\Database;
 use CodeIgniter\Database\Migration;
+use App\Core\Assert;
 
-class DatabaseTemplate extends Migration
+class Template extends Migration
 {
     public function __construct(
         protected string $schema,

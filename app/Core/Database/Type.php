@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core;
+namespace App\Core\Database;
 use CodeIgniter\Database\RawSql;
 
-final class DatabaseType
+final class Type
 {
     public function __construct(
         private array $definition
