@@ -1,3 +1,6 @@
+CREATE SCHEMA IF NOT EXISTS sik;
+CREATE SCHEMA IF NOT EXISTS ref;
+
 CREATE TYPE sik.cara_keluar_enum AS ENUM (
     'Atas Izin Dokter',
     'Pulang Sendiri',
@@ -50,6 +53,15 @@ CREATE TYPE sik.status_asal AS ENUM (
     'Hibah'
 );
 
+CREATE TYPE sik.agama AS ENUM (
+    'Islam',
+    'Kristen',
+    'Katholik',
+    'Hindu',
+    'Buddha',
+    'Konghucu',
+    'Lain-lain'
+);
 CREATE TYPE sik.status_cuti AS ENUM (
     'Ditolak',
     'Diproses',
@@ -1052,7 +1064,7 @@ CREATE TABLE sik.jenis_barang_medis_structure (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE sik.kelahiran_bayi_structure (
+CREATE TABLE sik.kelahiran_bayi_structure2 (
     no_rkm_medis character varying(15) NOT NULL,
     nm_pasien character varying(100),
     jk character varying(1),
