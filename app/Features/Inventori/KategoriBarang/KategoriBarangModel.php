@@ -1,0 +1,35 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\Inventori\KategoriBarang;
+
+use App\Core\ModelTemplate;
+
+class KategoriBarangModel extends ModelTemplate
+{
+    public function __construct(){
+        parent::__construct(
+            'REFS',
+            'inventori',
+            'kategori_barang',
+            'id_kategori',
+            [
+                'id_kategori' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ], 
+                'kode_kategori_barang' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ], 
+                'nama_kategori_barang' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ]
+            ],
+        );
+    }
+}
