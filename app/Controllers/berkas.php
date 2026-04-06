@@ -6,13 +6,6 @@ use App\Core\ControllerTemplate;
 
 class berkas extends ControllerTemplate
 {
-    protected $api_url;
-
-    public function __construct()
-    {
-        $this->api_url = getenv('api_URL');
-    }
-
     public function berkasPegawai()
     {
         $title = 'Berkas Pegawai';

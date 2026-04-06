@@ -6,14 +6,6 @@ use App\Core\ControllerTemplate;
 
 class Akun extends ControllerTemplate
 {
-    protected $api_url;
-
-    public function __construct()
-    {
-        $this->api_url = getenv('api_URL');
-    }
-
-
     public function dataAkun()
     {
         $title = 'Data Akun';
