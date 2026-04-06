@@ -7,15 +7,6 @@ use App\Core\ControllerTemplate;
 
 class header extends ControllerTemplate
 {
-
-    protected $api_url;
-
-    public function __construct()
-    {
-        $this->api_url = getenv('api_URL');
-    }
-
-
     public function lihatProfile()
     {
         $title = 'Profile Pengguna';

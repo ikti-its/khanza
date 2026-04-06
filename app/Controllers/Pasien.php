@@ -6,13 +6,6 @@ use App\Core\ControllerTemplate;
 
 class Pasien extends ControllerTemplate
 {
-    protected $api_url;
-
-    public function __construct()
-    {
-        $this->api_url = getenv('api_URL');
-    }
-
     public function dataPasien()
     {
         $title = 'Data Pasien';

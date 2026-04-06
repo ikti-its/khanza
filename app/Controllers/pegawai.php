@@ -6,15 +6,6 @@ use App\Core\ControllerTemplate;
 
 class pegawai extends ControllerTemplate
 {
-
-    protected $api_url;
-
-    public function __construct()
-    {
-        $this->api_url = getenv('api_URL');
-    }
-
-
     public function dataPegawai()
     {
         $title = 'Data Akun';

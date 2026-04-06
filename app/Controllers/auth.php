@@ -6,11 +6,6 @@ use App\Core\ControllerTemplate;
 
 class auth extends ControllerTemplate
 {
-    protected $api_url;
-    public function __construct()
-    {
-        $this->api_url = getenv('api_URL');
-    }
     public function index()
     {
         return view('login');

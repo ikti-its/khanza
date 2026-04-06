@@ -6,14 +6,6 @@ use App\Core\ControllerTemplate;
 
 class presensi extends ControllerTemplate
 {
-
-    protected $api_url;
-
-    public function __construct()
-    {
-        $this->api_url = getenv('api_URL');
-    }
-
     public function halamanPresensi()
     {
         $data = [
