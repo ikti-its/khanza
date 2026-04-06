@@ -40,7 +40,11 @@ class CreatePulauTable extends DatabaseTemplate
                 'nama_pulau' => T::TEXT(),
             ],
             ['id_pulau'],
-            [['nama_pulau']],
+            [],
+            [],
+            [],
+            true,
+            __DIR__ . '/pulau.csv',
         );
     }
 }
