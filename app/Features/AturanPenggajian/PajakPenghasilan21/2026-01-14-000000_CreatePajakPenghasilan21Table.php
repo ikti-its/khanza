@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Features\AturanPenggajian\PajakPenghasilan21;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
 
-class CreatePajakPenghasilan21Table extends DatabaseTemplate
+class CreatePajakPenghasilan21Table extends Template
 {
     public function __construct(){
         parent::__construct(

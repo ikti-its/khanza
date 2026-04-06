@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Features\Lokasi\Desa;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
     
 /*
  *  Dalam 1 kecamatan terdapat 1 atau lebih desa
@@ -28,7 +28,7 @@ use App\Core\DatabaseType as T;
  *  35.78.09.1001   = Kelurahan Keputih
  */
 
-class CreateDesaTable extends DatabaseTemplate
+class CreateDesaTable extends Template
 {
     public function __construct(){
         parent::__construct(

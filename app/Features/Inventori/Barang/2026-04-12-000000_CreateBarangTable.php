@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Features\Inventori\Barang;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
 
-class CreateBarangTable extends DatabaseTemplate
+class CreateBarangTable extends Template
 {
     public function __construct()
     {

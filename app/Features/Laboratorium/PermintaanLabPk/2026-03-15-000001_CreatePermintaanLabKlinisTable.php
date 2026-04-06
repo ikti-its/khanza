@@ -2,10 +2,10 @@
 
 namespace App\Features\Laboratorium\PermintaanLabPk;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
     
-class CreatePermintaanLabKlinisTable extends DatabaseTemplate
+class CreatePermintaanLabKlinisTable extends Template
 {
     public function __construct(){
     parent::__construct(

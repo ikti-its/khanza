@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Features\Inventori\Lokasi;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
 
-class CreateLokasiTable extends DatabaseTemplate
+class CreateLokasiTable extends Template
 {
     public function __construct()
     {

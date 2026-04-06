@@ -2,10 +2,10 @@
 
 namespace App\Features\Operasi\SkorBromage;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
     
-class CreateSkorBromageTable extends DatabaseTemplate
+class CreateSkorBromageTable extends Template
 {
     public function __construct(){
     parent::__construct(

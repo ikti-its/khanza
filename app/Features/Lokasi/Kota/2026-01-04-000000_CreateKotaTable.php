@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Features\Lokasi\Kota;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
 
 /*  Dalam 1 provinsi terdapat 5 atau lebih kota/kabupaten
  *  Di Indonesia, terdapat 416 kabupaten dan 98 kota
@@ -25,7 +25,7 @@ use App\Core\DatabaseType as T;
  *  3515 = Kabupaten Sidoarjo
  */
 
-class CreateKotaTable extends DatabaseTemplate
+class CreateKotaTable extends Template
 {
     public function __construct(){
         parent::__construct(

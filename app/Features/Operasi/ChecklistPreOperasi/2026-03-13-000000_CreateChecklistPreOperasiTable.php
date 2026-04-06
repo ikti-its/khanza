@@ -2,10 +2,10 @@
 
 namespace App\Features\Operasi\ChecklistPreOperasi;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
     
-class CreateChecklistPreOperasiTable extends DatabaseTemplate
+class CreateChecklistPreOperasiTable extends Template
 {
     public function __construct(){
     parent::__construct(

@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\JenisPencekalan;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
 
-class CreateJenisPencekalanTable extends DatabaseTemplate
+class CreateJenisPencekalanTable extends Template
 {
     public function __construct(){
         parent::__construct(

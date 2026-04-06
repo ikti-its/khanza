@@ -2,10 +2,10 @@
 
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningKeputusan;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
     
-class CreateRefSkriningKeputusanTable extends DatabaseTemplate
+class CreateRefSkriningKeputusanTable extends Template
 {
     public function __construct(){
     parent::__construct(

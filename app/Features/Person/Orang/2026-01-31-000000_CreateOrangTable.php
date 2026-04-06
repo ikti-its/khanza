@@ -2,8 +2,8 @@
 
 namespace App\Features\Person\Orang;
 
-use App\Core\DatabaseTemplate;
-use App\Core\DatabaseType as T;
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
     
 /*
 * Tabel orang digunakan untuk menyimpan data identitas individu
@@ -13,7 +13,7 @@ use App\Core\DatabaseType as T;
 * fitur lain seperti donor, pasien, petugas, atau pengguna sistem.
  */
 
-class CreateOrangTable extends DatabaseTemplate
+class CreateOrangTable extends Template
 {
     public function __construct(){
         parent::__construct(
