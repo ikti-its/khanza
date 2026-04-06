@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class ModelTemplate extends Model
 {
     /**
-     * @param 'BASE'| 'JUNCTION'| 'VIEW' $type
+     * @param 'BASE'| 'JOIN'| 'REFS' $type
      * @param string $schema
      * @param string $table
      * @param string $primaryKey
@@ -17,13 +17,13 @@ class ModelTemplate extends Model
         protected string $type,
         protected string $schema,
         protected string $table,
-        protected string $primaryKey,
+        protected string|array $primaryKey,
         protected array $fields,
     ) {
         parent::__construct();
         $this->table = $this->schema . '.' . $this->table;
         $this->allowedFields = array_keys($fields);
-        $this->setValidationRules($fields);
+        // $this->setValidationRules($fields);
         
         /*
          * All of the settings below are commented
