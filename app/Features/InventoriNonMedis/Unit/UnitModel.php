@@ -1,31 +1,26 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\KategoriBarang;
+namespace App\Features\InventoriNonMedis\Unit;
 
 use App\Core\ModelTemplate;
 
-class KategoriBarangModel extends ModelTemplate
+class UnitModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'REFS',
             'inventori',
-            'kategori_barang',
-            'id_kategori',
+            'unit',
+            'id_unit',
             [
-                'id_kategori' => [
+                'id_unit' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ], 
-                'kode_kategori_barang' => [
+                'nama_unit' => [
                     'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'nama_kategori_barang' => [
-                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ]

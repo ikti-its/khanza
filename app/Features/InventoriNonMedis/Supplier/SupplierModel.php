@@ -1,45 +1,35 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\MutasiStok;
+namespace App\Features\InventoriNonMedis\Supplier;
 
 use App\Core\ModelTemplate;
 
-class MutasiStokModel extends ModelTemplate
+class SupplierModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
             'inventori',
-            'mutasi_stok',
-            'id_mutasi',
+            'supplier',
+            'id_supplier',
             [
-                'id_mutasi' => [
+                'id_supplier' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ], 
-                'id_barang' => [
-                    'allowed' => false,
+                'nama_supplier' => [
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ], 
-                'lokasi_sumber' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'lokasi_tujuan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'qty' => [
+                'no_telp' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'tanggal' => [
+                'alamat' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],

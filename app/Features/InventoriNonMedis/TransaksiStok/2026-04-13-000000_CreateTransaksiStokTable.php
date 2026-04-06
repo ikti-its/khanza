@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\TransaksiStok;
+namespace App\Features\InventoriNonMedis\TransaksiStok;
 
 use App\Core\Database\Template;
 use App\Core\Database\Type as T;

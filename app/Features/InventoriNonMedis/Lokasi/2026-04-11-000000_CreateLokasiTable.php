@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\Lokasi;
+namespace App\Features\InventoriNonMedis\Lokasi;
 
 use App\Core\Database\Template;
 use App\Core\Database\Type as T;

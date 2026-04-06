@@ -1,20 +1,25 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\TransaksiStok;
+namespace App\Features\InventoriNonMedis\PermintaanBarangDetail;
 
 use App\Core\ModelTemplate;
 
-class TransaksiStokModel extends ModelTemplate
+class PermintaanBarangDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
             'inventori',
-            'transaksi_stok',
-            'id_transaksi',
+            'permintaan_barang_detail',
+            'id_detail',
             [
-                'id_transaksi' => [
+                'id_detail' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ], 
+                'id_permintaan' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
@@ -23,19 +28,9 @@ class TransaksiStokModel extends ModelTemplate
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
-                'tipe_transaksi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
                 ],
                 'qty' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal' => [
-                    'allowed' => true,
+                    'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ]

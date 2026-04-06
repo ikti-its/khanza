@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\Barang;
+namespace App\Features\InventoriNonMedis\Barang;
 
 use App\Core\Database\Template;
 use App\Core\Database\Type as T;
