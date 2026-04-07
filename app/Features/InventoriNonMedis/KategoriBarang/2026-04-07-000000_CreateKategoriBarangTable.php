@@ -11,7 +11,7 @@ class CreateKategoriBarangTable extends Template
     public function __construct()
     {
         parent::__construct(
-            'inventori',
+            'inventori_non_medis',
             'kategori_barang',
             [
                 'id_kategori'   => T::ID32(),

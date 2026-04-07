@@ -11,17 +11,23 @@ class CreatePermintaanBarangTable extends Template
     public function __construct()
     {
         parent::__construct(
-            'inventori',
+            'inventori_non_medis',
             'permintaan_barang',
             [
                 'id_permintaan' => T::ID32(),
+                'unit_pemohon'  => T::TEXT(),
+                'tipe'          => T::TEXT(),
                 'tanggal'       => T::DATETIME(),
                 'status'        => T::TEXT(),
+                'catatan'       => T::TEXT()->nullable(),
             ],
             ['id_permintaan'],
             [],
             [],
-            [],
+            [
+                ['tanggal'],
+                ['status'],
+            ],
             true,
             __DIR__ . '/permintaan_barang.csv'
         );

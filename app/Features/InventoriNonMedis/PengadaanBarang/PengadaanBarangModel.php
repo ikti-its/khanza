@@ -1,39 +1,49 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\Supplier;
+namespace App\Features\InventoriNonMedis\PengadaanBarang;
 
 use App\Core\ModelTemplate;
 
-class SupplierModel extends ModelTemplate
+class PengadaanBarangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
             'inventori_non_medis',
-            'supplier',
-            'id_supplier',
+            'pengadaan_barang',
+            'id_pengadaan',
             [
-                'id_supplier' => [
+                'id_pengadaan' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
-                'nama_supplier' => [
-                    'allowed' => true,
+                ],
+                'id_pengajuan' => [
+                    'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
-                'no_telp' => [
+                ],
+                'id_supplier' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'alamat' => [
+                'tanggal' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ]
+                ],
+                'status' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'catatan' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
             ],
         );
     }

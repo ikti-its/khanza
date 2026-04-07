@@ -1,6 +1,6 @@
-id_permintaan,tanggal,status
-1,2026-04-02 08:00:00,SELESAI
-2,2026-04-02 09:30:00,DIPROSES
-3,2026-04-03 10:15:00,DIPROSES
-4,2026-04-03 11:00:00,MENUNGGU
-5,2026-04-03 13:45:00,MENUNGGU
+id_permintaan,unit_pemohon,tipe,tanggal,status,catatan
+1,IGD,barang_lama,2026-04-02 08:00:00,disetujui,
+2,Poli Umum,barang_lama,2026-04-02 09:30:00,disetujui,
+3,Farmasi,barang_lama,2026-04-03 10:15:00,disetujui,
+4,Administrasi,barang_baru,2026-04-03 11:00:00,menunggu,Butuh printer wireless untuk loket pendaftaran
+5,Rawat Inap,barang_lama,2026-04-03 13:45:00,menunggu,

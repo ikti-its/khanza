@@ -1,0 +1,5 @@
+id_pengadaan,id_pengajuan,id_supplier,tanggal,status,catatan
+1,1,1,2026-04-01 07:30:00,diterima,Pengadaan ATK dari PT Sinar ATK Nusantara
+2,2,2,2026-04-01 08:30:00,diterima,Pengadaan kebersihan dari CV Bersih Jaya
+3,3,3,2026-04-01 09:30:00,diterima,Pengadaan lab dari PT Lab Utama Sejahtera
+4,4,4,2026-04-01 06:30:00,diterima,Pengadaan elektronik dari PT Teknologi Kantor Indonesia

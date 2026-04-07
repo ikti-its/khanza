@@ -1,36 +1,36 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\MutasiStok;
+namespace App\Features\InventoriNonMedis\PengajuanBarangDetail;
 
 use App\Core\ModelTemplate;
 
-class MutasiStokModel extends ModelTemplate
+class PengajuanBarangDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
-            'inventori',
-            'mutasi_stok',
-            'id_mutasi',
+            'inventori_non_medis',
+            'pengajuan_barang_detail',
+            'id_detail',
             [
-                'id_mutasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'lokasi_sumber' => [
+                'id_detail' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'lokasi_tujuan' => [
+                'id_pengajuan' => [
                     'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'id_barang' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'nama_barang_baru' => [
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
@@ -39,11 +39,11 @@ class MutasiStokModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'tanggal' => [
+                'harga_estimasi' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ]
+                ],
             ],
         );
     }

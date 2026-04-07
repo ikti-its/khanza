@@ -10,7 +10,7 @@ class TransaksiStokModel extends ModelTemplate
     public function __construct(){
         parent::__construct(
             'BASE',
-            'inventori',
+            'inventori_non_medis',
             'transaksi_stok',
             'id_transaksi',
             [
@@ -18,12 +18,12 @@ class TransaksiStokModel extends ModelTemplate
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
+                ],
                 'id_barang' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
+                ],
                 'tipe_transaksi' => [
                     'allowed' => false,
                     'rules'   => '',
@@ -38,7 +38,22 @@ class TransaksiStokModel extends ModelTemplate
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ]
+                ],
+                'id_pengadaan' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'id_permintaan' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'catatan' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
             ],
         );
     }

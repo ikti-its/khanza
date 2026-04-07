@@ -11,7 +11,7 @@ class CreateSupplierTable extends Template
     public function __construct()
     {
         parent::__construct(
-            'inventori',
+            'inventori_non_medis',
             'supplier',
             [
                 'id_supplier'   => T::ID32(),

@@ -11,7 +11,7 @@ class CreateLokasiTable extends Template
     public function __construct()
     {
         parent::__construct(
-            'inventori',
+            'inventori_non_medis',
             'lokasi',
             [
                 'id_lokasi'   => T::ID32(),

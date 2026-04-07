@@ -10,7 +10,7 @@ class KategoriBarangModel extends ModelTemplate
     public function __construct(){
         parent::__construct(
             'REFS',
-            'inventori',
+            'inventori_non_medis',
             'kategori_barang',
             'id_kategori',
             [

@@ -1,0 +1,5 @@
+id_pengajuan,id_permintaan,tanggal,status,catatan,catatan_atasan
+1,1,2026-04-02 10:00:00,disetujui,Stok pulpen dan kertas habis,Disetujui untuk pengadaan segera
+2,2,2026-04-02 11:00:00,disetujui,Stok cairan pembersih habis,Disetujui
+3,3,2026-04-03 12:00:00,disetujui,Stok sarung tangan kosong,Disetujui sesuai kebutuhan
+4,,2026-04-01 07:00:00,disetujui,Pengadaan rutin printer Epson L3210,Disetujui proaktif

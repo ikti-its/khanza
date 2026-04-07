@@ -1,54 +1,54 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\Barang;
+namespace App\Features\InventoriNonMedis\StokOpnameDetail;
 
 use App\Core\ModelTemplate;
 
-class BarangModel extends ModelTemplate
+class StokOpnameDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
             'inventori_non_medis',
-            'barang',
-            'id_barang',
+            'stok_opname_detail',
+            'id_detail',
             [
+                'id_detail' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'id_opname' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
                 'id_barang' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
-                'nama_barang' => [
+                ],
+                'stok_sistem' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
-                'id_kategori' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
                 ],
-                'id_supplier' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_unit' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_lokasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'stok' => [
+                'stok_fisik' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ]
+                ],
+                'selisih' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'keterangan' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
             ],
         );
     }

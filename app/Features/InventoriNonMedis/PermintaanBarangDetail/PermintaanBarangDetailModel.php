@@ -10,7 +10,7 @@ class PermintaanBarangDetailModel extends ModelTemplate
     public function __construct(){
         parent::__construct(
             'BASE',
-            'inventori',
+            'inventori_non_medis',
             'permintaan_barang_detail',
             'id_detail',
             [
@@ -18,22 +18,37 @@ class PermintaanBarangDetailModel extends ModelTemplate
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
+                ],
                 'id_permintaan' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
+                ],
                 'id_barang' => [
-                    'allowed' => false,
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'nama_barang_baru' => [
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
                 'qty' => [
-                    'allowed' => false,
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ]
+                ],
+                'qty_disetujui' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'catatan' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
             ],
         );
     }

@@ -1,6 +1,9 @@
-id_transaksi,id_barang,tipe_transaksi,qty,tanggal
-1,1,masuk,100,2026-04-01
-2,2,masuk,50,2026-04-01
-3,3,masuk,30,2026-04-01
-4,1,keluar,20,2026-04-02
-5,5,keluar,50,2026-04-03
+id_transaksi,id_barang,tipe_transaksi,qty,tanggal,id_pengadaan,id_permintaan,catatan
+1,1,MASUK,100,2026-04-01 08:00:00,1,,Penerimaan dari PT Sinar ATK Nusantara
+2,2,MASUK,50,2026-04-01 08:00:00,1,,Penerimaan dari PT Sinar ATK Nusantara
+3,3,MASUK,30,2026-04-01 09:00:00,2,,Penerimaan dari CV Bersih Jaya
+4,5,MASUK,200,2026-04-01 10:00:00,3,,Penerimaan dari PT Lab Utama Sejahtera
+5,4,MASUK,10,2026-04-01 11:00:00,4,,Penerimaan dari PT Teknologi Kantor Indonesia
+6,1,KELUAR,20,2026-04-02 08:30:00,,1,Distribusi ke IGD
+7,3,KELUAR,10,2026-04-02 09:45:00,,2,Distribusi ke Poli Umum
+8,5,KELUAR,50,2026-04-03 10:30:00,,3,Distribusi ke Farmasi

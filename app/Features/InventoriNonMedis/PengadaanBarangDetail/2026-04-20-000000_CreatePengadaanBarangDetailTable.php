@@ -1,0 +1,34 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\InventoriNonMedis\PengadaanBarangDetail;
+
+use App\Core\Database\Template;
+use App\Core\Database\Type as T;
+
+class CreatePengadaanBarangDetailTable extends Template
+{
+    public function __construct()
+    {
+        parent::__construct(
+            'inventori_non_medis',
+            'pengadaan_barang_detail',
+            [
+                'id_detail'     => T::ID32(),
+                'id_pengadaan'  => T::INT32(),
+                'id_barang'     => T::INT32(),
+                'qty'           => T::F64(),
+                'harga_satuan'  => T::F64()->nullable(),
+            ],
+            ['id_detail'],
+            [],
+            [
+                [['id_pengadaan'], 'pengadaan_barang', ['id_pengadaan'], 'CASCADE', 'RESTRICT'],
+                [['id_barang'],    'barang',           ['id_barang'],    'CASCADE', 'RESTRICT'],
+            ],
+            [],
+            true,
+            __DIR__ . '/pengadaan_barang_detail.csv'
+        );
+    }
+}
