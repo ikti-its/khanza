@@ -25,8 +25,8 @@ class ChecklistPostopPenunjangModel extends ModelTemplate
                     'rules' => '',
                     'errors' => [],
                 ],
-                'jenis_penunjang' => [
-                    'allowed' => true,
+                'id_jenis_penunjang' => [
+                    'allowed' => false,
                     'rules' => '',
                     'errors' => [],
                 ],
