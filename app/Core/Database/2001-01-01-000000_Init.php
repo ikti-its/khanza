@@ -8,19 +8,15 @@ use App\Core\Assert;
 class Init extends Migration
 {
     public function up()
-    {
+    { 
         $_db = \Config\Database::connect();
         $_forge = \Config\Database::forge($_db);
-        $_forge->createDatabase('khanza_db', true);
+        $_forge->createDatabase('khanza_db', true);   
         
-        $db = \Config\Database::connect([
-            'hostname' => 'localhost',
-            'username' => 'postgres',
-            'password' => 'postgres',
-            'database' => 'khanza_db',
-            'DBDriver' => 'Postgre',
-            'charset'  => 'utf8',
-        ]);
+        $config = new \Config\Database()->default;
+        $config['database'] = env('database.default.khanza_db');
+
+        $db = \Config\Database::connect($config);
         $path = APPPATH . 'Core/Database/Backup/';
         
         foreach(['migration', 'function'] as $type) {

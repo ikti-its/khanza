@@ -48,6 +48,12 @@ class Template extends Migration
         foreach ($this->fields as $name => $type) {
             $this->fields[$name] = $type->definition();
         }
+
+        $config = new \Config\Database()->default;
+        $config['database'] = env('database.default.khanza_db');
+
+        $this->db = \Config\Database::connect($config);
+        $this->forge = \Config\Database::forge($this->db);
     }
     private function add_primary_key(): void {
         if($this->primary_key == [])
