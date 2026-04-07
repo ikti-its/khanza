@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\StatusKantong;
+namespace App\Features\InventoriDarah\StatusKantong;
 
 use App\Core\Database\Template;
 use App\Core\Database\Type as T;
@@ -10,7 +10,7 @@ class CreateStatusKantongTable extends Template
 {
     public function __construct(){
         parent::__construct(
-            'inventori',
+            'inventori_darah',
             'status_kantong',
             [
                 'id_status_kantong'     => T::ID8(),

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\TarifKomponen;
+namespace App\Features\InventoriDarah\TarifKomponen;
 
 use App\Core\Database\Template;
 use App\Core\Database\Type as T;
@@ -10,7 +10,7 @@ class CreateTarifKomponenTable extends Template
 {
     public function __construct(){
         parent::__construct(
-            'inventori',
+            'inventori_darah',
             'tarif_komponen',
             [
                 'id_tarif'              => T::ID32(),

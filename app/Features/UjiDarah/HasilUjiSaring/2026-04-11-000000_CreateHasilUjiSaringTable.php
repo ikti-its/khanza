@@ -22,7 +22,7 @@ class CreateHasilUjiSaringTable extends Template
             ['id_uji_saring'],
             [['id_bag']],
             [
-                [['id_bag'], 'inventori.kantong_darah', ['id_bag'], 'CASCADE', 'CASCADE'],
+                [['id_bag'], 'inventori_darah.kantong_darah', ['id_bag'], 'CASCADE', 'CASCADE'],
                 [['id_metode_uji'], 'metode_uji', ['id_metode_uji'], 'CASCADE', 'CASCADE'],
                 // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
             ],

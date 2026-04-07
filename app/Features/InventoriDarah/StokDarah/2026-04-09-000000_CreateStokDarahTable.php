@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\StokDarah;
+namespace App\Features\InventoriDarah\StokDarah;
 
 use App\Core\Database\Template;
 use App\Core\Database\Type as T;
@@ -10,7 +10,7 @@ class CreateStokDarahTable extends Template
 {
     public function __construct(){
         parent::__construct(
-            'inventori',
+            'inventori_darah',
             'stok_darah',
             [
                 'id_stok_darah'              => T::ID32(),

@@ -26,7 +26,7 @@ class CreatePenyerahanDarahDetailTable extends Template
             [['id_stok_darah']],
             [
                 [['id_penyerahan'], 'penyerahan_darah', ['id_penyerahan'], 'CASCADE', 'CASCADE'],
-                [['id_stok_darah'], 'inventori.stok_darah', ['id_stok_darah'], 'CASCADE', 'CASCADE'],
+                [['id_stok_darah'], 'inventori_darah.stok_darah', ['id_stok_darah'], 'CASCADE', 'CASCADE'],
             ],
             [['id_penyerahan']],
         );

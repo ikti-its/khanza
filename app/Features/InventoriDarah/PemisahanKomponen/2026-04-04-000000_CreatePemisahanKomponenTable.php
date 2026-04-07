@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\PemisahanKomponen;
+namespace App\Features\InventoriDarah\PemisahanKomponen;
 
 use App\Core\Database\Template;
 use App\Core\Database\Type as T;
@@ -10,7 +10,7 @@ class CreatePemisahanKomponenTable extends Template
 {
     public function __construct(){
         parent::__construct(
-            'inventori',
+            'inventori_darah',
             'pemisahan_komponen',
             [
                 'id_pemisahan'          => T::ID32(),

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Inventori\SumberDarah;
+namespace App\Features\InventoriDarah\SumberDarah;
 
 use App\Core\Database\Template;
 use App\Core\Database\Type as T;
@@ -10,7 +10,7 @@ class CreateSumberDarahTable extends Template
 {
     public function __construct(){
         parent::__construct(
-            'inventori',
+            'inventori_darah',
             'sumber_darah',
             [
                 'id_sumber_darah'         => T::ID8(),
