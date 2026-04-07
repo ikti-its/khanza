@@ -13,8 +13,8 @@ class CreateChecklistPostopDrainTable extends Template
         'checklist_postop_drain',
         [
             'id_drain'           => T::ID8(),
-            'id_checklist_post'  => T::ID8(),
-            'id_ketersediaan'    => T::ID8(),
+            'id_checklist_post'  => T::INT8(),
+            'id_ketersediaan'    => T::INT8(),
             'jumlah'             => T::INT32(),
             'letak'              => T::TEXT(),
             'warna'              => T::TEXT(),

@@ -14,7 +14,7 @@ class CreateTarifKomponenTable extends Template
             'tarif_komponen',
             [
                 'id_tarif'              => T::ID32(),
-                'id_komponen'           => T::ID8(),
+                'id_komponen'           => T::INT8(),
                 'jasa_sarana'           => T::F32(),
                 'paket_bhp'             => T::F32(),
                 'kso'                   => T::F32(),

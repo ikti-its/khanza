@@ -14,10 +14,10 @@ class CreatePendonorTable extends Template
             'pendonor',
             [
                 'id_pendonor'                => T::ID32(),
-                'id_orang'                   => T::ID32(),
+                'id_orang'                   => T::INT32(),
                 'nomor_kartu_pendonor'       => T::TEXT(),
-                'id_rhesus'                  => T::ID8(),
-                'id_status_pendonor'         => T::ID8(),
+                'id_rhesus'                  => T::INT8(),
+                'id_status_pendonor'         => T::INT8(),
             ],
             ['id_pendonor'],
             [['id_orang'], ['nomor_kartu_pendonor']],

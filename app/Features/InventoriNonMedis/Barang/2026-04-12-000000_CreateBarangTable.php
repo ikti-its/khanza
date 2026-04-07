@@ -17,10 +17,10 @@ class CreateBarangTable extends Template
                 'id_barang'   => T::ID32(),
                 'nama_barang' => T::TEXT(),
                 
-                'id_kategori' => T::ID32(),
-                'id_supplier' => T::ID32(),
-                'id_unit'     => T::ID32(),
-                'id_lokasi'   => T::ID32(),
+                'id_kategori' => T::INT32(),
+                'id_supplier' => T::INT32(),
+                'id_unit'     => T::INT32(),
+                'id_lokasi'   => T::INT32(),
                 
                 'stok'        => T::F64(),
             ],

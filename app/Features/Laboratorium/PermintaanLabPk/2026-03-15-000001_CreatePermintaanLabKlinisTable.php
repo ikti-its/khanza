@@ -13,9 +13,9 @@ class CreatePermintaanLabKlinisTable extends Template
         'permintaan_lab_pk',
         [
             'id_permintaan_pk'          => T::ID32(),
-            'id_permintaan_lab'         => T::ID64(),
-            'id_item_pemeriksaan'       => T::ID32(),
-            'id_parameter_pemeriksaan'  => T::ID32(),
+            'id_permintaan_lab'         => T::INT64(),
+            'id_item_pemeriksaan'       => T::INT32(),
+            'id_parameter_pemeriksaan'  => T::INT32(),
         ],
         ['id_permintaan_pk'],
         [],

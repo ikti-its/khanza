@@ -14,7 +14,7 @@ class CreateJenisPendidikanTable extends Template
             [
                 'id_jenis_pendidikan'   => T::ID8(),
                 'nama_jenis_pendidikan' => T::TEXT(),
-                'jenjang_pendidikan_id' => T::ID8(),
+                'jenjang_pendidikan_id' => T::INT8(),
                 
             ],
             ['id_jenis_pendidikan'],

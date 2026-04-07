@@ -14,9 +14,9 @@ class CreateJawabanKonselingTable extends Template
             'jawaban_konseling',
             [
                 'id_jawaban'       => T::ID32(),
-                'id_konseling'     => T::ID32(),
-                'id_pertanyaan'    => T::ID8(),
-                'id_pilihan'       => T::ID8(),
+                'id_konseling'     => T::INT32(),
+                'id_pertanyaan'    => T::INT8(),
+                'id_pilihan'       => T::INT8(),
             ],
             ['id_jawaban'],
             [['id_konseling', 'id_pertanyaan']],

@@ -13,8 +13,8 @@ class CreatePenyerahanPasienPeralatanTable extends Template
         'penyerahan_pasien_peralatan',
         [
             'id'             => T::ID8(),
-            'id_penyerahan'  => T::ID8(),
-            'id_peralatan'   => T::ID8(),
+            'id_penyerahan'  => T::INT8(),
+            'id_peralatan'   => T::INT8(),
             'keterangan'     => T::TEXT(),
         ],
         ['id'],

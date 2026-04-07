@@ -13,9 +13,9 @@ class CreateTimeOutSebelumInsisiPenunjangTable extends Template
         'time_out_sebelum_insisi_penunjang',
         [
             'id_penunjang'    => T::ID8(),
-            'id_timeout'      => T::ID8(),
+            'id_timeout'      => T::INT8(),
             'jenis_penunjang' => T::TEXT(),
-            'id_status'       => T::ID8(),
+            'id_status'       => T::INT8(),
         ],
         ['id_penunjang'],
         [],

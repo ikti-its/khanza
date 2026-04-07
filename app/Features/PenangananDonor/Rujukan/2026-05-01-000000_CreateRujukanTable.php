@@ -14,10 +14,10 @@ class CreateRujukanTable extends Template
             'rujukan',
             [
                 'id_rujukan'              => T::ID32(),
-                'id_kasus'                => T::ID32(),
+                'id_kasus'                => T::INT32(),
                 'nomor_surat'             => T::TEXT(),
                 'tanggal_rujukan'         => T::DATE(),
-                'id_fasyankes'            => T::ID16(),
+                'id_fasyankes'            => T::INT16(),
             ],
             ['id_rujukan'],
             [['nomor_surat']],

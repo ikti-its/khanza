@@ -15,7 +15,7 @@ class CreateTransaksiStokTable extends Template
             'transaksi_stok',
             [
                 'id_transaksi'   => T::ID32(),
-                'id_barang'      => T::ID32(),
+                'id_barang'      => T::INT32(),
                 'tipe_transaksi' => T::TEXT(), 
                 'qty'            => T::F64(),
                 'tanggal'        => T::DATETIME(),

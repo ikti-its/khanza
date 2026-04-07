@@ -14,9 +14,9 @@ class CreateKantongDarahTable extends Template
             'kantong_darah',
             [
                 'id_bag'                   => T::ID32(),
-                'id_pengambilan_darah'     => T::ID32(),
+                'id_pengambilan_darah'     => T::INT32(),
                 'no_bag'                   => T::TEXT(),
-                'id_jenis_bag'             => T::ID8(),
+                'id_jenis_bag'             => T::INT8(),
             ],
             ['id_bag'],
             [['id_pengambilan_darah'], ['no_bag']],

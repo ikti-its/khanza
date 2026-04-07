@@ -14,9 +14,9 @@ class CreateHasilDiagnostikDetailTable extends Template
             'hasil_diagnostik_detail',
             [
                 'id_diagnostik_detail'     => T::ID32(),
-                'id_diagnostik'            => T::ID32(),
-                'id_parameter_uji'         => T::ID8(),
-                'id_nilai_diagnostik'      => T::ID8(),
+                'id_diagnostik'            => T::INT32(),
+                'id_parameter_uji'         => T::INT8(),
+                'id_nilai_diagnostik'      => T::INT8(),
             ],
             ['id_diagnostik_detail'],
             [['id_diagnostik', 'id_parameter_uji']],

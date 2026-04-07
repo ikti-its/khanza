@@ -13,7 +13,7 @@ class CreateKewarganegaraanTable extends Template
             'kewarganegaraan',
             [
                 'id_kewarganegaraan' => T::ID8(),
-                'id_negara'          => T::ID8(),
+                'id_negara'          => T::INT8(),
             ],
             ['id_kewarganegaraan'],
             [],

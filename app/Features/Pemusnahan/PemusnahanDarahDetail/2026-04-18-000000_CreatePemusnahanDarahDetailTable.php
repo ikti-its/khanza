@@ -14,9 +14,9 @@ class CreatePemusnahanDarahDetailTable extends Template
             'pemusnahan_darah_detail',
             [
                 'id_pemusnahan_detail'  => T::ID32(),
-                'id_pemusnahan'         => T::ID32(),
-                'id_stok_darah'         => T::ID32(),
-                'id_alasan'             => T::ID8(),
+                'id_pemusnahan'         => T::INT32(),
+                'id_stok_darah'         => T::INT32(),
+                'id_alasan'             => T::INT8(),
             ],
             ['id_pemusnahan_detail'],
             [['id_stok_darah']],

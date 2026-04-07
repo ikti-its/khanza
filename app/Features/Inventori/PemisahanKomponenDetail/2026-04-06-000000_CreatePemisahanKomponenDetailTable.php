@@ -14,9 +14,9 @@ class CreatePemisahanKomponenDetailTable extends Template
             'pemisahan_komponen_detail',
             [
                 'id_pemisahan_detail'    => T::ID32(),
-                'id_pemisahan'           => T::ID32(),
+                'id_pemisahan'           => T::INT32(),
                 'no_kantong'             => T::TEXT(),
-                'id_komponen'            => T::ID8(),
+                'id_komponen'            => T::INT8(),
                 'tanggal_kadaluarsa'     => T::DATE(),
             ],
             ['id_pemisahan_detail'],

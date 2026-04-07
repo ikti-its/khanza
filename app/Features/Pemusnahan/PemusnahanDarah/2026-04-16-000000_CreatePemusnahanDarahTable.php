@@ -15,7 +15,7 @@ class CreatePemusnahanDarahTable extends Template
             [
                 'id_pemusnahan'         => T::ID32(),
                 'tanggal_pemusnahan'    => T::DATE(),
-                // 'id_petugas'            => T::ID32(),
+                'id_petugas'            => T::INT32(),
                 'keterangan'            => T::TEXT()->nullable(),
             ],
             ['id_pemusnahan'],

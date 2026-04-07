@@ -15,9 +15,9 @@ class CreateMutasiStokTable extends Template
             'mutasi_stok',
             [
                 'id_mutasi'   => T::ID32(),
-                'id_barang'   => T::ID32(),
-                'lokasi_sumber' => T::ID32(),
-                'lokasi_tujuan'   => T::ID32(),
+                'id_barang'   => T::INT32(),
+                'lokasi_sumber' => T::INT32(),
+                'lokasi_tujuan'   => T::INT32(),
                 'qty'         => T::F64(),
                 'tanggal'     => T::DATETIME(),
             ],

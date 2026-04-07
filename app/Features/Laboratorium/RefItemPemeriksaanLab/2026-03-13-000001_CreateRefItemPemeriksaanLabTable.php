@@ -13,7 +13,7 @@ class CreateRefItemPemeriksaanLabTable extends Template
         'ref_item_pemeriksaan_lab',
         [
             'id_item_lab'   => T::ID32(),
-            'id_kategori'   => T::ID8(),
+            'id_kategori'   => T::INT8(),
             'kode_periksa'  => T::TEXT(),
             'nama_item'     => T::TEXT(),
             'tarif'         => T::F32(),

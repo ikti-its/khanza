@@ -14,7 +14,7 @@ class CreateEmailTable extends Template
             'email',
             [
                 'id_email'     => T::ID32(),
-                'id_orang'     => T::ID32(),
+                'id_orang'     => T::INT32(),
                 'alamat_email' => T::TEXT(),
             ],
             ['id_email'],

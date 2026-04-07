@@ -14,9 +14,9 @@ class CreateKonselingTable extends Template
             'konseling',
             [
                 'id_konseling'          => T::ID32(),
-                'id_kasus'              => T::ID32(),
+                'id_kasus'              => T::INT32(),
                 'tanggal_konseling'     => T::DATE(),
-                // 'id_petugas'            => T::ID32(),
+                'id_petugas'            => T::INT32(),
             ],
             ['id_konseling'],
             [['id_kasus']],

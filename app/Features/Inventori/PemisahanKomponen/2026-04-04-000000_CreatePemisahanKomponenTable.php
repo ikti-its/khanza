@@ -14,10 +14,10 @@ class CreatePemisahanKomponenTable extends Template
             'pemisahan_komponen',
             [
                 'id_pemisahan'          => T::ID32(),
-                'id_bag'                => T::ID32(),
+                'id_bag'                => T::INT32(),
                 'tanggal_pemisahan'     => T::DATE(),
-                'id_shift'              => T::ID8(),
-                'id_petugas'            => T::ID32(),
+                'id_shift'              => T::INT8(),
+                'id_petugas'            => T::INT32(),
             ],
             ['id_pemisahan'],
             [['id_bag']],
