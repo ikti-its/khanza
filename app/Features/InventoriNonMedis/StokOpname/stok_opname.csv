@@ -1,2 +1,2 @@
-id_opname,tanggal,status,catatan
-1,2026-04-05 09:00:00,disetujui,Opname rutin mingguan gudang utama
+id_opname,tanggal,status,catatan,catatan_atasan
+1,2026-04-05 09:00:00,disetujui,Opname rutin mingguan gudang utama,

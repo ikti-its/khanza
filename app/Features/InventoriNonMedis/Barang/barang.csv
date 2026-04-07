@@ -1,6 +1,6 @@
-id_barang,kode_barang,nama_barang,jenis_barang,id_kategori,id_supplier,id_unit,id_lokasi,stok,stok_minimum,harga_satuan
-1,ATK-001,Pulpen Hitam,habis_pakai,1,1,1,2,80,20,5000
-2,ATK-002,Kertas A4,habis_pakai,1,1,3,2,50,10,45000
-3,KBR-001,Cairan Pembersih Lantai,habis_pakai,2,2,4,3,20,5,25000
-4,ELK-001,Printer Epson L3210,aset,4,4,5,1,10,2,2500000
-5,LAB-001,Sarung Tangan Latex,habis_pakai,3,3,1,1,150,50,15000
+id_barang,kode_barang,nama_barang,id_jenis_barang,id_kategori,id_supplier,id_unit,id_lokasi,stok,stok_minimum,harga_satuan
+1,ATK-001,Pulpen Hitam,1,1,1,1,2,80,20,5000
+2,ATK-002,Kertas A4,1,1,1,3,2,50,10,45000
+3,KBR-001,Cairan Pembersih Lantai,1,2,2,4,3,20,5,25000
+4,ELK-001,Printer Epson L3210,3,4,4,5,1,10,2,2500000
+5,LAB-001,Sarung Tangan Latex,1,3,3,1,1,150,50,15000

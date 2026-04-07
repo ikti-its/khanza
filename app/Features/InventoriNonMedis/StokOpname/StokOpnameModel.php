@@ -34,6 +34,11 @@ class StokOpnameModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
+                'catatan_atasan' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
             ],
         );
     }

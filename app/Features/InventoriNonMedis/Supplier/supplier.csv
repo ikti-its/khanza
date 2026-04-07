@@ -1,6 +1,6 @@
-id_supplier,nama_supplier,no_telp,alamat
-1,PT Sinar ATK Nusantara,081234567890,Jl. Merdeka No 10 Jakarta Selatan
-2,CV Bersih Jaya,082145678901,Jl. Asia Afrika No 25 Bandung
-3,PT Lab Utama Sejahtera,083256789012,Jl. Raya Darmo No 15 Surabaya
-4,PT Teknologi Kantor Indonesia,084367890123,Jl. Thamrin No 8 Jakarta Pusat
-5,CV Umum Sentosa,085478901234,Jl. Malioboro No 12 Yogyakarta
+id_supplier,nama_supplier,no_telp,id_alamat
+1,PT Sinar ATK Nusantara,081234567890,
+2,CV Bersih Jaya,082145678901,
+3,PT Lab Utama Sejahtera,083256789012,
+4,PT Teknologi Kantor Indonesia,084367890123,
+5,CV Umum Sentosa,085478901234,

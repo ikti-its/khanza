@@ -14,10 +14,10 @@ class CreateBarangTable extends Template
             'inventori_non_medis',
             'barang',
             [
-                'id_barang'    => T::ID32(),
-                'kode_barang'  => T::TEXT(),
-                'nama_barang'  => T::TEXT(),
-                'jenis_barang' => T::TEXT(),
+                'id_barang'       => T::ID32(),
+                'kode_barang'     => T::TEXT(),
+                'nama_barang'     => T::TEXT(),
+                'id_jenis_barang' => T::INT8(),
 
                 'id_kategori'  => T::INT32(),
                 'id_supplier'  => T::INT32()->nullable(),
@@ -33,10 +33,11 @@ class CreateBarangTable extends Template
                 ['kode_barang']
             ],
             [
-                [['id_kategori'], 'kategori_barang', ['id_kategori'], 'CASCADE', 'RESTRICT'],
-                [['id_supplier'], 'supplier',        ['id_supplier'], 'CASCADE', 'SET NULL'],
-                [['id_unit'],     'unit',            ['id_unit'],     'CASCADE', 'RESTRICT'],
-                [['id_lokasi'],   'lokasi',          ['id_lokasi'],   'CASCADE', 'RESTRICT'],
+                [['id_jenis_barang'], 'jenis_barang',   ['id_jenis_barang'], 'CASCADE', 'RESTRICT'],
+                [['id_kategori'],     'kategori_barang', ['id_kategori'],    'CASCADE', 'RESTRICT'],
+                [['id_supplier'],     'supplier',        ['id_supplier'],    'CASCADE', 'SET NULL'],
+                [['id_unit'],         'unit',            ['id_unit'],        'CASCADE', 'RESTRICT'],
+                [['id_lokasi'],       'lokasi',          ['id_lokasi'],      'CASCADE', 'RESTRICT'],
             ],
             [
                 ['nama_barang']

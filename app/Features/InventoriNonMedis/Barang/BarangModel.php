@@ -18,29 +18,39 @@ class BarangModel extends ModelTemplate
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
+                ],
+                'kode_barang' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
                 'nama_barang' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
+                ],
+                'id_jenis_barang' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
                 'id_kategori' => [
-                    'allowed' => false,
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
                 'id_supplier' => [
-                    'allowed' => false,
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
                 'id_unit' => [
-                    'allowed' => false,
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
                 'id_lokasi' => [
-                    'allowed' => false,
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
@@ -48,7 +58,17 @@ class BarangModel extends ModelTemplate
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ]
+                ],
+                'stok_minimum' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'harga_satuan' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
             ],
         );
     }

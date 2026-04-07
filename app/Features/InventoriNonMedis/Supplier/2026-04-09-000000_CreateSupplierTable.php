@@ -17,11 +17,13 @@ class CreateSupplierTable extends Template
                 'id_supplier'   => T::ID32(),
                 'nama_supplier' => T::TEXT(),
                 'no_telp'       => T::TEXT()->nullable(),
-                'alamat'        => T::TEXT()->nullable(),
+                'id_alamat'     => T::INT32()->nullable(),
             ],
             ['id_supplier'],
             [],
-            [],
+            [
+                [['id_alamat'], 'lokasi.alamat', ['id_alamat'], 'CASCADE', 'SET NULL'],
+            ],
             [
                 ['nama_supplier']
             ],

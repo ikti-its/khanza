@@ -21,6 +21,7 @@ class CreateTransaksiStokTable extends Template
                 'tanggal'        => T::DATETIME(),
                 'id_pengadaan'   => T::INT32()->nullable(),
                 'id_permintaan'  => T::INT32()->nullable(),
+                'id_opname'      => T::INT32()->nullable(),
                 'catatan'        => T::TEXT()->nullable(),
             ],
             ['id_transaksi'],
@@ -29,6 +30,7 @@ class CreateTransaksiStokTable extends Template
                 [['id_barang'],     'barang',            ['id_barang'],     'CASCADE', 'RESTRICT'],
                 [['id_pengadaan'],  'pengadaan_barang',  ['id_pengadaan'],  'CASCADE', 'SET NULL'],
                 [['id_permintaan'], 'permintaan_barang', ['id_permintaan'], 'CASCADE', 'SET NULL'],
+                [['id_opname'],     'stok_opname',       ['id_opname'],     'CASCADE', 'SET NULL'],
             ],
             [
                 ['tanggal'],

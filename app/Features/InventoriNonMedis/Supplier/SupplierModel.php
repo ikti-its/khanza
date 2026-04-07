@@ -18,22 +18,22 @@ class SupplierModel extends ModelTemplate
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
+                ],
                 'nama_supplier' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
+                ],
                 'no_telp' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'alamat' => [
+                'id_alamat' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ]
+                ],
             ],
         );
     }

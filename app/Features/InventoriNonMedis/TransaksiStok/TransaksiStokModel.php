@@ -49,6 +49,11 @@ class TransaksiStokModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
+                'id_opname' => [
+                    'allowed' => true,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
                 'catatan' => [
                     'allowed' => true,
                     'rules'   => '',
