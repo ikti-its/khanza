@@ -14,7 +14,7 @@ class CreateStokDarahTable extends Template
             'stok_darah',
             [
                 'id_stok_darah'              => T::ID32(),
-                'id_pemisahan'               => T::INT32(),
+                'id_pemisahan'               => T::INT32()->nullable(),
                 'no_kantong'                 => T::TEXT(),
                 'id_komponen'                => T::INT8(),
                 'id_golongan_darah'          => T::INT8(),
