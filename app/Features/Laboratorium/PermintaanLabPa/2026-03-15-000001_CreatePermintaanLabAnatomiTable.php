@@ -13,7 +13,7 @@ class CreatePermintaanLabAnatomiTable extends Template
         'permintaan_lab_pa',
         [
             'id_permintaan_pa'          => T::ID32(),
-            'id_permintaan_lab'         => T::ID64(),
+            'id_permintaan_lab'         => T::INT64(),
             'tgl_pengambilan_bahan'     => T::DATETIME(),
             'metode_diperoleh'          => T::TEXT(),
             'lokasi_jaringan'           => T::TEXT(),
@@ -22,7 +22,7 @@ class CreatePermintaanLabAnatomiTable extends Template
             'riwayat_tgl_sebelumnya'    => T::DATE(),
             'riwayat_no_pa_sebelumnya'  => T::TEXT(),
             'riwayat_diagnosa_sebelumnya' => T::TEXT(),
-            'id_item_pemeriksaan'       => T::ID32(),
+            'id_item_pemeriksaan'       => T::INT32(),
         ],
         ['id_permintaan_pa'],
         [],

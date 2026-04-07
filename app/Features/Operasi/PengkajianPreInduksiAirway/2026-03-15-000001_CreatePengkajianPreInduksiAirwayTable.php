@@ -13,7 +13,7 @@ class CreatePengkajianPreInduksiAirwayTable extends Template
         'pengkajian_pre_induksi_airway',
         [
             'id_airway'     => T::ID8(),
-            'id_pengkajian' => T::ID8(),
+            'id_pengkajian' => T::INT8(),
             'jenis_airway'  => T::TEXT(),
             'nomor'         => T::TEXT(),
             'jenis'         => T::TEXT(),

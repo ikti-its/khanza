@@ -15,7 +15,7 @@ class CreateFasyankesRujukanTable extends Template
             [
                 'id_fasyankes'      => T::ID16(),
                 'nama_fasyankes'    => T::TEXT(),
-                'id_alamat'         => T::ID32(),
+                'id_alamat'         => T::INT32(),
                 'kode_pos'          => T::TEXT(),
             ],
             ['id_fasyankes'],

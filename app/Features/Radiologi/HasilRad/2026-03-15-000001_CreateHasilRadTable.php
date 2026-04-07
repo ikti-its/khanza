@@ -13,7 +13,7 @@ class CreateHasilRadTable extends Template
         'hasil_rad',
         [
             'id_hasil_rad'        => T::ID64(),
-            'id_permintaan_rad'   => T::ID64(),
+            'id_permintaan_rad'   => T::INT64(),
             'nomor_reg'           => T::TEXT(),
             'kode_dokter_pj'      => T::TEXT(),
             'id_petugas_rad'      => T::UUID(),

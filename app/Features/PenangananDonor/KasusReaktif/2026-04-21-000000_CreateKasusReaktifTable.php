@@ -14,7 +14,7 @@ class CreateKasusReaktifTable extends Template
             'kasus_reaktif',
             [
                 'id_kasus'               => T::ID32(),
-                'id_status_kasus'        => T::ID8(),
+                'id_status_kasus'        => T::INT8(),
                 'tanggal_ditetapkan'     => T::DATE(),
             ],
             ['id_kasus'],

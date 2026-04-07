@@ -15,8 +15,8 @@ class CreatePermintaanBarangDetailTable extends Template
             'permintaan_barang_detail',
             [
                 'id_detail'     => T::ID32(),
-                'id_permintaan' => T::ID32(),
-                'id_barang'     => T::ID32(),
+                'id_permintaan' => T::INT32(),
+                'id_barang'     => T::INT32(),
                 'qty'           => T::F64(),
             ],
             ['id_detail'],

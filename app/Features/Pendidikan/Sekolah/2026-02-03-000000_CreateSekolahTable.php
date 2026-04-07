@@ -14,8 +14,8 @@ class CreateSekolahTable extends Template
             [
                 'id_sekolah'   => T::ID8(),
                 'nama_sekolah' => T::TEXT(),
-                'jenis_id'     => T::ID8(),
-                'alamat_id'    => T::ID32(),
+                'jenis_id'     => T::INT8(),
+                'alamat_id'    => T::INT32(),
             ],
             ['id_sekolah'],
             [],

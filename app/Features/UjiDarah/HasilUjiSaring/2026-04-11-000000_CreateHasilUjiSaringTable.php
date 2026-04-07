@@ -14,10 +14,10 @@ class CreateHasilUjiSaringTable extends Template
             'hasil_uji_saring',
             [
                 'id_uji_saring'         => T::ID32(),
-                'id_bag'                => T::ID32(),
-                'id_metode_uji'         => T::ID8(),
+                'id_bag'                => T::INT32(),
+                'id_metode_uji'         => T::INT8(),
                 'tanggal_uji'           => T::DATETIME(),
-                'id_petugas'            => T::ID32(),
+                'id_petugas'            => T::INT32(),
             ],
             ['id_uji_saring'],
             [['id_bag']],

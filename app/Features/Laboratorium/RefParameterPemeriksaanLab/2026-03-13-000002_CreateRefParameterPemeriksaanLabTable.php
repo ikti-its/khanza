@@ -13,7 +13,7 @@ class CreateRefParameterPemeriksaanLabTable extends Template
         'ref_parameter_pemeriksaan_lab',
         [
             'id_parameter'  => T::ID32(),
-            'id_item_lab'   => T::ID32(),
+            'id_item_lab'   => T::INT32(),
             'nama_parameter'=> T::TEXT(),
             'satuan'        => T::TEXT()->nullable(),
             'nilai_rujukan' => T::TEXT()->nullable(),

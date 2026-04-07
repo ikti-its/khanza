@@ -14,7 +14,7 @@ class CreateHasilDiagnostikTable extends Template
             'hasil_diagnostik',
             [
                 'id_diagnostik'          => T::ID32(),
-                'id_rujukan'             => T::ID32(),
+                'id_rujukan'             => T::INT32(),
                 'tanggal_hasil'          => T::DATE(),
                 'dokter_pemeriksa'       => T::TEXT(),
             ],

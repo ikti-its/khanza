@@ -14,9 +14,9 @@ class CreateHasilUjiSaringDetailTable extends Template
             'hasil_uji_saring_detail',
             [
                 'id_uji_saring_detail'      => T::ID32(),
-                'id_uji_saring'             => T::ID32(),
-                'id_parameter_uji'          => T::ID8(),
-                'id_nilai_saring'           => T::ID8(),
+                'id_uji_saring'             => T::INT32(),
+                'id_parameter_uji'          => T::INT8(),
+                'id_nilai_saring'           => T::INT8(),
                 'nilai_absorbance'          => T::F32()->nullable(),
             ],
             ['id_uji_saring_detail'],

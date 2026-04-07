@@ -13,9 +13,9 @@ class CreateChecklistPostopPenunjangTable extends Template
         'checklist_postop_penunjang',
         [
             'id_penunjang'      => T::ID8(),
-            'id_checklist_post' => T::ID8(),
+            'id_checklist_post' => T::INT8(),
             'jenis_penunjang'   => T::TEXT(),
-            'id_ketersediaan'   => T::ID8(),
+            'id_ketersediaan'   => T::INT8(),
             'keterangan'        => T::TEXT(),
         ],
         ['id_penunjang'],

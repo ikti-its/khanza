@@ -14,10 +14,10 @@ class CreateTeleponTable extends Template
             'telepon',
             [
                 'id_telepon'    => T::ID32(),
-                'id_orang'      => T::ID32(),
+                'id_orang'      => T::INT32(),
                 'nomor_telepon' => T::TEXT(),
-                'jenis_telepon' => T::ID8(),
-                'id_provider'   => T::ID8(),
+                'jenis_telepon' => T::INT8(),
+                'id_provider'   => T::INT8(),
             ],
             ['id_telepon'],
             [['nomor_telepon']],

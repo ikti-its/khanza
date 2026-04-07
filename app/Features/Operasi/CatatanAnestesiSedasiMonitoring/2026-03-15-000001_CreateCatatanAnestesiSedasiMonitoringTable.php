@@ -13,7 +13,7 @@ class CreateCatatanAnestesiSedasiMonitoringTable extends Template
         'catatan_anestesi_sedasi_monitoring',
         [
             'id_monitoring'       => T::ID8(),
-            'id_catatan_anestesi' => T::ID8(),
+            'id_catatan_anestesi' => T::INT8(),
             'nama_monitoring'     => T::TEXT(),
             'is_digunakan'        => T::BOOL(),
             'keterangan'          => T::TEXT(),

@@ -13,7 +13,7 @@ class CreateCatatanAnestesiSedasiAlatTable extends Template
         'catatan_anestesi_sedasi_alat',
         [
             'id_alat'             => T::ID8(),
-            'id_catatan_anestesi' => T::ID8(),
+            'id_catatan_anestesi' => T::INT8(),
             'nama_alat'           => T::TEXT(),
             'is_digunakan'        => T::BOOL(),
             'keterangan'          => T::TEXT(),

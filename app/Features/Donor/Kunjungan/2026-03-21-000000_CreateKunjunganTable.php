@@ -14,10 +14,10 @@ class CreateKunjunganTable extends Template
             'kunjungan',
             [
                 'id_kunjungan'          => T::ID32(),
-                'id_pendonor'           => T::ID32(),
+                'id_pendonor'           => T::INT32(),
                 'tanggal_kunjungan'     => T::DATE(),
                 'nomor_antrian'         => T::INT16(),
-                'id_status_kunjungan'   => T::ID8(),
+                'id_status_kunjungan'   => T::INT8(),
             ],
             ['id_kunjungan'],
             [['tanggal_kunjungan', 'nomor_antrian']],

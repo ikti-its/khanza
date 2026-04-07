@@ -28,7 +28,7 @@ class CreateProvinsiTable extends Template
             'lokasi',
             'provinsi',
             [
-                'id_pulau'      => T::ID8(),
+                'id_pulau'      => T::INT8(),
                 'id_provinsi'   => T::ID8(),
                 'nama_provinsi' => T::TEXT(),
             ],

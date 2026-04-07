@@ -13,8 +13,8 @@ class CreateHasilRadTindakanTable extends Template
         'hasil_rad_tindakan',
         [
             'id_hasil_tindakan'         => T::ID64(),
-            'id_hasil_rad'              => T::ID64(),
-            'id_item_rad'               => T::ID32(),
+            'id_hasil_rad'              => T::INT64(),
+            'id_item_rad'               => T::INT32(),
             'tarif_tindakan'            => T::F32(),
             'kilovoltage_kv'            => T::F32(),
             'milliampere_second_mas'    => T::F32(),

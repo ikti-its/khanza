@@ -14,8 +14,8 @@ class CreateKasusReaktifDetailTable extends Template
             'kasus_reaktif_detail',
             [
                 'id_kasus_detail'           => T::ID32(),
-                'id_kasus'                  => T::ID32(),
-                'id_uji_saring_detail'      => T::ID32(),
+                'id_kasus'                  => T::INT32(),
+                'id_uji_saring_detail'      => T::INT32(),
             ],
             ['id_kasus_detail'],
             [['id_uji_saring_detail']],
