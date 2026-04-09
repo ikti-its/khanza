@@ -15,8 +15,8 @@ class CreatePermintaanDarahTable extends Template
             [
                 'id_permintaan'           => T::ID32(),
                 'no_rawat'                => T::TEXT(),
-                'tanggal_permintaan'      => T::DATETIME(),
                 'kode_dokter_pengirim'    => T::TEXT(),
+                'tanggal_permintaan'      => T::DATETIME(),
                 'id_status_permintaan'    => T::INT8(),
             ],
             ['id_permintaan'],

@@ -24,13 +24,13 @@ class PermintaanDarahModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'tanggal_permintaan' => [
-                    'allowed' => true,
+                'kode_dokter_pengirim' => [
+                    'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'kode_dokter_pengirim' => [
-                    'allowed' => false,
+                'tanggal_permintaan' => [
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
