@@ -19,7 +19,7 @@ class CreatePencekalanTable extends Template
                 'tanggal_mulai'             => T::DATE(),
                 'tanggal_selesai'           => T::DATE()->nullable(),
                 'id_shift'                  => T::INT8(),
-                'id_petugas'                => T::INT32(),
+                'id_petugas'                => T::UUID(),
                 'keterangan'                => T::TEXT(),
                 'id_status_pencekalan'      => T::INT8(),
             ],

@@ -17,7 +17,7 @@ class CreatePemisahanKomponenTable extends Template
                 'id_bag'                => T::INT32(),
                 'tanggal_pemisahan'     => T::DATE(),
                 'id_shift'              => T::INT8(),
-                'id_petugas'            => T::INT32(),
+                'id_petugas'            => T::UUID(),
             ],
             ['id_pemisahan'],
             [['id_bag']],

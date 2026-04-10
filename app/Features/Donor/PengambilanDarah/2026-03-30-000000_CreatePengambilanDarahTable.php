@@ -20,7 +20,7 @@ class CreatePengambilanDarahTable extends Template
                 'id_shift'                => T::INT8(),
                 'id_jenis_donor'          => T::INT8(),
                 'id_lokasi_pengambilan'   => T::INT8(),
-                'id_petugas'              => T::INT32(),
+                'id_petugas'              => T::UUID(),
             ],
             ['id_pengambilan_darah'],
             [['nomor_pengambilan']],

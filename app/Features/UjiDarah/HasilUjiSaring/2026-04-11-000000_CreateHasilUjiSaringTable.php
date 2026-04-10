@@ -17,7 +17,7 @@ class CreateHasilUjiSaringTable extends Template
                 'id_bag'                => T::INT32(),
                 'id_metode_uji'         => T::INT8(),
                 'tanggal_uji'           => T::DATETIME(),
-                'id_petugas'            => T::INT32(),
+                'id_petugas'            => T::UUID(),
             ],
             ['id_uji_saring'],
             [['id_bag']],
