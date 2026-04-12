@@ -19,7 +19,7 @@ class Init extends Migration
         $db = \Config\Database::connect($config);
         $path = APPPATH . 'Core/Database/Backup/';
         
-        foreach(['migration', 'function'] as $type) {
+        foreach(['migration', 'seeder', 'function'] as $type) {
             $file = $path . $type . '.sql';
             if(!file_exists($file)) {
                 Assert::Unreachable("SQL file for '$type' not found at '$file'");
