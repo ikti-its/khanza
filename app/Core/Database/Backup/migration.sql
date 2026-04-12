@@ -117,35 +117,35 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
-CREATE TABLE sik.alasan_cuti_structure (
+CREATE TABLE sik.alasan_cuti (
     id character varying(2) NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE sik.departemen_structure (
+CREATE TABLE sik.departemen (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE sik.golongan_barang_medis_structure (
+CREATE TABLE sik.golongan_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.hari_structure (
+CREATE TABLE ref.hari (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.industri_farmasi_structure (
+CREATE TABLE ref.industri_farmasi (
     id integer NOT NULL,
     kode character varying(20) NOT NULL,
     nama character varying(50) NOT NULL,
@@ -156,21 +156,21 @@ CREATE TABLE ref.industri_farmasi_structure (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.jabatan_structure (
+CREATE TABLE ref.jabatan (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.kategori_barang_medis_structure (
+CREATE TABLE ref.kategori_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.organisasi_structure (
+CREATE TABLE ref.organisasi (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     nama character varying(255) NOT NULL,
     alamat character varying(255) NOT NULL,
@@ -181,28 +181,28 @@ CREATE TABLE ref.organisasi_structure (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.role_structure (
+CREATE TABLE ref.role (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.ruangan_structure (
+CREATE TABLE ref.ruangan (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.satuan_barang_medis_structure (
+CREATE TABLE ref.satuan_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.shift_structure (
+CREATE TABLE ref.shift (
     id character varying(2) NOT NULL,
     nama character varying(50) NOT NULL,
     jam_masuk time with time zone NOT NULL,
@@ -211,7 +211,7 @@ CREATE TABLE ref.shift_structure (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE ref.status_aktif_pegawai_structure (
+CREATE TABLE ref.status_aktif_pegawai (
     id character varying(2) NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
@@ -229,7 +229,7 @@ CREATE TABLE ref.status_aktif_pegawai_structure (
 --     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 -- );
 
-CREATE TABLE ref.supplier_barang_medis_structure (
+CREATE TABLE ref.supplier_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     alamat character varying(255) NOT NULL,
@@ -241,7 +241,7 @@ CREATE TABLE ref.supplier_barang_medis_structure (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE sik.akun_structure (
+CREATE TABLE sik.akun (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     email character varying(255) NOT NULL,
     password character varying(255) NOT NULL,
@@ -253,7 +253,7 @@ CREATE TABLE sik.akun_structure (
     updater uuid
 );
 
-CREATE TABLE sik.alamat_structure (
+CREATE TABLE sik.alamat (
     id_akun uuid NOT NULL,
     alamat character varying(255) NOT NULL,
     alamat_lat numeric DEFAULT 7.2575 NOT NULL,
@@ -265,13 +265,13 @@ CREATE TABLE sik.alamat_structure (
 );
 
 
-CREATE TABLE sik.ambulans_structure (
+CREATE TABLE sik.ambulans (
     no_ambulans character varying(20) NOT NULL,
     status character varying(20) DEFAULT 'available'::character varying NOT NULL,
     supir character varying(50)
 );
 
-CREATE TABLE sik.barang_medis_structure (
+CREATE TABLE sik.barang_medis (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     kode_barang character varying(20) NOT NULL,
     kandungan character varying(100) NOT NULL,
@@ -300,7 +300,7 @@ CREATE TABLE sik.barang_medis_structure (
     id_golongan integer
 );
 
-CREATE TABLE sik.berkas_pegawai_structure (
+CREATE TABLE sik.berkas_pegawai (
     id_pegawai uuid NOT NULL,
     nik character varying(16) NOT NULL,
     tempat_lahir character varying(255) NOT NULL,
@@ -321,7 +321,7 @@ CREATE TABLE sik.berkas_pegawai_structure (
     updater uuid
 );
 
-CREATE TABLE sik.cuti_structure (
+CREATE TABLE sik.cuti (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_pegawai uuid NOT NULL,
     tanggal_mulai date NOT NULL,
@@ -334,7 +334,7 @@ CREATE TABLE sik.cuti_structure (
     updater uuid
 );
 
-CREATE TABLE sik.data_batch_structure (
+CREATE TABLE sik.data_batch (
     no_batch character varying(20) NOT NULL,
     no_faktur character varying(20) NOT NULL,
     id_barang_medis uuid NOT NULL,
@@ -357,7 +357,7 @@ CREATE TABLE sik.data_batch_structure (
     sisa integer NOT NULL
 );
 
-CREATE TABLE sik.data_phk_structure (
+CREATE TABLE sik.data_phk (
     no_pegawai uuid NOT NULL,
     lama_bekerja integer NOT NULL,
     pesangon integer NOT NULL,
@@ -366,7 +366,7 @@ CREATE TABLE sik.data_phk_structure (
     status text NOT NULL
 );
 
-CREATE TABLE sik.data_thr_structure (
+CREATE TABLE sik.data_thr (
     no_pegawai uuid NOT NULL,
     lama_bekerja integer NOT NULL,
     tahun integer NOT NULL,
@@ -374,7 +374,7 @@ CREATE TABLE sik.data_thr_structure (
     status text NOT NULL
 );
 
-CREATE TABLE sik.databarang_structure (
+CREATE TABLE sik.databarang (
     kode_brng character varying(15) DEFAULT ''::character varying NOT NULL,
     nama_brng character varying(80),
     kode_satbesar character(4) NOT NULL,
@@ -403,7 +403,7 @@ CREATE TABLE sik.databarang_structure (
     kode_golongan character(4)
 );
 
-CREATE TABLE sik.detail_penerimaan_barang_medis_structure (
+CREATE TABLE sik.detail_penerimaan_barang_medis (
     id_penerimaan uuid NOT NULL,
     id_barang_medis character varying NOT NULL,
     id_satuan integer NOT NULL,
@@ -419,7 +419,7 @@ CREATE TABLE sik.detail_penerimaan_barang_medis_structure (
     no_batch character varying(20)
 );
 
-CREATE TABLE sik.dokter_structure (
+CREATE TABLE sik.dokter (
     kode_dokter character varying(10) NOT NULL,
     nama_dokter character varying(50) NOT NULL,
     jenis_kelamin character varying(1) NOT NULL,
@@ -429,7 +429,7 @@ CREATE TABLE sik.dokter_structure (
     izin_praktik character varying(50) NOT NULL
 );
 
-CREATE TABLE sik.foto_pegawai_structure (
+CREATE TABLE sik.foto_pegawai (
     id_pegawai uuid NOT NULL,
     foto character varying(255) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
@@ -438,7 +438,7 @@ CREATE TABLE sik.foto_pegawai_structure (
     updater uuid
 );
 
-CREATE TABLE sik.gudang_barang_structure (
+CREATE TABLE sik.gudang_barang (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_barang_medis character varying,
     id_ruangan integer NOT NULL,
@@ -447,7 +447,7 @@ CREATE TABLE sik.gudang_barang_structure (
     no_faktur character varying(20)
 );
 
-CREATE TABLE sik.jadwal_pegawai_structure (
+CREATE TABLE sik.jadwal_pegawai (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_pegawai uuid NOT NULL,
     id_hari integer NOT NULL,
@@ -458,7 +458,7 @@ CREATE TABLE sik.jadwal_pegawai_structure (
     updater uuid
 );
 
-CREATE TABLE sik.jenis_tindakan_structure (
+CREATE TABLE sik.jenis_tindakan (
     kode text NOT NULL,
     nama_tindakan text,
     kode_kategori text,
@@ -477,7 +477,7 @@ CREATE TABLE sik.jenis_tindakan_structure (
     kelas text
 );
 
-CREATE TABLE sik.kamar_structure (
+CREATE TABLE sik.kamar (
     nomor_bed character varying(20) NOT NULL,
     kode_kamar character varying(20),
     nama_kamar character varying(50),
@@ -486,7 +486,7 @@ CREATE TABLE sik.kamar_structure (
     status_kamar character varying(20)
 );
 
-CREATE TABLE sik.kepegawaian_structure (
+CREATE TABLE sik.kepegawaian (
     no_pegawai uuid NOT NULL,
     status text NOT NULL,
     golongan text NOT NULL,
@@ -502,7 +502,7 @@ CREATE TABLE sik.kepegawaian_structure (
     rekening text NOT NULL
 );
 
-CREATE TABLE sik.mutasi_barang_structure (
+CREATE TABLE sik.mutasi_barang (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_barang_medis uuid,
     jumlah integer NOT NULL,
@@ -515,7 +515,7 @@ CREATE TABLE sik.mutasi_barang_structure (
     no_faktur character varying(20)
 );
 
-CREATE TABLE sik.notifikasi_structure (
+CREATE TABLE sik.notifikasi (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     sender uuid NOT NULL,
     recipient uuid NOT NULL,
@@ -525,7 +525,7 @@ CREATE TABLE sik.notifikasi_structure (
     read boolean DEFAULT false
 );
 
-CREATE TABLE sik.opname_structure (
+CREATE TABLE sik.opname (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_barang_medis uuid,
     id_ruangan integer NOT NULL,
@@ -538,7 +538,7 @@ CREATE TABLE sik.opname_structure (
     no_faktur character varying(20)
 );
 
-CREATE TABLE sik.pasien_structure (
+CREATE TABLE sik.pasien (
     no_rkm_medis character varying(15) NOT NULL,
     nm_pasien character varying(40),
     no_ktp character varying(20),
@@ -582,7 +582,7 @@ CREATE TABLE sik.pasien_structure (
     CONSTRAINT pasien_stts_nikah_check CHECK (((stts_nikah)::text = ANY (ARRAY[('BELUM MENIKAH'::character varying)::text, ('MENIKAH'::character varying)::text, ('DUDA'::character varying)::text, ('JANDA'::character varying)::text])))
 );
 
-CREATE TABLE sik.pegawai_structure (
+CREATE TABLE sik.pegawai (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_akun uuid NOT NULL,
     nip character varying(10) NOT NULL,
@@ -600,7 +600,7 @@ CREATE TABLE sik.pegawai_structure (
     updater uuid
 );
 
-CREATE TABLE sik.pemeriksaan_ranap_structure (
+CREATE TABLE sik.pemeriksaan_ranap (
     no_rawat character varying(17) NOT NULL,
     tgl_perawatan date NOT NULL,
     jam_rawat time without time zone NOT NULL,
@@ -623,7 +623,7 @@ CREATE TABLE sik.pemeriksaan_ranap_structure (
     nip character varying(20) NOT NULL
 );
 
-CREATE TABLE sik.penerimaan_barang_medis_structure (
+CREATE TABLE sik.penerimaan_barang_medis (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     no_faktur character varying(20) NOT NULL,
     no_pemesanan character varying(20) NOT NULL,
@@ -639,7 +639,7 @@ CREATE TABLE sik.penerimaan_barang_medis_structure (
     materai double precision NOT NULL
 );
 
-CREATE TABLE sik.penggajian_structure (
+CREATE TABLE sik.penggajian (
     no_pegawai uuid NOT NULL,
     tahun integer NOT NULL,
     bulan integer NOT NULL,
@@ -651,7 +651,7 @@ CREATE TABLE sik.penggajian_structure (
     status text NOT NULL
 );
 
-CREATE TABLE sik.permintaan_resep_pulang_structure (
+CREATE TABLE sik.permintaan_resep_pulang (
     no_permintaan character varying(20) NOT NULL,
     tgl_permintaan date,
     jam time without time zone NOT NULL,
@@ -666,7 +666,7 @@ CREATE TABLE sik.permintaan_resep_pulang_structure (
     CONSTRAINT permintaan_resep_pulang_status_check CHECK (((status)::text = ANY (ARRAY[('Sudah'::character varying)::text, ('Belum'::character varying)::text])))
 );
 
-CREATE TABLE sik.permintaan_stok_obat_structure (
+CREATE TABLE sik.permintaan_stok_obat (
     no_permintaan character varying(30) NOT NULL,
     tgl_permintaan date,
     jam time without time zone NOT NULL,
@@ -677,7 +677,7 @@ CREATE TABLE sik.permintaan_stok_obat_structure (
     jam_validasi time without time zone
 );
 
-CREATE TABLE sik.presensi_structure (
+CREATE TABLE sik.presensi (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_pegawai uuid NOT NULL,
     id_jadwal_pegawai uuid NOT NULL,
@@ -692,7 +692,7 @@ CREATE TABLE sik.presensi_structure (
     updater uuid
 );
 
-CREATE TABLE sik.rawat_inap_structure (
+CREATE TABLE sik.rawat_inap (
     nomor_rawat character varying(20) NOT NULL,
     nomor_rm character varying(20),
     nama_pasien character varying(50),
@@ -715,7 +715,7 @@ CREATE TABLE sik.rawat_inap_structure (
     jam_masuk time without time zone
 );
 
-CREATE TABLE sik.resep_dokter_racikan_detail_structure (
+CREATE TABLE sik.resep_dokter_racikan_detail (
     no_resep character varying(20) NOT NULL,
     no_racik character varying(20) NOT NULL,
     kode_brng character varying(15) NOT NULL,
@@ -725,7 +725,7 @@ CREATE TABLE sik.resep_dokter_racikan_detail_structure (
     jml double precision
 );
 
-CREATE TABLE sik.resep_dokter_racikan_structure (
+CREATE TABLE sik.resep_dokter_racikan (
     no_resep character varying(20) NOT NULL,
     no_racik character varying(20) NOT NULL,
     nama_racik character varying(100) NOT NULL,
@@ -735,7 +735,7 @@ CREATE TABLE sik.resep_dokter_racikan_structure (
     keterangan character varying(50) NOT NULL
 );
 
-CREATE TABLE sik.resep_obat_structure (
+CREATE TABLE sik.resep_obat (
     no_resep character varying(20) DEFAULT ''::character varying NOT NULL,
     tgl_perawatan date,
     jam time without time zone NOT NULL,
@@ -750,7 +750,7 @@ CREATE TABLE sik.resep_obat_structure (
     CONSTRAINT resep_obat_status_check CHECK (((status)::text = ANY (ARRAY[('ralan'::character varying)::text, ('ranap'::character varying)::text])))
 );
 
-CREATE TABLE sik.resep_pulang_structure (
+CREATE TABLE sik.resep_pulang (
     no_rawat character varying(17) NOT NULL,
     kode_brng character varying(15) NOT NULL,
     jml_barang double precision NOT NULL,
@@ -764,7 +764,7 @@ CREATE TABLE sik.resep_pulang_structure (
     no_faktur character varying(20) NOT NULL
 );
 
-CREATE TABLE sik.resume_pasien_ranap_structure (
+CREATE TABLE sik.resume_pasien_ranap (
     no_rawat character varying(17) NOT NULL,
     kd_dokter character varying(20) NOT NULL,
     diagnosa_awal character varying(100) NOT NULL,
@@ -808,7 +808,7 @@ CREATE TABLE sik.resume_pasien_ranap_structure (
     obat_pulang text NOT NULL
 );
 
-CREATE TABLE sik.rujukan_keluar_structure (
+CREATE TABLE sik.rujukan_keluar (
     nomor_rujuk character varying(20),
     nomor_rawat character varying(20) NOT NULL,
     nomor_rm character varying(20),
@@ -823,7 +823,7 @@ CREATE TABLE sik.rujukan_keluar_structure (
     keterangan character varying(60)
 );
 
-CREATE TABLE sik.rujukan_masuk_structure (
+CREATE TABLE sik.rujukan_masuk (
     nomor_rujuk character varying(20),
     perujuk character varying(255),
     alamat_perujuk character varying(255),
@@ -837,7 +837,7 @@ CREATE TABLE sik.rujukan_masuk_structure (
     diagnosa_awal character varying(255)
 );
 
-CREATE TABLE sik.stok_keluar_barang_medis_structure (
+CREATE TABLE sik.stok_keluar_barang_medis (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     no_keluar character varying(20) NOT NULL,
     id_pegawai uuid NOT NULL,
@@ -870,7 +870,7 @@ CREATE TABLE sik.stok_keluar_barang_medis_structure (
 --     FOREIGN KEY (updater) REFERENCES akun (id)
 -- );
 
-CREATE TABLE sik.tarif_tindakan_structure (
+CREATE TABLE sik.tarif_tindakan (
     kode character varying(20) NOT NULL,
     nama_perawatan character varying(255),
     kategori_perawatan character varying(50),
@@ -878,7 +878,7 @@ CREATE TABLE sik.tarif_tindakan_structure (
     kelas character varying(20)
 );
 
-CREATE TABLE sik.transaksi_keluar_barang_medis_structure (
+CREATE TABLE sik.transaksi_keluar_barang_medis (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_stok_keluar uuid NOT NULL,
     id_barang_medis uuid NOT NULL,
@@ -887,7 +887,7 @@ CREATE TABLE sik.transaksi_keluar_barang_medis_structure (
     jumlah_keluar integer NOT NULL
 );
 
-CREATE TABLE sik.tukar_jadwal_structure (
+CREATE TABLE sik.tukar_jadwal (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     id_sender uuid NOT NULL,
     id_recipient uuid NOT NULL,
@@ -897,7 +897,7 @@ CREATE TABLE sik.tukar_jadwal_structure (
     status sik.status_tukar DEFAULT 'Menunggu'::sik.status_tukar
 );
 
-CREATE TABLE sik.ugd_structure (
+CREATE TABLE sik.ugd (
     nomor_reg character varying(20) NOT NULL,
     nomor_rawat character varying(20),
     tanggal date,
@@ -919,7 +919,7 @@ CREATE TABLE sik.ugd_structure (
     status_bayar character varying(50)
 );
 
-CREATE TABLE sik.data_instansi_structure (
+CREATE TABLE sik.data_instansi (
     kode_instansi character varying(30) NOT NULL,
     nama_instansi character varying(255) NOT NULL,
     alamat_instansi character varying(255),
@@ -927,7 +927,7 @@ CREATE TABLE sik.data_instansi_structure (
     no_telp character varying(20)
 );
 
-CREATE TABLE sik.dokter_jaga_structure (
+CREATE TABLE sik.dokter_jaga (
     kode_dokter character varying(20) NOT NULL,
     nama_dokter character varying(50),
     hari_kerja character varying(50),
@@ -937,7 +937,7 @@ CREATE TABLE sik.dokter_jaga_structure (
     status character varying(50)
 );
 
-CREATE TABLE sik.kelahiran_bayi_structure (
+CREATE TABLE sik.kelahiran_bayi (
     no_rkm_medis character varying(15) NOT NULL,
     nm_pasien character varying(40),
     jk character varying(12),
@@ -992,7 +992,7 @@ CREATE TABLE sik.kelahiran_bayi_structure (
     no_rm_ibu character varying(15)
 );
 
-CREATE TABLE sik.pasien_meninggal_structure (
+CREATE TABLE sik.pasien_meninggal (
     no_rkm_medis character varying(15) NOT NULL,
     nm_pasien character varying(40),
     jk character varying(12),
@@ -1012,7 +1012,7 @@ CREATE TABLE sik.pasien_meninggal_structure (
     kode_dokter character varying(20)
 );
 
-CREATE TABLE sik.registrasi_structure (
+CREATE TABLE sik.registrasi (
     nomor_reg character varying(20) NOT NULL,
     nomor_rawat character varying(20),
     tanggal date,
@@ -1045,7 +1045,7 @@ CREATE TABLE sik.registrasi_structure (
     no_asuransi character varying(25)
 );
 
-CREATE TABLE sik.catatan_observasi_ranap_kebidanan_structure (
+CREATE TABLE sik.catatan_observasi_ranap_kebidanan (
     no_rawat character varying(17) NOT NULL,
     tgl_perawatan date NOT NULL,
     jam_rawat time without time zone NOT NULL,
@@ -1062,7 +1062,7 @@ CREATE TABLE sik.catatan_observasi_ranap_kebidanan_structure (
     nip character varying(20) NOT NULL
 );
 
-CREATE TABLE sik.catatan_observasi_ranap_postpartum_structure (
+CREATE TABLE sik.catatan_observasi_ranap_postpartum (
     no_rawat character varying(17) NOT NULL,
     tgl_perawatan date NOT NULL,
     jam_rawat time without time zone NOT NULL,
@@ -1079,7 +1079,7 @@ CREATE TABLE sik.catatan_observasi_ranap_postpartum_structure (
     nip character varying(20) NOT NULL
 );
 
-CREATE TABLE sik.catatan_observasi_ranap_structure (
+CREATE TABLE sik.catatan_observasi_ranap (
     no_rawat character varying(17) NOT NULL,
     tgl_perawatan date NOT NULL,
     jam_rawat time without time zone NOT NULL,
@@ -1092,14 +1092,14 @@ CREATE TABLE sik.catatan_observasi_ranap_structure (
     nip character varying(20) NOT NULL
 );
 
-CREATE TABLE sik.jenis_barang_medis_structure (
+CREATE TABLE sik.jenis_barang_medis (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
     created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE sik.kelahiran_bayi_structure2 (
+CREATE TABLE sik.kelahiran_bayi2 (
     no_rkm_medis character varying(15) NOT NULL,
     nm_pasien character varying(100),
     jk character varying(1),
@@ -1154,7 +1154,7 @@ CREATE TABLE sik.kelahiran_bayi_structure2 (
 );
 
 
-CREATE TABLE sik.pemberian_obat_structure (
+CREATE TABLE sik.pemberian_obat (
     tanggal_beri date,
     jam_beri time without time zone,
     nomor_rawat character varying(20),
@@ -1172,7 +1172,7 @@ CREATE TABLE sik.pemberian_obat_structure (
     kelas character varying(20) DEFAULT 'kelas1'::character varying
 );
 
-CREATE TABLE sik.resep_dokter_structure (
+CREATE TABLE sik.resep_dokter (
     no_resep character varying(20),
     kode_barang character varying(20),
     jumlah numeric,
@@ -1181,7 +1181,7 @@ CREATE TABLE sik.resep_dokter_structure (
     tuslah numeric DEFAULT 0
 );
 
-CREATE TABLE sik.tindakan_structure (
+CREATE TABLE sik.tindakan (
     nomor_rawat character varying(20) NOT NULL,
     nomor_rm character varying(20),
     nama_pasien character varying(50),
