@@ -81,18 +81,6 @@ abstract class ControllerTemplate extends Controller
         ];
     }
 
-    protected function getBreadcrumbs()
-    {
-        return $this->breadcrumbs;
-    }
-
-    protected function setBreadcrumbs($array): void
-    {
-        foreach ($array as $elem) {
-            $this->addBreadcrumb($elem, strtolower($elem));
-        }
-    }
-
     protected function fetchDataUsingCurl($method, $path, $data = null, $redirect_url = null, $redirect_msg = null)
     {
         CURL::fetchDataUsingCurl($method, $path, $data, $redirect_url, $redirect_msg);
