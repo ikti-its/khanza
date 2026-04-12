@@ -24,7 +24,7 @@ class MutasiGudang extends ControllerTemplate
             ]);
             $response_satuan = curl_exec($ch_satuan);
             $http_status_code_satuan = curl_getinfo($ch_satuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_satuan);
+
 
             $ch_ruangan = curl_init($ruangan_url);
             curl_setopt($ch_ruangan, CURLOPT_RETURNTRANSFER, true);
@@ -33,7 +33,7 @@ class MutasiGudang extends ControllerTemplate
             ]);
             $response_ruangan = curl_exec($ch_ruangan);
             $http_status_code_ruangan = curl_getinfo($ch_ruangan, CURLINFO_HTTP_CODE);
-            curl_close($ch_ruangan);
+
 
             $ch_gudang = curl_init($gudang_url);
             curl_setopt($ch_gudang, CURLOPT_RETURNTRANSFER, true);
@@ -42,7 +42,7 @@ class MutasiGudang extends ControllerTemplate
             ]);
             $response_gudang = curl_exec($ch_gudang);
             $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-            curl_close($ch_gudang);
+
 
             $ch_barang = curl_init($barang_url);
             curl_setopt($ch_barang, CURLOPT_RETURNTRANSFER, true);
@@ -51,7 +51,7 @@ class MutasiGudang extends ControllerTemplate
             ]);
             $response_barang = curl_exec($ch_barang);
             $http_status_code_barang = curl_getinfo($ch_barang, CURLINFO_HTTP_CODE);
-            curl_close($ch_barang);
+
 
             // New code for mutasi
             $ch_mutasi = curl_init($mutasi_url);
@@ -61,7 +61,7 @@ class MutasiGudang extends ControllerTemplate
             ]);
             $response_mutasi = curl_exec($ch_mutasi);
             $http_status_code_mutasi = curl_getinfo($ch_mutasi, CURLINFO_HTTP_CODE);
-            curl_close($ch_mutasi);
+
 
             if ($http_status_code_ruangan !== 201) {
                 return $this->renderErrorView($http_status_code_ruangan);
@@ -120,7 +120,7 @@ class MutasiGudang extends ControllerTemplate
             ]);
             $response_satuan = curl_exec($ch_satuan);
             $http_status_code_satuan = curl_getinfo($ch_satuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_satuan);
+
             $ch_ruangan = curl_init($ruangan_url);
             curl_setopt($ch_ruangan, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch_ruangan, CURLOPT_HTTPHEADER, [
@@ -128,7 +128,7 @@ class MutasiGudang extends ControllerTemplate
             ]);
             $response_ruangan = curl_exec($ch_ruangan);
             $http_status_code_ruangan = curl_getinfo($ch_ruangan, CURLINFO_HTTP_CODE);
-            curl_close($ch_ruangan);
+
 
             $ch_gudang = curl_init($gudang_url);
             curl_setopt($ch_gudang, CURLOPT_RETURNTRANSFER, true);
@@ -137,7 +137,7 @@ class MutasiGudang extends ControllerTemplate
             ]);
             $response_gudang = curl_exec($ch_gudang);
             $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-            curl_close($ch_gudang);
+
 
             $ch_barang = curl_init($barang_url);
             curl_setopt($ch_barang, CURLOPT_RETURNTRANSFER, true);
@@ -146,7 +146,7 @@ class MutasiGudang extends ControllerTemplate
             ]);
             $response_barang = curl_exec($ch_barang);
             $http_status_code_barang = curl_getinfo($ch_barang, CURLINFO_HTTP_CODE);
-            curl_close($ch_barang);
+
 
             if ($http_status_code_ruangan !== 201) {
                 return $this->renderErrorView($http_status_code_ruangan);
@@ -222,7 +222,7 @@ class MutasiGudang extends ControllerTemplate
                 ]);
                 $response_mutasi = curl_exec($ch_mutasi);
                 $http_status_code_mutasi = curl_getinfo($ch_mutasi, CURLINFO_HTTP_CODE);
-                curl_close($ch_mutasi);
+
 
                 if ($http_status_code_mutasi !== 201) {
                     $all_mutasi_success = false;
@@ -242,7 +242,7 @@ class MutasiGudang extends ControllerTemplate
                     $response_gudang = curl_exec($ch_gudang);
                     $gudang_data = json_decode($response_gudang, true);
                     $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-                    curl_close($ch_gudang);
+
 
                     if ($http_status_code_gudang !== 200) {
                         $all_gudang_success = false;
@@ -274,7 +274,7 @@ class MutasiGudang extends ControllerTemplate
 
                                 $response_asalgudang = curl_exec($ch_asalgudang);
                                 $http_status_code_asalgudang = curl_getinfo($ch_asalgudang, CURLINFO_HTTP_CODE);
-                                curl_close($ch_asalgudang);
+
 
                                 if ($http_status_code_asalgudang !== 200) {
                                     $all_gudang_success = false;
@@ -304,7 +304,7 @@ class MutasiGudang extends ControllerTemplate
 
                                 $response_tujuangudang = curl_exec($ch_tujuangudang);
                                 $http_status_code_tujuangudang = curl_getinfo($ch_tujuangudang, CURLINFO_HTTP_CODE);
-                                curl_close($ch_tujuangudang);
+
 
                                 if ($http_status_code_tujuangudang !== 200) {
                                     $all_gudang_success = false;
@@ -348,7 +348,7 @@ class MutasiGudang extends ControllerTemplate
         $response_mutasi = curl_exec($ch_mutasi);
         $mutasi_data = json_decode($response_mutasi, true);
         $http_status_code_mutasi = curl_getinfo($ch_mutasi, CURLINFO_HTTP_CODE);
-        curl_close($ch_mutasi);
+
 
         if ($http_status_code_mutasi !== 200) {
             return "Error fetching mutasi data.";
@@ -363,7 +363,7 @@ class MutasiGudang extends ControllerTemplate
         $response_gudang = curl_exec($ch_gudang);
         $gudang_data = json_decode($response_gudang, true);
         $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-        curl_close($ch_gudang);
+
 
         if ($http_status_code_gudang !== 200 || !isset($gudang_data['data'])) {
             return "Error fetching gudang data.";
@@ -396,7 +396,7 @@ class MutasiGudang extends ControllerTemplate
 
                 $response_asalgudang = curl_exec($ch_asalgudang);
                 $http_status_code_asalgudang = curl_getinfo($ch_asalgudang, CURLINFO_HTTP_CODE);
-                curl_close($ch_asalgudang);
+
 
                 if ($http_status_code_asalgudang !== 200) {
                     $all_gudang_success = false;
@@ -427,7 +427,7 @@ class MutasiGudang extends ControllerTemplate
 
                 $response_tujuangudang = curl_exec($ch_tujuangudang);
                 $http_status_code_tujuangudang = curl_getinfo($ch_tujuangudang, CURLINFO_HTTP_CODE);
-                curl_close($ch_tujuangudang);
+
 
                 if ($http_status_code_tujuangudang !== 200) {
                     $all_gudang_success = false;
@@ -446,7 +446,7 @@ class MutasiGudang extends ControllerTemplate
 
             $response = curl_exec($ch_mutasi);
             $http_status_code = curl_getinfo($ch_mutasi, CURLINFO_HTTP_CODE);
-            curl_close($ch_mutasi);
+
 
             if ($http_status_code === 204) {
                 return redirect()->to(base_url('mutasimedis'));

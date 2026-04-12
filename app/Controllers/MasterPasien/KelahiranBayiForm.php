@@ -161,7 +161,6 @@ class KelahiranBayiForm extends ControllerTemplate
 
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
 
             // dd($response, $http_status);
 
@@ -196,7 +195,6 @@ class KelahiranBayiForm extends ControllerTemplate
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
 
         if ($http_status === 200 && $response) {
             $result = json_decode($response, true);
@@ -345,7 +343,6 @@ class KelahiranBayiForm extends ControllerTemplate
 
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
 
             // dd($response, $http_status);
 

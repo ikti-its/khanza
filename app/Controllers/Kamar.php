@@ -52,7 +52,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
             ]);
             $response_kamar = curl_exec($ch_kamar);
             $http_status_code_kamar = curl_getinfo($ch_kamar, CURLINFO_HTTP_CODE);
-            curl_close($ch_kamar);
+
         
             // Check API response status
             if ($http_status_code_kamar !== 200) {
@@ -160,7 +160,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
                 return $this->renderErrorView($http_status_code_kamar);
             }
 
-            curl_close($ch_kamar);
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -187,7 +187,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
         ]);
         $response = curl_exec($ch_kamar);
         $http_status = curl_getinfo($ch_kamar, CURLINFO_HTTP_CODE);
-        curl_close($ch_kamar);
+
 
         // dd($response);
 
@@ -263,7 +263,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
                 log_message('error', 'cURL error: ' . curl_error($ch_kamar));
             }
             $http_status_code_kamar = curl_getinfo($ch_kamar, CURLINFO_HTTP_CODE);
-            curl_close($ch_kamar);
+
 
             // Log the response for debugging
             log_message('error', 'Response: ' . $response_kamar);
@@ -299,7 +299,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
             // Execute the DELETE request
             $response = curl_exec($ch_delete);
             $http_status = curl_getinfo($ch_delete, CURLINFO_HTTP_CODE);
-            curl_close($ch_delete);
+
 
             // Check if the request was successful (200 or 204)
             if ($http_status === 200 || $http_status === 204) {
@@ -332,7 +332,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
         ]);
         $response = curl_exec($ch_kamar);
         $http_status = curl_getinfo($ch_kamar, CURLINFO_HTTP_CODE);
-        curl_close($ch_kamar);
+
 
         // dd($response);
 

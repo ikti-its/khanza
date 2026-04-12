@@ -26,7 +26,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_medis = curl_exec($ch_medis);
             $http_status_code_medis = curl_getinfo($ch_medis, CURLINFO_HTTP_CODE);
-            curl_close($ch_medis);
+
 
             $ch_satuan = curl_init($satuan_url);
             curl_setopt($ch_satuan, CURLOPT_RETURNTRANSFER, true);
@@ -35,7 +35,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_satuan = curl_exec($ch_satuan);
             $http_status_code_satuan = curl_getinfo($ch_satuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_satuan);
+
 
             $ch_industri = curl_init($industri_url);
             curl_setopt($ch_industri, CURLOPT_RETURNTRANSFER, true);
@@ -44,7 +44,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_industri = curl_exec($ch_industri);
             $http_status_code_industri = curl_getinfo($ch_industri, CURLINFO_HTTP_CODE);
-            curl_close($ch_industri);
+
 
             $ch_jenis = curl_init($jenis_url);
             curl_setopt($ch_jenis, CURLOPT_RETURNTRANSFER, true);
@@ -53,7 +53,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_jenis = curl_exec($ch_jenis);
             $http_status_code_jenis = curl_getinfo($ch_jenis, CURLINFO_HTTP_CODE);
-            curl_close($ch_jenis);
+
 
             $ch_kategori = curl_init($kategori_url);
             curl_setopt($ch_kategori, CURLOPT_RETURNTRANSFER, true);
@@ -62,7 +62,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_kategori = curl_exec($ch_kategori);
             $http_status_code_kategori = curl_getinfo($ch_kategori, CURLINFO_HTTP_CODE);
-            curl_close($ch_kategori);
+
 
             $ch_golongan = curl_init($golongan_url);
             curl_setopt($ch_golongan, CURLOPT_RETURNTRANSFER, true);
@@ -71,7 +71,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_golongan = curl_exec($ch_golongan);
             $http_status_code_golongan = curl_getinfo($ch_golongan, CURLINFO_HTTP_CODE);
-            curl_close($ch_golongan);
+
 
             if ($http_status_code_medis !== 200) {
                 return $this->renderErrorView($http_status_code_medis);
@@ -136,7 +136,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_satuan = curl_exec($ch_satuan);
             $http_status_code_satuan = curl_getinfo($ch_satuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_satuan);
+
 
             $ch_industri = curl_init($industri_url);
             curl_setopt($ch_industri, CURLOPT_RETURNTRANSFER, true);
@@ -145,7 +145,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_industri = curl_exec($ch_industri);
             $http_status_code_industri = curl_getinfo($ch_industri, CURLINFO_HTTP_CODE);
-            curl_close($ch_industri);
+
 
             $ch_jenis = curl_init($jenis_url);
             curl_setopt($ch_jenis, CURLOPT_RETURNTRANSFER, true);
@@ -154,7 +154,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_jenis = curl_exec($ch_jenis);
             $http_status_code_jenis = curl_getinfo($ch_jenis, CURLINFO_HTTP_CODE);
-            curl_close($ch_jenis);
+
 
             $ch_kategori = curl_init($kategori_url);
             curl_setopt($ch_kategori, CURLOPT_RETURNTRANSFER, true);
@@ -163,7 +163,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_kategori = curl_exec($ch_kategori);
             $http_status_code_kategori = curl_getinfo($ch_kategori, CURLINFO_HTTP_CODE);
-            curl_close($ch_kategori);
+
 
             $ch_golongan = curl_init($golongan_url);
             curl_setopt($ch_golongan, CURLOPT_RETURNTRANSFER, true);
@@ -172,7 +172,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_golongan = curl_exec($ch_golongan);
             $http_status_code_golongan = curl_getinfo($ch_golongan, CURLINFO_HTTP_CODE);
-            curl_close($ch_golongan);
+
 
             if ($http_status_code_satuan !== 201) {
                 return $this->renderErrorView($http_status_code_satuan);
@@ -292,7 +292,7 @@ class Medis extends ControllerTemplate
             if ($http_status_code_ruangan !== 201) {
                 $this->renderErrorView($http_status_code_ruangan);
             }
-            curl_close($ch_ruangan);
+
 
             $ch_medis = curl_init($medis_url);
             curl_setopt($ch_medis, CURLOPT_POST, 1);
@@ -329,7 +329,7 @@ class Medis extends ControllerTemplate
                     ]);
                     $response_gudang = curl_exec($ch_gudang);
                     $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-                    curl_close($ch_gudang);
+
                 }
                 if ($http_status_code_gudang === 201) {
                     return redirect()->to(base_url('datamedis'));
@@ -340,7 +340,7 @@ class Medis extends ControllerTemplate
                 return $response_medis;
             }
 
-            curl_close($ch_medis);
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -365,7 +365,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_medis = curl_exec($ch_medis);
             $http_status_code_medis = curl_getinfo($ch_medis, CURLINFO_HTTP_CODE);
-            curl_close($ch_medis);
+
 
             $ch_satuan = curl_init($satuan_url);
             curl_setopt($ch_satuan, CURLOPT_RETURNTRANSFER, true);
@@ -374,7 +374,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_satuan = curl_exec($ch_satuan);
             $http_status_code_satuan = curl_getinfo($ch_satuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_satuan);
+
 
             $ch_industri = curl_init($industri_url);
             curl_setopt($ch_industri, CURLOPT_RETURNTRANSFER, true);
@@ -383,7 +383,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_industri = curl_exec($ch_industri);
             $http_status_code_industri = curl_getinfo($ch_industri, CURLINFO_HTTP_CODE);
-            curl_close($ch_industri);
+
 
             $ch_jenis = curl_init($jenis_url);
             curl_setopt($ch_jenis, CURLOPT_RETURNTRANSFER, true);
@@ -392,7 +392,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_jenis = curl_exec($ch_jenis);
             $http_status_code_jenis = curl_getinfo($ch_jenis, CURLINFO_HTTP_CODE);
-            curl_close($ch_jenis);
+
 
             $ch_kategori = curl_init($kategori_url);
             curl_setopt($ch_kategori, CURLOPT_RETURNTRANSFER, true);
@@ -401,7 +401,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_kategori = curl_exec($ch_kategori);
             $http_status_code_kategori = curl_getinfo($ch_kategori, CURLINFO_HTTP_CODE);
-            curl_close($ch_kategori);
+
 
             $ch_golongan = curl_init($golongan_url);
             curl_setopt($ch_golongan, CURLOPT_RETURNTRANSFER, true);
@@ -410,7 +410,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_golongan = curl_exec($ch_golongan);
             $http_status_code_golongan = curl_getinfo($ch_golongan, CURLINFO_HTTP_CODE);
-            curl_close($ch_golongan);
+
 
             if ($http_status_code_medis !== 200) {
                 return $this->renderErrorView($http_status_code_medis);
@@ -533,7 +533,7 @@ class Medis extends ControllerTemplate
             ]);
             $response_medis = curl_exec($ch_medis);
             $http_status_code_medis = curl_getinfo($ch_medis, CURLINFO_HTTP_CODE);
-            curl_close($ch_medis);
+
             if ($http_status_code_medis === 200) {
                 return redirect()->to(base_url('datamedis'));
             } else {
@@ -677,8 +677,6 @@ class Medis extends ControllerTemplate
 
     //                             return "Error Insert Data: " . $response;
     //                         }
-    //                         curl_close($ch);
-    //                         curl_close($ch_medis);
     //                     } else {
 
     //                         return "Error sending request to the API.";
@@ -688,9 +686,7 @@ class Medis extends ControllerTemplate
     //                 }
     //             } else {
     //                 return "Error sending request to the API.";
-    //             }
-
-    //             curl_close($ch_medis);
+    //             };
     //         } else {
     //             return "Email and role are required.";
     //         }
@@ -724,7 +720,6 @@ class Medis extends ControllerTemplate
     //     $ch_medis = initCurl($medis_url, $token);
     //     $response_medis = curl_exec($ch_medis);
     //     $http_status_code_medis = curl_getinfo($ch_medis, CURLINFO_HTTP_CODE);
-    //     curl_close($ch_medis);
 
     //     if ($http_status_code_medis !== 200) {
     //         return "Error fetching medis data: " . $response_medis;
@@ -738,7 +733,6 @@ class Medis extends ControllerTemplate
     //     $ch_gudang = initCurl($gudang_url, $token);
     //     $response_gudang = curl_exec($ch_gudang);
     //     $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-    //     curl_close($ch_gudang);
 
     //     if ($http_status_code_gudang !== 200) {
     //         return "Error fetching gudang data: " . $response_gudang;
@@ -751,7 +745,6 @@ class Medis extends ControllerTemplate
     //     $ch_ruangan = initCurl($ruangan_url, $token);
     //     $response_ruangan = curl_exec($ch_ruangan);
     //     $http_status_code_ruangan = curl_getinfo($ch_ruangan, CURLINFO_HTTP_CODE);
-    //     curl_close($ch_ruangan);
 
     //     if ($http_status_code_ruangan !== 201) {
     //         return "Error fetching ruangan data: " . $response_ruangan;
@@ -769,7 +762,6 @@ class Medis extends ControllerTemplate
     //                 $ch_gudang_delete = initCurl($gudang_delete_url, $token, 'DELETE');
     //                 $response_gudang_delete = curl_exec($ch_gudang_delete);
     //                 $http_status_code_gudang_final = curl_getinfo($ch_gudang_delete, CURLINFO_HTTP_CODE);
-    //                 curl_close($ch_gudang_delete);
 
     //                 if ($http_status_code_gudang_final !== 204) {
     //                     return "Error deleting gudang data: " . $response_gudang_delete;
@@ -782,7 +774,6 @@ class Medis extends ControllerTemplate
     //     $ch_medis_delete = initCurl($medis_url, $token, 'DELETE');
     //     $response_medis_delete = curl_exec($ch_medis_delete);
     //     $http_status_code_medis_delete = curl_getinfo($ch_medis_delete, CURLINFO_HTTP_CODE);
-    //     curl_close($ch_medis_delete);
 
     //     if ($http_status_code_medis_delete === 204) {
     //         return redirect()->to(base_url('datamedis'));

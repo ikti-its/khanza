@@ -48,7 +48,7 @@ protected array $breadcrumbs = [];
 
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
     
             if ($http_status !== 200) {
                 return $this->renderErrorView($http_status);
@@ -69,7 +69,7 @@ protected array $breadcrumbs = [];
                         curl_setopt($ch2, CURLOPT_TIMEOUT, 10);           // max total waktu
 curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             $jenis_response = curl_exec($ch2);
-            curl_close($ch2);
+
     
             $jenis_data = json_decode($jenis_response, true);
             $jenis_tindakan = $jenis_data['data'] ?? [];
@@ -108,7 +108,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -125,7 +125,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             'Authorization: Bearer ' . $token,
         ]);
         $ranap_response = curl_exec($ch_ranap);
-        curl_close($ch_ranap);
+
 
         $ranap_data = json_decode($ranap_response, true);
         $nomor_bed = $ranap_data['data']['kamar'];
@@ -141,7 +141,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
                 'Authorization: Bearer ' . $token,
             ]);
             $res_kamar = curl_exec($ck);
-            curl_close($ck);
+
 
             $data_kamar = json_decode($res_kamar, true);
             $kodeBangsalRaw = $data_kamar['data']['kelas'];
@@ -163,7 +163,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             'Authorization: Bearer ' . $token,
         ]);
         $jenis_response = curl_exec($ch2);
-        curl_close($ch2);
+
 
         $jenis_data = json_decode($jenis_response, true);
         $jenis_all = $jenis_data['data'] ?? [];
@@ -224,7 +224,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             ]);
             $response = curl_exec($ch);
             $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($status === 201 || $status === 200) {
                 // ✅ Redirect to the specific tindakan/{nomor_rawat}
@@ -253,7 +253,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             'Authorization: Bearer ' . $token,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         $selectedTindakan = [];
@@ -265,7 +265,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             'Authorization: Bearer ' . $token,
         ]);
         $jenis_response = curl_exec($ch2);
-        curl_close($ch2);
+
 
         $jenis_data = json_decode($jenis_response, true);
         $jenis_tindakan = $jenis_data['data'] ?? [];
@@ -331,7 +331,7 @@ $selectedTindakan = $t;
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('tindakan/' . $nomorRawat));
@@ -360,7 +360,7 @@ $selectedTindakan = $t;
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         $data = [];
         $tindakan_data = [];
@@ -388,7 +388,7 @@ $selectedTindakan = $t;
         curl_setopt($ch2, CURLOPT_TIMEOUT, 10);           // max total waktu
         curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
         $jenis_response = curl_exec($ch2);
-        curl_close($ch2);
+
 
         $jenis_data = json_decode($jenis_response, true);
         $jenis_tindakan = $jenis_data['data'] ?? [];
@@ -403,7 +403,7 @@ $selectedTindakan = $t;
             'Accept: application/json'
         ]);
         $ranap_response = curl_exec($ch3);
-        curl_close($ch3);
+
 
         $ranap_data = json_decode($ranap_response, true);
         $nomor_bed = $ranap_data['data']['kamar'];
@@ -420,7 +420,7 @@ $selectedTindakan = $t;
                 'Accept: application/json'
             ]);
             $kamar_response = curl_exec($ch4);
-            curl_close($ch4);
+
 
             $kamar_data = json_decode($kamar_response, true);
             $kelas = $kamar_data['data']['kelas'];
@@ -456,7 +456,7 @@ $selectedTindakan = $t;
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         if (!isset($data['data']) || $data['data'] === null) {
@@ -481,7 +481,7 @@ $selectedTindakan = $t;
                 'Accept: application/json'
             ]);
             $res_kamar = curl_exec($ck);
-            curl_close($ck);
+
 
             $data_kamar = json_decode($res_kamar, true);
             $kodeBangsal = $data_kamar['data']['kelas'];
@@ -507,7 +507,7 @@ $selectedTindakan = $t;
             'Authorization: Bearer ' . $token,
         ]);
         $jenis_response = curl_exec($cj);
-        curl_close($cj);
+
 
         $jenis_data = json_decode($jenis_response, true);
         $jenis_all = $jenis_data['data'] ?? [];
@@ -553,7 +553,7 @@ $selectedTindakan = $t;
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -595,7 +595,7 @@ $selectedTindakan = $t;
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -619,7 +619,7 @@ $selectedTindakan = $t;
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -682,7 +682,7 @@ $selectedUGD = $ugd;
 
         $response = curl_exec($ch);
         $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($httpStatus !== 200) {
             return $this->renderErrorView($httpStatus);

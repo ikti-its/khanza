@@ -152,7 +152,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
         return $response;
     }
 
@@ -179,7 +179,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
 
             $parsed = json_decode($response, true);
             log_message('debug', print_r($parsed, true));
@@ -209,7 +209,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         if (isset($data['data'])) {
@@ -260,7 +260,7 @@ protected array $breadcrumbs = [];
         ]);
         $responseMaster = curl_exec($chMaster);
         $statusMaster = curl_getinfo($chMaster, CURLINFO_HTTP_CODE);
-        curl_close($chMaster);
+
 
         if ($statusMaster !== 200 && $statusMaster !== 201) {
             log_message('error', '❌ Failed to insert into resep_dokter_racikan: ' . $responseMaster);
@@ -305,7 +305,7 @@ protected array $breadcrumbs = [];
             ]);
             $responseDetail = curl_exec($chDetail);
             $statusDetail = curl_getinfo($chDetail, CURLINFO_HTTP_CODE);
-            curl_close($chDetail);
+
 
             if ($statusDetail !== 200 && $statusDetail !== 201) {
                 log_message('error', '❌ Failed to insert into resep_dokter_racikan_detail: ' . $responseDetail);
@@ -335,7 +335,7 @@ protected array $breadcrumbs = [];
             ]);
             $responseResep = curl_exec($chResep);
             $statusResep = curl_getinfo($chResep, CURLINFO_HTTP_CODE);
-            curl_close($chResep);
+
 
             if ($statusResep !== 200 && $statusResep !== 201) {
                 log_message('error', '❌ Failed to insert into resep_dokter: ' . $responseResep);
@@ -374,7 +374,7 @@ protected array $breadcrumbs = [];
         ]);
         $responseResepObat = curl_exec($chResepObat);
         $statusResepObat = curl_getinfo($chResepObat, CURLINFO_HTTP_CODE);
-        curl_close($chResepObat);
+
 
         if ($statusResepObat !== 200 && $statusResepObat !== 201) {
             log_message('error', '❌ Failed to insert into resep_obat: ' . $responseResepObat);
@@ -405,7 +405,7 @@ protected array $breadcrumbs = [];
             'Authorization: Bearer ' . $token,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         $resep = $data['data'] ?? [];
@@ -456,7 +456,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('resepobatracikan'))->with('success', 'Resep obat updated');
@@ -484,7 +484,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -513,7 +513,7 @@ protected array $breadcrumbs = [];
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             log_message('error', 'ResepObatRacikanData Response: ' . $response);
             log_message('error', 'ResepObatRacikanData HTTP Status: ' . $http_status);
@@ -557,7 +557,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $res = curl_exec($ch);
-        curl_close($ch);
+
 
         $parsed = json_decode($res, true);
         return $parsed['data'] ?? [];
@@ -580,7 +580,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -655,7 +655,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status === 201 || $status === 200) {
             return redirect()->to(base_url('resepobatracikan/' . $noResep))->with('success', 'Detail resep berhasil ditambahkan.');

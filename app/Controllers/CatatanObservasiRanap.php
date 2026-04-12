@@ -65,7 +65,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200 || !$response) {
             return $this->renderErrorView($status);
@@ -91,7 +91,7 @@ protected array $breadcrumbs = [];
                     'Accept: application/json'
                 ]);
                 $response_reg = curl_exec($ch_reg);
-                curl_close($ch_reg);
+
 
                 $reg_data = json_decode($response_reg, true);
                 $item['nama_pasien'] = $reg_data['data']['nama_pasien'] ?? '';
@@ -111,7 +111,7 @@ protected array $breadcrumbs = [];
                     'Accept: application/json'
                 ]);
                 $response_nama = curl_exec($ch_nama);
-                curl_close($ch_nama);
+
 
                 $pegawai_data = json_decode($response_nama, true);
                 if (
@@ -215,7 +215,7 @@ protected array $breadcrumbs = [];
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($http_status === 201) {
                 return redirect()->to(base_url('catatanobservasiranap'));
@@ -249,7 +249,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200) {
             return $this->renderErrorView($status);
@@ -275,7 +275,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $response_reg = curl_exec($ch_reg);
-            curl_close($ch_reg);
+
 
             $reg_data = json_decode($response_reg, true);
             $nama_pasien = $reg_data['data']['nama_pasien'] ?? '';
@@ -291,7 +291,7 @@ protected array $breadcrumbs = [];
                     'Accept: application/json'
                 ]);
                 $response_pasien = curl_exec($ch_pasien);
-                curl_close($ch_pasien);
+
 
                 $pasien_data = json_decode($response_pasien, true);
                 $tgl_lahir = $pasien_data['data']['tgl_lahir'] ?? '';
@@ -310,7 +310,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $response_petugas = curl_exec($ch_petugas);
-            curl_close($ch_petugas);
+
 
             $pegawai_data = json_decode($response_petugas, true);
             if (
@@ -383,7 +383,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status === 200) {
             return redirect()->to(base_url('catatanobservasiranap'));
@@ -408,7 +408,7 @@ protected array $breadcrumbs = [];
 
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('catatanobservasiranap'))->with('success', 'Data observasi Rawat Inap berhasil dihapus.');
@@ -437,7 +437,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -463,7 +463,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $presp = curl_exec($pch);
-            curl_close($pch);
+
 
             $pasien_data = json_decode($presp, true);
             if (isset($pasien_data['data']['tgl_lahir'])) {
@@ -480,7 +480,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $presp = curl_exec($pch);
-        curl_close($pch);
+
 
         $pegawai_data = json_decode($presp, true);
         $pegawai_list = $pegawai_data['data'] ?? [];
@@ -531,7 +531,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200 || !$response) {
             return $this->renderErrorView($status);
@@ -551,7 +551,7 @@ protected array $breadcrumbs = [];
                     'Accept: application/json'
                 ]);
                 $response_reg = curl_exec($ch_reg);
-                curl_close($ch_reg);
+
 
                 $reg_data = json_decode($response_reg, true);
                 $item['nama_pasien'] = $reg_data['data']['nama_pasien'] ?? '';
@@ -569,7 +569,7 @@ protected array $breadcrumbs = [];
                     'Accept: application/json'
                 ]);
                 $pegawai_response = curl_exec($ch_peg);
-                curl_close($ch_peg);
+
 
                 $pegawai_data = json_decode($pegawai_response, true);
                 $item['nama_petugas'] = $pegawai_data['data']['Nama'] ?? '—';

@@ -24,7 +24,6 @@ class ModalDokter extends ControllerTemplate
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
 
         if ($http_status === 200 && $response) {
             $data = json_decode($response, true);

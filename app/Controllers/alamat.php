@@ -54,9 +54,6 @@ class alamat extends ControllerTemplate
                 // Error fetching akun data
                 return "Error fetching akun data.";
             }
-
-            // Close the cURL session for akun data
-            curl_close($ch_akun);
         } else {
             return "User not logged in. Please log in first.";
         }
@@ -138,9 +135,6 @@ class alamat extends ControllerTemplate
                     // Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                // Close the cURL session
-                curl_close($ch);
             } else {
                 // Email or role is empty
                 return "Email and role are required.";
@@ -190,9 +184,6 @@ class alamat extends ControllerTemplate
                 //Error fetching user data
                 return "Error fetching user data.";
             }
-
-            //Close the cURL session for user data
-            curl_close($ch_user);
         } else {
             //User not logged in
             return "User not logged in. Please log in first. ";
@@ -268,9 +259,6 @@ class alamat extends ControllerTemplate
                     // Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                // Close the cURL session
-                curl_close($ch);
             } else {
                 // Email or role is empty
                 return "Email and role are required.";
@@ -310,9 +298,6 @@ class alamat extends ControllerTemplate
                 // Error response from the API
                 return "Error deleting user: " . $response;
             }
-    
-            // Close the cURL session
-            curl_close($ch);
         } else {
             // User not logged in
             return "User not logged in. Please log in first.";

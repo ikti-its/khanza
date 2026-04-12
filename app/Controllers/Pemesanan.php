@@ -269,12 +269,12 @@ class Pemesanan extends ControllerTemplate
             }
 
             // Close cURL sessions
-            curl_close($ch_pemesanan);
-            curl_close($ch_medis);
-            curl_close($ch_satuan);
-            curl_close($ch_supplier);
-            curl_close($ch_pegawai);
-            curl_close($ch_persetujuan);
+
+
+
+
+
+
         } else {
             return "JWT token not found.";
         }
@@ -391,7 +391,7 @@ class Pemesanan extends ControllerTemplate
             ]);
             $response_pegawai = curl_exec($ch_pegawai);
             $http_status_code_pegawai = curl_getinfo($ch_pegawai, CURLINFO_HTTP_CODE);
-            curl_close($ch_pegawai);
+
 
             // Ambil data pengajuan
             $ch_pengajuan = curl_init($pengajuan_url);
@@ -401,7 +401,7 @@ class Pemesanan extends ControllerTemplate
             ]);
             $response_pengajuan = curl_exec($ch_pengajuan);
             $http_status_code_pengajuan = curl_getinfo($ch_pengajuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_pengajuan);
+
 
             // Ambil data barang medis
             $ch_barang_medis = curl_init($barang_medis_url);
@@ -411,7 +411,7 @@ class Pemesanan extends ControllerTemplate
             ]);
             $response_barang_medis = curl_exec($ch_barang_medis);
             $http_status_code_barang_medis = curl_getinfo($ch_barang_medis, CURLINFO_HTTP_CODE);
-            curl_close($ch_barang_medis);
+
 
             // Ambil data supplier
             $ch_supplier = curl_init($supplier_url);
@@ -421,7 +421,7 @@ class Pemesanan extends ControllerTemplate
             ]);
             $response_supplier = curl_exec($ch_supplier);
             $http_status_code_supplier = curl_getinfo($ch_supplier, CURLINFO_HTTP_CODE);
-            curl_close($ch_supplier);
+
 
             // Ambil data satuan
             $ch_satuan = curl_init($satuan_url);
@@ -431,7 +431,7 @@ class Pemesanan extends ControllerTemplate
             ]);
             $response_satuan = curl_exec($ch_satuan);
             $http_status_code_satuan = curl_getinfo($ch_satuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_satuan);
+
 
             // Ambil data pesanan
             $ch_pesanan = curl_init($pesanan_url);
@@ -441,7 +441,7 @@ class Pemesanan extends ControllerTemplate
             ]);
             $response_pesanan = curl_exec($ch_pesanan);
             $http_status_code_pesanan = curl_getinfo($ch_pesanan, CURLINFO_HTTP_CODE);
-            curl_close($ch_pesanan);
+
 
             // Cek response dan status code
             if ($http_status_code_pegawai === 200 && $http_status_code_pengajuan === 200 && $http_status_code_barang_medis === 200 && $http_status_code_supplier === 200 && $http_status_code_satuan === 200 && $http_status_code_pesanan === 200) {
@@ -621,12 +621,12 @@ class Pemesanan extends ControllerTemplate
                                 } else {
                                     return "Error sending request to the obat API.";
                                 }
-                                curl_close($ch_pesanan);
+
                             } else {
                                 return "Error Update Pengajuan: " . $response_pengajuan;
                             }
-                            curl_close($ch_pemesanan);
-                            curl_close($ch_pengajuan);
+
+
                         } else {
                             return "Error sending request to the obat API.";
                         }
@@ -753,13 +753,13 @@ class Pemesanan extends ControllerTemplate
             }
 
             // Close all cURL sessions
-            curl_close($ch_pemesanan);
-            curl_close($ch_pesanan);
-            curl_close($ch_pengajuan);
-            curl_close($ch_barang_medis);
-            curl_close($ch_pegawai);
-            curl_close($ch_supplier);
-            curl_close($ch_satuan);
+
+
+
+
+
+
+
         } else {
             // User belum login
             return "User not logged in. Please log in first.";
@@ -864,13 +864,13 @@ class Pemesanan extends ControllerTemplate
                         } else {
                             return "Error sending request to the obat API.";
                         }
-                        curl_close($ch_pesanan);
 
 
-                        curl_close($ch_pemesanan);
+
+
                     } else {
                         // Error response from the API
-                        curl_close($ch_pemesanan); // Tutup session cURL untuk medis_url di sini
+// Tutup session cURL untuk medis_url di sini
                         return "Error Update pemesanan: " . $response_pemesanan;
                     }
                 } else {
@@ -1000,8 +1000,8 @@ class Pemesanan extends ControllerTemplate
                             // Error response dari obat_url
                             return "Error Update Pengajuan: " . $response_pengajuan;
                         }
-                        curl_close($ch_pengajuan);
-                        curl_close($ch_pemesanan);
+
+
                     } else {
                         return "Error sending request to the obat API.";
                     }

@@ -53,7 +53,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -82,7 +82,7 @@ protected array $breadcrumbs = [];
                     'Accept: application/json'
                 ]);
                 $response = curl_exec($ch);
-                curl_close($ch);
+
 
                 $rawat_data = json_decode($response, true);
                 if (isset($rawat_data['data'])) {
@@ -128,7 +128,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
             $parsed = json_decode($response, true);
     
             if (isset($parsed['data'])) {
@@ -183,7 +183,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
         return json_decode($response, true);
     }
     
@@ -233,7 +233,7 @@ protected array $breadcrumbs = [];
     ]);
     $response = curl_exec($ch);
     $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+
 
     if ($status !== 200 && $status !== 201) {
         log_message('error', '❌ Gagal insert permintaan_resep_pulang: ' . $response);
@@ -263,7 +263,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
     // dd($noPermintaan);
         $data = json_decode($response, true);
         $permintaan = $data['data'] ?? [];
@@ -280,7 +280,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $obatResponse = curl_exec($chObat);
-        curl_close($chObat);
+
 
         $obatData = json_decode($obatResponse, true);
         $obatList = $obatData['data'] ?? [];
@@ -331,7 +331,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('permintaanreseppulang'))->with('success', 'Permintaan resep pulang updated');
@@ -359,7 +359,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -385,7 +385,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -432,7 +432,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -450,7 +450,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 

@@ -226,12 +226,12 @@ class Pengajuan extends ControllerTemplate
               
                 return $this->renderErrorView(500);
             }
-            curl_close($ch_pengajuan);
-            curl_close($ch_pesanan);
-            curl_close($ch_persetujuan);
-            curl_close($ch_barang_medis);
-            curl_close($ch_satuan);
-            curl_close($ch_pegawai);
+
+
+
+
+
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -422,9 +422,9 @@ class Pengajuan extends ControllerTemplate
 
                         return redirect()->to(base_url('pengajuanmedis'));
 
-                        curl_close($ch_persetujuan);
-                        curl_close($ch_pengajuan); 
-                        curl_close($ch_pesanan);
+
+
+
                     } else {
                         return $this->renderErrorView(500);
                     }
@@ -456,7 +456,7 @@ class Pengajuan extends ControllerTemplate
             ]);
             $response_barang_medis = curl_exec($ch_barang_medis);
 
-            curl_close($ch_barang_medis);
+
             $ch_pengajuan = curl_init($pengajuan_url);
             curl_setopt($ch_pengajuan, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch_pengajuan, CURLOPT_HTTPHEADER, [
@@ -538,8 +538,8 @@ class Pengajuan extends ControllerTemplate
             } else {
                 return $this->renderErrorView(500);
             }
-            curl_close($ch_pengajuan);
-            curl_close($ch_pesanan);
+
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -630,11 +630,11 @@ class Pengajuan extends ControllerTemplate
                     }
                     return redirect()->to(base_url('pengajuanmedis'));
                 } else {
-                    curl_close($ch_pesanan);
+
                     return $this->renderErrorView(500);
                 }
-                curl_close($ch_pengajuan);
-                curl_close($ch_pesanan);
+
+
             } else {
                 return $this->renderErrorView(500);
             }

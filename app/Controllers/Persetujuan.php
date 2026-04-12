@@ -36,12 +36,12 @@ class Persetujuan extends ControllerTemplate
             if ($response_pengajuan === false) {
                 $error = curl_error($ch_pengajuan);
                 $errno = curl_errno($ch_pengajuan);
-                curl_close($ch_pengajuan);
+
                 die("CURL error when calling pengajuan API: [$errno] $error");
             }
 
             $http_status_code_pengajuan = curl_getinfo($ch_pengajuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_pengajuan);
+
 
             if ($http_status_code_pengajuan !== 200) {
                 die("Pengajuan API responded with HTTP code $http_status_code_pengajuan. Raw response: " . $response_pengajuan);
@@ -60,12 +60,12 @@ class Persetujuan extends ControllerTemplate
             if ($response_pesanan === false) {
                 $error = curl_error($ch_pesanan);
                 $errno = curl_errno($ch_pesanan);
-                curl_close($ch_pesanan);
+
                 die("CURL error when calling pesanan API: [$errno] $error");
             }
 
             $http_status_code_pesanan = curl_getinfo($ch_pesanan, CURLINFO_HTTP_CODE);
-            curl_close($ch_pesanan);
+
 
             if ($http_status_code_pesanan !== 200) {
                 die("pesanan API responded with HTTP code $http_status_code_pesanan. Raw response: " . $response_pesanan);
@@ -93,12 +93,12 @@ class Persetujuan extends ControllerTemplate
             if ($response_persetujuan === false) {
                 $error = curl_error($ch_persetujuan);
                 $errno = curl_errno($ch_persetujuan);
-                curl_close($ch_persetujuan);
+
                 die("CURL error when calling persetujuan API: [$errno] $error");
             }
 
             $http_status_code_persetujuan = curl_getinfo($ch_persetujuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_persetujuan);
+
 
             if ($http_status_code_persetujuan !== 200) {
                 die("persetujuan API responded with HTTP code $http_status_code_persetujuan. Raw response: " . $response_persetujuan);
@@ -273,8 +273,6 @@ class Persetujuan extends ControllerTemplate
                         //     } else {
                         //         return "Error Update Pengajuan: " . $response_pengajuan;
                         //     }
-                        //     curl_close($ch_persetujuan);
-                        //     curl_close($ch_pengajuan);
                         // } else {
                         //     return "Error sending request to the obat API.";
                         // }

@@ -41,7 +41,7 @@ public function lihatProfil()
                 return $this->renderErrorView(500);
             }
 
-            curl_close($ch_akun);
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -123,8 +123,8 @@ public function lihatProfil()
                     return $this->renderErrorView(500);
                 }
 
-                // Close the cURL session
-                curl_close($ch);
+
+
             } else {
                 // User not logged in
                 return $this->renderErrorView(401);
@@ -186,7 +186,7 @@ public function lihatProfil()
                 // Check for cURL errors
                 if ($response_lokasi === false) {
                     $error_message = curl_error($ch_lokasi);
-                    curl_close($ch_lokasi);
+
                     return $this->renderErrorView(500, 'Error fetching location data: ' . $error_message);
                 }
 
@@ -194,7 +194,7 @@ public function lihatProfil()
                 $http_status_response_lokasi = curl_getinfo($ch_lokasi, CURLINFO_HTTP_CODE);
 
                 // Close cURL session for location request
-                curl_close($ch_lokasi);
+
 
                 if ($http_status_response_lokasi === 200) {
                     // Parse JSON response for location data
@@ -223,8 +223,6 @@ public function lihatProfil()
                     usort($ketersediaan_data['data']['ketersediaan'], function ($a, $b) {
                         return $a['distance'] <=> $b['distance'];
                     });
-                    // Close the cURL session for ketersediaan data
-                    curl_close($ch_ketersediaan);
 
                     // Pass data to the view, including the distances array
                     return view('/user/dataPegawai', [
@@ -235,12 +233,12 @@ public function lihatProfil()
                 }
             } else {
                 // Error fetching ketersediaan data
-                curl_close($ch_ketersediaan);
+
                 return $this->renderErrorView($http_status_code_ketersediaan);
             }
         } else {
             // Error fetching ketersediaan data
-            curl_close($ch_ketersediaan);
+
             return $this->renderErrorView(500); // Assume 500 for cURL error
         }
     } else {
@@ -339,7 +337,7 @@ public function lihatProfil()
             }
 
             //Close the cURL session for user data
-            curl_close($ch_user);
+
         } else {
             // User not logged in
             return $this->renderErrorView(401);
@@ -393,8 +391,6 @@ public function lihatProfil()
                 return $this->renderErrorView(500); // Assume 500 for cURL error
             }
 
-            // Close the cURL session for akun data
-            curl_close($ch_kehadiran);
         } else {
             // User not logged in
             return $this->renderErrorView(401);
@@ -454,8 +450,6 @@ public function lihatProfil()
                 return $this->renderErrorView(500); // Assume 500 for cURL error
             }
 
-            // Close the cURL session for akun data
-            curl_close($ch_cuti);
         } else {
             // User not logged in
             return $this->renderErrorView(401);
@@ -516,8 +510,6 @@ public function lihatProfil()
                 return $this->renderErrorView(500); // Assume 500 for cURL error
             }
 
-            // Close the cURL session for akun data
-            curl_close($ch_jadwal);
         } else {
             // User not logged in
             return $this->renderErrorView(401);
@@ -564,8 +556,6 @@ public function lihatProfil()
                     $jadwal_data = json_decode($response_jadwal, true);
                     $kehadiran_data = $jadwal_data['data']['jadwal_pegawai'];
 
-                    // Close the cURL session for jadwal data
-                    curl_close($ch_jadwal);
 
                     // URL for fetching pegawai data
                     $pegawai_url = $this->api_url . '/pegawai';
@@ -620,8 +610,6 @@ public function lihatProfil()
                         return $this->renderErrorView(500); // Assume 500 for cURL error
                     }
 
-                    // Close the cURL session for pegawai data
-                    curl_close($ch_pegawai);
                 } else {
                     // Error fetching jadwal data
                     return $this->renderErrorView($http_status_code_jadwal);
@@ -732,8 +720,8 @@ public function submitTambahCuti()
                 return $this->renderErrorView(500);
             }
 
-            // Close the cURL session
-            curl_close($ch);
+
+
         } else {
             // User is not logged in
             return redirect()->to('/login')->with('error', 'User not logged in. Please log in first.');
@@ -780,7 +768,7 @@ public function submitTambahCuti()
 
             $response = curl_exec($ch);
             $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
             
             if ($http_code === 200 && $response) {
                 $user_details_data = json_decode($response, true);
@@ -854,7 +842,7 @@ public function submitTambahCuti()
         // Check for cURL errors
         if ($response_lokasi === false) {
             $error_message = curl_error($ch_lokasi);
-            curl_close($ch_lokasi);
+
             return $this->renderErrorView(500, 'Error fetching location data: ' . $error_message);
         }
     
@@ -862,7 +850,7 @@ public function submitTambahCuti()
         $http_status_response_lokasi = curl_getinfo($ch_lokasi, CURLINFO_HTTP_CODE);
     
         // Close cURL session for location request
-        curl_close($ch_lokasi);
+
     
         // Check HTTP status for location request
         if ($http_status_response_lokasi === 200) {
@@ -927,7 +915,7 @@ public function submitTambahCuti()
             // Check for cURL errors
             if ($response_foto === false) {
                 $error_message = curl_error($ch_foto);
-                curl_close($ch_foto);
+
                 return $this->renderErrorView(500, 'Error fetching employee photo data: ' . $error_message);
             }
     
@@ -935,7 +923,7 @@ public function submitTambahCuti()
             $http_status_response_foto = curl_getinfo($ch_foto, CURLINFO_HTTP_CODE);
     
             // Close cURL session for employee photo request
-            curl_close($ch_foto);
+
     
             // Check HTTP status for employee photo request
             if ($http_status_response_foto !== 200) {
@@ -1010,9 +998,6 @@ public function submitTambahCuti()
                     // Error fetching jadwal data
                     return $this->renderErrorView(500, 'Error fetching jadwal data'); // Assume 500 for cURL error
                 }
-    
-                // Close the cURL session for akun data
-                curl_close($ch_jadwal);
             } else {
                 // User not logged in
                 return $this->renderErrorView(401);
@@ -1055,7 +1040,7 @@ public function submitTambahCuti()
         // Check for cURL errors
         if ($response_foto === false) {
             $error_message = curl_error($ch_foto);
-            curl_close($ch_foto);
+
             return $this->renderErrorView(500, 'Error fetching employee photo data: ' . $error_message);
         }
 
@@ -1063,7 +1048,7 @@ public function submitTambahCuti()
         $http_status_response_foto = curl_getinfo($ch_foto, CURLINFO_HTTP_CODE);
 
         // Close cURL session for employee photo request
-        curl_close($ch_foto);
+
 
         // Decode the JSON response to get the photo data
         $foto_data = json_decode($response_foto, true);
@@ -1169,8 +1154,6 @@ public function submitTambahCuti()
                 return $this->renderErrorView(500); // Assume 500 for cURL error
             }
 
-            // Close the cURL session for akun data
-            curl_close($ch_jadwal);
         } else {
             // User not logged in
             return $this->renderErrorView(401);
@@ -1278,8 +1261,8 @@ public function submitTambahCuti()
                     return $this->renderErrorView(500);
                 }
 
-                // Close the cURL session
-                curl_close($ch);
+
+
             } else {
                 // User is not logged in
                 return redirect()->to('/login')->with('error', 'User not logged in. Please log in first.');
@@ -1353,8 +1336,6 @@ public function submitTambahCuti()
                 return $this->renderErrorView(500); // Assume 500 for cURL error
             }
 
-            // Close the cURL session for akun data
-            curl_close($ch_jadwal);
         } else {
             // User not logged in
             return $this->renderErrorView(401);
@@ -1431,8 +1412,8 @@ public function submitTambahCuti()
                     return $this->renderErrorView(500);
                 }
 
-                // Close the cURL session
-                curl_close($ch);
+
+
             } else {
                 // User is not logged in
                 return redirect()->to('/login')->with('error', 'User not logged in. Please log in first.');
@@ -1524,12 +1505,9 @@ public function submitTambahCuti()
             // Check for errors
             if (curl_errno($ch)) {
                 $error_message = curl_error($ch);
-                curl_close($ch);
+
                 return "Error uploading KTP image: " . $error_message;
             }
-
-            // Close the cURL session for uploading KTP image
-            curl_close($ch);
 
             // Decode the response
             $responseData = json_decode($response, true);

@@ -56,7 +56,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
     
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -81,7 +81,7 @@ protected array $breadcrumbs = [];
                     'Accept: application/json'
                 ]);
                 $rawatResponse = curl_exec($ch);
-                curl_close($ch);
+
     
                 $rawatParsed = json_decode($rawatResponse, true);
                 $item['nama_pasien'] = $rawatParsed['data']['nama_pasien'] ?? 'N/A';
@@ -127,7 +127,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
 
             $parsed = json_decode($response, true);
 
@@ -156,7 +156,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $obatResponse = curl_exec($ch);
-            curl_close($ch);
+
 
             $parsedObat = json_decode($obatResponse, true);
         if (isset($parsedObat['data'])) {
@@ -211,7 +211,7 @@ protected array $breadcrumbs = [];
     ]);
     $masterResponse = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+
 // dd($masterResponse);
     $parsedMaster = json_decode($masterResponse, true);
     if ($httpCode === 200 && isset($parsedMaster['data']['no_rawat'])) {
@@ -234,7 +234,7 @@ if ($noPermintaan) {
     ]);
     $obatResponse = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+
 
     $parsedObat = json_decode($obatResponse, true);
 
@@ -265,7 +265,7 @@ if ($noPermintaan) {
         ]);
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         $parsed = json_decode($response, true);
 
@@ -342,7 +342,7 @@ if ($noPermintaan) {
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200 && $status !== 201) {
             log_message('error', 'Failed to insert resep_pulang: ' . $response);
@@ -370,7 +370,6 @@ if ($noPermintaan) {
 //         'Authorization: Bearer ' . $token,
 //     ]);
 //     $response = curl_exec($ch);
-//     curl_close($ch);
 
 //     $data = json_decode($response, true);
 //     $prefill = $data['data'] ?? [];
@@ -384,7 +383,6 @@ if ($noPermintaan) {
 //         'Accept: application/json'
 //     ]);
 //     $obat_response = curl_exec($ch);
-//     curl_close($ch);
 
 //     $obat_data = json_decode($obat_response, true);
 //     $obat_list = $obat_data['data'] ?? [];
@@ -423,7 +421,7 @@ public function editResepPulang($no_rawat, $kode_brng, $tanggal, $jam)
         'Authorization: Bearer ' . $token,
     ]);
     $response = curl_exec($ch);
-    curl_close($ch);
+
 
     $data = json_decode($response, true);
     $prefill = $data['data'] ?? [];
@@ -437,7 +435,7 @@ public function editResepPulang($no_rawat, $kode_brng, $tanggal, $jam)
         'Accept: application/json'
     ]);
     $obat_response = curl_exec($ch);
-    curl_close($ch);
+
 
     $obat_data = json_decode($obat_response, true);
     $obat_list = $obat_data['data'] ?? [];
@@ -493,7 +491,7 @@ public function editResepPulang($no_rawat, $kode_brng, $tanggal, $jam)
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('reseppulang'))->with('success', 'Resep pulang berhasil diupdate.');
@@ -521,7 +519,7 @@ public function editResepPulang($no_rawat, $kode_brng, $tanggal, $jam)
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -548,7 +546,7 @@ public function editResepPulang($no_rawat, $kode_brng, $tanggal, $jam)
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
     
         $data = json_decode($response, true);
     
@@ -604,7 +602,7 @@ public function editResepPulang($no_rawat, $kode_brng, $tanggal, $jam)
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 

@@ -51,7 +51,6 @@ class NomorGeneratorService
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
 
         return $response ? json_decode($response, true) : null;
     }

@@ -108,9 +108,9 @@ class Penerimaan extends ControllerTemplate
                 return "Error fetching data.";
             }
 
-            curl_close($ch_penerimaan);
-            curl_close($ch_ruangan);
-            curl_close($ch_pegawai);
+
+
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -136,7 +136,7 @@ class Penerimaan extends ControllerTemplate
             ]);
             $response_pegawai = curl_exec($ch_pegawai);
             $http_status_code_pegawai = curl_getinfo($ch_pegawai, CURLINFO_HTTP_CODE);
-            curl_close($ch_pegawai);
+
 
             // Ambil data pemesanan
             $ch_pemesanan = curl_init($pemesanan_url);
@@ -146,7 +146,7 @@ class Penerimaan extends ControllerTemplate
             ]);
             $response_pemesanan = curl_exec($ch_pemesanan);
             $http_status_code_pemesanan = curl_getinfo($ch_pemesanan, CURLINFO_HTTP_CODE);
-            curl_close($ch_pemesanan);
+
 
             // Ambil idpengajuan dari data pemesanan
             $pemesanan_data = json_decode($response_pemesanan, true);
@@ -161,7 +161,7 @@ class Penerimaan extends ControllerTemplate
             ]);
             $response_pengajuan = curl_exec($ch_pengajuan);
             $http_status_code_pengajuan = curl_getinfo($ch_pengajuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_pengajuan);
+
 
             // Ambil data pesanan berdasarkan idpengajuan
             $pesanan_url = $this->api_url . '/pengadaan/pesanan/pengajuan/' . $idpengajuan;
@@ -172,7 +172,7 @@ class Penerimaan extends ControllerTemplate
             ]);
             $response_pesanan = curl_exec($ch_pesanan);
             $http_status_code_pesanan = curl_getinfo($ch_pesanan, CURLINFO_HTTP_CODE);
-            curl_close($ch_pesanan);
+
 
             // Ambil data barang medis
             $ch_barang_medis = curl_init($barang_medis_url);
@@ -182,7 +182,7 @@ class Penerimaan extends ControllerTemplate
             ]);
             $response_barang_medis = curl_exec($ch_barang_medis);
             $http_status_code_barang_medis = curl_getinfo($ch_barang_medis, CURLINFO_HTTP_CODE);
-            curl_close($ch_barang_medis);
+
 
             // Ambil data supplier
             $ch_supplier = curl_init($supplier_url);
@@ -192,7 +192,7 @@ class Penerimaan extends ControllerTemplate
             ]);
             $response_supplier = curl_exec($ch_supplier);
             $http_status_code_supplier = curl_getinfo($ch_supplier, CURLINFO_HTTP_CODE);
-            curl_close($ch_supplier);
+
 
             // Ambil data satuan
             $ch_satuan = curl_init($satuan_url);
@@ -202,7 +202,7 @@ class Penerimaan extends ControllerTemplate
             ]);
             $response_satuan = curl_exec($ch_satuan);
             $http_status_code_satuan = curl_getinfo($ch_satuan, CURLINFO_HTTP_CODE);
-            curl_close($ch_satuan);
+
 
             // Cek response dan status code
             if ($http_status_code_pegawai === 200 && $http_status_code_pemesanan === 200 && $http_status_code_pengajuan === 200 && $http_status_code_pesanan === 200 && $http_status_code_barang_medis === 200 && $http_status_code_supplier === 200 && $http_status_code_satuan === 200) {
@@ -395,7 +395,7 @@ class Penerimaan extends ControllerTemplate
 
                 $response_penerimaan = curl_exec($ch_penerimaan);
                 $http_status_code_penerimaan = curl_getinfo($ch_penerimaan, CURLINFO_HTTP_CODE);
-                curl_close($ch_penerimaan);
+
 
                 if ($response_penerimaan && $http_status_code_penerimaan === 201) {
                     $penerimaan_data = json_decode($response_penerimaan, true);
@@ -435,7 +435,7 @@ class Penerimaan extends ControllerTemplate
 
                         $response_detail = curl_exec($ch_detail);
                         $http_status_code_detail = curl_getinfo($ch_detail, CURLINFO_HTTP_CODE);
-                        curl_close($ch_detail);
+
 
                         if (!$response_detail || $http_status_code_detail !== 201) {
                             return $this->renderErrorView($http_status_code_detail);
@@ -451,7 +451,7 @@ class Penerimaan extends ControllerTemplate
                             $response_medis = curl_exec($ch_medis);
                             $medis_data = json_decode($response_medis, true);
                             $http_status_code_medis = curl_getinfo($ch_medis, CURLINFO_HTTP_CODE);
-                            curl_close($ch_medis);
+
 
                             if ($http_status_code_medis === 200) {
                                 $h_dasar = round((intval($total_per_item[$i]) / intval($jumlah_pesanan[$i])) * (1 - (intval($diskon_persen[$i]) / 100)));
@@ -498,7 +498,7 @@ class Penerimaan extends ControllerTemplate
 
                                 $response_medis_put = curl_exec($ch_medis_put);
                                 $http_status_code_medis_put = curl_getinfo($ch_medis_put, CURLINFO_HTTP_CODE);
-                                curl_close($ch_medis_put);
+
 
                                 if ($http_status_code_medis_put !== 200) {
                                     return $this->renderErrorView($http_status_code_medis_put);
@@ -518,7 +518,7 @@ class Penerimaan extends ControllerTemplate
                         $response_gudang = curl_exec($ch_gudang);
                         $gudang_data = json_decode($response_gudang, true);
                         $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-                        curl_close($ch_gudang);
+
 
                         if ($http_status_code_gudang !== 200) {
                             return $this->renderErrorView($http_status_code_gudang);
@@ -549,7 +549,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
                                 $response_gudang_put = curl_exec($ch_gudang_put);
                                 $http_status_code_gudang_put = curl_getinfo($ch_gudang_put, CURLINFO_HTTP_CODE);
-                                curl_close($ch_gudang_put);
+
 
                                 if ($http_status_code_gudang_put !== 200) {
                                     return $this->renderErrorView($http_status_code_gudang_put);
@@ -740,7 +740,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
                 $response_penerimaan = curl_exec($ch_penerimaan);
                 $http_status_code_penerimaan = curl_getinfo($ch_penerimaan, CURLINFO_HTTP_CODE);
-                curl_close($ch_penerimaan);
+
 
                 if ($response_penerimaan && $http_status_code_penerimaan === 200) {
                     for ($i = 0; $i < count($idbrgmedis); $i++) {
@@ -776,7 +776,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
                         $response_detail = curl_exec($ch_detail);
                         $http_status_code_detail = curl_getinfo($ch_detail, CURLINFO_HTTP_CODE);
-                        curl_close($ch_detail);
+
 
                         if (!$response_detail || $http_status_code_detail !== 200) {
                             return $this->renderErrorView($http_status_code_detail);
@@ -792,7 +792,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                             $response_medis = curl_exec($ch_medis);
                             $medis_data = json_decode($response_medis, true);
                             $http_status_code_medis = curl_getinfo($ch_medis, CURLINFO_HTTP_CODE);
-                            curl_close($ch_medis);
+
 
                             if ($http_status_code_medis === 200) {
                                 $h_dasar = round((intval($total_per_item[$i]) / intval($jumlah_pesanan[$i])) * (1 - (intval($diskon_persen[$i]) / 100)));
@@ -838,7 +838,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                                 ]);
                                 $response_medis_put = curl_exec($ch_medis_put);
                                 $http_status_code_medis_put = curl_getinfo($ch_medis_put, CURLINFO_HTTP_CODE);
-                                curl_close($ch_medis_put);
+
 
                                 if ($http_status_code_medis_put !== 200) {
                                     return $this->renderErrorView($http_status_code_medis_put);
@@ -858,7 +858,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                         $response_gudang = curl_exec($ch_gudang);
                         $gudang_data = json_decode($response_gudang, true);
                         $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-                        curl_close($ch_gudang);
+
 
                         if ($http_status_code_gudang !== 200) {
                             return $this->renderErrorView($http_status_code_gudang);
@@ -889,7 +889,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
                                 $response_gudang_put = curl_exec($ch_gudang_put);
                                 $http_status_code_gudang_put = curl_getinfo($ch_gudang_put, CURLINFO_HTTP_CODE);
-                                curl_close($ch_gudang_put);
+
 
                                 if ($http_status_code_gudang_put !== 200) {
                                     return $this->renderErrorView($http_status_code_gudang_put);
@@ -923,7 +923,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
             ]);
             $responsePenerimaan = curl_exec($chPenerimaan);
             $httpStatusCodePenerimaan = curl_getinfo($chPenerimaan, CURLINFO_HTTP_CODE);
-            curl_close($chPenerimaan);
+
 
             if ($httpStatusCodePenerimaan !== 200) {
                 return "Error fetching penerimaan data: " . $responsePenerimaan;
@@ -938,7 +938,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
             ]);
             $responseDetail = curl_exec($chDetail);
             $httpStatusCodeDetail = curl_getinfo($chDetail, CURLINFO_HTTP_CODE);
-            curl_close($chDetail);
+
 
             if ($httpStatusCodeDetail !== 200) {
                 return "Error fetching detail data: " . $responseDetail;
@@ -958,7 +958,7 @@ $gudangUrl = $this->api_url . '/inventory/gudang/barang/' . $dtl['id_barang_medi
                     $responseGudang = curl_exec($chGudang);
                     $gudangData = json_decode($responseGudang, true);
                     $httpStatusCodeGudang = curl_getinfo($chGudang, CURLINFO_HTTP_CODE);
-                    curl_close($chGudang);
+
 
                     if ($httpStatusCodeGudang !== 200) {
                         return "Error fetching gudang data: " . $responseGudang;
@@ -990,7 +990,7 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
                             $responseGudangUpdate = curl_exec($chGudangUpdate);
                             $httpStatusCodeGudangUpdate = curl_getinfo($chGudangUpdate, CURLINFO_HTTP_CODE);
-                            curl_close($chGudangUpdate);
+
 
                             if ($httpStatusCodeGudangUpdate !== 200) {
                                 return "Error updating gudang: " . $responseGudangUpdate;
@@ -1006,7 +1006,7 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
                     $responseDeleteDetail = curl_exec($chDetailDelete);
                     $httpStatusCodeDeleteDetail = curl_getinfo($chDetailDelete, CURLINFO_HTTP_CODE);
-                    curl_close($chDetailDelete);
+
 
                     if ($httpStatusCodeDeleteDetail !== 204) {
                         return "Error deleting detail: " . $responseDeleteDetail;
@@ -1021,7 +1021,7 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
             $responsePenerimaanDelete = curl_exec($chPenerimaanDelete);
             $httpStatusCodePenerimaanDelete = curl_getinfo($chPenerimaanDelete, CURLINFO_HTTP_CODE);
-            curl_close($chPenerimaanDelete);
+
 
             if ($httpStatusCodePenerimaanDelete === 204) {
                 return redirect()->to(base_url('penerimaanmedis'));

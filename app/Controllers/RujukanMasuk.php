@@ -54,7 +54,7 @@ protected array $breadcrumbs = [];
             ]);
             $response_rujukan = curl_exec($ch_rujukan);
             $http_status_code_rujukan = curl_getinfo($ch_rujukan, CURLINFO_HTTP_CODE);
-            curl_close($ch_rujukan);
+
 
             // Check API response status
             if ($http_status_code_rujukan !== 200) {
@@ -177,7 +177,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 201) {
             return redirect()->to(base_url('rujukanmasuk'));
@@ -208,7 +208,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -276,7 +276,7 @@ protected array $breadcrumbs = [];
 
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($http_status === 200) {
                 return redirect()->to(base_url('rujukanmasuk'));
@@ -308,7 +308,7 @@ protected array $breadcrumbs = [];
 
             $response = curl_exec($ch_delete);
             $http_status = curl_getinfo($ch_delete, CURLINFO_HTTP_CODE);
-            curl_close($ch_delete);
+
 
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('rujukanmasuk'))->with('success', 'Data rujukan masuk berhasil dihapus.');

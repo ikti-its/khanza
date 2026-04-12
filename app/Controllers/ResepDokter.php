@@ -47,7 +47,7 @@ protected array $breadcrumbs = [];
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($http_status !== 200) {
                 return $this->renderErrorView($http_status);
@@ -91,7 +91,7 @@ protected array $breadcrumbs = [];
                 'Authorization: Bearer ' . $token,
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
             $parsed = json_decode($response, true);
             $resep = $parsed['data'][0] ?? [];
         }
@@ -135,7 +135,7 @@ protected array $breadcrumbs = [];
 
             $response = curl_exec($ch);
             $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($status === 201 || $status === 200) {
                 return redirect()->to(base_url('resepdokter/' . $postData['no_resep']));
@@ -164,7 +164,7 @@ protected array $breadcrumbs = [];
             'Authorization: Bearer ' . $token,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         $selectedResep = [];
@@ -187,7 +187,7 @@ $selectedResep = $item;
             'Authorization: Bearer ' . $token,
         ]);
         $infoResponse = curl_exec($infoCh);
-        curl_close($infoCh);
+
 
         $infoData = json_decode($infoResponse, true);
         $nomorRawat = $infoData['data']['no_rawat'] ?? '';
@@ -201,7 +201,7 @@ $selectedResep = $item;
             'Authorization: Bearer ' . $token,
         ]);
         $obatResponse = curl_exec($obatCh);
-        curl_close($obatCh);
+
 
         $obatData = json_decode($obatResponse, true);
         $obat_list = $obatData['data'] ?? [];
@@ -250,7 +250,7 @@ $selectedResep = $item;
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
     
         if ($http_status === 200) {
             return redirect()->to(base_url('resepdokter/' . $noResep));
@@ -279,7 +279,7 @@ $selectedResep = $item;
     
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
     
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -308,7 +308,7 @@ $selectedResep = $item;
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -340,7 +340,7 @@ $selectedResep = $item;
             'Accept: application/json'
         ]);
         $barang_response = curl_exec($ch2);
-        curl_close($ch2);
+
 
         $barang_data = json_decode($barang_response, true);
         $barang_lookup = [];
@@ -363,7 +363,7 @@ $selectedResep = $item;
         ]);
         $response_racikan = curl_exec($ch_racikan);
         $http_status_racikan = curl_getinfo($ch_racikan, CURLINFO_HTTP_CODE);
-        curl_close($ch_racikan);
+
 
         if ($http_status_racikan === 200) {
             $racikan_data = json_decode($response_racikan, true);
@@ -383,7 +383,7 @@ $selectedResep = $item;
             'Accept: application/json'
         ]);
         $response_header = curl_exec($ch_header);
-        curl_close($ch_header);
+
 
         $resep_header_data = json_decode($response_header, true);
         $resepobat_header = $resep_header_data['data'] ?? [];
@@ -398,7 +398,7 @@ $selectedResep = $item;
                 'Accept: application/json'
             ]);
             $dokter_response = curl_exec($ch_dokter);
-            curl_close($ch_dokter);
+
 
             $dokter_data = json_decode($dokter_response, true);
             if (isset($dokter_data['data']['nama_dokter'])) {
@@ -453,7 +453,7 @@ $barang_lookup[$item['kode_obat']] = $item['nama_obat'];
                 'Accept: application/json'
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
 
             $data = json_decode($response, true);
 
@@ -480,7 +480,7 @@ $barang_lookup[$item['kode_obat']] = $item['nama_obat'];
                 ]);
                 $result = curl_exec($ch2);
                 $status = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
-                curl_close($ch2);
+
 
                 if ($status === 201 || $status === 200) {
                     return redirect()->to('/resepdokter/' . $postData['no_resep'])->with('success', 'Data resep dokter berhasil disimpan.');

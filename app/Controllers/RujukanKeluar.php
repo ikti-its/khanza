@@ -55,7 +55,7 @@ protected array $breadcrumbs = [];
             ]);
             $response_ambulans = curl_exec($ch_ambulans);
             $http_status_ambulans = curl_getinfo($ch_ambulans, CURLINFO_HTTP_CODE);
-            curl_close($ch_ambulans);
+
             $ambulans_data = [];
 
             if ($http_status_ambulans === 200) {
@@ -71,7 +71,7 @@ protected array $breadcrumbs = [];
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
 
             if ($http_status !== 200) {
@@ -156,7 +156,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 201) {
             return redirect()->to(base_url('rujukankeluar'));
@@ -187,7 +187,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -236,7 +236,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('rujukankeluar'));
@@ -268,7 +268,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200 || $http_status === 204) {
             return redirect()->to(base_url('rujukankeluar'))->with('success', 'Data rujukan keluar berhasil dihapus.');
@@ -295,7 +295,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($httpCode !== 200) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Data tidak ditemukan");
@@ -321,7 +321,7 @@ protected array $breadcrumbs = [];
             'Content-Type: application/json',
         ]);
         $response_org = curl_exec($ch_org);
-        curl_close($ch_org);
+
 
         $data_org = json_decode($response_org, true);
         $organisasi = $data_org['data'];
@@ -339,7 +339,7 @@ protected array $breadcrumbs = [];
             'Content-Type: application/json',
         ]);
         $response_rawat = curl_exec($ch_rawat);
-        curl_close($ch_rawat);
+
 
         $data_rawat = json_decode($response_rawat, true);
         $rawatinap = $data_rawat['data'];
@@ -357,7 +357,7 @@ protected array $breadcrumbs = [];
             'Content-Type: application/json',
         ]);
         $response_tindakan = curl_exec($ch_tindakan);
-        curl_close($ch_tindakan);
+
 
         $data_tindakan = json_decode($response_tindakan, true);
         $tindakan_list = $data_tindakan['data'] ?? [];
@@ -389,7 +389,7 @@ protected array $breadcrumbs = [];
             ]);
 
             $response_jenis = curl_exec($ch_jenis);
-            curl_close($ch_jenis);
+
 
             $data_jenis = json_decode($response_jenis, true);
             $nama_tindakan = $kode;
@@ -411,7 +411,7 @@ protected array $breadcrumbs = [];
             'Content-Type: application/json',
         ]);
         $response_obat = curl_exec($ch_obat);
-        curl_close($ch_obat);
+
 
         $data_obat = json_decode($response_obat, true);
         $obat_list = $data_obat['data'] ?? [];
@@ -458,7 +458,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status === 200 || $status === 201) {
             return redirect()->to(base_url('rujukankeluar'))->with('success', 'Permintaan ambulans berhasil dikirim.');
@@ -484,7 +484,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 

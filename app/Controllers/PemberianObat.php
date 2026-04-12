@@ -49,7 +49,7 @@ class PemberianObat extends ControllerTemplate
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
     
             if ($http_status !== 200) {
                 return $this->renderErrorView($http_status);
@@ -94,7 +94,7 @@ class PemberianObat extends ControllerTemplate
             'Authorization: Bearer ' . $token,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
         $parsed = json_decode($response, true);
         $pemberianobat = $parsed['data'][0] ?? []; // safely pick first if list
 
@@ -109,7 +109,7 @@ class PemberianObat extends ControllerTemplate
             'Authorization: Bearer ' . $token,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
         $data = json_decode($response, true);
         $obat_data = $data['data'] ?? [];
         
@@ -151,7 +151,7 @@ class PemberianObat extends ControllerTemplate
         ]);
         $getResponse = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200) {
             return $this->renderErrorView($status);
@@ -191,7 +191,7 @@ class PemberianObat extends ControllerTemplate
         
         $putResponse = curl_exec($ch);
         $putStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
     log_message('error', "PUT Response: " . $putResponse);
     log_message('error', "PUT Status: " . $putStatus);
         if ($putStatus !== 200) {
@@ -230,7 +230,7 @@ class PemberianObat extends ControllerTemplate
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status === 200 || $status === 201) {
             return redirect()->to(base_url('pemberianobat/' . $postData['nomor_rawat']));
@@ -257,7 +257,7 @@ class PemberianObat extends ControllerTemplate
             'Authorization: Bearer ' . $token,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         $selectedObat = [];
@@ -281,7 +281,7 @@ $selectedObat = $item;
             'Authorization: Bearer ' . $token,
         ]);
         $obatResponse = curl_exec($ch);
-        curl_close($ch);
+
 
         $obatData = json_decode($obatResponse, true);
         $obat_list = $obatData['data'] ?? [];
@@ -339,7 +339,7 @@ $selectedObat = $item;
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('pemberianobat/' . $nomorRawat));
@@ -368,7 +368,7 @@ $selectedObat = $item;
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -393,7 +393,7 @@ $selectedObat = $item;
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($http_status !== 200) {
                 return $this->renderErrorView($http_status);
@@ -443,7 +443,7 @@ $selectedObat = $item;
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -494,7 +494,7 @@ $selectedObat = $item;
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         return $data['data'] ?? [];

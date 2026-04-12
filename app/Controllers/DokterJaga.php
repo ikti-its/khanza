@@ -47,7 +47,7 @@ protected array $breadcrumbs = [];
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($http_status !== 200) {
                 return $this->renderErrorView($http_status);
@@ -104,7 +104,7 @@ protected array $breadcrumbs = [];
             ]);
 
             $response = curl_exec($ch);
-            curl_close($ch);
+
 
             $dokterData = json_decode($response, true);
 
@@ -152,7 +152,7 @@ protected array $breadcrumbs = [];
 
             $response = curl_exec($ch);
             $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             return ($status === 201)
                 ? redirect()->to(base_url('dokterjaga'))
@@ -177,7 +177,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200) return $this->renderErrorView($status);
 
@@ -192,7 +192,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $dokterResponse = curl_exec($ch);
-        curl_close($ch);
+
         $dokterList = json_decode($dokterResponse, true);
 
         // 🧭 Breadcrumbs
@@ -236,7 +236,7 @@ protected array $breadcrumbs = [];
             ]);
             $response = curl_exec($ch);
             $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             return ($status === 200)
                 ? redirect()->to(base_url('dokterjaga'))->with('success', 'Data dokter jaga berhasil diperbarui.')
@@ -264,7 +264,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         return ($status === 200 || $status === 204)
             ? redirect()->to(base_url('dokterjaga'))->with('success', 'Data dokter jaga berhasil dihapus.')
@@ -288,7 +288,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -337,7 +337,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('dokterjaga'))->with('success', 'Status dokter jaga berhasil diperbarui.');

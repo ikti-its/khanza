@@ -25,7 +25,7 @@ class StokObatPasien extends ControllerTemplate
         ]);
         $response = curl_exec($ch);
         $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         // Handle connection failure or non-200 status
         if ($httpStatus !== 200 || !$response) {
@@ -79,7 +79,7 @@ $item['nama_brng'] = '';
                 'Accept: application/json'
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
 
             $parsed = json_decode($response, true);
             log_message('debug', print_r($parsed, true));
@@ -151,7 +151,7 @@ $item['nama_brng'] = '';
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200 && $status !== 201) {
             log_message('error', 'Failed to insert stok_obat_pasien: ' . $response);
@@ -178,7 +178,7 @@ $item['nama_brng'] = '';
             'Authorization: Bearer ' . $token,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         $stok = $data['data'] ?? [];
@@ -235,7 +235,7 @@ $item['nama_brng'] = '';
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('stokobatpasien'))->with('success', 'Stok obat pasien berhasil diperbarui.');
@@ -262,7 +262,7 @@ $item['nama_brng'] = '';
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -291,7 +291,7 @@ $item['nama_brng'] = '';
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             log_message('error', 'StokObatPasienData Response: ' . $response);
             log_message('error', 'StokObatPasienData HTTP Status: ' . $http_status);
@@ -335,7 +335,7 @@ $item['nama_brng'] = '';
             'Accept: application/json'
         ]);
         $res = curl_exec($ch);
-        curl_close($ch);
+
 
         $parsed = json_decode($res, true);
         return $parsed['data'] ?? [];
@@ -358,7 +358,7 @@ $item['nama_brng'] = '';
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 

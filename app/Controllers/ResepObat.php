@@ -64,7 +64,7 @@ protected array $breadcrumbs = [];
     ]);
     $response = curl_exec($ch);
     $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+
 
     if ($http_status !== 200) {
         return $this->renderErrorView($http_status);
@@ -89,7 +89,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $rresponse = curl_exec($rch);
-            curl_close($rch);
+
 
             $registrasi_data = json_decode($rresponse, true);
             $data = $registrasi_data['data'] ?? [];
@@ -137,7 +137,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
 
             $parsed = json_decode($response, true);
             log_message('debug', print_r($parsed, true));
@@ -167,7 +167,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         if (isset($data['data'])) {
@@ -205,7 +205,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
 
             $parsed = json_decode($response, true);
             log_message('debug', print_r($parsed, true));
@@ -234,7 +234,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         if (isset($data['data'])) {
@@ -291,7 +291,7 @@ protected array $breadcrumbs = [];
         ]);
         $response1 = curl_exec($ch1);
         $status1 = curl_getinfo($ch1, CURLINFO_HTTP_CODE);
-        curl_close($ch1);
+
 
         if ($status1 !== 200 && $status1 !== 201) {
             log_message('error', 'Failed to insert resep_obat: ' . $response1);
@@ -328,7 +328,7 @@ protected array $breadcrumbs = [];
             ]);
             $response2 = curl_exec($ch2);
             $status2 = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
-            curl_close($ch2);
+
 
             if ($status2 !== 200 && $status2 !== 201) {
                 log_message('error', 'Failed to insert resep_dokter: ' . $response2);
@@ -357,7 +357,7 @@ protected array $breadcrumbs = [];
             'Authorization: Bearer ' . $token,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         $resep = $data['data'] ?? [];
@@ -370,7 +370,7 @@ protected array $breadcrumbs = [];
             'Authorization: Bearer ' . $token,
         ]);
         $obatResponse = curl_exec($obatCh);
-        curl_close($obatCh);
+
 
         $obatData = json_decode($obatResponse, true);
         $obat_list = $obatData['data'] ?? [];
@@ -425,7 +425,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('resepobat'))->with('success', 'Resep obat updated');
@@ -453,7 +453,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -483,13 +483,13 @@ protected array $breadcrumbs = [];
 
         if ($response === false) {
             $error = curl_error($ch);
-            curl_close($ch);
+
             log_message('error', 'cURL Error: ' . $error);
             return $this->renderErrorView(500);
         }
 
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         log_message('error', 'ResepObatData Response: ' . $response);
         log_message('error', 'ResepObatData HTTP Status: ' . $http_status);
@@ -518,7 +518,7 @@ protected array $breadcrumbs = [];
                 'Accept: application/json'
             ]);
             $rawatResponse = curl_exec($rawatCh);
-            curl_close($rawatCh);
+
 
             $rawatData = json_decode($rawatResponse, true);
 
@@ -552,7 +552,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $res = curl_exec($ch);
-        curl_close($ch);
+
 
         $parsed = json_decode($res, true);
         return $parsed['data'] ?? [];
@@ -575,7 +575,7 @@ protected array $breadcrumbs = [];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -649,7 +649,7 @@ protected array $breadcrumbs = [];
 
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status === 201 || $status === 200) {
             return redirect()->to(base_url('resepobat/' . $noResep))->with('success', 'Detail resep berhasil ditambahkan.');

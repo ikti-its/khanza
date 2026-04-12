@@ -22,7 +22,7 @@ class PermintaanStokObat extends ControllerTemplate
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($http_status !== 200) {
                 return $this->renderErrorView($http_status);
@@ -65,7 +65,7 @@ class PermintaanStokObat extends ControllerTemplate
                     'Accept: application/json'
                 ]);
                 $response = curl_exec($ch);
-                curl_close($ch);
+
 
                 $parsed = json_decode($response, true);
                 if (isset($parsed['data'])) {
@@ -114,7 +114,7 @@ class PermintaanStokObat extends ControllerTemplate
                 'Accept: application/json'
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
     
             $parsed = json_decode($response, true);
             log_message('debug', print_r($parsed, true));
@@ -144,7 +144,7 @@ class PermintaanStokObat extends ControllerTemplate
             'Accept: application/json'
         ]);
         $obat_response = curl_exec($ch);
-        curl_close($ch);
+
     
         $obat_parsed = json_decode($obat_response, true);
         if (isset($obat_parsed['data'])) {
@@ -248,7 +248,7 @@ $postData[$key] = null;
         ]);
         $response = curl_exec($ch);
         $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if (! in_array($status, [200,201])) {
         log_message('error', "Failed to insert permintaan_stok_obat: $response");
@@ -284,7 +284,7 @@ $postData[$key] = null;
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
     
         if ($status !== 200 || !$response) {
             return $this->renderErrorView($status);
@@ -303,7 +303,7 @@ $postData[$key] = null;
             'Accept: application/json'
         ]);
         $obatResponse = curl_exec($ch);
-        curl_close($ch);
+
     
         $obatData = json_decode($obatResponse, true);
         $obatList = $obatData['data'] ?? [];
@@ -357,7 +357,7 @@ $postData[$key] = null;
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('permintaanstokobat'))->with('success', 'Permintaan stok obat updated');
@@ -384,7 +384,7 @@ $postData[$key] = null;
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -413,7 +413,7 @@ $postData[$key] = null;
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             log_message('error', 'PermintaanStokObatData Response: ' . $response);
             log_message('error', 'PermintaanStokObatData HTTP Status: ' . $http_status);
@@ -456,7 +456,7 @@ $postData[$key] = null;
             'Accept: application/json'
         ]);
         $res = curl_exec($ch);
-        curl_close($ch);
+
     
         $parsed = json_decode($res, true);
         return $parsed['data'] ?? [];
@@ -479,7 +479,7 @@ $postData[$key] = null;
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $decoded = json_decode($response, true);
 
@@ -533,7 +533,7 @@ $postData[$key] = null;
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $parsed = json_decode($response, true);
         $stokObat = is_array($parsed) && isset($parsed['data']) && is_array($parsed['data'])
@@ -549,7 +549,7 @@ $postData[$key] = null;
             'Accept: application/json'
         ]);
         $barangResponse = curl_exec($ch);
-        curl_close($ch);
+
 
         $barangParsed = json_decode($barangResponse, true);
 
@@ -589,7 +589,7 @@ $kode = trim((string)$b['kode_obat']);
             'Accept: application/json',
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
     // dd($data);
@@ -611,7 +611,7 @@ $kode = trim((string)$b['kode_obat']);
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         return is_array($data['data']) ? $data['data'] : [];

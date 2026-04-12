@@ -218,12 +218,9 @@ abstract class ControllerTemplate extends Controller
     //     // Check for cURL errors
     //     if ($response === false) {
     //         $error_message = curl_error($ch);
-    //         curl_close($ch);
     //         log_message('error', 'cURL Error: ' . $error_message);
     //         return; // Exit method on error
     //     }
-
-    //     curl_close($ch);
 
     //     // Check HTTP status code
     //     if ($http_status_code !== 200) {

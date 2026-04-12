@@ -83,7 +83,6 @@ class PasienMeninggalForm extends ControllerTemplate
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
 
             if ($response && in_array($http_status, [200, 201])) {
                 // Step 2: PATCH status pasien di masterpasien
@@ -99,7 +98,6 @@ class PasienMeninggalForm extends ControllerTemplate
                     'Authorization: Bearer ' . $token,
                 ]);
                 $response2 = curl_exec($ch2);
-                curl_close($ch2);
 
                 return redirect()->to('/pasienmeninggal')->with('success', 'Data pasien meninggal telah dicatat dan status pasien diperbarui.');
             } else {
@@ -128,7 +126,6 @@ class PasienMeninggalForm extends ControllerTemplate
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
 
         if ($http_status === 200 && $response) {
             $result = json_decode($response, true);
@@ -221,7 +218,6 @@ class PasienMeninggalForm extends ControllerTemplate
 
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
 
             if ($response && in_array($http_status, [200, 204])) {
                 return redirect()->to('/pasienmeninggal')->with('success', 'Data pasien meninggal berhasil diperbarui.');

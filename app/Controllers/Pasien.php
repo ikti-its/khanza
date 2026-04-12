@@ -24,7 +24,7 @@ class Pasien extends ControllerTemplate
             ]);
 
             $response = curl_exec($ch);
-            curl_close($ch);
+
 
             if ($response) {
                 $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -132,7 +132,7 @@ class Pasien extends ControllerTemplate
             //     'response' => $response,
             //     'http_code' => $http_status,
             // ]);
-            curl_close($ch);
+
 
             if ($response && $http_status === 201) {
                 return redirect()->to('/pasien');
@@ -161,7 +161,7 @@ class Pasien extends ControllerTemplate
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             if ($http_status === 200 && $response) {
                 $data = json_decode($response, true);
@@ -197,7 +197,7 @@ class Pasien extends ControllerTemplate
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200 || !$response) {
             return $this->renderErrorView($http_status);
@@ -281,7 +281,7 @@ class Pasien extends ControllerTemplate
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to('/pasien')->with('success', 'Data pasien berhasil diperbarui.');
@@ -309,7 +309,7 @@ class Pasien extends ControllerTemplate
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to('/pasien')->with('success', 'Pasien berhasil dihapus.');

@@ -101,11 +101,11 @@ class StokKeluar extends ControllerTemplate
             } else {
                 return "Error fetching data.";
             }
-            curl_close($ch_stok_keluar);
-            curl_close($ch_transaksi_keluar);
-            curl_close($ch_medis);
-            curl_close($ch_satuan);
-            curl_close($ch_pegawai);
+
+
+
+
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -181,9 +181,9 @@ class StokKeluar extends ControllerTemplate
             } else {
                 return "Error fetching data. Response medis: $response_medis, Response pegawai: $response_pegawai";
             }
-            curl_close($ch_medis);
-            curl_close($ch_ruangan);
-            curl_close($ch_pegawai);
+
+
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -272,7 +272,7 @@ class StokKeluar extends ControllerTemplate
                                     $response_gudang = curl_exec($ch_gudang);
                                     $gudang_data = json_decode($response_gudang, true);
                                     $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-                                    curl_close($ch_gudang);
+
 
                                     $gudang = $gudang_data['data'];
                                     foreach ($gudang as $gdg) {
@@ -301,7 +301,7 @@ class StokKeluar extends ControllerTemplate
                                             $response_gudang_update = curl_exec($ch_gudang_update);
                                             $http_status_code_gudang_update = curl_getinfo($ch_gudang_update, CURLINFO_HTTP_CODE);
 
-                                            curl_close($ch_gudang_update);
+
                                         }
                                     }
                                 }
@@ -311,15 +311,15 @@ class StokKeluar extends ControllerTemplate
                                     return $response_gudang_update . $tambah_gudang_JSON;
                                 }
                             } else {
-                                curl_close($ch_transaksi_brgmedis);
+
                                 return "Error Barang Stok Keluar: " . $response;
                             }
                         } else {
-                            curl_close($ch_transaksi_brgmedis);
+
                             return "Error sending request to the transaksi barang medis API.";
                         }
                     } else {
-                        curl_close($ch_stok_keluar);
+
                         return "Error Insert Stok Keluar: " . $response_stok_keluar . $tambah_stok_keluar_JSON;
                     }
                 } else {
@@ -403,9 +403,9 @@ class StokKeluar extends ControllerTemplate
             } else {
                 return "Error fetching data. Response medis: $response_medis, Response pegawai: $response_pegawai";
             }
-            curl_close($ch_medis);
-            curl_close($ch_ruangan);
-            curl_close($ch_pegawai);
+
+
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -491,17 +491,17 @@ class StokKeluar extends ControllerTemplate
                             if ($http_status_code_transaksi_brgmedis === 200) {
                                 return redirect()->to(base_url('stokkeluarmedis'));
                             } else {
-                                curl_close($ch_transaksi_brgmedis);
+
                                 return "Error Update Transaksi Brgmedis: " . $response;
                             }
                         } else {
-                            curl_close($ch_transaksi_brgmedis);
+
                             return "Error sending request to the transaksi brgmedis API.";
                         }
-                        curl_close($ch_stok_keluar);
-                        curl_close($ch_transaksi_brgmedis);
+
+
                     } else {
-                        curl_close($ch_stok_keluar);
+
                         return "Error Update StokKkeluar: " . $response_stok_keluar;
                     }
                 } else {
@@ -530,7 +530,7 @@ class StokKeluar extends ControllerTemplate
             ]);
             $responseTransaksi = curl_exec($chTransaksi);
             $httpStatusCodeTransaksi = curl_getinfo($chTransaksi, CURLINFO_HTTP_CODE);
-            curl_close($chTransaksi);
+
 
             if ($httpStatusCodeTransaksi !== 200) {
                 return "Error fetching transaksi data: " . $responseTransaksi;
@@ -545,7 +545,7 @@ class StokKeluar extends ControllerTemplate
             ]);
             $responseStok = curl_exec($chStok);
             $httpStatusCodeStok = curl_getinfo($chStok, CURLINFO_HTTP_CODE);
-            curl_close($chStok);
+
 
             if ($httpStatusCodeStok !== 200) {
                 return $responseStok;
@@ -565,7 +565,7 @@ $gudangUrl = $this->api_url . '/inventory/gudang/barang/' . $transaksi['id_baran
                     $responseGudang = curl_exec($chGudang);
                     $gudangData = json_decode($responseGudang, true);
                     $httpStatusCodeGudang = curl_getinfo($chGudang, CURLINFO_HTTP_CODE);
-                    curl_close($chGudang);
+
 
                     if ($httpStatusCodeGudang !== 200) {
                         return "Error fetching gudang data: " . $responseGudang;
@@ -597,7 +597,7 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
                             $responseGudangUpdate = curl_exec($chGudangUpdate);
                             $httpStatusCodeGudangUpdate = curl_getinfo($chGudangUpdate, CURLINFO_HTTP_CODE);
-                            curl_close($chGudangUpdate);
+
 
                             if ($httpStatusCodeGudangUpdate !== 200) {
                                 return "Error updating gudang: " . $responseGudangUpdate;
@@ -613,7 +613,7 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
                     $responseDeleteTransaksi = curl_exec($chTransaksiDelete);
                     $httpStatusCodeDeleteTransaksi = curl_getinfo($chTransaksiDelete, CURLINFO_HTTP_CODE);
-                    curl_close($chTransaksiDelete);
+
 
                     if ($httpStatusCodeDeleteTransaksi !== 204) {
                         return "Error deleting transaksi: " . $responseDeleteTransaksi;
@@ -628,7 +628,7 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
             $responseStokDelete = curl_exec($chStokDelete);
             $httpStatusCodeStokDelete = curl_getinfo($chStokDelete, CURLINFO_HTTP_CODE);
-            curl_close($chStokDelete);
+
 
             if ($httpStatusCodeStokDelete === 204) {
                 return redirect()->to(base_url('stokkeluarmedis'));
@@ -651,7 +651,6 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
     // ]);
     // $response_gudang = curl_exec($ch_gudang);
     // $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-    // curl_close($ch_gudang);
     // $gudang_data=json_decode($response_gudang, true);
     // foreach($gudang_data as $gudang){
 
@@ -665,7 +664,6 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
     // $response_gudang = curl_exec($ch_gudang);
     // $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-    // curl_close($ch_gudang);
 
 
 
@@ -738,7 +736,6 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
             //     $response_gudang = curl_exec($ch_gudang);
             //     $gudang_data = json_decode($response_gudang, true);
             //     $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-            //     curl_close($ch_gudang);
 
             //     $postGudangMedis = [
             //         'id_barang_medis' => $transaksi['data']['id_barang_medis'],
@@ -763,6 +760,4 @@ $gudangUrl = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
             //     $response_gudang = curl_exec($ch_gudang);
             //     $http_status_code_gudang = curl_getinfo($ch_gudang, CURLINFO_HTTP_CODE);
-
-            //     curl_close($ch_gudang);
             // }

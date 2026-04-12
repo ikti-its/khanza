@@ -26,7 +26,7 @@ class ResepObatRacikan extends ControllerTemplate
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -71,7 +71,7 @@ class ResepObatRacikan extends ControllerTemplate
                 'Accept: application/json'
             ]);
             $response = curl_exec($ch);
-            curl_close($ch);
+
 
             $parsed = json_decode($response, true);
             log_message('debug', print_r($parsed, true));
@@ -101,7 +101,7 @@ class ResepObatRacikan extends ControllerTemplate
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         if (isset($data['data'])) {
@@ -152,7 +152,7 @@ class ResepObatRacikan extends ControllerTemplate
         ]);
         $responseMaster = curl_exec($chMaster);
         $statusMaster = curl_getinfo($chMaster, CURLINFO_HTTP_CODE);
-        curl_close($chMaster);
+
 
         if ($statusMaster !== 200 && $statusMaster !== 201) {
             log_message('error', '❌ Failed to insert into resep_dokter_racikan: ' . $responseMaster);
@@ -197,7 +197,7 @@ class ResepObatRacikan extends ControllerTemplate
             ]);
             $responseDetail = curl_exec($chDetail);
             $statusDetail = curl_getinfo($chDetail, CURLINFO_HTTP_CODE);
-            curl_close($chDetail);
+
 
             if ($statusDetail !== 200 && $statusDetail !== 201) {
                 log_message('error', '❌ Failed to insert into resep_dokter_racikan_detail: ' . $responseDetail);
@@ -227,7 +227,7 @@ class ResepObatRacikan extends ControllerTemplate
             ]);
             $responseResep = curl_exec($chResep);
             $statusResep = curl_getinfo($chResep, CURLINFO_HTTP_CODE);
-            curl_close($chResep);
+
 
             if ($statusResep !== 200 && $statusResep !== 201) {
                 log_message('error', '❌ Failed to insert into resep_dokter: ' . $responseResep);
@@ -266,7 +266,7 @@ class ResepObatRacikan extends ControllerTemplate
         ]);
         $responseResepObat = curl_exec($chResepObat);
         $statusResepObat = curl_getinfo($chResepObat, CURLINFO_HTTP_CODE);
-        curl_close($chResepObat);
+
 
         if ($statusResepObat !== 200 && $statusResepObat !== 201) {
             log_message('error', '❌ Failed to insert into resep_obat: ' . $responseResepObat);
@@ -296,7 +296,7 @@ class ResepObatRacikan extends ControllerTemplate
             'Authorization: Bearer ' . $token,
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
         $resep = $data['data'] ?? [];
@@ -347,7 +347,7 @@ class ResepObatRacikan extends ControllerTemplate
         ]);
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('resepobatracikan'))->with('success', 'Resep obat updated');
@@ -375,7 +375,7 @@ class ResepObatRacikan extends ControllerTemplate
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -404,7 +404,7 @@ class ResepObatRacikan extends ControllerTemplate
             ]);
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
+
 
             log_message('error', 'ResepObatRacikanData Response: ' . $response);
             log_message('error', 'ResepObatRacikanData HTTP Status: ' . $http_status);
@@ -448,7 +448,7 @@ class ResepObatRacikan extends ControllerTemplate
             'Accept: application/json'
         ]);
         $res = curl_exec($ch);
-        curl_close($ch);
+
 
         $parsed = json_decode($res, true);
         return $parsed['data'] ?? [];
@@ -471,7 +471,7 @@ class ResepObatRacikan extends ControllerTemplate
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -546,7 +546,7 @@ class ResepObatRacikan extends ControllerTemplate
 
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status === 201 || $status === 200) {
             return redirect()->to(base_url('resepobatracikan/' . $noResep))->with('success', 'Detail resep berhasil ditambahkan.');

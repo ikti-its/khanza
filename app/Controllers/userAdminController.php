@@ -84,8 +84,6 @@ class userAdminController extends ControllerTemplate
                             $cutiEntry['nama_pegawai'] = 'Error: Failed to fetch name';
                         }
 
-                        // Close the cURL session for employee details
-                        curl_close($ch_pegawai);
                     }
 
                     // Return the view with filtered cuti data and additional employee names
@@ -103,8 +101,6 @@ class userAdminController extends ControllerTemplate
                 return $this->renderErrorView(500); // Assume 500 for cURL error
             }
 
-            // Close the cURL session for cuti data
-            curl_close($ch_cuti);
         } else {
             // User not logged in
             return $this->renderErrorView(401);
@@ -185,8 +181,8 @@ class userAdminController extends ControllerTemplate
                     return $this->renderErrorView(500);
                 }
 
-                // Close the cURL session
-                curl_close($ch);
+
+
             } else {
                 // User not logged in
                 return $this->renderErrorView(401);
@@ -223,13 +219,13 @@ class userAdminController extends ControllerTemplate
                 // Check for cURL errors
                 if ($pegawai_response === false) {
                     $error_message = curl_error($ch_pegawai);
-                    curl_close($ch_pegawai);
+
                     log_message('error', 'cURL Error: ' . $error_message);
                     return $this->renderErrorView(500); // Exit method on cURL error
                 }
 
-                // Close the cURL session
-                curl_close($ch_pegawai);
+
+
 
                 // Log the response for debugging
                 log_message('debug', 'Pegawai Response: ' . print_r($pegawai_response, true));
@@ -291,8 +287,8 @@ class userAdminController extends ControllerTemplate
                             return $this->renderErrorView(500);
                         }
 
-                        // Close the cURL session
-                        curl_close($ch);
+
+
                     } else {
                         // Log or handle the error
                         log_message('error', 'id_akun not found in the response: ' . print_r($pegawai_data, true));

@@ -55,8 +55,6 @@ class pegawai extends ControllerTemplate
                 return "Error fetching akun data.";
             }
 
-            // Close the cURL session for akun data
-            curl_close($ch_akun);
         } else {
             return "User not logged in. Please log in first.";
         }
@@ -148,8 +146,8 @@ class pegawai extends ControllerTemplate
                     return "Error sending request to the API.";
                 }
 
-                // Close the cURL session
-                curl_close($ch);
+
+
             } else {
                 // Email or role is empty
                 return "Email and role are required.";
@@ -201,7 +199,7 @@ class pegawai extends ControllerTemplate
             }
 
             //Close the cURL session for user data
-            curl_close($ch_user);
+
         } else {
             //User not logged in
             return "User not logged in. Please log in first. ";
@@ -287,8 +285,8 @@ class pegawai extends ControllerTemplate
                     return "Error sending request to the API.";
                 }
 
-                // Close the cURL session
-                curl_close($ch);
+
+
             } else {
                 // Email or role is empty
                 return "Email and role are required.";
@@ -329,8 +327,8 @@ class pegawai extends ControllerTemplate
                 return "Error deleting user: " . $response;
             }
     
-            // Close the cURL session
-            curl_close($ch);
+
+
         } else {
             // User not logged in
             return "User not logged in. Please log in first.";

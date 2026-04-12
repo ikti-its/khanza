@@ -72,7 +72,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
     ]);
     $response = curl_exec($ch);
     $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+
 
     if ($http_status !== 200) {
         return $this->renderErrorView($http_status);
@@ -120,7 +120,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
             'Accept: application/json'
         ]);
         $tindakan_response = curl_exec($ct);
-        curl_close($ct);
+
 
         $tindakan_data = json_decode($tindakan_response, true);
         $tindakanList = $tindakan_data['data'] ?? [];
@@ -142,7 +142,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
             'Accept: application/json'
         ]);
         $pemberian_response = curl_exec($cp);
-        curl_close($cp);
+
 
         $pemberian_data = json_decode($pemberian_response, true);
         $pemberianList = $pemberian_data['data'] ?? [];
@@ -210,7 +210,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
         $response = curl_exec($ch);
         $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         // dd($response);
 
@@ -256,7 +256,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
         ]);
         $response = curl_exec($ch);
         $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         // dd($response);
     
@@ -297,7 +297,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200) {
             return $this->renderErrorView($status);
@@ -338,7 +338,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
             'Accept: application/json'
         ]);
         $tindakan_response = curl_exec($ct);
-        curl_close($ct);
+
 
         $tindakan_data = json_decode($tindakan_response, true);
         $tindakanList = $tindakan_data['data'] ?? [];
@@ -360,7 +360,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
             'Accept: application/json'
         ]);
         $pemberian_response = curl_exec($cp);
-        curl_close($cp);
+
 
         $pemberian_data = json_decode($pemberian_response, true);
         $pemberianList = $pemberian_data['data'] ?? [];
@@ -414,7 +414,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status === 200) {
             return redirect()->to(base_url('rawatinap'));
@@ -441,7 +441,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status === 200 || $status === 204) {
             return redirect()->to(base_url('rawatinap'))->with('success', 'Data rawat inap berhasil dihapus.');

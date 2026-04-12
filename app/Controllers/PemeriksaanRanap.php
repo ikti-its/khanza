@@ -69,7 +69,7 @@ class PemeriksaanRanap extends ControllerTemplate
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200 || !$response) {
             return $this->renderErrorView($status);
@@ -99,7 +99,7 @@ class PemeriksaanRanap extends ControllerTemplate
                     'Accept: application/json'
                 ]);
                 $response_reg = curl_exec($ch_reg);
-                curl_close($ch_reg);
+
     // log_message('debug', "📥 Registrasi response for {$no_rawat}: {$response_reg}");
                 $reg_data = json_decode($response_reg, true);
     // dd($reg_data);
@@ -125,7 +125,7 @@ class PemeriksaanRanap extends ControllerTemplate
                     'Accept: application/json'
                 ]);
                 $response_nama = curl_exec($ch_nama);
-                curl_close($ch_nama);
+
 
                 $pegawai_data = json_decode($response_nama, true);
                 // error_log("📥 Pegawai response for NIP {$nip}: " . $response_nama);
@@ -179,7 +179,7 @@ class PemeriksaanRanap extends ControllerTemplate
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200 || !$response) {
             return $this->renderErrorView($status);
@@ -203,7 +203,7 @@ class PemeriksaanRanap extends ControllerTemplate
                 'Authorization: Bearer ' . $token
             ]);
             $response_reg = curl_exec($ch_reg);
-            curl_close($ch_reg);
+
             $reg_data = json_decode($response_reg, true);
             $item['nomor_rm'] = $reg_data['data']['nomor_rm'] ?? '';
             $item['nama_pasien'] = $reg_data['data']['nama_pasien'] ?? '';
@@ -224,7 +224,7 @@ class PemeriksaanRanap extends ControllerTemplate
                     'Authorization: Bearer ' . $token
                 ]);
                 $response_nama = curl_exec($ch_nama);
-                curl_close($ch_nama);
+
                 $pegawai_data = json_decode($response_nama, true);
                 $item['nama_petugas'] = $pegawai_data['data']['Nama'] ?? '—';
             } else {
@@ -269,7 +269,7 @@ class PemeriksaanRanap extends ControllerTemplate
             'Accept: application/json',
         ]);
         $pegawaiResponse = curl_exec($chPegawai);
-        curl_close($chPegawai);
+
         $pegawaiData = json_decode($pegawaiResponse, true);
 
         if (isset($pegawaiData['data']) && is_array($pegawaiData['data'])) {
@@ -290,7 +290,7 @@ $pegawaiNips[] = $pegawai['nip'];
             'Accept: application/json',
         ]);
         $dokterResponse = curl_exec($chDokter);
-        curl_close($chDokter);
+
         $dokterData = json_decode($dokterResponse, true);
 
         if (isset($dokterData['data']) && is_array($dokterData['data'])) {
@@ -360,7 +360,7 @@ $dokterNips[] = $dokter['kd_dokter'];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 201) {
             return redirect()->to(base_url('pemeriksaanranap'))->with('success', 'Pemeriksaan berhasil ditambahkan.');
@@ -387,7 +387,7 @@ $dokterNips[] = $dokter['kd_dokter'];
         ]);
         $response = curl_exec($ch_pemeriksaan);
         $http_status = curl_getinfo($ch_pemeriksaan, CURLINFO_HTTP_CODE);
-        curl_close($ch_pemeriksaan);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -433,7 +433,7 @@ $dokterNips[] = $dokter['kd_dokter'];
                 'Accept: application/json'
             ]);
             $response_reg = curl_exec($ch_reg);
-            curl_close($ch_reg);
+
 
             $reg_data = json_decode($response_reg, true);
             $nama_pasien = $reg_data['data']['nama_pasien'] ?? '';
@@ -450,7 +450,7 @@ $dokterNips[] = $dokter['kd_dokter'];
                 'Accept: application/json'
             ]);
             $response_petugas = curl_exec($ch_petugas);
-            curl_close($ch_petugas);
+
 
             $pegawai_data = json_decode($response_petugas, true);
             if (
@@ -474,7 +474,7 @@ $dokterNips[] = $dokter['kd_dokter'];
                 'Accept: application/json'
             ]);
             $response_pasien = curl_exec($ch_pasien);
-            curl_close($ch_pasien);
+
 
             $pasien_data = json_decode($response_pasien, true);
             $tgl_lahir = $pasien_data['data']['tgl_lahir'] ?? '';
@@ -561,7 +561,7 @@ $dokterNips[] = $dokter['kd_dokter'];
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($http_status === 200) {
             return redirect()->to(base_url('pemeriksaanranap'));
@@ -589,7 +589,7 @@ $dokterNips[] = $dokter['kd_dokter'];
     
             $response = curl_exec($ch_delete);
             $http_status = curl_getinfo($ch_delete, CURLINFO_HTTP_CODE);
-            curl_close($ch_delete);
+
     
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('pemeriksaanranap'))->with('success', 'Data pemeriksaan ranap berhasil dihapus.');
@@ -618,7 +618,7 @@ $dokterNips[] = $dokter['kd_dokter'];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -653,7 +653,7 @@ $dokterNips[] = $dokter['kd_dokter'];
             'Authorization: Bearer ' . $token
         ]);
         $pegawai_response = curl_exec($ch_pegawai);
-        curl_close($ch_pegawai);
+
         $pegawai_data = json_decode($pegawai_response, true);
 
         if (isset($pegawai_data['data']) && is_array($pegawai_data['data'])) {
@@ -672,7 +672,7 @@ $nip_list[] = $pegawai['nip'];
             'Authorization: Bearer ' . $token
         ]);
         $dokter_response = curl_exec($ch_dokter);
-        curl_close($ch_dokter);
+
         $dokter_data = json_decode($dokter_response, true);
 
         if (isset($dokter_data['data']) && is_array($dokter_data['data'])) {
@@ -716,7 +716,7 @@ $nip_list[] = $dokter['kd_dokter'];
             'Accept: application/json'
         ]);
         $response = curl_exec($ch);
-        curl_close($ch);
+
 
         $data = json_decode($response, true);
 
@@ -751,7 +751,7 @@ $nip_list[] = $dokter['kd_dokter'];
             'Authorization: Bearer ' . $token
         ]);
         $pegawai_response = curl_exec($ch_pegawai);
-        curl_close($ch_pegawai);
+
         $pegawai_data = json_decode($pegawai_response, true);
 
         if (isset($pegawai_data['data']) && is_array($pegawai_data['data'])) {
@@ -770,7 +770,7 @@ $nip_list[] = $pegawai['nip'];
             'Authorization: Bearer ' . $token
         ]);
         $dokter_response = curl_exec($ch_dokter);
-        curl_close($ch_dokter);
+
         $dokter_data = json_decode($dokter_response, true);
 
         if (isset($dokter_data['data']) && is_array($dokter_data['data'])) {

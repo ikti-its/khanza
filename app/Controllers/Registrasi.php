@@ -71,7 +71,7 @@ class Registrasi extends ControllerTemplate
             ]);
             $response_registrasi = curl_exec($ch_registrasi);
             $http_status_code_registrasi = curl_getinfo($ch_registrasi, CURLINFO_HTTP_CODE);
-            curl_close($ch_registrasi);
+
 
             // Check API response status
             if ($http_status_code_registrasi !== 200) {
@@ -236,7 +236,7 @@ class Registrasi extends ControllerTemplate
             ]);
             $response_registrasi = curl_exec($ch_registrasi);
             $http_status_code_registrasi = curl_getinfo($ch_registrasi, CURLINFO_HTTP_CODE);
-            curl_close($ch_registrasi); // pastikan ditutup sebelum return
+// pastikan ditutup sebelum return
 
             if ($response_registrasi && $http_status_code_registrasi === 201) {
                 return redirect()->to(base_url('registrasi'))->with('success', 'Data registrasi berhasil ditambahkan.');
@@ -266,7 +266,7 @@ class Registrasi extends ControllerTemplate
         ]);
         $response = curl_exec($ch_registrasi);
         $http_status = curl_getinfo($ch_registrasi, CURLINFO_HTTP_CODE);
-        curl_close($ch_registrasi);
+
 
         if ($http_status !== 200) {
             return $this->renderErrorView($http_status);
@@ -383,7 +383,7 @@ class Registrasi extends ControllerTemplate
                 return $response_registrasi;
             }
 
-            curl_close($ch_registrasi);
+
         } else {
             return $this->renderErrorView(401);
         }
@@ -406,7 +406,7 @@ class Registrasi extends ControllerTemplate
 
             $response = curl_exec($ch_delete);
             $http_status = curl_getinfo($ch_delete, CURLINFO_HTTP_CODE);
-            curl_close($ch_delete);
+
 
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('registrasi'))->with('success', 'Data registrasi berhasil dihapus.');

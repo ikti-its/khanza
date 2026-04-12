@@ -62,7 +62,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
     
         // dd($response);
 
@@ -153,7 +153,7 @@ protected array $breadcrumbs = [];
         ]);
         $responseUgd = curl_exec($ch1);
         $statusUgd = curl_getinfo($ch1, CURLINFO_HTTP_CODE);
-        curl_close($ch1);
+
 
         log_message('error', 'UGD API response: ' . $responseUgd);
 
@@ -194,7 +194,7 @@ protected array $breadcrumbs = [];
         ]);
         $responseRegistrasi = curl_exec($ch2);
         $statusRegistrasi = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
-        curl_close($ch2);
+
 
         log_message('error', 'Registrasi API response: ' . $responseRegistrasi);
 
@@ -228,7 +228,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status !== 200) {
             return $this->renderErrorView($status);
@@ -288,7 +288,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 // dd($jsonData);
         if ($status === 200) {
             return redirect()->to(base_url('ugd'));
@@ -315,7 +315,7 @@ protected array $breadcrumbs = [];
         ]);
         $response = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+
 
         if ($status === 200 || $status === 204) {
             return redirect()->to(base_url('ugd'))->with('success', 'Data UGD berhasil dihapus.');

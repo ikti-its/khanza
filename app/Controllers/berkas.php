@@ -54,9 +54,6 @@ class berkas extends ControllerTemplate
                 // Error fetching akun data
                 return "Error fetching akun data.";
             }
-
-            // Close the cURL session for akun data
-            curl_close($ch_akun);
         } else {
             return "User not logged in. Please log in first.";
         }
@@ -220,9 +217,6 @@ class berkas extends ControllerTemplate
                     // Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                // Close the cURL session
-                curl_close($ch);
             } else {
                 // Email or role is empty
                 return "Email and role are required.";
@@ -259,12 +253,8 @@ class berkas extends ControllerTemplate
             // Check for errors
             if (curl_errno($ch)) {
                 $error_message = curl_error($ch);
-                curl_close($ch);
                 return "Error uploading KTP image: " . $error_message;
             }
-
-            // Close the cURL session for uploading KTP image
-            curl_close($ch);
 
             // Decode the response
             $responseData = json_decode($response, true);
@@ -325,9 +315,6 @@ class berkas extends ControllerTemplate
                 //Error fetching user data
                 return "Error fetching user data.";
             }
-
-            //Close the cURL session for user data
-            curl_close($ch_user);
         } else {
             //User not logged in
             return "User not logged in. Please log in first. ";
@@ -421,9 +408,6 @@ class berkas extends ControllerTemplate
                     // Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                // Close the cURL session
-                curl_close($ch);
             } else {
                 // Email or role is empty
                 return "Email and role are required.";
@@ -530,9 +514,6 @@ class berkas extends ControllerTemplate
                     //Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                curl_close($ch);
-
             } else {
                 //Email or role is empty
                 return "Email and role are required";
@@ -644,9 +625,6 @@ class berkas extends ControllerTemplate
                     //Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                curl_close($ch);
-
             } else {
                 //Email or role is empty
                 return "Email and role are required";
@@ -761,9 +739,6 @@ class berkas extends ControllerTemplate
                     //Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                curl_close($ch);
-
             } else {
                 //Email or role is empty
                 return "Email and role are required";
@@ -878,9 +853,6 @@ class berkas extends ControllerTemplate
                     //Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                curl_close($ch);
-
             } else {
                 //Email or role is empty
                 return "Email and role are required";
@@ -994,9 +966,6 @@ class berkas extends ControllerTemplate
                     //Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                curl_close($ch);
-
             } else {
                 //Email or role is empty
                 return "Email and role are required";
@@ -1110,8 +1079,6 @@ class berkas extends ControllerTemplate
                     //Error sending request to the API
                     return "Error sending request to the API.";
                 }
-
-                curl_close($ch);
 
             } else {
                 //Email or role is empty
@@ -1227,8 +1194,6 @@ class berkas extends ControllerTemplate
                     return "Error sending request to the API.";
                 }
 
-                curl_close($ch);
-
             } else {
                 //Email or role is empty
                 return "Email and role are required";
@@ -1274,9 +1239,6 @@ class berkas extends ControllerTemplate
                 // Error response from the API
                 return "Error deleting user: " . $response;
             }
-
-            // Close the cURL session
-            curl_close($ch);
         } else {
             // User not logged in
             return "User not logged in. Please log in first.";

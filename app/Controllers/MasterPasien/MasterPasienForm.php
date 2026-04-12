@@ -131,7 +131,6 @@ class MasterPasienForm extends ControllerTemplate
 
             $response = curl_exec($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
 
             if ($response && in_array($http_status, [200, 201])) {
                 return redirect()->to('/masterpasien')->with('success', 'Data pasien berhasil ditambahkan.');
@@ -161,7 +160,6 @@ class MasterPasienForm extends ControllerTemplate
 
         $response = curl_exec($ch);
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
 
         if ($http_status === 200 && $response) {
             $result = json_decode($response, true);
@@ -269,7 +267,6 @@ class MasterPasienForm extends ControllerTemplate
             $response = curl_exec($ch);
             $error = curl_error($ch);
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
 
             // dd([
             //     'http_status' => $http_status,

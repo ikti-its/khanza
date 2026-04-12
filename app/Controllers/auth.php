@@ -104,8 +104,6 @@ class auth extends ControllerTemplate
                         // Store user details in session along with the token
                         session()->set('user_details', $user_details['data']);
 
-                        // Close the cURL session for user details
-                        curl_close($user_details_ch);
 // dd($user_details);
                         // Check if the user role is 2 or 1
                         if ($user_details['data']['role'] === 2 || $user_details['data']['role'] === 1) {
@@ -158,9 +156,6 @@ class auth extends ControllerTemplate
                 // No response from API
                 return $this->renderErrorView(500, "Tidak ada respons dari Server");
             }
-
-            // Close the cURL session
-            curl_close($ch);
         }
         // If the form was not submitted or any other case where it doesn't validate or process login
         return view('login'); // Return the login view by default

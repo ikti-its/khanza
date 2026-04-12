@@ -227,13 +227,6 @@ class Tagihan extends ControllerTemplate
     //             // Error: Failed to get responses from the API
     //             return "Error fetching data.";
     //         }
-
-    //         // Close cURL sessions
-    //         curl_close($ch_pengajuan);
-    //         curl_close($ch_penerimaan);
-    //         curl_close($ch_pegawai);
-    //         curl_close($ch_medis);
-    //         curl_close($ch_satuan);
     //     } else {
     //         // User not logged in
     //         return "User not logged in. Please log in first.";
@@ -366,12 +359,12 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
             }
 
             // Close cURL sessions
-            curl_close($ch_pengajuan);
-            curl_close($ch_penerimaan);
-            curl_close($ch_pegawai);
-            curl_close($ch_medis);
-            curl_close($ch_satuan);
-            curl_close($ch_pesanan);
+
+
+
+
+
+
         } else {
             // User not logged in
             return "User not logged in. Please log in first.";
@@ -478,8 +471,8 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
                             } else {
                                 return "Error Update Pengajuan: " . $response_pengajuan;
                             }
-                            curl_close($ch_tagihan);
-                            curl_close($ch_pengajuan);
+
+
                         } else {
                             return "Error sending request to the obat API.";
                         }
@@ -628,14 +621,14 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
             }
 
             // Tutup sesi cURL untuk data medis dan obat
-            curl_close($ch_tagihan);
-            curl_close($ch_pesanan);
-            curl_close($ch_pengajuan);
-            curl_close($ch_pemesanan);
-            curl_close($ch_penerimaan);
-            curl_close($ch_pegawai);
-            curl_close($ch_satuan);
-            curl_close($ch_medis);
+
+
+
+
+
+
+
+
         } else {
             // User belum login
             return "User not logged in. Please log in first.";
@@ -730,15 +723,15 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
                             } else {
                                 return "Error Update Pengajuan: " . $response_pengajuan;
                             }
-                            curl_close($ch_tagihan);
-                            curl_close($ch_pengajuan);
+
+
                         } else {
                             return "Error sending request to the obat API.";
                         }
-                        curl_close($ch_tagihan);
+
                     } else {
                         // Error response from the API
-                        curl_close($ch_tagihan); // Tutup session cURL untuk medis_url di sini
+// Tutup session cURL untuk medis_url di sini
                         return "Error Insert Tagihan: " . $response_tagihan;
                     }
                 } else {
@@ -821,25 +814,25 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
                             $http_status_code_delete_tagihan = curl_getinfo($ch_delete_tagihan, CURLINFO_HTTP_CODE);
 
                             if ($http_status_code_delete_tagihan === 204) {
-                                curl_close($ch_delete_tagihan);
+
                                 return redirect()->to(base_url('tagihanmedis'));
                             } else {
                                 // Error response from the API
                                 return "Error deleting tagihan." . $response_delete_tagihan;
                             }
-                            curl_close($ch_pengajuan); // Tutup session cURL untuk obat_url di sini
+// Tutup session cURL untuk obat_url di sini
                             // Tutup session cURL untuk medis_url di sini
 
                         } else {
                             // Error response dari obat_url
-                            curl_close($ch_pengajuan); // Tutup session cURL untuk obat_url di sini
+// Tutup session cURL untuk obat_url di sini
                             return "Error Update Pengajuan: " . $response_pengajuan;
                         }
-                        curl_close($ch_pengajuan);
-                        curl_close($ch_tagihan);
+
+
                     } else {
                         // Error kirim permintaan ke obat_url
-                        curl_close($ch_pengajuan); // Tutup session cURL untuk obat_url di sini
+// Tutup session cURL untuk obat_url di sini
                         return "Error sending request to the obat API.";
                     }
                 } else {
