@@ -14,14 +14,14 @@ class ControllerTemplate extends Controller
 {
     protected string $api_url;
     protected array $breadcrumbs = [];
-    readonly protected string $judul;
-    readonly protected string $modul_path;
-    readonly protected string $api_path;
-    readonly protected string $nama_tabel;
-    readonly protected string $kolom_id;
-    readonly protected array $aksi;
-    readonly protected array $konfig;
-    readonly protected array $meta_data;
+    protected string $judul;
+    protected string $modul_path;
+    protected string $api_path;
+    protected string $nama_tabel;
+    protected string $kolom_id;
+    protected array $aksi;
+    protected array $konfig;
+    protected array $meta_data;
 
     public function __construct(
     ) {
