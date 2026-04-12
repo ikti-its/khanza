@@ -1,4 +1,4 @@
-COPY sik.alasan_cuti_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY sik.alasan_cuti (id, nama, created_at, updated_at) FROM stdin;
 S	Sakit	2025-05-15 23:07:10.313595+07	2025-05-15 23:07:10.313595+07
 I	Izin	2025-05-15 23:07:10.313595+07	2025-05-15 23:07:10.313595+07
 CT	Cuti Tahunan	2025-05-15 23:07:10.313595+07	2025-05-15 23:07:10.313595+07
@@ -7,14 +7,14 @@ CM	Cuti Melahirkan	2025-05-15 23:07:10.313595+07	2025-05-15 23:07:10.313595+07
 CU	Cuti karena Alasan Penting	2025-05-15 23:07:10.313595+07	2025-05-15 23:07:10.313595+07
 \.
 
-COPY sik.departemen_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY sik.departemen (id, nama, created_at, updated_at) FROM stdin;
 2	Petugas	2025-05-15 18:33:07.921616+07	2025-05-15 18:33:07.921616+07
 3	Dokter	2025-05-15 18:33:15.989844+07	2025-05-15 18:33:15.989844+07
 1	Admin	2025-05-15 20:00:58.872706+07	2025-05-15 20:00:58.872706+07
 1000	Testing	2025-05-20 15:23:03.025262+07	2025-05-20 15:23:03.025262+07
 \.
 
-COPY ref.hari_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY ref.hari (id, nama, created_at, updated_at) FROM stdin;
 1	Senin	2025-05-15 20:05:08.34462+07	2025-05-15 20:05:08.34462+07
 2	Selasa	2025-05-15 20:05:08.34462+07	2025-05-15 20:05:08.34462+07
 3	Rabu	2025-05-15 20:05:08.34462+07	2025-05-15 20:05:08.34462+07
@@ -24,18 +24,18 @@ COPY ref.hari_structure (id, nama, created_at, updated_at) FROM stdin;
 7	Minggu	2025-05-15 20:05:08.34462+07	2025-05-15 20:05:08.34462+07
 \.
 
-COPY ref.jabatan_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY ref.jabatan (id, nama, created_at, updated_at) FROM stdin;
 2	Petugas	2025-05-15 18:31:32.497043+07	2025-05-15 18:31:32.497043+07
 3	Dokter	2025-05-15 18:31:43.12515+07	2025-05-15 18:31:43.12515+07
 1	Admin	2025-05-15 20:00:48.601557+07	2025-05-15 20:00:48.601557+07
 1000	Testing	2025-05-20 15:23:30.917849+07	2025-05-20 15:23:30.917849+07
 \.
 
-COPY ref.organisasi_structure (id, nama, alamat, latitude, longitude, radius, created_at, updated_at) FROM stdin;
+COPY ref.organisasi (id, nama, alamat, latitude, longitude, radius, created_at, updated_at) FROM stdin;
 2e8ecec0-5f4d-4dbe-a74d-0f014718b68d	Apartemen Puncak Kertajaya	apartemen puncak kertajaya, Kertajaya Indah Regency, Keputih, Kec. Sukolilo, Surabaya, Jawa Timur 60111	-7.288022143772514	112.78670386466561	50	2025-05-24 19:39:07.031719+07	2025-05-24 19:39:07.031719+07
 \.
 
-COPY sik.akun_structure (id, email, password, foto, role, created_at, updated_at, deleted_at, updater) FROM stdin;
+COPY sik.akun (id, email, password, foto, role, created_at, updated_at, deleted_at, updater) FROM stdin;
 83e0f2ba-9b19-439e-a448-97338eea7ff8	admin123@fathoor.dev	$2a$10$LcvwwjdpGUz3LmKLOa9Yy.Oqs0DAsquurYYMAWA8n0eO3uPX0ibrW	/img/default.png	1	2025-03-17 20:35:20.555048+07	2025-03-17 20:35:20.555048+07	\N	\N
 933568d5-982a-43c3-a4aa-3177bab10f07	eric@fathoor.dev	$2a$12$GmKnyhdJVTC424cvJFgiC.fiQjFm18IN587OIq/puCLg5ab1abnEm	/img/default.png	2	2025-05-15 18:28:32.325395+07	2025-05-15 18:28:32.325395+07	\N	933568d5-982a-43c3-a4aa-3177bab10f07
 9de502cb-2cd5-46cb-a717-97f2bb1f85c5	fathoor@fathoor.dev	$2a$10$Yg78XjsfHtvpiZHzxjhtBeauNRpK928c1zKSXjPdV.jOE0q21qXgq	/img/default.png	1337	2025-03-17 20:07:40.473102+07	2025-03-17 20:07:40.473102+07	\N	\N
@@ -43,13 +43,13 @@ b9b1ad6c-c41b-446a-b00e-f56684663c56	aziz@fathoor.dev	$2a$12$GmKnyhdJVTC424cvJFg
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	admin@fathoor.dev	$2a$10$8jI.qKrVbXQjNzYX6KOIvukkYkNcmfYyPWiv9tuHE8vdg5EhjQBzy	/img/default.png	1	2025-03-17 20:07:40.473102+07	2025-03-17 20:07:40.473102+07	\N	bd0b4833-510c-4c29-a3a4-e08e9a0a5955
 \.
 
-COPY sik.alamat_structure (id_akun, alamat, alamat_lat, alamat_lon, created_at, updated_at, deleted_at, updater) FROM stdin;
+COPY sik.alamat (id_akun, alamat, alamat_lat, alamat_lon, created_at, updated_at, deleted_at, updater) FROM stdin;
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	Jl. Mawar No. 123, Surabaya	-7.257472	112.752088	2025-05-15 20:12:31.655792+07	2025-05-15 20:12:31.655792+07	\N	\N
 933568d5-982a-43c3-a4aa-3177bab10f07	Jl. Kertajaya No. 5	-7.257472	112.752088	2025-05-19 20:18:04.722652+07	2025-05-19 20:18:04.722652+07	\N	\N
 b9b1ad6c-c41b-446a-b00e-f56684663c56	Jl. Keputih Tegal Timur II	-7.257472	112.752088	2025-05-19 20:18:43.649155+07	2025-05-19 20:18:43.649155+07	\N	\N
 \.
 
-COPY sik.ambulans_structure (no_ambulans, status, supir) FROM stdin;
+COPY sik.ambulans (no_ambulans, status, supir) FROM stdin;
 AMB-003	accepted	Supri
 AMB-005	available	agus
 AMB-001	accepted	Sopir Uji
@@ -63,34 +63,34 @@ AMB-0999	available	123
 TESTING	available	Supri
 \.
 
-COPY sik.barang_medis_structure (id, kode_barang, kandungan, id_industri, nama, id_satbesar, id_satuan, h_dasar, h_beli, h_ralan, h_kelas1, h_kelas2, h_kelas3, h_utama, h_vip, h_vvip, h_beliluar, h_jualbebas, h_karyawan, stok_minimum, id_jenis, isi, kapasitas, kadaluwarsa, id_kategori, id_golongan) FROM stdin;
+COPY sik.barang_medis (id, kode_barang, kandungan, id_industri, nama, id_satbesar, id_satuan, h_dasar, h_beli, h_ralan, h_kelas1, h_kelas2, h_kelas3, h_utama, h_vip, h_vvip, h_beliluar, h_jualbebas, h_karyawan, stok_minimum, id_jenis, isi, kapasitas, kadaluwarsa, id_kategori, id_golongan) FROM stdin;
 \.
 
-COPY sik.berkas_pegawai_structure (id_pegawai, nik, tempat_lahir, tanggal_lahir, agama, pendidikan, ktp, kk, npwp, bpjs, ijazah, skck, str, serkom, created_at, updated_at, deleted_at, updater) FROM stdin;
+COPY sik.berkas_pegawai (id_pegawai, nik, tempat_lahir, tanggal_lahir, agama, pendidikan, ktp, kk, npwp, bpjs, ijazah, skck, str, serkom, created_at, updated_at, deleted_at, updater) FROM stdin;
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	3210112345678901	Jakarta	1995-01-01	Islam	S1	ktp_admin.pdf	kk_admin.pdf	npwp_admin.pdf	bpjs_admin.pdf	ijazah_admin.pdf	skck_admin.pdf	str_admin.pdf	serkom_admin.pdf	2025-05-19 22:27:04.917087+07	2025-05-19 22:27:04.917087+07	\N	bd0b4833-510c-4c29-a3a4-e08e9a0a5955
 b9b1ad6c-c41b-446a-b00e-f56684663c56	3210223456789012	Bandung	1994-02-02	Kristen	S2	ktp_aziz.pdf	kk_aziz.pdf	npwp_aziz.pdf	bpjs_aziz.pdf	ijazah_aziz.pdf	skck_aziz.pdf	str_aziz.pdf	serkom_aziz.pdf	2025-05-19 22:27:04.917087+07	2025-05-19 22:27:04.917087+07	\N	b9b1ad6c-c41b-446a-b00e-f56684663c56
 933568d5-982a-43c3-a4aa-3177bab10f07	3210334567890123	Surabaya	1993-03-03	Hindu	D3	ktp_eric.pdf	kk_eric.pdf	npwp_eric.pdf	bpjs_eric.pdf	ijazah_eric.pdf	skck_eric.pdf	str_eric.pdf	serkom_eric.pdf	2025-05-19 22:27:04.917087+07	2025-05-19 22:27:04.917087+07	\N	933568d5-982a-43c3-a4aa-3177bab10f07
 \.
 
-COPY sik.bpjs_structure (no_bpjs, nama_program, penyelenggara, tarif, batas_bawah, batas_atas) FROM stdin;
+COPY sik.bpjs (no_bpjs, nama_program, penyelenggara, tarif, batas_bawah, batas_atas) FROM stdin;
 10	JKN	BPJS Kesehatan	50	1000000	5000000
 \.
 
-COPY sik.cuti_structure (id, id_pegawai, tanggal_mulai, tanggal_selesai, id_alasan_cuti, status, created_at, updated_at, deleted_at, updater) FROM stdin;
+COPY sik.cuti (id, id_pegawai, tanggal_mulai, tanggal_selesai, id_alasan_cuti, status, created_at, updated_at, deleted_at, updater) FROM stdin;
 cb38e8cb-cbbe-4708-b9fe-8fb2cb06d7b0	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	2025-05-16	2025-05-17	S	Ditolak	2025-05-15 23:07:43.915708+07	2025-06-01 17:25:17.032598+07	\N	bd0b4833-510c-4c29-a3a4-e08e9a0a5955
 fda80261-207d-4afc-bc9f-e8cd0d49771e	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	2025-06-02	2025-06-03	CT	Diproses	2025-06-01 17:26:20.331472+07	2025-06-01 17:26:20.331472+07	\N	\N
 \.
 
-COPY sik.data_batch_structure (no_batch, no_faktur, id_barang_medis, tanggal_datang, kadaluwarsa, asal, h_dasar, h_beli, h_ralan, h_kelas1, h_kelas2, h_kelas3, h_utama, h_vip, h_vvip, h_beliluar, h_jualbebas, h_karyawan, jumlahbeli, sisa) FROM stdin;
+COPY sik.data_batch (no_batch, no_faktur, id_barang_medis, tanggal_datang, kadaluwarsa, asal, h_dasar, h_beli, h_ralan, h_kelas1, h_kelas2, h_kelas3, h_utama, h_vip, h_vvip, h_beliluar, h_jualbebas, h_karyawan, jumlahbeli, sisa) FROM stdin;
 \.
 
-COPY sik.data_phk_structure (no_pegawai, lama_bekerja, pesangon, upmk, nominal, status) FROM stdin;
+COPY sik.data_phk (no_pegawai, lama_bekerja, pesangon, upmk, nominal, status) FROM stdin;
 \.
 
-COPY sik.data_thr_structure (no_pegawai, lama_bekerja, tahun, nominal, status) FROM stdin;
+COPY sik.data_thr (no_pegawai, lama_bekerja, tahun, nominal, status) FROM stdin;
 \.
 
-COPY sik.databarang_structure (kode_brng, nama_brng, kode_satbesar, kode_sat, letak_barang, dasar, h_beli, ralan, kelas1, kelas2, kelas3, utama, vip, vvip, beliluar, jualbebas, karyawan, stokminimal, kdjns, isi, kapasitas, expire, status, kode_industri, kode_kategori, kode_golongan) FROM stdin;
+COPY sik.databarang (kode_brng, nama_brng, kode_satbesar, kode_sat, letak_barang, dasar, h_beli, ralan, kelas1, kelas2, kelas3, utama, vip, vvip, beliluar, jualbebas, karyawan, stokminimal, kdjns, isi, kapasitas, expire, status, kode_industri, kode_kategori, kode_golongan) FROM stdin;
 2018001	AB-Vask 10mg (Otsus)	AMP5	AMP5		21259	21259	25511	25511	25511	25511	25511	25511	25511	40392	25511	25511	0	JB02	1	10	2020-02-27	1	-    	-   	-   
 2018003	AB-Vask 10mg (APBK)	BKS 	AMP5		191871	191871	230246	230246	230246	230246	230246	230246	230246	364555	230246	230246	0	JB02	14	10	2024-12-27	1	I0005	K04 	G03 
 A000000004	Alkohol 95% 20 liter OM	GLN 	GLN 		880000	880000	1056000	1056000	1056000	1056000	1056000	1056000	1056000	1672000	1056000	1056000	0	JB03	1	0	\N	1	-    	-   	-   
@@ -2105,16 +2105,16 @@ C000000007	Iol PMMA Power 20,5	PCS 	PCS 		195834	195834	235001	235001	235001	235
 VAK001	Vaksin Hepatitis B Recombinant 20 ug/1 mL Suspensi Injeksi (Umum)	-   	-   	-	1	1	1	1	1	1	1	1	1	1	1	1	0	-   	1	1	2023-01-23	1	-    	-   	-   
 \.
 
-COPY sik.detail_penerimaan_barang_medis_structure (id_penerimaan, id_barang_medis, id_satuan, ubah_master, jumlah, h_pesan, subtotal_per_item, diskon_persen, diskon_jumlah, total_per_item, jumlah_diterima, kadaluwarsa, no_batch) FROM stdin;
+COPY sik.detail_penerimaan_barang_medis (id_penerimaan, id_barang_medis, id_satuan, ubah_master, jumlah, h_pesan, subtotal_per_item, diskon_persen, diskon_jumlah, total_per_item, jumlah_diterima, kadaluwarsa, no_batch) FROM stdin;
 \.
 
-COPY sik.foto_pegawai_structure (id_pegawai, foto, created_at, updated_at, deleted_at, updater) FROM stdin;
+COPY sik.foto_pegawai (id_pegawai, foto, created_at, updated_at, deleted_at, updater) FROM stdin;
 933568d5-982a-43c3-a4aa-3177bab10f07	/img/default.png	2025-05-19 20:20:06.601437+07	2025-05-19 20:20:06.601437+07	\N	\N
 b9b1ad6c-c41b-446a-b00e-f56684663c56	/img/default.png	2025-05-19 20:20:06.601437+07	2025-05-19 20:20:06.601437+07	\N	\N
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	/img/default.png	2025-05-15 20:14:12.663592+07	2025-05-15 20:14:12.663592+07	\N	\N
 \.
 
-COPY sik.golongan_barang_medis_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY sik.golongan_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 1000	Analgesik	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2000	Antibiotik	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 3000	Antijamur	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -2122,7 +2122,7 @@ COPY sik.golongan_barang_medis_structure (id, nama, created_at, updated_at) FROM
 5000	Antasida	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-COPY sik.golongan_structure (no_golongan, kode_golongan, nama_golongan, pendidikan, gaji_pokok) FROM stdin;
+COPY sik.golongan (no_golongan, kode_golongan, nama_golongan, pendidikan, gaji_pokok) FROM stdin;
 1	Ia	Juru Muda	SD/SMP	1000000
 2	Ib	Juru Muda Tingkat I	SD/SMP	1500000
 3	Ic	Juru	SD/SMP	2000000
@@ -2142,7 +2142,7 @@ COPY sik.golongan_structure (no_golongan, kode_golongan, nama_golongan, pendidik
 17	IVe	Pembina Utama	S2/S3	18000000
 \.
 
-COPY sik.gudang_barang_structure (id, id_barang_medis, id_ruangan, stok, no_batch, no_faktur) FROM stdin;
+COPY sik.gudang_barang (id, id_barang_medis, id_ruangan, stok, no_batch, no_faktur) FROM stdin;
 de82172e-80d6-4a06-95a0-cfce4f66d71c	B000000980	1000	1000	BATCH001	FAKTUR001
 b11dcad6-d073-498e-9af9-11baabe41ab8	B000001758	1000	1000	BATCH001	FAKTUR001
 b769fee0-ab77-45d4-bd24-3844094e7f26	B000001068	1000	1000	BATCH001	FAKTUR001
@@ -4157,11 +4157,11 @@ d3545eba-6474-456e-81d3-9808f58708fc	B000000611	1000	1000	BATCH001	FAKTUR001
 202321fd-7d1f-42f3-a9a4-0d1b069e899b	A000000801	1000	1000	BATCH001	FAKTUR001
 \.
 
-COPY sik.industri_farmasi_structure (id, kode, nama, alamat, kota, telepon, created_at, updated_at) FROM stdin;
+COPY sik.industri_farmasi (id, kode, nama, alamat, kota, telepon, created_at, updated_at) FROM stdin;
 1000	KLBF	Kalbe Farma	Jln. jalan	Jakarta	0812312312	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-COPY sik.jabatan_pegawai_structure (no_jabatan, jenis_jabatan, nama_jabatan, jenjang, tunjangan) FROM stdin;
+COPY sik.jabatan_pegawai (no_jabatan, jenis_jabatan, nama_jabatan, jenjang, tunjangan) FROM stdin;
 1	Fungsional	Dokter	Ahli Pertama	3000000
 2	Fungsional	Dokter	Muda	5000000
 3	Fungsional	Dokter	Madya	7000000
@@ -4180,7 +4180,7 @@ COPY sik.jabatan_pegawai_structure (no_jabatan, jenis_jabatan, nama_jabatan, jen
 16	Fungsional	Perawat	Ahli	6500000
 \.
 
-COPY sik.jadwal_pegawai_structure (id, id_pegawai, id_hari, id_shift, created_at, updated_at, deleted_at, updater) FROM stdin;
+COPY sik.jadwal_pegawai (id, id_pegawai, id_hari, id_shift, created_at, updated_at, deleted_at, updater) FROM stdin;
 c951ca8b-9879-4188-810c-36f9924fd7c5	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	1	1	2025-05-15 20:08:17.888268+07	2025-05-15 20:08:17.888268+07	\N	\N
 ef4471c6-6254-4895-97c9-a931d784659c	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	1	2	2025-05-15 20:08:17.888268+07	2025-05-15 20:08:17.888268+07	\N	\N
 89cedec6-deb1-4f75-86c3-71c59b9200d6	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	1	3	2025-05-15 20:08:17.888268+07	2025-05-15 20:08:17.888268+07	\N	\N
@@ -4246,7 +4246,7 @@ ca8eb8e3-9461-4e76-81c6-5fb00ef28d4c	b9b1ad6c-c41b-446a-b00e-f56684663c56	7	2	20
 f819d5b5-cca3-446c-aab8-e13fa828ed00	b9b1ad6c-c41b-446a-b00e-f56684663c56	7	3	2025-05-19 20:06:58.501942+07	2025-05-19 20:06:58.501942+07	\N	\N
 \.
 
-COPY sik.jenis_barang_medis_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY sik.jenis_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 1000	Obat Oral	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2000	Obat Topikal	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 3000	Obat Injeksi	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -4254,7 +4254,7 @@ COPY sik.jenis_barang_medis_structure (id, nama, created_at, updated_at) FROM st
 5000	Obat Infus	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-COPY sik.jenis_tindakan_structure (kode, nama_tindakan, kode_kategori, material, bhp, tarif_tindakan_dokter, tarif_tindakan_perawat, kso, manajemen, total_bayar_dokter, total_bayar_perawat, total_bayar_dokter_perawat, kode_pj, kode_bangsal, status, kelas) FROM stdin;
+COPY sik.jenis_tindakan (kode, nama_tindakan, kode_kategori, material, bhp, tarif_tindakan_dokter, tarif_tindakan_perawat, kso, manajemen, total_bayar_dokter, total_bayar_perawat, total_bayar_dokter_perawat, kode_pj, kode_bangsal, status, kelas) FROM stdin;
 001.ICU	Ruang Operasi	OP33	2200000	0	0	250000	0	0	0	2450000	2450000	A09	ICU	1	-
 001.K.3	FISIOTERAPHY > 1	K3	15000	0	0	40000	0	0	0	55000	0	A09	K3	1	Kelas 2
 002.ICU	Ruang Operasi	ok35	2200000	0	0	350000	0	0	0	2550000	2550000	A09	ICU	1	-
@@ -7550,7 +7550,7 @@ UMM.VVIP.113	Jasa Asisten Anestesi	OV	0	0	0	500000	0	0	0	500000	0	A09	VVIP	1	-
 UMM.VVIP.68	Visite dokter spesialis (dr. ATJO ADHMART P, SpOG)	RI2	0	0	200000	0	0	0	200000	0	200000	A09	VVIP	1	-
 \.
 
-COPY sik.kamar_structure (nomor_bed, kode_kamar, nama_kamar, kelas, tarif_kamar, status_kamar) FROM stdin;
+COPY sik.kamar (nomor_bed, kode_kamar, nama_kamar, kelas, tarif_kamar, status_kamar) FROM stdin;
 1	bcd	anggrek	1	50000	available
 2	1	anggrek	2	50000	penuh
 3	bcd	anggrek	VIP	100000	penuh
@@ -7569,7 +7569,7 @@ VUP-02	VIP	melati	VIP	500000	available
 VUP-03	VIP	kenanga	VIP	500000	available
 \.
 
-COPY sik.kategori_barang_medis_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY sik.kategori_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 1000	Obat Paten	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2000	Obat Generik	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 3000	Obat Merek	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -7577,10 +7577,10 @@ COPY sik.kategori_barang_medis_structure (id, nama, created_at, updated_at) FROM
 5000	Obat Bebas Paten	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-COPY sik.kepegawaian_structure (no_pegawai, status, golongan, jabatan, jkn, jkk, jkm, jht, jp, jkp, ptkp, bank, rekening) FROM stdin;
+COPY sik.kepegawaian (no_pegawai, status, golongan, jabatan, jkn, jkk, jkm, jht, jp, jkp, ptkp, bank, rekening) FROM stdin;
 \.
 
-COPY sik.lembur_structure (no_lembur, jenis_lembur, jam_lembur, pengali_upah) FROM stdin;
+COPY sik.lembur (no_lembur, jenis_lembur, jam_lembur, pengali_upah) FROM stdin;
 1	Lembur Hari Biasa	1	1.5
 2	Lembur Hari Biasa	2	2.0
 3	Lembur Hari Biasa	3	2.0
@@ -7591,29 +7591,29 @@ COPY sik.lembur_structure (no_lembur, jenis_lembur, jam_lembur, pengali_upah) FR
 8	Libur Nasional	4	4
 \.
 
-COPY sik.mutasi_barang_structure (id, id_barang_medis, jumlah, harga, id_ruangandari, id_ruanganke, tanggal, keterangan, no_batch, no_faktur) FROM stdin;
+COPY sik.mutasi_barang (id, id_barang_medis, jumlah, harga, id_ruangandari, id_ruanganke, tanggal, keterangan, no_batch, no_faktur) FROM stdin;
 \.
 
-COPY sik.notifikasi_structure (id, sender, recipient, tanggal, judul, pesan, read) FROM stdin;
+COPY sik.notifikasi (id, sender, recipient, tanggal, judul, pesan, read) FROM stdin;
 2eb3e845-f0d2-4ab3-b599-dd91a6799438	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	933568d5-982a-43c3-a4aa-3177bab10f07	2025-06-01	INI JUDUL	INI PESAN	f
 \.
 
-COPY sik.opname_structure (id, id_barang_medis, id_ruangan, h_beli, tanggal, "real", stok, keterangan, no_batch, no_faktur) FROM stdin;
+COPY sik.opname (id, id_barang_medis, id_ruangan, h_beli, tanggal, "real", stok, keterangan, no_batch, no_faktur) FROM stdin;
 \.
 
-COPY sik.pegawai_structure (id, id_akun, nip, nama, jenis_kelamin, id_jabatan, id_departemen, id_status_aktif, jenis_pegawai, telepon, tanggal_masuk, created_at, updated_at, deleted_at, updater) FROM stdin;
+COPY sik.pegawai (id, id_akun, nip, nama, jenis_kelamin, id_jabatan, id_departemen, id_status_aktif, jenis_pegawai, telepon, tanggal_masuk, created_at, updated_at, deleted_at, updater) FROM stdin;
 933568d5-982a-43c3-a4aa-3177bab10f07	933568d5-982a-43c3-a4aa-3177bab10f07	1987123456	Eric	L	2	2	1	Tetap	081234567890	2020-01-01	2025-05-15 18:35:47.617694+07	2025-05-15 18:35:47.617694+07	\N	933568d5-982a-43c3-a4aa-3177bab10f07
 b9b1ad6c-c41b-446a-b00e-f56684663c56	b9b1ad6c-c41b-446a-b00e-f56684663c56	1987123457	Aziz	L	3	3	1	Kontrak	082345678901	2021-05-15	2025-05-15 18:35:47.617694+07	2025-05-15 18:35:47.617694+07	\N	b9b1ad6c-c41b-446a-b00e-f56684663c56
 bd0b4833-510c-4c29-a3a4-e08e9a0a5955	bd0b4833-510c-4c29-a3a4-e08e9a0a5955	1987123455	Admin	L	1000	1000	A	Tetap	081234567890	2020-01-01	2025-05-15 20:01:08.381723+07	2025-05-20 15:24:14.18878+07	\N	bd0b4833-510c-4c29-a3a4-e08e9a0a5955
 \.
 
-COPY sik.penerimaan_barang_medis_structure (id, no_faktur, no_pemesanan, id_supplier, tanggal_datang, tanggal_faktur, tanggal_jthtempo, id_pegawai, id_ruangan, pajak_persen, pajak_jumlah, tagihan, materai) FROM stdin;
+COPY sik.penerimaan_barang_medis (id, no_faktur, no_pemesanan, id_supplier, tanggal_datang, tanggal_faktur, tanggal_jthtempo, id_pegawai, id_ruangan, pajak_persen, pajak_jumlah, tagihan, materai) FROM stdin;
 \.
 
-COPY sik.penggajian_structure (no_pegawai, tahun, bulan, gaji_pokok, tunjangan, bpjs, pajak, nominal, status) FROM stdin;
+COPY sik.penggajian (no_pegawai, tahun, bulan, gaji_pokok, tunjangan, bpjs, pajak, nominal, status) FROM stdin;
 \.
 
-COPY sik.permintaan_resep_pulang_structure (no_permintaan, tgl_permintaan, jam, no_rawat, kd_dokter, status, tgl_validasi, jam_validasi, kode_brng, jumlah, aturan_pakai) FROM stdin;
+COPY sik.permintaan_resep_pulang (no_permintaan, tgl_permintaan, jam, no_rawat, kd_dokter, status, tgl_validasi, jam_validasi, kode_brng, jumlah, aturan_pakai) FROM stdin;
 PRP202505071001	2025-05-07	10:00:00	RW20250427001	D001	Sudah	2025-05-07	10:05:00	OBT001	10	3x1 sesudah makan
 PRP202505060901	2025-05-06	10:00:00	RW202505060001	D001	Belum	2025-05-06	10:30:00	OB001	5	3x1 sesudah makan
 PRP202505060902	2025-05-06	10:10:00	RW202505060002	D002	Belum	2025-05-06	10:40:00	OB002	10	2x1 sebelum makan
@@ -7626,7 +7626,7 @@ PRP202505069177	2025-05-06	21:57:54	202504232512	D008	Sudah	2025-05-06	21:57:54	
 PRP202505311745	2025-05-31	00:23:07	202504232661		Sudah	2025-05-31	00:23:07	2018003	1	3x1
 \.
 
-COPY sik.permintaan_stok_obat_structure (no_permintaan, tgl_permintaan, jam, no_rawat, kd_dokter, status, tgl_validasi, jam_validasi) FROM stdin;
+COPY sik.permintaan_stok_obat (no_permintaan, tgl_permintaan, jam, no_rawat, kd_dokter, status, tgl_validasi, jam_validasi) FROM stdin;
 P001202504	2025-04-29	08:30:00	RW20250429001	D001	Belum	2025-04-29	09:00:00
 P001202506	2025-04-29	10:00:00	RW20250429003	D003	Belum	2025-04-29	10:30:00
 P001202507	2025-04-29	10:45:00	RW20250429004	D001	Sudah	2025-04-29	11:00:00
@@ -7649,7 +7649,7 @@ SOP202505316071	2025-05-31	00:03:50	202505284371	D004	Belum	\N	\N
 SOP202506011656	2025-06-01	15:21:57	202504164239	D001	Belum	2025-06-01	15:22:22
 \.
 
-COPY sik.pesangon_structure (no_pesangon, masa_kerja, pengali_upah) FROM stdin;
+COPY sik.pesangon (no_pesangon, masa_kerja, pengali_upah) FROM stdin;
 1	1	2
 2	2	3
 3	3	4
@@ -7660,7 +7660,7 @@ COPY sik.pesangon_structure (no_pesangon, masa_kerja, pengali_upah) FROM stdin;
 8	8	9
 \.
 
-COPY sik.pph21_structure (no_pph21, pkp_bawah, pkp_atas, tarif_pajak) FROM stdin;
+COPY sik.pph21 (no_pph21, pkp_bawah, pkp_atas, tarif_pajak) FROM stdin;
 1	0	60000000	5
 2	60000000	250000000	15
 3	250000000	500000000	25
@@ -7668,10 +7668,10 @@ COPY sik.pph21_structure (no_pph21, pkp_bawah, pkp_atas, tarif_pajak) FROM stdin
 5	5000000000	1000000000000000000	35
 \.
 
-COPY sik.presensi_structure (id, id_pegawai, id_jadwal_pegawai, tanggal, jam_masuk, jam_pulang, keterangan, foto, created_at, updated_at, deleted_at, updater) FROM stdin;
+COPY sik.presensi (id, id_pegawai, id_jadwal_pegawai, tanggal, jam_masuk, jam_pulang, keterangan, foto, created_at, updated_at, deleted_at, updater) FROM stdin;
 \.
 
-COPY sik.ptkp_structure (no_ptkp, kode_ptkp, perkawinan, tanggungan, nilai_ptkp) FROM stdin;
+COPY sik.ptkp (no_ptkp, kode_ptkp, perkawinan, tanggungan, nilai_ptkp) FROM stdin;
 1	TK/0	Tidak kawin	0	54000000
 2	TK/1	Tidak kawin	1	58500000
 3	TK/2	Tidak kawin	2	63000000
@@ -7686,7 +7686,7 @@ COPY sik.ptkp_structure (no_ptkp, kode_ptkp, perkawinan, tanggungan, nilai_ptkp)
 12	K/I/3	Kawin (harta digabung)	3	126000000
 \.
 
-COPY sik.rawat_inap_structure (nomor_rawat, nomor_rm, nama_pasien, alamat_pasien, penanggung_jawab, hubungan_pj, jenis_bayar, kamar, tarif_kamar, diagnosa_awal, diagnosa_akhir, tanggal_masuk, tanggal_keluar, jam_keluar, total_biaya, status_pulang, lama_ranap, dokter_pj, status_bayar, jam_masuk) FROM stdin;
+COPY sik.rawat_inap (nomor_rawat, nomor_rm, nama_pasien, alamat_pasien, penanggung_jawab, hubungan_pj, jenis_bayar, kamar, tarif_kamar, diagnosa_awal, diagnosa_akhir, tanggal_masuk, tanggal_keluar, jam_keluar, total_biaya, status_pulang, lama_ranap, dokter_pj, status_bayar, jam_masuk) FROM stdin;
 202504254997	300	Mae	Jl. Merpati	Meri	Diri Sendiri	BPJS	VUP.01	500	Diare	\N	2025-04-06	0001-01-01	0001-01-01	0	\N	0	Dr. Elsa	\N	14:55:32
 202504164239	123	Andi	Jl. Merpati	Eric	Diri Sendiri	BPJS	VUP.03	0	DBD	\N	2025-04-19	0001-01-01	0001-01-01 BC	0	Belum	0	Dr. Ahmad	Belum Bayar	15:10:48
 202504232661	125	Don	Jl. Merpati	Budi	Diri Sendiri	BPJS	K1.02	200	Sakit	\N	2025-04-06	0001-01-01	0001-01-01 BC	0	Belum	0	Dr. Intan	Belum Bayar	15:13:07
@@ -7698,7 +7698,7 @@ COPY sik.rawat_inap_structure (nomor_rawat, nomor_rm, nama_pasien, alamat_pasien
 202504168143	123	Andi	Jl. Merpati	Eric	Diri Sendiri	BPJS	VUP.04	0	Influenza	\N	2025-04-19	0001-01-01	0001-01-01 BC	0	Belum	0	Dr. Ahmad	Belum Bayar	16:59:25
 \.
 
-COPY sik.resep_dokter_racikan_detail_structure (no_resep, no_racik, kode_brng, p1, p2, kandungan, jml) FROM stdin;
+COPY sik.resep_dokter_racikan_detail (no_resep, no_racik, kode_brng, p1, p2, kandungan, jml) FROM stdin;
 RSP202505294923	RC01	2018001	1	2	250	3
 RSP202505297596	1	2018003	1	2	200	4
 RSP202505297596	1	B000000003	1	2	250	5
@@ -7712,7 +7712,7 @@ RSP202505316952	5	B000000003	1	2	100	10
 RSP202505316952	5	B000001547	1	2	200	20
 \.
 
-COPY sik.resep_dokter_racikan_structure (no_resep, no_racik, nama_racik, kd_racik, jml_dr, aturan_pakai, keterangan) FROM stdin;
+COPY sik.resep_dokter_racikan (no_resep, no_racik, nama_racik, kd_racik, jml_dr, aturan_pakai, keterangan) FROM stdin;
 RSP202505294923	RC01	Racikan Batuk	PCT	10	3x1 sesudah makan	Obat campuran batuk
 RSP202505297596	1	Flu	PCT	10	3x1	Sesudah makan
 RSP202505292188	2	Flu	PCT	10	3x1	Sesudah makan
@@ -7721,7 +7721,7 @@ RSP202505304793	4	Flu	PCT	10	3x1	Sesudah makan
 RSP202505316952	5	Flu	PCT	10	3x1	Sesudah makan
 \.
 
-COPY sik.resep_obat_structure (no_resep, tgl_perawatan, jam, no_rawat, kd_dokter, tgl_peresepan, jam_peresepan, status, tgl_penyerahan, jam_penyerahan, validasi) FROM stdin;
+COPY sik.resep_obat (no_resep, tgl_perawatan, jam, no_rawat, kd_dokter, tgl_peresepan, jam_peresepan, status, tgl_penyerahan, jam_penyerahan, validasi) FROM stdin;
 RSP202504229734	2025-04-22	15:08:55	RW202504169001	D004	2025-04-22	15:08:55	ranap	2025-04-22	15:08:55	t
 RSP20250421002	2025-04-20	09:30:00	RW20250420002	D001	2025-04-20	09:35:00	ranap	2025-04-20	10:15:00	f
 RSP20250421003	2025-04-19	13:00:00	RW20250419001	D001	2025-04-19	13:10:00	ralan	2025-04-19	14:00:00	f
@@ -7739,7 +7739,7 @@ RSP202504238226	2025-04-23	16:26:25	202504199396	D004	2025-04-23	16:26:25	ranap	
 RSP202504237598	2025-04-23	16:24:18	202504199396	D004	2025-04-23	16:24:18	ranap	2025-04-23	16:24:18	t
 \.
 
-COPY sik.resep_pulang_structure (no_rawat, kode_brng, jml_barang, harga, total, dosis, tanggal, jam, kd_bangsal, no_batch, no_faktur) FROM stdin;
+COPY sik.resep_pulang (no_rawat, kode_brng, jml_barang, harga, total, dosis, tanggal, jam, kd_bangsal, no_batch, no_faktur) FROM stdin;
 RW20250428001	OBT001	2	15000	30000	3x1 sesudah makan	2025-04-28	08:00:00	B001	BT001	FKT001
 RW20250428002	OBT002	1	20000	20000	2x1 sebelum makan	2025-04-28	09:30:00	B002	BT002	FKT002
 RW20250428004	OBT004	3	5000	15000	1x1 malam hari	2025-04-28	11:45:00	B004	BT004	FKT004
@@ -7753,7 +7753,7 @@ RW20250428005	OBT005	4	12000	48000	3x1 setelah makan	2025-04-28	13:00:00	B005	BT
 202504232661	2018003	1	0	0	3x1	2025-04-16	23:01:37	K1.02	1	1
 \.
 
-COPY sik.resume_pasien_ranap_structure (no_rawat, kd_dokter, diagnosa_awal, alasan, keluhan_utama, pemeriksaan_fisik, jalannya_penyakit, pemeriksaan_penunjang, hasil_laborat, tindakan_dan_operasi, obat_di_rs, diagnosa_utama, kd_diagnosa_utama, diagnosa_sekunder, kd_diagnosa_sekunder, diagnosa_sekunder2, kd_diagnosa_sekunder2, diagnosa_sekunder3, kd_diagnosa_sekunder3, diagnosa_sekunder4, kd_diagnosa_sekunder4, prosedur_utama, kd_prosedur_utama, prosedur_sekunder, kd_prosedur_sekunder, prosedur_sekunder2, kd_prosedur_sekunder2, prosedur_sekunder3, kd_prosedur_sekunder3, alergi, diet, lab_belum, edukasi, cara_keluar, ket_keluar, keadaan, ket_keadaan, dilanjutkan, ket_dilanjutkan, kontrol, obat_pulang) FROM stdin;
+COPY sik.resume_pasien_ranap (no_rawat, kd_dokter, diagnosa_awal, alasan, keluhan_utama, pemeriksaan_fisik, jalannya_penyakit, pemeriksaan_penunjang, hasil_laborat, tindakan_dan_operasi, obat_di_rs, diagnosa_utama, kd_diagnosa_utama, diagnosa_sekunder, kd_diagnosa_sekunder, diagnosa_sekunder2, kd_diagnosa_sekunder2, diagnosa_sekunder3, kd_diagnosa_sekunder3, diagnosa_sekunder4, kd_diagnosa_sekunder4, prosedur_utama, kd_prosedur_utama, prosedur_sekunder, kd_prosedur_sekunder, prosedur_sekunder2, kd_prosedur_sekunder2, prosedur_sekunder3, kd_prosedur_sekunder3, alergi, diet, lab_belum, edukasi, cara_keluar, ket_keluar, keadaan, ket_keadaan, dilanjutkan, ket_dilanjutkan, kontrol, obat_pulang) FROM stdin;
 RW001	D001	Demam Berdarah	Panas tinggi dan lemas	Demam selama 3 hari	TD: 120/80, N: 90x/mnt	Demam disertai nyeri kepala dan mual	USG Abdomen, Rontgen Thorax	Trombosit menurun	Transfusi cairan	Paracetamol, Ringer Laktat	Dengue Fever	A91	Dehidrasi Ringan	E86	Hipotensi	I95	Nyeri Perut	R10	Batuk Ringan	R05	Infus Cairan	99.15	Pemberian Obat	99.29	Pemantauan Vital Sign	89.52	Konsultasi Gizi	88.78	Tidak ada	Cair, rendah garam	Sedang diproses	Telah diberikan	Atas Izin Dokter	\N	Membaik	\N	Kembali Ke RS	\N	2024-08-01 10:00:00	Parasetamol 3x sehari
 RW002	D002	Asma Akut	Sesak napas mendadak	Sesak berat	Wheezing terdengar jelas	Riwayat asma sejak kecil	Spirometri, Foto Thorax	Normal, eosinofil meningkat	Inhalasi bronkodilator	Salbutamol, Oksigen	Asma	J45	Infeksi Saluran Nafas Atas	J00	Alergi Debu	T78	Bronkospasme	J98	Hipoksia	R09	Nebulizer	93.93	Oksigenasi	93.94	Pemeriksaan Darah	90.59	Pendidikan Pasien	94.01	Alergi debu rumah	Tinggi kalori, rendah lemak	Sudah dilakukan	Edukasi penggunaan inhaler	Atas Izin Dokter	\N	Sembuh	\N	Kontrol di RS	Poli Paru	2024-08-03 14:00:00	Salbutamol 2x sehari
 RW003	D003	Hipertensi Berat	Pusing dan mimisan	Tekanan darah tinggi	TD: 180/110, N: 88x/mnt	Hipertensi tidak terkontrol	EKG, Urinalisis	Proteinuria, hipertrofi ventrikel kiri	Pemberian antihipertensi	Captopril, Amlodipine	Hipertensi	I10	Nefropati	N08	Retinopati	H35	Gangguan Kognitif	F06	Hiperkolesterolemia	E78	Pemeriksaan EKG	89.52	CT Scan	87.03	Pemeriksaan Laboratorium	90.59	Psikologi	94.08	Tidak ada	Rendah garam	Pending	Konseling keluarga	Pulang Sendiri	Atas permintaan pasien	Membaik	Masih perlu kontrol	Puskesmas	Faskes terdekat	2024-08-07 08:00:00	Captopril 2x sehari
@@ -7761,14 +7761,14 @@ RW004	D004	Demensia	Penurunan daya ingat	Lupa nama anak sendiri	TD: 130/80, MMSE
 RW005	D005	TBC Paru	Batuk lama dan berat badan turun	Batuk >2 minggu, BB turun	Ronki basah bilateral	Didiagnosis TBC sejak 1 bulan lalu	Rontgen Thorax, Sputum BTA	BTA positif	Terapi OAT	HRZE, vitamin B6	Tuberculosis Paru	A15	Anemia Ringan	D50	Malnutrisi	E46	Gastritis	K29	Hipoglikemia	E16	Terapi OAT	99.24	Konseling	94.12	Tes HIV	90.61	Pendidikan TB	94.01	Tidak ada	Tinggi protein	Pending pengambilan ulang	Edukasi kepatuhan OAT	Atas Izin Dokter	\N	Membaik	\N	Kembali Ke RS	\N	2024-08-10 10:00:00	HRZE selama 2 bulan
 \.
 
-COPY sik.role_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY sik.role (id, nama, created_at, updated_at) FROM stdin;
 1337	Developer	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 1	Admin	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2	Pegawai	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 3	Dokter	2025-05-15 18:24:16.375191+07	2025-05-15 18:24:16.375191+07
 \.
 
-COPY sik.ruangan_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY sik.ruangan (id, nama, created_at, updated_at) FROM stdin;
 1000	Gudang	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2000	Apotek	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 3000	LABORAT	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -7784,19 +7784,19 @@ COPY sik.ruangan_structure (id, nama, created_at, updated_at) FROM stdin;
 13000	VVIP	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-COPY sik.rujukan_keluar_structure (nomor_rujuk, nomor_rawat, nomor_rm, nama_pasien, tempat_rujuk, tanggal_rujuk, jam_rujuk, keterangan_diagnosa, dokter_perujuk, kategori_rujuk, pengantaran, keterangan) FROM stdin;
+COPY sik.rujukan_keluar (nomor_rujuk, nomor_rawat, nomor_rm, nama_pasien, tempat_rujuk, tanggal_rujuk, jam_rujuk, keterangan_diagnosa, dokter_perujuk, kategori_rujuk, pengantaran, keterangan) FROM stdin;
 1	2	3	eric	rsud	2025-05-05	2025-05-05	sakit	eric	bedah	ambulans	-
 50	202504066965	789	Jaya	rsud	2025-04-06	0001-01-01 BC	sakit	ahmad	bedah	sendiri	
 \.
 
-COPY sik.rujukan_masuk_structure (nomor_rujuk, perujuk, alamat_perujuk, nomor_rawat, nomor_rm, nama_pasien, alamat, umur, tanggal_masuk, tanggal_keluar, diagnosa_awal) FROM stdin;
+COPY sik.rujukan_masuk (nomor_rujuk, perujuk, alamat_perujuk, nomor_rawat, nomor_rm, nama_pasien, alamat, umur, tanggal_masuk, tanggal_keluar, diagnosa_awal) FROM stdin;
 1	RSUD	keputih	456	789	Eric	keputih	22	2025-04-04	2025-04-05	Sakit
 50	RSUD	keputih	750	15615635	Jaya	keputih	23	2025-04-06	2025-04-10	Sakit
 51	RSUD	keputih	202504066408	15615634	Jaya	keputih	23	2025-04-06	2025-04-05	Sakit
 			202504148176	55	Don			2025-04-06	2025-04-10	Sakit
 \.
 
-COPY sik.satuan_barang_medis_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY sik.satuan_barang_medis (id, nama, created_at, updated_at) FROM stdin;
 1	-	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 2	pcs	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 3	tablet	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -7809,14 +7809,14 @@ COPY sik.satuan_barang_medis_structure (id, nama, created_at, updated_at) FROM s
 10	item	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-COPY sik.shift_structure (id, nama, jam_masuk, jam_pulang, created_at, updated_at) FROM stdin;
+COPY sik.shift (id, nama, jam_masuk, jam_pulang, created_at, updated_at) FROM stdin;
 NA	Belum Ditentukan	07:00:00+07	07:00:00+07	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 P	Pagi	07:00:00+07	15:00:00+07	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 S	Sore	15:00:00+07	23:00:00+07	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 M	Malam	23:00:00+07	07:00:00+07	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-COPY sik.status_aktif_pegawai_structure (id, nama, created_at, updated_at) FROM stdin;
+COPY sik.status_aktif_pegawai (id, nama, created_at, updated_at) FROM stdin;
 A	Aktif	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 BH	Berhenti dengan Hormat	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 C	Cuti	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
@@ -7826,20 +7826,20 @@ P	Pensiun	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 W	Wafat	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
-COPY sik.stok_keluar_barang_medis_structure (id, no_keluar, id_pegawai, tanggal_stok_keluar, id_ruangan, keterangan) FROM stdin;
+COPY sik.stok_keluar_barang_medis (id, no_keluar, id_pegawai, tanggal_stok_keluar, id_ruangan, keterangan) FROM stdin;
 \.
 
-COPY sik.supplier_barang_medis_structure (id, nama, alamat, no_telp, kota, nama_bank, no_rekening, created_at, updated_at) FROM stdin;
+COPY sik.supplier_barang_medis (id, nama, alamat, no_telp, kota, nama_bank, no_rekening, created_at, updated_at) FROM stdin;
 1	Mitra	Jln. Benar	08234234	Jakarta	BCA	8123123	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
 -- Akun Bayar
 -- INSERT INTO akun_bayar (id, nama_akun, nomor_rekening, nama_rekening, ppn) VALUES ('1000', 'Cash', '-', '-', '0'), ('2000', 'Transfer lewat Virtual Mandiri', '12308123123', 'Bank Mandiri', '1');
 
-COPY sik.tarif_tindakan_structure (kode, nama_perawatan, kategori_perawatan, tarif, kelas) FROM stdin;
+COPY sik.tarif_tindakan (kode, nama_perawatan, kategori_perawatan, tarif, kelas) FROM stdin;
 \.
 
-COPY sik.thr_structure (no_thr, masa_kerja, pengali_upah) FROM stdin;
+COPY sik.thr (no_thr, masa_kerja, pengali_upah) FROM stdin;
 1	1	0.08333333333333333333
 2	2	0.16666666666666666667
 3	3	0.25000000000000000000
@@ -7854,23 +7854,23 @@ COPY sik.thr_structure (no_thr, masa_kerja, pengali_upah) FROM stdin;
 12	12	1.00000000000000000000
 \.
 
-COPY sik.transaksi_keluar_barang_medis_structure (id, id_stok_keluar, id_barang_medis, no_batch, no_faktur, jumlah_keluar) FROM stdin;
+COPY sik.transaksi_keluar_barang_medis (id, id_stok_keluar, id_barang_medis, no_batch, no_faktur, jumlah_keluar) FROM stdin;
 \.
 
-COPY sik.tukar_jadwal_structure (id, id_sender, id_recipient, id_hari, id_shift_sender, id_shift_recipient, status) FROM stdin;
+COPY sik.tukar_jadwal (id, id_sender, id_recipient, id_hari, id_shift_sender, id_shift_recipient, status) FROM stdin;
 \.
 
-COPY sik.ugd_structure (nomor_reg, nomor_rawat, tanggal, jam, kode_dokter, dokter_dituju, nomor_rm, nama_pasien, jenis_kelamin, umur, poliklinik, penanggung_jawab, alamat_pj, hubungan_pj, biaya_registrasi, status, jenis_bayar, status_rawat, status_bayar) FROM stdin;
+COPY sik.ugd (nomor_reg, nomor_rawat, tanggal, jam, kode_dokter, dokter_dituju, nomor_rm, nama_pasien, jenis_kelamin, umur, poliklinik, penanggung_jawab, alamat_pj, hubungan_pj, biaya_registrasi, status, jenis_bayar, status_rawat, status_bayar) FROM stdin;
 1	20250412256	2025-04-12	20:20:20	D001	Dr. Ahmad	1	Aziz	L	22	Poli Jantung	Jaya	Keputih	Diri Sendiri	100000	Lama	BPJS	Belum	Belum Bayar
 UGD1001	RW1001	2025-04-12	14:00:00	D001	dr. Rina	RM1001	Andi	L	35	Poli Umum	Budi	Jl. Merpati	Suami	50000		Tunai	rawat	belum
 \.
 
-COPY sik.umr_structure (no_umr, provinsi, kotakab, jenis, upah_minimum) FROM stdin;
+COPY sik.umr (no_umr, provinsi, kotakab, jenis, upah_minimum) FROM stdin;
 1	Jawa Timur	Surabaya	UMK	49000000
 2	Jawa Timur	Sidoarjo	UMK	350000000
 \.
 
-COPY sik.upmk_structure (no_upmk, masa_kerja, pengali_upah) FROM stdin;
+COPY sik.upmk (no_upmk, masa_kerja, pengali_upah) FROM stdin;
 1	3	2
 2	6	3
 3	9	4
@@ -7882,7 +7882,7 @@ COPY sik.upmk_structure (no_upmk, masa_kerja, pengali_upah) FROM stdin;
 9	27	10
 \.
 
-COPY sik.data_instansi_structure (kode_instansi, nama_instansi, alamat_instansi, kota, no_telp) FROM stdin;
+COPY sik.data_instansi (kode_instansi, nama_instansi, alamat_instansi, kota, no_telp) FROM stdin;
 ITS	Institut Teknologi Sepuluh Nopember	Jl. Teknik Kimia, Keputih, Kec. Sukolilo, Surabaya, Jawa Timur 60111	Surabaya	(031) 5994251
 PG	PT Petrokimia Gresik 	 Jl. Jend Ahmad Yani, Gresik 61119, Jawa Timur-Indonesia	Gresik	0811 9918 001
 TELKOM	PT Telkom Indonesia (Persero) Tbk	Jl. Japati No.1, Bandung 40133, Jawa Barat, Indonesia	Bandung	(022) 4521451
@@ -7892,7 +7892,7 @@ UNILEV	PT Unilever Indonesia Tbk	Jl. BSD Boulevard Barat, BSD Green Office Park,
 ASTRA	PT Astra International Tbk	Jl. Gaya Motor Raya No.8, Sunter II, Jakarta Utara 14330	Jakarta Utara	(021) 65307000
 \.
 
-COPY sik.dokter_jaga_structure (kode_dokter, nama_dokter, hari_kerja, jam_mulai, jam_selesai, poliklinik, status) FROM stdin;
+COPY sik.dokter_jaga (kode_dokter, nama_dokter, hari_kerja, jam_mulai, jam_selesai, poliklinik, status) FROM stdin;
 D001	Dr. Andi Wijaya	2025-04-15	08:00:00	14:00:00	Poli Umum	
 D003	Dr. Budi Santoso	2025-04-16	10:00:00	16:00:00	Poli Gigi	
 D006	Dr. Hadi Permana	Senin	08:00:00	14:00:00	Poli Umum	
@@ -7931,7 +7931,7 @@ D002	Dr. Andi Wicaksana	Sabtu	13:30:13	19:30:16	Poli Umum	aktif
 D004	Dr. Daniel	Selasa	21:17:21	03:17:23	Poli Umum	aktif
 \.
 
-COPY sik.dokter_structure (kode_dokter, nama_dokter, jenis_kelamin, alamat_tinggal, no_telp, spesialis, izin_praktik) FROM stdin;
+COPY sik.dokter (kode_dokter, nama_dokter, jenis_kelamin, alamat_tinggal, no_telp, spesialis, izin_praktik) FROM stdin;
 D011	Dr. Maya Kusuma	P	Jl. Bougenville No.4, Palembang	084812345678	Saraf	SIP-05724
 D012	Dr. Agus Riyanto	L	Jl. Kamboja No.6, Balikpapan	085345678901	THT	SIP-18586
 D004	Dr. Daniel	L	Jl. Anggrek No.33, Bandung	082112345678	Anak	SIP-90407
@@ -7970,15 +7970,15 @@ D001	Dr. Andi Wijaya	L	Jl. Merpati No.12, Surabaya	081234567890	Umum	SIP-63670
 D003	Dr. Budi Santoso	L	Jl. Kenanga No.45, Jakarta Selatan	081298765432	Gigi	SIP-63430
 \.
 
-COPY sik.kelahiran_bayi_structure (no_rkm_medis, nm_pasien, jk, tmp_lahir, tgl_lahir, jam, umur, tgl_daftar, nm_ibu, umur_ibu, nm_ayah, umur_ayah, alamat, bb, pb, proses_lahir, kelahiran_ke, keterangan, diagnosa, penyulit_kehamilan, ketuban, lk_perut, lk_kepala, lk_dada, penolong, no_skl, gravida, para, abortus, f1, u1, t1, r1, w1, n1, f5, u5, t5, r5, w5, n5, f10, u10, t10, r10, w10, n10, resusitas, obat, mikasi, mikonium, no_rm_ibu) FROM stdin;
+COPY sik.kelahiran_bayi (no_rkm_medis, nm_pasien, jk, tmp_lahir, tgl_lahir, jam, umur, tgl_daftar, nm_ibu, umur_ibu, nm_ayah, umur_ayah, alamat, bb, pb, proses_lahir, kelahiran_ke, keterangan, diagnosa, penyulit_kehamilan, ketuban, lk_perut, lk_kepala, lk_dada, penolong, no_skl, gravida, para, abortus, f1, u1, t1, r1, w1, n1, f5, u5, t5, r5, w5, n5, f10, u10, t10, r10, w10, n10, resusitas, obat, mikasi, mikonium, no_rm_ibu) FROM stdin;
 \.
 
-COPY sik.pasien_meninggal_structure (no_rkm_medis, nm_pasien, jk, tgl_lahir, umur, gol_darah, stts_nikah, agama, tanggal, jam, icdx, icdx_antara1, icdx_antara2, icdx_langsung, keterangan, nama_dokter, kode_dokter) FROM stdin;
+COPY sik.pasien_meninggal (no_rkm_medis, nm_pasien, jk, tgl_lahir, umur, gol_darah, stts_nikah, agama, tanggal, jam, icdx, icdx_antara1, icdx_antara2, icdx_langsung, keterangan, nama_dokter, kode_dokter) FROM stdin;
 001234	Budi Santoso	L	1970-05-12	53 Tahun	O	Menikah	Islam	2025-07-03	13:45:00	I21.9	I20.0	I50.1	I46.1	Pasien meninggal karena gagal jantung setelah serangan jantung.	dr. Andi Subagio	D001
 001999	Ani Wijaya	P	1980-10-15	43 Tahun	B	Menikah	Islam	2025-07-05	14:30:00	C34.1	J18.9	I50.0	R99	Meninggal karena komplikasi infeksi paru-paru.	dr. Budi Hermanto	D002
 \.
 
-COPY sik.pasien_structure (no_rkm_medis, nm_pasien, no_ktp, jk, tmp_lahir, tgl_lahir, nm_ibu, alamat, gol_darah, pekerjaan, stts_nikah, agama, tgl_daftar, no_tlp, umur, pnd, asuransi, no_asuransi, suku_bangsa, bahasa_pasien, perusahaan_pasien, nip, email, cacat_fisik, kd_kel, kd_kec, kd_kab, kd_prop, stts_pasien) FROM stdin;
+COPY sik.pasien (no_rkm_medis, nm_pasien, no_ktp, jk, tmp_lahir, tgl_lahir, nm_ibu, alamat, gol_darah, pekerjaan, stts_nikah, agama, tgl_daftar, no_tlp, umur, pnd, asuransi, no_asuransi, suku_bangsa, bahasa_pasien, perusahaan_pasien, nip, email, cacat_fisik, kd_kel, kd_kec, kd_kab, kd_prop, stts_pasien) FROM stdin;
 RM000001	Fitria Nur Azzahra	3512051806990003	P	Surabaya	1999-06-18	Sulastri	Jl. Kenanga Raya No.12, Surabaya	A	Pegawai Negeri Sipil	MENIKAH	ISLAM	2025-07-13	082145673829	26 Th 0 Bl 25 Hr	S2	UMUM		Jawa	Indonesia			fitria.azzahra99@gmail.com	Tidak Ada	Wonokromo	Wonokromo	Surabaya	Jawa Timur	Aktif
 RM000002	I Putu Adhitya Pratama Mangku Purnama	5108061602030006	L	Singaraja	2003-02-16	Evi Tri Kustinawati	JL. Gebang Wetan 5b	O	Mahasiswa	BELUM MENIKAH	HINDU	2025-07-14	083192925747	22 Th 4 Bl 28 Hr	S1	UMUM		Bali	Indonesia	I003	5026211037	portodit@gmail.com	Tidak Ada	Gebang Putih	Sukolilo	Surabaya	Jawa Timur	Aktif
 RM000003	Rifqi Naufal Luthfyardy	3578032804030003	L	Surabaya	2003-04-28	Ningsih	Wisma Medokan, G/13	A	Mahasiswa	BELUM MENIKAH	ISLAM	2025-07-14	087857097780	22 Th 2 Bl 16 Hr	S1	UMUM		Jawa	Indonesia	I003	5026211189	fyarrifqi5@gmail.com	Tidak Ada	Medokan Ayu	Rungkut	Surabaya	Jawa Timur	Aktif
@@ -7990,7 +7990,7 @@ RM000008	Rayyan Maulana	9986806623215593	L	Surabaya	2000-02-11	Nanik Partiningru
 RM000009	Ucok Subejo	3525141404030001	L	Gresik	2003-04-14	Nurhayati	Perumahan Petrokimia Gresik	A	Mahasiswa	BELUM MENIKAH	ISLAM	2025-07-20	082337441736	22 Th 3 Bl 6 Hr	S1	UMUM		Jawa	Indonesia	PG	199310030924	didin6428@gmail.com	Tidak Ada	Sukodono	Gresik	Gresik	East Java	Aktif
 \.
 
-COPY sik.registrasi_structure (nomor_reg, nomor_rawat, tanggal, jam, kode_dokter, nama_dokter, nomor_rm, nama_pasien, jenis_kelamin, umur, poliklinik, jenis_bayar, penanggung_jawab, alamat_pj, hubungan_pj, biaya_registrasi, status_registrasi, no_telepon, status_rawat, status_poli, status_bayar, status_kamar, nomor_bed, pekerjaanpj, kelurahanpj, kecamatanpj, kabupatenpj, propinsipj, notelp_pj, no_asuransi) FROM stdin;
+COPY sik.registrasi (nomor_reg, nomor_rawat, tanggal, jam, kode_dokter, nama_dokter, nomor_rm, nama_pasien, jenis_kelamin, umur, poliklinik, jenis_bayar, penanggung_jawab, alamat_pj, hubungan_pj, biaya_registrasi, status_registrasi, no_telepon, status_rawat, status_poli, status_bayar, status_kamar, nomor_bed, pekerjaanpj, kelurahanpj, kecamatanpj, kabupatenpj, propinsipj, notelp_pj, no_asuransi) FROM stdin;
 REG202507147677	202507146641	2025-07-14	11:21:15	D1001	Dr. Ahmad Fauzi	RM000002	I Putu Adhitya Pratama Mangku Purnama	L	22	Poli Umum	BPJS	I Putu Adhitya Pratama Mangku Purnama	JL. Gebang Wetan 5b	DIRI SENDIRI	0	Lama	083192925747	Belum	Baru	Belum Bayar		\N	Mahasiswa	Gebang Putih	Sukolilo	Surabaya	Jawa Timur	083192925747	-
 REG202507140503	202507140039	2025-07-14	11:22:22	D006	Dr. Farhan	RM000005	Muhammad Fatchu Rozaq	L	21	Poli Umum	BPJS	Rifqi Naufal Luthfyardy	Wisma Medokan, G/13	LAIN-LAIN	0	Lama	0895385132323	Belum	Baru	Belum Bayar		\N	Mahasiswa	Medokan Ayu	Rungkut	Surabaya	Jawa Timur	082764536475	-
 REG202507143351	202507143148	2025-07-14	11:20:47	D006	Dr. Farhan	RM000001	Fitria Nur Azzahra	P	26	Poli Umum	BPJS	Ahmad Zulfikar	Jl. Kenanga Raya No.12, Surabaya	SUAMI	0	Lama	082145673829	Belum	Baru	Belum Bayar		\N	Dosen	Wonokromo	Wonokromo	Surabaya	Jawa Timur	087664758475	-
@@ -8001,7 +8001,7 @@ REG202507149203	202507144162	2025-07-14	11:21:42	D006	Dr. Farhan	RM000003	Rifqi 
 REG202507149717	202507143783	2025-07-14	11:23:09	D006	Dr. Farhan	RM000007	Sri Wahyuningsih	P	50	Poli Umum	BPJS	Rayyan Pangestu	Gg. Monginsidi, Kel. Manyar, Kabupaten Gresik, Jawa Timur	ANAK	0	Lama	085681331532	Belum	Baru	Belum Bayar		\N	Karyawan Swasta	Sidomukti	Manyar	Gresik	Jawa Timur	082746354675	-
 \.
 
-COPY sik.catatan_observasi_ranap_kebidanan_structure (no_rawat, tgl_perawatan, jam_rawat, gcs, td, hr, rr, suhu, spo2, kontraksi, bjj, ppv, vt, nip) FROM stdin;
+COPY sik.catatan_observasi_ranap_kebidanan (no_rawat, tgl_perawatan, jam_rawat, gcs, td, hr, rr, suhu, spo2, kontraksi, bjj, ppv, vt, nip) FROM stdin;
 20240501000001	2025-05-26	08:00:00	15-15-15	120/80	80	18	36.5	98	3x/10mnt	140	tidak ada	5cm	1234567890
 20240501000002	2025-05-26	09:30:00	14-14-14	110/70	78	20	36.8	97	2x/10mnt	135	manual	4cm	1987654321
 20240501000003	2025-05-26	10:45:00	13-13-13	130/85	85	22	37.1	99	4x/10mnt	150	ventilasi	6cm	2020011122
@@ -8010,7 +8010,7 @@ COPY sik.catatan_observasi_ranap_kebidanan_structure (no_rawat, tgl_perawatan, j
 202505284371	2025-05-31	17:26:19	1	2	3	4	5	6	7	8	9	10	1987123457
 \.
 
-COPY sik.catatan_observasi_ranap_postpartum_structure (no_rawat, tgl_perawatan, jam_rawat, gcs, td, hr, rr, suhu, spo2, tfu, kontraksi, perdarahan, keterangan, nip) FROM stdin;
+COPY sik.catatan_observasi_ranap_postpartum (no_rawat, tgl_perawatan, jam_rawat, gcs, td, hr, rr, suhu, spo2, tfu, kontraksi, perdarahan, keterangan, nip) FROM stdin;
 20240501000011	2025-05-25	06:30:00	15-15-15	120/80	78	20	36.8	98	2j bawah pusat	baik	sedikit	Kondisi stabil	10000000001
 20240501000012	2025-05-25	09:00:00	14-14-14	110/70	82	22	37.1	97	1j bawah pusat	sedang	normal	Tidak ada keluhan	10000000002
 20240501000013	2025-05-26	11:15:00	13-13-13	118/76	76	19	36.5	99	setinggi pusat	lemah	banyak	Observasi ketat	10000000003
@@ -8019,7 +8019,7 @@ COPY sik.catatan_observasi_ranap_postpartum_structure (no_rawat, tgl_perawatan, 
 202505284371	2025-05-31	18:10:46	1	2	3	4	5	6	7	8	9	10	1987123456
 \.
 
-COPY sik.catatan_observasi_ranap_structure (no_rawat, tgl_perawatan, jam_rawat, gcs, td, hr, rr, suhu, spo2, nip) FROM stdin;
+COPY sik.catatan_observasi_ranap (no_rawat, tgl_perawatan, jam_rawat, gcs, td, hr, rr, suhu, spo2, nip) FROM stdin;
 20240501000001	2025-05-25	08:00:00	15-15-15	120/80	78	20	36.8	98	1234567890
 20240501000002	2025-05-25	12:00:00	14-14-14	110/70	82	22	37.2	97	2234567890
 20240501000003	2025-05-26	07:45:00	13-13-13	118/76	76	19	36.5	99	3234567890
@@ -8028,7 +8028,7 @@ COPY sik.catatan_observasi_ranap_structure (no_rawat, tgl_perawatan, jam_rawat, 
 202505284371	2025-05-31	16:49:27	1	2	3	4	5	6	1987123456
 \.
 
-COPY sik.pemberian_obat_structure (tanggal_beri, jam_beri, nomor_rawat, nama_pasien, kode_obat, nama_obat, embalase, tuslah, jumlah, biaya_obat, total, gudang, no_batch, no_faktur, kelas) FROM stdin;
+COPY sik.pemberian_obat (tanggal_beri, jam_beri, nomor_rawat, nama_pasien, kode_obat, nama_obat, embalase, tuslah, jumlah, biaya_obat, total, gudang, no_batch, no_faktur, kelas) FROM stdin;
 2025-04-16	09:15:00	RW002	Siti Aminah	OB002	Amoxicillin 250mg	1500	2500	1	7000.00	11000.00	Gudang B	BATCH002	FAKTUR002	kelas1
 2025-04-16	10:00:00	RW003	Ahmad Fauzi	OB003	Ibuprofen 200mg	500	1000	3	4000.00	13500.00	Gudang C	BATCH003	FAKTUR003	kelas1
 2025-04-19	15:57:46	RW202504169001	Eric	2018001	AB-Vask 10mg (Otsus)	\N	\N	5	25511	127555	Gudang A	1	1	\N
@@ -8041,7 +8041,7 @@ COPY sik.pemberian_obat_structure (tanggal_beri, jam_beri, nomor_rawat, nama_pas
 2025-05-31	18:10:03		Indira			\N	\N	\N	\N	\N	\N	\N	\N	\N
 \.
 
-COPY sik.pemeriksaan_ranap_structure (no_rawat, tgl_perawatan, jam_rawat, suhu_tubuh, tensi, nadi, respirasi, tinggi, berat, spo2, gcs, kesadaran, keluhan, pemeriksaan, alergi, penilaian, rtl, instruksi, evaluasi, nip) FROM stdin;
+COPY sik.pemeriksaan_ranap (no_rawat, tgl_perawatan, jam_rawat, suhu_tubuh, tensi, nadi, respirasi, tinggi, berat, spo2, gcs, kesadaran, keluhan, pemeriksaan, alergi, penilaian, rtl, instruksi, evaluasi, nip) FROM stdin;
 202504244462	2025-05-12	08:30:00	36.5	120/80	75	16	170	65	98	15	Compos Mentis	Headache	Normal	None	Stable	Follow up in 2 weeks	Take paracetamol	Satisfactory	1987123456
 202504167258	2025-05-12	09:00:00	37.2	130/85	80	18	165	70	97	15	Compos Mentis	Fever and cough	Inflamed throat	Penicillin	Needs rest	Monitor symptoms	Take rest and fluids	Improvement expected	1987123456
 456	2025-05-13	11:30:00	36.9	120/90	78	16	175	75	98	15	Compos Mentis	Fatigue	Normal	Aspirin	Stable	Normal follow up	Rest and hydration	Satisfactory	1987123456
@@ -8052,7 +8052,7 @@ RW001	2025-05-14	14:00:00	37.0	140/90	85	19	160	60	96	15	Compos Mentis	Abdominal
 202507140039	2025-07-15	19:12:02	37	120/80	75	18	170	56	98	2	Compos Mentis	Tes	Tes	Tidak Ada	Tes	Tes	Tes	Tes	1987123457
 \.
 
-COPY sik.resep_dokter_structure (no_resep, kode_barang, jumlah, aturan_pakai, embalase, tuslah) FROM stdin;
+COPY sik.resep_dokter (no_resep, kode_barang, jumlah, aturan_pakai, embalase, tuslah) FROM stdin;
 RSP20250421001	OBT001	22.17	3x1 sesudah makan	0	0
 RSP20250421002	OBT002	29.33	2x1 sebelum makan	0	0
 RSP20250421003	OBT003	6.70	1x1 malam hari	0	0
@@ -8093,7 +8093,7 @@ RSP202505316952	B000000003	10	3x1	0	0
 RSP202505316952	B000001547	20	3x1	0	0
 \.
 
-COPY sik.tindakan_structure (nomor_rawat, nomor_rm, nama_pasien, tindakan, kode_dokter, nama_dokter, nip, nama_petugas, tanggal_rawat, jam_rawat, biaya) FROM stdin;
+COPY sik.tindakan (nomor_rawat, nomor_rm, nama_pasien, tindakan, kode_dokter, nama_dokter, nip, nama_petugas, tanggal_rawat, jam_rawat, biaya) FROM stdin;
 40	2	Aziz	suntik	D001	Dr. Ahmad	75	Agus	2025-06-01	20:20:00	100000
 41	3	Don	cuci darah	D001	Dr. Ahmad	55	Mae	2025-05-08	18:00:00	500000
 40	2	Aziz	OG.I.102	D001	Dr. Rina Kusuma	\N	Acil	2025-04-16	20:06:47	5000
