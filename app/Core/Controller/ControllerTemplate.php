@@ -2,71 +2,23 @@
 declare(strict_types=1);
 
 namespace App\Core\Controller;
-
 use CodeIgniter\Controller;
-use CodeIgniter\HTTP\CLIRequest;
-use CodeIgniter\HTTP\IncomingRequest;
-use CodeIgniter\HTTP\RequestInterface;
-use CodeIgniter\HTTP\ResponseInterface;
-use Psr\Log\LoggerInterface;
 
-/**
- * Class BaseController
- *
- * BaseController provides a convenient place for loading components
- * and performing functions that are needed by all your controllers.
- * Extend this class in any new controllers:
- *     class Home extends BaseController
- *
- * For security be sure to declare any new methods as protected or private.
- */
+
 class ControllerTemplate extends Controller
 {
-    /**
-     * Instance of the main Request object.
-     *
-     * @var CLIRequest|IncomingRequest
-     */
-    protected $request;
-
-    /**
-     * An array of helpers to be loaded automatically upon
-     * class instantiation. These helpers will be available
-     * to all other controllers that extend BaseController.
-     *
-     * @var array
-     */
-    protected $helpers = [];
-
-    /**
-     * Be sure to declare properties for any property fetch you initialized.
-     * The creation of dynamic property is deprecated in PHP 8.2.
-     */
-    // protected $session;
-
-    /**
-     * @return void
-     */
-    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
-    {
-        // Do Not Edit This Line
-        parent::initController($request, $response, $logger);
-        // Preload any models, libraries, etc, here.
-        // E.g.: $this->session = \Config\Services::session();
-    }
-
     protected string $api_url;
 
     public function __construct(
         protected array $breadcrumbs = [],
-        protected string $judul,
-        protected string $modul_path,
-        protected string $api_path,
-        protected string $nama_tabel,
-        protected string $kolom_id,
-        protected array $aksi,
-        protected array $konfig,
-        protected array $meta_data,
+        readonly protected string $judul,
+        readonly protected string $modul_path,
+        readonly protected string $api_path,
+        readonly protected string $nama_tabel,
+        readonly protected string $kolom_id,
+        readonly protected array $aksi,
+        readonly protected array $konfig,
+        readonly protected array $meta_data,
     ) {
         $this->api_url = getenv('api_URL');
         // Check notifications and set session variable
@@ -98,7 +50,7 @@ class ControllerTemplate extends Controller
         return $postData;
     }
 
-    public function tampilData()
+    final public function tampilData()
     {
         $tabel = CURL::fetchDataUsingCurl('GET', $this->api_path)['data']['data'];
         return view('/layouts/data', [
@@ -112,7 +64,7 @@ class ControllerTemplate extends Controller
             'tabel'       => $tabel,
         ]);
     }
-    public function tampilAudit()
+    final public function tampilAudit()
     {
         $audit_konfig = [
             // [1, 'Nomor Perubahan'  , 'change_id' , 'indeks'],
@@ -177,7 +129,7 @@ class ControllerTemplate extends Controller
         return CURL::fetchDataUsingCurl('PUT', $this->api_path . '/' . $id, $postData, $this->modul_path, $this->judul . ' berhasil diperbarui.');
     }
 
-    public function hapusData($id)
+    final public function hapusData($id)
     {
         return CURL::fetchDataUsingCurl('DELETE', $this->api_path . '/' . $id, null, $this->modul_path, $this->judul . ' berhasil dihapus.');
     }
