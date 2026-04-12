@@ -12,6 +12,7 @@ final readonly class CURL
         string|null $redirect_url = null, 
         string|null $redirect_msg = null)
     {
+        
         $allowed_methods = ['GET', 'POST', 'PUT', 'DELETE'];
         if (!in_array($method, $allowed_methods)) {
             echo HTTPError::renderErrorView(405);
@@ -22,7 +23,7 @@ final readonly class CURL
         }
 
         $token = session()->get('jwt_token');
-        $full_url = getenv('api_url') . $path;
+        $full_url =getenv('api_URL') . $path;
         $ch = curl_init($full_url);
 
         $headers = [
