@@ -7833,6 +7833,9 @@ COPY sik.supplier_barang_medis_structure (id, nama, alamat, no_telp, kota, nama_
 1	Mitra	Jln. Benar	08234234	Jakarta	BCA	8123123	2025-03-17 19:59:47.012224+07	2025-03-17 19:59:47.012224+07
 \.
 
+-- Akun Bayar
+-- INSERT INTO akun_bayar (id, nama_akun, nomor_rekening, nama_rekening, ppn) VALUES ('1000', 'Cash', '-', '-', '0'), ('2000', 'Transfer lewat Virtual Mandiri', '12308123123', 'Bank Mandiri', '1');
+
 COPY sik.tarif_tindakan_structure (kode, nama_perawatan, kategori_perawatan, tarif, kelas) FROM stdin;
 \.
 

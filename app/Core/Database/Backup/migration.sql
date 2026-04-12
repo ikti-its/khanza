@@ -218,6 +218,17 @@ CREATE TABLE ref.status_aktif_pegawai_structure (
     updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Akun Bayar
+-- CREATE TABLE IF NOT EXISTS akun (
+--     id INT PRIMARY KEY,
+--     nama_akun VARCHAR(100) NOT NULL,
+--     nomor_rekening VARCHAR(50) NOT NULL,
+--     nama_rekening VARCHAR(50) NOT NULL,
+--     ppn FLOAT NOT NULL DEFAULT 0,
+--     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+-- );
+
 CREATE TABLE ref.supplier_barang_medis_structure (
     id integer NOT NULL,
     nama character varying(50) NOT NULL,
@@ -834,6 +845,30 @@ CREATE TABLE sik.stok_keluar_barang_medis_structure (
     id_ruangan integer NOT NULL,
     keterangan character varying(255)
 );
+
+-- -- Bayar Tagihan Barang Medis
+-- CREATE TABLE IF NOT EXISTS tagihan_barang_medis (
+--     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+--     id_pengajuan UUID NOT NULL,
+--     id_pemesanan UUID NOT NULL,
+--     id_penerimaan UUID NOT NULL,
+--     tanggal_bayar DATE NOT NULL,
+--     jumlah_bayar FLOAT NOT NULL,
+--     id_pegawai UUID NOT NULL, 
+--     keterangan VARCHAR(255),
+--     no_bukti VARCHAR(50) NOT NULL,
+--     id_akun_bayar INT NOT NULL,
+--     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--     deleted_at TIMESTAMP WITH TIME ZONE,
+--     updater UUID, 
+--     FOREIGN KEY (id_pengajuan) REFERENCES pengajuan_barang_medis (id),
+--     FOREIGN KEY (id_pemesanan) REFERENCES pemesanan_barang_medis (id),
+--     FOREIGN KEY (id_penerimaan) REFERENCES penerimaan_barang_medis (id),
+--     FOREIGN KEY (id_pegawai) REFERENCES pegawai (id),
+--     FOREIGN KEY (id_akun_bayar) REFERENCES ref.akun_bayar (id),
+--     FOREIGN KEY (updater) REFERENCES akun (id)
+-- );
 
 CREATE TABLE sik.tarif_tindakan_structure (
     kode character varying(20) NOT NULL,
