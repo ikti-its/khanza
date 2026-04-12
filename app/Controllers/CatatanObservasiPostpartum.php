@@ -130,14 +130,13 @@ class CatatanObservasiPostpartum extends ControllerTemplate
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Post Partum', 'catatanobservasipostpartum');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 
         return view('/admin/observasipostpartum/catatanobservasipostpartum_data', [
             'catatan_data' => $list,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $meta_data
         ]);
     }
@@ -150,12 +149,10 @@ class CatatanObservasiPostpartum extends ControllerTemplate
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Observasi Post Partum', 'catatanobservasipostpartum');
             $this->addBreadcrumb('Tambah', 'tambah');
-
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/observasipostpartum/tambah_catatanobservasipostpartum', [
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -302,12 +299,11 @@ class CatatanObservasiPostpartum extends ControllerTemplate
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Post Partum', 'catatanobservasipostpartum');
         $this->addBreadcrumb('Edit', 'edit');
-        $breadcrumbs = $this->breadcrumbs;
-    // dd($catatan);
+        // dd($catatan);
         return view('/admin/observasipostpartum/edit_catatanobservasipostpartum', [
             'catatan' => $catatan,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'nama_pasien' => $nama_pasien,
             'tgl_lahir' => $tgl_lahir,
             'nama_petugas' => $nama_petugas,
@@ -566,14 +562,13 @@ class CatatanObservasiPostpartum extends ControllerTemplate
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Post Partum', 'catatanobservasipostpartum');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 
         return view('/admin/observasipostpartum/catatanobservasipostpartum_data', [
             'catatan_data' => $list,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $meta_data
         ]);
     }

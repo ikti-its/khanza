@@ -93,12 +93,11 @@ protected array $breadcrumbs = [];
         // Breadcrumbs
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Resep Pulang', 'reseppulang');
-        $breadcrumbs = $this->breadcrumbs;
     
         return view('/admin/reseppulang/reseppulang_data', [
             'reseppulang_data' => $reseppulang_data,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $resep_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
         ]);
     }

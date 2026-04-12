@@ -74,9 +74,7 @@ class Pengajuan extends ControllerTemplate
 
                 $this->addBreadcrumb('Pengadaan', 'pengadaanmedis');
                 $this->addBreadcrumb('Dashboard', 'dashboardpengadaan');
-
-                $breadcrumbs = $this->breadcrumbs;
-
+                
                 return view("/admin/pengadaan/medis/dashboardPengadaan", [
                     'pengajuan_data' => $pengajuan_data['data']['pengajuan_barang_medis'],
                     'pengajuan_tanpa_params_data' => $pengajuan_tanpa_params_data['data'], // tambahkan data pengajuan tanpa params
@@ -84,7 +82,7 @@ class Pengajuan extends ControllerTemplate
                     'penerimaan_data' => $penerimaan_data['data'],
                     'meta_data' => $pengajuan_data['data'],
                     'title' => $title,
-                    'breadcrumbs' => $breadcrumbs
+                    'breadcrumbs' => $this->breadcrumbs
                 ]);
             } else {
                 return $this->renderErrorView(500);
@@ -209,7 +207,6 @@ class Pengajuan extends ControllerTemplate
                 $this->addBreadcrumb('Barang Medis', 'medis');
                 $this->addBreadcrumb('Pengajuan', 'data');
 
-                $breadcrumbs = $this->breadcrumbs;
                 session()->set('status_pesanan', $pengajuan_tanpa_params_medis_data['data']);
                 return view('/admin/pengadaan/medis/pengajuan/data_pengajuan', [
                     'pengajuan_medis_data' => $pengajuan_medis_data['data']['pengajuan_barang_medis'],
@@ -223,7 +220,7 @@ class Pengajuan extends ControllerTemplate
                     'api_url' => $api_url,
                     'token' => $token,
                     'title' => $title,
-                    'breadcrumbs' => $breadcrumbs
+                    'breadcrumbs' => $this->breadcrumbs
                 ]);
             } else {
               
@@ -308,16 +305,14 @@ class Pengajuan extends ControllerTemplate
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Pengajuan', 'data');
             $this->addBreadcrumb('Tambah', '');
-
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/pengadaan/medis/pengajuan/tambah_pengajuan', [
                 'pengajuan_data' => $pengajuan_data['data'],
                 'pegawai_data' => $pegawai_data['data'],
                 'barang_medis' => $medis_data['data'],
                 'satuan_data' => $satuan_data['data'],
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -528,9 +523,7 @@ class Pengajuan extends ControllerTemplate
                 $this->addBreadcrumb('Barang Medis', 'medis');
                 $this->addBreadcrumb('Pengajuan', 'pengajuanmedis');
                 $this->addBreadcrumb('Ubah', 'editpengajuanmedis');
-
-                $breadcrumbs = $this->breadcrumbs;
-
+                
 
                 return view('/admin/pengadaan/medis/pengajuan/edit_pengajuan', [
                     'pengajuan_data' => $pengajuan_data['data'],
@@ -540,7 +533,7 @@ class Pengajuan extends ControllerTemplate
                     'satuan_data' => $satuan_data['data'],
                     'pengajuanId' => $pengajuanId,
                     'title' => 'Edit Pengajuan Medis',
-                    'breadcrumbs' => $breadcrumbs
+                    'breadcrumbs' => $this->breadcrumbs
                 ]);
             } else {
                 return $this->renderErrorView(500);

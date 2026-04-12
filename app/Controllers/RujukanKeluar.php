@@ -86,14 +86,13 @@ protected array $breadcrumbs = [];
 
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Rujukan Keluar', 'rujukankeluar');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             $meta_data = $rujukan_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1];
 
             return view('/admin/rujukan/rujukan_keluar_data', [
                 'rujukankeluar_data' => $rujukan_data['data'],
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $meta_data,
                 'ambulans_list' => $ambulans_data,
             ]);
@@ -112,11 +111,10 @@ protected array $breadcrumbs = [];
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Rujukan Keluar', 'rujukankeluar');
         $this->addBreadcrumb('Tambah', 'tambah');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         return view('/admin/rujukan/tambah_rujukan_keluar', [
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -200,12 +198,11 @@ protected array $breadcrumbs = [];
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Rujukan Keluar', 'rujukankeluar');
         $this->addBreadcrumb('Edit', 'edit');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         return view('/admin/rujukan/edit_rujukan_keluar', [
             'rujukan' => $rujukan_data['data'],
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 

@@ -130,14 +130,13 @@ protected array $breadcrumbs = [];
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Rawat Inap', 'catatanobservasiranap');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 // dd($list);
         return view('/admin/observasiranap/catatanobservasiranap_data', [
             'catatan_data' => $list,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $meta_data
         ]);
     }
@@ -150,12 +149,10 @@ protected array $breadcrumbs = [];
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Observasi Rawat Inap', 'catatanobservasiranap');
             $this->addBreadcrumb('Tambah', 'tambah');
-
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/observasiranap/tambah_catatanobservasiranap', [
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -328,12 +325,11 @@ protected array $breadcrumbs = [];
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Rawat Inap', 'catatanobservasiranap');
         $this->addBreadcrumb('Edit', 'edit');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         return view('/admin/observasiranap/edit_catatanobservasiranap', [
             'catatan'       => $catatan,
             'title'         => $title,
-            'breadcrumbs'   => $breadcrumbs,
+            'breadcrumbs'   => $this->breadcrumbs,
             'nama_pasien'   => $nama_pasien,
             'tgl_lahir'     => $tgl_lahir,
             'nama_petugas'  => $nama_petugas,
@@ -585,12 +581,11 @@ protected array $breadcrumbs = [];
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Rawat Inap', 'catatanobservasiranap');
         $this->addBreadcrumb('Lihat', '');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         return view('/admin/observasiranap/catatanobservasiranap_data', [
             'catatan_data' => $list,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => ['page' => 1, 'size' => count($list), 'total' => count($list)]
         ]);
     }

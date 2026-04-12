@@ -60,15 +60,13 @@ class StokOpname extends ControllerTemplate
                $this->addBreadcrumb('Inventaris', 'inventarismedis');
                $this->addBreadcrumb('Barang Medis', 'medis');
                $this->addBreadcrumb('Sisa stok', 'sisatok');
-
-               $breadcrumbs = $this->breadcrumbs;
-
+               
                return view('/admin/inventaris/medis/sisa_stok', [
                     'medis_data' => $medis_data['data'],
                     'gudang_data' => $gudang_data['data'],
                     'ruangan_data' => $ruangan_data['data'],
                     'title' => $title,
-                    'breadcrumbs' => $breadcrumbs
+                    'breadcrumbs' => $this->breadcrumbs
                ]);
           } else {
                return $this->renderErrorView(401);
@@ -150,9 +148,7 @@ class StokOpname extends ControllerTemplate
                $this->addBreadcrumb('Inventaris', 'inventarismedis');
                $this->addBreadcrumb('Barang Medis', 'medis');
                $this->addBreadcrumb('Stok Opname', 'stokopname');
-
-               $breadcrumbs = $this->breadcrumbs;
-
+               
                $opname_data = json_decode($response_opname, true);
                $ruangan_data = json_decode($response_ruangan, true);
                $satuan_data = json_decode($response_satuan, true);
@@ -165,7 +161,7 @@ class StokOpname extends ControllerTemplate
                     'ruangan_data' => $ruangan_data['data'],
                     'satuan_data' => $satuan_data['data'],
                     'title' => $title,
-                    'breadcrumbs' => $breadcrumbs
+                    'breadcrumbs' => $this->breadcrumbs
                ]);
           } else {
                return $this->renderErrorView(401);
@@ -236,7 +232,6 @@ class StokOpname extends ControllerTemplate
                $this->addBreadcrumb('Stok Opname', 'stokopname');
                $this->addBreadcrumb('Tambah', 'tambah');
 
-               $breadcrumbs = $this->breadcrumbs;
                $ruangan_data = json_decode($response_ruangan, true);
                $satuan_data = json_decode($response_satuan, true);
                $gudang_data = json_decode($response_gudang, true);
@@ -247,7 +242,7 @@ class StokOpname extends ControllerTemplate
                     'ruangan_data' => $ruangan_data['data'],
                     'satuan_data' => $satuan_data['data'],
                     'title' => $title,
-                    'breadcrumbs' => $breadcrumbs
+                    'breadcrumbs' => $this->breadcrumbs
                ]);
           } else {
                return $this->renderErrorView(401);

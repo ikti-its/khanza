@@ -149,14 +149,13 @@ class PemeriksaanRanap extends ControllerTemplate
         // Breadcrumbs & pagination
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Pemeriksaan Ranap', 'pemeriksaanranap');
-        $breadcrumbs = $this->breadcrumbs;
-    // dd($pemeriksaan_list);
+        // dd($pemeriksaan_list);
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($pemeriksaan_list)];
         // dd($pemeriksaan_list);
         return view('/admin/pemeriksaanranap/pemeriksaanranap_data', [
             'pemeriksaanranap_data' => $pemeriksaan_list,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $meta_data
         ]);
     }
@@ -237,12 +236,11 @@ class PemeriksaanRanap extends ControllerTemplate
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Pemeriksaan Ranap', 'pemeriksaanranap');
         $this->addBreadcrumb('Detail Pasien', '');
-        $breadcrumbs = $this->breadcrumbs;
-    // dd($filtered);
+        // dd($filtered);
         return view('/admin/pemeriksaanranap/pemeriksaanranap_data', [
             'pemeriksaanranap_data' => $filtered,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => ['page' => 1, 'size' => count($filtered), 'total' => count($filtered)]
         ]);
     }
@@ -260,8 +258,7 @@ class PemeriksaanRanap extends ControllerTemplate
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Pemeriksaan Ranap', 'pemeriksaanranap');
         $this->addBreadcrumb('Tambah', 'tambah');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         // === Fetch NIP from Pegawai ===
         $pegawaiNips = [];
         $pegawaiUrl = $this->api_url . '/pegawai';
@@ -309,7 +306,7 @@ $dokterNips[] = $dokter['kd_dokter'];
 
         return view('/admin/pemeriksaanranap/tambah_pemeriksaanranap', [
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'nip_list' => $nip_list
         ]);
     }
@@ -488,13 +485,12 @@ $dokterNips[] = $dokter['kd_dokter'];
         $this->addBreadcrumb('Pemeriksaan Ranap', 'pemeriksaanranap');
         $this->addBreadcrumb('Edit', 'edit');
 
-        $breadcrumbs = $this->breadcrumbs;
-    // dd($pemeriksaan);
+        // dd($pemeriksaan);
         // 🔹 Return view with normalized values
         return view('/admin/pemeriksaanranap/edit_pemeriksaanranap', [
             'pemeriksaan' => $pemeriksaan,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'nama_pasien' => $nama_pasien,
             'tgl_lahir' => $tgl_lahir,
             'nama_petugas' => $nama_petugas,

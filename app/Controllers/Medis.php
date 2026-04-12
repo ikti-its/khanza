@@ -103,8 +103,6 @@ class Medis extends ControllerTemplate
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Data', 'data');
 
-            $breadcrumbs = $this->breadcrumbs;
-
             return view('/admin/inventaris/medis/data_medis', [
                 'medis_data' => $medis_data['data'],
                 'satuan_data' => $satuan_data['data'],
@@ -113,7 +111,7 @@ class Medis extends ControllerTemplate
                 'kategori_data' => $kategori_data['data'],
                 'golongan_data' => $golongan_data['data'],
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -201,9 +199,7 @@ class Medis extends ControllerTemplate
             $this->addBreadcrumb('Inventaris', 'inventarismedis');
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Tambah', 'tambah');
-
-            $breadcrumbs = $this->breadcrumbs;
-
+           
             return view('/admin/inventaris/medis/tambah_medis', [
                 'satuan_data' => $satuan_data['data'],
                 'industri_data' => $industri_data['data'],
@@ -211,7 +207,7 @@ class Medis extends ControllerTemplate
                 'kategori_data' => $kategori_data['data'],
                 'golongan_data' => $golongan_data['data'],
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -445,9 +441,7 @@ class Medis extends ControllerTemplate
             $this->addBreadcrumb('Inventaris', 'inventarismedis');
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Tambah', 'tambah');
-
-            $breadcrumbs = $this->breadcrumbs;
-
+           
             return view('/admin/inventaris/medis/edit_medis', [
                 'medis_data' => $medis_data['data'],
                 'satuan_data' => $satuan_data['data'],
@@ -456,7 +450,7 @@ class Medis extends ControllerTemplate
                 'kategori_data' => $kategori_data['data'],
                 'golongan_data' => $golongan_data['data'],
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);

@@ -386,10 +386,8 @@ class userPegawaiController extends ControllerTemplate
                     $this->addBreadcrumb('Kehadiran', 'kehadiran');
                     $this->addBreadcrumb('Peninjauan', 'peninjauan');
                     $this->addBreadcrumb('Catatan Kehadiran', '');
-
-                    $breadcrumbs = $this->breadcrumbs;
-
-                    return  view('/user/tampilCatatanKehadiran', ['kehadiran_data' => $kehadiran_data['data'], 'title' => $title, 'breadcrumbs' => $breadcrumbs]);
+                    
+                    return  view('/user/tampilCatatanKehadiran', ['kehadiran_data' => $kehadiran_data['data'], 'title' => $title, 'breadcrumbs' => $this->breadcrumbs]);
                 } else {
                     // Error fetching kehadiran data
                     return $this->renderErrorView($http_status_code_kehadiran);
@@ -449,10 +447,8 @@ class userPegawaiController extends ControllerTemplate
                     $this->addBreadcrumb('Kehadiran', 'kehadiran');
                     $this->addBreadcrumb('Peninjauan',  'peninjauan');
                     $this->addBreadcrumb('Daftar Pengajuan Cuti', '');
-
-                    $breadcrumbs = $this->breadcrumbs;
-
-                    return  view('/user/tampilCatatanCuti', ['cuti_data' => $cuti_data['data'], 'title' => $title, 'breadcrumbs' => $breadcrumbs]);
+                    
+                    return  view('/user/tampilCatatanCuti', ['cuti_data' => $cuti_data['data'], 'title' => $title, 'breadcrumbs' => $this->breadcrumbs]);
                 } else {
                     // Error fetching cuti data
                     return $this->renderErrorView($http_status_code_cuti);
@@ -513,10 +509,8 @@ class userPegawaiController extends ControllerTemplate
                     $this->addBreadcrumb('Kehadiran', 'kehadiran');
                     $this->addBreadcrumb('Peninjauan', 'peninjauan');
                     $this->addBreadcrumb('Jadwal Kerja', '');
-
-                    $breadcrumbs = $this->breadcrumbs;
-
-                    return  view('/user/tampilJadwalPegawai', ['kehadiran_data' => $jadwal_data['data'], 'title' => $title, 'breadcrumbs' => $breadcrumbs]);
+                    
+                    return  view('/user/tampilJadwalPegawai', ['kehadiran_data' => $jadwal_data['data'], 'title' => $title, 'breadcrumbs' => $this->breadcrumbs]);
                 } else {
                     // Error fetching jadwal data
                     return $this->renderErrorView($http_status_code_jadwal);
@@ -614,13 +608,12 @@ class userPegawaiController extends ControllerTemplate
                             $this->addBreadcrumb('Peninjauan', 'peninjauan');
                             $this->addBreadcrumb('Jadwal Kerja', '');
 
-                            $breadcrumbs = $this->breadcrumbs;
                             // Return view with combined data
                             return view('/user/tampilJadwalPegawaiPenuh', [
                                 'kehadiran_data' => $kehadiran_data,
                                 'meta_data' => $jadwal_data['data'],
                                 'title' => $title,
-                                'breadcrumbs' => $breadcrumbs,
+                                'breadcrumbs' => $this->breadcrumbs,
                             ]);
                         } else {
                             // Error fetching pegawai data
@@ -664,8 +657,7 @@ class userPegawaiController extends ControllerTemplate
             $this->addBreadcrumb('Pengajuan', 'peninjauan');
             $this->addBreadcrumb('Izin Cuti', '');
 
-            $breadcrumbs = $this->breadcrumbs;
-            return view('/user/izinCuti', ['title' => $title, 'breadcrumbs' => $breadcrumbs]);
+            return view('/user/izinCuti', ['title' => $title, 'breadcrumbs' => $this->breadcrumbs]);
         } else {
             // Redirect to login page or show an appropriate message
             return redirect()->to('/login')->with('error', 'User not logged in. Please log in first.');
@@ -753,10 +745,8 @@ class userPegawaiController extends ControllerTemplate
             $this->addBreadcrumb('Kehadiran', 'kehadiran');
             $this->addBreadcrumb('Presensi', 'presensi');
             $this->addBreadcrumb('Masuk', '');
-
-            $breadcrumbs = $this->breadcrumbs;
         }
-        return view('/user/opsiHadir', ['title' => $title, 'breadcrumbs' => $breadcrumbs]);
+        return view('/user/opsiHadir', ['title' => $title, 'breadcrumbs' => $this->breadcrumbs]);
     }
 
 
@@ -989,9 +979,7 @@ public function tambahPresensi()
                         $this->addBreadcrumb('Kehadiran', 'kehadiran');
                         $this->addBreadcrumb('Presensi', 'presensi');
                         $this->addBreadcrumb('Masuk', '');
-
-                        $breadcrumbs = $this->breadcrumbs;
-
+                        
                         // Render the view with fetched data
                         return view('/user/tambahPresensi', [
                             'api_url' => $api_url,
@@ -1000,7 +988,7 @@ public function tambahPresensi()
                             'jwtToken' => $jwtToken,
                             'title' => $title,
                             'foto_data' => $foto_data['data']['foto'],
-                            'breadcrumbs' => $breadcrumbs,
+                            'breadcrumbs' => $this->breadcrumbs,
                             'kehadiran_data' => $jadwal_today
                         ]);
                     } else {
@@ -1028,11 +1016,6 @@ public function tambahPresensi()
 }
 
 
-
-
-
-
-
     public function tambahSwafoto()
 {
     $title = 'Detail berkas';
@@ -1040,9 +1023,7 @@ public function tambahPresensi()
         $this->addBreadcrumb('Kehadiran', 'kehadiran');
         $this->addBreadcrumb('Presensi', 'presensi');
         $this->addBreadcrumb('Masuk', '');
-
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         // Get the employee ID and JWT token from the session
         $pegawaiId = session()->get('user_specific_data')['pegawai'];
         $jwtToken = session()->get('jwt_token');
@@ -1088,7 +1069,7 @@ public function tambahPresensi()
         // Pass the photo data to the view
         return view('/user/tambahSwafoto', [
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'pegawaiId' => $pegawaiId,
             'namaPegawai' => $namaPegawai,
             'foto_data' => $foto_data['data']['foto']
@@ -1346,13 +1327,11 @@ public function tambahPresensi()
                         $this->addBreadcrumb('Kehadiran', 'kehadiran');
                         $this->addBreadcrumb('Presensi', 'presensi');
                         $this->addBreadcrumb('Pulang', '');
-
-                        $breadcrumbs = $this->breadcrumbs;
-
+                        
                         return view('/user/tampilAbsenPulang', [
                             'kehadiran_data' => $jadwal_today,
                             'title' => $title,
-                            'breadcrumbs' => $breadcrumbs
+                            'breadcrumbs' => $this->breadcrumbs
                         ]);
                     } else {
                         // No schedule found for today

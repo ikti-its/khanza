@@ -88,7 +88,6 @@ class Penerimaan extends ControllerTemplate
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Penerimaan', 'penerimaanmedis');
 
-                    $breadcrumbs = $this->breadcrumbs;
                     return view('/admin/pengadaan/medis/penerimaan/data_penerimaan', [
                         'penerimaan_data' => $penerimaan_data['data'],
                         'detail_data' => $detail_data['data'],
@@ -98,7 +97,7 @@ class Penerimaan extends ControllerTemplate
                         'supplier_data' => $supplier_data['data'],
                         'ruangan_data' => $ruangan_data['data'],
                         'title' => $title,
-                        'breadcrumbs' => $breadcrumbs
+                        'breadcrumbs' => $this->breadcrumbs
                     ]);
                 } else {
 
@@ -233,7 +232,6 @@ class Penerimaan extends ControllerTemplate
             $this->addBreadcrumb('Penerimaan', 'penerimaanmedis');
             $this->addBreadcrumb('Tambah', 'tambahpenerimaanmedis');
 
-            $breadcrumbs = $this->breadcrumbs;
             // Tampilkan view dengan data yang sudah diambil
             echo view('/admin/pengadaan/medis/penerimaan/penerimaan', [
                 'pegawai_data' => $pegawai_data['data'],
@@ -246,7 +244,7 @@ class Penerimaan extends ControllerTemplate
                 'api_url' => $api_url,
                 'token' => $token,
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return "User not logged in. Please log in first.";

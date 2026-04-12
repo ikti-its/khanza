@@ -72,7 +72,6 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
             // Set up breadcrumbs (for UI navigation)
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Kamar', 'kamar');  // Adjusted breadcrumb title to Kamar
-            $breadcrumbs = $this->breadcrumbs;
             
             // Ensure we have valid meta data
             if (!isset($kamar_data['meta_data'])) {
@@ -86,7 +85,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
             return view('/admin/kamar/kamar_data', [  // Adjusted the view path to kamar_data
                 'kamar_data' => $kamar_data['data'],
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $meta_data ?? ['page' => 1, 'size' => 10] // Ensure meta_data is always set
                 
             ]);
@@ -105,12 +104,10 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Kamar', 'kamar');
             $this->addBreadcrumb('Tambah', 'tambah');
-
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/kamar/tambah_kamar', [
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -205,13 +202,12 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Kamar', 'kamar');
         $this->addBreadcrumb('Edit', 'edit');
-        $breadcrumbs = $this->breadcrumbs;
-            // dd($kamar_data);
+        // dd($kamar_data);
         // Return the edit view with kamar data
         return view('/admin/kamar/edit_kamar', [
             'kamar' => $kamar_data['data'],
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 
@@ -351,13 +347,12 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Kamar', 'kamar');
         $this->addBreadcrumb('Terima', 'terima');
-        $breadcrumbs = $this->breadcrumbs;
-            // dd($kamar_data);
+        // dd($kamar_data);
         // Return the edit view with kamar data
         return view('/admin/kamar/terima_kamar', [
             'kamar' => $kamar_data['data'],
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 

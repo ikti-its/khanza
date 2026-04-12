@@ -165,12 +165,11 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
     // Breadcrumbs
     $this->addBreadcrumb('User', 'user');
     $this->addBreadcrumb('Rawat Inap', 'rawatinap');
-    $breadcrumbs = $this->breadcrumbs;
-
+    
     return view('/admin/rawatinap/rawatinap_data', [
         'rawatinap_data' => $rawatinapList,
         'title'          => $title,
-        'breadcrumbs'    => $breadcrumbs,
+        'breadcrumbs'    => $this->breadcrumbs,
         'meta_data'      => $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
     ]);
 }
@@ -234,12 +233,10 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Rawat Inap', 'rawatinap');
         $this->addBreadcrumb('Tambah', 'tambah');
-
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         return view('/admin/rawatinap/tambah_rawatinap', [
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -277,7 +274,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
     
         return view('admin/rawatinap/tambah_rawatinapbaru', [
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'registrasi' => $registrasi,
             'tanggal_masuk' => date('Y-m-d'),
             'jam_masuk' => date('H:i:s'),

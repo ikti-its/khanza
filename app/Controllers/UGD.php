@@ -79,13 +79,12 @@ protected array $breadcrumbs = [];
     
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('UGD', 'ugd');
-        $breadcrumbs = $this->breadcrumbs;
         $meta_data = $ugd_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1];
     
         return view('/admin/ugd/ugd_data', [
             'ugd_data' => $ugd_data['data'],
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $meta_data,
         ]);
     }

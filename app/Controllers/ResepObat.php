@@ -104,12 +104,11 @@ protected array $breadcrumbs = [];
     // Breadcrumbs
     $this->addBreadcrumb('User', 'user');
     $this->addBreadcrumb('Resep Obat', 'ResepObat');
-    $breadcrumbs = $this->breadcrumbs;
-
+    
     return view('/admin/resepobat/resepobat_data', [
         'resepobat_data' => $resep_list,
         'title'          => $title,
-        'breadcrumbs'    => $breadcrumbs,
+        'breadcrumbs'    => $this->breadcrumbs,
         'meta_data'      => $resep_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
     ]);
 }
@@ -534,12 +533,11 @@ protected array $breadcrumbs = [];
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Resep Obat', 'resepobat');
-        $breadcrumbs = $this->breadcrumbs;
-    // dd($data);
+        // dd($data);
         return view('/admin/resepobat/resepobat_data', [
             'resepobat_data' => $data,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $resep_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
         ]);
     }

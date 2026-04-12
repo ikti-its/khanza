@@ -84,8 +84,7 @@ class StokKeluar extends ControllerTemplate
                     $this->addBreadcrumb('Inventaris', 'inventarismedis');
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Stok Keluar', 'stokkeluarmedis');
-                    $breadcrumbs = $this->breadcrumbs;
-
+                    
                     return view('/admin/inventaris/medis/stok_keluar/data_stok_keluar', [
                         'stok_keluar_medis_data' => $stok_keluar_medis_data['data'],
                         'transaksi_keluar_data' => $transaksi_keluar_data['data'],
@@ -94,7 +93,7 @@ class StokKeluar extends ControllerTemplate
                         'ruangan_data' => $ruangan_data['data'],
                         'pegawai_data' => $pegawai_data['data'],
                         'title' => $title,
-                        'breadcrumbs' => $breadcrumbs
+                        'breadcrumbs' => $this->breadcrumbs
                     ]);
                 } else {
                     return "Error fetching data. HTTP Status Codes: Stok Keluar ($http_status_code_stok_keluar), Transaksi Keluar ($http_status_code_transaksi_keluar), Medis ($http_status_code_medis), Satuan ($http_status_code_satuan), Pegawai ($http_status_code_pegawai)";
@@ -169,7 +168,6 @@ class StokKeluar extends ControllerTemplate
                 $this->addBreadcrumb('Stok Keluar', 'stokkeluarmedis');
                 $this->addBreadcrumb('Tambah', 'tambahstokkeluarmedis');
 
-                $breadcrumbs = $this->breadcrumbs;
                 return view('/admin/inventaris/medis/stok_keluar/tambah_stok_keluar', [
                     'medis_data' => $medis_data['data'],
                     'ruangan_data' => $ruangan_data['data'],
@@ -178,7 +176,7 @@ class StokKeluar extends ControllerTemplate
                     'pegawai_data' => $pegawai_data['data'],
                     'token' => $token,
                     'title' => $title,
-                    'breadcrumbs' => $breadcrumbs
+                    'breadcrumbs' => $this->breadcrumbs
                 ]);
             } else {
                 return "Error fetching data. Response medis: $response_medis, Response pegawai: $response_pegawai";
@@ -392,7 +390,6 @@ class StokKeluar extends ControllerTemplate
                 $this->addBreadcrumb('Stok Keluar', 'stokkeluarmedis');
                 $this->addBreadcrumb('Tambah', 'tambahstokkeluarmedis');
 
-                $breadcrumbs = $this->breadcrumbs;
                 return view('/admin/inventaris/medis/stok_keluar/edit_stok_keluar', [
                     'medis_data' => $medis_data['data'],
                     'ruangan_data' => $ruangan_data['data'],
@@ -401,7 +398,7 @@ class StokKeluar extends ControllerTemplate
                     'pegawai_data' => $pegawai_data['data'],
                     'token' => $token,
                     'title' => $title,
-                    'breadcrumbs' => $breadcrumbs
+                    'breadcrumbs' => $this->breadcrumbs
                 ]);
             } else {
                 return "Error fetching data. Response medis: $response_medis, Response pegawai: $response_pegawai";

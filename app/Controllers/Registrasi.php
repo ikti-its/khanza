@@ -91,8 +91,7 @@ class Registrasi extends ControllerTemplate
             // Set up breadcrumbs (for UI navigation)
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Registrasi', 'registrasi');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             // Ensure we have valid meta data
             if (!isset($registrasi_data['meta_data'])) {
                 $meta_data = ['page' => 1, 'size' => 10, 'total' => 1]; // Provide default values
@@ -106,7 +105,7 @@ class Registrasi extends ControllerTemplate
                 'registrasi_data' => $registrasi_data['data'],
                 // dd($registrasi_data),
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'medis_data' => $medis_data ?? [], // Ensure medis_data is always set
                 'medis_tanpa_params_data' => $medis_tanpa_params_data ?? [], // Ensure it's always set
                 'meta_data' => $meta_data ?? ['page' => 1, 'size' => 10] // Ensure meta_data is always set
@@ -127,12 +126,10 @@ class Registrasi extends ControllerTemplate
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Registrasi', 'registrasi');
             $this->addBreadcrumb('Tambah', 'tambah');
-
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/registrasi/tambah_registrasi', [
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -287,12 +284,11 @@ class Registrasi extends ControllerTemplate
         $this->addBreadcrumb('Registrasi', 'registrasi');
         $this->addBreadcrumb('Edit', 'edit');
 
-        $breadcrumbs = $this->breadcrumbs;
         // dd($registrasi_data);
         return view('/admin/registrasi/edit_registrasi', [
             'registrasi' => $registrasi_data['data'],
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             // Add other dropdown data if needed
         ]);
     }

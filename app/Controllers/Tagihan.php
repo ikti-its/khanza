@@ -115,7 +115,6 @@ class Tagihan extends ControllerTemplate
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Tagihan', 'tagihanmedis');
 
-                    $breadcrumbs = $this->breadcrumbs;
                     return view('/admin/pengadaan/medis/tagihan/data_tagihan', [
                         'tagihan_medis_data' => $tagihan_data['data']['tagihan_barang_medis'],
                         'pengajuan_data' => $pengajuan_data['data'], // Assuming pengajuan data is stored in 'data' key
@@ -127,7 +126,7 @@ class Tagihan extends ControllerTemplate
                         'medis_data' => $medis_data['data'], // Assuming medis data is stored in 'data' key
                         'meta_data' => $tagihan_data['data'],
                         'title' => $title,
-                        'breadcrumbs' => $breadcrumbs
+                        'breadcrumbs' => $this->breadcrumbs
                     ]);
                 } else {
                     return "Error: Response tagihan data: $response_tagihan, Response pengajuan data: $response_pengajuan, Response penerimaan data: $response_penerimaan, Response pemesanan data: $response_pemesanan, Response pegawai data: $response_pegawai, Response pesanan data: $response_pesanan, Response satuan data: $response_satuan, Response medis data: $response_medis";
@@ -339,7 +338,6 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
                     $this->addBreadcrumb('Tagihan', 'tagihanmedis');
                     $this->addBreadcrumb('Tambah', 'tambahtagihanmedis');
 
-                    $breadcrumbs = $this->breadcrumbs;
                     // Pass all data to the view
                     return view('/admin/pengadaan/medis/tagihan/tagihan', [
                         'pengajuan_data' => $pengajuan_data['data'],
@@ -351,7 +349,7 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
                         'pesanan_data' => $pesanan_data['data'], // tambahkan pesanan_data ke dalam view
                         'token' => $token,
                         'title' => $title,
-                        'breadcrumbs' => $breadcrumbs
+                        'breadcrumbs' => $this->breadcrumbs
                     ]);
                 } else {
                     // Error: Failed to fetch data
@@ -606,7 +604,6 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
                     $this->addBreadcrumb('Tagihan', 'tagihanmedis');
                     $this->addBreadcrumb('Ubah', 'edittagihanmedis');
 
-                    $breadcrumbs = $this->breadcrumbs;
                     return view('/admin/pengadaan/medis/tagihan/edit_tagihan', [
                         'tagihan_data' => $tagihan_data['data'],
                         'pesanan_data' => $pesanan_data['data'],
@@ -619,7 +616,7 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
                         'tagihanId' => $tagihanId,
                         'token' => $token,
                         'title' => 'Edit tagihan Medis',
-                        'breadcrumbs' => $breadcrumbs
+                        'breadcrumbs' => $this->breadcrumbs
                     ]);
                 } else {
                     // Error handling if any of the requests fail

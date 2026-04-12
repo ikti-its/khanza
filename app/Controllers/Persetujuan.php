@@ -160,7 +160,6 @@ class Persetujuan extends ControllerTemplate
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Persetujuan', 'persetujuanpengadaan');
 
-                    $breadcrumbs = $this->breadcrumbs;
                     return view('/admin/pengadaan/persetujuan', [
                         'pengajuan_medis_data' => $pengajuan_medis_data['data']['pengajuan_barang_medis'],
                         'pesanan_data' => $pesanan_data['data'],
@@ -173,7 +172,7 @@ class Persetujuan extends ControllerTemplate
                         'api_url' => $api_url,
                         'token' => $token,
                         'title' => $title,
-                        'breadcrumbs' => $breadcrumbs
+                        'breadcrumbs' => $this->breadcrumbs
                     ]);
                 } else {
                     // Error handling for unsuccessful HTTP status codes

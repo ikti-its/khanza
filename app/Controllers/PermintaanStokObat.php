@@ -75,13 +75,12 @@ class PermintaanStokObat extends ControllerTemplate
             
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Permintaan Stok Obat', 'permintaanstokobat');
-            $breadcrumbs = $this->breadcrumbs;
-// dd($stok_obat);
+            // dd($stok_obat);
             return view('/admin/stokobatpasien/permintaanstokobat_data', [
                 'permintaanstokobat_data' => $permintaan_data['data'],
                 'title' => $title,
                 'rawatinap' => $rawatinap,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'permintaanstokobat' => $permintaan,
                 'permintaanstokobat_data' => $permintaan_list,
                 'stok_obat' => $stok_obat,
@@ -434,12 +433,11 @@ $postData[$key] = null;
 
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Permintaan Stok Obat', 'permintaanstokobat');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/stokobatpasien/permintaanstokobat_data', [
                 'permintaanstokobat_data' => $data,
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $permintaan_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
             ]);
 

@@ -63,14 +63,13 @@ class PemberianObat extends ControllerTemplate
             // ✅ Breadcrumbs
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Pemberian Obat', 'pemberianobat');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             // dd($obat_data);
     
             return view('/admin/pemberianobat/pemberianobat_data', [
                 'pemberianobat_data' => $obat_data['data'],
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $obat_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
             ]);
         } else {
@@ -413,14 +412,13 @@ $selectedObat = $item;
 
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Pemberian Obat', 'pemberianobat');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             // dd($response);
 
             return view('/admin/pemberianObat/pemberianobat_data', [
                 'pemberianobat_data' => $data,
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $obat_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
             ]);
         } else {

@@ -61,12 +61,11 @@ protected array $breadcrumbs = [];
             // ✅ Breadcrumbs
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Resep Dokter', 'resepdokter');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/resepdokter/resepdokter_data', [
                 'resepdokter_data' => $resep_data['data'],
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $resep_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
             ]);
         } else {
@@ -425,8 +424,7 @@ $barang_lookup[$item['kode_obat']] = $item['nama_obat'];
         // ✅ Breadcrumbs
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Resep Dokter', 'resepdokter');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         return view('/admin/resepdokter/resepdokter_data', [
             'racikan_list'     => $racikan_list,
             'resepdokter_data' => $data,
@@ -435,7 +433,7 @@ $barang_lookup[$item['kode_obat']] = $item['nama_obat'];
             'resepobat_header' => $resepobat_header,
             'dokter_nama'      => $dokter_nama,
             'title'            => $title,
-            'breadcrumbs'      => $breadcrumbs,
+            'breadcrumbs'      => $this->breadcrumbs,
             'meta_data'        => $resep_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
         ]);
     }

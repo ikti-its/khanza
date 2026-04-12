@@ -126,14 +126,13 @@ class CatatanObservasiKebidanan extends ControllerTemplate
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Kebidanan', 'catatanobservasikebidanan');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 
         return view('/admin/observasikebidanan/catatanobservasikebidanan_data', [
             'catatan_data' => $list,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $meta_data
         ]);
     }
@@ -147,11 +146,10 @@ class CatatanObservasiKebidanan extends ControllerTemplate
             $this->addBreadcrumb('Observasi Kebidanan', 'catatanobservasikebidanan');
             $this->addBreadcrumb('Tambah', 'tambah');
 
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/observasikebidanan/tambah_catatanobservasiranapkebidanan', [
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -299,12 +297,11 @@ class CatatanObservasiKebidanan extends ControllerTemplate
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Kebidanan', 'catatanobservasikebidanan');
         $this->addBreadcrumb('Edit', 'edit');
-        $breadcrumbs = $this->breadcrumbs;
-    // dd($catatan);
+            // dd($catatan);
         return view('/admin/observasikebidanan/edit_catatanobservasikebidanan', [
             'catatan' => $catatan,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'nama_pasien' => $nama_pasien,
             'tgl_lahir' => $tgl_lahir,
             'nama_petugas' => $nama_petugas,
@@ -561,14 +558,13 @@ class CatatanObservasiKebidanan extends ControllerTemplate
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Kebidanan', 'catatanobservasikebidanan');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 
         return view('/admin/observasikebidanan/catatanobservasikebidanan_data', [
             'catatan_data' => $list,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $meta_data
         ]);
     }

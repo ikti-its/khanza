@@ -76,13 +76,12 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
     
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Tindakan', 'tindakan');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/tindakan/tindakan_data', [
                 'tindakan_data' => $tindakan_data['data'],
                 'jenis_tindakan' => $jenis_tindakan,
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $tindakan_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
             ]);
         } else {
@@ -429,14 +428,13 @@ $selectedTindakan = $t;
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Tindakan', 'tindakan');
-        $breadcrumbs = $this->breadcrumbs;
-    // dd($kelas);
+        // dd($kelas);
         return view('/admin/tindakan/tindakan_data', [
             'tindakan_data' => $data,
             'jenis_tindakan' => $jenis_tindakan,
             'kelas' => $kelas,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $tindakan_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 0],
         ]);
     }

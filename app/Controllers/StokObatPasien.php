@@ -311,12 +311,11 @@ $item['nama_brng'] = '';
 
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Stok Obat Pasien', 'stokobatpasien');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/stokobatpasien/stokobatpasien_data', [
                 'stokobatpasien_data' => $data,
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $stok_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
             ]);
 

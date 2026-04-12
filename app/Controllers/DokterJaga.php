@@ -70,14 +70,13 @@ protected array $breadcrumbs = [];
 
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Dokter Jaga', 'dokterjaga');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             $meta_data = $dokterjaga_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1];
 
             return view('/admin/dokterjaga/dokterjaga_data', [
                 'dokterjaga_data' => $dokterjaga_data['data'],
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $meta_data
             ]);
         } else {
@@ -300,12 +299,11 @@ protected array $breadcrumbs = [];
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Dokter Jaga', 'dokterjaga');
         $this->addBreadcrumb('Detail', 'detail');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         return view('/admin/dokterjaga/detail_dokterjaga', [
             'dokterjaga' => $dokter_data['data'],
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 

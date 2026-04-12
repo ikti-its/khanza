@@ -95,12 +95,11 @@ protected array $breadcrumbs = [];
         // Step 3: Breadcrumbs and render view
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Permintaan Resep Pulang', 'PermintaanResepPulang');
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         return view('/admin/permintaanreseppulang/permintaanreseppulang_data', [
             'permintaanreseppulang_data' => $permintaan_list,
             'title' => $title,
-            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $permintaan_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
         ]);
     }

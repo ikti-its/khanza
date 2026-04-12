@@ -116,9 +116,7 @@ class Pemesanan extends ControllerTemplate
                     $this->addBreadcrumb('Pengadaan', 'pengadaanmedis');
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Pemesanan', 'pemesananmedis');
-
-                    $breadcrumbs = $this->breadcrumbs;
-
+                    
                     return view('/admin/pengadaan/medis/pemesanan/data_pemesanan', [
                         'pemesanan_medis_data' => $pemesanan_medis_data['data']['pemesanan_barang_medis'],
                         'pengajuan_medis_data' => $pengajuan_medis_data['data'],
@@ -129,7 +127,7 @@ class Pemesanan extends ControllerTemplate
                         'satuan_data' => $satuan_data['data'], // Tambahkan data satuan ke dalam array
                         'meta_data' => $pemesanan_medis_data['data'],
                         'title' => $title,
-                        'breadcrumbs' => $breadcrumbs
+                        'breadcrumbs' => $this->breadcrumbs
                     ]);
                 } else {
                     return "Failed to fetch data.";
@@ -469,9 +467,7 @@ class Pemesanan extends ControllerTemplate
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Pemesanan', 'pemesananmedis');
             $this->addBreadcrumb('Tambah', 'tambahpemesananmedis');
-
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             // Tampilkan view dengan data yang sudah diambil
             echo view('/admin/pengadaan/medis/pemesanan/pemesanan', [
                 'pegawai_data' => $pegawai_data['data'],
@@ -483,7 +479,7 @@ class Pemesanan extends ControllerTemplate
                 'api_url' => $api_url,
                 'token' => $token,
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return "User not logged in. Please log in first.";
@@ -735,8 +731,6 @@ class Pemesanan extends ControllerTemplate
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Pemesanan', 'pemesananmedis');
                     $this->addBreadcrumb('Ubah', 'editpemesananmedis');
-
-                    $breadcrumbs = $this->breadcrumbs;
                     return view('/admin/pengadaan/medis/pemesanan/edit_pemesanan', [
                         'pemesanan_data' => $pemesanan_data['data'],
                         'pesanan_data' => $pesanan_data['data'],
@@ -747,7 +741,7 @@ class Pemesanan extends ControllerTemplate
                         'satuan_data' => $satuan_data['data'], // Menyertakan data satuan
                         'pemesananId' => $pemesananId,
                         'title' => 'Edit pemesanan Medis',
-                        'breadcrumbs' => $breadcrumbs
+                        'breadcrumbs' => $this->breadcrumbs
                     ]);
                 } else {
                     // Error: Gagal mengambil data medis

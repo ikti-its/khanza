@@ -39,12 +39,11 @@ class ResepObatRacikan extends ControllerTemplate
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Resep Obat Racikan', 'resepobatracikan');
         $this->addBreadcrumb('Detail', 'resepobatracikan/' . $noResep);
-        $breadcrumbs = $this->breadcrumbs;
-
+        
         return view('/admin/resepobatracikan/resepobatracikan_detail', [
             'racikan_detail' => $racikan_detail,
             'title'          => $title,
-            'breadcrumbs'    => $breadcrumbs,
+            'breadcrumbs'    => $this->breadcrumbs,
         ]);
     }
 
@@ -425,12 +424,11 @@ class ResepObatRacikan extends ControllerTemplate
 
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Resep Obat', 'resepobatracikan');
-            $breadcrumbs = $this->breadcrumbs;
-
+            
             return view('/admin/resepobatracikan/resepobatracikan_data', [
                 'resepobatracikan_data' => $data,
                 'title' => $title,
-                'breadcrumbs' => $breadcrumbs,
+                'breadcrumbs' => $this->breadcrumbs,
                 'meta_data' => $resep_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
             ]);
 
