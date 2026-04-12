@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers\RekamMedis;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 use App\Core\Controller\CURL;
 
 class RekamMedis extends ControllerTemplate
@@ -69,7 +70,7 @@ class RekamMedis extends ControllerTemplate
         // 1. Ambil data pasien utama dari masterpasien
         $response = CURL::fetchDataUsingCurl('GET', $this->api_path . '/' . $id);
         if ($response['kode'] !== 200 || !isset($response['data']['data'])) {
-            return $this->renderErrorView(404, 'Data pasien tidak ditemukan.');
+            return HTTPError::renderErrorView(404, 'Data pasien tidak ditemukan.');
         }
 
         $pasien = $response['data']['data'];

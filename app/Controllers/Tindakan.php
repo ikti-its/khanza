@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class Tindakan extends ControllerTemplate
 {
@@ -51,12 +52,12 @@ protected array $breadcrumbs = [];
 
     
             if ($http_status !== 200) {
-                return $this->renderErrorView($http_status);
+                return HTTPError::renderErrorView($http_status);
             }
     
             $tindakan_data = json_decode($response, true);
             if (!isset($tindakan_data['data'])) {
-                return $this->renderErrorView(500);
+                return HTTPError::renderErrorView(500);
             }
     
             // ✅ Fetch jenis_tindakan data (this was missing)
@@ -85,7 +86,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
                 'meta_data' => $tindakan_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
     
@@ -93,7 +94,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
     public function tambahTindakan($nomorRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -111,7 +112,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
 
 
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         $tindakan_data = json_decode($response, true);
@@ -233,14 +234,14 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
                 return $response;
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
     public function editTindakan($nomorRawat, $jamRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -295,7 +296,7 @@ $selectedTindakan = $t;
     public function submitEditTindakan($nomorRawat, $jamRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -345,7 +346,7 @@ $selectedTindakan = $t;
         $title = 'Detail Tindakan';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -663,7 +664,7 @@ $selectedUGD = $ugd;
     public function hapusTindakan($nomorRawat, $jamRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -685,7 +686,7 @@ $selectedUGD = $ugd;
 
 
         if ($httpStatus !== 200) {
-            return $this->renderErrorView($httpStatus);
+            return HTTPError::renderErrorView($httpStatus);
         }
 
         return redirect()->to('/tindakan')->with('success', 'Tindakan berhasil dihapus');

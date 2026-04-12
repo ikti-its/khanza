@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class authController extends ControllerTemplate
 {
@@ -126,14 +127,14 @@ class authController extends ControllerTemplate
                                 session()->set('user_specific_data', $user_specific_data['data']);
                             } else {
                                 // Failed to get user specific data
-                                return $this->renderErrorView(500, "Failed to retrieve user specific data.");
+                                return HTTPError::renderErrorView(500, "Failed to retrieve user specific data.");
                             }
                         }
     
                         return redirect()->to('/dashboard')->with('title', $title, 'user_details', $user_details);
                     } else {
                         // Failed to get user details
-                        return $this->renderErrorView(500, "Tidak ada respons dari server");
+                        return HTTPError::renderErrorView(500, "Tidak ada respons dari server");
                     }
                 } elseif ($http_status_code === 401) {
                     return redirect('login')->with('passwordsalah', 'Password salah, mohon dicoba kembali');
@@ -144,7 +145,7 @@ class authController extends ControllerTemplate
                 }
             } else {
                 // No response from API
-                return $this->renderErrorView(500, "Tidak ada respons dari Server");
+                return HTTPError::renderErrorView(500, "Tidak ada respons dari Server");
             }
         }
         // If the form was not submitted or any other case where it doesn't validate or process login

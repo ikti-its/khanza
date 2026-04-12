@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class MutasiGudang extends ControllerTemplate
 {
@@ -64,19 +65,19 @@ class MutasiGudang extends ControllerTemplate
 
 
             if ($http_status_code_ruangan !== 201) {
-                return $this->renderErrorView($http_status_code_ruangan);
+                return HTTPError::renderErrorView($http_status_code_ruangan);
             }
             if ($http_status_code_satuan !== 201) {
-                return $this->renderErrorView($http_status_code_satuan);
+                return HTTPError::renderErrorView($http_status_code_satuan);
             }
             if ($http_status_code_gudang !== 200) {
-                return $this->renderErrorView($http_status_code_gudang);
+                return HTTPError::renderErrorView($http_status_code_gudang);
             }
             if ($http_status_code_barang !== 200) {
-                return $this->renderErrorView($http_status_code_barang);
+                return HTTPError::renderErrorView($http_status_code_barang);
             }
             if ($http_status_code_mutasi !== 200) {
-                return $this->renderErrorView($http_status_code_mutasi);
+                return HTTPError::renderErrorView($http_status_code_mutasi);
             }
 
             $this->addBreadcrumb('Inventaris', 'inventarismedis');
@@ -99,7 +100,7 @@ class MutasiGudang extends ControllerTemplate
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -149,16 +150,16 @@ class MutasiGudang extends ControllerTemplate
 
 
             if ($http_status_code_ruangan !== 201) {
-                return $this->renderErrorView($http_status_code_ruangan);
+                return HTTPError::renderErrorView($http_status_code_ruangan);
             }
             if ($http_status_code_satuan !== 201) {
-                return $this->renderErrorView($http_status_code_satuan);
+                return HTTPError::renderErrorView($http_status_code_satuan);
             }
             if ($http_status_code_gudang !== 200) {
-                return $this->renderErrorView($http_status_code_gudang);
+                return HTTPError::renderErrorView($http_status_code_gudang);
             }
             if ($http_status_code_barang !== 200) {
-                return $this->renderErrorView($http_status_code_barang);
+                return HTTPError::renderErrorView($http_status_code_barang);
             }
 
             $this->addBreadcrumb('Inventaris', 'inventarismedis');
@@ -178,7 +179,7 @@ class MutasiGudang extends ControllerTemplate
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
     public function submitTambah()
@@ -327,14 +328,14 @@ class MutasiGudang extends ControllerTemplate
                 return $response_mutasi . $tambah_mutasi_JSON;
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
     public function hapusMutasi($id)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class ResepObat extends ControllerTemplate
 {
@@ -44,7 +45,7 @@ protected array $breadcrumbs = [];
     $title = 'Data Resep Dokter';
 
     if (!session()->has('jwt_token')) {
-        return $this->renderErrorView(401);
+        return HTTPError::renderErrorView(401);
     }
 
     $token = session()->get('jwt_token');
@@ -67,12 +68,12 @@ protected array $breadcrumbs = [];
 
 
     if ($http_status !== 200) {
-        return $this->renderErrorView($http_status);
+        return HTTPError::renderErrorView($http_status);
     }
 
     $resep_data = json_decode($response, true);
     if (!isset($resep_data['data'])) {
-        return $this->renderErrorView(500);
+        return HTTPError::renderErrorView(500);
     }
 
     $resep_list = $resep_data['data'];
@@ -117,7 +118,7 @@ protected array $breadcrumbs = [];
     public function tambahResepObat()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -189,7 +190,7 @@ protected array $breadcrumbs = [];
     public function tambahResepObatId($nomorRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -258,7 +259,7 @@ protected array $breadcrumbs = [];
     public function submitTambahResepObat()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -295,14 +296,14 @@ protected array $breadcrumbs = [];
 
         if ($status1 !== 200 && $status1 !== 201) {
             log_message('error', 'Failed to insert resep_obat: ' . $response1);
-            return $this->renderErrorView($status1);
+            return HTTPError::renderErrorView($status1);
         }
 
         // ✅ Submit to resep_dokter (details)
         $kodeBarangList = $this->request->getPost('kode_barang');
 
         if (!is_array($kodeBarangList)) {
-            return $this->renderErrorView(400); // Ensure it's an array
+            return HTTPError::renderErrorView(400); // Ensure it's an array
         }
 
         foreach ($kodeBarangList as $kodeBarang) {
@@ -332,7 +333,7 @@ protected array $breadcrumbs = [];
 
             if ($status2 !== 200 && $status2 !== 201) {
                 log_message('error', 'Failed to insert resep_dokter: ' . $response2);
-                return $this->renderErrorView($status2);
+                return HTTPError::renderErrorView($status2);
             }
         }
 
@@ -343,7 +344,7 @@ protected array $breadcrumbs = [];
     public function editResepObat($noResep)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -393,7 +394,7 @@ protected array $breadcrumbs = [];
     public function submitEditResepObat($noResep)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -430,14 +431,14 @@ protected array $breadcrumbs = [];
         if ($http_status === 200) {
             return redirect()->to(base_url('resepobat'))->with('success', 'Resep obat updated');
         } else {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
     }
 
     public function hapusResepObat($noResep)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -456,7 +457,7 @@ protected array $breadcrumbs = [];
 
 
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         return redirect()->to('/resepobat')->with('success', 'Resep obat deleted');
@@ -467,7 +468,7 @@ protected array $breadcrumbs = [];
         $title = 'Detail Resep Obat';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -485,7 +486,7 @@ protected array $breadcrumbs = [];
             $error = curl_error($ch);
 
             log_message('error', 'cURL Error: ' . $error);
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
 
         $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -495,14 +496,14 @@ protected array $breadcrumbs = [];
         log_message('error', 'ResepObatData HTTP Status: ' . $http_status);
 
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         $resep_data = json_decode($response, true);
 
         if (!isset($resep_data['data'])) {
             log_message('error', 'ResepObatData: data key not found');
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
 
         $data = $resep_data['data'];
@@ -610,7 +611,7 @@ protected array $breadcrumbs = [];
     public function submitTambahResepObatDetail()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -654,7 +655,7 @@ protected array $breadcrumbs = [];
         if ($status === 201 || $status === 200) {
             return redirect()->to(base_url('resepobat/' . $noResep))->with('success', 'Detail resep berhasil ditambahkan.');
         } else {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
     }
 

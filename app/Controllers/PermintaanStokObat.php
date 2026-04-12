@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class PermintaanStokObat extends ControllerTemplate
 {
@@ -25,13 +26,13 @@ class PermintaanStokObat extends ControllerTemplate
 
 
             if ($http_status !== 200) {
-                return $this->renderErrorView($http_status);
+                return HTTPError::renderErrorView($http_status);
             }
 
             $permintaan_data = json_decode($response, true);
             // dd($permintaan_data);
             if (!isset($permintaan_data['data'])) {
-                return $this->renderErrorView(500);
+                return HTTPError::renderErrorView(500);
             }
 
             $permintaan_list = $permintaan_data['data']; // now clearly a list
@@ -87,14 +88,14 @@ class PermintaanStokObat extends ControllerTemplate
                 'meta_data' => $permintaan_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1],
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
     public function tambahPermintaanStokObat()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     
         $token = session()->get('jwt_token');
@@ -170,7 +171,7 @@ class PermintaanStokObat extends ControllerTemplate
     public function submitTambahPermintaanStokObat()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -252,12 +253,12 @@ $postData[$key] = null;
 
         if (! in_array($status, [200,201])) {
         log_message('error', "Failed to insert permintaan_stok_obat: $response");
-        return $this->renderErrorView($status);
+        return HTTPError::renderErrorView($status);
         }
 
         if ($status !== 200 && $status !== 201) {
             log_message('error', 'Failed to insert permintaan_stok_obat: ' . $response);
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         return redirect()->to(base_url('permintaanstokobat'))
@@ -268,7 +269,7 @@ $postData[$key] = null;
     public function editPermintaanStokObat($noPermintaan)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     
         $token = session()->get('jwt_token');
@@ -287,7 +288,7 @@ $postData[$key] = null;
 
     
         if ($status !== 200 || !$response) {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
     
         $responseData = json_decode($response, true);
@@ -327,7 +328,7 @@ $postData[$key] = null;
     public function submitEditPermintaanStokObat($noPermintaan)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -362,14 +363,14 @@ $postData[$key] = null;
         if ($http_status === 200) {
             return redirect()->to(base_url('permintaanstokobat'))->with('success', 'Permintaan stok obat updated');
         } else {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
     }
 
     public function hapusPermintaanStokObat($noPermintaan)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -387,7 +388,7 @@ $postData[$key] = null;
 
 
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         return redirect()->to('/permintaanstokobat')->with('success', 'Permintaan stok obat deleted');
@@ -398,7 +399,7 @@ $postData[$key] = null;
         $title = 'Detail Permintaan Stok Obat';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -419,14 +420,14 @@ $postData[$key] = null;
             log_message('error', 'PermintaanStokObatData HTTP Status: ' . $http_status);
 
             if ($http_status !== 200) {
-                return $this->renderErrorView($http_status);
+                return HTTPError::renderErrorView($http_status);
             }
 
             $permintaan_data = json_decode($response, true);
 
             if (!isset($permintaan_data['data'])) {
                 log_message('error', 'PermintaanStokObatData: data key not found');
-                return $this->renderErrorView(500);
+                return HTTPError::renderErrorView(500);
             }
 
             $data = $permintaan_data['data'];
@@ -443,7 +444,7 @@ $postData[$key] = null;
 
         } catch (\Throwable $e) {
             log_message('critical', 'PermintaanStokObatData Exception: ' . $e->getMessage());
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
     }
     private function getPermintaanStokObatListFromAPI(#[\SensitiveParameter] $token)

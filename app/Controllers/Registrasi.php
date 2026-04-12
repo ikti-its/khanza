@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class Registrasi extends ControllerTemplate
 {
@@ -75,7 +76,7 @@ class Registrasi extends ControllerTemplate
 
             // Check API response status
             if ($http_status_code_registrasi !== 200) {
-                return $this->renderErrorView($http_status_code_registrasi);
+                return HTTPError::renderErrorView($http_status_code_registrasi);
             }
 
             // Decode JSON response
@@ -85,7 +86,7 @@ class Registrasi extends ControllerTemplate
 
             // Ensure we have valid data
             if (!isset($registrasi_data['data'])) {
-                return $this->renderErrorView(500);
+                return HTTPError::renderErrorView(500);
             }
 
             // Set up breadcrumbs (for UI navigation)
@@ -112,7 +113,7 @@ class Registrasi extends ControllerTemplate
             ]);
         } else {
             // If no JWT token, return unauthorized error
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -132,7 +133,7 @@ class Registrasi extends ControllerTemplate
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -252,7 +253,7 @@ class Registrasi extends ControllerTemplate
     public function editRegistrasi($nomorReg)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -269,7 +270,7 @@ class Registrasi extends ControllerTemplate
 
 
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         $registrasi_data = json_decode($response, true);
@@ -385,7 +386,7 @@ class Registrasi extends ControllerTemplate
 
 
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -411,10 +412,10 @@ class Registrasi extends ControllerTemplate
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('registrasi'))->with('success', 'Data registrasi berhasil dihapus.');
             } else {
-                return $this->renderErrorView($http_status);
+                return HTTPError::renderErrorView($http_status);
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 

@@ -20,7 +20,7 @@ use Psr\Log\LoggerInterface;
  *
  * For security be sure to declare any new methods as protected or private.
  */
-abstract class ControllerTemplate extends Controller
+class ControllerTemplate extends Controller
 {
     /**
      * Instance of the main Request object.
@@ -73,7 +73,7 @@ abstract class ControllerTemplate extends Controller
         // $this->checkNotifications();
     }
 
-    protected function addBreadcrumb($title, $icon = '')
+    final protected function addBreadcrumb($title, $icon = '')
     {
         $this->breadcrumbs[] = [
             'title' => $title,

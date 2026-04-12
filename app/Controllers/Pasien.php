@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class Pasien extends ControllerTemplate
 {
@@ -181,7 +182,7 @@ class Pasien extends ControllerTemplate
     public function editPasien($no_rkm_medis)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -200,7 +201,7 @@ class Pasien extends ControllerTemplate
 
 
         if ($http_status !== 200 || !$response) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         $data = json_decode($response, true);
@@ -219,7 +220,7 @@ class Pasien extends ControllerTemplate
     public function submitEditPasien($no_rkm_medis)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -286,14 +287,14 @@ class Pasien extends ControllerTemplate
         if ($http_status === 200) {
             return redirect()->to('/pasien')->with('success', 'Data pasien berhasil diperbarui.');
         } else {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
     }
 
     public function hapusPasien($no_rkm_medis)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -314,7 +315,7 @@ class Pasien extends ControllerTemplate
         if ($http_status === 200) {
             return redirect()->to('/pasien')->with('success', 'Pasien berhasil dihapus.');
         } else {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
     }
 }

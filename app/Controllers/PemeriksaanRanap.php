@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class PemeriksaanRanap extends ControllerTemplate
 {
@@ -54,7 +55,7 @@ class PemeriksaanRanap extends ControllerTemplate
         $title = 'Data Pemeriksaan Ranap';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -72,13 +73,13 @@ class PemeriksaanRanap extends ControllerTemplate
 
 
         if ($status !== 200 || !$response) {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         $data = json_decode($response, true);
 
         if (!isset($data['data']) || !is_array($data['data'])) {
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
 
         $pemeriksaan_list = $data['data'];
@@ -165,7 +166,7 @@ class PemeriksaanRanap extends ControllerTemplate
         $title = 'Pemeriksaan Ranap Pasien';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -182,12 +183,12 @@ class PemeriksaanRanap extends ControllerTemplate
 
 
         if ($status !== 200 || !$response) {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         $data = json_decode($response, true);
         if (!isset($data['data']) || !is_array($data['data'])) {
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
     // dd($data);
         // 🔍 Filter only entries with matching no_rawat
@@ -249,7 +250,7 @@ class PemeriksaanRanap extends ControllerTemplate
     public function tambahPemeriksaanRanap()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -314,7 +315,7 @@ $dokterNips[] = $dokter['kd_dokter'];
    public function submitTambahPemeriksaanRanap()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -365,14 +366,14 @@ $dokterNips[] = $dokter['kd_dokter'];
         if ($http_status === 201) {
             return redirect()->to(base_url('pemeriksaanranap'))->with('success', 'Pemeriksaan berhasil ditambahkan.');
         } else {
-            return $this->renderErrorView($http_status, $response);
+            return HTTPError::renderErrorView($http_status, $response);
         }
     }
 
     public function editPemeriksaanRanap($nomorRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -390,7 +391,7 @@ $dokterNips[] = $dokter['kd_dokter'];
 
 
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         $pemeriksaan_data = json_decode($response, true);
@@ -500,7 +501,7 @@ $dokterNips[] = $dokter['kd_dokter'];
     public function submitEditPemeriksaanRanap($nomorRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -594,10 +595,10 @@ $dokterNips[] = $dokter['kd_dokter'];
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('pemeriksaanranap'))->with('success', 'Data pemeriksaan ranap berhasil dihapus.');
             } else {
-                return $this->renderErrorView($http_status);
+                return HTTPError::renderErrorView($http_status);
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 

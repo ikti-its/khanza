@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class CatatanObservasiRanap extends ControllerTemplate
 {
@@ -51,7 +52,7 @@ protected array $breadcrumbs = [];
         $title = 'Catatan Observasi Rawat Inap';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -68,12 +69,12 @@ protected array $breadcrumbs = [];
 
 
         if ($status !== 200 || !$response) {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         $data = json_decode($response, true);
         if (!isset($data['data']) || !is_array($data['data'])) {
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
 
         $list = $data['data'];
@@ -155,7 +156,7 @@ protected array $breadcrumbs = [];
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -223,7 +224,7 @@ protected array $breadcrumbs = [];
                 return $response;
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -232,7 +233,7 @@ protected array $breadcrumbs = [];
     public function editCatatanObservasiRanap($noRawat, $tglPerawatan)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -252,7 +253,7 @@ protected array $breadcrumbs = [];
 
 
         if ($status !== 200) {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         $data = json_decode($response, true);
@@ -340,7 +341,7 @@ protected array $breadcrumbs = [];
     public function submitEditCatatanObservasiRanap($noRawat, $tanggalObservasi)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -413,10 +414,10 @@ protected array $breadcrumbs = [];
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('catatanobservasiranap'))->with('success', 'Data observasi Rawat Inap berhasil dihapus.');
             } else {
-                return $this->renderErrorView($http_status);
+                return HTTPError::renderErrorView($http_status);
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -517,7 +518,7 @@ protected array $breadcrumbs = [];
         $title = 'Catatan Observasi Rawat Inap';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -534,7 +535,7 @@ protected array $breadcrumbs = [];
 
 
         if ($status !== 200 || !$response) {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         $data = json_decode($response, true);

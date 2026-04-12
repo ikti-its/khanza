@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class Kamar extends ControllerTemplate
 {
@@ -56,7 +57,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
         
             // Check API response status
             if ($http_status_code_kamar !== 200) {
-                return $this->renderErrorView($http_status_code_kamar);
+                return HTTPError::renderErrorView($http_status_code_kamar);
             }
         
             // Decode JSON response
@@ -66,7 +67,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
 
             // Ensure we have valid data
             if (!isset($kamar_data['data'])) {
-                return $this->renderErrorView(500);
+                return HTTPError::renderErrorView(500);
             }
         
             // Set up breadcrumbs (for UI navigation)
@@ -91,7 +92,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
             ]);
         } else {
             // If no JWT token, return unauthorized error
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
     
@@ -110,7 +111,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -157,12 +158,12 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
             if ($http_status_code_kamar === 201) {
                 return redirect()->to(base_url('kamar'));  // Redirect to the Kamar page after success
             } else {
-                return $this->renderErrorView($http_status_code_kamar);
+                return HTTPError::renderErrorView($http_status_code_kamar);
             }
 
 
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -170,7 +171,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
     public function editKamar($nomorBed)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -193,7 +194,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
 
         // Handle API response
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         $kamar_data = json_decode($response, true);
@@ -274,10 +275,10 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
                 return redirect()->to(base_url('kamar'))->with('success', 'Kamar berhasil diperbarui.');  // Success message
             } else {
                 // Return the error view if update failed
-                return $this->renderErrorView($http_status_code_kamar);
+                return HTTPError::renderErrorView($http_status_code_kamar);
             }
         } else {
-            return $this->renderErrorView(401);  // Unauthorized error if no JWT token
+            return HTTPError::renderErrorView(401);  // Unauthorized error if no JWT token
         }
     }
 
@@ -305,17 +306,17 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('kamar'))->with('success', 'Kamar berhasil dihapus.');  // Redirect to Kamar page
             } else {
-                return $this->renderErrorView($http_status);  // Render error view if not successful
+                return HTTPError::renderErrorView($http_status);  // Render error view if not successful
             }
         } else {
-            return $this->renderErrorView(401);  // Unauthorized error if no JWT token
+            return HTTPError::renderErrorView(401);  // Unauthorized error if no JWT token
         }
     }
 
     public function terimaKamar($nomorBed)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -338,7 +339,7 @@ $kamar_url = $this->api_url . "/kamar?page={$page}&size={$size}";  // Adjusted t
 
         // Handle API response
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         $kamar_data = json_decode($response, true);

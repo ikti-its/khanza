@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class RujukanMasuk extends ControllerTemplate
 {
@@ -58,7 +59,7 @@ protected array $breadcrumbs = [];
 
             // Check API response status
             if ($http_status_code_rujukan !== 200) {
-                return $this->renderErrorView($http_status_code_rujukan);
+                return HTTPError::renderErrorView($http_status_code_rujukan);
             }
 
             // Decode JSON response
@@ -66,7 +67,7 @@ protected array $breadcrumbs = [];
 
             // Ensure we have valid data
             if (!isset($rujukan_data['data'])) {
-                return $this->renderErrorView(500);
+                return HTTPError::renderErrorView(500);
             }
 
             // Set up breadcrumbs
@@ -91,7 +92,7 @@ protected array $breadcrumbs = [];
                 'meta_data' => $meta_data
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -112,14 +113,14 @@ protected array $breadcrumbs = [];
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
     public function submitTambahRujukanMasuk()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -194,7 +195,7 @@ protected array $breadcrumbs = [];
     public function editRujukanMasuk($nomorRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -211,7 +212,7 @@ protected array $breadcrumbs = [];
 
 
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         $rujukan_data = json_decode($response, true);
@@ -288,7 +289,7 @@ protected array $breadcrumbs = [];
                 ]);
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -313,10 +314,10 @@ protected array $breadcrumbs = [];
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('rujukanmasuk'))->with('success', 'Data rujukan masuk berhasil dihapus.');
             } else {
-                return $this->renderErrorView($http_status);
+                return HTTPError::renderErrorView($http_status);
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 }

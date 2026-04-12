@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class Medis extends ControllerTemplate
 {
@@ -74,22 +75,22 @@ class Medis extends ControllerTemplate
 
 
             if ($http_status_code_medis !== 200) {
-                return $this->renderErrorView($http_status_code_medis);
+                return HTTPError::renderErrorView($http_status_code_medis);
             }
             if ($http_status_code_satuan !== 201) {
-                return $this->renderErrorView($http_status_code_satuan);
+                return HTTPError::renderErrorView($http_status_code_satuan);
             }
             if ($http_status_code_industri !== 201) {
-                return $this->renderErrorView($http_status_code_industri);
+                return HTTPError::renderErrorView($http_status_code_industri);
             }
             if ($http_status_code_jenis !== 201) {
-                return $this->renderErrorView($http_status_code_jenis);
+                return HTTPError::renderErrorView($http_status_code_jenis);
             }
             if ($http_status_code_kategori !== 201) {
-                return $this->renderErrorView($http_status_code_kategori);
+                return HTTPError::renderErrorView($http_status_code_kategori);
             }
             if ($http_status_code_golongan !== 201) {
-                return $this->renderErrorView($http_status_code_golongan);
+                return HTTPError::renderErrorView($http_status_code_golongan);
             }
 
             $medis_data = json_decode($response_medis, true);
@@ -114,7 +115,7 @@ class Medis extends ControllerTemplate
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -175,19 +176,19 @@ class Medis extends ControllerTemplate
 
 
             if ($http_status_code_satuan !== 201) {
-                return $this->renderErrorView($http_status_code_satuan);
+                return HTTPError::renderErrorView($http_status_code_satuan);
             }
             if ($http_status_code_industri !== 201) {
-                return $this->renderErrorView($http_status_code_industri);
+                return HTTPError::renderErrorView($http_status_code_industri);
             }
             if ($http_status_code_jenis !== 201) {
-                return $this->renderErrorView($http_status_code_jenis);
+                return HTTPError::renderErrorView($http_status_code_jenis);
             }
             if ($http_status_code_kategori !== 201) {
-                return $this->renderErrorView($http_status_code_kategori);
+                return HTTPError::renderErrorView($http_status_code_kategori);
             }
             if ($http_status_code_golongan !== 201) {
-                return $this->renderErrorView($http_status_code_golongan);
+                return HTTPError::renderErrorView($http_status_code_golongan);
             }
 
             $satuan_data = json_decode($response_satuan, true);
@@ -210,7 +211,7 @@ class Medis extends ControllerTemplate
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -290,7 +291,7 @@ class Medis extends ControllerTemplate
             $ruangan_data = json_decode($response_ruangan, true);
             $http_status_code_ruangan = curl_getinfo($ch_ruangan, CURLINFO_HTTP_CODE);
             if ($http_status_code_ruangan !== 201) {
-                $this->renderErrorView($http_status_code_ruangan);
+                HTTPError::renderErrorView($http_status_code_ruangan);
             }
 
 
@@ -342,7 +343,7 @@ class Medis extends ControllerTemplate
 
 
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -413,22 +414,22 @@ class Medis extends ControllerTemplate
 
 
             if ($http_status_code_medis !== 200) {
-                return $this->renderErrorView($http_status_code_medis);
+                return HTTPError::renderErrorView($http_status_code_medis);
             }
             if ($http_status_code_satuan !== 201) {
-                return $this->renderErrorView($http_status_code_satuan);
+                return HTTPError::renderErrorView($http_status_code_satuan);
             }
             if ($http_status_code_industri !== 201) {
-                return $this->renderErrorView($http_status_code_industri);
+                return HTTPError::renderErrorView($http_status_code_industri);
             }
             if ($http_status_code_jenis !== 201) {
-                return $this->renderErrorView($http_status_code_jenis);
+                return HTTPError::renderErrorView($http_status_code_jenis);
             }
             if ($http_status_code_kategori !== 201) {
-                return $this->renderErrorView($http_status_code_kategori);
+                return HTTPError::renderErrorView($http_status_code_kategori);
             }
             if ($http_status_code_golongan !== 201) {
-                return $this->renderErrorView($http_status_code_golongan);
+                return HTTPError::renderErrorView($http_status_code_golongan);
             }
 
             $medis_data = json_decode($response_medis, true);
@@ -453,7 +454,7 @@ class Medis extends ControllerTemplate
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -537,10 +538,10 @@ class Medis extends ControllerTemplate
             if ($http_status_code_medis === 200) {
                 return redirect()->to(base_url('datamedis'));
             } else {
-                return $this->renderErrorView(500);
+                return HTTPError::renderErrorView(500);
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 }
@@ -697,7 +698,7 @@ class Medis extends ControllerTemplate
     // public function hapusMedis($medisId)
     // {
     //     if (!session()->has('jwt_token')) {
-    //         return $this->renderErrorView(401);
+    //         return HTTPError::renderErrorView(401);
     //     }
 
     //     $token = session()->get('jwt_token');

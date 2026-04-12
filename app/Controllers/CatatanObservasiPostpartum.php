@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class CatatanObservasiPostpartum extends ControllerTemplate
 {
@@ -51,7 +52,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
         $title = 'Catatan Observasi Ranap Post Partum';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -68,12 +69,12 @@ class CatatanObservasiPostpartum extends ControllerTemplate
 
 
         if ($status !== 200 || !$response) {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         $data = json_decode($response, true);
         if (!isset($data['data']) || !is_array($data['data'])) {
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
 
         $list = $data['data'];
@@ -155,7 +156,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
                 'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -203,14 +204,14 @@ class CatatanObservasiPostpartum extends ControllerTemplate
                 return $response;
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
     public function editCatatanObservasiPostpartum($noRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -229,7 +230,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
 
 
         if ($status !== 200) {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         $data = json_decode($response, true);
@@ -313,7 +314,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
     public function submitEditCatatanObservasiPostpartum($noRawat)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -384,10 +385,10 @@ class CatatanObservasiPostpartum extends ControllerTemplate
             if ($http_status === 200 || $http_status === 204) {
                 return redirect()->to(base_url('catatanobservasipostpartum'))->with('success', 'Data observasi postpartum berhasil dihapus.');
             } else {
-                return $this->renderErrorView($http_status);
+                return HTTPError::renderErrorView($http_status);
             }
         } else {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
     }
 
@@ -487,7 +488,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
         $title = 'Catatan Observasi Ranap Post Partum';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -504,12 +505,12 @@ class CatatanObservasiPostpartum extends ControllerTemplate
 
 
         if ($status !== 200 || !$response) {
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         $data = json_decode($response, true);
         if (!isset($data['data']) || !is_array($data['data'])) {
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
 
         // Filter berdasarkan nomor rawat

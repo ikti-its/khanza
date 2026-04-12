@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class StokOpname extends ControllerTemplate
 {
@@ -69,7 +70,7 @@ class StokOpname extends ControllerTemplate
                     'breadcrumbs' => $this->breadcrumbs
                ]);
           } else {
-               return $this->renderErrorView(401);
+               return HTTPError::renderErrorView(401);
           }
      }
 
@@ -130,19 +131,19 @@ class StokOpname extends ControllerTemplate
 
 
                if ($http_status_code_opname !== 200) {
-                    return $this->renderErrorView($http_status_code_opname);
+                    return HTTPError::renderErrorView($http_status_code_opname);
                }
                if ($http_status_code_ruangan !== 201) {
-                    return $this->renderErrorView($http_status_code_ruangan);
+                    return HTTPError::renderErrorView($http_status_code_ruangan);
                }
                if ($http_status_code_satuan !== 201) {
-                    return $this->renderErrorView($http_status_code_satuan);
+                    return HTTPError::renderErrorView($http_status_code_satuan);
                }
                if ($http_status_code_gudang !== 200) {
-                    return $this->renderErrorView($http_status_code_gudang);
+                    return HTTPError::renderErrorView($http_status_code_gudang);
                }
                if ($http_status_code_barang !== 200) {
-                    return $this->renderErrorView($http_status_code_barang);
+                    return HTTPError::renderErrorView($http_status_code_barang);
                }
 
                $this->addBreadcrumb('Inventaris', 'inventarismedis');
@@ -164,7 +165,7 @@ class StokOpname extends ControllerTemplate
                     'breadcrumbs' => $this->breadcrumbs
                ]);
           } else {
-               return $this->renderErrorView(401);
+               return HTTPError::renderErrorView(401);
           }
      }
 
@@ -215,16 +216,16 @@ class StokOpname extends ControllerTemplate
 
 
                if ($http_status_code_ruangan !== 201) {
-                    return $this->renderErrorView($http_status_code_ruangan);
+                    return HTTPError::renderErrorView($http_status_code_ruangan);
                }
                if ($http_status_code_satuan !== 201) {
-                    return $this->renderErrorView($http_status_code_satuan);
+                    return HTTPError::renderErrorView($http_status_code_satuan);
                }
                if ($http_status_code_gudang !== 200) {
-                    return $this->renderErrorView($http_status_code_gudang);
+                    return HTTPError::renderErrorView($http_status_code_gudang);
                }
                if ($http_status_code_barang !== 200) {
-                    return $this->renderErrorView($http_status_code_barang);
+                    return HTTPError::renderErrorView($http_status_code_barang);
                }
 
                $this->addBreadcrumb('Inventaris', 'inventarismedis');
@@ -245,7 +246,7 @@ class StokOpname extends ControllerTemplate
                     'breadcrumbs' => $this->breadcrumbs
                ]);
           } else {
-               return $this->renderErrorView(401);
+               return HTTPError::renderErrorView(401);
           }
      }
 
@@ -347,7 +348,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
                return redirect()->to(base_url('stokopnamemedis'));
           } else {
-               return $this->renderErrorView(401);
+               return HTTPError::renderErrorView(401);
           }
      }
 
@@ -366,7 +367,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
 
                if ($http_status_code_opname !== 200) {
-                    return $this->renderErrorView($http_status_code_opname);
+                    return HTTPError::renderErrorView($http_status_code_opname);
                }
 
                $gudang_url = $this->api_url . '/inventory/gudang/barang/' . $opname_data['data']['id_barang_medis'];
@@ -381,7 +382,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
 
                if ($http_status_code_gudang !== 200) {
-                    return $this->renderErrorView($http_status_code_gudang);
+                    return HTTPError::renderErrorView($http_status_code_gudang);
                }
 
                $gudang_items = $gudang_data['data'];
@@ -414,7 +415,7 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
 
 
                          if ($http_status_code_gudang_update !== 200) {
-                              return $this->renderErrorView($http_status_code_gudang_update);
+                              return HTTPError::renderErrorView($http_status_code_gudang_update);
                          }
                }
 
@@ -429,10 +430,10 @@ $gudang_put_url = $this->api_url . '/inventory/gudang/' . $gudang['id'];
                if ($http_status_code_delete === 204) {
                     return redirect()->to(base_url('stokopnamemedis'));
                } else {
-                    return $this->renderErrorView($http_status_code_delete);
+                    return HTTPError::renderErrorView($http_status_code_delete);
                }
           } else {
-               return $this->renderErrorView(401);
+               return HTTPError::renderErrorView(401);
           }
      }
 }

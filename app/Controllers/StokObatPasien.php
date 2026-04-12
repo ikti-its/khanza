@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\HTTPError;
 
 class StokObatPasien extends ControllerTemplate
 {
@@ -11,7 +12,7 @@ class StokObatPasien extends ControllerTemplate
         $title = 'Data Stok Obat Pasien';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -29,12 +30,12 @@ class StokObatPasien extends ControllerTemplate
 
         // Handle connection failure or non-200 status
         if ($httpStatus !== 200 || !$response) {
-            return $this->renderErrorView($httpStatus);
+            return HTTPError::renderErrorView($httpStatus);
         }
 
         $decoded = json_decode($response, true);
         if (!isset($decoded['data']) || !is_array($decoded['data'])) {
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
 
         $stokObatData = $decoded['data'];
@@ -61,7 +62,7 @@ $item['nama_brng'] = '';
     public function tambahStokObatPasien()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -114,7 +115,7 @@ $item['nama_brng'] = '';
     public function submitTambahStokObatPasien()
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -155,7 +156,7 @@ $item['nama_brng'] = '';
 
         if ($status !== 200 && $status !== 201) {
             log_message('error', 'Failed to insert stok_obat_pasien: ' . $response);
-            return $this->renderErrorView($status);
+            return HTTPError::renderErrorView($status);
         }
 
         return redirect()->to(base_url('stokobatpasien'))
@@ -165,7 +166,7 @@ $item['nama_brng'] = '';
     public function editStokObatPasien($noPermintaan)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -197,7 +198,7 @@ $item['nama_brng'] = '';
     public function submitEditStokObatPasien($noPermintaan)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -240,14 +241,14 @@ $item['nama_brng'] = '';
         if ($http_status === 200) {
             return redirect()->to(base_url('stokobatpasien'))->with('success', 'Stok obat pasien berhasil diperbarui.');
         } else {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
     }
 
     public function hapusStokObatPasien($noPermintaan)
     {
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -265,7 +266,7 @@ $item['nama_brng'] = '';
 
 
         if ($http_status !== 200) {
-            return $this->renderErrorView($http_status);
+            return HTTPError::renderErrorView($http_status);
         }
 
         return redirect()->to('/stokobatpasien')->with('success', 'Stok obat pasien berhasil dihapus.');
@@ -276,7 +277,7 @@ $item['nama_brng'] = '';
         $title = 'Detail Stok Obat Pasien';
 
         if (!session()->has('jwt_token')) {
-            return $this->renderErrorView(401);
+            return HTTPError::renderErrorView(401);
         }
 
         $token = session()->get('jwt_token');
@@ -297,14 +298,14 @@ $item['nama_brng'] = '';
             log_message('error', 'StokObatPasienData HTTP Status: ' . $http_status);
 
             if ($http_status !== 200) {
-                return $this->renderErrorView($http_status);
+                return HTTPError::renderErrorView($http_status);
             }
 
             $stok_data = json_decode($response, true);
 
             if (!isset($stok_data['data'])) {
                 log_message('error', 'StokObatPasienData: data key not found');
-                return $this->renderErrorView(500);
+                return HTTPError::renderErrorView(500);
             }
 
             $data = $stok_data['data'];
@@ -321,7 +322,7 @@ $item['nama_brng'] = '';
 
         } catch (\Throwable $e) {
             log_message('critical', 'StokObatPasienData Exception: ' . $e->getMessage());
-            return $this->renderErrorView(500);
+            return HTTPError::renderErrorView(500);
         }
     }
 
