@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Controller;
 
-final readonly class Audit extends ControllerTemplate
+final readonly class Audit
 {
     public static function GetAuditData($tabel){
         $tabel = str_replace('/', '', $tabel);
