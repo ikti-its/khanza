@@ -36,10 +36,10 @@ BEGIN
           AND table_schema NOT IN ('pg_catalog', 'information_schema') -- exclude system tables
           AND table_name NOT LIKE '%_audit'     -- exclude audit tables
           AND table_name NOT LIKE '%_encrypted' -- exclude encrypted tables \
-          AND table_name LIKE '%_old'
+          AND table_name LIKE '%_structure' -- include _structure only
     LOOP
         RAISE NOTICE '%', tbl.table_name;
-        EXECUTE format('ALTER TABLE IF EXISTS %I.%I RENAME TO %I;', tbl.table_schema, tbl.table_name, left(tbl.table_name, length(tbl.table_name) -4));
+        EXECUTE format('ALTER TABLE IF EXISTS %I.%I RENAME TO %I;', tbl.table_schema, tbl.table_name, left(tbl.table_name, length(tbl.table_name) - 10));
 
     END LOOP;
 END
