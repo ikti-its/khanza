@@ -51,71 +51,9 @@ abstract class ControllerTemplate extends Controller
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-
         // Preload any models, libraries, etc, here.
-
         // E.g.: $this->session = \Config\Services::session();
-
     }
-
-    // public function checkNotifications()
-    // {
-    //     // Get user ID from session
-    //     dd(session()->get('user_details'));
-    //     $userId = session()->get('user_details')['id'];
-    //     $token = session()->get('jwt_token');
-
-    //     // API URL to check notifications
-    //     $notif_url = $this->api_url . '/w/notification/' . $userId;
-
-    //     // Initialize cURL session for fetching notifications
-    //     $ch = curl_init($notif_url);
-
-    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    //         'Content-Type: application/json',
-    //         'Authorization: Bearer ' . $token,
-    //     ]);
-
-    //     // Execute the cURL request
-    //     $response = curl_exec($ch);
-    //     $http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-    //     // Check for cURL errors
-    //     if ($response === false) {
-    //         $error_message = curl_error($ch);
-    //         curl_close($ch);
-    //         log_message('error', 'cURL Error: ' . $error_message);
-    //         return; // Exit method on error
-    //     }
-
-    //     curl_close($ch);
-
-    //     // Check HTTP status code
-    //     if ($http_status_code !== 200) {
-    //         log_message('error', 'HTTP Error: ' . $http_status_code);
-    //         return; // Exit method on HTTP error
-    //     }
-
-    //     // Decode the JSON response
-    //     $data = json_decode($response, true);
-
-    //     // Log the data for debugging purposes
-    //     log_message('debug', 'Notification API Response: ' . print_r($data, true));
-
-    //     // Initialize notification count
-    //     $notificationCount = 0;
-
-    //     // Check if there are notifications
-    //     if (isset($data['data']) && is_array($data['data'])) {
-    //         // Count the number of notifications
-    //         $notificationCount = count($data['data']);
-    //     }
-
-    //     // Store notification count in session or do further processing as needed
-    //     session()->set('notification_count', $notificationCount);
-    //     session()->set('notif_data', $data['data']);
-    // }
 
     protected string $api_url;
 
@@ -235,52 +173,7 @@ abstract class ControllerTemplate extends Controller
 
     protected function renderErrorView($status_code, $custom_message = null)
     {
-        $data = [
-            'kode'       => $status_code,
-            'title'      => '',
-            'errorTitle' => '',
-            'message'    => $custom_message
-        ];
-
-        switch ($status_code) {
-            case 400:
-                $data['title'] = 'Bad Request';
-                $data['errorTitle'] = 'Oops! ada kesalahan pada permintaan Anda';
-                $data['message'] ??= 'Permintaan yang anda buat tidak dapat diproses. Pastikan Anda telah memasukkan informasi dengan benar. Coba periksa kembali dan kirim ulang';
-                break;
-            case 401:
-                $data['title'] = 'Unauthorized';
-                $data['errorTitle'] = 'Akses terbatas';
-                $data['message'] ??= 'Anda harus login untuk mengakses halaman ini';
-                break;
-            case 403:
-                $data['title'] = 'Forbidden';
-                $data['errorTitle'] = 'Access ditolak';
-                $data['message'] ??= 'Anda tidak memiliki izin untuk melihat halaman ini. Kalau Anda merasa ini salah, hubungi admin.';
-                break;
-            case 404:
-                $data['title'] = 'Not Found';
-                $data['errorTitle'] = 'Halaman tidak ditemukan';
-                $data['message'] ??= 'Kami tidak dapat menemukan halaman yang Anda cari. Periksa URL atau kembali ke halaman utama';
-                break;
-            case 405:
-                $data['title'] = 'Method Not Allowed ';
-                $data['errorTitle'] = 'Method HTTP yang Anda gunakan tidak tersedia';
-                $data['message'] ??= 'Kami tidak menyediakan method HTTP tersebut. Periksa kembali URL dan method http Anda';
-                break;
-            case 500:
-                $data['title'] = 'Internal Server Error';
-                $data['errorTitle'] = 'Kesalahan Server';
-                $data['message'] ??= 'Terjadi masalah pada server kami. Silakan coba lagi nanti atau hubungi dukungan teknis jika masalah berlanjut';
-                break;
-            default:
-                $data['title'] = 'Error';
-                $data['errorTitle'] = 'Unexpected Error';
-                $data['message'] ??= "Error fetching data. HTTP Status Code: $status_code";
-                break;
-        }
-
-        return view('errors/html/general_error', $data);
+        return HTTPError::renderErrorView($status_code, $custom_message);
     }
 
     public function tampilData()
@@ -366,4 +259,63 @@ abstract class ControllerTemplate extends Controller
     {
         return $this->fetchDataUsingCurl('DELETE', $this->api_path . '/' . $id, null, $this->modul_path, $this->judul . ' berhasil dihapus.');
     }
+
+     // public function checkNotifications()
+    // {
+    //     // Get user ID from session
+    //     dd(session()->get('user_details'));
+    //     $userId = session()->get('user_details')['id'];
+    //     $token = session()->get('jwt_token');
+
+    //     // API URL to check notifications
+    //     $notif_url = $this->api_url . '/w/notification/' . $userId;
+
+    //     // Initialize cURL session for fetching notifications
+    //     $ch = curl_init($notif_url);
+
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //     curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    //         'Content-Type: application/json',
+    //         'Authorization: Bearer ' . $token,
+    //     ]);
+
+    //     // Execute the cURL request
+    //     $response = curl_exec($ch);
+    //     $http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    //     // Check for cURL errors
+    //     if ($response === false) {
+    //         $error_message = curl_error($ch);
+    //         curl_close($ch);
+    //         log_message('error', 'cURL Error: ' . $error_message);
+    //         return; // Exit method on error
+    //     }
+
+    //     curl_close($ch);
+
+    //     // Check HTTP status code
+    //     if ($http_status_code !== 200) {
+    //         log_message('error', 'HTTP Error: ' . $http_status_code);
+    //         return; // Exit method on HTTP error
+    //     }
+
+    //     // Decode the JSON response
+    //     $data = json_decode($response, true);
+
+    //     // Log the data for debugging purposes
+    //     log_message('debug', 'Notification API Response: ' . print_r($data, true));
+
+    //     // Initialize notification count
+    //     $notificationCount = 0;
+
+    //     // Check if there are notifications
+    //     if (isset($data['data']) && is_array($data['data'])) {
+    //         // Count the number of notifications
+    //         $notificationCount = count($data['data']);
+    //     }
+
+    //     // Store notification count in session or do further processing as needed
+    //     session()->set('notification_count', $notificationCount);
+    //     session()->set('notif_data', $data['data']);
+    // }
 }
