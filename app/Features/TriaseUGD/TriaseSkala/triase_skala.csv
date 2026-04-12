@@ -1,0 +1,65 @@
+﻿id_skala,tingkat_skala,kode_skala,id_pemeriksaan,pengkajian
+1,1,001,1,Sumbatan Total
+2,1,002,2,Henti Nafas
+3,1,003,2,Frekuensi Nafas < 10x/menit
+4,1,004,3,Henti Nafas
+5,1,005,3,"Retraksi berat, sianosis"
+6,1,006,4,Nadi Karotis Tidak Teraba
+7,1,007,5,Nadi Karotis Tidak Teraba
+8,1,008,5,Pucat
+9,1,009,5,Akral Dingin
+10,1,010,5,CRT > 4 detik
+11,1,011,6,Tidak Respon (GCS < 8)
+12,1,012,7,Nyeri Jantung VAS 10
+13,1,013,8,Immediate / Segera
+14,2,001,1,Sumbatan Parsial
+15,2,002,2,Ada Nafas
+16,2,003,3,Retraksi sedang
+17,2,004,4,Nadi perifer tidak teraba
+18,2,005,4,CRT > 2 detik
+19,2,006,4,Akral Dingin
+20,2,007,4,Pucat
+21,2,008,5,Nadi perifer tidak teraba
+22,2,009,5,Pucat
+23,2,010,5,Akral Dingin
+24,2,011,5,CRT 2 - 4 detik
+25,2,012,6,Respon terhadap nyeri (GCS 9 - 12)
+26,2,013,7,Nyeri jantung VAS 7 - 9
+27,2,014,8,Emergent / Gawat Darurat
+28,3,001,1,Bebas
+29,3,002,2,Frekuensi Nafas 24 - 40x/menit
+30,3,003,3,Retraksi ringan
+31,3,004,4,Nadi 121 - 150x/menit
+32,3,005,4,Sistolik 160 - 200 mmHg
+33,3,006,4,Akral hangat
+34,3,007,5,Nadi perifer teraba
+35,3,008,5,Pucat
+36,3,009,5,Hangat
+37,3,010,6,Respon terhadap verbal (GCS 13 - 14)
+38,3,011,7,Nyeri Jantung VAS 1 - 6
+39,3,012,7,"Nyeri Selain Jantung, VAS 7 - 10"
+40,3,013,8,Urgent / Mendesak
+41,4,001,1,Bebas
+42,4,002,2,Frekuensi Nafas 21 - 23x/menit
+43,4,003,3,Tidak ada retraksi
+44,4,004,4,Nadi 81 - 120x/menit
+45,4,005,4,Sistolik 120 - 159 mmHg
+46,4,006,4,Akral hangat
+47,4,007,5,Nadi perifer teraba
+48,4,008,5,Merah Muda
+49,4,009,5,Hangat
+50,4,010,6,Sadar Penuh (GCS 15)
+51,4,011,7,"Nyeri Selain Jantung, VAS 1 - 6"
+52,4,012,8,Semi Urgent / Kurang Mendesak
+53,5,001,1,Bebas
+54,5,002,2,Frekuensi Nafas 12 - 20x/menit
+55,5,003,3,Tidak ada retraksi
+56,5,004,4,Nadi 60 - 80x/menit
+57,5,005,4,Sistolik < 120 mmHg
+58,5,006,4,Akral hangat
+59,5,007,5,Nadi perifer teraba
+60,5,008,5,Merah Muda
+61,5,009,5,Hangat
+62,5,010,6,Sadar Penuh (GCS 15)
+63,5,011,7,Tidak ada nyeri
+64,5,012,8,Non Urgent / Tidak Mendesak
