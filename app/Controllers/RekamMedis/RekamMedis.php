@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers\RekamMedis;
-use App\Core\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate;
 
 class RekamMedis extends ControllerTemplate
 {

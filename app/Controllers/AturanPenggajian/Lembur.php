@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
-use App\Core\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate;
 
 class Lembur extends ControllerTemplate
 {   

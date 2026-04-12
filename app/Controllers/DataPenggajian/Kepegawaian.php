@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers\DataPenggajian;
-use App\Core\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate;
 
 class Kepegawaian extends ControllerTemplate
 {
