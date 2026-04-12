@@ -98,11 +98,6 @@ class ControllerTemplate extends Controller
         return $postData;
     }
 
-    protected function renderErrorView($status_code, $custom_message = null)
-    {
-        return HTTPError::renderErrorView($status_code, $custom_message);
-    }
-
     public function tampilData()
     {
         $tabel = CURL::fetchDataUsingCurl('GET', $this->api_path)['data']['data'];
