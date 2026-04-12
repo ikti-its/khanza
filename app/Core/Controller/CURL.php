@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core;
+namespace App\Core\Controller;
 
-class CURL
+final readonly class CURL
 {
     public static function fetchDataUsingCurl(
         string $method, 

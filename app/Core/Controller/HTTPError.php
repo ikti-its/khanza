@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core;
+namespace App\Core\Controller;
 
-class HTTPError
+final readonly class HTTPError
 {
     public static function renderErrorView($status_code, $custom_message = null)
     {

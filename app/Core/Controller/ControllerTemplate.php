@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core;
+namespace App\Core\Controller;
 
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;

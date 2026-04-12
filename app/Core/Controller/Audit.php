@@ -1,10 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core;
-use App\Core\ControllerTemplate;
+namespace App\Core\Controller;
 
-class Audit extends ControllerTemplate
+final readonly class Audit extends ControllerTemplate
 {
     public static function GetAuditData($tabel){
         $tabel = str_replace('/', '', $tabel);
