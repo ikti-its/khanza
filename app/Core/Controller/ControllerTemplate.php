@@ -2,7 +2,13 @@
 declare(strict_types=1);
 
 namespace App\Core\Controller;
+use App\Core\ModelTemplate;
 use CodeIgniter\Controller;
+
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
+
 
 class ControllerTemplate extends Controller
 {
@@ -22,6 +28,15 @@ class ControllerTemplate extends Controller
         $this->api_url = getenv('api_URL');
         // Check notifications and set session variable
         // $this->checkNotifications();
+    }
+
+    public function initController(
+        RequestInterface $request, 
+        ResponseInterface $response, 
+        LoggerInterface $logger)
+    {
+        parent::initController($request, $response, $logger);
+        //$this->construct();
     }
 
     final protected function addBreadcrumb($title, $icon = '')
