@@ -76,7 +76,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
     
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Tindakan', 'tindakan');
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/tindakan/tindakan_data', [
                 'tindakan_data' => $tindakan_data['data'],
@@ -184,7 +184,7 @@ curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 5);     // max waktu koneksi
             'tindakan' => $existing_tindakan,
             'jenis_tindakan' => $jenis_tindakan,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -289,7 +289,7 @@ $selectedTindakan = $t;
             'tindakan' => $selectedTindakan,
             'jenis_tindakan' => $jenis_tindakan, // ✅ this fixes the undefined variable error
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
     
@@ -429,7 +429,7 @@ $selectedTindakan = $t;
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Tindakan', 'tindakan');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
     // dd($kelas);
         return view('/admin/tindakan/tindakan_data', [
             'tindakan_data' => $data,

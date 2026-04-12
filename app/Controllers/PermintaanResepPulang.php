@@ -95,7 +95,7 @@ protected array $breadcrumbs = [];
         // Step 3: Breadcrumbs and render view
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Permintaan Resep Pulang', 'PermintaanResepPulang');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         return view('/admin/permintaanreseppulang/permintaanreseppulang_data', [
             'permintaanreseppulang_data' => $permintaan_list,
@@ -167,7 +167,7 @@ protected array $breadcrumbs = [];
         return view('/admin/permintaanreseppulang/tambah_permintaanreseppulang', [
             'permintaanreseppulang' => $permintaan,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs(),
+            'breadcrumbs' => $this->breadcrumbs,
             'dokter_list' => $dokter_list,
             'obat_list' => $obat_list
         ]);
@@ -296,7 +296,7 @@ protected array $breadcrumbs = [];
             'title' => $title,
             'dokter_list' => $dokterList,
             'obat_list' => $obatList, // ✅ Kirim ke view
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 

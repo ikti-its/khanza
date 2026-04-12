@@ -117,7 +117,7 @@ class Pemesanan extends ControllerTemplate
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Pemesanan', 'pemesananmedis');
 
-                    $breadcrumbs = $this->getBreadcrumbs();
+                    $breadcrumbs = $this->breadcrumbs;
 
                     return view('/admin/pengadaan/medis/pemesanan/data_pemesanan', [
                         'pemesanan_medis_data' => $pemesanan_medis_data['data']['pemesanan_barang_medis'],
@@ -470,7 +470,7 @@ class Pemesanan extends ControllerTemplate
             $this->addBreadcrumb('Pemesanan', 'pemesananmedis');
             $this->addBreadcrumb('Tambah', 'tambahpemesananmedis');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             // Tampilkan view dengan data yang sudah diambil
             echo view('/admin/pengadaan/medis/pemesanan/pemesanan', [
@@ -736,7 +736,7 @@ class Pemesanan extends ControllerTemplate
                     $this->addBreadcrumb('Pemesanan', 'pemesananmedis');
                     $this->addBreadcrumb('Ubah', 'editpemesananmedis');
 
-                    $breadcrumbs = $this->getBreadcrumbs();
+                    $breadcrumbs = $this->breadcrumbs;
                     return view('/admin/pengadaan/medis/pemesanan/edit_pemesanan', [
                         'pemesanan_data' => $pemesanan_data['data'],
                         'pesanan_data' => $pesanan_data['data'],

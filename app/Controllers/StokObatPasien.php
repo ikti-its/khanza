@@ -53,7 +53,7 @@ $item['nama_brng'] = '';
         return view('/admin/stokobatpasien/stokobatpasien_data', [
             'stokobatpasien_data' => $stokObatData,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs(),
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data' => $metaData,
         ]);
     }
@@ -107,7 +107,7 @@ $item['nama_brng'] = '';
         return view('/admin/stokobatpasien/tambah_stokobatpasien', [
             'stokobatpasien' => $stok,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -190,7 +190,7 @@ $item['nama_brng'] = '';
         return view('/admin/stokobatpasien/edit_stokobatpasien', [
             'stokobatpasien' => $stok,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -311,7 +311,7 @@ $item['nama_brng'] = '';
 
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Stok Obat Pasien', 'stokobatpasien');
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/stokobatpasien/stokobatpasien_data', [
                 'stokobatpasien_data' => $data,

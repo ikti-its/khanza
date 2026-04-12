@@ -23,7 +23,7 @@ class Ambulans extends ControllerTemplate
         $ambulans_data = $this->fetchDataUsingCurl('GET', '/ambulans')['data'];
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Ambulans', 'ambulans');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         $meta_data = $ambulans_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1];
 
@@ -47,7 +47,7 @@ class Ambulans extends ControllerTemplate
 
             return view('/admin/ambulans/tambah_ambulans', [
                 'title' => $title,
-                'breadcrumbs' => $this->getBreadcrumbs()
+                'breadcrumbs' => $this->breadcrumbs
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -75,7 +75,7 @@ class Ambulans extends ControllerTemplate
         return view('/admin/ambulans/edit_ambulans', [
             'ambulans' => $ambulans_data['data'],
             'title' => 'Edit Ambulans',
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -103,7 +103,7 @@ class Ambulans extends ControllerTemplate
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Kamar', 'kamar');
         $this->addBreadcrumb('Terima', 'terima');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
             // dd($kamar_data);
         // Return the edit view with kamar data
         return view('/admin/kamar/terima_kamar', [

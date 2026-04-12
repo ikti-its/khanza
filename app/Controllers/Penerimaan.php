@@ -88,7 +88,7 @@ class Penerimaan extends ControllerTemplate
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Penerimaan', 'penerimaanmedis');
 
-                    $breadcrumbs = $this->getBreadcrumbs();
+                    $breadcrumbs = $this->breadcrumbs;
                     return view('/admin/pengadaan/medis/penerimaan/data_penerimaan', [
                         'penerimaan_data' => $penerimaan_data['data'],
                         'detail_data' => $detail_data['data'],
@@ -233,7 +233,7 @@ class Penerimaan extends ControllerTemplate
             $this->addBreadcrumb('Penerimaan', 'penerimaanmedis');
             $this->addBreadcrumb('Tambah', 'tambahpenerimaanmedis');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
             // Tampilkan view dengan data yang sudah diambil
             echo view('/admin/pengadaan/medis/penerimaan/penerimaan', [
                 'pegawai_data' => $pegawai_data['data'],

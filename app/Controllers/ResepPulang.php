@@ -93,7 +93,7 @@ protected array $breadcrumbs = [];
         // Breadcrumbs
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Resep Pulang', 'reseppulang');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
     
         return view('/admin/reseppulang/reseppulang_data', [
             'reseppulang_data' => $reseppulang_data,
@@ -185,7 +185,7 @@ protected array $breadcrumbs = [];
             'no_permintaan' => $noPermintaan,
             'title' => $title,
             'obat_list' => $obat_list,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -301,7 +301,7 @@ if ($noPermintaan) {
         'no_permintaan' => $noPermintaan,
         'title' => $title,
         'obat_list' => $obat_list,
-        'breadcrumbs' => $this->getBreadcrumbs()
+        'breadcrumbs' => $this->breadcrumbs
     ]);
 }
 
@@ -403,7 +403,7 @@ if ($noPermintaan) {
 //         'prefill'    => $prefill,
 //         'obat_list'  => $obat_list,
 //         'title'      => $title,
-//         'breadcrumbs'=> $this->getBreadcrumbs()
+//         'breadcrumbs'=> $this->breadcrumbs
 //     ]);
 // }
 
@@ -456,7 +456,7 @@ public function editResepPulang($no_rawat, $kode_brng, $tanggal, $jam)
         'prefill'    => $prefill,
         'obat_list'  => $obat_list,
         'title'      => $title,
-        'breadcrumbs'=> $this->getBreadcrumbs()
+        'breadcrumbs'=> $this->breadcrumbs
     ]);
 }
 
@@ -590,7 +590,7 @@ public function editResepPulang($no_rawat, $kode_brng, $tanggal, $jam)
             'prefill' => $preFill,
             'title' => 'Tambah Resep Pulang',
             'obat_list' => $obat_list,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
     

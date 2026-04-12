@@ -79,7 +79,7 @@ protected array $breadcrumbs = [];
     
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('UGD', 'ugd');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
         $meta_data = $ugd_data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => 1];
     
         return view('/admin/ugd/ugd_data', [
@@ -101,7 +101,7 @@ protected array $breadcrumbs = [];
 
             return view('/admin/ugd/tambah_ugd', [
                 'title' => $title,
-                'breadcrumbs' => $this->getBreadcrumbs(),
+                'breadcrumbs' => $this->breadcrumbs,
             ]);
         } else {
             return $this->renderErrorView(401);
@@ -244,7 +244,7 @@ protected array $breadcrumbs = [];
         return view('/admin/ugd/edit_ugd', [
             'ugd' => $ugd_data['data'],
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 

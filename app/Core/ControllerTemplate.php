@@ -125,7 +125,7 @@ abstract class ControllerTemplate extends Controller
         $tabel = $this->fetchDataUsingCurl('GET', $this->api_path)['data']['data'];
         return view('/layouts/data', [
             'judul'       => $this->judul,
-            'breadcrumbs' => $this->getBreadcrumbs(),
+            'breadcrumbs' => $this->breadcrumbs,
             'meta_data'   => $this->meta_data,
             'modul_path'  => $this->modul_path,
             'kolom_id'    => $this->kolom_id,
@@ -150,7 +150,7 @@ abstract class ControllerTemplate extends Controller
         ];
         return view('/layouts/audit', [
             'judul'       => 'Audit ' . $this->judul,
-            'breadcrumbs' => array_merge($this->getBreadcrumbs(), $breadcrumbs),
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'meta_data'   => $this->meta_data,
             'modul_path'  => $this->modul_path . '/audit',
             'kolom_id'    => 'action',
@@ -165,7 +165,7 @@ abstract class ControllerTemplate extends Controller
         ];
         return view('/layouts/tambah_ubah', [
             'judul'       => 'Tambah ' . $this->judul,
-            'breadcrumbs' => array_merge($this->getBreadcrumbs(), $breadcrumbs),
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->modul_path,
             'kolom_id'    => $this->kolom_id,
             'konfig'      => $this->konfig,
@@ -180,7 +180,7 @@ abstract class ControllerTemplate extends Controller
         $baris = $this->fetchDataUsingCurl('GET', $this->api_path . '/' . $id)['data']['data'];
         return view('/layouts/tambah_ubah', [
             'judul'       => 'Ubah ' . $this->judul,
-            'breadcrumbs' => array_merge($this->getBreadcrumbs(), $breadcrumbs),
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->modul_path,
             'kolom_id'    => $this->kolom_id,
             'konfig'      => $this->konfig,

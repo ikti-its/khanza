@@ -72,7 +72,7 @@ protected array $breadcrumbs = [];
             // Set up breadcrumbs
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Rujukan Masuk', 'rujukanmasuk');
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             // Meta fallback
             if (!isset($rujukan_data['meta_data'])) {
@@ -108,7 +108,7 @@ protected array $breadcrumbs = [];
             $this->addBreadcrumb('Rujukan Masuk', 'rujukanmasuk');
             $this->addBreadcrumb('Tambah', 'tambah');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/rujukan/tambah_rujukan_masuk', [
                 'title' => $title,
@@ -223,7 +223,7 @@ protected array $breadcrumbs = [];
         $this->addBreadcrumb('Rujukan Masuk', 'rujukanmasuk');
         $this->addBreadcrumb('Edit', 'edit');
 
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         return view('/admin/rujukan/edit_rujukan_masuk', [
             'rujukan' => $rujukan_data['data'],

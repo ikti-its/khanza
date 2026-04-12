@@ -165,7 +165,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
     // Breadcrumbs
     $this->addBreadcrumb('User', 'user');
     $this->addBreadcrumb('Rawat Inap', 'rawatinap');
-    $breadcrumbs = $this->getBreadcrumbs();
+    $breadcrumbs = $this->breadcrumbs;
 
     return view('/admin/rawatinap/rawatinap_data', [
         'rawatinap_data' => $rawatinapList,
@@ -235,7 +235,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
         $this->addBreadcrumb('Rawat Inap', 'rawatinap');
         $this->addBreadcrumb('Tambah', 'tambah');
 
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         return view('/admin/rawatinap/tambah_rawatinap', [
             'title' => $title,
@@ -389,7 +389,7 @@ $url  = $this->api_url . "/rawatinap?page={$page}&size={$size}";
         return view('/admin/rawatinap/edit_rawatinap', [
             'rawatinap' => $ri,
             'title' => 'Edit Rawat Inap',
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 

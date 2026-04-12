@@ -104,7 +104,7 @@ protected array $breadcrumbs = [];
     // Breadcrumbs
     $this->addBreadcrumb('User', 'user');
     $this->addBreadcrumb('Resep Obat', 'ResepObat');
-    $breadcrumbs = $this->getBreadcrumbs();
+    $breadcrumbs = $this->breadcrumbs;
 
     return view('/admin/resepobat/resepobat_data', [
         'resepobat_data' => $resep_list,
@@ -183,7 +183,7 @@ protected array $breadcrumbs = [];
             'resepobat' => $resep,
             'title' => $title,
             'obat_list' => $obat,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -252,7 +252,7 @@ protected array $breadcrumbs = [];
             'nomor_rm'   => $resep['nomor_rm'] ?? '',
             'title'      => $title,
             'obat_list'  => $obat,
-            'breadcrumbs'=> $this->getBreadcrumbs()
+            'breadcrumbs'=> $this->breadcrumbs
         ]);
     }
 
@@ -386,7 +386,7 @@ protected array $breadcrumbs = [];
             'resepobat' => $resep,
             'obat_list' => $obat_list,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs(),
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 
@@ -534,7 +534,7 @@ protected array $breadcrumbs = [];
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Resep Obat', 'resepobat');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
     // dd($data);
         return view('/admin/resepobat/resepobat_data', [
             'resepobat_data' => $data,

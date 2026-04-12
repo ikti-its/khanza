@@ -126,7 +126,7 @@ class CatatanObservasiKebidanan extends ControllerTemplate
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Kebidanan', 'catatanobservasikebidanan');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 
@@ -147,7 +147,7 @@ class CatatanObservasiKebidanan extends ControllerTemplate
             $this->addBreadcrumb('Observasi Kebidanan', 'catatanobservasikebidanan');
             $this->addBreadcrumb('Tambah', 'tambah');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/observasikebidanan/tambah_catatanobservasiranapkebidanan', [
                 'title' => $title,
@@ -299,7 +299,7 @@ class CatatanObservasiKebidanan extends ControllerTemplate
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Kebidanan', 'catatanobservasikebidanan');
         $this->addBreadcrumb('Edit', 'edit');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
     // dd($catatan);
         return view('/admin/observasikebidanan/edit_catatanobservasikebidanan', [
             'catatan' => $catatan,
@@ -476,7 +476,7 @@ class CatatanObservasiKebidanan extends ControllerTemplate
 
         return view('/admin/observasikebidanan/tambah_catatanobservasi', [
             'title' => 'Tambah Observasi Kebidanan',
-            'breadcrumbs' => $this->getBreadcrumbs(),
+            'breadcrumbs' => $this->breadcrumbs,
             'prefill' => $prefill,
             'pegawai_list' => $pegawai_list
         ]);
@@ -561,7 +561,7 @@ class CatatanObservasiKebidanan extends ControllerTemplate
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Kebidanan', 'catatanobservasikebidanan');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 

@@ -63,7 +63,7 @@ class PemberianObat extends ControllerTemplate
             // ✅ Breadcrumbs
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Pemberian Obat', 'pemberianobat');
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             // dd($obat_data);
     
@@ -126,7 +126,7 @@ class PemberianObat extends ControllerTemplate
             'pemberianobat' => $pemberianobat,
             'obat_list' => $obat_data,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -296,7 +296,7 @@ $selectedObat = $item;
             'pemberianobat' => $selectedObat,
             'obat_list' => $obat_list,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -413,7 +413,7 @@ $selectedObat = $item;
 
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Pemberian Obat', 'pemberianobat');
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             // dd($response);
 

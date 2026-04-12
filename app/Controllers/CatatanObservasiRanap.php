@@ -130,7 +130,7 @@ protected array $breadcrumbs = [];
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Rawat Inap', 'catatanobservasiranap');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 // dd($list);
@@ -151,7 +151,7 @@ protected array $breadcrumbs = [];
             $this->addBreadcrumb('Observasi Rawat Inap', 'catatanobservasiranap');
             $this->addBreadcrumb('Tambah', 'tambah');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/observasiranap/tambah_catatanobservasiranap', [
                 'title' => $title,
@@ -328,7 +328,7 @@ protected array $breadcrumbs = [];
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Rawat Inap', 'catatanobservasiranap');
         $this->addBreadcrumb('Edit', 'edit');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         return view('/admin/observasiranap/edit_catatanobservasiranap', [
             'catatan'       => $catatan,
@@ -510,7 +510,7 @@ protected array $breadcrumbs = [];
 
         return view('/admin/observasiranap/tambah_catatanobservasi', [
             'title' => 'Tambah Observasi Rawat Inap',
-            'breadcrumbs' => $this->getBreadcrumbs(),
+            'breadcrumbs' => $this->breadcrumbs,
             'prefill' => $prefill,
             'pegawai_list' => $pegawai_list
         ]);
@@ -585,7 +585,7 @@ protected array $breadcrumbs = [];
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Rawat Inap', 'catatanobservasiranap');
         $this->addBreadcrumb('Lihat', '');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         return view('/admin/observasiranap/catatanobservasiranap_data', [
             'catatan_data' => $list,

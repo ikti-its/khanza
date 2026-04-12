@@ -61,7 +61,7 @@ protected array $breadcrumbs = [];
             // ✅ Breadcrumbs
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Resep Dokter', 'resepdokter');
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/resepdokter/resepdokter_data', [
                 'resepdokter_data' => $resep_data['data'],
@@ -105,7 +105,7 @@ protected array $breadcrumbs = [];
         return view('/admin/resepdokter/tambah_resepdokter', [
             'resepdokter' => $resep,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -218,7 +218,7 @@ $selectedResep = $item;
             'obat_list'     => $obat_list,
             'nomor_rawat'   => $nomorRawat,
             'nomor_rm'      => $nomorRM,
-            'breadcrumbs'   => $this->getBreadcrumbs()
+            'breadcrumbs'   => $this->breadcrumbs
         ]);
     }
 
@@ -425,7 +425,7 @@ $barang_lookup[$item['kode_obat']] = $item['nama_obat'];
         // ✅ Breadcrumbs
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Resep Dokter', 'resepdokter');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         return view('/admin/resepdokter/resepdokter_data', [
             'racikan_list'     => $racikan_list,

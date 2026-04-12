@@ -115,7 +115,7 @@ class Tagihan extends ControllerTemplate
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Tagihan', 'tagihanmedis');
 
-                    $breadcrumbs = $this->getBreadcrumbs();
+                    $breadcrumbs = $this->breadcrumbs;
                     return view('/admin/pengadaan/medis/tagihan/data_tagihan', [
                         'tagihan_medis_data' => $tagihan_data['data']['tagihan_barang_medis'],
                         'pengajuan_data' => $pengajuan_data['data'], // Assuming pengajuan data is stored in 'data' key
@@ -339,7 +339,7 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
                     $this->addBreadcrumb('Tagihan', 'tagihanmedis');
                     $this->addBreadcrumb('Tambah', 'tambahtagihanmedis');
 
-                    $breadcrumbs = $this->getBreadcrumbs();
+                    $breadcrumbs = $this->breadcrumbs;
                     // Pass all data to the view
                     return view('/admin/pengadaan/medis/tagihan/tagihan', [
                         'pengajuan_data' => $pengajuan_data['data'],
@@ -606,7 +606,7 @@ return redirect('penerimaanmedis')->with('warning', 'Barang harus diterima terle
                     $this->addBreadcrumb('Tagihan', 'tagihanmedis');
                     $this->addBreadcrumb('Ubah', 'edittagihanmedis');
 
-                    $breadcrumbs = $this->getBreadcrumbs();
+                    $breadcrumbs = $this->breadcrumbs;
                     return view('/admin/pengadaan/medis/tagihan/edit_tagihan', [
                         'tagihan_data' => $tagihan_data['data'],
                         'pesanan_data' => $pesanan_data['data'],

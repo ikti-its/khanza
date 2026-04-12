@@ -91,7 +91,7 @@ class Registrasi extends ControllerTemplate
             // Set up breadcrumbs (for UI navigation)
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Registrasi', 'registrasi');
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             // Ensure we have valid meta data
             if (!isset($registrasi_data['meta_data'])) {
@@ -128,7 +128,7 @@ class Registrasi extends ControllerTemplate
             $this->addBreadcrumb('Registrasi', 'registrasi');
             $this->addBreadcrumb('Tambah', 'tambah');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/registrasi/tambah_registrasi', [
                 'title' => $title,
@@ -287,7 +287,7 @@ class Registrasi extends ControllerTemplate
         $this->addBreadcrumb('Registrasi', 'registrasi');
         $this->addBreadcrumb('Edit', 'edit');
 
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
         // dd($registrasi_data);
         return view('/admin/registrasi/edit_registrasi', [
             'registrasi' => $registrasi_data['data'],

@@ -212,7 +212,7 @@ class Pasien extends ControllerTemplate
         return view('/admin/pasien/edit_pasien', [
             'title' => $title,
             'pasien' => $pasienData,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 

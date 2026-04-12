@@ -103,7 +103,7 @@ class Medis extends ControllerTemplate
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Data', 'data');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/inventaris/medis/data_medis', [
                 'medis_data' => $medis_data['data'],
@@ -202,7 +202,7 @@ class Medis extends ControllerTemplate
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Tambah', 'tambah');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/inventaris/medis/tambah_medis', [
                 'satuan_data' => $satuan_data['data'],
@@ -446,7 +446,7 @@ class Medis extends ControllerTemplate
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Tambah', 'tambah');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/inventaris/medis/edit_medis', [
                 'medis_data' => $medis_data['data'],

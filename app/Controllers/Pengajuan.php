@@ -75,7 +75,7 @@ class Pengajuan extends ControllerTemplate
                 $this->addBreadcrumb('Pengadaan', 'pengadaanmedis');
                 $this->addBreadcrumb('Dashboard', 'dashboardpengadaan');
 
-                $breadcrumbs = $this->getBreadcrumbs();
+                $breadcrumbs = $this->breadcrumbs;
 
                 return view("/admin/pengadaan/medis/dashboardPengadaan", [
                     'pengajuan_data' => $pengajuan_data['data']['pengajuan_barang_medis'],
@@ -209,7 +209,7 @@ class Pengajuan extends ControllerTemplate
                 $this->addBreadcrumb('Barang Medis', 'medis');
                 $this->addBreadcrumb('Pengajuan', 'data');
 
-                $breadcrumbs = $this->getBreadcrumbs();
+                $breadcrumbs = $this->breadcrumbs;
                 session()->set('status_pesanan', $pengajuan_tanpa_params_medis_data['data']);
                 return view('/admin/pengadaan/medis/pengajuan/data_pengajuan', [
                     'pengajuan_medis_data' => $pengajuan_medis_data['data']['pengajuan_barang_medis'],
@@ -309,7 +309,7 @@ class Pengajuan extends ControllerTemplate
             $this->addBreadcrumb('Pengajuan', 'data');
             $this->addBreadcrumb('Tambah', '');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/pengadaan/medis/pengajuan/tambah_pengajuan', [
                 'pengajuan_data' => $pengajuan_data['data'],
@@ -529,7 +529,7 @@ class Pengajuan extends ControllerTemplate
                 $this->addBreadcrumb('Pengajuan', 'pengajuanmedis');
                 $this->addBreadcrumb('Ubah', 'editpengajuanmedis');
 
-                $breadcrumbs = $this->getBreadcrumbs();
+                $breadcrumbs = $this->breadcrumbs;
 
 
                 return view('/admin/pengadaan/medis/pengajuan/edit_pengajuan', [

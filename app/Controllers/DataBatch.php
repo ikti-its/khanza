@@ -81,7 +81,7 @@ class DataBatch extends ControllerTemplate
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Data Batch', 'databatch');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
             $ruangan_data = json_decode($response_ruangan, true);
             $satuan_data = json_decode($response_satuan, true);
             $gudang_data = json_decode($response_gudang, true);
@@ -164,7 +164,7 @@ class DataBatch extends ControllerTemplate
             $this->addBreadcrumb('Data Batch', 'databatch');
             $this->addBreadcrumb('Tambah', 'tambah');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
             $ruangan_data = json_decode($response_ruangan, true);
             $satuan_data = json_decode($response_satuan, true);
             $gudang_data = json_decode($response_gudang, true);
@@ -333,7 +333,7 @@ class DataBatch extends ControllerTemplate
             $this->addBreadcrumb('Data Batch', 'databatch');
             $this->addBreadcrumb('Edit', 'edit');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
             $ruangan_data = json_decode($response_ruangan, true);
             $satuan_data = json_decode($response_satuan, true);
             $gudang_data = json_decode($response_gudang, true);

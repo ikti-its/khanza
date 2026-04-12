@@ -61,7 +61,7 @@ class StokOpname extends ControllerTemplate
                $this->addBreadcrumb('Barang Medis', 'medis');
                $this->addBreadcrumb('Sisa stok', 'sisatok');
 
-               $breadcrumbs = $this->getBreadcrumbs();
+               $breadcrumbs = $this->breadcrumbs;
 
                return view('/admin/inventaris/medis/sisa_stok', [
                     'medis_data' => $medis_data['data'],
@@ -151,7 +151,7 @@ class StokOpname extends ControllerTemplate
                $this->addBreadcrumb('Barang Medis', 'medis');
                $this->addBreadcrumb('Stok Opname', 'stokopname');
 
-               $breadcrumbs = $this->getBreadcrumbs();
+               $breadcrumbs = $this->breadcrumbs;
 
                $opname_data = json_decode($response_opname, true);
                $ruangan_data = json_decode($response_ruangan, true);
@@ -236,7 +236,7 @@ class StokOpname extends ControllerTemplate
                $this->addBreadcrumb('Stok Opname', 'stokopname');
                $this->addBreadcrumb('Tambah', 'tambah');
 
-               $breadcrumbs = $this->getBreadcrumbs();
+               $breadcrumbs = $this->breadcrumbs;
                $ruangan_data = json_decode($response_ruangan, true);
                $satuan_data = json_decode($response_satuan, true);
                $gudang_data = json_decode($response_gudang, true);

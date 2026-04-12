@@ -129,7 +129,7 @@ protected array $breadcrumbs = [];
         // ✅ Breadcrumbs
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Resep Obat', 'resepobatracikan');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
     // dd($combinedList);
         return view('/admin/resepobatracikan/resepobatracikan_data', [
             'resepobatracikan_data' => $combinedList,
@@ -225,7 +225,7 @@ protected array $breadcrumbs = [];
             'resepobatracikan' => $resep,
             'title' => $title,
             'obat_list' => $obat,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -418,7 +418,7 @@ protected array $breadcrumbs = [];
         return view('/admin/resepobatracikan/edit_resepobatracikan', [
             'resepobatracikan' => $resep,
             'title' => $title,
-            'breadcrumbs' => $this->getBreadcrumbs()
+            'breadcrumbs' => $this->breadcrumbs
         ]);
     }
 
@@ -534,7 +534,7 @@ protected array $breadcrumbs = [];
 
             $this->addBreadcrumb('User', 'user');
             $this->addBreadcrumb('Resep Obat', 'resepobatracikan');
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/resepobatracikan/resepobatracikan_data', [
                 'resepobatracikan_data' => $data,

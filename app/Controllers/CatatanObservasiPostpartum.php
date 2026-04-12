@@ -130,7 +130,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Post Partum', 'catatanobservasipostpartum');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 
@@ -151,7 +151,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
             $this->addBreadcrumb('Observasi Post Partum', 'catatanobservasipostpartum');
             $this->addBreadcrumb('Tambah', 'tambah');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
 
             return view('/admin/observasipostpartum/tambah_catatanobservasipostpartum', [
                 'title' => $title,
@@ -302,7 +302,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Post Partum', 'catatanobservasipostpartum');
         $this->addBreadcrumb('Edit', 'edit');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
     // dd($catatan);
         return view('/admin/observasipostpartum/edit_catatanobservasipostpartum', [
             'catatan' => $catatan,
@@ -481,7 +481,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
 
         return view('/admin/observasipostpartum/tambah_catatanobservasi', [
             'title' => 'Tambah Observasi Post Partum',
-            'breadcrumbs' => $this->getBreadcrumbs(),
+            'breadcrumbs' => $this->breadcrumbs,
             'prefill' => $prefill,
             'pegawai_list' => $pegawai_list
         ]);
@@ -566,7 +566,7 @@ class CatatanObservasiPostpartum extends ControllerTemplate
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Observasi Post Partum', 'catatanobservasipostpartum');
-        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs = $this->breadcrumbs;
 
         $meta_data = $data['meta_data'] ?? ['page' => 1, 'size' => 10, 'total' => count($list)];
 

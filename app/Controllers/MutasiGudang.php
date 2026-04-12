@@ -83,7 +83,7 @@ class MutasiGudang extends ControllerTemplate
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Stok Opname', 'stokopname');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
             $ruangan_data = json_decode($response_ruangan, true);
             $satuan_data = json_decode($response_satuan, true);
             $gudang_data = json_decode($response_gudang, true);
@@ -166,7 +166,7 @@ class MutasiGudang extends ControllerTemplate
             $this->addBreadcrumb('Barang Medis', 'medis');
             $this->addBreadcrumb('Mutasi', 'mutasi');
 
-            $breadcrumbs = $this->getBreadcrumbs();
+            $breadcrumbs = $this->breadcrumbs;
             $ruangan_data = json_decode($response_ruangan, true);
             $satuan_data = json_decode($response_satuan, true);
             $gudang_data = json_decode($response_gudang, true);

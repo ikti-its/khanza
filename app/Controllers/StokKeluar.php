@@ -84,7 +84,7 @@ class StokKeluar extends ControllerTemplate
                     $this->addBreadcrumb('Inventaris', 'inventarismedis');
                     $this->addBreadcrumb('Barang Medis', 'medis');
                     $this->addBreadcrumb('Stok Keluar', 'stokkeluarmedis');
-                    $breadcrumbs = $this->getBreadcrumbs();
+                    $breadcrumbs = $this->breadcrumbs;
 
                     return view('/admin/inventaris/medis/stok_keluar/data_stok_keluar', [
                         'stok_keluar_medis_data' => $stok_keluar_medis_data['data'],
@@ -169,7 +169,7 @@ class StokKeluar extends ControllerTemplate
                 $this->addBreadcrumb('Stok Keluar', 'stokkeluarmedis');
                 $this->addBreadcrumb('Tambah', 'tambahstokkeluarmedis');
 
-                $breadcrumbs = $this->getBreadcrumbs();
+                $breadcrumbs = $this->breadcrumbs;
                 return view('/admin/inventaris/medis/stok_keluar/tambah_stok_keluar', [
                     'medis_data' => $medis_data['data'],
                     'ruangan_data' => $ruangan_data['data'],
@@ -392,7 +392,7 @@ class StokKeluar extends ControllerTemplate
                 $this->addBreadcrumb('Stok Keluar', 'stokkeluarmedis');
                 $this->addBreadcrumb('Tambah', 'tambahstokkeluarmedis');
 
-                $breadcrumbs = $this->getBreadcrumbs();
+                $breadcrumbs = $this->breadcrumbs;
                 return view('/admin/inventaris/medis/stok_keluar/edit_stok_keluar', [
                     'medis_data' => $medis_data['data'],
                     'ruangan_data' => $ruangan_data['data'],
