@@ -2,6 +2,11 @@ DO $$
 DECLARE
     tbl RECORD;
 BEGIN
+    IF current_database() <> 'khanza_db' THEN
+        RAISE NOTICE 'Skipping: not in khanza_db (current: %)', current_database();
+        RETURN;
+    END IF;
+
     FOR tbl IN
         SELECT table_schema, table_name
         FROM information_schema.tables
