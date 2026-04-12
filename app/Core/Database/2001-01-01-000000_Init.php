@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Database;
 use CodeIgniter\Database\Migration;
-use App\Core\Assert;
+use App\Core\Controller\Assert;
 
 class Init extends Migration
 {
