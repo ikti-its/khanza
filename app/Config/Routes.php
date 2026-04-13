@@ -816,6 +816,16 @@ $features = [
         ['RefParameterPemeriksaanLab', 'ref-parameter-pemeriksaan-lab'],
         ['RefStatusPermintaan', 'ref-status-permintaan'],
     ]],
+    ['Donor', 'donor/', [
+        ['HasilAnamnesis', 'hasil-anamnesis'],
+        ['JenisDonor', 'jenis-donor'],
+        ['Kunjungan', 'kunjungan'],
+        ['LokasiPengambilanDarah', 'lokasi-pengambilan-darah'],
+        ['PengambilanDarah', 'pengambilan-darah'],
+        ['SkriningDonor', 'skrining-donor'],
+        ['StatusKunjungan', 'status-kunjungan'],
+        ['StatusPendonor', 'status-pendonor']
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];

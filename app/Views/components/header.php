@@ -804,6 +804,16 @@
                         ['Komponen Darah', '/komponen-darah', ''],
                         ['Rhesus', '/rhesus', '']
                     ]],
+                    ['Donor', '', 'donor', '/donor', $petugasrole, [
+                        ['Kunjungan', '/kunjungan', ''],
+                        ['Skrining Donor', '/skrining-donor', ''],
+                        ['Pengambilan Darah', '/pengambilan-darah', ''],
+                        ['Hasil Anamnesis', '/hasil-anamnesis', ''],
+                        ['Jenis Donor', '/jenis-donor', ''],
+                        ['Lokasi Pengambilan Darah', '/lokasi-pengambilan-darah', ''],
+                        ['Status Pendonor', '/status-pendonor', ''],
+                        ['Status Kunjungan', '/status-kunjungan', '']
+                    ]],
                     ['Laboratorium', '', 'laboratorium', '/laboratorium', $petugasrole, [
                         // Permintaan Lab
                         ['Permintaan Lab', '/permintaan-lab', ''],
