@@ -800,8 +800,8 @@
                         ['Observasi Rawat Inap Post Partum', '/catatanobservasipostpartum', ''],
                     ]],
                     ['Darah', '', 'darah', '/darah', $petugasrole, [
-                        ['Golongan Darah', '/golongandarah', ''],
-                        ['Komponen Darah', '/komponendarah', ''],
+                        ['Golongan Darah', '/golongan-darah', ''],
+                        ['Komponen Darah', '/komponen-darah', ''],
                         ['Rhesus', '/rhesus', '']
                     ]],
                     ['Laboratorium', '', 'laboratorium', '/laboratorium', $petugasrole, [
