@@ -8,10 +8,8 @@ final readonly class CURL
     public static function call(
         string $method, 
         string $path, 
-        array|null $data = null, 
-        string|null $redirect_url = null, 
-        string|null $redirect_msg = null)
-    {
+        array|null $data = null
+    ){
         
         $allowed_methods = ['GET', 'POST', 'PUT', 'DELETE'];
         if (!in_array($method, $allowed_methods)) {
@@ -52,12 +50,6 @@ final readonly class CURL
         $http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         $return_data = json_decode($response, true);
-        if ($method === 'GET') {
-            return [
-                'data' => $return_data,
-                'kode' => $http_status_code
-            ];
-        }
 
         $http_success_codes = [200, 201, 204];
         if (!in_array($http_status_code, $http_success_codes)) {
@@ -69,6 +61,9 @@ final readonly class CURL
             log_message('error', 'JSON decode error: ' . json_last_error_msg());
             echo HTTPError::renderErrorView(status_code: 500);
         }
-        return redirect()->to(base_url($redirect_url))->with('success', $redirect_msg ?? 'Berhasil');    
+        return [
+            'data' => $return_data,
+            'kode' => $http_status_code
+        ];    
     }
 }

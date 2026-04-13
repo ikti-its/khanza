@@ -62,7 +62,8 @@ class Ambulans extends ControllerTemplate
             'status' => $this->request->getPost('status'),
             'supir' => $this->request->getPost('supir')
         ];
-        return CURL::call('POST', '/ambulans', $postData, 'ambulans');
+        $_response = CURL::call('POST', '/ambulans', $postData);
+        return redirect()->to(base_url('/ambulans'))->with('success', 'Berhasil');
     }
 
     public function editAmbulans($noAmbulans)
@@ -87,12 +88,14 @@ class Ambulans extends ControllerTemplate
             'status' => $this->request->getPost('status'),
             'supir' => $this->request->getPost('supir')
         ];
-        return CURL::call('PUT', '/ambulans/' . $noAmbulans, $postData, 'ambulans', 'Ambulans berhasil diperbarui.');
+        $_response = CURL::call('PUT', '/ambulans/' . $noAmbulans, $postData);
+        return redirect()->to(base_url('/ambulans'))->with('success', 'Berhasil');
     }
 
     public function hapusAmbulans($noAmbulans)
     {
-        return CURL::call('DELETE', '/ambulans/' . $noAmbulans, null, 'ambulans', 'Ambulans berhasil dihapus.' );
+        $_response = CURL::call('DELETE', '/ambulans/' . $noAmbulans);
+        return redirect()->to(base_url('/ambulans'))->with('success', 'Berhasil');
     }
 
     public function panggilAmbulans($nomorBed)
@@ -115,6 +118,7 @@ class Ambulans extends ControllerTemplate
 
     public function terimaAmbulans($noAmbulans)
     {
-        return CURL::call('PUT', '/ambulans/terima/' . $noAmbulans, null, 'ambulans', 'Ambulans telah diterima.');
+        $_response = CURL::call('PUT', '/ambulans/terima/' . $noAmbulans);
+        return redirect()->to(base_url('/ambulans'))->with('success', 'Berhasil');
     }
 }

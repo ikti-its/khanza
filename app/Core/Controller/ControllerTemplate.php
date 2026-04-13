@@ -150,17 +150,22 @@ class ControllerTemplate extends Controller
     public function simpanTambah()
     {
         $postData = $this->getPostData();
-        return CURL::call('POST', $this->api_path, $postData, $this->modul_path);
+        $_response = CURL::call('POST', $this->api_path, $postData);
+        return redirect()->to(base_url($this->modul_path))->with('success', 'Berhasil');    
     }
     public function simpanUbah($id)
     {
         $postData = $this->getPostData();
-        return CURL::call('PUT', $this->api_path . '/' . $id, $postData, $this->modul_path, $this->judul . ' berhasil diperbarui.');
+        $_response = CURL::call('PUT', $this->api_path . '/' . $id, $postData);
+        return redirect()->to(base_url($this->modul_path))->with('success', $this->judul . ' berhasil diperbarui.');   
+        
     }
 
     final public function hapusData($id)
     {
-        return CURL::call('DELETE', $this->api_path . '/' . $id, null, $this->modul_path, $this->judul . ' berhasil dihapus.');
+        $_response = CURL::call('DELETE', $this->api_path . '/' . $id);
+        return redirect()->to(base_url($this->modul_path))->with('success', $this->judul . ' berhasil dihapus.');   
+        
     }
 
      // public function checkNotifications()
