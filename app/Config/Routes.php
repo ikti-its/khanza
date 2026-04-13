@@ -789,6 +789,23 @@ $features = [
         ['TransaksiStok', 'transaksi-stok'],
         ['Unit', 'unit']
     ]],
+    ['Laboratorium', 'laboratorium/', [
+        // Hasil Lab
+        ['HasilLabMb', 'hasil-lab-mb'],
+        ['HasilLabPa', 'hasil-lab-pa'],
+        ['HasilLabPk', 'hasil-lab-pk'],
+        // Permintaan Lab
+        ['PermintaanLabHeader', 'permintaan-lab'],
+        ['PermintaanLabMb', 'permintaan-lab-mb'],
+        ['PermintaanLabPa', 'permintaan-lab-pa'],
+        ['PermintaanLabPk', 'permintaan-lab-pk'],
+        // Referensi
+        ['RefItemPemeriksaanLab', 'ref-item-pemeriksaan-lab'],
+        ['RefKategoriLab', 'ref-kategori-lab'],
+        ['RefKategoriUsiaLab', 'ref-kategori-usia-lab'],
+        ['RefParameterPemeriksaanLab', 'ref-parameter-pemeriksaan-lab'],
+        ['RefStatusPermintaan', 'ref-status-permintaan'],
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
