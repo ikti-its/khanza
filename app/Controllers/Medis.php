@@ -7,7 +7,7 @@ use App\Core\Controller\HTTPError;
 
 class Medis extends ControllerTemplate
 {
-    public function dataMedis()
+    public function showData()
     {
         $title = 'Data Medis';
 
@@ -119,7 +119,7 @@ class Medis extends ControllerTemplate
         }
     }
 
-    public function tambahMedis()
+    public function showInsert()
     {
         if (session()->has('jwt_token')) {
             $token = session()->get('jwt_token');
@@ -215,7 +215,7 @@ class Medis extends ControllerTemplate
         }
     }
 
-    public function submitTambahMedis()
+    public function saveInsert()
     {
         if (session()->has('jwt_token')) {
             $token = session()->get('jwt_token');
@@ -347,7 +347,7 @@ class Medis extends ControllerTemplate
         }
     }
 
-    public function editMedis($medisId)
+    public function showUpdate($medisId)
     {
         if (session()->has('jwt_token')) {
             $token = session()->get('jwt_token');
@@ -458,7 +458,7 @@ class Medis extends ControllerTemplate
         }
     }
 
-    public function submitEditMedis($medisId)
+    public function saveUpdate($medisId)
     {
         if (session()->has('jwt_token')) {
             $token = session()->get('jwt_token');
