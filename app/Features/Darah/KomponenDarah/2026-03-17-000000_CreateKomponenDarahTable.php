@@ -22,6 +22,8 @@ class CreateKomponenDarahTable extends DatabaseTemplate
             [['kode_komponen']],
             [],
             [],
+            true,
+            __DIR__ . '/komponen_darah.csv'
         );
     }
 }
