@@ -711,18 +711,6 @@ $routes->get('/modalasuransi/list', 'Modal\ModalAsuransi::listAsuransi');
 
 //Fitur Penggajian 
 $fiturs = [
-    ['AturanPenggajian\\', 'aturan-penggajian/', [
-        ['BPJS', 'bpjs'],
-        ['Golongan', 'golongan'],
-        ['Jabatan', 'jabatan'],
-        ['PTKP', 'ptkp'],
-        ['PPH21', 'pph21'],
-        ['Lembur', 'lembur'],
-        ['UMR', 'umr'],
-        ['THR', 'thr'],
-        ['Pesangon', 'pesangon'],
-        ['UPMK', 'upmk']
-    ]],
     ['DataPenggajian\\', 'data-penggajian/', [
         ['Kepegawaian', 'kepegawaian'],
         ['Penggajian', 'penggajian'],
@@ -760,6 +748,45 @@ foreach ($fiturs as $fitur) {
             $routes->get('edit/(:segment)',        $m . '::tampilUbah/$1', $filter);
             $routes->post('submitedit/(:segment)', $m . '::simpanUbah/$1', $filter);
             $routes->delete('hapus/(:segment)',    $m . '::hapusData/$1', $filter);
+        });
+    }
+}
+/***************************************************************************************************************** */
+// Abaikan kode di atas baris ini. Isi routing di bawah ini 
+// Features Routes
+$features = [
+    ['AturanPenggajian\\', 'aturan-penggajian/', [
+        ['BPJS', 'bpjs'],
+        ['Golongan', 'golongan'],
+        ['Jabatan', 'jabatan'],
+        ['PTKP', 'ptkp'],
+        ['PPH21', 'pph21'],
+        ['Lembur', 'lembur'],
+        ['UMR', 'umr'],
+        ['THR', 'thr'],
+        ['Pesangon', 'pesangon'],
+        ['UPMK', 'upmk']
+    ]
+    ]
+];
+
+$filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
+foreach ($features as $feature) {
+    $feature_group  = '\App\Features\\' . $feature[0];    
+    $prefix         = $feature[1];
+    $feature_names  = $feature[2];
+    
+    foreach ($feature_names as $feature_name) {
+        $f = $feature_group . $feature_name[0] . '\\' . $feature_name[0] . 'Controller';
+        $routes->group($prefix . $feature_name[1], ['filter' => 'auth'], function ($routes) use ($f, $filter) {
+            $routes->get('/',                    $f . '::index', $filter);
+            $routes->get('audit',                $f . '::audit', $filter);
+            $routes->get('create',               $f . '::create_page', $filter);
+            $routes->post('create',              $f . '::create', $filter);
+            $routes->get('update/(:segment)',    $f . '::update_page/$1', $filter);
+            $routes->put('update/(:segment)',    $f . '::update/$1', $filter);
+            $routes->patch('patch/(:segment)',   $f . '::patch/$1', $filter);
+            $routes->delete('delete/(:segment)', $f . '::delete/$1', $filter);
         });
     }
 }
