@@ -140,19 +140,9 @@ class Template extends Migration
         if($this->source === '')
             return;
         if(!file_exists($this->source)){
-            dd($this->source);
             Assert::Unreachable("Data file '$this->source' does not exist");
         }
         $this->read_csv();
-        // if($this->data_is_real){ 
-        //     return;
-        // }  else {
-        //     if($this->source !== ''){
-        //         Assert::Unreachable("Source must be empty when data is fake");
-        //     }           
-        //     // $this->db->table($this->schema . "." . $this->table)
-        //     //     ->insertBatch($this->generate_data());
-        // }
     }
 
     final public function up(): void
