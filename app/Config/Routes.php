@@ -762,12 +762,16 @@ $features = [
         ['PTKP', 'ptkp'],
         ['PPH21', 'pph21'],
         ['Lembur', 'lembur'],
-        ['UMR', 'umr'],
+        // ['UMR', 'umr'],
         ['THR', 'thr'],
         ['Pesangon', 'pesangon'],
         ['UPMK', 'upmk']
-    ]
-    ]
+    ]],
+    ['Darah', 'darah/', [
+        ['GolonganDarah', 'golongan-darah'],
+        ['KomponenDarah', 'komponen-darah'],
+        ['Rhesus', 'rhesus'],
+    ]]
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
