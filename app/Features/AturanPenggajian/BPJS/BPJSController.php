@@ -12,7 +12,7 @@ class BPJSController extends ControllerTemplate
             model: new BPJSModel(),
             breadcrumbs: [
                 ['title' => 'User', 'icon' => 'user'],
-                ['title' => 'BPJS2', 'icon' => 'bpjs'],
+                ['title' => 'BPJS', 'icon' => 'bpjs'],
             ],
             judul: 'BPJS',
             aksi: [
