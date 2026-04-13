@@ -13,16 +13,22 @@ class ModelTemplate extends Model
      * @param string $primaryKey
      */
     public function __construct(
-
         protected string $type,
         protected string $schema,
-        protected string $table,
-        protected string|array $primaryKey,
+        protected string $table_name,
+        protected string|array $primary_key,
         protected array $fields,
     ) {
         parent::__construct();
-        $this->table = $this->schema . '.' . $this->table;
+        $this->table = $this->schema . '.' . $this->table_name;
         $this->allowedFields = array_keys($fields);
+        $this->primaryKey = $this->primary_key;
+
+        $config = new \Config\Database()->default;
+        $config['database'] = env('database.default.khanza_db');
+        $this->db = \Config\Database::connect($config);
+        $this->forge = \Config\Database::forge($this->db);
+        
         // $this->setValidationRules($fields);
         
         /*
