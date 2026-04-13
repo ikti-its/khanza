@@ -7,6 +7,10 @@ use App\Core\Controller\HTTPError;
 
 class auth extends ControllerTemplate
 {
+    public function __construct(
+    ){
+        parent::__construct();
+    }
     public function index()
     {
         return view('login');
