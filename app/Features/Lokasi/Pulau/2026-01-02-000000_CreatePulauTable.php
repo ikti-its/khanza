@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Features\Lokasi\Pulau;
 
-use App\Core\Database\Template;
-use App\Core\Database\Type as T;
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
 
 /*
  *  Di Indonesia, 9 Kepulauan besar yang terdiri dari ribuan pulau kecil yaitu
@@ -29,7 +29,7 @@ use App\Core\Database\Type as T;
  *  35 = Provinsi Jawa Timur
  */
 
-class CreatePulauTable extends Template
+class CreatePulauTable extends DatabaseTemplate
 {   
     public function __construct(){
         parent::__construct(

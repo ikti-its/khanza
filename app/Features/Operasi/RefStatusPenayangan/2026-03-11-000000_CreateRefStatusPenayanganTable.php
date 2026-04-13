@@ -2,10 +2,10 @@
 
 namespace App\Features\Operasi\RefStatusPenayangan;
 
-use App\Core\Database\Template;
-use App\Core\Database\Type as T;
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
     
-class CreateRefStatusPenayanganTable extends Template
+class CreateRefStatusPenayanganTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(

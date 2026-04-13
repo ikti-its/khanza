@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Features\Person\JenisKelamin;
 
-use App\Core\Database\Template;
-use App\Core\Database\Type as T;
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
     
 /*
  *  Tabel jenis_kelamin merupakan tabel referensi (master data)
@@ -14,7 +14,7 @@ use App\Core\Database\Type as T;
  *  penyimpanan teks berulang seperti "Laki-laki" atau "Perempuan".
  */
 
-class CreateJenisKelaminTable extends Template
+class CreateJenisKelaminTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Features\Donor\HasilAnamnesis;
 
-use App\Core\Database\Template;
-use App\Core\Database\Type as T;
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
 
-class CreateHasilAnamnesisTable extends Template
+class CreateHasilAnamnesisTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

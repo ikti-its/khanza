@@ -5,7 +5,7 @@ namespace App\Core\Database;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
 
-class Template extends Migration
+class DatabaseTemplate extends Migration
 {
     public function __construct(
         protected string $schema,

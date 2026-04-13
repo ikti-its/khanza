@@ -2,10 +2,10 @@
 
 namespace App\Features\RawatJalan\SkriningRJ\SkriningRawatJalan;
 
-use App\Core\Database\Template;
-use App\Core\Database\Type as T;
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
     
-class CreateSkriningRawatJalanTable extends Template
+class CreateSkriningRawatJalanTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(

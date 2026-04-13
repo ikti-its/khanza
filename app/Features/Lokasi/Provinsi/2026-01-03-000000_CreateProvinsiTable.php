@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Features\Lokasi\Provinsi;
 
-use App\Core\Database\Template;
-use App\Core\Database\Type as T;
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
 
 /*
  *  Di Indonesia, terdapat 38 provinsi
@@ -21,7 +21,7 @@ use App\Core\Database\Type as T;
  *  11 = Provinsi Aceh 
  */
 
-class CreateProvinsiTable extends Template
+class CreateProvinsiTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

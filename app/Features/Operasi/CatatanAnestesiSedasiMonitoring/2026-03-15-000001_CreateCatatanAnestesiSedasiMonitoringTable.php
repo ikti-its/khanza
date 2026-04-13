@@ -2,10 +2,10 @@
 
 namespace App\Features\Operasi\CatatanAnestesiSedasiMonitoring;
 
-use App\Core\Database\Template;
-use App\Core\Database\Type as T;
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
     
-class CreateCatatanAnestesiSedasiMonitoringTable extends Template
+class CreateCatatanAnestesiSedasiMonitoringTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(

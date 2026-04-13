@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Features\Lokasi\Kecamatan;
 
-use App\Core\Database\Template;
-use App\Core\Database\Type as T;
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
 
 /*  Dalam 1 kota/kabupaten terdapat 1 atau lebih kecamatan
  *  Di Indonesia, terdapat sekitar 7.000 kecamatan
@@ -25,7 +25,7 @@ use App\Core\Database\Type as T;
  *  35.78.09 = Kecamatan Sukolilo
  */
 
-class CreateKecamatanTable extends Template
+class CreateKecamatanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
