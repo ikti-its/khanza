@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Database;
 use CodeIgniter\Database\Migration;
-use App\Core\Assert;
+use App\Core\Controller\Assert;
 
 class Template extends Migration
 {
@@ -140,6 +140,7 @@ class Template extends Migration
         if($this->source === '')
             return;
         if(!file_exists($this->source)){
+            dd($this->source);
             Assert::Unreachable("Data file '$this->source' does not exist");
         }
         $this->read_csv();
