@@ -747,7 +747,7 @@
                         ['Sisa Stok',  '/sisastokmedis', ''],
                         ['Data Batch', '/batchmedis', '']
                     ]],
-                    ['Inventaris Non Medis', '', 'inventoriNonMedis', '/inventori-non-medis',  $petugasrole, [
+                    ['Inventaris Non Medis', '', 'inventaris_non_medis', '/inventori-non-medis',  $petugasrole, [
                         ['Barang', '/barang', ''],
                         ['Jenis Barang', '/jenis-barang', ''],
                         ['Kategori Barang', '/kategori-barang', ''],
