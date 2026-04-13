@@ -81,7 +81,7 @@ class ControllerTemplate extends Controller
 
     final public function tampilData()
     {
-        $tabel = CURL::fetchDataUsingCurl('GET', $this->api_path)['data']['data'];
+        $tabel = CURL::call('GET', $this->api_path)['data']['data'];
         return view('/layouts/data', [
             'judul'       => $this->judul,
             'breadcrumbs' => $this->breadcrumbs,
@@ -136,7 +136,7 @@ class ControllerTemplate extends Controller
         $breadcrumbs = [
             ['title' => 'Ubah', 'icon', 'Ubah']
         ];
-        $baris = CURL::fetchDataUsingCurl('GET', $this->api_path . '/' . $id)['data']['data'];
+        $baris = CURL::call('GET', $this->api_path . '/' . $id)['data']['data'];
         return view('/layouts/tambah_ubah', [
             'judul'       => 'Ubah ' . $this->judul,
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
@@ -150,17 +150,17 @@ class ControllerTemplate extends Controller
     public function simpanTambah()
     {
         $postData = $this->getPostData();
-        return CURL::fetchDataUsingCurl('POST', $this->api_path, $postData, $this->modul_path);
+        return CURL::call('POST', $this->api_path, $postData, $this->modul_path);
     }
     public function simpanUbah($id)
     {
         $postData = $this->getPostData();
-        return CURL::fetchDataUsingCurl('PUT', $this->api_path . '/' . $id, $postData, $this->modul_path, $this->judul . ' berhasil diperbarui.');
+        return CURL::call('PUT', $this->api_path . '/' . $id, $postData, $this->modul_path, $this->judul . ' berhasil diperbarui.');
     }
 
     final public function hapusData($id)
     {
-        return CURL::fetchDataUsingCurl('DELETE', $this->api_path . '/' . $id, null, $this->modul_path, $this->judul . ' berhasil dihapus.');
+        return CURL::call('DELETE', $this->api_path . '/' . $id, null, $this->modul_path, $this->judul . ' berhasil dihapus.');
     }
 
      // public function checkNotifications()

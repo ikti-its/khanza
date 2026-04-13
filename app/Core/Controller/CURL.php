@@ -5,7 +5,7 @@ namespace App\Core\Controller;
 
 final readonly class CURL
 {
-    public static function fetchDataUsingCurl(
+    public static function call(
         string $method, 
         string $path, 
         array|null $data = null, 

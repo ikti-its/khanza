@@ -68,7 +68,7 @@ class RekamMedis extends ControllerTemplate
     public function detail($id)
     {
         // 1. Ambil data pasien utama dari masterpasien
-        $response = CURL::fetchDataUsingCurl('GET', $this->api_path . '/' . $id);
+        $response = CURL::call('GET', $this->api_path . '/' . $id);
         if ($response['kode'] !== 200 || !isset($response['data']['data'])) {
             return HTTPError::renderErrorView(404, 'Data pasien tidak ditemukan.');
         }
@@ -89,7 +89,7 @@ class RekamMedis extends ControllerTemplate
 
         // 2. Ambil data registrasi terakhir dari endpoint registrasi
         $registrasiEndpoint = 'http://localhost:8080/v1/registrasi/pasien/' . $id;
-        $registrasi = CURL::fetchDataUsingCurl(
+        $registrasi = CURL::call(
             'GET',
             '/registrasi/pasien/' . $id,
         );

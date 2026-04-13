@@ -22,7 +22,7 @@ class Ambulans extends ControllerTemplate
     public function dataAmbulans()
     {
         $title = 'Data Ambulans';
-        $ambulans_data = CURL::fetchDataUsingCurl('GET', '/ambulans')['data'];
+        $ambulans_data = CURL::call('GET', '/ambulans')['data'];
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Ambulans', 'ambulans');
         
@@ -62,12 +62,12 @@ class Ambulans extends ControllerTemplate
             'status' => $this->request->getPost('status'),
             'supir' => $this->request->getPost('supir')
         ];
-        return CURL::fetchDataUsingCurl('POST', '/ambulans', $postData, 'ambulans');
+        return CURL::call('POST', '/ambulans', $postData, 'ambulans');
     }
 
     public function editAmbulans($noAmbulans)
     {
-        $ambulans_data = CURL::fetchDataUsingCurl('GET', '/ambulans/' . $noAmbulans)['data'];
+        $ambulans_data = CURL::call('GET', '/ambulans/' . $noAmbulans)['data'];
 
         $this->addBreadcrumb('User', 'user');
         $this->addBreadcrumb('Ambulans', 'ambulans');
@@ -87,18 +87,18 @@ class Ambulans extends ControllerTemplate
             'status' => $this->request->getPost('status'),
             'supir' => $this->request->getPost('supir')
         ];
-        return CURL::fetchDataUsingCurl('PUT', '/ambulans/' . $noAmbulans, $postData, 'ambulans', 'Ambulans berhasil diperbarui.');
+        return CURL::call('PUT', '/ambulans/' . $noAmbulans, $postData, 'ambulans', 'Ambulans berhasil diperbarui.');
     }
 
     public function hapusAmbulans($noAmbulans)
     {
-        return CURL::fetchDataUsingCurl('DELETE', '/ambulans/' . $noAmbulans, null, 'ambulans', 'Ambulans berhasil dihapus.' );
+        return CURL::call('DELETE', '/ambulans/' . $noAmbulans, null, 'ambulans', 'Ambulans berhasil dihapus.' );
     }
 
     public function panggilAmbulans($nomorBed)
     {
         $title = 'Edit Kamar';
-        $kamar_data = CURL::fetchDataUsingCurl('GET', '/kamar/' . $nomorBed)['data'];
+        $kamar_data = CURL::call('GET', '/kamar/' . $nomorBed)['data'];
 
         // Breadcrumbs setup
         $this->addBreadcrumb('User', 'user');
@@ -115,6 +115,6 @@ class Ambulans extends ControllerTemplate
 
     public function terimaAmbulans($noAmbulans)
     {
-        return CURL::fetchDataUsingCurl('PUT', '/ambulans/terima/' . $noAmbulans, null, 'ambulans', 'Ambulans telah diterima.');
+        return CURL::call('PUT', '/ambulans/terima/' . $noAmbulans, null, 'ambulans', 'Ambulans telah diterima.');
     }
 }
