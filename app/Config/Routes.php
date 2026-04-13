@@ -193,15 +193,25 @@ $routes->get('/error_403', 'Error::noAccess403', ['filter' => 'auth']);
 
 //=============================================================================
 
-$routes->group('datamedis', ['filter' => 'auth'], function ($routes) {
-    $routes->get('/', 'Medis::dataMedis', ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004']);
-    $routes->get('tambah', 'Medis::tambahMedis', ['filter' => 'checkpermission:1337,1,2,4001,4002']);
-    $routes->post('submittambah', 'Medis::submitTambahMedis', ['filter' => 'checkpermission:1337,1,2,4001,4002']);
-    $routes->get('edit/(:any)', 'Medis::editMedis/$1', ['filter' => 'checkpermission:1337,1,2,4001,4002']);
-    $routes->post('submitedit', 'Medis::submitEditMedis', ['filter' => 'checkpermission:1337,1,2,4001,4002']);
-    $routes->post('submitedit/(:segment)', 'Medis::submitEditMedis/$1', ['filter' => 'checkpermission:1337,1,2,4001,4002']);
-    $routes->delete('hapus/(:segment)', 'Medis::hapusMedis/$1', ['filter' => 'checkpermission:1337,1,2,4001,4002']);
-});
+//Fitur Penggajian 
+$fiturs_old = [
+    ['Medis', 'datamedis/'],
+];
+$filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
+foreach ($fiturs_old as $fitur) {
+    $controller  = $fitur[0];
+    $url_path    = $fitur[1];
+    $m = $controller;
+    $routes->group($url_path, ['filter' => 'auth'], function ($routes) use ($m, $filter) {
+        $routes->get('/',                      $m . '::showData',      $filter);
+        $routes->get('audit',                  $m . '::showAudit',     $filter);
+        $routes->get('tambah',                 $m . '::showInsert',    $filter);
+        $routes->post('submittambah',          $m . '::saveInsert',    $filter);
+        $routes->get('edit/(:segment)',        $m . '::showUpdate/$1', $filter);
+        $routes->post('submitedit/(:segment)', $m . '::saveUpdate/$1', $filter);
+        $routes->delete('hapus/(:segment)',    $m . '::deleteData/$1', $filter);
+    });
+}
 
 $routes->group('stokkeluarmedis', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'StokKeluar::dataStokKeluarMedis', ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004']);
