@@ -747,6 +747,23 @@
                         ['Sisa Stok',  '/sisastokmedis', ''],
                         ['Data Batch', '/batchmedis', '']
                     ]],
+                    ['Inventaris Non Medis', '', 'inventoriNonMedis', '/inventori-non-medis',  $petugasrole, [
+                        ['Barang', '/barang', ''],
+                        ['Jenis Barang', '/jenis-barang', ''],
+                        ['Kategori Barang', '/kategori-barang', ''],
+                        ['Lokasi', '/lokasi', ''],
+                        ['Pengadaan Barang', '/pengadaan-barang', ''],
+                        ['Pengadaan Barang Detail', '/pengadaan-barang-detail', ''],
+                        ['Pengajuan Barang', '/pengajuan-barang', ''],
+                        ['Pengajuan Barang Detail', '/pengajuan-barang-detail', ''],
+                        ['Permintaan Barang', '/permintaan-barang', ''],
+                        ['Permintaan Barang Detail', '/permintaan-barang-detail', ''],
+                        ['Stok Opname', '/stok-opname', ''],
+                        ['Stok Opname Detail', '/stok-opname-detail', ''],
+                        ['Supplier', '/supplier', ''],
+                        ['Transaksi Stok', '/transaksi-stok', ''],
+                        ['Unit', '/unit', '']
+                    ]],
                     ['Rujukan', '', 'rujukan', '', $petugasdokterrole, [
                         ['Rujukan Masuk', '/rujukanmasuk', ''],
                         ['Rujukan Keluar', '/rujukankeluar', ''],
