@@ -24,6 +24,8 @@ class CreateBPJSTable extends Template
             [['nama_program']],
             [],
             [],
+            true,
+            __DIR__ . '/bpjs.csv'
         );
     }
 }
