@@ -771,7 +771,24 @@ $features = [
         ['GolonganDarah', 'golongan-darah'],
         ['KomponenDarah', 'komponen-darah'],
         ['Rhesus', 'rhesus'],
-    ]]
+    ]],
+    ['InventoriNonMedis', 'inventori-non-medis/', [
+        ['Barang', 'barang'],
+        ['JenisBarang', 'jenis-barang'],
+        ['KategoriBarang', 'kategori-barang'],
+        ['Lokasi', 'lokasi'],
+        ['PengadaanBarang', 'pengadaan-barang'],
+        ['PengadaanBarangDetail', 'pengadaan-barang-detail'],
+        ['PengajuanBarang', 'pengajuan-barang'],
+        ['PengajuanBarangDetail', 'pengajuan-barang-detail'],
+        ['PermintaanBarang', 'permintaan-barang'],
+        ['PermintaanBarangDetail', 'permintaan-barang-detail'],
+        ['StokOpname', 'stok-opname'],
+        ['StokOpnameDetail', 'stok-opname-detail'],
+        ['Supplier', 'supplier'],
+        ['TransaksiStok', 'transaksi-stok'],
+        ['Unit', 'unit']
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
