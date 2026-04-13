@@ -13,30 +13,45 @@ use Psr\Log\LoggerInterface;
 class ControllerTemplate extends Controller
 {
     protected string $api_url;
-    protected array $breadcrumbs = [];
-    protected string $judul;
-    protected string $modul_path;
-    protected string $api_path;
-    protected string $nama_tabel;
-    protected string $kolom_id;
-    protected array $aksi;
-    protected array $konfig;
-    protected array $meta_data;
 
     public function __construct(
+        protected ModelTemplate|null $model = null,
+        protected array $breadcrumbs = [],
+        protected string $judul = '',
+        protected string $modul_path = '',
+        protected string $api_path = '',
+        protected string $nama_tabel = '',
+        protected string $kolom_id = '',
+        protected array $aksi = [],
+        protected array $konfig = [],
+        protected array $meta_data = [],
     ) {
         $this->api_url = getenv('api_URL');
         // Check notifications and set session variable
         // $this->checkNotifications();
     }
 
+    public function index()
+    {
+        return view('/layouts/data', [
+            'judul'       => $this->judul,
+            'breadcrumbs' => $this->breadcrumbs,
+            'meta_data'   => $this->meta_data,
+            'modul_path'  => $this->modul_path,
+            'kolom_id'    => $this->kolom_id,
+            'konfig'      => $this->konfig,
+            'aksi'        => $this->aksi,
+            'tabel'       => $this->model->findAll(),
+        ]);
+    }
+
+
     public function initController(
         RequestInterface $request, 
         ResponseInterface $response, 
-        LoggerInterface $logger)
+        LoggerInterface $logger,)
     {
         parent::initController($request, $response, $logger);
-        //$this->construct();
     }
 
     final protected function addBreadcrumb($title, $icon = '')
