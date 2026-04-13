@@ -28,10 +28,7 @@ class PermintaanBarangController extends ControllerTemplate
                 // [visible, 'Display', 'kolom', 'jenis', required]
                 [0, 'ID',           'id_permintaan', 'indeks',  0],
                 [1, 'Unit Pemohon', 'unit_pemohon',  'teks',    1],
-                [1, 'Tipe',         'tipe',          'status',  1, [
-                    ['rutin',    'Rutin'],
-                    ['mendesak', 'Mendesak'],
-                ]],
+                [1, 'Tipe',         'tipe',          'status',  1],
                 [1, 'Tanggal',      'tanggal',       'tanggal', 1],
                 [1, 'Status',       'status',        'status',  0],
                 [1, 'Catatan',      'catatan',       'teks',    0],
