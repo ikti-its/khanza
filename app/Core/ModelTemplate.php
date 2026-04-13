@@ -71,4 +71,8 @@ class ModelTemplate extends Model
         // $this->beforeDelete = [];
         // $this->afterDelete  = [];
     }
+
+    final public function get_primary_key(){
+        return $this->primary_key;
+    }
 }

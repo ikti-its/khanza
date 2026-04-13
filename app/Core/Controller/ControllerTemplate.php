@@ -24,7 +24,7 @@ class ControllerTemplate extends Controller
         protected string $kolom_id = '',
         protected array $aksi = [],
         protected array $konfig = [],
-        protected array $meta_data = [],
+        protected array $meta_data = ['page' => 1, 'size' => 10, 'total' => 1],
     ) {
         $this->api_url = getenv('api_URL');
         // Check notifications and set session variable
@@ -38,7 +38,7 @@ class ControllerTemplate extends Controller
             'breadcrumbs' => $this->breadcrumbs,
             'meta_data'   => $this->meta_data,
             'modul_path'  => $this->modul_path,
-            'kolom_id'    => $this->kolom_id,
+            'kolom_id'    => $this->model->get_primary_key(),
             'konfig'      => $this->konfig,
             'aksi'        => $this->aksi,
             'tabel'       => $this->model->findAll(),
