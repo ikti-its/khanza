@@ -842,6 +842,17 @@
                         ['Referensi Status Permintaan',   '/ref-status-permintaan-rad',''],
                         ['Referensi Template Radiologi',  '/ref-template-rad',        ''],
                     ]],
+                    ['Rawat Jalan', '', 'rawat_jalan', '/rawat-jalan', $petugasrole, [
+                        // Skrining Rawat Jalan
+                        ['Skrining Rawat Jalan',          '/skrining-rawat-jalan',      ''],
+                        // Referensi Skrining
+                        ['Referensi Batuk',               '/ref-skrining-batuk',        ''],
+                        ['Referensi Keputusan',           '/ref-skrining-keputusan',    ''],
+                        ['Referensi Kesadaran',           '/ref-skrining-kesadaran',    ''],
+                        ['Referensi Nyeri Dada',          '/ref-skrining-nyeri-dada',   ''],
+                        ['Referensi Pernafasan',          '/ref-skrining-pernafasan',   ''],
+                        ['Referensi Skala Nyeri',         '/ref-skrining-skala-nyeri',  ''],
+                    ]],
                 ];
                 echo view('components/menu/menu', ['menu_list' => $menu_list]);
                 ?>
