@@ -29,6 +29,8 @@ class CreateSkriningDonorTable extends DatabaseTemplate
                 [['id_hasil_anamnesis'], 'hasil_anamnesis', ['id_hasil'], 'CASCADE', 'CASCADE'],
             ],
             [],
+            false,
+            __DIR__ . '/skrining_donor.csv'
         );
     }
 }
