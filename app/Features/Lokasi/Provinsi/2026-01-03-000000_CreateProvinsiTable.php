@@ -30,10 +30,11 @@ class CreateProvinsiTable extends DatabaseTemplate
             [
                 'id_pulau'      => T::INT8(),
                 'id_provinsi'   => T::ID8(),
+                'kode_provinsi' => T::TEXT(),
                 'nama_provinsi' => T::TEXT(),
             ],
             ['id_provinsi'],
-            [['nama_provinsi']],
+            [['kode_provinsi'], ['nama_provinsi']],
             [
                 [['id_pulau'], 'pulau', ['id_pulau'], 'CASCADE', 'CASCADE'],
             ],
