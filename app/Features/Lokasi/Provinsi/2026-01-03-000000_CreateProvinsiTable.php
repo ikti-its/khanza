@@ -36,7 +36,10 @@ class CreateProvinsiTable extends DatabaseTemplate
             [['nama_provinsi']],
             [
                 [['id_pulau'], 'pulau', ['id_pulau'], 'CASCADE', 'CASCADE'],
-            ]
+            ],
+            [],
+            true,
+            __DIR__ . '/provinsi.csv',
         );
     }
 }

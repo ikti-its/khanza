@@ -1,0 +1,39 @@
+﻿id_pulau,id_provinsi,nama_provinsi
+1,1,Aceh
+1,2,Sumatera Utara
+1,3,Sumatera Barat
+1,4,Riau
+1,5,Jambi
+1,6,Sumatera Selatan
+1,7,Bengkulu
+1,8,Lampung
+1,9,Kepulauan Bangka Belitung
+2,10,Kepulauan Riau
+3,11,Daerah Khusus Ibukota Jakarta
+3,12,Jawa Barat
+3,13,Jawa Tengah
+3,14,Daerah Istimewa Yogyakarta
+3,15,Jawa Timur
+3,16,Banten
+5,17,Bali
+5,18,Nusa Tenggara Barat
+5,19,Nusa Tenggara Timur
+6,20,Kalimantan Barat
+6,21,Kalimantan Tengah
+6,22,Kalimantan Selatan
+6,23,Kalimantan Timur
+6,24,Kalimantan Utara
+7,25,Sulawesi Utara
+7,26,Sulawesi Tengah
+7,27,Sulawesi Selatan
+7,28,Sulawesi Tenggara
+7,29,Gorontalo
+7,30,Sulawesi Barat
+8,31,Maluku
+8,32,Maluku Utara
+9,33,Papua
+9,34,Papua Barat
+9,35,Papua Selatan
+9,36,Papua Tengah
+9,37,Papua Pegunungan
+9,38,Papua Barat Daya
