@@ -35,18 +35,20 @@ class CreateDesaTable extends DatabaseTemplate
             'lokasi',
             'desa',
             [
-                'id_provinsi'       => T::ID8(),
-                'id_kota_lokal'     => T::ID8(),
-                'id_kecamatan_lokal'=> T::ID8(),
-                'id_desa_lokal'     => T::ID16(),
+                'id_provinsi'       => T::INT8(),
+                'id_kota_lokal'     => T::INT16(),
+                'id_kecamatan_lokal'=> T::INT16(),
+                'id_desa_lokal'     => T::ID32(),
                 'nama_desa'         => T::TEXT(),
             ],
             ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal', 'id_desa_lokal'],
             [],
             [
                 [['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'], 'kecamatan', ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'], 'CASCADE', 'CASCADE'],
-            ]
-        
+            ],
+            [],
+            true,
+            __DIR__ . '/desa.csv',
         );
     }
 }
