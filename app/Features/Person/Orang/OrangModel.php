@@ -54,11 +54,6 @@ class OrangModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'tempat_lahir_prov' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
                 'tempat_lahir_kota' => [
                     'allowed' => false,
                     'rules'   => '',
