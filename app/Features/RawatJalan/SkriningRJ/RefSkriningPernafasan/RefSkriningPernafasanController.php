@@ -1,0 +1,31 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\RawatJalan\SkriningRJ\RefSkriningPernafasan;
+use App\Core\Controller\ControllerTemplate;
+
+class RefSkriningPernafasanController extends ControllerTemplate
+{
+    public function __construct()
+    {
+        parent::__construct(
+            model: new RefSkriningPernafasanModel(),
+            breadcrumbs: [
+                ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
+                ['title' => 'Referensi Skrining Pernafasan', 'icon' => 'ref_skrining_pernafasan'],
+            ],
+            judul: 'Referensi Skrining Pernafasan',
+            aksi: [
+                'tambah' => false,
+                'audit'  => false,
+                'ubah'   => false,
+                'hapus'  => false,
+            ],
+            konfig: [
+                //visible, display, kolom, jenis, required
+                [0, 'ID Pernafasan', 'id_pernafasan', 'indeks', 0],
+                [1, 'Pernafasan',    'pernafasan',    'teks',   1],
+            ],
+        );
+    }
+}
