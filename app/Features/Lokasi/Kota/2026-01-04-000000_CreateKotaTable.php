@@ -34,10 +34,12 @@ class CreateKotaTable extends DatabaseTemplate
             [
                 'id_provinsi'   => T::INT8(),
                 'id_kota_lokal' => T::ID16(),
+                'kode_kota'     => T::TEXT(),
                 'nama_kota'     => T::TEXT(),
             ],
-            ['id_provinsi', 'id_kota_lokal'],
-            [],
+            // ['id_provinsi', 'id_kota_lokal'],
+            ['id_kota_lokal'],
+            [['id_provinsi', 'kode_kota']],
             [
                 [['id_provinsi'], 'provinsi', ['id_provinsi'], 'CASCADE', 'CASCADE'],
             ],
