@@ -15,14 +15,15 @@ class CreateUpahMinimumKotakabTable extends DatabaseTemplate
             [
                 'no_ump'       => T::ID8(),
                 'tahun'        => T::YEAR(),
-                'provinsi'     => T::ID8(),
-                'kotakab'      => T::ID8(),
+                // 'provinsi'     => T::ID8(),
+                'kotakab'      => T::INT16(),
                 'upah_minimum' => T::INT32(),
             ],
             ['no_ump'],
             [],
             [
-                [['provinsi', 'kotakab'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
+                // [['provinsi', 'kotakab'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
+                [['kotakab'], 'lokasi.kota', ['id_kota_lokal'], 'CASCADE', 'CASCADE'],
             ],
             [],
         );
