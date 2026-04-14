@@ -13,12 +13,14 @@ class CreatePernikahanTable extends DatabaseTemplate
             'pernikahan',
             [
                 'id_pernikahan'   => T::ID8(),
-                'nama_pernikahan' => T::TEXT(),
+                'status_pernikahan' => T::TEXT(),
             ],
             ['id_pernikahan'],
-            [['nama_pernikahan']],
+            [['status_pernikahan']],
             [],
             [],
+            true,
+            __DIR__ . '/pernikahan.csv'
         );
     }
 }
