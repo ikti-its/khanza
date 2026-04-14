@@ -32,6 +32,8 @@ class CreatePengambilanDarahTable extends DatabaseTemplate
                 // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
             ],
             [['id_kunjungan'], ['tanggal_pengambilan']],
+            false,
+            __DIR__ . '/pengambilan_darah.csv'
         );
     }
 }
