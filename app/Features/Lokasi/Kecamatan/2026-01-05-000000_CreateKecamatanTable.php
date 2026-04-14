@@ -32,16 +32,19 @@ class CreateKecamatanTable extends DatabaseTemplate
             'lokasi',
             'kecamatan',
             [
-                'id_provinsi'       => T::ID8(),
-                'id_kota_lokal'     => T::ID8(),
-                'id_kecamatan_lokal'=> T::ID8(),
+                'id_provinsi'       => T::INT8(),
+                'id_kota_lokal'     => T::INT16(),
+                'id_kecamatan_lokal'=> T::ID16(),
                 'nama_kecamatan'    => T::TEXT(),
             ],
             ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'],
             [],
             [
                 [['id_provinsi', 'id_kota_lokal'], 'kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
-            ]
+            ],
+            [],
+            true,
+            __DIR__ . '/kecamatan.csv',
         );
     }
 }
