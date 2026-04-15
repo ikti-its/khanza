@@ -29,7 +29,7 @@ class TarifKomponenController extends ControllerTemplate
                 [1, 'Paket BHP', 'paket_bhp', 'uang', 1],
                 [1, 'KSO', 'kso', 'uang', 1],
                 [1, 'Manajemen', 'manajemen', 'uang', 1],
-                [1, 'Pembatalan', 'pembatalan', 'uang', 1],
+                [0, 'Pembatalan', 'pembatalan', 'uang', 1],
                 [1, 'Tanggal Berlaku', 'tanggal_berlaku', 'tanggal', 1],
             ],
         );
