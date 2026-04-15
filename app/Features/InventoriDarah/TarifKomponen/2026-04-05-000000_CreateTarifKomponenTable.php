@@ -28,6 +28,8 @@ class CreateTarifKomponenTable extends DatabaseTemplate
                 [['id_komponen'], 'darah.komponen_darah', ['id_komponen'], 'CASCADE', 'CASCADE'],
             ],
             [],
+            false,
+            __DIR__ . '/tarif_komponen.csv'
         );
     }
 }
