@@ -25,6 +25,8 @@ class CreateKantongDarahTable extends DatabaseTemplate
                 [['id_jenis_bag'], 'jenis_bag', ['id_jenis_bag'], 'CASCADE', 'CASCADE'],
             ],
             [],
+            false,
+            __DIR__ . '/kantong_darah.csv'
         );
     }
 }
