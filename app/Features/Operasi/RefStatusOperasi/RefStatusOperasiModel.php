@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefStatusOperasi;
 
 use App\Core\ModelTemplate;
 
-class Model extends ModelTemplate
+class RefStatusOperasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
