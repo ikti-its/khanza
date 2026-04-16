@@ -1,0 +1,31 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\UjiDarah\ParameterUji;
+use App\Core\Controller\ControllerTemplate;
+
+class ParameterUjiController extends ControllerTemplate
+{
+    public function __construct(
+    ){
+        parent::__construct(
+            model: new ParameterUjiModel(),
+            breadcrumbs: [
+                ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
+                ['title' => 'Parameter Uji', 'icon' => 'parameter_uji'],
+            ],
+            judul: 'Parameter Uji',
+            aksi: [
+                'tambah' => false,
+                'audit'  => false,
+                'ubah'   => false,
+                'hapus'  => false
+            ],
+            konfig: [
+                //visible, display, kolom, jenis, required, *opsi
+                [0, 'ID Parameter Uji', 'id_parameter_uji', 'indeks', 0],
+                [1, 'Nama Parameter', 'nama_parameter', 'teks', 1],
+            ],
+        );
+    }   
+}
