@@ -848,6 +848,16 @@ $features = [
         ['StatusKunjungan', 'status-kunjungan'],
         ['StatusPendonor', 'status-pendonor']
     ]],
+    ['InventoriDarah', 'inventaris-darah/', [
+        ['JenisBag', 'jenis-bag'],
+        ['KantongDarah', 'kantong-darah'],
+        ['PemisahanKomponen', 'pemisahan-komponen'],
+        ['StatusKantong', 'status-kantong'],
+        ['StatusStok', 'status-stok'],
+        ['StokDarah', 'stok-darah'],
+        ['SumberDarah', 'sumber-darah'],
+        ['TarifKomponen', 'tarif-komponen']
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];

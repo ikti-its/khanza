@@ -814,6 +814,15 @@
                         ['Status Pendonor', '/status-pendonor', ''],
                         ['Status Kunjungan', '/status-kunjungan', '']
                     ]],
+                    ['Inventaris Darah', '', 'inventaris_darah', '/inventaris-darah', $petugasrole, [
+                        ['Kantong Darah', '/kantong-darah', ''],
+                        ['Pemisahan Komponen', '/pemisahan-komponen', ''],
+                        ['Stok Darah', '/stok-darah', ''],
+                        ['Status Stok', '/status-stok', ''],
+                        ['Jenis Bag', '/jenis-bag', ''],
+                        ['Sumber Darah', '/sumber-darah', ''],
+                        ['Tarif Komponen', '/tarif-komponen', '']
+                    ]],
                     ['Laboratorium', '', 'laboratorium', '/laboratorium', $petugasrole, [
                         // Permintaan Lab
                         ['Permintaan Lab', '/permintaan-lab', ''],
