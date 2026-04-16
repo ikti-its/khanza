@@ -1,0 +1,4 @@
+﻿id_stok_darah,id_pemisahan,no_kantong,id_komponen,id_golongan_darah,id_rhesus,tanggal_pengambilan,tanggal_kadaluarsa,id_sumber_darah,id_status_stok
+1,1,PRC2026/04/UTD000001,2,2,1,4/14/2026,5/12/2026,1,4
+2,1,FFP2026/04/UTD000001,4,2,1,4/14/2026,4/14/2027,1,2
+3,,TCA999726123456,5,4,2,4/16/2026,4/21/2026,2,2
