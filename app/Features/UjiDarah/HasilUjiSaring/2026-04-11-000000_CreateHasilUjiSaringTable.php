@@ -16,7 +16,7 @@ class CreateHasilUjiSaringTable extends DatabaseTemplate
                 'id_uji_saring'         => T::ID32(),
                 'id_bag'                => T::INT32(),
                 'id_metode_uji'         => T::INT8(),
-                'tanggal_uji'           => T::DATETIME(),
+                'tanggal_uji'           => T::DATE(),
                 'id_petugas'            => T::UUID(),
             ],
             ['id_uji_saring'],
@@ -27,6 +27,8 @@ class CreateHasilUjiSaringTable extends DatabaseTemplate
                 // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
             ],
             [],
+            false,
+            __DIR__ . '/hasil_uji_saring.csv'
         );
     }
 }
