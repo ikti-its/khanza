@@ -1,0 +1,31 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\Operasi\RefAngkaAsa;
+use App\Core\Controller\ControllerTemplate;
+
+class RefAngkaAsaController extends ControllerTemplate
+{
+    public function __construct()
+    {
+        parent::__construct(
+            model: new RefAngkaAsaModel(),
+            breadcrumbs: [
+                ['title' => 'Operasi', 'icon' => 'operasi'],
+                ['title' => 'Referensi Angka ASA', 'icon' => 'ref_angka_asa'],
+            ],
+            judul: 'Referensi Angka ASA',
+            aksi: [
+                'tambah' => false,
+                'audit'  => false,
+                'ubah'   => false,
+                'hapus'  => false,
+            ],
+            konfig: [
+                //visible, display, kolom, jenis, required
+                [0, 'ID ASA',   'id_asa',   'indeks', 0],
+                [1, 'Nama ASA', 'nama_asa', 'teks',   1],
+            ],
+        );
+    }
+}
