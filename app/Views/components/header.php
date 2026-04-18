@@ -823,6 +823,16 @@
                         ['Sumber Darah', '/sumber-darah', ''],
                         ['Tarif Komponen', '/tarif-komponen', '']
                     ]],
+                    ['Uji Darah', '', 'uji_darah', '/uji-darah', $petugasrole, [
+                        ['Hasil Uji Saring', '/hasil-uji-saring', ''],
+                        ['Hasil Uji Saring Detail', '/hasil-uji-saring-detail', ''],
+                        ['Hasil Diagnostik', '/hasil-diagnostik', ''],
+                        ['Hasil Diagnostik Detail', '/hasil-diagnostik-detail', ''],
+                        ['Metode Uji', '/metode-uji', ''],
+                        ['Parameter Uji', '/parameter-uji', ''],
+                        ['Nilai Saring', '/nilai-saring', ''],
+                        ['Nilai Diagnostik', '/nilai-diagnostik', '']
+                    ]],
                     ['Laboratorium', '', 'laboratorium', '/laboratorium', $petugasrole, [
                         // Permintaan Lab
                         ['Permintaan Lab', '/permintaan-lab', ''],

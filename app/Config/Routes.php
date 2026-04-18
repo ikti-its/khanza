@@ -926,6 +926,16 @@ $features = [
         ['RefStatusSpesimen',       'ref-status-spesimen'],
         ['RefWarnaUrine',           'ref-warna-urine'],
     ]],
+    ['UjiDarah', 'uji-darah/', [
+        ['HasilDiagnostik', 'hasil-diagnostik'],
+        ['HasilDiagnostikDetail', 'hasil-diagnostik-detail'],
+        ['HasilUjiSaring', 'hasil-uji-saring'],
+        ['HasilUjiSaringDetail', 'hasil-uji-saring-detail'],
+        ['MetodeUji', 'metode-uji'],
+        ['NilaiDiagnostik', 'nilai-diagnostik'],
+        ['NilaiSaring', 'nilai-saring'],
+        ['ParameterUji', 'parameter-uji']
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
