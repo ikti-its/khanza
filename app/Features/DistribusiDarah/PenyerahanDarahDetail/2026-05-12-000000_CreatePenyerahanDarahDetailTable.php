@@ -20,7 +20,7 @@ class CreatePenyerahanDarahDetailTable extends DatabaseTemplate
                 'paket_bhp'                => T::F32(),
                 'kso'                      => T::F32(),
                 'manajemen'                => T::F32(),
-                'total'                    => T::F32(),
+                // 'total'                    => T::F32(),
             ],
             ['id_penyerahan_detail'],
             [['id_stok_darah']],

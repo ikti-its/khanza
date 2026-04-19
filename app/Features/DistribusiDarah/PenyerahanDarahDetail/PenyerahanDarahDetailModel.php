@@ -49,11 +49,11 @@ class PenyerahanDarahDetailModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'total' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                // 'total' => [
+                //     'allowed' => false,
+                //     'rules'   => '',
+                //     'errors'  => [],
+                // ]
             ],
         );
     }
