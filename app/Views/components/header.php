@@ -833,6 +833,14 @@
                         ['Nilai Saring', '/nilai-saring', ''],
                         ['Nilai Diagnostik', '/nilai-diagnostik', '']
                     ]],
+                    ['Pelayanan Darah', '', 'pelayanan_darah', '/pelayanan-darah', $petugasrole, [
+                        ['Permintaan Darah', '/permintaan-darah', ''],
+                        ['Permintaan Darah Detail', '/permintaan-darah-detail', ''],
+                        ['Penyerahan Darah', '/penyerahan-darah', ''],
+                        ['Penyerahan Darah Detail', '/penyerahan-darah-detail', ''],
+                        ['Status Permintaan', '/status-permintaan', ''],
+                        ['Status Pembayaran', '/status-pembayaran', '']
+                    ]],
                     ['Laboratorium', '', 'laboratorium', '/laboratorium', $petugasrole, [
                         // Permintaan Lab
                         ['Permintaan Lab', '/permintaan-lab', ''],

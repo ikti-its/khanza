@@ -936,6 +936,14 @@ $features = [
         ['NilaiSaring', 'nilai-saring'],
         ['ParameterUji', 'parameter-uji']
     ]],
+    ['DistribusiDarah', 'pelayanan-darah/', [
+        ['PenyerahanDarah', 'penyerahan-darah'],
+        ['PenyerahanDarahDetail', 'penyerahan-darah-detail'],
+        ['PermintaanDarah', 'permintaan-darah'],
+        ['PermintaanDarahDetail', 'permintaan-darah-detail'],
+        ['StatusPembayaran', 'status-pembayaran'],
+        ['StatusPermintaan', 'status-permintaan'],
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
