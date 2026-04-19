@@ -75,4 +75,19 @@ class ModelTemplate extends Model
     final public function get_primary_key(){
         return $this->primary_key;
     }
+
+    final public function audit(){
+        $query = $this->db->query(
+            "SELECT * FROM sik.{$this->table_name}_audit_view
+            LEFT OUTER JOIN 
+            (SELECT id, nama FROM sik.pegawai) c
+            ON sik.{$this->table_name}_audit_view.changed_by = c.id
+            ORDER BY changed_by DESC");
+        $results = $query->getResult();
+
+        for($i = 0; $i < count($results); $i++){
+            $results[$i] = json_decode(json_encode($results[$i]), true);
+        }
+        return $results;
+    }
 }
