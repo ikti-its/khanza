@@ -959,10 +959,10 @@ foreach ($features as $feature) {
             $routes->get('audit',                "$f::audit", $filter);
             $routes->get('tambah',               "$f::create_page", $filter);
             $routes->post('submittambah',        "$f::create", $filter);
-            $routes->get('ubah/(:segment)',      "$f::update_page/$1", $filter);
-            $routes->put('submitedit/(:segment)',"$f::update/$1", $filter);
-            $routes->patch('patch/(:segment)',   "$f::patch/$1", $filter);
-            $routes->delete('delete/(:segment)', "$f::delete/$1", $filter);
+            $routes->get('edit/(:segment)',      "$f::update_page/$1", $filter);
+            $routes->post('submitedit/(:segment)',"$f::update/$1", $filter);
+            // $routes->patch('patch/(:segment)',   "$f::patch/$1", $filter);
+            $routes->delete('hapus/(:segment)', "$f::delete/$1", $filter);
         });
     }
 }

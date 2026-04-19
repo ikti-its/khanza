@@ -31,7 +31,7 @@ class ControllerTemplate extends Controller
         // $this->checkNotifications();
     }
 
-    public function initController(
+    final public function initController(
         RequestInterface $request, 
         ResponseInterface $response, 
         LoggerInterface $logger,)
@@ -41,34 +41,78 @@ class ControllerTemplate extends Controller
 
     private function get_uri_path(){
         $segments = $this->request->getUri()->getSegments();
-        array_pop($segments);
+        while (count($segments) > 2) {
+            array_pop($segments);
+        }
 
         $parentPath = empty($segments)
             ? '/'
             : '/' . implode('/', $segments);
         return $parentPath;
     }
-    public function index()
+    final public function index()
     {
         return view('/layouts/data', [
             'judul'       => $this->judul,
             'breadcrumbs' => $this->breadcrumbs,
             'meta_data'   => $this->meta_data,
-            'modul_path'  => $this->modul_path,
+            'modul_path'  => $this->get_uri_path(),
             'kolom_id'    => $this->model->get_primary_key(),
             'konfig'      => $this->konfig,
             'aksi'        => $this->aksi,
             'tabel'       => $this->model->findAll(),
         ]);
     }
-
-
-    public function initController(
-        RequestInterface $request, 
-        ResponseInterface $response, 
-        LoggerInterface $logger,)
+    final public function create_page()
     {
-        parent::initController($request, $response, $logger);
+        $breadcrumbs = [
+            ['title' => 'Tambah', 'icon', 'tambah']
+        ];
+        return view('/layouts/tambah_ubah', [
+            'judul'       => 'Tambah ' . $this->judul,
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
+            'modul_path'  => $this->get_uri_path(),
+            'kolom_id'    => $this->model->get_primary_key(),
+            'konfig'      => $this->konfig,
+            'form_action' => '/submittambah/',
+        ]);
+    }
+
+    final public function create()
+    {
+        $postData = $this->getPostData();
+        $this->model->insert($postData);
+        return $this->index();
+    }
+
+    final public function update_page($id)
+    {
+        $breadcrumbs = [
+            ['title' => 'Ubah', 'icon', 'Ubah']
+        ];
+        $data  = $this->model->find($id);
+        return view('/layouts/tambah_ubah', [
+            'judul'       => 'Ubah ' . $this->judul,
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
+            'modul_path'  => $this->get_uri_path(),
+            'kolom_id'    => $this->model->get_primary_key(),
+            'konfig'      => $this->konfig,
+            'baris'       => $data,
+            'form_action' => '/submitedit/' . $data[$this->model->get_primary_key()],
+        ]);
+    }
+
+    final public function update($id)
+    {
+        $postData = $this->getPostData();
+        $this->model->update($id, $postData);
+        return $this->index();
+    }
+
+    final public function delete($id)
+    {   
+        $this->model->delete($id);
+        return $this->index();        
     }
 
     final protected function addBreadcrumb($title, $icon = '')
