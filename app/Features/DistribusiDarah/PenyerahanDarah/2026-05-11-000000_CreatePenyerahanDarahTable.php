@@ -34,10 +34,12 @@ class CreatePenyerahanDarahTable extends DatabaseTemplate
                 [['id_shift'], 'operasional.shift', ['id_shift'], 'CASCADE', 'CASCADE'],
                 // [['id_petugas_cross'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
                 [['id_status_pembayaran'], 'status_pembayaran', ['id_status_pembayaran'], 'CASCADE', 'CASCADE'],
-                [['id_rekening'], 'finansial.rekening', ['id_rekening'], 'CASCADE', 'CASCADE'],
+                // [['id_rekening'], 'finansial.rekening', ['id_rekening'], 'CASCADE', 'CASCADE'],
                 // [['id_penanggung_jawab'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
             ],
-            [['tanggal_penyerahan'], ['id_status_pembayaran'], ['id_permintaan']]
+            [['tanggal_penyerahan'], ['id_status_pembayaran'], ['id_permintaan']],
+            false,
+            __DIR__ . '/penyerahan_darah.csv'
         );
     }
 }

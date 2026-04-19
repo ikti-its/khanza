@@ -1,0 +1,2 @@
+﻿id_penyerahan,id_permintaan,no_penyerahan,tanggal_penyerahan,id_shift,id_petugas_cross,keterangan,id_status_pembayaran,id_rekening,pengambil_darah,alamat_pengambil,id_penanggung_jawab,besar_ppn
+1,1,2026/04/PD00001,2026-04-18 16:45:05,3,550e8400-e29b-41d4-a716-446655440000,,1,1,Aminah,Ruang Melati Lt. 2,123e4567-e89b-12d3-a456-426614174000,1.0
