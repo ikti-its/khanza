@@ -751,7 +751,7 @@ foreach ($fiturs as $fitur) {
     foreach ($moduls as $modul) {
         $m = $folder . $modul[0];
         $routes->group($prefiks . $modul[1], ['filter' => 'auth'], function ($routes) use ($m, $filter) {
-            $routes->get('/',                      $m . '::tampilData', $filter); //  ojok diubah din, iki wes rapi //sepurane iki vscode ku onok auto rapi ne wkwk
+            $routes->get('data',                      $m . '::tampilData', $filter); //  ojok diubah din, iki wes rapi //sepurane iki vscode ku onok auto rapi ne wkwk
             $routes->get('audit',                  $m . '::tampilAudit', $filter);
             $routes->get('tambah',                 $m . '::tampilTambah', $filter);
             $routes->post('submittambah',          $m . '::simpanTambah', $filter);
@@ -955,12 +955,12 @@ foreach ($features as $feature) {
     foreach ($feature_names as $feature_name) {
         $f = "$feature_group\\$feature_name[0]\\$feature_name[0]Controller";
         $routes->group($prefix . $feature_name[1], ['filter' => 'auth'], function ($routes) use ($f, $filter) {
-            $routes->get('/',                    "$f::index", $filter);
+            $routes->get('data',                 "$f::index", $filter);
             $routes->get('audit',                "$f::audit", $filter);
-            $routes->get('create',               "$f::create_page", $filter);
-            $routes->post('create',              "$f::create", $filter);
-            $routes->get('update/(:segment)',    "$f::update_page/$1", $filter);
-            $routes->put('update/(:segment)',    "$f::update/$1", $filter);
+            $routes->get('tambah',               "$f::create_page", $filter);
+            $routes->post('submittambah',        "$f::create", $filter);
+            $routes->get('ubah/(:segment)',      "$f::update_page/$1", $filter);
+            $routes->put('submitedit/(:segment)',"$f::update/$1", $filter);
             $routes->patch('patch/(:segment)',   "$f::patch/$1", $filter);
             $routes->delete('delete/(:segment)', "$f::delete/$1", $filter);
         });

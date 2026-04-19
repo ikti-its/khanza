@@ -31,6 +31,23 @@ class ControllerTemplate extends Controller
         // $this->checkNotifications();
     }
 
+    public function initController(
+        RequestInterface $request, 
+        ResponseInterface $response, 
+        LoggerInterface $logger,)
+    {
+        parent::initController($request, $response, $logger);
+    }
+
+    private function get_uri_path(){
+        $segments = $this->request->getUri()->getSegments();
+        array_pop($segments);
+
+        $parentPath = empty($segments)
+            ? '/'
+            : '/' . implode('/', $segments);
+        return $parentPath;
+    }
     public function index()
     {
         return view('/layouts/data', [
