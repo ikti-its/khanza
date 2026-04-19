@@ -29,6 +29,8 @@ class CreatePermintaanDarahDetailTable extends DatabaseTemplate
                 [['id_rhesus'], 'darah.rhesus', ['id_rhesus'], 'CASCADE', 'CASCADE'],
             ],
             [],
+            false,
+            __DIR__ . '/permintaan_darah_detail.csv'
         );
     }
 }
