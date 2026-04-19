@@ -16,15 +16,16 @@ class BPJSController extends ControllerTemplate
             ],
             judul: 'BPJS',
             aksi: [
-                'tambah' => false,
+                'tambah' => true,
                 'audit'  => true,
-                'ubah'  => true, 
-                'hapus' => true],
+                'ubah'   => true, 
+                'hapus'  => true
+            ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [1, 'Nomor BPJS', 'no_bpjs', 'indeks', 1],
+                // [1, 'Nomor BPJS', 'no_bpjs', 'indeks', 1],
                 [1, 'Program', 'nama_program', 'teks', 1],
-                [1, 'Penyelenggara', 'penyelenggara', 'status', 1],
+                [1, 'Penyelenggara', 'penyelenggara', 'teks', 1],
                 [1, 'Tarif (%)', 'tarif', 'jumlah', 1],
                 [1, 'Limit', 'batas_atas', 'uang', 1],
                 [1, 'Threshold', 'batas_bawah', 'uang', 1],
