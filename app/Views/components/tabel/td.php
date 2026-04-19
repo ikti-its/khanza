@@ -1,5 +1,5 @@
 <?php 
-    $list_jenis = ['indeks', 'tanggal', 'jam', 'uang', 'status', 'nama', 'teks', 'jumlah', 'suhu', 'bool', 'desimal'];
+    $list_jenis = ['indeks', 'tanggal', 'jam', 'uang', 'status', 'nama', 'teks', 'jumlah', 'suhu', 'bool', 'desimal', 'tanggal_jam'];
     for($i = 0; $i < sizeof($kolom); $i++){
         if(!in_array($jenis[$i], $list_jenis)){
             echo 'Jenis tidak ditemukan pada daftar';
