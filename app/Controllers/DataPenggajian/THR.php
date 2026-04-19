@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\DataPenggajian;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 
-class THR extends ControllerTemplate
+class THR extends ControllerTemplate_LEGACY
 {
     protected string $judul = 'Data THR';
     protected array $breadcrumbs = [

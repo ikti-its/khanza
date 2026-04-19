@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 
-class UMR extends ControllerTemplate
+class UMR extends ControllerTemplate_LEGACY
 {   
     protected string $judul = 'Aturan Upah Minimum Provinsi/Kota/Kabupaten';
     protected array $breadcrumbs = [

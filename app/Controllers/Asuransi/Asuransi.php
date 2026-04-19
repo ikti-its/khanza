@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\Asuransi;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 
-class Asuransi extends ControllerTemplate
+class Asuransi extends ControllerTemplate_LEGACY
 {
     protected string $judul = 'Asuransi / Askes';
     protected array $breadcrumbs = [

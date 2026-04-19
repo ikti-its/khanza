@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\DataPenggajian;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 
-class Kepegawaian extends ControllerTemplate
+class Kepegawaian extends ControllerTemplate_LEGACY
 {
     protected string $judul = 'Data Kepegawaian';
     protected array $breadcrumbs = [

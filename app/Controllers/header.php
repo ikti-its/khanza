@@ -2,11 +2,11 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 use App\Core\Controller\HTTPError;
 
 
-class header extends ControllerTemplate
+class header extends ControllerTemplate_LEGACY
 {
     public function lihatProfile()
     {

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 use App\Core\Controller\HTTPError;
 
 require_once FCPATH . '../vendor/autoload.php';
@@ -10,7 +10,7 @@ require_once FCPATH . '../vendor/autoload.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-class Pemesanan extends ControllerTemplate
+class Pemesanan extends ControllerTemplate_LEGACY
 {
     public function dataPemesananMedis()
     {

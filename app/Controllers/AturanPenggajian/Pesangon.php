@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 
-class Pesangon extends ControllerTemplate
+class Pesangon extends ControllerTemplate_LEGACY
 {   
     protected string $judul = 'Aturan Uang Pesangon';
     protected array $breadcrumbs = [

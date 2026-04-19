@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 use App\Core\Controller\HTTPError;
 
-class StokKeluar extends ControllerTemplate
+class StokKeluar extends ControllerTemplate_LEGACY
 {
     public function dataStokKeluarMedis()
     {

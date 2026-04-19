@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 
-class Jabatan extends ControllerTemplate
+class Jabatan extends ControllerTemplate_LEGACY
 {
     protected string $judul = 'Aturan Jabatan Pegawai';
     protected array $breadcrumbs = [

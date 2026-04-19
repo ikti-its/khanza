@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
-use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\ControllerTemplate_LEGACY;
 
-class PTKP extends ControllerTemplate
+class PTKP extends ControllerTemplate_LEGACY
 {   
     protected string $judul = 'Aturan Penghasilan Tidak Kena Pajak';
     protected array $breadcrumbs = [
