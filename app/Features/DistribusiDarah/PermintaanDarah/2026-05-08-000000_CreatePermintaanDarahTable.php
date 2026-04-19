@@ -27,6 +27,8 @@ class CreatePermintaanDarahTable extends DatabaseTemplate
                 [['id_status_permintaan'], 'status_permintaan', ['id_status_permintaan'], 'CASCADE', 'CASCADE'],
             ],
             [['tanggal_permintaan'], ['id_status_permintaan']],
+            false,
+            __DIR__ . '/permintaan_darah.csv'
         );
     }
 }
