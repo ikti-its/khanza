@@ -29,6 +29,8 @@ class CreatePenyerahanDarahDetailTable extends DatabaseTemplate
                 [['id_stok_darah'], 'inventori_darah.stok_darah', ['id_stok_darah'], 'CASCADE', 'CASCADE'],
             ],
             [['id_penyerahan']],
+            false,
+            __DIR__ . '/penyerahan_darah_detail.csv'
         );
     }
 }
