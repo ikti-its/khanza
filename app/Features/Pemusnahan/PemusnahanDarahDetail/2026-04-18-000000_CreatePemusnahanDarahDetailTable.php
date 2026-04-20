@@ -6,7 +6,7 @@ namespace App\Features\Pemusnahan\PemusnahanDarahDetail;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePemusnahanDarahDetailTable extends DatabaseTemplate
+final class CreatePemusnahanDarahDetailTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -18,12 +18,12 @@ class CreatePemusnahanDarahDetailTable extends DatabaseTemplate
                 'id_stok_darah'         => T::INT32(),
                 'id_alasan'             => T::INT8(),
             ],
-            ['id_pemusnahan_detail'],
-            [['id_stok_darah']],
+            'id_pemusnahan_detail',
+            'id_stok_darah',
             [
-                [['id_pemusnahan'], 'pemusnahan_darah', ['id_pemusnahan'], 'CASCADE', 'CASCADE'],
-                [['id_stok_darah'], 'inventori_darah.stok_darah', ['id_stok_darah'], 'CASCADE', 'CASCADE'],
-                [['id_alasan'], 'alasan_pemusnahan', ['id_alasan'], 'CASCADE', 'CASCADE'],
+                ['id_pemusnahan', 'pemusnahan_darah', 'id_pemusnahan'],
+                ['id_stok_darah', 'inventori_darah.stok_darah', 'id_stok_darah'],
+                ['id_alasan', 'alasan_pemusnahan', 'id_alasan'],
             ],
         );
     }
