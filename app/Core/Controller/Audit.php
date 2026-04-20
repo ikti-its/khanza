@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace App\Core\Controller;
 
-#[\Deprecated(reason: "Already covered in ModelTemplate::audit()", since: "April 2026")]
-final readonly class Audit
+/** 
+ * @deprecated "Migrate to ModelTemplate::audit"
+ */final readonly class Audit
 {
     public static function GetAuditData($tabel){
         $tabel = str_replace('/', '', $tabel);

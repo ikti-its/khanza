@@ -5,7 +5,9 @@ namespace App\Core\Controller;
 use App\Core\ModelTemplate;
 use CodeIgniter\Controller;
 
-#[\Deprecated(reason: "Please migrate to ControllerTemplate", since: "April 2026")]
+/** 
+ * @deprecated "Migrate to ControllerTemplate"
+ */
 class ControllerTemplate_LEGACY extends Controller
 {
     protected string $api_url;
