@@ -20,7 +20,7 @@ final class CreateUpahMinimumProvinsiTable extends DatabaseTemplate
             ],
             'no_ump',
             [],
-            [['provinsi'], 'lokasi.provinsi', ['id_provinsi']],
+            ['provinsi', 'lokasi.provinsi', 'id_provinsi'],
         );
     }
 }

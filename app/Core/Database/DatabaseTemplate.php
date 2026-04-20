@@ -29,13 +29,13 @@ class DatabaseTemplate extends Migration
         protected string|array $unique_key = '',
         /**
          * @var array<int, array{
-         *   0: array<string>,
+         *   0: string|array<string>,
          *   1: string,
-         *   2: array<string>,
+         *   2: string|array<string>,
          * }>|array{
-         *   0: array<string>,
+         *   0: string|array<string>,
          *   1: string,
-         *   2: array<string>,
+         *   2: string|array<string>,
          * }>|
          */
         protected array $foreign_key = [],
