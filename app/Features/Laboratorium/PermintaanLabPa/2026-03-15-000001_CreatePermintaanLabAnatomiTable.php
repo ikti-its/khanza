@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\PermintaanLabPa;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreatePermintaanLabAnatomiTable extends DatabaseTemplate
+final class CreatePermintaanLabAnatomiTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -24,13 +24,12 @@ class CreatePermintaanLabAnatomiTable extends DatabaseTemplate
             'riwayat_diagnosa_sebelumnya' => T::TEXT(),
             'id_item_pemeriksaan'       => T::INT32(),
         ],
-        ['id_permintaan_pa'],
+        'id_permintaan_pa',
         [],
         [
-            [['id_permintaan_lab'], 'laboratorium.permintaan_lab_header', ['id_permintaan'], 'CASCADE', 'CASCADE'],
-            [['id_item_pemeriksaan'], 'laboratorium.ref_item_pemeriksaan_lab', ['id_item_lab'], 'CASCADE', 'RESTRICT'],
+            ['id_permintaan_lab', 'laboratorium.permintaan_lab_header', 'id_permintaan'],
+            ['id_item_pemeriksaan', 'laboratorium.ref_item_pemeriksaan_lab', 'id_item_lab'],
         ],
-        [['id_permintaan_lab']]
     );
 }
 }

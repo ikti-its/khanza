@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\HasilLabPk;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateHasilLabKlinisTable extends DatabaseTemplate
+final class CreateHasilLabKlinisTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -25,19 +25,18 @@ class CreateHasilLabKlinisTable extends DatabaseTemplate
             'nilai_hasil'               => T::TEXT(),
             'keterangan_hasil'          => T::TEXT()->nullable(),
         ],
-        ['id_hasil_pk'],
+        'id_hasil_pk',
         [],
         [
-            [['id_permintaan_lab'], 'laboratorium.permintaan_lab_header', ['id_permintaan'], 'CASCADE', 'RESTRICT'],
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_pj'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            // [['id_petugas_lab'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_perujuk'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['id_kategori_usia'], 'laboratorium.ref_kategori_usia_lab', ['id_kategori_usia'], 'CASCADE', 'RESTRICT'],
-            [['id_item_pemeriksaan'], 'laboratorium.permintaan_lab_pk', ['id_permintaan_pk'], 'CASCADE', 'RESTRICT'],
-            [['id_parameter_pemeriksaan'], 'laboratorium.permintaan_lab_pk', ['id_permintaan_pk'], 'CASCADE', 'RESTRICT'],
+            ['id_permintaan_lab', 'laboratorium.permintaan_lab_header', 'id_permintaan'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dokter_pj', 'sik.dokter_structure', 'kode_dokter'],
+            // ['id_petugas_lab', 'sik.pegawai_structure', 'id'],
+            // ['kode_dokter_perujuk', 'sik.dokter_structure', 'kode_dokter'],
+            ['id_kategori_usia', 'laboratorium.ref_kategori_usia_lab', 'id_kategori_usia'],
+            ['id_item_pemeriksaan', 'laboratorium.permintaan_lab_pk', 'id_permintaan_pk'],
+            ['id_parameter_pemeriksaan', 'laboratorium.permintaan_lab_pk', 'id_permintaan_pk'],
         ],
-        [['nomor_reg'], ['tgl_jam_hasil']]
     );
 }
 }

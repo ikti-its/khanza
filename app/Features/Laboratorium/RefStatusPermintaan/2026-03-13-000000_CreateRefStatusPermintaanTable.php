@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\RefStatusPermintaan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefStatusPermintaanTable extends DatabaseTemplate
+final class CreateRefStatusPermintaanTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefStatusPermintaanTable extends DatabaseTemplate
             'id_status'   => T::ID8(),
             'nama_status' => T::TEXT(),
         ],
-        ['id_status'],
-        [],
+        'id_status',
         [],
         [],
         true,

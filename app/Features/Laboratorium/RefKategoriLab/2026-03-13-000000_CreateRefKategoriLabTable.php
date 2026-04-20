@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\RefKategoriLab;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefKategoriLabTable extends DatabaseTemplate
+final class CreateRefKategoriLabTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -16,9 +16,8 @@ class CreateRefKategoriLabTable extends DatabaseTemplate
             'kode_kategori' => T::TEXT(),
             'nama_kategori' => T::TEXT(),
         ],
-        ['id_kategori'],
-        [['kode_kategori']],
-        [],
+        'id_kategori',
+        'kode_kategori',
         [],
         true,
         __DIR__ . '/kategori_lab.csv'

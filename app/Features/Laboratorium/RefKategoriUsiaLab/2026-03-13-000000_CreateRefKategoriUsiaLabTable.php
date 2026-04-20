@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\RefKategoriUsiaLab;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefKategoriUsiaLabTable extends DatabaseTemplate
+final class CreateRefKategoriUsiaLabTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefKategoriUsiaLabTable extends DatabaseTemplate
             'id_kategori_usia'   => T::ID8(),
             'nama_kategori_usia' => T::TEXT(),
         ],
-        ['id_kategori_usia'],
-        [],
+        'id_kategori_usia',
         [],
         [],
         true,
