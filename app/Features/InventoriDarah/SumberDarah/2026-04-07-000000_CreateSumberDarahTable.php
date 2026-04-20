@@ -6,7 +6,7 @@ namespace App\Features\InventoriDarah\SumberDarah;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateSumberDarahTable extends DatabaseTemplate
+final class CreateSumberDarahTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -16,8 +16,8 @@ class CreateSumberDarahTable extends DatabaseTemplate
                 'id_sumber_darah'         => T::ID8(),
                 'nama_sumber_darah'       => T::TEXT(),
             ],
-            ['id_sumber_darah'],
-            [['nama_sumber_darah']],
+            'id_sumber_darah',
+            'nama_sumber_darah',
             [],
             true,
             __DIR__ . '/sumber_darah.csv'

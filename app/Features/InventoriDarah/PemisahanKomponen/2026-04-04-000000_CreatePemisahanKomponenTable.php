@@ -6,7 +6,7 @@ namespace App\Features\InventoriDarah\PemisahanKomponen;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePemisahanKomponenTable extends DatabaseTemplate
+final class CreatePemisahanKomponenTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,12 +19,12 @@ class CreatePemisahanKomponenTable extends DatabaseTemplate
                 'id_shift'              => T::INT8(),
                 'id_petugas'            => T::UUID(),
             ],
-            ['id_pemisahan'],
-            [['id_bag']],
+            'id_pemisahan',
+            'id_bag',
             [
-                [['id_bag'], 'kantong_darah', ['id_bag'], 'CASCADE', 'CASCADE'],
-                [['id_shift'], 'operasional.shift', ['id_shift'], 'CASCADE', 'CASCADE'],
-                // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
+                ['id_bag', 'kantong_darah', 'id_bag'],
+                ['id_shift', 'operasional.shift', 'id_shift'],
+                // ['id_petugas', 'role.petugas', 'id_petugas'],
             ],
             false,
             __DIR__ . '/pemisahan_komponen.csv'

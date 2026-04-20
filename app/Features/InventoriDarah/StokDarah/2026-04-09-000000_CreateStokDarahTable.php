@@ -6,7 +6,7 @@ namespace App\Features\InventoriDarah\StokDarah;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateStokDarahTable extends DatabaseTemplate
+final class CreateStokDarahTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -24,15 +24,15 @@ class CreateStokDarahTable extends DatabaseTemplate
                 'id_sumber_darah'            => T::INT8(),
                 'id_status_stok'             => T::INT8(),
             ],
-            ['id_stok_darah'],
-            [['no_kantong']],
+            'id_stok_darah',
+            'no_kantong',
             [
-                [['id_pemisahan'], 'pemisahan_komponen', ['id_pemisahan'], 'CASCADE', 'CASCADE'],
-                [['id_komponen'], 'darah.komponen_darah', ['id_komponen'], 'CASCADE', 'CASCADE'],
-                [['id_golongan_darah'], 'darah.golongan_darah', ['id_golongan_darah'], 'CASCADE', 'CASCADE'],
-                [['id_rhesus'], 'darah.rhesus', ['id_rhesus'], 'CASCADE', 'CASCADE'],
-                [['id_sumber_darah'], 'sumber_darah', ['id_sumber_darah'], 'CASCADE', 'CASCADE'],
-                [['id_status_stok'], 'status_stok', ['id_status_stok'], 'CASCADE', 'CASCADE'],
+                ['id_pemisahan', 'pemisahan_komponen', 'id_pemisahan'],
+                ['id_komponen', 'darah.komponen_darah', 'id_komponen'],
+                ['id_golongan_darah', 'darah.golongan_darah', 'id_golongan_darah'],
+                ['id_rhesus', 'darah.rhesus', 'id_rhesus'],
+                ['id_sumber_darah', 'sumber_darah', 'id_sumber_darah'],
+                ['id_status_stok', 'status_stok', 'id_status_stok'],
             ],
             false,
             __DIR__ . '/stok_darah.csv'

@@ -6,7 +6,7 @@ namespace App\Features\InventoriDarah\TarifKomponen;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateTarifKomponenTable extends DatabaseTemplate
+final class CreateTarifKomponenTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -22,10 +22,10 @@ class CreateTarifKomponenTable extends DatabaseTemplate
                 'pembatalan'            => T::F32(),
                 'tanggal_berlaku'       => T::DATE(),
             ],
-            ['id_tarif'],
+            'id_tarif',
             [['id_komponen', 'tanggal_berlaku']],
             [
-                [['id_komponen'], 'darah.komponen_darah', ['id_komponen'], 'CASCADE', 'CASCADE'],
+                ['id_komponen', 'darah.komponen_darah', 'id_komponen'],
             ],
             false,
             __DIR__ . '/tarif_komponen.csv'
