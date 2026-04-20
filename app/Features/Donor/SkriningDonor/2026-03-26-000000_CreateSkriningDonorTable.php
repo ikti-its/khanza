@@ -6,7 +6,7 @@ namespace App\Features\Donor\SkriningDonor;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateSkriningDonorTable extends DatabaseTemplate
+final class CreateSkriningDonorTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -22,11 +22,11 @@ class CreateSkriningDonorTable extends DatabaseTemplate
                 'suhu_tubuh'           => T::F32(),
                 'id_hasil_anamnesis'   => T::INT8(),
             ],
-            ['id_skrining'],
-            [['id_kunjungan']],
+            'id_skrining',
+            'id_kunjungan',
             [
-                [['id_kunjungan'], 'kunjungan', ['id_kunjungan'], 'CASCADE', 'CASCADE'],
-                [['id_hasil_anamnesis'], 'hasil_anamnesis', ['id_hasil'], 'CASCADE', 'CASCADE'],
+                ['id_kunjungan', 'kunjungan', 'id_kunjungan'],
+                ['id_hasil_anamnesis', 'hasil_anamnesis', 'id_hasil'],
             ],
             false,
             __DIR__ . '/skrining_donor.csv'

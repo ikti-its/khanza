@@ -6,7 +6,7 @@ namespace App\Features\Donor\Kunjungan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateKunjunganTable extends DatabaseTemplate
+final class CreateKunjunganTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,11 +19,11 @@ class CreateKunjunganTable extends DatabaseTemplate
                 'nomor_antrian'         => T::INT16(),
                 'id_status_kunjungan'   => T::INT8(),
             ],
-            ['id_kunjungan'],
+            'id_kunjungan',
             [['tanggal_kunjungan', 'nomor_antrian']],
             [
-                [['id_pendonor'], 'role.pendonor', ['id_pendonor'], 'CASCADE', 'CASCADE'],
-                [['id_status_kunjungan'], 'status_kunjungan', ['id_status_kunjungan'], 'CASCADE', 'CASCADE'],
+                ['id_pendonor', 'role.pendonor', 'id_pendonor'],
+                ['id_status_kunjungan', 'status_kunjungan', 'id_status_kunjungan'],
             ],
             false,
             __DIR__ . '/kunjungan.csv'

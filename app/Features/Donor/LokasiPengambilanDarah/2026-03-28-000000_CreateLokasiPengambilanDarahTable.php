@@ -6,7 +6,7 @@ namespace App\Features\Donor\LokasiPengambilanDarah;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateLokasiPengambilanDarahTable extends DatabaseTemplate
+final class CreateLokasiPengambilanDarahTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -16,8 +16,8 @@ class CreateLokasiPengambilanDarahTable extends DatabaseTemplate
                 'id_lokasi_pengambilan'    => T::ID8(),
                 'nama_lokasi'              => T::TEXT(),
             ],
-            ['id_lokasi_pengambilan'],
-            [['nama_lokasi']],
+            'id_lokasi_pengambilan',
+            'nama_lokasi',
             [],
             true,
             __DIR__ . '/lokasi_pengambilan_darah.csv'
