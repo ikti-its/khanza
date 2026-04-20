@@ -1,4 +1,4 @@
-﻿id_skala,tingkat_skala,kode_skala,id_pemeriksaan,pengkajian
+﻿id_skala,id_tingkat_skala,kode_skala,id_pemeriksaan,pengkajian
 1,1,001,1,Sumbatan Total
 2,1,002,2,Henti Nafas
 3,1,003,2,Frekuensi Nafas < 10x/menit

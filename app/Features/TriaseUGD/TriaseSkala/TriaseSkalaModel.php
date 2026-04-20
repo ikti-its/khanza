@@ -19,7 +19,7 @@ class TriaseSkalaModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'tingkat_skala' => [
+                'id_tingkat_skala' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],

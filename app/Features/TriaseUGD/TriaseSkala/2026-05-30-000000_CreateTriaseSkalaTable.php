@@ -14,14 +14,15 @@ class CreateTriaseSkalaTable extends DatabaseTemplate
             'triase_skala',
             [
                 'id_skala'              => T::ID16(),
-                'tingkat_skala'         => T::INT8(),
+                'id_tingkat_skala'      => T::INT8(),
                 'kode_skala'            => T::TEXT(),
                 'id_pemeriksaan'        => T::INT8(),
                 'pengkajian'            => T::TEXT(),
             ],
             ['id_skala'],
-            [['tingkat_skala', 'kode_skala'], ['tingkat_skala', 'id_pemeriksaan', 'pengkajian']],
+            [['id_tingkat_skala', 'kode_skala'], ['id_tingkat_skala', 'id_pemeriksaan', 'pengkajian']],
             [
+                [['id_tingkat_skala'], 'tingkat_skala', ['id_tingkat'], 'CASCADE', 'CASCADE'],
                 [['id_pemeriksaan'], 'triase_pemeriksaan', ['id_pemeriksaan'], 'CASCADE', 'CASCADE'],
             ],
             [],
