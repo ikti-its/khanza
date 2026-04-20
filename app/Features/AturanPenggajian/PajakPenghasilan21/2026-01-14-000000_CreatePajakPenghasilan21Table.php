@@ -21,7 +21,6 @@ class CreatePajakPenghasilan21Table extends DatabaseTemplate
             ['no_pph21'],
             [],
             [],
-            [],
         );
     }
 }

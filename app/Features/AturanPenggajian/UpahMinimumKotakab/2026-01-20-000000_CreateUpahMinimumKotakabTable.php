@@ -25,7 +25,6 @@ class CreateUpahMinimumKotakabTable extends DatabaseTemplate
                 // [['provinsi', 'kotakab'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
                 [['kotakab'], 'lokasi.kota', ['id_kota_lokal'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

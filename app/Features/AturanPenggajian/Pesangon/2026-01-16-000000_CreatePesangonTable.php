@@ -20,7 +20,6 @@ class CreatePesangonTable extends DatabaseTemplate
             ['no_pesangon'],
             [],
             [],
-            [],
         );
     }
 }

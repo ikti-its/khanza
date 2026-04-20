@@ -22,7 +22,6 @@ class CreatePenghasilanTidakKenaPajakTable extends DatabaseTemplate
             ['no_ptkp'],
             [],
             [],
-            [],
         );
     }
 }

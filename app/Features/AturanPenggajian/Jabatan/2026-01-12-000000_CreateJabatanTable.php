@@ -22,7 +22,6 @@ class CreateJabatanTable extends DatabaseTemplate
             ['no_jabatan'],
             [['nama_jabatan']],
             [],
-            [],
         );
     }
 }

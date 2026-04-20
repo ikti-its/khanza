@@ -21,7 +21,6 @@ class CreateLemburTable extends DatabaseTemplate
             ['no_lembur'],
             [['jenis_lembur', 'jam_lembur']],
             [],
-            [],
         );
     }
 }

@@ -22,7 +22,6 @@ class CreateGolonganTable extends DatabaseTemplate
             ['no_golongan'],
             [['nama_golongan'], ['kode_golongan']],
             [],
-            []
         );
     }
 }

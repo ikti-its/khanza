@@ -23,7 +23,6 @@ class CreateBPJSTable extends DatabaseTemplate
             ['no_bpjs'],
             [['nama_program']],
             [],
-            [],
             true,
             __DIR__ . '/bpjs.csv'
         );

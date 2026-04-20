@@ -23,7 +23,6 @@ class CreateUpahMinimumProvinsiTable extends DatabaseTemplate
             [
                 [['provinsi'], 'lokasi.provinsi', ['id_provinsi'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

@@ -20,7 +20,6 @@ class CreateTunjanganHariRayaTable extends DatabaseTemplate
             ['no_thr'],
             [],
             [],
-            [],
         );
     }
 }
