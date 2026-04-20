@@ -6,7 +6,7 @@ namespace App\Features\Role\Pendonor;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePendonorTable extends DatabaseTemplate
+final class CreatePendonorTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,12 +19,12 @@ class CreatePendonorTable extends DatabaseTemplate
                 'id_rhesus'                  => T::INT8(),
                 'id_status_pendonor'         => T::INT8(),
             ],
-            ['id_pendonor'],
-            [['id_orang'], ['nomor_pendonor']],
+            'id_pendonor',
+            ['id_orang', 'nomor_pendonor'],
             [
-                [['id_orang'], 'person.orang', ['id_orang'], 'CASCADE', 'CASCADE'],
-                [['id_rhesus'], 'darah.rhesus', ['id_rhesus'], 'CASCADE', 'CASCADE'],
-                [['id_status_pendonor'], 'donor.status_pendonor', ['id_status_pendonor'], 'CASCADE', 'CASCADE'],
+                ['id_orang', 'person.orang', 'id_orang'],
+                ['id_rhesus', 'darah.rhesus', 'id_rhesus'],
+                ['id_status_pendonor', 'donor.status_pendonor', 'id_status_pendonor'],
             ],
             false,
             __DIR__ . '/pendonor.csv'
