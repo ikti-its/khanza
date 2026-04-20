@@ -4,8 +4,7 @@ parameters:
 
     # Directories to analyze
     paths:
-        - app/Controllers
-        - tests
+        - app/Features
 
     # Bootstrap CodeIgniter system files so PHPStan knows about them
     #bootstrapFiles:
@@ -14,6 +13,7 @@ parameters:
     # Directories PHPStan should scan for function definitions (helpers etc.)
     scanDirectories:
         - vendor/codeigniter4/framework/system/Helpers
+        - app/Core
 
     # Enforce stricter checks
     # checkMissingIterableValueType: true

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Core\Database;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
+use App\Core\Database\DatabaseType;
 
 class DatabaseTemplate extends Migration
 {
@@ -11,7 +12,7 @@ class DatabaseTemplate extends Migration
         protected string $schema,
         protected string $table,
         /**
-         * @var array<string, string>
+         * @var array<string, DatabaseType>
          */
         protected array $fields,
         /**
