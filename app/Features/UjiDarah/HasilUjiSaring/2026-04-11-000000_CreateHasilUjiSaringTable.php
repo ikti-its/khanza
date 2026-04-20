@@ -6,7 +6,7 @@ namespace App\Features\UjiDarah\HasilUjiSaring;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateHasilUjiSaringTable extends DatabaseTemplate
+final class CreateHasilUjiSaringTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,12 +19,12 @@ class CreateHasilUjiSaringTable extends DatabaseTemplate
                 'tanggal_uji'           => T::DATE(),
                 'id_petugas'            => T::UUID(),
             ],
-            ['id_uji_saring'],
-            [['id_bag']],
+            'id_uji_saring',
+            'id_bag',
             [
-                [['id_bag'], 'inventori_darah.kantong_darah', ['id_bag'], 'CASCADE', 'CASCADE'],
-                [['id_metode_uji'], 'metode_uji', ['id_metode_uji'], 'CASCADE', 'CASCADE'],
-                // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
+                ['id_bag', 'inventori_darah.kantong_darah', 'id_bag'],
+                ['id_metode_uji', 'metode_uji', 'id_metode_uji'],
+                // ['id_petugas', 'role.petugas', 'id_petugas'],
             ],
             false,
             __DIR__ . '/hasil_uji_saring.csv'

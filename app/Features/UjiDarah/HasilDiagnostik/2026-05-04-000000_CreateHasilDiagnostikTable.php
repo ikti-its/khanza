@@ -6,7 +6,7 @@ namespace App\Features\UjiDarah\HasilDiagnostik;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateHasilDiagnostikTable extends DatabaseTemplate
+final class CreateHasilDiagnostikTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -18,10 +18,10 @@ class CreateHasilDiagnostikTable extends DatabaseTemplate
                 'tanggal_hasil'          => T::DATE(),
                 'dokter_pemeriksa'       => T::TEXT(),
             ],
-            ['id_diagnostik'],
-            [['id_rujukan']],
+            'id_diagnostik',
+            'id_rujukan',
             [
-                [['id_rujukan'], 'penanganan_donor.rujukan', ['id_rujukan'], 'CASCADE', 'CASCADE'],
+                ['id_rujukan', 'penanganan_donor.rujukan', 'id_rujukan'],
             ],
         );
     }
