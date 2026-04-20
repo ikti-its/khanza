@@ -1,3 +1,14 @@
+<?php
+if($opsi === null){
+    echo view('components/form/isian/teks', [
+        'id'    => $id,
+        'kolom' => $kolom,
+        'value' => $value,
+        'req'   => $req,
+    ]);
+    return;
+}
+?>
 <select 
     id="<?= $id ?>"
     name="<?= $kolom ?>"
