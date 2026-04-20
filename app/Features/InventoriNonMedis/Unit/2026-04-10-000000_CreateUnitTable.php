@@ -22,7 +22,6 @@ class CreateUnitTable extends DatabaseTemplate
                 ['nama_unit']
             ],
             [],
-            [],
             true,
             __DIR__ . '/unit.csv'
         );

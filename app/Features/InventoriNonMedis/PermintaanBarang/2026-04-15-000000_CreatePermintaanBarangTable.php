@@ -24,10 +24,6 @@ class CreatePermintaanBarangTable extends DatabaseTemplate
             ['id_permintaan'],
             [],
             [],
-            [
-                ['tanggal'],
-                ['status'],
-            ],
             true,
             __DIR__ . '/permintaan_barang.csv'
         );

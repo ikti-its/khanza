@@ -39,9 +39,6 @@ class CreateBarangTable extends DatabaseTemplate
                 [['id_unit'],         'unit',            ['id_unit'],        'CASCADE', 'RESTRICT'],
                 [['id_lokasi'],       'lokasi',          ['id_lokasi'],      'CASCADE', 'RESTRICT'],
             ],
-            [
-                ['nama_barang']
-            ],
             true,
             __DIR__ . '/barang.csv'
         );

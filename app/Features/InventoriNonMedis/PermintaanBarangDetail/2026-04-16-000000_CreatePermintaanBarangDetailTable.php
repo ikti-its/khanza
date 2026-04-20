@@ -28,7 +28,6 @@ class CreatePermintaanBarangDetailTable extends DatabaseTemplate
                 [['id_permintaan'], 'permintaan_barang', ['id_permintaan'], 'CASCADE', 'RESTRICT'],
                 [['id_barang'],     'barang',            ['id_barang'],     'CASCADE', 'SET NULL'],
             ],
-            [],
             true,
             __DIR__ . '/permintaan_barang_detail.csv'
         );

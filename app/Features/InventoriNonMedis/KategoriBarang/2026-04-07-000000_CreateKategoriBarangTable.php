@@ -23,13 +23,7 @@ class CreateKategoriBarangTable extends DatabaseTemplate
             [
                 ['kode_kategori_barang']
             ],
-
             [],
-
-            [
-                ['nama_kategori_barang']
-            ],
-
             true,
             __DIR__ . '/kategori_barang.csv'
         );

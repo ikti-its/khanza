@@ -24,9 +24,6 @@ class CreateSupplierTable extends DatabaseTemplate
             [
                 [['id_alamat'], 'lokasi.alamat', ['id_alamat'], 'CASCADE', 'SET NULL'],
             ],
-            [
-                ['nama_supplier']
-            ],
             true,
             __DIR__ . '/supplier.csv'
         );

@@ -26,10 +26,6 @@ class CreatePengajuanBarangTable extends DatabaseTemplate
             [
                 [['id_permintaan'], 'permintaan_barang', ['id_permintaan'], 'CASCADE', 'SET NULL'],
             ],
-            [
-                ['tanggal'],
-                ['status'],
-            ],
             true,
             __DIR__ . '/pengajuan_barang.csv'
         );

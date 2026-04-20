@@ -32,10 +32,6 @@ class CreateTransaksiStokTable extends DatabaseTemplate
                 [['id_permintaan'], 'permintaan_barang', ['id_permintaan'], 'CASCADE', 'SET NULL'],
                 [['id_opname'],     'stok_opname',       ['id_opname'],     'CASCADE', 'SET NULL'],
             ],
-            [
-                ['tanggal'],
-                ['tipe_transaksi'],
-            ],
             true,
             __DIR__ . '/transaksi_stok.csv'
         );

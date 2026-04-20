@@ -27,10 +27,6 @@ class CreatePengadaanBarangTable extends DatabaseTemplate
                 [['id_pengajuan'], 'pengajuan_barang', ['id_pengajuan'], 'CASCADE', 'RESTRICT'],
                 [['id_supplier'],  'supplier',         ['id_supplier'],  'CASCADE', 'RESTRICT'],
             ],
-            [
-                ['tanggal'],
-                ['status'],
-            ],
             true,
             __DIR__ . '/pengadaan_barang.csv'
         );

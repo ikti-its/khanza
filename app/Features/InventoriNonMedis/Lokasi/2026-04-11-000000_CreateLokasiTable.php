@@ -20,7 +20,6 @@ class CreateLokasiTable extends DatabaseTemplate
             ['id_lokasi'],
             [],
             [],
-            [],
             true,
             __DIR__ . '/lokasi.csv'
         );

@@ -28,7 +28,6 @@ class CreateStokOpnameDetailTable extends DatabaseTemplate
                 [['id_opname'], 'stok_opname', ['id_opname'], 'CASCADE', 'RESTRICT'],
                 [['id_barang'], 'barang',      ['id_barang'], 'CASCADE', 'RESTRICT'],
             ],
-            [],
             true,
             __DIR__ . '/stok_opname_detail.csv'
         );
