@@ -19,7 +19,6 @@ class CreatePrinsipBankTable extends DatabaseTemplate
             ['id'],
             [['prinsip']],
             [],
-            [],
             true,
             __DIR__ . '/prinsip_bank.csv'
         );

@@ -18,6 +18,7 @@ class CreateRekeningTable extends DatabaseTemplate
             ],
             ['id_rekening'],
             [['nama_rekening']],
+            [],
         );
     }
 }

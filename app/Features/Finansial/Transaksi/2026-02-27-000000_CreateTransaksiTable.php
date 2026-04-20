@@ -18,6 +18,7 @@ class CreateTransaksiTable extends DatabaseTemplate
             ],
             ['id_transaksi'],
             [['nama_transaksi']],
+            [],
         );
     }
 }

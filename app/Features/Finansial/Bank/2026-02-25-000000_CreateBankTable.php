@@ -30,7 +30,6 @@ class CreateBankTable extends DatabaseTemplate
                 [['pemilik_id'], 'pemilik_bank', ['id'], 'CASCADE', 'CASCADE'],
                 [['prinsip_id'], 'prinsip_bank', ['id'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             true,
             __DIR__ . '/bank.csv'
         );

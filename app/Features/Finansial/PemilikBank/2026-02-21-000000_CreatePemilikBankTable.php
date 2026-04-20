@@ -19,7 +19,6 @@ class CreatePemilikBankTable extends DatabaseTemplate
             ['id'],
             [['pemilik']],
             [],
-            [],
             true,
             __DIR__ . '/pemilik_bank.csv'
         );
