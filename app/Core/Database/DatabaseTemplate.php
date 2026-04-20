@@ -8,6 +8,10 @@ use App\Core\Database\DatabaseType;
 
 class DatabaseTemplate extends Migration
 {
+    /**
+     * @var array<array<string>>
+     */
+    protected array $index = [];
     public function __construct(
         protected string $schema,
         protected string $table,
@@ -33,11 +37,6 @@ class DatabaseTemplate extends Migration
          * }>
          */
         protected array $foreign_key = [],
-        /**
-         * @var array<array<string>>
-         */
-        protected array $index = [],
-
         protected bool $data_is_real = false,
         protected string $source = '', 
     ) {
