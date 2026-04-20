@@ -958,6 +958,22 @@ $features = [
         ['StatusKasus', 'status-kasus'],
         ['StatusPencekalan', 'status-pencekalan'],
     ]],
+    ['TriaseUGD', 'triase-ugd/', [
+        ['AlasanKedatangan', 'alasan-kedatangan'],
+        ['AlatTransportasi', 'alat-transportasi'],
+        ['CaraMasuk', 'cara-masuk'],
+        ['DataTriase', 'data-triase'],
+        ['DataTriaseDetail', 'data-triase-detail'],
+        ['DataTriasePrimer', 'data-triase-primer'],
+        ['DataTriaseSekunder', 'data-triase-sekunder'],
+        ['KebutuhanKhusus', 'kebutuhan-khusus'],
+        ['PlanPrimer', 'plan-primer'],
+        ['PlanSekunder', 'plan-sekunder'],
+        ['TingkatSkala', 'tingkat-skala'],
+        ['TriaseMacamKasus', 'triase-macam-kasus'],
+        ['TriasePemeriksaan', 'triase-pemeriksaan'],
+        ['TriaseSkala', 'triase-skala'],
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
