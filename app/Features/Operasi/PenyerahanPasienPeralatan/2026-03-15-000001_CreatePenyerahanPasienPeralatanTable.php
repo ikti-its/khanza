@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PenyerahanPasienPeralatan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreatePenyerahanPasienPeralatanTable extends DatabaseTemplate
+final class CreatePenyerahanPasienPeralatanTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -17,13 +17,12 @@ class CreatePenyerahanPasienPeralatanTable extends DatabaseTemplate
             'id_peralatan'   => T::INT8(),
             'keterangan'     => T::TEXT(),
         ],
-        ['id'],
+        'id',
         [],
         [
-            [['id_penyerahan'], 'operasi.penyerahan_pasien', ['id_penyerahan'], 'CASCADE', 'CASCADE'],
-            [['id_peralatan'], 'operasi.ref_peralatan_transfer', ['id_peralatan'], 'CASCADE', 'RESTRICT'],
+            ['id_penyerahan', 'operasi.penyerahan_pasien', 'id_penyerahan'],
+            ['id_peralatan', 'operasi.ref_peralatan_transfer', 'id_peralatan'],
         ],
-        [['id_penyerahan']]
     );
 }
 }

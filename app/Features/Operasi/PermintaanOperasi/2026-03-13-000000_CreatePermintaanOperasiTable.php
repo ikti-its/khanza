@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PermintaanOperasi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreatePermintaanOperasiTable extends DatabaseTemplate
+final class CreatePermintaanOperasiTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -18,13 +18,12 @@ class CreatePermintaanOperasiTable extends DatabaseTemplate
             'tanggal_minta' => T::DATETIME(),
             'is_cito'       => T::BOOL(),
         ],
-        ['id_permintaan'],
+        'id_permintaan',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dokter', 'sik.dokter_structure', 'kode_dokter'],
         ],
-        [['nomor_reg'], ['is_cito']]
     );
 }
 }

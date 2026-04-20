@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefKeadaanUmum;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefKeadaanUmumTable extends DatabaseTemplate
+final class CreateRefKeadaanUmumTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefKeadaanUmumTable extends DatabaseTemplate
             'id_keadaan_umum' => T::ID8(),
             'nama_keadaan'    => T::TEXT(),
         ],
-        ['id_keadaan_umum'],
-        [],
+        'id_keadaan_umum',
         [],
         [],
         true,

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\CatatanAnestesiSedasiAlat;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateCatatanAnestesiSedasiAlatTable extends DatabaseTemplate
+final class CreateCatatanAnestesiSedasiAlatTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -18,12 +18,11 @@ class CreateCatatanAnestesiSedasiAlatTable extends DatabaseTemplate
             'is_digunakan'        => T::BOOL(),
             'keterangan'          => T::TEXT(),
         ],
-        ['id_alat'],
+        'id_alat',
         [],
         [
-            [['id_catatan_anestesi'], 'operasi.catatan_anestesi_sedasi', ['id_catatan_anestesi'], 'CASCADE', 'CASCADE'],
+            ['id_catatan_anestesi', 'operasi.catatan_anestesi_sedasi', 'id_catatan_anestesi'],
         ],
-        [['id_catatan_anestesi']]
     );
 }
 }

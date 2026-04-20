@@ -5,7 +5,7 @@ namespace App\Features\Operasi\JadwalOperasi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateJadwalOperasiTable extends DatabaseTemplate
+final class CreateJadwalOperasiTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -23,17 +23,16 @@ class CreateJadwalOperasiTable extends DatabaseTemplate
             'waktu_selesai'      => T::TIME(),
             'id_status'          => T::INT8(),
         ],
-        ['id_jadwal'],
+        'id_jadwal',
         [],
         [
-            [['id_permintaan'], 'operasi.permintaan_operasi', ['id_permintaan'], 'CASCADE', 'RESTRICT'],
-            [['id_ruangan'], 'operasi.ref_ruangan_operasi', ['id_ruangan'], 'CASCADE', 'RESTRICT'],
-            // [['id_tindakan'], 'sik.jenis_tindakan_structure', ['kode'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['id_status'], 'operasi.ref_status_operasi', ['id_status'], 'CASCADE', 'RESTRICT'],
+            ['id_permintaan', 'operasi.permintaan_operasi', 'id_permintaan'],
+            ['id_ruangan', 'operasi.ref_ruangan_operasi', 'id_ruangan'],
+            // ['id_tindakan', 'sik.jenis_tindakan_structure', 'kode'],
+            // ['kode_dokter_bedah', 'sik.dokter_structure', 'kode_dokter'],
+            // ['kode_dokter_anestesi', 'sik.dokter_structure', 'kode_dokter'],
+            ['id_status', 'operasi.ref_status_operasi', 'id_status'],
         ],
-        [['tanggal'], ['kode_dokter_bedah'], ['kode_dokter_anestesi']]
     );
 }
 }

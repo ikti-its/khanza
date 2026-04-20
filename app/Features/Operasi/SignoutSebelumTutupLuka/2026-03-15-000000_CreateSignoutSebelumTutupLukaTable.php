@@ -5,7 +5,7 @@ namespace App\Features\Operasi\SignoutSebelumTutupLuka;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateSignoutSebelumTutupLukaTable extends DatabaseTemplate
+final class CreateSignoutSebelumTutupLukaTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -31,17 +31,16 @@ class CreateSignoutSebelumTutupLukaTable extends DatabaseTemplate
             'catatan_pemulihan'       => T::TEXT(),
             'id_perawat_ok'           => T::UUID(),
         ],
-        ['id_signout'],
+        'id_signout',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['id_label_spesimen'], 'operasi.ref_status_spesimen', ['id_status_spesimen'], 'CASCADE', 'RESTRICT'],
-            [['id_formulir_spesimen'], 'operasi.ref_status_spesimen', ['id_status_spesimen'], 'CASCADE', 'RESTRICT'],
-            // [['id_perawat_ok'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dokter_bedah', 'sik.dokter_structure', 'kode_dokter'],
+            // ['kode_dokter_anestesi', 'sik.dokter_structure', 'kode_dokter'],
+            ['id_label_spesimen', 'operasi.ref_status_spesimen', 'id_status_spesimen'],
+            ['id_formulir_spesimen', 'operasi.ref_status_spesimen', 'id_status_spesimen'],
+            // ['id_perawat_ok', 'sik.pegawai_structure', 'id'],
         ],
-        [['nomor_reg'], ['waktu_signout']]
     );
 }
 }

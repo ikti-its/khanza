@@ -5,7 +5,7 @@ namespace App\Features\Operasi\SkorBromage;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateSkorBromageTable extends DatabaseTemplate
+final class CreateSkorBromageTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -22,15 +22,14 @@ class CreateSkorBromageTable extends DatabaseTemplate
             'catatan_keluar'     => T::TEXT(),
             'instruksi_rr'       => T::TEXT(),
         ],
-        ['id_skor_bromage'],
+        'id_skor_bromage',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            // [['id_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['skor_bromage'], 'operasi.ref_bromage', ['id_bromage'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['id_petugas', 'sik.pegawai_structure', 'id'],
+            // ['id_dokter_anestesi', 'sik.dokter_structure', 'kode_dokter'],
+            ['skor_bromage', 'operasi.ref_bromage', 'id_bromage'],
         ],
-        [['nomor_reg'], ['waktu_penilaian']]
     );
 }
 }

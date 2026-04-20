@@ -5,7 +5,7 @@ namespace App\Features\Operasi\CatatanAnestesiSedasi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateCatatanAnestesiSedasiTable extends DatabaseTemplate
+final class CreateCatatanAnestesiSedasiTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -58,21 +58,20 @@ class CreateCatatanAnestesiSedasiTable extends DatabaseTemplate
             'is_batal_tindakan'    => T::BOOL(),
             'alasan_batal'         => T::TEXT(),
         ],
-        ['id_catatan_anestesi'],
+        'id_catatan_anestesi',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dpjp_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dpjp_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            // [['id_perawat_anestesi'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            // [['id_perawat_bedah'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            [['id_golongan_darah'], 'darah.golongan_darah', ['id_golongan_darah'], 'CASCADE', 'RESTRICT'],
-            [['id_rhesus'], 'darah.rhesus', ['id_rhesus'], 'CASCADE', 'RESTRICT'],
-            [['id_kesadaran'], 'operasi.ref_kesadaran', ['id_kesadaran'], 'CASCADE', 'RESTRICT'],
-            [['id_asa'], 'operasi.ref_angka_asa', ['id_asa'], 'CASCADE', 'RESTRICT'],
-            [['id_jenis_sedasi'], 'operasi.ref_jenis_sedasi', ['id_jenis_sedasi'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dpjp_anestesi', 'sik.dokter_structure', 'kode_dokter'],
+            // ['kode_dpjp_bedah', 'sik.dokter_structure', 'kode_dokter'],
+            // ['id_perawat_anestesi', 'sik.pegawai_structure', 'id'],
+            // ['id_perawat_bedah', 'sik.pegawai_structure', 'id'],
+            ['id_golongan_darah', 'darah.golongan_darah','id_golongan_darah'],
+            ['id_rhesus', 'darah.rhesus', 'id_rhesus'],
+            ['id_kesadaran', 'operasi.ref_kesadaran', 'id_kesadaran'],
+            ['id_asa', 'operasi.ref_angka_asa', 'id_asa'],
+            ['id_jenis_sedasi', 'operasi.ref_jenis_sedasi', 'id_jenis_sedasi'],
         ],
-        [['nomor_reg'], ['waktu_catatan']]
     );
 }
 }

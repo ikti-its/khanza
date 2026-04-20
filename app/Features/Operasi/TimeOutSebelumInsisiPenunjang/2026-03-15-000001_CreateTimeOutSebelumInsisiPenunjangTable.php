@@ -5,7 +5,7 @@ namespace App\Features\Operasi\TimeOutSebelumInsisiPenunjang;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateTimeOutSebelumInsisiPenunjangTable extends DatabaseTemplate
+final class CreateTimeOutSebelumInsisiPenunjangTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -20,10 +20,9 @@ class CreateTimeOutSebelumInsisiPenunjangTable extends DatabaseTemplate
         ['id_penunjang'],
         [],
         [
-            [['id_timeout'], 'operasi.time_out_sebelum_insisi', ['id_timeout'], 'CASCADE', 'CASCADE'],
-            [['id_status'], 'operasi.ref_status_penayangan', ['id_status_penayangan'], 'CASCADE', 'RESTRICT'],
+            ['id_timeout', 'operasi.time_out_sebelum_insisi', 'id_timeout'],
+            ['id_status', 'operasi.ref_status_penayangan', 'id_status_penayangan'],
         ],
-        [['id_timeout']]
     );
 }
 }

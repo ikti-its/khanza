@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefPosisiPasien;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefPosisiPasienTable extends DatabaseTemplate
+final class CreateRefPosisiPasienTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefPosisiPasienTable extends DatabaseTemplate
             'id_posisi'   => T::ID8(),
             'nama_posisi' => T::TEXT(),
         ],
-        ['id_posisi'],
-        [],
+        'id_posisi',
         [],
         [],
         true,

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefStatusSpesimen;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefStatusSpesimenTable extends DatabaseTemplate
+final class CreateRefStatusSpesimenTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefStatusSpesimenTable extends DatabaseTemplate
             'id_status_spesimen' => T::ID8(),
             'nama_status'        => T::TEXT(),
         ],
-        ['id_status_spesimen'],
-        [],
+        'id_status_spesimen',
         [],
         [],
         true,

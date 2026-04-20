@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PengkajianPreop;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreatePengkajianPreopTable extends DatabaseTemplate
+final class CreatePengkajianPreopTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -24,13 +24,12 @@ class CreatePengkajianPreopTable extends DatabaseTemplate
             'persiapan_khusus'     => T::TEXT(),
             'terapi_pre_operasi'   => T::TEXT(),
         ],
-        ['id_pengkajian_pre'],
+        'id_pengkajian_pre',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dokter_bedah', 'sik.dokter_structure', 'kode_dokter'],
         ],
-        [['nomor_reg'], ['waktu_pengkajian']]
     );
 }
 }

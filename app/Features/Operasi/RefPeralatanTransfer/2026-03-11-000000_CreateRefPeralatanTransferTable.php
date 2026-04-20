@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefPeralatanTransfer;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefPeralatanTransferTable extends DatabaseTemplate
+final class CreateRefPeralatanTransferTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefPeralatanTransferTable extends DatabaseTemplate
             'id_peralatan'   => T::ID8(),
             'nama_peralatan' => T::TEXT(),
         ],
-        ['id_peralatan'],
-        [],
+        'id_peralatan',
         [],
         [],
         true,

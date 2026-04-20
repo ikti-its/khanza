@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PengkajianPreInduksi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreatePengkajianPreInduksiTable extends DatabaseTemplate
+final class CreatePengkajianPreInduksiTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -48,16 +48,15 @@ class CreatePengkajianPreInduksiTable extends DatabaseTemplate
             'komplikasi'                 => T::TEXT(),
             'hasil'                      => T::TEXT(),
         ],
-        ['id_pengkajian'],
+        'id_pengkajian',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['id_posisi'], 'operasi.ref_posisi_pasien', ['id_posisi'], 'CASCADE', 'RESTRICT'],
-            [['id_premedikasi'], 'operasi.ref_premedikasi', ['id_premedikasi'], 'CASCADE', 'RESTRICT'],
-            [['id_induksi'], 'operasi.ref_induksi', ['id_induksi'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dokter', 'sik.dokter_structure', 'kode_dokter'],
+            ['id_posisi', 'operasi.ref_posisi_pasien', 'id_posisi'],
+            ['id_premedikasi', 'operasi.ref_premedikasi', 'id_premedikasi'],
+            ['id_induksi', 'operasi.ref_induksi', 'id_induksi'],
         ],
-        [['nomor_reg'], ['waktu_pengkajian']]
     );
 }
 }

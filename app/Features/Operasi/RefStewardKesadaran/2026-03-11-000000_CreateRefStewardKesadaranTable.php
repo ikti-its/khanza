@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefStewardKesadaran;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefStewardKesadaranTable extends DatabaseTemplate
+final class CreateRefStewardKesadaranTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -16,8 +16,7 @@ class CreateRefStewardKesadaranTable extends DatabaseTemplate
             'nama_skala'   => T::TEXT(),
             'nilai'        => T::INT8(),
         ],
-        ['id_kesadaran'],
-        [],
+        'id_kesadaran',
         [],
         [],
         true,

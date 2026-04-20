@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefAngkaAsa;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefAngkaAsaTable extends DatabaseTemplate
+final class CreateRefAngkaAsaTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefAngkaAsaTable extends DatabaseTemplate
             'id_asa'   => T::ID8(),
             'nama_asa' => T::TEXT(),
         ],
-        ['id_asa'],
-        [],
+        'id_asa',
         [],
         [],
         true,

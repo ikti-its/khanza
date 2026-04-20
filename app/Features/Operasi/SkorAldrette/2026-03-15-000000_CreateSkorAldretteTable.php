@@ -5,7 +5,7 @@ namespace App\Features\Operasi\SkorAldrette;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateSkorAldretteTable extends DatabaseTemplate
+final class CreateSkorAldretteTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -27,19 +27,18 @@ class CreateSkorAldretteTable extends DatabaseTemplate
             'catatan_keluar'      => T::TEXT(),
             'instruksi_rr'        => T::TEXT(),
         ],
-        ['id_skor_aldrette'],
+        'id_skor_aldrette',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            // [['id_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['skor_aktivitas'], 'operasi.ref_aldrette_aktivitas', ['id_aktivitas'], 'CASCADE', 'RESTRICT'],
-            [['skor_respirasi'], 'operasi.ref_aldrette_respirasi', ['id_respirasi'], 'CASCADE', 'RESTRICT'],
-            [['skor_tekanan_darah'], 'operasi.ref_aldrette_tekanan_darah', ['id_td'], 'CASCADE', 'RESTRICT'],
-            [['skor_kesadaran'], 'operasi.ref_aldrette_kesadaran', ['id_kesadaran'], 'CASCADE', 'RESTRICT'],
-            [['skor_warna_kulit'], 'operasi.ref_aldrette_warna_kulit', ['id_warna'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['id_petugas', 'sik.pegawai_structure', 'id'],
+            // ['id_dokter_anestesi', 'sik.dokter_structure', 'kode_dokter'],
+            ['skor_aktivitas', 'operasi.ref_aldrette_aktivitas', 'id_aktivitas'],
+            ['skor_respirasi', 'operasi.ref_aldrette_respirasi', 'id_respirasi'],
+            ['skor_tekanan_darah', 'operasi.ref_aldrette_tekanan_darah', 'id_td'],
+            ['skor_kesadaran', 'operasi.ref_aldrette_kesadaran', 'id_kesadaran'],
+            ['skor_warna_kulit', 'operasi.ref_aldrette_warna_kulit', 'id_warna'],
         ],
-        [['nomor_reg'], ['waktu_penilaian']]
     );
 }
 }

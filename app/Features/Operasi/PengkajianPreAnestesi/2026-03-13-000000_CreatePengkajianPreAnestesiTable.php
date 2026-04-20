@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PengkajianPreAnestesi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreatePengkajianPreAnestesiTable extends DatabaseTemplate
+final class CreatePengkajianPreAnestesiTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -55,16 +55,15 @@ class CreatePengkajianPreAnestesiTable extends DatabaseTemplate
             'rencana_perawatan'   => T::TEXT(),
             'catatan_khusus'      => T::TEXT(),
         ],
-        ['id_pre_anestesi'],
+        'id_pre_anestesi',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['id_obat_bebas'], 'operasi.ref_obat_bebas', ['id_obat_bebas'], 'CASCADE', 'RESTRICT'],
-            [['id_rencana_anestesi'], 'operasi.ref_rencana_anestesi', ['id_rencana_anestesi'], 'CASCADE', 'RESTRICT'],
-            [['id_asa'], 'operasi.ref_angka_asa', ['id_asa'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dokter', 'sik.dokter_structure', 'kode_dokter'],
+            ['id_obat_bebas', 'operasi.ref_obat_bebas', 'id_obat_bebas'],
+            ['id_rencana_anestesi', 'operasi.ref_rencana_anestesi', 'id_rencana_anestesi'],
+            ['id_asa', 'operasi.ref_angka_asa', 'id_asa'],
         ],
-        [['nomor_reg'], ['waktu_pengkajian']]
     );
 }
 }

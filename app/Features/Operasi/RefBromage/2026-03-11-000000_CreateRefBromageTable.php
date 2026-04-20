@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefBromage;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefBromageTable extends DatabaseTemplate
+final class CreateRefBromageTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -18,8 +18,7 @@ class CreateRefBromageTable extends DatabaseTemplate
             'nilai'        => T::INT8(),
             'gambar'       => T::TEXT()->nullable(),
         ],
-        ['id_bromage'],
-        [],
+        'id_bromage',
         [],
         [],
         true,

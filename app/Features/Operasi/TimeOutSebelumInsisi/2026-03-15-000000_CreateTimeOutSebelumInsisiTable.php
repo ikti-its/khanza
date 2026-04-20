@@ -5,7 +5,7 @@ namespace App\Features\Operasi\TimeOutSebelumInsisi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateTimeOutSebelumInsisiTable extends DatabaseTemplate
+final class CreateTimeOutSebelumInsisiTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -35,17 +35,16 @@ class CreateTimeOutSebelumInsisiTable extends DatabaseTemplate
             'is_verifikasi_preop'     => T::BOOL(),
             'id_perawat_ok'           => T::UUID(),
         ],
-        ['id_timeout'],
+        'id_timeout',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['id_penandaan_area'], 'operasi.ref_ketersediaan_status', ['id_ketersediaan_status'], 'CASCADE', 'RESTRICT'],
-            [['id_hal_khusus'], 'operasi.ref_ketersediaan_status', ['id_ketersediaan_status'], 'CASCADE', 'RESTRICT'],
-            // [['id_perawat_ok'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dokter_bedah', 'sik.dokter_structure', 'kode_dokter'],
+            // ['kode_dokter_anestesi', 'sik.dokter_structure', 'kode_dokter'],
+            ['id_penandaan_area', 'operasi.ref_ketersediaan_status', 'id_ketersediaan_status'],
+            ['id_hal_khusus', 'operasi.ref_ketersediaan_status', 'id_ketersediaan_status'],
+            // ['id_perawat_ok', 'sik.pegawai_structure', 'id'],
         ],
-        [['nomor_reg'], ['waktu_timeout']]
     );
 }
 }

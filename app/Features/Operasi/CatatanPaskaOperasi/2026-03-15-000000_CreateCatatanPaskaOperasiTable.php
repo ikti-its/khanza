@@ -5,7 +5,7 @@ namespace App\Features\Operasi\CatatanPaskaOperasi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateCatatanPaskaOperasiTable extends DatabaseTemplate
+final class CreateCatatanPaskaOperasiTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -26,13 +26,12 @@ class CreateCatatanPaskaOperasiTable extends DatabaseTemplate
             'instruksi_transfusi'    => T::TEXT(),
             'instruksi_lainnya'      => T::TEXT(),
         ],
-        ['id_catatan_paska'],
+        'id_catatan_paska',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dokter_bedah', 'sik.dokter_structure', 'kode_dokter'],
         ],
-        [['nomor_reg'], ['waktu_penilaian']]
     );
 }
 }

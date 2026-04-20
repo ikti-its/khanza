@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefAldretteRespirasi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefAldretteRespirasiTable extends DatabaseTemplate
+final class CreateRefAldretteRespirasiTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -16,8 +16,7 @@ class CreateRefAldretteRespirasiTable extends DatabaseTemplate
             'nama_skala'   => T::TEXT(),
             'nilai'        => T::INT8(),
         ],
-        ['id_respirasi'],
-        [],
+        'id_respirasi',
         [],
         [],
         true,

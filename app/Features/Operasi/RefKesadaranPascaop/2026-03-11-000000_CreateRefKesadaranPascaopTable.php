@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefKesadaranPascaop;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefKesadaranPascaopTable extends DatabaseTemplate
+final class CreateRefKesadaranPascaopTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefKesadaranPascaopTable extends DatabaseTemplate
             'id_kesadaran'   => T::ID8(),
             'nama_kesadaran' => T::TEXT(),
         ],
-        ['id_kesadaran'],
-        [],
+        'id_kesadaran',
         [],
         [],
         true,

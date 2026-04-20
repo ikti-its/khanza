@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PengkajianPreInduksiAirway;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreatePengkajianPreInduksiAirwayTable extends DatabaseTemplate
+final class CreatePengkajianPreInduksiAirwayTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -20,12 +20,11 @@ class CreatePengkajianPreInduksiAirwayTable extends DatabaseTemplate
             'fiksasi_cm'    => T::INT8(),
             'keterangan'    => T::TEXT(),
         ],
-        ['id_airway'],
+        'id_airway',
         [],
         [
-            [['id_pengkajian'], 'operasi.pengkajian_pre_induksi', ['id_pengkajian'], 'CASCADE', 'CASCADE'],
+            ['id_pengkajian', 'operasi.pengkajian_pre_induksi', 'id_pengkajian'],
         ],
-        [['id_pengkajian']]
     );
 }
 }

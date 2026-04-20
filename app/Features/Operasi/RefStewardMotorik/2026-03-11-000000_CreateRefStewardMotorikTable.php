@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefStewardMotorik;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefStewardMotorikTable extends DatabaseTemplate
+final class CreateRefStewardMotorikTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -16,8 +16,7 @@ class CreateRefStewardMotorikTable extends DatabaseTemplate
             'nama_skala'  => T::TEXT(),
             'nilai'       => T::INT8(),
         ],
-        ['id_motorik'],
-        [],
+        'id_motorik',
         [],
         [],
         true,

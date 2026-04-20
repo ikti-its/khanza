@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefIndikasiPindah;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefIndikasiPindahTable extends DatabaseTemplate
+final class CreateRefIndikasiPindahTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefIndikasiPindahTable extends DatabaseTemplate
             'id_indikasi'   => T::ID8(),
             'nama_indikasi' => T::TEXT(),
         ],
-        ['id_indikasi'],
-        [],
+        'id_indikasi',
         [],
         [],
         true,

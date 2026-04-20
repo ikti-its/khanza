@@ -5,7 +5,7 @@ namespace App\Features\Operasi\ChecklistPostop;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateChecklistPostopTable extends DatabaseTemplate
+final class CreateChecklistPostopTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -30,20 +30,19 @@ class CreateChecklistPostopTable extends DatabaseTemplate
             'id_petugas_anestesi'  => T::UUID(),
             'id_petugas_ok'        => T::UUID(),
         ],
-        ['id_checklist_post'],
+        'id_checklist_post',
         [],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_bedah'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_anestesi'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['id_kesadaran_pascaop'], 'operasi.ref_kesadaran_pascaop', ['id_kesadaran'], 'CASCADE', 'RESTRICT'],
-            [['id_jaringan_pa_vc'], 'operasi.ref_ketersediaan_status', ['id_ketersediaan_status'], 'CASCADE', 'RESTRICT'],
-            [['id_kateter_urine'], 'operasi.ref_ketersediaan_status', ['id_ketersediaan_status'], 'CASCADE', 'RESTRICT'],
-            [['id_warna_urine'], 'operasi.ref_warna_urine', ['id_warna_urine'], 'CASCADE', 'RESTRICT'],
-            // [['id_petugas_anestesi'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
-            // [['id_petugas_ok'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // ['kode_dokter_bedah', 'sik.dokter_structure', 'kode_dokter'],
+            // ['kode_dokter_anestesi', 'sik.dokter_structure', 'kode_dokter'],
+            ['id_kesadaran_pascaop', 'operasi.ref_kesadaran_pascaop', 'id_kesadaran'],
+            ['id_jaringan_pa_vc', 'operasi.ref_ketersediaan_status', 'id_ketersediaan_status'],
+            ['id_kateter_urine', 'operasi.ref_ketersediaan_status', 'id_ketersediaan_status'],
+            ['id_warna_urine', 'operasi.ref_warna_urine', 'id_warna_urine'],
+            // ['id_petugas_anestesi', 'sik.pegawai_structure', 'id'],
+            // ['id_petugas_ok', 'sik.pegawai_structure', 'id'],
         ],
-        [['nomor_reg'], ['waktu_checklist']]
     );
 }
 }
