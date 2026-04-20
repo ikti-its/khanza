@@ -6,7 +6,7 @@ namespace App\Features\PenangananDonor\Konseling;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateKonselingTable extends DatabaseTemplate
+final class CreateKonselingTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -18,11 +18,11 @@ class CreateKonselingTable extends DatabaseTemplate
                 'tanggal_konseling'     => T::DATE(),
                 'id_petugas'            => T::UUID(),
             ],
-            ['id_konseling'],
-            [['id_kasus']],
+            'id_konseling',
+            'id_kasus',
             [
-                [['id_kasus'], 'kasus_reaktif', ['id_kasus'], 'CASCADE', 'CASCADE'],
-                // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
+                ['id_kasus', 'kasus_reaktif', 'id_kasus'],
+                // ['id_petugas', 'role.petugas', 'id_petugas'],
             ],
         );
     }

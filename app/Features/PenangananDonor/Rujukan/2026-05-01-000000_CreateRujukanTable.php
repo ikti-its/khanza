@@ -6,7 +6,7 @@ namespace App\Features\PenangananDonor\Rujukan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateRujukanTable extends DatabaseTemplate
+final class CreateRujukanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,11 +19,11 @@ class CreateRujukanTable extends DatabaseTemplate
                 'tanggal_rujukan'         => T::DATE(),
                 'id_fasyankes'            => T::INT16(),
             ],
-            ['id_rujukan'],
-            [['nomor_surat']],
+            'id_rujukan',
+            'nomor_surat',
             [
-                [['id_kasus'], 'kasus_reaktif', ['id_kasus'], 'CASCADE', 'CASCADE'],
-                [['id_fasyankes'], 'fasyankes_rujukan', ['id_fasyankes'], 'CASCADE', 'CASCADE'],
+                ['id_kasus', 'kasus_reaktif', 'id_kasus'],
+                ['id_fasyankes', 'fasyankes_rujukan', 'id_fasyankes'],
             ],
         );
     }

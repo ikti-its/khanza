@@ -6,7 +6,7 @@ namespace App\Features\PenangananDonor\PertanyaanKonseling;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePertanyaanKonselingTable extends DatabaseTemplate
+final class CreatePertanyaanKonselingTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -16,7 +16,7 @@ class CreatePertanyaanKonselingTable extends DatabaseTemplate
                 'id_pertanyaan'     => T::ID8(),
                 'teks_pertanyaan'   => T::TEXT(),
             ],
-            ['id_pertanyaan'],
+            'id_pertanyaan',
             [],
             [],
             true,

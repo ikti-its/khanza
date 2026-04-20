@@ -6,7 +6,7 @@ namespace App\Features\PenangananDonor\FasyankesRujukan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateFasyankesRujukanTable extends DatabaseTemplate
+final class CreateFasyankesRujukanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -18,10 +18,10 @@ class CreateFasyankesRujukanTable extends DatabaseTemplate
                 'id_alamat'         => T::INT32(),
                 'kode_pos'          => T::TEXT(),
             ],
-            ['id_fasyankes'],
+            'id_fasyankes',
             [],
             [
-                [['id_alamat'], 'lokasi.alamat', ['id_alamat'], 'CASCADE', 'CASCADE'],
+                ['id_alamat', 'lokasi.alamat', 'id_alamat'],
             ],
         );
     }
