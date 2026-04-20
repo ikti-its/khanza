@@ -45,7 +45,6 @@ class CreateKecamatanTable extends DatabaseTemplate
                 // [['id_provinsi', 'id_kota_lokal'], 'kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
                 [['id_kota_lokal'], 'kota', ['id_kota_lokal'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             true,
             __DIR__ . '/kecamatan.csv',
         );

@@ -28,7 +28,6 @@ class CreateAlamatTable extends DatabaseTemplate
                 // [['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal', 'id_desa_lokal'], 'desa', ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal', 'id_desa_lokal'], 'CASCADE', 'CASCADE'],
                 [['id_desa_lokal'], 'desa', ['id_desa_lokal'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             false,
             __DIR__ . '/alamat.csv',
         );

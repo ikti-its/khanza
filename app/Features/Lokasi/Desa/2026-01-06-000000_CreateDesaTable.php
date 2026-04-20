@@ -49,7 +49,6 @@ class CreateDesaTable extends DatabaseTemplate
                 // [['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'], 'kecamatan', ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'], 'CASCADE', 'CASCADE'],
                 [['id_kecamatan_lokal'], 'kecamatan', ['id_kecamatan_lokal'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             true,
             __DIR__ . '/desa.csv',
         );

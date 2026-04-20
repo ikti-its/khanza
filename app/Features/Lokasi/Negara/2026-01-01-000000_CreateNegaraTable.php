@@ -19,6 +19,7 @@ class CreateNegaraTable extends DatabaseTemplate
             ],
             ['id_negara'],
             [['nama_negara']],
+            [],
         );
     }
 }

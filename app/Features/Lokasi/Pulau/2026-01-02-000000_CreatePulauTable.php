@@ -42,7 +42,6 @@ class CreatePulauTable extends DatabaseTemplate
             ['id_pulau'],
             [],
             [],
-            [],
             true,
             __DIR__ . '/pulau.csv',
         );

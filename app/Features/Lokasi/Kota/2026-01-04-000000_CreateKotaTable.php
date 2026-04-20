@@ -43,7 +43,6 @@ class CreateKotaTable extends DatabaseTemplate
             [
                 [['id_provinsi'], 'provinsi', ['id_provinsi'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             true,
             __DIR__ . '/kota.csv',
         );
