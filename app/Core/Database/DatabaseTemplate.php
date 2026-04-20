@@ -20,21 +20,23 @@ class DatabaseTemplate extends Migration
          */
         protected array $fields,
         /**
-         * @var array<string>
+         * @var string|array<string>
          */
-        protected array $primary_key = [],
+        protected string|array $primary_key = '',
         /**
-         * @var array<array<string>>
+         * @var string|array<string>|array<array<string>>
          */
-        protected array $unique_key = [],
+        protected string|array $unique_key = '',
         /**
          * @var array<int, array{
          *   0: array<string>,
          *   1: string,
          *   2: array<string>,
-         *   3: string,
-         *   4: string
-         * }>
+         * }>|array{
+         *   0: array<string>,
+         *   1: string,
+         *   2: array<string>,
+         * }>|
          */
         protected array $foreign_key = [],
         protected bool $data_is_real = false,
