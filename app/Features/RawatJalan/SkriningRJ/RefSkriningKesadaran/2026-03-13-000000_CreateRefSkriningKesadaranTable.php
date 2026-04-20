@@ -5,7 +5,7 @@ namespace App\Features\RawatJalan\SkriningRJ\RefSkriningKesadaran;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefSkriningKesadaranTable extends DatabaseTemplate
+final class CreateRefSkriningKesadaranTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefSkriningKesadaranTable extends DatabaseTemplate
             'id_kesadaran' => T::ID8(),
             'kesadaran'    => T::TEXT(),
         ],
-        ['id_kesadaran'],
-        [],
+        'id_kesadaran',
         [],
         [],
         true,

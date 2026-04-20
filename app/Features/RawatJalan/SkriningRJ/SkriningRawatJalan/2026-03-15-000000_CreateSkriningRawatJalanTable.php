@@ -5,7 +5,7 @@ namespace App\Features\RawatJalan\SkriningRJ\SkriningRawatJalan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateSkriningRawatJalanTable extends DatabaseTemplate
+final class CreateSkriningRawatJalanTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -25,19 +25,18 @@ class CreateSkriningRawatJalanTable extends DatabaseTemplate
             'id_keputusan'   => T::INT8(),
             'id_petugas'     => T::UUID(),
         ],
-        ['id_skrining'],
+        'id_skrining',
         [],
         [
-            // [['no_rm'], 'sik.pasien_structure', ['no_rkm_medis'], 'CASCADE', 'RESTRICT'],
-            [['id_kesadaran'], 'skrining_rj.ref_skrining_kesadaran', ['id_kesadaran'], 'CASCADE', 'RESTRICT'],
-            [['id_pernafasan'], 'skrining_rj.ref_skrining_pernafasan', ['id_pernafasan'], 'CASCADE', 'RESTRICT'],
-            [['id_skala_nyeri'], 'skrining_rj.ref_skrining_skala_nyeri', ['id_skala_nyeri'], 'CASCADE', 'RESTRICT'],
-            [['id_nyeri_dada'], 'skrining_rj.ref_skrining_nyeri_dada', ['id_nyeri_dada'], 'CASCADE', 'RESTRICT'],
-            [['id_batuk'], 'skrining_rj.ref_skrining_batuk', ['id_batuk'], 'CASCADE', 'RESTRICT'],
-            [['id_keputusan'], 'skrining_rj.ref_skrining_keputusan', ['id_keputusan'], 'CASCADE', 'RESTRICT'],
-            // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            // ['no_rm', 'sik.pasien_structure', 'no_rkm_medis'],
+            ['id_kesadaran', 'skrining_rj.ref_skrining_kesadaran', 'id_kesadaran'],
+            ['id_pernafasan', 'skrining_rj.ref_skrining_pernafasan', 'id_pernafasan'],
+            ['id_skala_nyeri', 'skrining_rj.ref_skrining_skala_nyeri', 'id_skala_nyeri'],
+            ['id_nyeri_dada', 'skrining_rj.ref_skrining_nyeri_dada', 'id_nyeri_dada'],
+            ['id_batuk', 'skrining_rj.ref_skrining_batuk', 'id_batuk'],
+            ['id_keputusan', 'skrining_rj.ref_skrining_keputusan', 'id_keputusan'],
+            // ['id_petugas', 'sik.pegawai_structure', 'id'],
         ],
-        [['no_rm'], ['tgl_jam_skrining']]
     );
 }
 }

@@ -5,7 +5,7 @@ namespace App\Features\RawatJalan\SkriningRJ\RefSkriningSkalaNyeri;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefSkriningSkalaNyeriTable extends DatabaseTemplate
+final class CreateRefSkriningSkalaNyeriTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefSkriningSkalaNyeriTable extends DatabaseTemplate
             'id_skala_nyeri' => T::ID8(),
             'skala_nyeri'    => T::TEXT(),
         ],
-        ['id_skala_nyeri'],
-        [],
+        'id_skala_nyeri',
         [],
         [],
         true,
