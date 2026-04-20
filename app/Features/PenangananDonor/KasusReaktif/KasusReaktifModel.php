@@ -19,12 +19,17 @@ class KasusReaktifModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'id_status_kasus' => [
+                'id_kunjungan' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ],
                 'tanggal_ditetapkan' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'id_status_kasus' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],

@@ -14,12 +14,14 @@ class CreateKasusReaktifTable extends DatabaseTemplate
             'kasus_reaktif',
             [
                 'id_kasus'               => T::ID32(),
-                'id_status_kasus'        => T::INT8(),
+                'id_kunjungan'           => T::INT32(),
                 'tanggal_ditetapkan'     => T::DATE(),
+                'id_status_kasus'        => T::INT8(),
             ],
             ['id_kasus'],
-            [],
+            [['id_kunjungan']],
             [
+                [['id_kunjungan'], 'donor.kunjungan', ['id_kunjungan'], 'CASCADE', 'CASCADE'],
                 [['id_status_kasus'], 'status_kasus', ['id_status_kasus'], 'CASCADE', 'CASCADE'],
             ],
             [['id_status_kasus']],
