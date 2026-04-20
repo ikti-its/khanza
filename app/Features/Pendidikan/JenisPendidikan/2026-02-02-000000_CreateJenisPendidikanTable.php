@@ -22,7 +22,6 @@ class CreateJenisPendidikanTable extends DatabaseTemplate
             [
                 [['jenjang_pendidikan_id'], 'jenjang_pendidikan', ['id_jenjang_pendidikan'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

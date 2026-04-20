@@ -23,7 +23,6 @@ class CreateSekolahTable extends DatabaseTemplate
                 [['alamat_id'], 'lokasi.alamat', ['id_alamat'], 'CASCADE', 'CASCADE'],
                 [['jenis_id'], 'jenis_pendidikan', ['id_jenis_pendidikan'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

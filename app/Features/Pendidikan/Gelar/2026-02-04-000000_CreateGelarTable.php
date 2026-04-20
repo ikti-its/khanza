@@ -18,7 +18,6 @@ class CreateGelarTable extends DatabaseTemplate
             ['id_gelar'],
             [['nama_gelar']],
             [],
-            [],
         );
     }
 }
