@@ -841,6 +841,20 @@
                         ['Status Permintaan', '/status-permintaan', ''],
                         ['Status Pembayaran', '/status-pembayaran', '']
                     ]],
+                    ['Penanganan Donor', '', 'penanganan_donor', '/penanganan-donor', $petugasrole, [
+                        ['Kasus Reaktif', '/kasus-reaktif', ''],
+                        ['Kasus Reaktif Detail', '/kasus-reaktif-detail', ''],
+                        ['Konseling', '/konseling', ''],
+                        ['Jawaban Konseling', '/jawaban-konseling', ''],
+                        ['Rujukan', '/rujukan', ''],
+                        ['Pencekalan', '/pencekalan', ''],
+                        ['Status Kasus', '/status-kasus', ''],
+                        ['Pertanyaan Konseling', '/pertanyaan-konseling', ''],
+                        ['Pilihan Jawaban', '/pilihan-jawaban', ''],
+                        ['Fasyankes Rujukan', '/fasyankes-rujukan', ''],
+                        ['Jenis Pencekalan', '/jenis-pencekalan', ''],
+                        ['Status Pencekalan', '/status-pencekalan', '']
+                    ]],
                     ['Laboratorium', '', 'laboratorium', '/laboratorium', $petugasrole, [
                         // Permintaan Lab
                         ['Permintaan Lab', '/permintaan-lab', ''],

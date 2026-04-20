@@ -944,6 +944,20 @@ $features = [
         ['StatusPembayaran', 'status-pembayaran'],
         ['StatusPermintaan', 'status-permintaan'],
     ]],
+    ['PenangananDonor', 'penanganan-donor/', [
+        ['FasyankesRujukan', 'fasyankes-rujukan'],
+        ['JawabanKonseling', 'jawaban-konseling'],
+        ['JenisPencekalan', 'jenis-pencekalan'],
+        ['KasusReaktif', 'kasus-reaktif'],
+        ['KasusReaktifDetail', 'kasus-reaktif-detail'],
+        ['Konseling', 'konseling'],
+        ['Pencekalan', 'pencekalan'],
+        ['PertanyaanKonseling', 'pertanyaan-konseling'],
+        ['PilihanJawaban', 'pilihan-jawaban'],
+        ['Rujukan', 'rujukan'],
+        ['StatusKasus', 'status-kasus'],
+        ['StatusPencekalan', 'status-pencekalan'],
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
