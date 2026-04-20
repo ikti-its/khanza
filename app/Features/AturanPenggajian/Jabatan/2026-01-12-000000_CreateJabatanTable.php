@@ -6,7 +6,7 @@ namespace App\Features\AturanPenggajian\Jabatan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateJabatanTable extends DatabaseTemplate
+final class CreateJabatanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,8 +19,8 @@ class CreateJabatanTable extends DatabaseTemplate
                 'jenjang'       => T::TEXT(),
                 'tunjangan'     => T::INT32(),
             ],
-            ['no_jabatan'],
-            [['nama_jabatan']],
+            'no_jabatan',
+            'nama_jabatan',
             [],
         );
     }

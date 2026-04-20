@@ -6,7 +6,7 @@ namespace App\Features\AturanPenggajian\UpahMinimumProvinsi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateUpahMinimumKotakabTable extends DatabaseTemplate
+final class CreateUpahMinimumKotakabTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,12 +19,10 @@ class CreateUpahMinimumKotakabTable extends DatabaseTemplate
                 'kotakab'      => T::INT16(),
                 'upah_minimum' => T::INT32(),
             ],
-            ['no_ump'],
+            'no_ump',
             [],
-            [
-                // [['provinsi', 'kotakab'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
-                [['kotakab'], 'lokasi.kota', ['id_kota_lokal'], 'CASCADE', 'CASCADE'],
-            ],
+            // [['provinsi', 'kotakab'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
+            [['kotakab'], 'lokasi.kota', ['id_kota_lokal']],
         );
     }
 }

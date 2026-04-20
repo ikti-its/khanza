@@ -6,7 +6,7 @@ namespace App\Features\AturanPenggajian\Lembur;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateLemburTable extends DatabaseTemplate
+final class CreateLemburTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -18,7 +18,7 @@ class CreateLemburTable extends DatabaseTemplate
                 'jam_lembur'   => T::INT8(),
                 'pengali_upah' => T::F32(),
             ],
-            ['no_lembur'],
+            'no_lembur',
             [['jenis_lembur', 'jam_lembur']],
             [],
         );

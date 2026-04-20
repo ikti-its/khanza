@@ -6,7 +6,7 @@ namespace App\Features\AturanPenggajian\PenghasilanTidakKenaPajak;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePenghasilanTidakKenaPajakTable extends DatabaseTemplate
+final class CreatePenghasilanTidakKenaPajakTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,7 +19,7 @@ class CreatePenghasilanTidakKenaPajakTable extends DatabaseTemplate
                 'tanggungan' => T::INT8(),
                 'nilai_ptkp' => T::ID32(),
             ],
-            ['no_ptkp'],
+            'no_ptkp',
             [],
             [],
         );

@@ -6,7 +6,7 @@ namespace App\Features\AturanPenggajian\TunjanganHariRaya;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateTunjanganHariRayaTable extends DatabaseTemplate
+final class CreateTunjanganHariRayaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -17,7 +17,7 @@ class CreateTunjanganHariRayaTable extends DatabaseTemplate
                 'masa_kerja'   => T::INT8(),
                 'pengali_upah' => T::F32(),
             ],
-            ['no_thr'],
+            'no_thr',
             [],
             [],
         );

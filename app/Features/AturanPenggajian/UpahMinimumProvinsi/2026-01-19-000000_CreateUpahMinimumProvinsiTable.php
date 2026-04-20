@@ -6,7 +6,7 @@ namespace App\Features\AturanPenggajian\UpahMinimumProvinsi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateUpahMinimumProvinsiTable extends DatabaseTemplate
+final class CreateUpahMinimumProvinsiTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -18,11 +18,9 @@ class CreateUpahMinimumProvinsiTable extends DatabaseTemplate
                 'provinsi'     => T::ID8(),
                 'upah_minimum' => T::INT32(),
             ],
-            ['no_ump'],
+            'no_ump',
             [],
-            [
-                [['provinsi'], 'lokasi.provinsi', ['id_provinsi'], 'CASCADE', 'CASCADE'],
-            ],
+            [['provinsi'], 'lokasi.provinsi', ['id_provinsi']],
         );
     }
 }

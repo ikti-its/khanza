@@ -6,7 +6,7 @@ namespace App\Features\AturanPenggajian\Pesangon;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePesangonTable extends DatabaseTemplate
+final class CreatePesangonTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -17,7 +17,7 @@ class CreatePesangonTable extends DatabaseTemplate
                 'masa_kerja'   => T::INT8(),
                 'pengali_upah' => T::F32(),
             ],
-            ['no_pesangon'],
+            'no_pesangon',
             [],
             [],
         );
