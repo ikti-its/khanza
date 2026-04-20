@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefAldretteRespirasi;
 
 use App\Core\ModelTemplate;
 
-class RefAldretteRespirasIModel extends ModelTemplate
+class RefAldretteRespirasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
