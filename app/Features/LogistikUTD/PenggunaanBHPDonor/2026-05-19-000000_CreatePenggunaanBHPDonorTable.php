@@ -6,7 +6,7 @@ namespace App\Features\LogistikUTD\PenggunaanBHPDonor;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePenggunaanBHPDonorTable extends DatabaseTemplate
+final class CreatePenggunaanBHPDonorTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -21,13 +21,13 @@ class CreatePenggunaanBHPDonorTable extends DatabaseTemplate
                 'jumlah'                    => T::INT32(),
                 'harga'                     => T::F64(),
             ],
-            ['id_bhp_donor'],
+            'id_bhp_donor',
             [],
             [
-                [['id_pengambilan_darah'], 'donor.pengambilan_darah', ['id_pengambilan_darah'], 'CASCADE', 'CASCADE'],
-                [['id_jenis_bhp'], 'jenis_bhp', ['id_jenis_bhp'], 'CASCADE', 'CASCADE'],
-                // [['id_barang_medis'], 'sik.barang_medis_structure',['id'], 'CASCADE', 'CASCADE'],
-                // [['id_barang_penunjang'], 'inventori_non_medis.barang',['id_barang'], 'CASCADE', 'CASCADE'],
+                ['id_pengambilan_darah', 'donor.pengambilan_darah', 'id_pengambilan_darah'],
+                ['id_jenis_bhp', 'jenis_bhp', 'id_jenis_bhp'],
+                // ['id_barang_medis', 'sik.barang_medis_structure','id'],
+                // ['id_barang_penunjang', 'inventori_non_medis.barang','id_barang'],
             ],
         );
     }

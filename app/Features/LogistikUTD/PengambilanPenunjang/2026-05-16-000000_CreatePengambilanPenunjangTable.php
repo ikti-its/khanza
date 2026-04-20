@@ -6,7 +6,7 @@ namespace App\Features\LogistikUTD\PengambilanPenunjang;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePengambilanPenunjangTable extends DatabaseTemplate
+final class CreatePengambilanPenunjangTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -21,11 +21,11 @@ class CreatePengambilanPenunjangTable extends DatabaseTemplate
                 'tanggal_pengambilan'       => T::DATETIME(),
                 'keterangan'                => T::TEXT(),
             ],
-            ['id_pengambilan_penunjang'],
+            'id_pengambilan_penunjang',
             [],
             [
-                // [['id_barang'], 'inventori_non_medis.barang', ['id_barang'], 'CASCADE', 'CASCADE'],
-                // [['id_petugas_gudang'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'CASCADE'],
+                // ['id_barang', 'inventori_non_medis.barang', 'id_barang'],
+                // ['id_petugas_gudang', 'sik.pegawai_structure', 'id'],
             ],
         );
     }

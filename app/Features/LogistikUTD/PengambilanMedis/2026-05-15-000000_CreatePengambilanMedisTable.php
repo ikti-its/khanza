@@ -6,7 +6,7 @@ namespace App\Features\LogistikUTD\PengambilanMedis;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePengambilanMedisTable extends DatabaseTemplate
+final class CreatePengambilanMedisTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -23,10 +23,10 @@ class CreatePengambilanMedisTable extends DatabaseTemplate
                 'nomor_batch'               => T::TEXT()->nullable(),
                 'nomor_faktur'              => T::TEXT()->nullable(),
             ],
-            ['id_pengambilan_medis'],
+            'id_pengambilan_medis',
             [],
             [
-                // [['id_barang'], 'sik.barang_medis_structure', ['id'], 'CASCADE', 'CASCADE'],
+                // ['id_barang', 'sik.barang_medis_structure', 'id'],
             ],
         );
     }

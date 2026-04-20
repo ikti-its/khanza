@@ -6,7 +6,7 @@ namespace App\Features\LogistikUTD\PenggunaanBHPPemisahan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePenggunaanBHPPemisahanTable extends DatabaseTemplate
+final class CreatePenggunaanBHPPemisahanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -21,13 +21,13 @@ class CreatePenggunaanBHPPemisahanTable extends DatabaseTemplate
                 'jumlah'                    => T::INT32(),
                 'harga'                     => T::F64(),
             ],
-            ['id_bhp_pemisahan'],
+            'id_bhp_pemisahan',
             [],
             [
-                [['id_pemisahan'], 'inventori_darah.pemisahan_komponen', ['id_pemisahan'], 'CASCADE', 'CASCADE'],
-                [['id_jenis_bhp'], 'jenis_bhp', ['id_jenis_bhp'], 'CASCADE', 'CASCADE'],
-                // [['id_barang_medis'], 'sik.barang_medis_structure',['id'], 'CASCADE', 'CASCADE'],
-                // [['id_barang_penunjang'], 'inventori_non_medis.barang',['id_barang'], 'CASCADE', 'CASCADE'],
+                ['id_pemisahan', 'inventori_darah.pemisahan_komponen', 'id_pemisahan'],
+                ['id_jenis_bhp', 'jenis_bhp', 'id_jenis_bhp'],
+                // ['id_barang_medis', 'sik.barang_medis_structure','id'],
+                // ['id_barang_penunjang', 'inventori_non_medis.barang','id_barang'],
             ],
         );
     }
