@@ -22,7 +22,6 @@ class CreateEmailTable extends DatabaseTemplate
             [
                 [['id_orang'], 'person.orang', ['id_orang'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

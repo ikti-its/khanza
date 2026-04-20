@@ -19,7 +19,6 @@ class CreateJenisTeleponTable extends DatabaseTemplate
             ['id_jenis_telepon'],
             [['nama_jenis_telepon']],
             [],
-            [],
         );
     }
 }

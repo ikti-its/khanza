@@ -19,7 +19,6 @@ class CreateProviderTable extends DatabaseTemplate
             ['id_provider'],
             [['nama_provider']],
             [],
-            [],
         );
     }
 }

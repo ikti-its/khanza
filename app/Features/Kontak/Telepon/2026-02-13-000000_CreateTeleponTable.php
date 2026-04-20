@@ -26,7 +26,6 @@ class CreateTeleponTable extends DatabaseTemplate
                 [['jenis_telepon'], 'jenis_telepon', ['id_jenis_telepon'], 'CASCADE', 'CASCADE'],
                 [['id_provider'], 'provider', ['id_provider'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }
