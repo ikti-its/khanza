@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\StokOpname;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateStokOpnameTable extends DatabaseTemplate
+final class CreateStokOpnameTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -20,7 +20,7 @@ class CreateStokOpnameTable extends DatabaseTemplate
                 'catatan'        => T::TEXT()->nullable(),
                 'catatan_atasan' => T::TEXT()->nullable(),
             ],
-            ['id_opname'],
+            'id_opname',
             [],
             [],
             true,

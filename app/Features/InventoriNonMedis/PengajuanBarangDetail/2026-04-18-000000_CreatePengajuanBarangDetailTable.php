@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\PengajuanBarangDetail;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePengajuanBarangDetailTable extends DatabaseTemplate
+final class CreatePengajuanBarangDetailTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -21,11 +21,11 @@ class CreatePengajuanBarangDetailTable extends DatabaseTemplate
                 'qty'             => T::F64(),
                 'harga_estimasi'  => T::F64()->nullable(),
             ],
-            ['id_detail'],
+            'id_detail',
             [],
             [
-                [['id_pengajuan'], 'pengajuan_barang', ['id_pengajuan'], 'CASCADE', 'RESTRICT'],
-                [['id_barang'],    'barang',           ['id_barang'],    'CASCADE', 'SET NULL'],
+                ['id_pengajuan', 'pengajuan_barang', 'id_pengajuan'],
+                ['id_barang', 'barang', 'id_barang'],
             ],
             true,
             __DIR__ . '/pengajuan_barang_detail.csv'

@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\PermintaanBarangDetail;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePermintaanBarangDetailTable extends DatabaseTemplate
+final class CreatePermintaanBarangDetailTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -22,11 +22,11 @@ class CreatePermintaanBarangDetailTable extends DatabaseTemplate
                 'qty_disetujui'  => T::F64()->nullable(),
                 'catatan'        => T::TEXT()->nullable(),
             ],
-            ['id_detail'],
+            'id_detail',
             [],
             [
-                [['id_permintaan'], 'permintaan_barang', ['id_permintaan'], 'CASCADE', 'RESTRICT'],
-                [['id_barang'],     'barang',            ['id_barang'],     'CASCADE', 'SET NULL'],
+                ['id_permintaan', 'permintaan_barang', 'id_permintaan'],
+                ['id_barang', 'barang', 'id_barang'],
             ],
             true,
             __DIR__ . '/permintaan_barang_detail.csv'

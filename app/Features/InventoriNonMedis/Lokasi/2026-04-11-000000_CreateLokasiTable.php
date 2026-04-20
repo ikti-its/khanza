@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\Lokasi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateLokasiTable extends DatabaseTemplate
+final class CreateLokasiTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -17,7 +17,7 @@ class CreateLokasiTable extends DatabaseTemplate
                 'id_lokasi'   => T::ID32(),
                 'nama_lokasi' => T::TEXT(),
             ],
-            ['id_lokasi'],
+            'id_lokasi',
             [],
             [],
             true,

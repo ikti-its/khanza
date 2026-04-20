@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\PengajuanBarang;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePengajuanBarangTable extends DatabaseTemplate
+final class CreatePengajuanBarangTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -21,11 +21,9 @@ class CreatePengajuanBarangTable extends DatabaseTemplate
                 'catatan'          => T::TEXT()->nullable(),
                 'catatan_atasan'   => T::TEXT()->nullable(),
             ],
-            ['id_pengajuan'],
+            'id_pengajuan',
             [],
-            [
-                [['id_permintaan'], 'permintaan_barang', ['id_permintaan'], 'CASCADE', 'SET NULL'],
-            ],
+            ['id_permintaan', 'permintaan_barang', 'id_permintaan'],
             true,
             __DIR__ . '/pengajuan_barang.csv'
         );

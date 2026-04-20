@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\Supplier;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateSupplierTable extends DatabaseTemplate
+final class CreateSupplierTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -19,11 +19,9 @@ class CreateSupplierTable extends DatabaseTemplate
                 'no_telp'       => T::TEXT()->nullable(),
                 'id_alamat'     => T::INT32()->nullable(),
             ],
-            ['id_supplier'],
+            'id_supplier',
             [],
-            [
-                [['id_alamat'], 'lokasi.alamat', ['id_alamat'], 'CASCADE', 'SET NULL'],
-            ],
+            ['id_alamat', 'lokasi.alamat', 'id_alamat'],
             true,
             __DIR__ . '/supplier.csv'
         );

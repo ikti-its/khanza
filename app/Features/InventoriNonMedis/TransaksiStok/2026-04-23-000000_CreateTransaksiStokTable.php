@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\TransaksiStok;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateTransaksiStokTable extends DatabaseTemplate
+final class CreateTransaksiStokTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -24,13 +24,13 @@ class CreateTransaksiStokTable extends DatabaseTemplate
                 'id_opname'      => T::INT32()->nullable(),
                 'catatan'        => T::TEXT()->nullable(),
             ],
-            ['id_transaksi'],
+            'id_transaksi',
             [],
             [
-                [['id_barang'],     'barang',            ['id_barang'],     'CASCADE', 'RESTRICT'],
-                [['id_pengadaan'],  'pengadaan_barang',  ['id_pengadaan'],  'CASCADE', 'SET NULL'],
-                [['id_permintaan'], 'permintaan_barang', ['id_permintaan'], 'CASCADE', 'SET NULL'],
-                [['id_opname'],     'stok_opname',       ['id_opname'],     'CASCADE', 'SET NULL'],
+                ['id_barang', 'barang', 'id_barang'],
+                ['id_pengadaan', 'pengadaan_barang', 'id_pengadaan'],
+                ['id_permintaan', 'permintaan_barang', 'id_permintaan'],
+                ['id_opname', 'stok_opname', 'id_opname'],
             ],
             true,
             __DIR__ . '/transaksi_stok.csv'

@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\StokOpnameDetail;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateStokOpnameDetailTable extends DatabaseTemplate
+final class CreateStokOpnameDetailTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -22,11 +22,11 @@ class CreateStokOpnameDetailTable extends DatabaseTemplate
                 'selisih'     => T::F64(),
                 'keterangan'  => T::TEXT()->nullable(),
             ],
-            ['id_detail'],
+            'id_detail',
             [],
             [
-                [['id_opname'], 'stok_opname', ['id_opname'], 'CASCADE', 'RESTRICT'],
-                [['id_barang'], 'barang',      ['id_barang'], 'CASCADE', 'RESTRICT'],
+                ['id_opname', 'stok_opname', 'id_opname'],
+                ['id_barang', 'barang', 'id_barang'],
             ],
             true,
             __DIR__ . '/stok_opname_detail.csv'

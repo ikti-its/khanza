@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\JenisBarang;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateJenisBarangTable extends DatabaseTemplate
+final class CreateJenisBarangTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -17,10 +17,8 @@ class CreateJenisBarangTable extends DatabaseTemplate
                 'id_jenis_barang'   => T::ID8(),
                 'nama_jenis_barang' => T::TEXT(),
             ],
-            ['id_jenis_barang'],
-            [
-                ['nama_jenis_barang']
-            ],
+            'id_jenis_barang',
+            'nama_jenis_barang',
             [],
             true,
             __DIR__ . '/jenis_barang.csv'

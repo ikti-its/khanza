@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\Barang;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateBarangTable extends DatabaseTemplate
+final class CreateBarangTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -28,16 +28,14 @@ class CreateBarangTable extends DatabaseTemplate
                 'stok_minimum' => T::F64()->nullable(),
                 'harga_satuan' => T::F64()->nullable(),
             ],
-            ['id_barang'],
+            'id_barang',
+            'kode_barang',
             [
-                ['kode_barang']
-            ],
-            [
-                [['id_jenis_barang'], 'jenis_barang',   ['id_jenis_barang'], 'CASCADE', 'RESTRICT'],
-                [['id_kategori'],     'kategori_barang', ['id_kategori'],    'CASCADE', 'RESTRICT'],
-                [['id_supplier'],     'supplier',        ['id_supplier'],    'CASCADE', 'SET NULL'],
-                [['id_unit'],         'unit',            ['id_unit'],        'CASCADE', 'RESTRICT'],
-                [['id_lokasi'],       'lokasi',          ['id_lokasi'],      'CASCADE', 'RESTRICT'],
+                ['id_jenis_barang', 'jenis_barang', 'id_jenis_barang'],
+                ['id_kategori', 'kategori_barang', 'id_kategori'],
+                ['id_supplier', 'supplier', 'id_supplier'],
+                ['id_unit', 'unit', 'id_unit'],
+                ['id_lokasi', 'lokasi', 'id_lokasi'],
             ],
             true,
             __DIR__ . '/barang.csv'

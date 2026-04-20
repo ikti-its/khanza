@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\PermintaanBarang;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePermintaanBarangTable extends DatabaseTemplate
+final class CreatePermintaanBarangTable extends DatabaseTemplate
 {
     public function __construct()
     {
@@ -21,7 +21,7 @@ class CreatePermintaanBarangTable extends DatabaseTemplate
                 'status'        => T::TEXT(),
                 'catatan'       => T::TEXT()->nullable(),
             ],
-            ['id_permintaan'],
+            'id_permintaan',
             [],
             [],
             true,
