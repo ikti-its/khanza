@@ -6,7 +6,7 @@ namespace App\Features\DistribusiDarah\StatusPermintaan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateStatusPermintaanTable extends DatabaseTemplate
+final class CreateStatusPermintaanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -16,8 +16,8 @@ class CreateStatusPermintaanTable extends DatabaseTemplate
                 'id_status_permintaan'    => T::ID8(),
                 'nama_status_permintaan'  => T::TEXT(),
             ],
-            ['id_status_permintaan'],
-            [['nama_status_permintaan']],
+            'id_status_permintaan',
+            'nama_status_permintaan',
             [],
             true,
             __DIR__ . '/status_permintaan.csv'

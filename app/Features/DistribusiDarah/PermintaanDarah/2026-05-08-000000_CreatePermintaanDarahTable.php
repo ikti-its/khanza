@@ -6,7 +6,7 @@ namespace App\Features\DistribusiDarah\PermintaanDarah;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePermintaanDarahTable extends DatabaseTemplate
+final class CreatePermintaanDarahTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,12 +19,12 @@ class CreatePermintaanDarahTable extends DatabaseTemplate
                 'tanggal_permintaan'      => T::DATETIME(),
                 'id_status_permintaan'    => T::INT8(),
             ],
-            ['id_permintaan'],
-            [['no_rawat']],
+            'id_permintaan',
+            'no_rawat',
             [
-                // [['no_rawat'], 'sik.rawat_inap', ['no_rawat'], 'CASCADE', 'CASCADE'],
-                // [['kode_dokter_pengirim'], 'sik.dokter', ['kode_dokter'], 'CASCADE', 'CASCADE'],
-                [['id_status_permintaan'], 'status_permintaan', ['id_status_permintaan'], 'CASCADE', 'CASCADE'],
+                // ['no_rawat', 'sik.rawat_inap', 'no_rawat'],
+                // ['kode_dokter_pengirim', 'sik.dokter', 'kode_dokter'],
+                ['id_status_permintaan', 'status_permintaan', 'id_status_permintaan'],
             ],
             false,
             __DIR__ . '/permintaan_darah.csv'

@@ -6,7 +6,7 @@ namespace App\Features\DistribusiDarah\PenyerahanDarah;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePenyerahanDarahTable extends DatabaseTemplate
+final class CreatePenyerahanDarahTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -27,15 +27,15 @@ class CreatePenyerahanDarahTable extends DatabaseTemplate
                 'id_penanggung_jawab'       => T::UUID(),
                 'besar_ppn'                 => T::F32(),
             ],
-            ['id_penyerahan'],
-            [['no_penyerahan']],
+            'id_penyerahan',
+            'no_penyerahan',
             [
-                [['id_permintaan'], 'permintaan_darah', ['id_permintaan'], 'CASCADE', 'CASCADE'],
-                [['id_shift'], 'operasional.shift', ['id_shift'], 'CASCADE', 'CASCADE'],
-                // [['id_petugas_cross'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
-                [['id_status_pembayaran'], 'status_pembayaran', ['id_status_pembayaran'], 'CASCADE', 'CASCADE'],
-                // [['id_rekening'], 'finansial.rekening', ['id_rekening'], 'CASCADE', 'CASCADE'],
-                // [['id_penanggung_jawab'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
+                ['id_permintaan', 'permintaan_darah', 'id_permintaan'],
+                ['id_shift', 'operasional.shift', 'id_shift'],
+                // ['id_petugas_cross', 'role.petugas', 'id_petugas'],
+                ['id_status_pembayaran', 'status_pembayaran', 'id_status_pembayaran'],
+                // ['id_rekening', 'finansial.rekening', 'id_rekening'],
+                // ['id_penanggung_jawab', 'role.petugas', 'id_petugas'],
             ],
             false,
             __DIR__ . '/penyerahan_darah.csv'

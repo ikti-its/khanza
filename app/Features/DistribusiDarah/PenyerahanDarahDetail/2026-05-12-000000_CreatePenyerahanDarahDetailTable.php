@@ -6,7 +6,7 @@ namespace App\Features\DistribusiDarah\PenyerahanDarahDetail;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePenyerahanDarahDetailTable extends DatabaseTemplate
+final class CreatePenyerahanDarahDetailTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -22,11 +22,11 @@ class CreatePenyerahanDarahDetailTable extends DatabaseTemplate
                 'manajemen'                => T::F32(),
                 // 'total'                    => T::F32(),
             ],
-            ['id_penyerahan_detail'],
-            [['id_stok_darah']],
+            'id_penyerahan_detail',
+            'id_stok_darah',
             [
-                [['id_penyerahan'], 'penyerahan_darah', ['id_penyerahan'], 'CASCADE', 'CASCADE'],
-                [['id_stok_darah'], 'inventori_darah.stok_darah', ['id_stok_darah'], 'CASCADE', 'CASCADE'],
+                ['id_penyerahan', 'penyerahan_darah', 'id_penyerahan'],
+                ['id_stok_darah', 'inventori_darah.stok_darah', 'id_stok_darah'],
             ],
             false,
             __DIR__ . '/penyerahan_darah_detail.csv'
