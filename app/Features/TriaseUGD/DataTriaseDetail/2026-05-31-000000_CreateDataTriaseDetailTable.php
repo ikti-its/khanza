@@ -6,7 +6,7 @@ namespace App\Features\TriaseUGD\DataTriaseDetail;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateDataTriaseDetailTable extends DatabaseTemplate
+final class CreateDataTriaseDetailTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -17,11 +17,11 @@ class CreateDataTriaseDetailTable extends DatabaseTemplate
                 'id_triase'                 => T::INT32(),
                 'id_skala'                  => T::INT16(),
             ],
-            ['id_triase_detail'],
+            'id_triase_detail',
             [['id_triase', 'id_skala']],
             [
-                [['id_triase'], 'data_triase', ['id_triase'], 'CASCADE', 'CASCADE'],
-                [['id_skala'], 'triase_skala', ['id_skala'], 'CASCADE', 'CASCADE'],
+                ['id_triase', 'data_triase', 'id_triase'],
+                ['id_skala', 'triase_skala', 'id_skala'],
             ],
         );
     }

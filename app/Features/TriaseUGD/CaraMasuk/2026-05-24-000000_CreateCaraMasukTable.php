@@ -6,7 +6,7 @@ namespace App\Features\TriaseUGD\CaraMasuk;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateCaraMasukTable extends DatabaseTemplate
+final class CreateCaraMasukTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -16,8 +16,8 @@ class CreateCaraMasukTable extends DatabaseTemplate
                 'id_cara'          => T::ID8(),
                 'nama_cara'        => T::TEXT(),
             ],
-            ['id_cara'],
-            [['nama_cara']],
+            'id_cara',
+            'nama_cara',
             [],
             true,
             __DIR__ . '/cara_masuk.csv'

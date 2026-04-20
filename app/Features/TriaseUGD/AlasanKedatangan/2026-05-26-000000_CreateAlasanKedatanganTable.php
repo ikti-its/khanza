@@ -6,7 +6,7 @@ namespace App\Features\TriaseUGD\AlasanKedatangan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateAlasanKedatanganTable extends DatabaseTemplate
+final class CreateAlasanKedatanganTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -16,8 +16,8 @@ class CreateAlasanKedatanganTable extends DatabaseTemplate
                 'id_alasan'          => T::ID8(),
                 'nama_alasan'        => T::TEXT(),
             ],
-            ['id_alasan'],
-            [['nama_alasan']],
+            'id_alasan',
+            'nama_alasan',
             [],
             true,
             __DIR__ . '/alasan_kedatangan.csv'

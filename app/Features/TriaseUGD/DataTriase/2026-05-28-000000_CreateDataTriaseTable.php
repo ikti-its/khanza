@@ -6,7 +6,7 @@ namespace App\Features\TriaseUGD\DataTriase;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateDataTriaseTable extends DatabaseTemplate
+final class CreateDataTriaseTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -29,14 +29,14 @@ class CreateDataTriaseTable extends DatabaseTemplate
                 'saturasi_o2'                => T::INT8(),
                 'nyeri'                      => T::INT8(),
             ],
-            ['id_triase'],
+            'id_triase',
             [],
             [
-                // [['nomor_reg'], 'sik.ugd_structure', ['nomor_reg'], 'CASCADE', 'CASCADE'],
-                [['id_cara_masuk'], 'cara_masuk', ['id_cara'], 'CASCADE', 'CASCADE'],
-                [['id_alat_transportasi'], 'alat_transportasi', ['id_transportasi'], 'CASCADE', 'CASCADE'],
-                [['id_alasan_kedatangan'], 'alasan_kedatangan', ['id_alasan'], 'CASCADE', 'CASCADE'],
-                [['id_macam_kasus'], 'triase_macam_kasus', ['id_macam_kasus'], 'CASCADE', 'CASCADE'],
+                // ['nomor_reg', 'sik.ugd_structure', 'nomor_reg'],
+                ['id_cara_masuk', 'cara_masuk', 'id_cara'],
+                ['id_alat_transportasi', 'alat_transportasi', 'id_transportasi'],
+                ['id_alasan_kedatangan', 'alasan_kedatangan', 'id_alasan'],
+                ['id_macam_kasus', 'triase_macam_kasus', 'id_macam_kasus'],
             ],
         );
     }

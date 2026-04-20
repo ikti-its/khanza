@@ -6,7 +6,7 @@ namespace App\Features\TriaseUGD\DataTriaseSekunder;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateDataTriaseSekunderTable extends DatabaseTemplate
+final class CreateDataTriaseSekunderTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -21,12 +21,12 @@ class CreateDataTriaseSekunderTable extends DatabaseTemplate
                 'tanggal_triase'            => T::DATETIME(),
                 'id_petugas'                => T::UUID(),
             ],
-            ['id_triase_sekunder'],
-            [['id_triase']],
+            'id_triase_sekunder',
+            'id_triase',
             [
-                [['id_triase'], 'data_triase', ['id_triase'], 'CASCADE', 'CASCADE'],
-                [['id_plan_sekunder'], 'plan_sekunder', ['id_plan_sekunder'], 'CASCADE', 'CASCADE'],
-                // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'CASCADE'],
+                ['id_triase', 'data_triase', 'id_triase'],
+                ['id_plan_sekunder', 'plan_sekunder', 'id_plan_sekunder'],
+                // ['id_petugas', 'sik.pegawai_structure', 'id'],
             ],
         );
     }

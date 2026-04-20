@@ -6,7 +6,7 @@ namespace App\Features\TriaseUGD\PlanPrimer;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePlanPrimerTable extends DatabaseTemplate
+final class CreatePlanPrimerTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -16,8 +16,8 @@ class CreatePlanPrimerTable extends DatabaseTemplate
                 'id_plan_primer'          => T::ID8(),
                 'nama_plan_primer'        => T::TEXT(),
             ],
-            ['id_plan_primer'],
-            [['nama_plan_primer']],
+            'id_plan_primer',
+            'nama_plan_primer',
             [],
             true,
             __DIR__ . '/plan_primer.csv'

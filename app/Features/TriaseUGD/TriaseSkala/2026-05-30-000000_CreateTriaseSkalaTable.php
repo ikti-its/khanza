@@ -6,7 +6,7 @@ namespace App\Features\TriaseUGD\TriaseSkala;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateTriaseSkalaTable extends DatabaseTemplate
+final class CreateTriaseSkalaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -19,11 +19,11 @@ class CreateTriaseSkalaTable extends DatabaseTemplate
                 'id_pemeriksaan'        => T::INT8(),
                 'pengkajian'            => T::TEXT(),
             ],
-            ['id_skala'],
+            'id_skala',
             [['id_tingkat_skala', 'kode_skala'], ['id_tingkat_skala', 'id_pemeriksaan', 'pengkajian']],
             [
-                [['id_tingkat_skala'], 'tingkat_skala', ['id_tingkat'], 'CASCADE', 'CASCADE'],
-                [['id_pemeriksaan'], 'triase_pemeriksaan', ['id_pemeriksaan'], 'CASCADE', 'CASCADE'],
+                ['id_tingkat_skala', 'tingkat_skala', 'id_tingkat'],
+                ['id_pemeriksaan', 'triase_pemeriksaan', 'id_pemeriksaan'],
             ],
             true,
             __DIR__ . '/triase_skala.csv'
