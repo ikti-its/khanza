@@ -19,7 +19,6 @@ class CreateLokasiPengambilanDarahTable extends DatabaseTemplate
             ['id_lokasi_pengambilan'],
             [['nama_lokasi']],
             [],
-            [],
             true,
             __DIR__ . '/lokasi_pengambilan_darah.csv'
         );

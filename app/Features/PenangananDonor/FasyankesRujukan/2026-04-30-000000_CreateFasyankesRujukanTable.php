@@ -23,7 +23,6 @@ class CreateFasyankesRujukanTable extends DatabaseTemplate
             [
                 [['id_alamat'], 'lokasi.alamat', ['id_alamat'], 'CASCADE', 'CASCADE'],
             ],
-            [['nama_fasyankes']],
         );
     }
 }

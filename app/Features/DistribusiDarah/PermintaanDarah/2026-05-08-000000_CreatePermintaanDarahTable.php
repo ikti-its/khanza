@@ -26,7 +26,6 @@ class CreatePermintaanDarahTable extends DatabaseTemplate
                 // [['kode_dokter_pengirim'], 'sik.dokter', ['kode_dokter'], 'CASCADE', 'CASCADE'],
                 [['id_status_permintaan'], 'status_permintaan', ['id_status_permintaan'], 'CASCADE', 'CASCADE'],
             ],
-            [['tanggal_permintaan'], ['id_status_permintaan']],
             false,
             __DIR__ . '/permintaan_darah.csv'
         );

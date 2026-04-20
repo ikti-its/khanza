@@ -19,7 +19,6 @@ class CreateCaraMasukTable extends DatabaseTemplate
             ['id_cara'],
             [['nama_cara']],
             [],
-            [],
             true,
             __DIR__ . '/cara_masuk.csv'
         );

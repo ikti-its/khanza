@@ -20,7 +20,6 @@ class CreateJenisBagTable extends DatabaseTemplate
             ['id_jenis_bag'],
             [['kode_jenis_bag'], ['nama_jenis_bag']],
             [],
-            [],
             true,
             __DIR__ . '/jenis_bag.csv'
         );

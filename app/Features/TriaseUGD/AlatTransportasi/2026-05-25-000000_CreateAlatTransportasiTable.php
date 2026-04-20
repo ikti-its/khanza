@@ -19,7 +19,6 @@ class CreateAlatTransportasiTable extends DatabaseTemplate
             ['id_transportasi'],
             [['nama_transportasi']],
             [],
-            [],
             true,
             __DIR__ . '/alat_transportasi.csv'
         );

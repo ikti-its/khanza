@@ -19,7 +19,6 @@ class CreateAlasanKedatanganTable extends DatabaseTemplate
             ['id_alasan'],
             [['nama_alasan']],
             [],
-            [],
             true,
             __DIR__ . '/alasan_kedatangan.csv'
         );

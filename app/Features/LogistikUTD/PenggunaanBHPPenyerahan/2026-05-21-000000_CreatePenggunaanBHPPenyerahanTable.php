@@ -29,7 +29,6 @@ class CreatePenggunaanBHPPenyerahanTable extends DatabaseTemplate
                 // [['id_barang_medis'], 'sik.barang_medis_structure',['id'], 'CASCADE', 'CASCADE'],
                 // [['id_barang_penunjang'], 'inventori_non_medis.barang',['id_barang'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_penyerahan'], ['id_jenis_bhp']],
         );
     }
 }

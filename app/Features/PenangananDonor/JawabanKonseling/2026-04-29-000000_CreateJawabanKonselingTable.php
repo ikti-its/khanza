@@ -25,7 +25,6 @@ class CreateJawabanKonselingTable extends DatabaseTemplate
                 [['id_pertanyaan'], 'pertanyaan_konseling', ['id_pertanyaan'], 'CASCADE', 'CASCADE'],
                 [['id_pilihan'], 'pilihan_jawaban', ['id_pilihan'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

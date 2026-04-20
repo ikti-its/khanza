@@ -19,7 +19,6 @@ class CreateMetodeUjiTable extends DatabaseTemplate
             ['id_metode_uji'],
             [['nama_metode']],
             [],
-            [],
             true,
             __DIR__ . '/metode_uji.csv'
         );

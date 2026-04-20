@@ -31,7 +31,6 @@ class CreateBHPRusakTable extends DatabaseTemplate
                 // [['id_barang_penunjang'], 'inventori_non_medis.barang',['id_barang'], 'CASCADE', 'CASCADE'],
                 // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_jenis_bhp'], ['tanggal_rusak']],
         );
     }
 }

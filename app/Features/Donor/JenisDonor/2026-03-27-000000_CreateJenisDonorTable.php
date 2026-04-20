@@ -20,7 +20,6 @@ class CreateJenisDonorTable extends DatabaseTemplate
             ['id_jenis_donor'],
             [['kode_jenis_donor'], ['nama_jenis_donor']],
             [],
-            [],
             true,
             __DIR__ . '/jenis_donor.csv'
         );

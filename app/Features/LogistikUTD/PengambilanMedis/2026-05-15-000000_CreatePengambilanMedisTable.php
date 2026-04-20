@@ -28,7 +28,6 @@ class CreatePengambilanMedisTable extends DatabaseTemplate
             [
                 // [['id_barang'], 'sik.barang_medis_structure', ['id'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_barang'], ['tanggal_pengambilan']],
         );
     }
 }

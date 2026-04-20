@@ -25,7 +25,6 @@ class CreateKunjunganTable extends DatabaseTemplate
                 [['id_pendonor'], 'role.pendonor', ['id_pendonor'], 'CASCADE', 'CASCADE'],
                 [['id_status_kunjungan'], 'status_kunjungan', ['id_status_kunjungan'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_pendonor']],
             false,
             __DIR__ . '/kunjungan.csv'
         );

@@ -19,7 +19,6 @@ class CreateGolonganDarahTable extends DatabaseTemplate
             ['id_golongan_darah'],
             [['nama_golongan_darah']],
             [],
-            [],
             true,
             __DIR__ . '/golongan_darah.csv'
         );

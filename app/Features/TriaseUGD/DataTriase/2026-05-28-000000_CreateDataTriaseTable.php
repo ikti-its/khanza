@@ -38,7 +38,6 @@ class CreateDataTriaseTable extends DatabaseTemplate
                 [['id_alasan_kedatangan'], 'alasan_kedatangan', ['id_alasan'], 'CASCADE', 'CASCADE'],
                 [['id_macam_kasus'], 'triase_macam_kasus', ['id_macam_kasus'], 'CASCADE', 'CASCADE'],
             ],
-            [['nomor_reg']],
         );
     }
 }

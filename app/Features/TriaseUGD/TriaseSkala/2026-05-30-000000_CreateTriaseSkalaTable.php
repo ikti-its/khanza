@@ -25,7 +25,6 @@ class CreateTriaseSkalaTable extends DatabaseTemplate
                 [['id_tingkat_skala'], 'tingkat_skala', ['id_tingkat'], 'CASCADE', 'CASCADE'],
                 [['id_pemeriksaan'], 'triase_pemeriksaan', ['id_pemeriksaan'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             true,
             __DIR__ . '/triase_skala.csv'
         );

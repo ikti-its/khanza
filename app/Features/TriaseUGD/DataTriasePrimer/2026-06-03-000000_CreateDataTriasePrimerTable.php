@@ -30,7 +30,6 @@ class CreateDataTriasePrimerTable extends DatabaseTemplate
                 [['id_plan_primer'], 'plan_primer', ['id_plan_primer'], 'CASCADE', 'CASCADE'],
                 // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

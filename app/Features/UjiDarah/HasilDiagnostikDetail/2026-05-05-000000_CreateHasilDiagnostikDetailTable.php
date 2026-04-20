@@ -25,7 +25,6 @@ class CreateHasilDiagnostikDetailTable extends DatabaseTemplate
                 [['id_parameter_uji'], 'parameter_uji', ['id_parameter_uji'], 'CASCADE', 'CASCADE'],
                 [['id_nilai_diagnostik'], 'nilai_diagnostik', ['id_nilai_diagnostik'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

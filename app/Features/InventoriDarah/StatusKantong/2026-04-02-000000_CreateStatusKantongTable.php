@@ -19,7 +19,6 @@ class CreateStatusKantongTable extends DatabaseTemplate
             ['id_status_kantong'],
             [['nama_status_kantong']],
             [],
-            [],
             true,
             __DIR__ . '/status_kantong.csv'
         );

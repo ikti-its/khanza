@@ -19,7 +19,6 @@ class CreatePlanPrimerTable extends DatabaseTemplate
             ['id_plan_primer'],
             [['nama_plan_primer']],
             [],
-            [],
             true,
             __DIR__ . '/plan_primer.csv'
         );

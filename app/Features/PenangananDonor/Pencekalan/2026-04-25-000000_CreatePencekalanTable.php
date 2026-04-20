@@ -32,7 +32,6 @@ class CreatePencekalanTable extends DatabaseTemplate
                 // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
                 [['id_status_pencekalan'], 'status_pencekalan', ['id_status_pencekalan'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_jenis_pencekalan'], ['id_status_pencekalan']],
         );
     }
 }

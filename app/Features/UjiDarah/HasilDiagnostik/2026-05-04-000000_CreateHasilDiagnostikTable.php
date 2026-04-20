@@ -23,7 +23,6 @@ class CreateHasilDiagnostikTable extends DatabaseTemplate
             [
                 [['id_rujukan'], 'penanganan_donor.rujukan', ['id_rujukan'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

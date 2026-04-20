@@ -19,7 +19,6 @@ class CreateNilaiDiagnostikTable extends DatabaseTemplate
             ['id_nilai_diagnostik'],
             [['nama_nilai_diagnostik']],
             [],
-            [],
             true,
             __DIR__ . '/nilai_diagnostik.csv'
         );

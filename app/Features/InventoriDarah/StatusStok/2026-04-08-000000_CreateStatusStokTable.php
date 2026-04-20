@@ -19,7 +19,6 @@ class CreateStatusStokTable extends DatabaseTemplate
             ['id_status_stok'],
             [['nama_status_stok']],
             [],
-            [],
             true,
             __DIR__ . '/status_stok.csv'
         );

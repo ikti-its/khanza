@@ -19,7 +19,6 @@ class CreatePertanyaanKonselingTable extends DatabaseTemplate
             ['id_pertanyaan'],
             [],
             [],
-            [],
             true,
             __DIR__ . '/pertanyaan_konseling.csv'
         );

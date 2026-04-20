@@ -19,7 +19,6 @@ class CreateJenisBHPTable extends DatabaseTemplate
             ['id_jenis_bhp'],
             [['nama_jenis_bhp']],
             [],
-            [],
             true,
             __DIR__ . '/jenis_bhp.csv'
         );

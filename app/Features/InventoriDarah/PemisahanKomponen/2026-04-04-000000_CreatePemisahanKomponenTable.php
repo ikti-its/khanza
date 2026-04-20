@@ -26,7 +26,6 @@ class CreatePemisahanKomponenTable extends DatabaseTemplate
                 [['id_shift'], 'operasional.shift', ['id_shift'], 'CASCADE', 'CASCADE'],
                 // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             false,
             __DIR__ . '/pemisahan_komponen.csv'
         );

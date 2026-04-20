@@ -19,7 +19,6 @@ class CreateSumberDarahTable extends DatabaseTemplate
             ['id_sumber_darah'],
             [['nama_sumber_darah']],
             [],
-            [],
             true,
             __DIR__ . '/sumber_darah.csv'
         );

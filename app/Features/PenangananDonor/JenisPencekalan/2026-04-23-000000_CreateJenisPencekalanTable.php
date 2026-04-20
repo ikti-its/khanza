@@ -19,7 +19,6 @@ class CreateJenisPencekalanTable extends DatabaseTemplate
             ['id_jenis_pencekalan'],
             [['nama_jenis_pencekalan']],
             [],
-            [],
             true,
             __DIR__ . '/jenis_pencekalan.csv'
         );

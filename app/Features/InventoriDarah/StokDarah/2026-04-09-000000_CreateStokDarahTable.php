@@ -34,7 +34,6 @@ class CreateStokDarahTable extends DatabaseTemplate
                 [['id_sumber_darah'], 'sumber_darah', ['id_sumber_darah'], 'CASCADE', 'CASCADE'],
                 [['id_status_stok'], 'status_stok', ['id_status_stok'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_pemisahan'], ['id_status_stok'], ['tanggal_kadaluarsa']],
             false,
             __DIR__ . '/stok_darah.csv'
         );

@@ -28,7 +28,6 @@ class CreatePermintaanDarahDetailTable extends DatabaseTemplate
                 [['id_golongan_darah'], 'darah.golongan_darah', ['id_golongan_darah'], 'CASCADE', 'CASCADE'],
                 [['id_rhesus'], 'darah.rhesus', ['id_rhesus'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             false,
             __DIR__ . '/permintaan_darah_detail.csv'
         );

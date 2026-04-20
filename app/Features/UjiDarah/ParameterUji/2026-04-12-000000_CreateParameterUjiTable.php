@@ -19,7 +19,6 @@ class CreateParameterUjiTable extends DatabaseTemplate
             ['id_parameter_uji'],
             [['nama_parameter']],
             [],
-            [],
             true,
             __DIR__ . '/parameter_uji.csv'
         );

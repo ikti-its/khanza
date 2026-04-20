@@ -19,7 +19,6 @@ class CreateHasilAnamnesisTable extends DatabaseTemplate
             ['id_hasil'],
             [['nama_hasil']],
             [],
-            [],
             true,
             __DIR__ . '/hasil_anamnesis.csv'
         );

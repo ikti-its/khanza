@@ -19,7 +19,6 @@ class CreatePlanSekunderTable extends DatabaseTemplate
             ['id_plan_sekunder'],
             [['nama_plan_sekunder']],
             [],
-            [],
             true,
             __DIR__ . '/plan_sekunder.csv'
         );

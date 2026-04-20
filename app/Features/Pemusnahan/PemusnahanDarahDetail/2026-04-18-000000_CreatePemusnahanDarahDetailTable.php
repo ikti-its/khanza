@@ -25,7 +25,6 @@ class CreatePemusnahanDarahDetailTable extends DatabaseTemplate
                 [['id_stok_darah'], 'inventori_darah.stok_darah', ['id_stok_darah'], 'CASCADE', 'CASCADE'],
                 [['id_alasan'], 'alasan_pemusnahan', ['id_alasan'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_pemusnahan']],
         );
     }
 }

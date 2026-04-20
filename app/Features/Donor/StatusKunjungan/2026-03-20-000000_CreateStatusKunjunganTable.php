@@ -19,7 +19,6 @@ class CreateStatusKunjunganTable extends DatabaseTemplate
             ['id_status_kunjungan'],
             [['nama_status_kunjungan']],
             [],
-            [],
             true,
             __DIR__ . '/status_kunjungan.csv'
         );

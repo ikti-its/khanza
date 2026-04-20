@@ -24,7 +24,6 @@ class CreateKantongDarahTable extends DatabaseTemplate
                 [['id_pengambilan_darah'], 'donor.pengambilan_darah', ['id_pengambilan_darah'], 'CASCADE', 'CASCADE'],
                 [['id_jenis_bag'], 'jenis_bag', ['id_jenis_bag'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             false,
             __DIR__ . '/kantong_darah.csv'
         );

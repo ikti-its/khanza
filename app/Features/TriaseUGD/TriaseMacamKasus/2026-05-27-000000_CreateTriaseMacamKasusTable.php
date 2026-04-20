@@ -20,7 +20,6 @@ class CreateTriaseMacamKasusTable extends DatabaseTemplate
             ['id_macam_kasus'],
             [['kode_macam_kasus'], ['nama_macam_kasus']],
             [],
-            [],
             true,
             __DIR__ . '/triase_macam_kasus.csv'
         );

@@ -19,7 +19,6 @@ class CreateStatusPencekalanTable extends DatabaseTemplate
             ['id_status_pencekalan'],
             [['nama_status_pencekalan']],
             [],
-            [],
             true,
             __DIR__ . '/status_pencekalan.csv'
         );

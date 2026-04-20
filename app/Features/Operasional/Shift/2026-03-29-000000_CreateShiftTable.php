@@ -19,7 +19,6 @@ class CreateShiftTable extends DatabaseTemplate
             ['id_shift'],
             [['nama_shift']],
             [],
-            [],
             true,
             __DIR__ . '/shift.csv'
         );

@@ -26,7 +26,6 @@ class CreateHasilUjiSaringDetailTable extends DatabaseTemplate
                 [['id_parameter_uji'], 'parameter_uji', ['id_parameter_uji'], 'CASCADE', 'CASCADE'],
                 [['id_nilai_saring'], 'nilai_saring', ['id_nilai_saring'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             false,
             __DIR__ . '/hasil_uji_saring_detail.csv'
         );

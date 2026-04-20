@@ -19,7 +19,6 @@ class CreateStatusPermintaanTable extends DatabaseTemplate
             ['id_status_permintaan'],
             [['nama_status_permintaan']],
             [],
-            [],
             true,
             __DIR__ . '/status_permintaan.csv'
         );

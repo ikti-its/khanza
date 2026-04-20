@@ -19,7 +19,6 @@ class CreateStatusPembayaranTable extends DatabaseTemplate
             ['id_status_pembayaran'],
             [['nama_status_pembayaran']],
             [],
-            [],
             true,
             __DIR__ . '/status_pembayaran.csv'
         );

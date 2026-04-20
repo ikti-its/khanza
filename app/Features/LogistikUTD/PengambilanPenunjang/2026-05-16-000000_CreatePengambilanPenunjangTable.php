@@ -27,7 +27,6 @@ class CreatePengambilanPenunjangTable extends DatabaseTemplate
                 // [['id_barang'], 'inventori_non_medis.barang', ['id_barang'], 'CASCADE', 'CASCADE'],
                 // [['id_petugas_gudang'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_barang'], ['tanggal_pengambilan']],
         );
     }
 }

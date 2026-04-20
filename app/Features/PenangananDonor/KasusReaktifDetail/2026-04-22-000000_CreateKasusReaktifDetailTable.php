@@ -23,7 +23,6 @@ class CreateKasusReaktifDetailTable extends DatabaseTemplate
                 [['id_kasus'], 'kasus_reaktif', ['id_kasus'], 'CASCADE', 'CASCADE'],
                 [['id_uji_saring_detail'], 'uji_darah.hasil_uji_saring_detail', ['id_uji_saring_detail'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_kasus']],
         );
     }
 }

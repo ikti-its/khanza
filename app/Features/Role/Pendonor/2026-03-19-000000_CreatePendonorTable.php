@@ -26,7 +26,6 @@ class CreatePendonorTable extends DatabaseTemplate
                 [['id_rhesus'], 'darah.rhesus', ['id_rhesus'], 'CASCADE', 'CASCADE'],
                 [['id_status_pendonor'], 'donor.status_pendonor', ['id_status_pendonor'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_status_pendonor']],
             false,
             __DIR__ . '/pendonor.csv'
         );

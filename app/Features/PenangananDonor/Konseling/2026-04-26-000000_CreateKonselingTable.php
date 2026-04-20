@@ -24,7 +24,6 @@ class CreateKonselingTable extends DatabaseTemplate
                 [['id_kasus'], 'kasus_reaktif', ['id_kasus'], 'CASCADE', 'CASCADE'],
                 // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

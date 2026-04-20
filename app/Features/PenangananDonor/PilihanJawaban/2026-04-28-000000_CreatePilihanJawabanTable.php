@@ -19,7 +19,6 @@ class CreatePilihanJawabanTable extends DatabaseTemplate
             ['id_pilihan'],
             [['nama_pilihan']],
             [],
-            [],
             true,
             __DIR__ . '/pilihan_jawaban.csv'
         );

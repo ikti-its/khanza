@@ -25,7 +25,6 @@ class CreateRujukanTable extends DatabaseTemplate
                 [['id_kasus'], 'kasus_reaktif', ['id_kasus'], 'CASCADE', 'CASCADE'],
                 [['id_fasyankes'], 'fasyankes_rujukan', ['id_fasyankes'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_kasus']],
         );
     }
 }

@@ -24,7 +24,6 @@ class CreateKasusReaktifTable extends DatabaseTemplate
                 [['id_kunjungan'], 'donor.kunjungan', ['id_kunjungan'], 'CASCADE', 'CASCADE'],
                 [['id_status_kasus'], 'status_kasus', ['id_status_kasus'], 'CASCADE', 'CASCADE'],
             ],
-            [['id_status_kasus']],
         );
     }
 }

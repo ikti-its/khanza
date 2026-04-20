@@ -28,7 +28,6 @@ class CreateDataTriaseSekunderTable extends DatabaseTemplate
                 [['id_plan_sekunder'], 'plan_sekunder', ['id_plan_sekunder'], 'CASCADE', 'CASCADE'],
                 // [['id_petugas'], 'sik.pegawai_structure', ['id'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

@@ -23,7 +23,6 @@ class CreateDataTriaseDetailTable extends DatabaseTemplate
                 [['id_triase'], 'data_triase', ['id_triase'], 'CASCADE', 'CASCADE'],
                 [['id_skala'], 'triase_skala', ['id_skala'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

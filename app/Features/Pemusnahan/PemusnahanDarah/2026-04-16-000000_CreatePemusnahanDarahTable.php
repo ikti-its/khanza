@@ -23,7 +23,6 @@ class CreatePemusnahanDarahTable extends DatabaseTemplate
             [
                 // [['id_petugas'], 'role.petugas', ['id_petugas'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

@@ -19,7 +19,6 @@ class CreateNilaiSaringTable extends DatabaseTemplate
             ['id_nilai_saring'],
             [['nama_nilai_saring']],
             [],
-            [],
             true,
             __DIR__ . '/nilai_saring.csv'
         );

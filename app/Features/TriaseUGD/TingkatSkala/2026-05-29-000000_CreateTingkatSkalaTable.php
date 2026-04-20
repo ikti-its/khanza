@@ -19,7 +19,6 @@ class CreateTingkatSkalaTable extends DatabaseTemplate
             ['id_tingkat'],
             [['nama_tingkat']],
             [],
-            [],
             true,
             __DIR__ . '/tingkat_skala.csv'
         );

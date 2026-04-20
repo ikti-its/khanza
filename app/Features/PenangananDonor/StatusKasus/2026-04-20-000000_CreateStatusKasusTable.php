@@ -19,7 +19,6 @@ class CreateStatusKasusTable extends DatabaseTemplate
             ['id_status_kasus'],
             [['nama_status_kasus']],
             [],
-            [],
             true,
             __DIR__ . '/status_kasus.csv'
         );

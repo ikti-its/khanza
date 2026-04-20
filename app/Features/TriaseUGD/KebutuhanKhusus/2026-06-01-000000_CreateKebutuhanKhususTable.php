@@ -19,7 +19,6 @@ class CreateKebutuhanKhususTable extends DatabaseTemplate
             ['id_kebutuhan'],
             [['nama_kebutuhan']],
             [],
-            [],
             true,
             __DIR__ . '/kebutuhan_khusus.csv'
         );
