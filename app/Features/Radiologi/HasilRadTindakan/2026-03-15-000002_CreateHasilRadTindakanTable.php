@@ -5,7 +5,7 @@ namespace App\Features\Radiolgi\HasilRadTindakan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateHasilRadTindakanTable extends DatabaseTemplate
+final class CreateHasilRadTindakanTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -26,14 +26,13 @@ class CreateHasilRadTindakanTable extends DatabaseTemplate
             'hasil_ekspertise'          => T::TEXT(),
             'id_template_rad'           => T::INT32()->nullable(),
         ],
-        ['id_hasil_tindakan'],
+        'id_hasil_tindakan',
         [],
         [
-            [['id_hasil_rad'], 'radiologi.hasil_rad', ['id_hasil_rad'], 'CASCADE', 'CASCADE'],
-            [['id_item_rad'], 'radiologi.ref_item_rad', ['id_item'], 'CASCADE', 'RESTRICT'],
-            [['id_template_rad'], 'radiologi.ref_template_rad', ['id_template'], 'CASCADE', 'RESTRICT'],
+            ['id_hasil_rad', 'radiologi.hasil_rad', 'id_hasil_rad'],
+            ['id_item_rad', 'radiologi.ref_item_rad', 'id_item'],
+            ['id_template_rad', 'radiologi.ref_template_rad', 'id_template'],
         ],
-        [['id_hasil_rad']]
     );
 }
 }

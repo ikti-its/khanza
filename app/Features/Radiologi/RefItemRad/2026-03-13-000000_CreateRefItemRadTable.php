@@ -5,7 +5,7 @@ namespace App\Features\Radiolgi\RefItemRad;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefItemRadTable extends DatabaseTemplate
+final class CreateRefItemRadTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -17,9 +17,8 @@ class CreateRefItemRadTable extends DatabaseTemplate
             'nama_pemeriksaan' => T::TEXT(),
             'tarif_dasar'      => T::F32(),
         ],
-        ['id_item'],
-        [['kode_periksa']],
-        [],
+        'id_item',
+        'kode_periksa',
         [],
         false,
         __DIR__ . '/item_rad.csv'

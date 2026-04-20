@@ -5,7 +5,7 @@ namespace App\Features\Radiolgi\RefTemplateRad;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefTemplateRadTable extends DatabaseTemplate
+final class CreateRefTemplateRadTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -16,8 +16,7 @@ class CreateRefTemplateRadTable extends DatabaseTemplate
             'nama_template'      => T::TEXT(),
             'isi_teks_ekspertise'=> T::TEXT(),
         ],
-        ['id_template'],
-        [],
+        'id_template',
         [],
         [],
         false,

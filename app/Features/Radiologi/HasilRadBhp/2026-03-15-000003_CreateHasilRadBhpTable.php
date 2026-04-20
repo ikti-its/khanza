@@ -5,7 +5,7 @@ namespace App\Features\Radiolgi\HasilRadBhp;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateHasilRadBhpTable extends DatabaseTemplate
+final class CreateHasilRadBhpTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -19,13 +19,12 @@ class CreateHasilRadBhpTable extends DatabaseTemplate
             'satuan'         => T::TEXT(),
             'harga_satuan'   => T::F32(),
         ],
-        ['id_rad_bhp'],
+        'id_rad_bhp',
         [],
         [
-            [['id_hasil_rad'], 'radiologi.hasil_rad', ['id_hasil_rad'], 'CASCADE', 'CASCADE'],
-            // [['id_barang_medis'], 'sik.barang_medis_structure', ['id'], 'CASCADE', 'RESTRICT'],
+            ['id_hasil_rad', 'radiologi.hasil_rad', 'id_hasil_rad'],
+            // ['id_barang_medis', 'sik.barang_medis_structure', 'id'],
         ],
-        [['id_hasil_rad']]
     );
 }
 }

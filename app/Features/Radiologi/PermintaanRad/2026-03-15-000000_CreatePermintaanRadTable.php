@@ -5,7 +5,7 @@ namespace App\Features\Radiolgi\PermintaanRad;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreatePermintaanRadTable extends DatabaseTemplate
+final class CreatePermintaanRadTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -22,15 +22,14 @@ class CreatePermintaanRadTable extends DatabaseTemplate
             'id_status_permintaan'  => T::INT8(),
             'id_item_rad'           => T::INT32(),
         ],
-        ['id_permintaan'],
-        [['no_permintaan']],
+        'id_permintaan',
+        ['no_permintaan'],
         [
-            // [['nomor_reg'], 'sik.registrasi_structure', ['nomor_reg'], 'CASCADE', 'RESTRICT'],
-            // [['kode_dokter_perujuk'], 'sik.dokter_structure', ['kode_dokter'], 'CASCADE', 'RESTRICT'],
-            [['id_status_permintaan'], 'radiologi.ref_status_permintaan_rad', ['id_status'], 'CASCADE', 'RESTRICT'],
-            [['id_item_rad'], 'radiologi.ref_item_rad', ['id_item'], 'CASCADE', 'RESTRICT'],
+            // [['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            // [['kode_dokter_perujuk', 'sik.dokter_structure', 'kode_dokter'],
+            ['id_status_permintaan', 'radiologi.ref_status_permintaan_rad', 'id_status'],
+            ['id_item_rad', 'radiologi.ref_item_rad', 'id_item'],
         ],
-        [['nomor_reg'], ['tgl_jam_permintaan']]
     );
 }
 }

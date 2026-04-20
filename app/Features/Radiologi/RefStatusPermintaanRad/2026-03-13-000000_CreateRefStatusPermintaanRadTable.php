@@ -5,7 +5,7 @@ namespace App\Features\Radiolgi\RefStatusPermintaanRad;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateRefStatusPermintaanRadTable extends DatabaseTemplate
+final class CreateRefStatusPermintaanRadTable extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
@@ -15,8 +15,7 @@ class CreateRefStatusPermintaanRadTable extends DatabaseTemplate
             'id_status'   => T::ID8(),
             'nama_status' => T::TEXT(),
         ],
-        ['id_status'],
-        [],
+        'id_status',
         [],
         [],
         true,
