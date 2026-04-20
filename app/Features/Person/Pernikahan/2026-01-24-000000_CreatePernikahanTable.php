@@ -5,7 +5,7 @@ namespace App\Features\Person\Pernikahan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePernikahanTable extends DatabaseTemplate
+final class CreatePernikahanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -15,8 +15,8 @@ class CreatePernikahanTable extends DatabaseTemplate
                 'id_pernikahan'   => T::ID8(),
                 'status_pernikahan' => T::TEXT(),
             ],
-            ['id_pernikahan'],
-            [['status_pernikahan']],
+            'id_pernikahan',
+            'status_pernikahan',
             [],
             true,
             __DIR__ . '/pernikahan.csv'

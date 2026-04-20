@@ -14,7 +14,7 @@ use App\Core\Database\DatabaseType as T;
  *  penyimpanan teks berulang seperti "Laki-laki" atau "Perempuan".
  */
 
-class CreateJenisKelaminTable extends DatabaseTemplate
+final class CreateJenisKelaminTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -24,8 +24,8 @@ class CreateJenisKelaminTable extends DatabaseTemplate
                 'id_jenis_kelamin'   => T::ID8(),
                 'nama_jenis_kelamin' => T::TEXT(),
             ],
-            ['id_jenis_kelamin'],
-            [['nama_jenis_kelamin']],
+            'id_jenis_kelamin',
+            'nama_jenis_kelamin',
             [],
             true,
             __DIR__ . '/jenis_kelamin.csv'

@@ -13,7 +13,7 @@ use App\Core\Database\DatabaseType as T;
 * fitur lain seperti donor, pasien, petugas, atau pengguna sistem.
  */
 
-class CreateOrangTable extends DatabaseTemplate
+final class CreateOrangTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -32,16 +32,16 @@ class CreateOrangTable extends DatabaseTemplate
                 'tempat_lahir_kota'  => T::INT16(),
                 'tanggal_lahir'      => T::DATE(),
             ],
-            ['id_orang'],
-            [['nik']],
+            'id_orang',
+            'nik',
             [
-                [['id_jenis_kelamin'], 'jenis_kelamin', ['id_jenis_kelamin'], 'CASCADE', 'CASCADE'],
-                [['id_agama'], 'agama', ['id_agama'], 'CASCADE', 'CASCADE'],
-                [['id_pernikahan'], 'pernikahan', ['id_pernikahan'], 'CASCADE', 'CASCADE'],
-                [['id_golongan_darah'], 'darah.golongan_darah', ['id_golongan_darah'], 'CASCADE', 'CASCADE'],
-                [['id_alamat'], 'lokasi.alamat', ['id_alamat'], 'CASCADE', 'CASCADE'],
+                ['id_jenis_kelamin', 'jenis_kelamin', 'id_jenis_kelamin'],
+                ['id_agama', 'agama', 'id_agama'],
+                ['id_pernikahan', 'pernikahan', 'id_pernikahan'],
+                ['id_golongan_darah', 'darah.golongan_darah', 'id_golongan_darah'],
+                ['id_alamat', 'lokasi.alamat', 'id_alamat'],
                 // [['tempat_lahir_prov', 'tempat_lahir_kota'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
-                [['tempat_lahir_kota'], 'lokasi.kota', ['id_kota_lokal'], 'CASCADE', 'CASCADE'],
+                ['tempat_lahir_kota', 'lokasi.kota', 'id_kota_lokal'],
             ],
             false,
             __DIR__ . '/orang.csv'

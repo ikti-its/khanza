@@ -5,7 +5,7 @@ namespace App\Features\Person\Agama;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateAgamaTable extends DatabaseTemplate
+final class CreateAgamaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -15,8 +15,8 @@ class CreateAgamaTable extends DatabaseTemplate
                 'id_agama'   => T::ID8(),
                 'nama_agama' => T::TEXT(),
             ],
-            ['id_agama'],
-            [['nama_agama']],
+            'id_agama',
+            'nama_agama',
             [],
             true,
             __DIR__ . '/agama.csv'
