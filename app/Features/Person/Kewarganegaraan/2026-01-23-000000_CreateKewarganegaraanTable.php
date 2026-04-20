@@ -20,7 +20,6 @@ class CreateKewarganegaraanTable extends DatabaseTemplate
             [
                 [['id_negara'], 'lokasi.negara', ['id_negara'], 'CASCADE', 'CASCADE'],
             ],
-            [],
         );
     }
 }

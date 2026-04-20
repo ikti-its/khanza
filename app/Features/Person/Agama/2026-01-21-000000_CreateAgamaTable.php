@@ -18,7 +18,6 @@ class CreateAgamaTable extends DatabaseTemplate
             ['id_agama'],
             [['nama_agama']],
             [],
-            [],
             true,
             __DIR__ . '/agama.csv'
         );

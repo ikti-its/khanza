@@ -27,7 +27,6 @@ class CreateJenisKelaminTable extends DatabaseTemplate
             ['id_jenis_kelamin'],
             [['nama_jenis_kelamin']],
             [],
-            [],
             true,
             __DIR__ . '/jenis_kelamin.csv'
         );

@@ -18,7 +18,6 @@ class CreatePernikahanTable extends DatabaseTemplate
             ['id_pernikahan'],
             [['status_pernikahan']],
             [],
-            [],
             true,
             __DIR__ . '/pernikahan.csv'
         );

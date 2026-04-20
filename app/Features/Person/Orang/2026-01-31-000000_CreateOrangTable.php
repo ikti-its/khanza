@@ -43,7 +43,6 @@ class CreateOrangTable extends DatabaseTemplate
                 // [['tempat_lahir_prov', 'tempat_lahir_kota'], 'lokasi.kota', ['id_provinsi', 'id_kota_lokal'], 'CASCADE', 'CASCADE'],
                 [['tempat_lahir_kota'], 'lokasi.kota', ['id_kota_lokal'], 'CASCADE', 'CASCADE'],
             ],
-            [],
             false,
             __DIR__ . '/orang.csv'
         );
