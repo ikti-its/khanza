@@ -24,7 +24,7 @@ class TriaseMacamKasusController extends ControllerTemplate
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
                 [0, 'ID Macam Kasus', 'id_macam_kasus', 'indeks', 0],
-                [1, 'Kode Macam Kasus', 'kode_macam_kasus', 'teks', 1],
+                [1, 'Kode', 'kode_macam_kasus', 'teks', 1],
                 [1, 'Nama Macam Kasus', 'nama_macam_kasus', 'teks', 1],
             ],
         );
