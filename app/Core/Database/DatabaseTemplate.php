@@ -55,16 +55,13 @@ class DatabaseTemplate extends Migration
 
         $this->db = \Config\Database::connect($config);
         $this->forge = \Config\Database::forge($this->db);
-
-        $this->unique_key  = TypeHelper::convert_string_or_array_to_array_of_array_of_string($this->unique_key);
-        $this->foreign_key = TypeHelper::convert_string_or_array_to_array_of_array_of_string($this->foreign_key);
     }
 
     private function validate_primary_key_type(): void {
         if(is_string($this->primary_key)){
             if($this->primary_key === '')
                 Assert::Unreachable("Primary key must be defined");
-            $this->primary_key = TypeHelper::convert_string_to_array_of_string($this->primary_key); 
+            $this->primary_key = [$this->primary_key]; 
         } else if (is_array($this->primary_key)){
             if($this->primary_key === [])
                 Assert::Unreachable("Primary key must be defined");
@@ -73,15 +70,15 @@ class DatabaseTemplate extends Migration
         }
     }
     private function validate_primary_key_fields(): void {
-       foreach ($this->primary_key as $field) {
-            if(!array_key_exists($field, $this->fields))
-                Assert::Unreachable("Primary key field '$field' is not defined in fields");
-            if(array_count_values($this->primary_key)[$field] > 1)
-                Assert::Unreachable("Primary key field '$field' is duplicated in primary key");
-            if(in_array($field, $this->unique_key))
-                Assert::Unreachable("Primary key field '$field' cannot be in unique key");
-            if($this->fields[$field]['null'])
-                Assert::Unreachable("Primary key field '$field' cannot be nullable");
+       foreach ($this->primary_key as $key) {
+            if(!array_key_exists($key, $this->fields))
+                Assert::Unreachable("Primary key field '$key' is not defined in fields");
+            if(array_count_values($this->primary_key)[$key] > 1)
+                Assert::Unreachable("Primary key field '$key' is duplicated in primary key");
+            if($this->fields[$key]['null'])
+                Assert::Unreachable("Primary key field '$key' cannot be nullable");
+            if(in_array($key, $this->unique_key))
+                Assert::Unreachable("Primary key field '$key' cannot be in unique key");   
         }
     }
     private function add_primary_key(): void {
