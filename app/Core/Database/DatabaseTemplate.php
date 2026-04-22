@@ -87,7 +87,7 @@ class DatabaseTemplate extends Migration
         $this->forge->addPrimaryKey($this->primary_key);
     }
 
-    private function is_array_of_strings(mixed $value): bool {
+    private static function is_array_of_strings(mixed $value): bool {
         if(!is_array($value))
             return false;
         foreach ($value as $item) {
@@ -97,11 +97,11 @@ class DatabaseTemplate extends Migration
         return true;
     }
 
-    private function is_array_of_array_of_strings(mixed $value): bool {
+    private static function is_array_of_array_of_strings(mixed $value): bool {
         if(!is_array($value))
             return false;
         foreach ($value as $item) {
-            if(!this->is_array_of_strings($item))
+            if(!self::is_array_of_strings($item))
                 return false;
         }
         return true;
@@ -113,9 +113,9 @@ class DatabaseTemplate extends Migration
             } else {
                 $this->unique_key = [[$this->unique_key]]; 
             }
-        } else if ($this->is_array_of_strings($this->unique_key)){
+        } else if (self::is_array_of_strings($this->unique_key)){
             $this->unique_key = array_map(fn($v) => [$v], $this->unique_key);
-        } else if ($this->is_array_of_array_of_strings($this->unique_key)){
+        } else if (self::is_array_of_array_of_strings($this->unique_key)){
             return; // Already in correct format
         } else {
             Assert::Unreachable("Unique key must be either an empty string, 
@@ -155,15 +155,86 @@ class DatabaseTemplate extends Migration
         }
     }
 
-    private function add_foreign_key(): void {
-        foreach ($this->foreign_key as $fk) {
-            if($fk === []) break;      
-            [$fields, $referenced_table, $referenced_fields] = $fk;
-            $fields = TypeHelper::convert_string_to_array_of_string($fields);
+    private static function is_valid_foreign_key_format(array $value): bool {
+        if($value === []) return true;
+        if (count($value) !== 3) return false;
+        
+        [$fields, $referenced_table, $referenced_fields] = $value;
+        
+        if(!is_string($referenced_table))
+            return false;
+        if($referenced_table === '')
+            return false;
+
+        if(is_string($fields)){
+            if ($fields === '') return false;
+            if(!is_string($referenced_fields)) return false;
+            if($referenced_fields === '') return false;
+            return true;
+        }
+        if(is_array($fields)){
+            if($fields === []) return false;
+            if(!is_array($referenced_fields)) return false;
+            if($referenced_fields === []) return false;
+            if(count($fields) !== count($referenced_fields)) return false;
+            return true;
+        }
+        return false;
+    }
+
+    private function validate_foreign_key_type(): void {
+        if(!is_array($this->foreign_key)){
+            Assert::Unreachable("Foreign key must be an array, not " 
+            . gettype($this->foreign_key));
+        } 
+        if(self::is_valid_foreign_key_format($this->foreign_key))
+            $this->foreign_key = [$this->foreign_key];
+            return;
+        
+        foreach($this->foreign_key as $keys){
+            if(!is_array($keys)){
+                Assert::Unreachable("Invalid foreign key format. 
+                    Single foriegn key constraint must be a simple array,
+                    Multiple foreign key constraints must be array of arrays" 
+                    . implode(',', $this->foreign_key));
+            }
+            if(self::is_valid_foreign_key_format($keys)){
+                continue;
+            }
+        }
+    }
+
+    private function validate_foreign_key_fields(): void {
+        if($this->foreign_key === []) return;
+
+        foreach ($this->foreign_key as $keys) {
+            [$fields, $referenced_table, $referenced_fields] = $keys;
+            if(is_string($fields)) $fields = [$fields];
+            if(is_string($referenced_fields)) $referenced_fields = [$referenced_fields];
+
+            if(count($fields) !== count($referenced_fields)){
+                Assert::Unreachable("The fields " . implode(',', $fields) 
+                . "has more columns than the referenced fields" . implode(',', $referenced_fields));
+            }
+
             foreach ($fields as $field) {
                 if(!array_key_exists($field, $this->fields))
-                    Assert::Unreachable("Foreign key field '$field' is not defined in fields");
+                    Assert::Unreachable("Foreign key field '$field' is not defined in fields "
+                        . implode(", ", $this->fields));
             }
+            foreach ($referenced_fields as $field) {
+                if(!array_key_exists($field, $this->fields))
+                    Assert::Unreachable("Foreign key field '$field' is not defined in fields "
+                        . implode(", ", $this->fields));
+            }
+        }
+    }
+
+    private function add_foreign_key(): void {
+        $this->validate_foreign_key_type();
+        $this->validate_foreign_key_fields();
+        foreach ($this->foreign_key as $fk) {
+            [$fields, $referenced_table, $referenced_fields] = $fk;
             $this->forge->addForeignKey($fields, $referenced_table, $referenced_fields);
         }
     }
