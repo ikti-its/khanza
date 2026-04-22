@@ -66,19 +66,20 @@ class DatabaseTemplate extends Migration
             if($this->primary_key === [])
                 Assert::Unreachable("Primary key must be defined");
         } else {
-            Assert::Unreachable("Primary key must be a string or an array of strings");
+            Assert::Unreachable("Primary key must be a string or an array of strings, not " 
+                . gettype($this->primary_key));
         }
     }
     private function validate_primary_key_fields(): void {
        foreach ($this->primary_key as $key) {
             if(!array_key_exists($key, $this->fields))
-                Assert::Unreachable("Primary key field '$key' is not defined in fields");
+                Assert::Unreachable("Primary key field '$key' is not defined in fields: "
+                    . implode(", ", $this->fields));
             if(array_count_values($this->primary_key)[$key] > 1)
-                Assert::Unreachable("Primary key field '$key' is duplicated in primary key");
+                Assert::Unreachable("Primary key field '$key' is duplicated in primary keys: "
+                    . implode(", ", $this->primary_key));
             if($this->fields[$key]['null'])
                 Assert::Unreachable("Primary key field '$key' cannot be nullable");
-            if(in_array($key, $this->unique_key))
-                Assert::Unreachable("Primary key field '$key' cannot be in unique key");   
         }
     }
     private function add_primary_key(): void {
