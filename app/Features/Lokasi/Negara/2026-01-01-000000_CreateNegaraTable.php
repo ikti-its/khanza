@@ -17,8 +17,8 @@ class CreateNegaraTable extends DatabaseTemplate
                 'nama_negara'  => T::TEXT(),
                 'kode_telepon' => T::INT16(),
             ],
-            ['id_negara'],
-            [['nama_negara']],
+            'id_negara',
+            'nama_negara',
             [],
         );
     }

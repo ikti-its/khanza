@@ -1,35 +1,10 @@
-﻿id_kota_lokal,id_kecamatan_lokal,kode_kecamatan,nama_kecamatan
-1,1,01,Bakongan
-1,2,02,Kluet Utara
-1,3,03,Kluet Selatan
-1,4,04,Labuhanhaji
-1,5,05,Meukek
-1,6,06,Samadua
-1,7,07,Sawang
-1,8,08,Tapaktuan
-1,9,09,Trumon
-1,10,10,Pasie Raja
-1,11,11,Labuhanhaji Timur
-1,12,12,Labuhanhaji Barat
-1,13,13,Kluet Tengah
-1,14,14,Kluet Timur
-1,15,15,Bakongan Timur
-1,16,16,Trumon Timur
-1,17,17,Kota Bahagia
-1,18,18,Trumon Tengah
-2,19,01,Lawe Alas
-2,20,02,Lawe Sigala-Gala
-2,21,03,Bambel
-2,22,04,Babussalam
-2,23,05,Badar
-2,24,06,Babul Makmur
-2,25,07,Darul Hasanah
-2,26,08,Lawe Bulan
-2,27,09,Bukit Tusam
-2,28,10,Semadam
-2,29,11,Babul Rahmah
-2,30,12,Ketambe
-2,31,13,Deleng Pokhkisen
-2,32,14,Lawe Sumur
-2,33,15,Tanoh Alas
-2,34,16,Leuser
+﻿id_provinsi_, id_kota_lokal,id_kecamatan_lokal,nama_kecamatan
+1,1,1,Bakongan
+1,1,2,Kluet Utara
+1,1,3,Kluet Selatan
+1,1,4,Labuhanhaji
+1,1,5,Meukek
+1,1,6,Samadua
+1,1,7,Sawang
+1,1,8,Tapaktuan
+1,1,9,Trumon

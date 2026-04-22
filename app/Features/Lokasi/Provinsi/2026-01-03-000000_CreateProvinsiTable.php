@@ -33,11 +33,9 @@ class CreateProvinsiTable extends DatabaseTemplate
                 'kode_provinsi' => T::TEXT(),
                 'nama_provinsi' => T::TEXT(),
             ],
-            ['id_provinsi'],
-            [['kode_provinsi'], ['nama_provinsi']],
-            [
-                [['id_pulau'], 'pulau', ['id_pulau'], 'CASCADE', 'CASCADE'],
-            ],
+            'id_provinsi',
+            ['kode_provinsi', 'nama_provinsi'],
+            ['id_pulau', 'pulau', 'id_pulau'],
             true,
             __DIR__ . '/provinsi.csv',
         );

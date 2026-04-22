@@ -39,7 +39,7 @@ class CreatePulauTable extends DatabaseTemplate
                 'id_pulau'   => T::ID8(),
                 'nama_pulau' => T::TEXT(),
             ],
-            ['id_pulau'],
+            'id_pulau',
             [],
             [],
             true,

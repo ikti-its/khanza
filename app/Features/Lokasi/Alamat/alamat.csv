@@ -1,2 +1,2 @@
-﻿id_alamat,id_desa_lokal,rw,rt,alamat_lengkap
-1,21,2,5,Jl. Utama Raya No. 45
+﻿id_alamat,id_provinsi,id_kota_lokal,id_kecamatan_lokal,id_desa_lokal,rw,rt,alamat_lengkap
+1,1,1,5,2015,10,10,Jl. Utama Raya No. 45
