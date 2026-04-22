@@ -295,7 +295,6 @@ class DatabaseTemplate extends Migration
         $this->add_foreign_key();
         $this->add_index();
 
-        var_dump($this);
         $this->forge->createTable($this->table);
         try {
             $this->seed();
