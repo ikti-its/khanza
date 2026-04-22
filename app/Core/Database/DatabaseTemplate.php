@@ -140,9 +140,9 @@ class DatabaseTemplate extends Migration
             if(empty(array_diff($this->primary_key, $keys)))
                 Assert::Unreachable("Unique key fields'" . implode(", ", $keys) . 
                     "' is a superset of the primary keys" . implode(", ", $this->primary_key));
-            if(empty(array_diff($keys, $this->unique_key)))
-                Assert::Unreachable("Unique key fields'" . implode(", ", $keys) . 
-                    "' is a subset of the unique keys" . implode(", ", $this->unique_key));
+            // if(empty(array_diff($keys, $this->unique_key)))
+            //     Assert::Unreachable("Unique key fields'" . implode(", ", $keys) . 
+            //         "' is a subset of the unique keys" . implode(", ", $this->unique_key));
         }
     }
     
@@ -188,7 +188,8 @@ class DatabaseTemplate extends Migration
             . gettype($this->foreign_key));
         } 
         if(self::is_valid_foreign_key_format($this->foreign_key))
-            $this->foreign_key = [$this->foreign_key];
+            if($this->foreign_key !== [])
+                $this->foreign_key = [$this->foreign_key];
             return;
         
         foreach($this->foreign_key as $keys){
