@@ -38,6 +38,8 @@ final class CreateDataTriaseTable extends DatabaseTemplate
                 ['id_alasan_kedatangan', 'alasan_kedatangan', 'id_alasan'],
                 ['id_macam_kasus', 'triase_macam_kasus', 'id_macam_kasus'],
             ],
+            false,
+            __DIR__ . '/data_triase.csv'
         );
     }
 }
