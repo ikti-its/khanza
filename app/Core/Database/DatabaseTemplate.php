@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Core\Database;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
-use App\Core\Database\DatabaseType;
 
 class DatabaseTemplate extends Migration
 {
@@ -56,6 +55,10 @@ class DatabaseTemplate extends Migration
 
         $this->db = \Config\Database::connect($config);
         $this->forge = \Config\Database::forge($this->db);
+
+        $this->primary_key = TypeHelper::convert_string_to_array_of_string($this->primary_key);
+        $this->unique_key  = TypeHelper::convert_string_or_array_to_array_of_array_of_string($this->unique_key);
+        $this->foreign_key = TypeHelper::convert_string_or_array_to_array_of_array_of_string($this->foreign_key);
     }
     private function add_primary_key(): void {
         if($this->primary_key == [])
@@ -91,12 +94,14 @@ class DatabaseTemplate extends Migration
 
     private function add_foreign_key(): void {
         foreach ($this->foreign_key as $fk) {
-            [$fields, $referenced_table, $referenced_fields, $on_update, $on_delete] = $fk;
+            if($fk === []) break;      
+            [$fields, $referenced_table, $referenced_fields] = $fk;
+            $fields = TypeHelper::convert_string_to_array_of_string($fields);
             foreach ($fields as $field) {
                 if(!array_key_exists($field, $this->fields))
                     Assert::Unreachable("Foreign key field '$field' is not defined in fields");
             }
-            $this->forge->addForeignKey($fields, $referenced_table, $referenced_fields, $on_update, $on_delete);
+            $this->forge->addForeignKey($fields, $referenced_table, $referenced_fields);
         }
     }
 
