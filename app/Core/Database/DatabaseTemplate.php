@@ -42,7 +42,7 @@ class DatabaseTemplate extends Migration
         protected string $source = '', 
     ) {
         parent::__construct();
-        
+
         foreach ($this->fields as $name => $type) {
             $this->fields[$name] = $type->definition();
         }
@@ -87,6 +87,25 @@ class DatabaseTemplate extends Migration
         $this->forge->addPrimaryKey($this->primary_key);
     }
 
+    private function is_array_of_strings(mixed $value): bool {
+        if(!is_array($value))
+            return false;
+        foreach ($value as $item) {
+            if(!is_string($item))
+                return false;
+        }
+        return true;
+    }
+
+    private function is_array_of_array_of_strings(mixed $value): bool {
+        if(!is_array($value))
+            return false;
+        foreach ($value as $item) {
+            if(!this->is_array_of_strings($item))
+                return false;
+        }
+        return true;
+    }
     private function validate_unique_key_type(): void {
         if(is_string($this->unique_key)){
             if($this->unique_key === ''){
@@ -94,9 +113,9 @@ class DatabaseTemplate extends Migration
             } else {
                 $this->unique_key = [[$this->unique_key]]; 
             }
-        } else if (TypeHelper::is_array_of_strings($this->unique_key)){
+        } else if ($this->is_array_of_strings($this->unique_key)){
             $this->unique_key = array_map(fn($v) => [$v], $this->unique_key);
-        } else if (TypeHelper::is_array_of_array_of_strings($this->unique_key)){
+        } else if ($this->is_array_of_array_of_strings($this->unique_key)){
             return; // Already in correct format
         } else {
             Assert::Unreachable("Unique key must be either an empty string, 
