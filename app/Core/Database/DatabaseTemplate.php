@@ -42,14 +42,13 @@ class DatabaseTemplate extends Migration
         protected string $source = '', 
     ) {
         parent::__construct();
-    }
-    
-    private function setup(){
-         
+        
         foreach ($this->fields as $name => $type) {
             $this->fields[$name] = $type->definition();
         }
-
+    }
+    
+    private function setup(){
         $config = new \Config\Database()->default;
         $config['database'] = env('database.default.khanza_db');
 
