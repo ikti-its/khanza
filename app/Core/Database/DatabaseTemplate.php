@@ -56,25 +56,37 @@ class DatabaseTemplate extends Migration
         $this->db = \Config\Database::connect($config);
         $this->forge = \Config\Database::forge($this->db);
 
-        $this->primary_key = TypeHelper::convert_string_to_array_of_string($this->primary_key);
         $this->unique_key  = TypeHelper::convert_string_or_array_to_array_of_array_of_string($this->unique_key);
         $this->foreign_key = TypeHelper::convert_string_or_array_to_array_of_array_of_string($this->foreign_key);
     }
-    private function add_primary_key(): void {
-        if($this->primary_key == [])
-            Assert::Unreachable("Primary key must be defined");
-        foreach ($this->primary_key as $field) {
+
+    private function validate_primary_key_type(): void {
+        if(is_string($this->primary_key)){
+            if($this->primary_key === '')
+                Assert::Unreachable("Primary key must be defined");
+            $this->primary_key = TypeHelper::convert_string_to_array_of_string($this->primary_key); 
+        } else if (is_array($this->primary_key)){
+            if($this->primary_key === [])
+                Assert::Unreachable("Primary key must be defined");
+        } else {
+            Assert::Unreachable("Primary key must be a string or an array of strings");
+        }
+    }
+    private function validate_primary_key_fields(): void {
+       foreach ($this->primary_key as $field) {
             if(!array_key_exists($field, $this->fields))
                 Assert::Unreachable("Primary key field '$field' is not defined in fields");
+            if(array_count_values($this->primary_key)[$field] > 1)
+                Assert::Unreachable("Primary key field '$field' is duplicated in primary key");
             if(in_array($field, $this->unique_key))
                 Assert::Unreachable("Primary key field '$field' cannot be in unique key");
-            if(in_array($field, $this->index))
-                Assert::Unreachable("Primary key field '$field' cannot be in index");
             if($this->fields[$field]['null'])
                 Assert::Unreachable("Primary key field '$field' cannot be nullable");
-            if(!$this->fields[$field]['auto_increment'] ?? false)
-                Assert::Unreachable("Primary key field '$field' must use IDx() type with auto_increment");
         }
+    }
+    private function add_primary_key(): void {
+        $this->validate_primary_key_type();
+        $this->validate_primary_key_fields();
         $this->forge->addPrimaryKey($this->primary_key);
     }
 
