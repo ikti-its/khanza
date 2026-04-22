@@ -223,11 +223,6 @@ class DatabaseTemplate extends Migration
                     Assert::Unreachable("Foreign key field '$field' is not defined in fields "
                         . implode(", ", $this->fields));
             }
-            foreach ($referenced_fields as $field) {
-                if(!array_key_exists($field, $this->fields))
-                    Assert::Unreachable("Foreign key field '$field' is not defined in fields "
-                        . implode(", ", $this->fields));
-            }
         }
     }
 
@@ -290,7 +285,6 @@ class DatabaseTemplate extends Migration
     final public function up(): void
     {
         $this->setup();
-        
         $this->db->query("CREATE SCHEMA IF NOT EXISTS " . $this->schema);
         $this->db->query("SET search_path TO " . $this->schema . ", public");
 
@@ -301,6 +295,7 @@ class DatabaseTemplate extends Migration
         $this->add_foreign_key();
         $this->add_index();
 
+        var_dump($this);
         $this->forge->createTable($this->table);
         try {
             $this->seed();
