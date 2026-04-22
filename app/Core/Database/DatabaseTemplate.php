@@ -88,16 +88,51 @@ class DatabaseTemplate extends Migration
         $this->forge->addPrimaryKey($this->primary_key);
     }
 
-    private function add_unique_key(): void {
-        foreach ($this->unique_key as $keys) {
-            foreach ($keys as $field) {
-                if(!array_key_exists($field, $this->fields))
-                    Assert::Unreachable("Unique key field '$field' is not defined in fields");
-                if(in_array($field, $this->primary_key))
-                    Assert::Unreachable("Unique key field '$field' cannot be in primary key");
-                if(in_array($field, $this->index))
-                    Assert::Unreachable("Unique key field '$field' cannot be in index");
+    private function validate_unique_key_type(): void {
+        if(is_string($this->unique_key)){
+            if($this->unique_key === ''){
+                $this->unique_key = [];
+            } else {
+                $this->unique_key = [[$this->unique_key]]; 
             }
+        } else if (TypeHelper::is_array_of_strings($this->unique_key)){
+            $this->unique_key = array_map(fn($v) => [$v], $this->unique_key);
+        } else if (TypeHelper::is_array_of_array_of_strings($this->unique_key)){
+            return; // Already in correct format
+        } else {
+            Assert::Unreachable("Unique key must be either an empty string, 
+                a regular string, an empty array, an array of strings, 
+                or an array of array of strings, not " . gettype($this->unique_key));
+        }
+    }
+
+    private function validate_unique_key_fields(): void {
+        foreach ($this->unique_key as $keys) {
+            foreach ($keys as $key) {
+                if(!array_key_exists($key, $this->fields))
+                    Assert::Unreachable("Unique key field '$key' is not defined in fields "
+                        . implode(", ", $this->fields));
+                if(array_count_values($keys)[$key] > 1)
+                    Assert::Unreachable("Unique key field '$key' 
+                    is duplicated in unique key pair " . implode(", ", $keys));
+            }
+            if(empty(array_diff($keys, $this->primary_key)))
+                Assert::Unreachable("Unique key fields'" . implode(", ", $keys) . 
+                    "' is a subset of the primary keys" . implode(", ", $this->primary_key));
+            if(empty(array_diff($this->primary_key, $keys)))
+                Assert::Unreachable("Unique key fields'" . implode(", ", $keys) . 
+                    "' is a superset of the primary keys" . implode(", ", $this->primary_key));
+            if(empty(array_diff($keys, $this->unique_key)))
+                Assert::Unreachable("Unique key fields'" . implode(", ", $keys) . 
+                    "' is a subset of the unique keys" . implode(", ", $this->unique_key));
+        }
+    }
+    
+    private function add_unique_key(): void {
+        $this->validate_unique_key_type();
+        $this->validate_unique_key_fields();
+
+        foreach ($this->unique_key as $keys) {
             $this->forge->addUniqueKey($keys);
         }
     }
