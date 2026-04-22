@@ -15,12 +15,12 @@ final class CreateUpahMinimumProvinsiTable extends DatabaseTemplate
             [
                 'no_ump'       => T::ID8(),
                 'tahun'        => T::YEAR(),
-                'provinsi'     => T::ID8(),
+                'provinsi'     => T::INT8(),
                 'upah_minimum' => T::INT32(),
             ],
             'no_ump',
             [],
-            ['provinsi', 'lokasi.provinsi', 'id_provinsi'],
+            [['provinsi', 'lokasi.provinsi', 'id_provinsi']],
         );
     }
 }
