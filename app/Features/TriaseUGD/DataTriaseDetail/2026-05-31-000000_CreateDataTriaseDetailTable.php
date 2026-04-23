@@ -23,6 +23,8 @@ final class CreateDataTriaseDetailTable extends DatabaseTemplate
                 ['id_triase', 'data_triase', 'id_triase'],
                 ['id_skala', 'triase_skala', 'id_skala'],
             ],
+            false,
+            __DIR__ . '/data_triase_detail.csv'
         );
     }
 }
