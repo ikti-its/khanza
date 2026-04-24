@@ -88,5 +88,5 @@ class Autoload extends AutoloadConfig
      *
      * @var list<string>
      */
-    public $helpers = ['autonomor', 'icon', 'statuspasien'];
+    public $helpers = ['autonomor', 'icon', 'statuspasien', 'auth', 'setting'];
 }

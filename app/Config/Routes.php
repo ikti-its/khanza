@@ -719,6 +719,8 @@ $routes->get('/modaldokter/list', 'Modal\ModalDokter::listDokter');
 $routes->get('/modaldokterjaga/list', 'Modal\ModalDokterJaga::listDokterJaga');
 $routes->get('/modalasuransi/list', 'Modal\ModalAsuransi::listAsuransi');
 
+service('auth')->routes($routes);
+
 //Fitur Penggajian 
 $fiturs = [
     ['DataPenggajian\\', 'data-penggajian/', [
