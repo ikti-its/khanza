@@ -28,6 +28,8 @@ final class CreateDataTriaseSekunderTable extends DatabaseTemplate
                 ['id_plan_sekunder', 'plan_sekunder', 'id_plan_sekunder'],
                 // ['id_petugas', 'sik.pegawai_structure', 'id'],
             ],
+            false,
+            __DIR__ . '/data_triase_sekunder.csv'
         );
     }
 }
