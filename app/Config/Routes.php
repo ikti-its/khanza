@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 // $routes->get('/', 'Home::index');
+$routes->get('/jwt',  'app\Core\Auth\AuthContoller::login');
 $routes->get('/', 'auth::index');
 $routes->get('/', 'userPegawai::lihatDashboard', ['filter' => 'auth']);
 $routes->get('/login', 'auth::index');
@@ -718,8 +719,6 @@ $routes->get('/modalinstansi/list', 'Modal\ModalInstansi::listInstansi');
 $routes->get('/modaldokter/list', 'Modal\ModalDokter::listDokter');
 $routes->get('/modaldokterjaga/list', 'Modal\ModalDokterJaga::listDokterJaga');
 $routes->get('/modalasuransi/list', 'Modal\ModalAsuransi::listAsuransi');
-
-service('auth')->routes($routes);
 
 //Fitur Penggajian 
 $fiturs = [
