@@ -6,14 +6,16 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 // $routes->get('/', 'Home::index');
-$routes->get('/jwt',  'app\Core\Auth\AuthContoller::login');
+$routes->post('/jwt',  [\App\Core\Auth\AuthController::class, 'jwt']);
 $routes->get('/', 'auth::index');
 $routes->get('/', 'userPegawai::lihatDashboard', ['filter' => 'auth']);
 $routes->get('/login', 'auth::index');
 $routes->post('/logout', 'auth::logout', ['filter' => 'auth']);
 
 $routes->get('/dashboard', 'userPegawai::lihatDashboard', ['filter' => 'auth']);
-$routes->post('/dashboard', 'auth::login', ['filter' => 'noauth']);
+// $routes->post('/dashboard', [App\Controllers\auth::class, 'login'], ['filter' => 'noauth']);
+$routes->post('/login', [\App\Core\Auth\AuthController::class, 'login2'], ['filter' => 'noauth']);
+
 $routes->get('/profile', 'userPegawai::lihatProfil', ['filter' => 'auth']);
 $routes->post('/submiteditprofil/(:segment)', 'userPegawai::submitEditProfil/$1', ['filter' => 'auth']);
 $routes->get('/datauserpegawai', 'userPegawai::lihatPegawai', ['filter' => 'auth']);
