@@ -12,9 +12,9 @@ class PengambilanMedisController extends ControllerTemplate
             model: new PengambilanMedisModel(),
             breadcrumbs: [
                 ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
-                ['title' => 'Pengambilan Medis', 'icon' => 'pengambilan_medis'],
+                ['title' => 'Pengambilan BHP Medis', 'icon' => 'pengambilan_bhp_medis'],
             ],
-            judul: 'Pengambilan Medis',
+            judul: 'Pengambilan BHP Medis',
             aksi: [
                 'tambah' => false,
                 'audit'  => false,
