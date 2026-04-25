@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\TriaseUGD\TriaseSkala;
 use App\Core\Controller\ControllerTemplate;
 
-class TriaseSkalaController extends ControllerTemplate
+final class TriaseSkalaController extends ControllerTemplate
 {
     public function __construct(
     ){

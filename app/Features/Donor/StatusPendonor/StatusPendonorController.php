@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Donor\StatusPendonor;
 use App\Core\Controller\ControllerTemplate;
 
-class StatusPendonorController extends ControllerTemplate
+final class StatusPendonorController extends ControllerTemplate
 {
     public function __construct(
     ){

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\TimeOutSebelumInsisi;
 use App\Core\Controller\ControllerTemplate;
 
-class TimeOutSebelumInsisiController extends ControllerTemplate
+final class TimeOutSebelumInsisiController extends ControllerTemplate
 {
     public function __construct()
     {

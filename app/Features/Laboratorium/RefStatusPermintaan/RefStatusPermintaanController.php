@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Laboratorium\RefStatusPermintaan;
 use App\Core\Controller\ControllerTemplate;
 
-class RefStatusPermintaanController extends ControllerTemplate
+final class RefStatusPermintaanController extends ControllerTemplate
 {
     public function __construct()
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefMetodeTransfer;
 use App\Core\Controller\ControllerTemplate;
 
-class RefMetodeTransferController extends ControllerTemplate
+final class RefMetodeTransferController extends ControllerTemplate
 {
     public function __construct()
     {

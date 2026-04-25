@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningKeputusan;
 use App\Core\Controller\ControllerTemplate;
 
-class RefSkriningKeputusanController extends ControllerTemplate
+final class RefSkriningKeputusanController extends ControllerTemplate
 {
     public function __construct()
     {

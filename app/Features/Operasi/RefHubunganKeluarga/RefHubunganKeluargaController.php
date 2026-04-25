@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefHubunganKeluarga;
 use App\Core\Controller\ControllerTemplate;
 
-class RefHubunganKeluargaController extends ControllerTemplate
+final class RefHubunganKeluargaController extends ControllerTemplate
 {
     public function __construct()
     {

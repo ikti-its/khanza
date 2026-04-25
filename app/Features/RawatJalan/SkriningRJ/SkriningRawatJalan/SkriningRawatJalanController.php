@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\RawatJalan\SkriningRJ\SkriningRawatJalan;
 use App\Core\Controller\ControllerTemplate;
 
-class SkriningRawatJalanController extends ControllerTemplate
+final class SkriningRawatJalanController extends ControllerTemplate
 {
     public function __construct()
     {

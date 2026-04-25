@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Laboratorium\RefItemPemeriksaanLab;
 use App\Core\Controller\ControllerTemplate;
 
-class RefItemPemeriksaanLabController extends ControllerTemplate
+final class RefItemPemeriksaanLabController extends ControllerTemplate
 {
     public function __construct()
     {

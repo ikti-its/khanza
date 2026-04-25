@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefRuanganOperasi;
 use App\Core\Controller\ControllerTemplate;
 
-class RefRuanganOperasiController extends ControllerTemplate
+final class RefRuanganOperasiController extends ControllerTemplate
 {
     public function __construct()
     {

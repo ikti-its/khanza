@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefStewardKesadaran;
 use App\Core\Controller\ControllerTemplate;
 
-class RefStewardKesadaranController extends ControllerTemplate
+final class RefStewardKesadaranController extends ControllerTemplate
 {
     public function __construct()
     {

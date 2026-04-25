@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriNonMedis\Barang;
 use App\Core\Controller\ControllerTemplate;
 
-class BarangController extends ControllerTemplate
+final class BarangController extends ControllerTemplate
 {
     public function __construct()
     {

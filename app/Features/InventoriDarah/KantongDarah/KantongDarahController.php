@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriDarah\KantongDarah;
 use App\Core\Controller\ControllerTemplate;
 
-class KantongDarahController extends ControllerTemplate
+final class KantongDarahController extends ControllerTemplate
 {
     public function __construct(
     ){

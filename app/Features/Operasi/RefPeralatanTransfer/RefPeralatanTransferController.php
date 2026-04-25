@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefPeralatanTransfer;
 use App\Core\Controller\ControllerTemplate;
 
-class RefPeralatanTransferController extends ControllerTemplate
+final class RefPeralatanTransferController extends ControllerTemplate
 {
     public function __construct()
     {

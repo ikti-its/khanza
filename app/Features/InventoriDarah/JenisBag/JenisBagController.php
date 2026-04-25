@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriDarah\JenisBag;
 use App\Core\Controller\ControllerTemplate;
 
-class JenisBagController extends ControllerTemplate
+final class JenisBagController extends ControllerTemplate
 {
     public function __construct(
     ){

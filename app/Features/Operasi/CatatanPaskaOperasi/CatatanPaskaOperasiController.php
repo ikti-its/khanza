@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\CatatanPaskaOperasi;
 use App\Core\Controller\ControllerTemplate;
 
-class CatatanPaskaOperasiController extends ControllerTemplate
+final class CatatanPaskaOperasiController extends ControllerTemplate
 {
     public function __construct()
     {

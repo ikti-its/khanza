@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\PenangananDonor\KasusReaktif;
 use App\Core\Controller\ControllerTemplate;
 
-class KasusReaktifController extends ControllerTemplate
+final class KasusReaktifController extends ControllerTemplate
 {
     public function __construct(
     ){

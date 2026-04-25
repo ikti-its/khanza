@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\SigninSebelumAnestesi;
 use App\Core\Controller\ControllerTemplate;
 
-class SigninSebelumAnestesiController extends ControllerTemplate
+final class SigninSebelumAnestesiController extends ControllerTemplate
 {
     public function __construct()
     {

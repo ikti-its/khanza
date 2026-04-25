@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Donor\Kunjungan;
 use App\Core\Controller\ControllerTemplate;
 
-class KunjunganController extends ControllerTemplate
+final class KunjunganController extends ControllerTemplate
 {
     public function __construct(
     ){

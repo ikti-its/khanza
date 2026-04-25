@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriNonMedis\Lokasi;
 use App\Core\Controller\ControllerTemplate;
 
-class LokasiController extends ControllerTemplate
+final class LokasiController extends ControllerTemplate
 {
     public function __construct()
     {

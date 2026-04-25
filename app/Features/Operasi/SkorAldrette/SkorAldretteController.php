@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\SkorAldrette;
 use App\Core\Controller\ControllerTemplate;
 
-class SkorAldretteController extends ControllerTemplate
+final class SkorAldretteController extends ControllerTemplate
 {
     public function __construct()
     {

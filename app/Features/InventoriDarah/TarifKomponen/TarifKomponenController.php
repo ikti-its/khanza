@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriDarah\TarifKomponen;
 use App\Core\Controller\ControllerTemplate;
 
-class TarifKomponenController extends ControllerTemplate
+final class TarifKomponenController extends ControllerTemplate
 {
     public function __construct(
     ){

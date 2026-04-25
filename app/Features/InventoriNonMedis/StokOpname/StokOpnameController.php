@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriNonMedis\StokOpname;
 use App\Core\Controller\ControllerTemplate;
 
-class StokOpnameController extends ControllerTemplate
+final class StokOpnameController extends ControllerTemplate
 {
     public function __construct()
     {

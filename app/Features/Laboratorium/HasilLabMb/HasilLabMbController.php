@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Laboratorium\HasilLabMb;
 use App\Core\Controller\ControllerTemplate;
 
-class HasilLabMbController extends ControllerTemplate
+final class HasilLabMbController extends ControllerTemplate
 {
     public function __construct()
     {

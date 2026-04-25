@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Laboratorium\PermintaanLabPa;
 use App\Core\Controller\ControllerTemplate;
 
-class PermintaanLabPaController extends ControllerTemplate
+final class PermintaanLabPaController extends ControllerTemplate
 {
     public function __construct()
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningNyeriDada;
 use App\Core\Controller\ControllerTemplate;
 
-class RefSkriningNyeriDadaController extends ControllerTemplate
+final class RefSkriningNyeriDadaController extends ControllerTemplate
 {
     public function __construct()
     {

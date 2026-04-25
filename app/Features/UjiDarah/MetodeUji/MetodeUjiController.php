@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\UjiDarah\MetodeUji;
 use App\Core\Controller\ControllerTemplate;
 
-class MetodeUjiController extends ControllerTemplate
+final class MetodeUjiController extends ControllerTemplate
 {
     public function __construct(
     ){

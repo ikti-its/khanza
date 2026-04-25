@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriNonMedis\PengadaanBarang;
 use App\Core\Controller\ControllerTemplate;
 
-class PengadaanBarangController extends ControllerTemplate
+final class PengadaanBarangController extends ControllerTemplate
 {
     public function __construct()
     {

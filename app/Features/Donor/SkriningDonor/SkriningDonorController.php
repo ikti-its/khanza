@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Donor\SkriningDonor;
 use App\Core\Controller\ControllerTemplate;
 
-class SkriningDonorController extends ControllerTemplate
+final class SkriningDonorController extends ControllerTemplate
 {
     public function __construct(
     ){

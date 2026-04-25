@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefPremedikasi;
 use App\Core\Controller\ControllerTemplate;
 
-class RefPremedikasiController extends ControllerTemplate
+final class RefPremedikasiController extends ControllerTemplate
 {
     public function __construct()
     {

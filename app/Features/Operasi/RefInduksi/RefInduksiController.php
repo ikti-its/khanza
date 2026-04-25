@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefInduksi;
 use App\Core\Controller\ControllerTemplate;
 
-class RefInduksiController extends ControllerTemplate
+final class RefInduksiController extends ControllerTemplate
 {
     public function __construct()
     {

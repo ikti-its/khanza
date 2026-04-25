@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\TriaseUGD\PlanPrimer;
 use App\Core\Controller\ControllerTemplate;
 
-class PlanPrimerController extends ControllerTemplate
+final class PlanPrimerController extends ControllerTemplate
 {
     public function __construct(
     ){

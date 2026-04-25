@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Radiologi\HasilRadTindakan;
 use App\Core\Controller\ControllerTemplate;
 
-class HasilRadTindakanController extends ControllerTemplate
+final class HasilRadTindakanController extends ControllerTemplate
 {
     public function __construct()
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\PenangananDonor\PertanyaanKonseling;
 use App\Core\Controller\ControllerTemplate;
 
-class PertanyaanKonselingController extends ControllerTemplate
+final class PertanyaanKonselingController extends ControllerTemplate
 {
     public function __construct(
     ){

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriNonMedis\Unit;
 use App\Core\Controller\ControllerTemplate;
 
-class UnitController extends ControllerTemplate
+final class UnitController extends ControllerTemplate
 {
     public function __construct()
     {

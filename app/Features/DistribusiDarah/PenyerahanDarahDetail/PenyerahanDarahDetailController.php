@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\DistribusiDarah\PenyerahanDarahDetail;
 use App\Core\Controller\ControllerTemplate;
 
-class PenyerahanDarahDetailController extends ControllerTemplate
+final class PenyerahanDarahDetailController extends ControllerTemplate
 {
     public function __construct(
     ){

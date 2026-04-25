@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\SkorSteward;
 use App\Core\Controller\ControllerTemplate;
 
-class SkorStewardController extends ControllerTemplate
+final class SkorStewardController extends ControllerTemplate
 {
     public function __construct()
     {

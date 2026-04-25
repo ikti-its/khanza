@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\DistribusiDarah\PermintaanDarahDetail;
 use App\Core\Controller\ControllerTemplate;
 
-class PermintaanDarahDetailController extends ControllerTemplate
+final class PermintaanDarahDetailController extends ControllerTemplate
 {
     public function __construct(
     ){

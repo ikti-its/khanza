@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\ChecklistPostopDrain;
 use App\Core\Controller\ControllerTemplate;
 
-class ChecklistPostopDrainController extends ControllerTemplate
+final class ChecklistPostopDrainController extends ControllerTemplate
 {
     public function __construct()
     {

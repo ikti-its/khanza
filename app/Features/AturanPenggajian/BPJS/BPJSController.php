@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\AturanPenggajian\BPJS;
 use App\Core\Controller\ControllerTemplate;
 
-class BPJSController extends ControllerTemplate
+final class BPJSController extends ControllerTemplate
 {
     public function __construct(
     ){

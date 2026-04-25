@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\JadwalOperasi;
 use App\Core\Controller\ControllerTemplate;
 
-class JadwalOperasiController extends ControllerTemplate
+final class JadwalOperasiController extends ControllerTemplate
 {
     public function __construct()
     {

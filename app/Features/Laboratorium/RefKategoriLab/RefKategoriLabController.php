@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Laboratorium\RefKategoriLab;
 use App\Core\Controller\ControllerTemplate;
 
-class RefKategoriLabController extends ControllerTemplate
+final class RefKategoriLabController extends ControllerTemplate
 {
     public function __construct()
     {

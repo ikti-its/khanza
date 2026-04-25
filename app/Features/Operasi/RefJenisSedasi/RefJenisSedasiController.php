@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefJenisSedasi;
 use App\Core\Controller\ControllerTemplate;
 
-class RefJenisSedasiController extends ControllerTemplate
+final class RefJenisSedasiController extends ControllerTemplate
 {
     public function __construct()
     {

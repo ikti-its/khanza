@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefAldretteAktivitas;
 use App\Core\Controller\ControllerTemplate;
 
-class RefAldretteAktivitasController extends ControllerTemplate
+final class RefAldretteAktivitasController extends ControllerTemplate
 {
     public function __construct()
     {

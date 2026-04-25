@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefStewardRespirasi;
 use App\Core\Controller\ControllerTemplate;
 
-class RefStewardRespirasiController extends ControllerTemplate
+final class RefStewardRespirasiController extends ControllerTemplate
 {
     public function __construct()
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\PenangananDonor\StatusKasus;
 use App\Core\Controller\ControllerTemplate;
 
-class StatusKasusController extends ControllerTemplate
+final class StatusKasusController extends ControllerTemplate
 {
     public function __construct(
     ){

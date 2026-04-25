@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Donor\HasilAnamnesis;
 use App\Core\Controller\ControllerTemplate;
 
-class HasilAnamnesisController extends ControllerTemplate
+final class HasilAnamnesisController extends ControllerTemplate
 {
     public function __construct(
     ){

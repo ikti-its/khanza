@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\DistribusiDarah\StatusPembayaran;
 use App\Core\Controller\ControllerTemplate;
 
-class StatusPembayaranController extends ControllerTemplate
+final class StatusPembayaranController extends ControllerTemplate
 {
     public function __construct(
     ){

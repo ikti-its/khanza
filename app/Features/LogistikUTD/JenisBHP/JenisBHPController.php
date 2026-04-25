@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\LogistikUTD\JenisBHP;
 use App\Core\Controller\ControllerTemplate;
 
-class JenisBHPController extends ControllerTemplate
+final class JenisBHPController extends ControllerTemplate
 {
     public function __construct(
     ){

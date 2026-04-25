@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefStatusSpesimen;
 use App\Core\Controller\ControllerTemplate;
 
-class RefStatusSpesimenController extends ControllerTemplate
+final class RefStatusSpesimenController extends ControllerTemplate
 {
     public function __construct()
     {

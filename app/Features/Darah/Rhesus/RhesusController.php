@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Darah\Rhesus;
 use App\Core\Controller\ControllerTemplate;
 
-class RhesusController extends ControllerTemplate
+final class RhesusController extends ControllerTemplate
 {
     public function __construct(
     ){

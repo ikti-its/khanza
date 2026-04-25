@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefKeadaanUmum;
 use App\Core\Controller\ControllerTemplate;
 
-class RefKeadaanUmumController extends ControllerTemplate
+final class RefKeadaanUmumController extends ControllerTemplate
 {
     public function __construct()
     {

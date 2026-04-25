@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefObatBebas;
 use App\Core\Controller\ControllerTemplate;
 
-class RefObatBebasController extends ControllerTemplate
+final class RefObatBebasController extends ControllerTemplate
 {
     public function __construct()
     {

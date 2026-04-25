@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\PengkajianPreInduksiAirway;
 use App\Core\Controller\ControllerTemplate;
 
-class PengkajianPreInduksiAirwayController extends ControllerTemplate
+final class PengkajianPreInduksiAirwayController extends ControllerTemplate
 {
     public function __construct()
     {

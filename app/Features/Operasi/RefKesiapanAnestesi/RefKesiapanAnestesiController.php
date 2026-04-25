@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefKesiapanAnestesi;
 use App\Core\Controller\ControllerTemplate;
 
-class RefKesiapanAnestesiController extends ControllerTemplate
+final class RefKesiapanAnestesiController extends ControllerTemplate
 {
     public function __construct()
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefAldretteWarnaKulit;
 use App\Core\Controller\ControllerTemplate;
 
-class RefAldretteWarnaKulitController extends ControllerTemplate
+final class RefAldretteWarnaKulitController extends ControllerTemplate
 {
     public function __construct()
     {

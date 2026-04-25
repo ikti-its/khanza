@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\PenangananDonor\JenisPencekalan;
 use App\Core\Controller\ControllerTemplate;
 
-class JenisPencekalanController extends ControllerTemplate
+final class JenisPencekalanController extends ControllerTemplate
 {
     public function __construct(
     ){

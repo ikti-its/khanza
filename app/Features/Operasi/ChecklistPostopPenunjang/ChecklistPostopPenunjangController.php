@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\ChecklistPostopPenunjang;
 use App\Core\Controller\ControllerTemplate;
 
-class ChecklistPostopPenunjangController extends ControllerTemplate
+final class ChecklistPostopPenunjangController extends ControllerTemplate
 {
     public function __construct()
     {

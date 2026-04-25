@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\PengkajianPreInduksi;
 use App\Core\Controller\ControllerTemplate;
 
-class PengkajianPreInduksiController extends ControllerTemplate
+final class PengkajianPreInduksiController extends ControllerTemplate
 {
     public function __construct()
     {

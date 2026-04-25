@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\TriaseUGD\KebutuhanKhusus;
 use App\Core\Controller\ControllerTemplate;
 
-class KebutuhanKhususController extends ControllerTemplate
+final class KebutuhanKhususController extends ControllerTemplate
 {
     public function __construct(
     ){

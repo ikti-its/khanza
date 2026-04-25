@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefBromage;
 use App\Core\Controller\ControllerTemplate;
 
-class RefBromageController extends ControllerTemplate
+final class RefBromageController extends ControllerTemplate
 {
     public function __construct()
     {

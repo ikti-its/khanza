@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriNonMedis\TransaksiStok;
 use App\Core\Controller\ControllerTemplate;
 
-class TransaksiStokController extends ControllerTemplate
+final class TransaksiStokController extends ControllerTemplate
 {
     public function __construct()
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\UjiDarah\NilaiDiagnostik;
 use App\Core\Controller\ControllerTemplate;
 
-class NilaiDiagnostikController extends ControllerTemplate
+final class NilaiDiagnostikController extends ControllerTemplate
 {
     public function __construct(
     ){

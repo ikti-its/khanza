@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\UjiDarah\HasilUjiSaring;
 use App\Core\Controller\ControllerTemplate;
 
-class HasilUjiSaringController extends ControllerTemplate
+final class HasilUjiSaringController extends ControllerTemplate
 {
     public function __construct(
     ){

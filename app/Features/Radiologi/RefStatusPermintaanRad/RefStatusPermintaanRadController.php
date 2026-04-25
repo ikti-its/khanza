@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Radiologi\RefStatusPermintaanRad;
 use App\Core\Controller\ControllerTemplate;
 
-class RefStatusPermintaanRadController extends ControllerTemplate
+final class RefStatusPermintaanRadController extends ControllerTemplate
 {
     public function __construct()
     {

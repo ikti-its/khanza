@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriNonMedis\PermintaanBarang;
 use App\Core\Controller\ControllerTemplate;
 
-class PermintaanBarangController extends ControllerTemplate
+final class PermintaanBarangController extends ControllerTemplate
 {
     public function __construct()
     {

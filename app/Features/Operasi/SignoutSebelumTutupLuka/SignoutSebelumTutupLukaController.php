@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\SignoutSebelumTutupLuka;
 use App\Core\Controller\ControllerTemplate;
 
-class SignoutSebelumTutupLukaController extends ControllerTemplate
+final class SignoutSebelumTutupLukaController extends ControllerTemplate
 {
     public function __construct()
     {

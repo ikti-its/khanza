@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefStatusOperasi;
 use App\Core\Controller\ControllerTemplate;
 
-class RefStatusOperasiController extends ControllerTemplate
+final class RefStatusOperasiController extends ControllerTemplate
 {
     public function __construct()
     {

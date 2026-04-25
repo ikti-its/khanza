@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\DistribusiDarah\StatusPermintaan;
 use App\Core\Controller\ControllerTemplate;
 
-class StatusPermintaanController extends ControllerTemplate
+final class StatusPermintaanController extends ControllerTemplate
 {
     public function __construct(
     ){

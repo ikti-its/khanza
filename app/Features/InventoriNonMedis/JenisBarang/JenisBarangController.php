@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriNonMedis\JenisBarang;
 use App\Core\Controller\ControllerTemplate;
 
-class JenisBarangController extends ControllerTemplate
+final class JenisBarangController extends ControllerTemplate
 {
     public function __construct()
     {

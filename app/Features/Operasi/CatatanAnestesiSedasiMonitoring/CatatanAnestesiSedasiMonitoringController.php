@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\CatatanAnestesiSedasiMonitoring;
 use App\Core\Controller\ControllerTemplate;
 
-class CatatanAnestesiSedasiMonitoringController extends ControllerTemplate
+final class CatatanAnestesiSedasiMonitoringController extends ControllerTemplate
 {
     public function __construct()
     {

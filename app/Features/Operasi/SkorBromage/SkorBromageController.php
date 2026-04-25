@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\SkorBromage;
 use App\Core\Controller\ControllerTemplate;
 
-class SkorBromageController extends ControllerTemplate
+final class SkorBromageController extends ControllerTemplate
 {
     public function __construct()
     {

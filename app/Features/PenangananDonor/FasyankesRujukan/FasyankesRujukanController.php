@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\PenangananDonor\FasyankesRujukan;
 use App\Core\Controller\ControllerTemplate;
 
-class FasyankesRujukanController extends ControllerTemplate
+final class FasyankesRujukanController extends ControllerTemplate
 {
     public function __construct(
     ){

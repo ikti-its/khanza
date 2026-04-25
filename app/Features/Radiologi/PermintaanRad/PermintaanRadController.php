@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Radiologi\PermintaanRad;
 use App\Core\Controller\ControllerTemplate;
 
-class PermintaanRadController extends ControllerTemplate
+final class PermintaanRadController extends ControllerTemplate
 {
     public function __construct()
     {

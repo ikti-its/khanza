@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Radiologi\RefItemRad;
 use App\Core\Controller\ControllerTemplate;
 
-class RefItemRadController extends ControllerTemplate
+final class RefItemRadController extends ControllerTemplate
 {
     public function __construct()
     {

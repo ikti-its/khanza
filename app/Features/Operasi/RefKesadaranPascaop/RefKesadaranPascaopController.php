@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefKesadaranPascaop;
 use App\Core\Controller\ControllerTemplate;
 
-class RefKesadaranPascaopController extends ControllerTemplate
+final class RefKesadaranPascaopController extends ControllerTemplate
 {
     public function __construct()
     {

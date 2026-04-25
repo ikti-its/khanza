@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\PenangananDonor\Pencekalan;
 use App\Core\Controller\ControllerTemplate;
 
-class PencekalanController extends ControllerTemplate
+final class PencekalanController extends ControllerTemplate
 {
     public function __construct(
     ){

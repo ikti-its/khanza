@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\PenyerahanPasien;
 use App\Core\Controller\ControllerTemplate;
 
-class PenyerahanPasienController extends ControllerTemplate
+final class PenyerahanPasienController extends ControllerTemplate
 {
     public function __construct()
     {

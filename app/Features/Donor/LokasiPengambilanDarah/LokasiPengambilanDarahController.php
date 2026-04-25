@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Donor\LokasiPengambilanDarah;
 use App\Core\Controller\ControllerTemplate;
 
-class LokasiPengambilanDarahController extends ControllerTemplate
+final class LokasiPengambilanDarahController extends ControllerTemplate
 {
     public function __construct(
     ){

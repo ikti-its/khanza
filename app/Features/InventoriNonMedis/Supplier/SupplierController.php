@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriNonMedis\Supplier;
 use App\Core\Controller\ControllerTemplate;
 
-class SupplierController extends ControllerTemplate
+final class SupplierController extends ControllerTemplate
 {
     public function __construct()
     {

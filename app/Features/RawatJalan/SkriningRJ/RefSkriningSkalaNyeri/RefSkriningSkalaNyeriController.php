@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningSkalaNyeri;
 use App\Core\Controller\ControllerTemplate;
 
-class RefSkriningSkalaNyeriController extends ControllerTemplate
+final class RefSkriningSkalaNyeriController extends ControllerTemplate
 {
     public function __construct()
     {

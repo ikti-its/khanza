@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\TriaseUGD\AlatTransportasi;
 use App\Core\Controller\ControllerTemplate;
 
-class AlatTransportasiController extends ControllerTemplate
+final class AlatTransportasiController extends ControllerTemplate
 {
     public function __construct(
     ){

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\UjiDarah\ParameterUji;
 use App\Core\Controller\ControllerTemplate;
 
-class ParameterUjiController extends ControllerTemplate
+final class ParameterUjiController extends ControllerTemplate
 {
     public function __construct(
     ){

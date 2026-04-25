@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\ChecklistPreOperasi;
 use App\Core\Controller\ControllerTemplate;
 
-class ChecklistPreOperasiController extends ControllerTemplate
+final class ChecklistPreOperasiController extends ControllerTemplate
 {
     public function __construct()
     {

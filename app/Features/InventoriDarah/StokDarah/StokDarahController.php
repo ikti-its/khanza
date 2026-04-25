@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriDarah\StokDarah;
 use App\Core\Controller\ControllerTemplate;
 
-class StokDarahController extends ControllerTemplate
+final class StokDarahController extends ControllerTemplate
 {
     public function __construct(
     ){

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\PermintaanOperasi;
 use App\Core\Controller\ControllerTemplate;
 
-class PermintaanOperasiController extends ControllerTemplate
+final class PermintaanOperasiController extends ControllerTemplate
 {
     public function __construct()
     {

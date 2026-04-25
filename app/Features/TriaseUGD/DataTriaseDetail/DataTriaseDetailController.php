@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\TriaseUGD\DataTriaseDetail;
 use App\Core\Controller\ControllerTemplate;
 
-class DataTriaseDetailController extends ControllerTemplate
+final class DataTriaseDetailController extends ControllerTemplate
 {
     public function __construct(
     ){

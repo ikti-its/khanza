@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\PenangananDonor\Rujukan;
 use App\Core\Controller\ControllerTemplate;
 
-class RujukanController extends ControllerTemplate
+final class RujukanController extends ControllerTemplate
 {
     public function __construct(
     ){

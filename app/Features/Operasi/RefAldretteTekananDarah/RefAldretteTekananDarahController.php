@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefAldretteTekananDarah;
 use App\Core\Controller\ControllerTemplate;
 
-class RefAldretteTekananDarahController extends ControllerTemplate
+final class RefAldretteTekananDarahController extends ControllerTemplate
 {
     public function __construct()
     {

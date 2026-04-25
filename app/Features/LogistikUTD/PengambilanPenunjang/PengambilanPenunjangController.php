@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\LogistikUTD\PengambilanPenunjang;
 use App\Core\Controller\ControllerTemplate;
 
-class PengambilanPenunjangController extends ControllerTemplate
+final class PengambilanPenunjangController extends ControllerTemplate
 {
     public function __construct(
     ){

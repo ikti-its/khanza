@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriDarah\SumberDarah;
 use App\Core\Controller\ControllerTemplate;
 
-class SumberDarahController extends ControllerTemplate
+final class SumberDarahController extends ControllerTemplate
 {
     public function __construct(
     ){
