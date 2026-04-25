@@ -50,17 +50,7 @@
             </div>
 
 
-            <div class="group mt-28 pt-10 items-center py-2 px-2 text-lg font-medium text-white">
-                <span>Shift</span>
-                <p>
-                    <?php 
-                        $userData = session('user_specific_data');
-                        echo isset($userData['jam_masuk']) ? $userData['jam_masuk'] : 'N/A';
-                        echo ' - ';
-                        echo isset($userData['jam_pulang']) ? $userData['jam_pulang'] : 'N/A';
-                    ?> 
-                </p>
-            </div>
+            <?= $this->include('dashboard/shift') ?>
 
         </div>
     </div>
