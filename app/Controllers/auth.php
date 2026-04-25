@@ -20,7 +20,7 @@ class auth extends ControllerTemplate_LEGACY
     public function dashboard()
     {
         $data = ['title' => 'Dashboard Admin'];
-        return  view('/user/dashboard', $data);
+        return  view('/dashboard/dashboard', $data);
     }
 
     public function logout()

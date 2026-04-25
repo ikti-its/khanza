@@ -786,7 +786,7 @@ class userPegawaiController extends ControllerTemplate_LEGACY
         if (isset($user_specific_data['data'])) {
             // Store the user specific data in session or handle it as needed
             session()->set('user_specific_data', $user_specific_data['data']);
-            return view('/user/dashboard', ['title' => $title]);
+            return view('/dashboard/dashboard', ['title' => $title]);
         } else {
             // Handle unexpected API response format
             return HTTPError::renderErrorView(500);

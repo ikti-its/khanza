@@ -77,12 +77,8 @@
 </div>
 
 <div class="relative overflow-x-auto">
-
-    <!-- Card Blog -->
     <div class="px-4 py-10 sm:px-6 lg:py-10 mx-auto">
-        <!-- Grid -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Card -->
             <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
                 <div class="px-5 py-5 flex flex-col justify-center items-start bg-white rounded-t-xl">
                     <img src="<?= base_url('svg/layouts/dashboard/desain_sistem.svg') ?>" alt="Icon">
@@ -95,8 +91,6 @@
                         Temukan pedoman dan elemen desain yang konsisten untuk membangun antarmuka pengguna yang efektif dan intuitif
                     </p>
                 </div>
-
-
                 <div class="p-4 md:p-6">
                     <a href="#" class="group inline-flex items-center py-2 border border-transparent text-base font-medium rounded-md text-[#1D8676] bg-transparent hover:text-gray-200 transition duration-300">
                         Jelajahi Desain Sistem
@@ -105,11 +99,7 @@
                         </svg>
                     </a>
                 </div>
-
             </div>
-            <!-- End Card -->
-
-            <!-- Card -->
             <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
                 <div class="px-5 py-5 flex flex-col justify-center items-start bg-white rounded-t-xl">
                     <img src="<?= base_url('svg/layouts/dashboard/tutorial_video.svg') ?>" alt="Icon">
@@ -122,8 +112,6 @@
                         Ikuti langkah-langkah praktis dalam video tutorial kami untuk memaksimalkan penggunaan sistem dan fitur-fiturnya
                     </p>
                 </div>
-
-
                 <div class="p-4 md:p-6">
                     <a href="#" class="group inline-flex items-center py-2 border border-transparent text-base font-medium rounded-md text-[#1D8676] bg-transparent hover:text-gray-200 transition duration-300">
                         Tonton Tutorial
@@ -134,9 +122,7 @@
                 </div>
 
             </div>
-            <!-- End Card -->
 
-            <!-- Card -->
             <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
                 <div class="px-5 py-5 flex flex-col justify-center items-start bg-white rounded-t-xl">
                     <img src="<?= base_url('svg/layouts/dashboard/faq.svg') ?>" alt="Icon">
@@ -149,8 +135,6 @@
                         Dapatkan jawaban cepat dan solusi untuk pertanyaan dan masalah umum yang mungkin Anda hadapi
                     </p>
                 </div>
-
-
                 <div class="p-4 md:p-6">
                     <a href="#" class="group inline-flex items-center py-2 border border-transparent text-base font-medium rounded-md text-[#1D8676] bg-transparent hover:text-gray-200 transition duration-300">
                         Lihat FAQ
@@ -159,14 +143,11 @@
                         </svg>
                     </a>
                 </div>
-
             </div>
-            <!-- End Card -->
         </div>
-        <!-- End Grid -->
     </div>
-    <!-- End Card Blog -->
 </div>
+
 <?php if (session()->has('jwt_token')): ?>
 <script>
     // Simpan token ke sessionStorage untuk digunakan oleh fetch()

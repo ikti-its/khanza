@@ -278,7 +278,7 @@ class userAdminController extends ControllerTemplate_LEGACY
 
                             if ($http_status_code === 201) {
                                 // Notification created successfully
-                                return view('/user/dashboard', ['title' => 'Dashboard pegawai']); // Redirect to desired page
+                                return view('/dashboard/dashboard', ['title' => 'Dashboard pegawai']); // Redirect to desired page
                             } else {
                                 // Error response from the API
                                 return HTTPError::renderErrorView($http_status_code);

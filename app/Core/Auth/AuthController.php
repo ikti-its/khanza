@@ -135,6 +135,12 @@ final class AuthController extends Controller
         return redirect()->to(base_url("/login"));
     }
 
+    public function dashboard()
+    {
+        $data = ['title' => 'Dashboard Admin'];
+        return  view('/dashboard/dashboard', $data);
+    }
+
     public function login2()
     {
         if (!$this->request->getPost()) {

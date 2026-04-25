@@ -793,7 +793,7 @@ public function submitTambahCuti()
             session()->set('user_specific_data', $user_specific_data['data']);
         }
 
-        return view('/user/dashboard', ['title' => $title]);
+        return view('/dashboard/dashboard', ['title' => $title]);
     }
 
     public function tambahPresensi()
