@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Operasi\RefStatusSpesimen;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\InputType as I;
 
 final class RefStatusSpesimenController extends ControllerTemplate
 {

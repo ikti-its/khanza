@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Darah\KomponenDarah;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\InputType as I;
 
 final class KomponenDarahController extends ControllerTemplate
 {

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\Rujukan;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\InputType as I;
 
 final class RujukanController extends ControllerTemplate
 {

@@ -1,0 +1,17 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Core\Controller;
+
+enum InputType: string
+{
+    case INDEX = 'indeks';
+    case MONEY = 'uang';
+    case EMPTY = 'kosong';
+    case DATE = 'tanggal';
+    case TIME = 'jam';
+    case NAME = 'nama';
+    case TEXT = 'teks';
+    case NUMBER = 'jumlah';
+    case SELECT = 'status';
+}

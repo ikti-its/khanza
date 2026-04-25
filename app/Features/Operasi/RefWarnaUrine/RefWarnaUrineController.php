@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Operasi\RefWarnaUrine;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\InputType as I;
 
 final class RefWarnaUrineController extends ControllerTemplate
 {

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\DistribusiDarah\StatusPembayaran;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\InputType as I;
 
 final class StatusPembayaranController extends ControllerTemplate
 {

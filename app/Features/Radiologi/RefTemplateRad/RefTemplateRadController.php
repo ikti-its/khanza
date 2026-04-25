@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Radiologi\RefTemplateRad;
 use App\Core\Controller\ControllerTemplate;
+use App\Core\Controller\InputType as I;
 
 final class RefTemplateRadController extends ControllerTemplate
 {
