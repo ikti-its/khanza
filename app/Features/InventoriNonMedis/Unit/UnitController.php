@@ -26,10 +26,10 @@ final class UnitController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [0, 'ID',        'id_unit',   'indeks', 0],
-                [1, 'Nama Unit', 'nama_unit', 'nama',   1],
+                [HIDE, 'ID',        'id_unit',   'indeks', OPTIONAL],
+                [SHOW, 'Nama Unit', 'nama_unit', 'nama',   REQUIRED],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => 1],
+            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

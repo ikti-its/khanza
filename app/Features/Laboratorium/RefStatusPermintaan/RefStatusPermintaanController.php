@@ -23,8 +23,8 @@ final class RefStatusPermintaanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Status',   'id_status',   'indeks', 0],
-                [1, 'Nama Status', 'nama_status', 'teks',   1],
+                [HIDE, 'ID Status',   'id_status',   'indeks', OPTIONAL],
+                [SHOW, 'Nama Status', 'nama_status', 'teks',   REQUIRED],
             ],
         );
     }

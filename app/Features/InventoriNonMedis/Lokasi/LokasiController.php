@@ -26,10 +26,10 @@ final class LokasiController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [0, 'ID',          'id_lokasi',   'indeks', 0],
-                [1, 'Nama Lokasi', 'nama_lokasi', 'nama',   1],
+                [HIDE, 'ID',          'id_lokasi',   'indeks', OPTIONAL],
+                [SHOW, 'Nama Lokasi', 'nama_lokasi', 'nama',   REQUIRED],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => 1],
+            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

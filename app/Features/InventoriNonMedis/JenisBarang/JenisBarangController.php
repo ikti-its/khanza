@@ -26,10 +26,10 @@ final class JenisBarangController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [0, 'ID',               'id_jenis_barang',   'indeks', 0],
-                [1, 'Nama Jenis Barang','nama_jenis_barang',  'nama',   1],
+                [HIDE, 'ID',               'id_jenis_barang',   'indeks', OPTIONAL],
+                [SHOW, 'Nama Jenis Barang','nama_jenis_barang',  'nama',   REQUIRED],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => 1],
+            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

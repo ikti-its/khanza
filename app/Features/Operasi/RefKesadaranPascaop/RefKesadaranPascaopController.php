@@ -23,8 +23,8 @@ final class RefKesadaranPascaopController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Kesadaran',   'id_kesadaran',   'indeks', 0],
-                [1, 'Nama Kesadaran', 'nama_kesadaran', 'teks',   1],
+                [HIDE, 'ID Kesadaran',   'id_kesadaran',   'indeks', OPTIONAL],
+                [SHOW, 'Nama Kesadaran', 'nama_kesadaran', 'teks',   REQUIRED],
             ],
         );
     }

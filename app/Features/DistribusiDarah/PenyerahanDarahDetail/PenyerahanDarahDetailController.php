@@ -23,13 +23,13 @@ final class PenyerahanDarahDetailController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Penyerahan Detail', 'id_penyerahan_detail', 'indeks', 0],
-                [1, 'ID Penyerahan', 'id_penyerahan', 'indeks', 1],
-                [1, 'ID Stok Darah', 'id_stok_darah', 'indeks', 1],
-                [1, 'Jasa Sarana', 'jasa_sarana', 'uang', 1],
-                [1, 'Paket BHP', 'paket_bhp', 'uang', 1],
-                [1, 'KSO', 'kso', 'uang', 1],
-                [1, 'Manajemen', 'manajemen', 'uang', 1],
+                [HIDE, 'ID Penyerahan Detail', 'id_penyerahan_detail', 'indeks', OPTIONAL],
+                [SHOW, 'ID Penyerahan', 'id_penyerahan', 'indeks', REQUIRED],
+                [SHOW, 'ID Stok Darah', 'id_stok_darah', 'indeks', REQUIRED],
+                [SHOW, 'Jasa Sarana', 'jasa_sarana', 'uang', REQUIRED],
+                [SHOW, 'Paket BHP', 'paket_bhp', 'uang', REQUIRED],
+                [SHOW, 'KSO', 'kso', 'uang', REQUIRED],
+                [SHOW, 'Manajemen', 'manajemen', 'uang', REQUIRED],
             ],
         );
     }   

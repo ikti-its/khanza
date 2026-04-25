@@ -23,15 +23,15 @@ final class SkorBromageController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Skor Bromage', 'id_skor_bromage',    'indeks',  0],
-                [1, 'Nomor Registrasi', 'nomor_reg',          'teks',    1],
-                [1, 'Waktu Penilaian',  'waktu_penilaian',    'tanggal', 1],
-                [1, 'ID Petugas',       'id_petugas',         'teks',    1],
-                [1, 'Dokter Anestesi',  'id_dokter_anestesi', 'teks',    1],
-                [1, 'Skor Bromage',     'skor_bromage',       'jumlah',  1],
-                [1, 'Boleh Pindah',     'is_boleh_pindah',    'status',  1],
-                [1, 'Catatan Keluar',   'catatan_keluar',     'teks',    1],
-                [1, 'Instruksi RR',     'instruksi_rr',       'teks',    1],
+                [HIDE, 'ID Skor Bromage', 'id_skor_bromage',    'indeks',  OPTIONAL],
+                [SHOW, 'Nomor Registrasi', 'nomor_reg',          'teks',    REQUIRED],
+                [SHOW, 'Waktu Penilaian',  'waktu_penilaian',    'tanggal', REQUIRED],
+                [SHOW, 'ID Petugas',       'id_petugas',         'teks',    REQUIRED],
+                [SHOW, 'Dokter Anestesi',  'id_dokter_anestesi', 'teks',    REQUIRED],
+                [SHOW, 'Skor Bromage',     'skor_bromage',       'jumlah',  REQUIRED],
+                [SHOW, 'Boleh Pindah',     'is_boleh_pindah',    'status',  REQUIRED],
+                [SHOW, 'Catatan Keluar',   'catatan_keluar',     'teks',    REQUIRED],
+                [SHOW, 'Instruksi RR',     'instruksi_rr',       'teks',    REQUIRED],
             ],
         );
     }

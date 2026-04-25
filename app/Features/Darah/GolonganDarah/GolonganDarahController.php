@@ -23,8 +23,8 @@ final class GolonganDarahController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Golongan Darah', 'id_golongan_darah', 'indeks', 0],
-                [1, 'Nama Golongan Darah', 'nama_golongan_darah', 'teks', 1],
+                [HIDE, 'ID Golongan Darah', 'id_golongan_darah', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Golongan Darah', 'nama_golongan_darah', 'teks', REQUIRED],
             ],
         );
     }   

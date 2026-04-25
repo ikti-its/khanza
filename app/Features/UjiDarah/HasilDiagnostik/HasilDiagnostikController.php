@@ -23,10 +23,10 @@ final class HasilDiagnostikController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Diagnostik', 'id_diagnostik', 'indeks', 0],
-                [1, 'ID Rujukan', 'id_rujukan', 'indeks', 1],
-                [1, 'Tanggal Hasil', 'tanggal_hasil', 'tanggal', 1],
-                [1, 'Dokter Pemeriksa', 'dokter_pemeriksa', 'nama', 1],
+                [HIDE, 'ID Diagnostik', 'id_diagnostik', 'indeks', OPTIONAL],
+                [SHOW, 'ID Rujukan', 'id_rujukan', 'indeks', REQUIRED],
+                [SHOW, 'Tanggal Hasil', 'tanggal_hasil', 'tanggal', REQUIRED],
+                [SHOW, 'Dokter Pemeriksa', 'dokter_pemeriksa', 'nama', REQUIRED],
             ],
         );
     }   

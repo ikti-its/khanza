@@ -23,8 +23,8 @@ final class RefJenisPenunjangController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Jenis Penunjang', 'id_jenis_penunjang', 'indeks', 0],
-                [1, 'Nama Jenis',         'nama_jenis',         'teks',   1],
+                [HIDE, 'ID Jenis Penunjang', 'id_jenis_penunjang', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Jenis',         'nama_jenis',         'teks',   REQUIRED],
             ],
         );
     }

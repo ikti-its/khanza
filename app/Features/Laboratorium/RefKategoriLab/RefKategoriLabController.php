@@ -23,9 +23,9 @@ final class RefKategoriLabController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Kategori',   'id_kategori',   'indeks', 0],
-                [1, 'Kode Kategori', 'kode_kategori', 'teks',   1],
-                [1, 'Nama Kategori', 'nama_kategori', 'teks',   1],
+                [HIDE, 'ID Kategori',   'id_kategori',   'indeks', OPTIONAL],
+                [SHOW, 'Kode Kategori', 'kode_kategori', 'teks',   REQUIRED],
+                [SHOW, 'Nama Kategori', 'nama_kategori', 'teks',   REQUIRED],
             ],
         );
     }

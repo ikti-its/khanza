@@ -23,10 +23,10 @@ final class KonselingController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Konseling', 'id_konseling', 'indeks', 0],
-                [1, 'ID Kasus', 'id_kasus', 'indeks', 1],
-                [1, 'Tanggal Konseling', 'tanggal_konseling', 'tanggal', 1],
-                [1, 'ID Petugas', 'id_petugas', 'indeks', 1],
+                [HIDE, 'ID Konseling', 'id_konseling', 'indeks', OPTIONAL],
+                [SHOW, 'ID Kasus', 'id_kasus', 'indeks', REQUIRED],
+                [SHOW, 'Tanggal Konseling', 'tanggal_konseling', 'tanggal', REQUIRED],
+                [SHOW, 'ID Petugas', 'id_petugas', 'indeks', REQUIRED],
             ],
         );
     }   

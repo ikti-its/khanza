@@ -23,8 +23,8 @@ final class RefPremedikasiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Premedikasi',   'id_premedikasi',   'indeks', 0],
-                [1, 'Nama Premedikasi', 'nama_premedikasi', 'teks',   1],
+                [HIDE, 'ID Premedikasi',   'id_premedikasi',   'indeks', OPTIONAL],
+                [SHOW, 'Nama Premedikasi', 'nama_premedikasi', 'teks',   REQUIRED],
             ],
         );
     }

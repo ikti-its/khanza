@@ -23,9 +23,9 @@ final class RefRuanganOperasiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Ruangan',   'id_ruangan',   'indeks', 0],
-                [1, 'Kode Ruangan', 'kode_ruangan', 'teks',   1],
-                [1, 'Nama Ruangan', 'nama_ruangan', 'teks',   1],
+                [HIDE, 'ID Ruangan',   'id_ruangan',   'indeks', OPTIONAL],
+                [SHOW, 'Kode Ruangan', 'kode_ruangan', 'teks',   REQUIRED],
+                [SHOW, 'Nama Ruangan', 'nama_ruangan', 'teks',   REQUIRED],
             ],
         );
     }

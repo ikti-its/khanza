@@ -23,8 +23,8 @@ final class RefSkriningBatukController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Batuk',      'id_batuk',       'indeks', 0],
-                [1, 'Kategori Batuk','kategori_batuk', 'teks',   1],
+                [HIDE, 'ID Batuk',      'id_batuk',       'indeks', OPTIONAL],
+                [SHOW, 'Kategori Batuk','kategori_batuk', 'teks',   REQUIRED],
             ],
         );
     }

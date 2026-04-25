@@ -23,8 +23,8 @@ final class RefPeralatanTransferController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Peralatan',   'id_peralatan',   'indeks', 0],
-                [1, 'Nama Peralatan', 'nama_peralatan', 'teks',   1],
+                [HIDE, 'ID Peralatan',   'id_peralatan',   'indeks', OPTIONAL],
+                [SHOW, 'Nama Peralatan', 'nama_peralatan', 'teks',   REQUIRED],
             ],
         );
     }

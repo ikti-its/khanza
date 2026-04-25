@@ -26,14 +26,14 @@ final class PengadaanBarangController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [0, 'ID Pengadaan', 'id_pengadaan', 'indeks',  0],
-                [0, 'ID Pengajuan', 'id_pengajuan', 'indeks',  0],
-                [1, 'Supplier',     'id_supplier',  'status',  1],
-                [1, 'Tanggal',      'tanggal',      'tanggal', 1],
-                [1, 'Status',       'status',       'status',  0],
-                [1, 'Catatan',      'catatan',      'teks',    0],
+                [HIDE, 'ID Pengadaan', 'id_pengadaan', 'indeks',  OPTIONAL],
+                [HIDE, 'ID Pengajuan', 'id_pengajuan', 'indeks',  OPTIONAL],
+                [SHOW, 'Supplier',     'id_supplier',  'status',  REQUIRED],
+                [SHOW, 'Tanggal',      'tanggal',      'tanggal', REQUIRED],
+                [SHOW, 'Status',       'status',       'status',  OPTIONAL],
+                [SHOW, 'Catatan',      'catatan',      'teks',    OPTIONAL],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => 1],
+            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

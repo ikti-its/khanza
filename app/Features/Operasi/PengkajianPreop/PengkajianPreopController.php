@@ -23,17 +23,17 @@ final class PengkajianPreopController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Pengkajian',            'id_pengkajian',            'indeks',   0],
-                [1, 'Nomor Registrasi',         'nomor_reg',                'teks',     1],
-                [1, 'Kode Dokter Bedah',        'kode_dokter_bedah',        'teks',     1],
-                [1, 'Waktu Pengkajian',         'waktu_pengkajian',         'jam',      1],
-                [1, 'Ringkasan Klinik',         'ringkasan_klinik',         'teks',     1],
-                [1, 'Pemeriksaan Fisik',        'pemeriksaan_fisik',        'teks',     1],
-                [1, 'Pemeriksaan Diagnostik',   'pemeriksaan_diagnostik',   'teks',     1],
-                [1, 'Diagnosa Pre-Operasi',     'diagnosa_pre_operasi',     'teks',     1],
-                [1, 'Rencana Tindakan',         'rencana_tindakan',         'teks',     1],
-                [1, 'Persiapan Khusus',         'persiapan_khusus',         'teks',     1],
-                [1, 'Terapi Pre-Operasi',       'terapi_pre_operasi',       'teks',     1],
+                [HIDE, 'ID Pengkajian',            'id_pengkajian',            'indeks',   OPTIONAL],
+                [SHOW, 'Nomor Registrasi',         'nomor_reg',                'teks',     REQUIRED],
+                [SHOW, 'Kode Dokter Bedah',        'kode_dokter_bedah',        'teks',     REQUIRED],
+                [SHOW, 'Waktu Pengkajian',         'waktu_pengkajian',         'jam',      REQUIRED],
+                [SHOW, 'Ringkasan Klinik',         'ringkasan_klinik',         'teks',     REQUIRED],
+                [SHOW, 'Pemeriksaan Fisik',        'pemeriksaan_fisik',        'teks',     REQUIRED],
+                [SHOW, 'Pemeriksaan Diagnostik',   'pemeriksaan_diagnostik',   'teks',     REQUIRED],
+                [SHOW, 'Diagnosa Pre-Operasi',     'diagnosa_pre_operasi',     'teks',     REQUIRED],
+                [SHOW, 'Rencana Tindakan',         'rencana_tindakan',         'teks',     REQUIRED],
+                [SHOW, 'Persiapan Khusus',         'persiapan_khusus',         'teks',     REQUIRED],
+                [SHOW, 'Terapi Pre-Operasi',       'terapi_pre_operasi',       'teks',     REQUIRED],
             ],
         );
     }

@@ -26,19 +26,19 @@ final class BarangController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [0, 'ID Barang',    'id_barang',       'indeks', 0],
-                [1, 'Kode Barang',  'kode_barang',     'teks',   1],
-                [1, 'Nama Barang',  'nama_barang',     'nama',   1],
-                [1, 'Jenis Barang', 'id_jenis_barang', 'status', 1],
-                [1, 'Kategori',     'id_kategori',     'status', 1],
-                [1, 'Supplier',     'id_supplier',     'status', 0],
-                [1, 'Unit',         'id_unit',         'status', 1],
-                [1, 'Lokasi',       'id_lokasi',       'status', 0],
-                [1, 'Stok',         'stok',            'jumlah', 0],
-                [1, 'Stok Minimum', 'stok_minimum',    'jumlah', 0],
-                [1, 'Harga Satuan', 'harga_satuan',    'uang',   0],
+                [HIDE, 'ID Barang',    'id_barang',       'indeks', OPTIONAL],
+                [SHOW, 'Kode Barang',  'kode_barang',     'teks',   REQUIRED],
+                [SHOW, 'Nama Barang',  'nama_barang',     'nama',   REQUIRED],
+                [SHOW, 'Jenis Barang', 'id_jenis_barang', 'status', REQUIRED],
+                [SHOW, 'Kategori',     'id_kategori',     'status', REQUIRED],
+                [SHOW, 'Supplier',     'id_supplier',     'status', OPTIONAL],
+                [SHOW, 'Unit',         'id_unit',         'status', REQUIRED],
+                [SHOW, 'Lokasi',       'id_lokasi',       'status', OPTIONAL],
+                [SHOW, 'Stok',         'stok',            'jumlah', OPTIONAL],
+                [SHOW, 'Stok Minimum', 'stok_minimum',    'jumlah', OPTIONAL],
+                [SHOW, 'Harga Satuan', 'harga_satuan',    'uang',   OPTIONAL],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => 1],
+            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

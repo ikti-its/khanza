@@ -23,8 +23,8 @@ final class RefWarnaUrineController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Warna Urine', 'id_warna_urine', 'indeks', 0],
-                [1, 'Nama Warna',     'nama_warna',     'teks',   1],
+                [HIDE, 'ID Warna Urine', 'id_warna_urine', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Warna',     'nama_warna',     'teks',   REQUIRED],
             ],
         );
     }

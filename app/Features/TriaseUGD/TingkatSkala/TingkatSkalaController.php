@@ -23,8 +23,8 @@ final class TingkatSkalaController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Tingkat', 'id_tingkat', 'indeks', 0],
-                [1, 'Nama Tingkat', 'nama_tingkat', 'teks', 1],
+                [HIDE, 'ID Tingkat', 'id_tingkat', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Tingkat', 'nama_tingkat', 'teks', REQUIRED],
             ],
         );
     }   

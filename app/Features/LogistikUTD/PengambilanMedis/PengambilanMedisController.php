@@ -23,15 +23,15 @@ final class PengambilanMedisController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Pengambilan Medis', 'id_pengambilan_medis', 'indeks', 0],
-                [1, 'ID Barang', 'id_barang', 'indeks', 1],
-                [1, 'Jumlah', 'jumlah', 'jumlah', 1],
-                [1, 'Harga Beli', 'harga_beli', 'uang', 1],
-                [1, 'Nama Bangsal', 'nama_bangsal', 'teks', 1],
-                [1, 'Tanggal Pengambilan', 'tanggal_pengambilan', 'tanggal_jam', 1],
-                [0, 'Keterangan', 'keterangan', 'teks', 1],
-                [0, 'Nomor Batch', 'nomor_batch', 'teks', 0],
-                [0, 'Nomor Faktur', 'nomor_faktur', 'teks', 0],
+                [HIDE, 'ID Pengambilan Medis', 'id_pengambilan_medis', 'indeks', OPTIONAL],
+                [SHOW, 'ID Barang', 'id_barang', 'indeks', REQUIRED],
+                [SHOW, 'Jumlah', 'jumlah', 'jumlah', REQUIRED],
+                [SHOW, 'Harga Beli', 'harga_beli', 'uang', REQUIRED],
+                [SHOW, 'Nama Bangsal', 'nama_bangsal', 'teks', REQUIRED],
+                [SHOW, 'Tanggal Pengambilan', 'tanggal_pengambilan', 'tanggal_jam', REQUIRED],
+                [HIDE, 'Keterangan', 'keterangan', 'teks', REQUIRED],
+                [HIDE, 'Nomor Batch', 'nomor_batch', 'teks', OPTIONAL],
+                [HIDE, 'Nomor Faktur', 'nomor_faktur', 'teks', OPTIONAL],
             ],
         );
     }   

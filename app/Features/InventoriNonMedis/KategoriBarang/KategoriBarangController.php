@@ -26,11 +26,11 @@ final class KategoriBarangController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [0, 'ID',                   'id_kategori',          'indeks', 0],
-                [0, 'Kode Kategori',        'kode_kategori_barang', 'indeks', 0],
-                [1, 'Nama Kategori Barang', 'nama_kategori_barang', 'nama',   1],
+                [HIDE, 'ID',                   'id_kategori',          'indeks', OPTIONAL],
+                [HIDE, 'Kode Kategori',        'kode_kategori_barang', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Kategori Barang', 'nama_kategori_barang', 'nama',   REQUIRED],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => 1],
+            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

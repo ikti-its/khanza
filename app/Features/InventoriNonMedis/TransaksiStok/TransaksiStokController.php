@@ -26,14 +26,14 @@ final class TransaksiStokController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [0, 'ID Transaksi',   'id_transaksi',   'indeks',  0],
-                [1, 'Barang',         'id_barang',      'status',  1],
-                [1, 'Tipe Transaksi', 'tipe_transaksi', 'status',  1],
-                [1, 'Qty',            'qty',            'jumlah',  1],
-                [1, 'Tanggal',        'tanggal',        'tanggal', 1],
-                [1, 'Catatan',        'catatan',        'teks',    0],
+                [HIDE, 'ID Transaksi',   'id_transaksi',   'indeks',  OPTIONAL],
+                [SHOW, 'Barang',         'id_barang',      'status',  REQUIRED],
+                [SHOW, 'Tipe Transaksi', 'tipe_transaksi', 'status',  REQUIRED],
+                [SHOW, 'Qty',            'qty',            'jumlah',  REQUIRED],
+                [SHOW, 'Tanggal',        'tanggal',        'tanggal', REQUIRED],
+                [SHOW, 'Catatan',        'catatan',        'teks',    OPTIONAL],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => 1],
+            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

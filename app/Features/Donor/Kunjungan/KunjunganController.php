@@ -23,11 +23,11 @@ final class KunjunganController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Kunjungan', 'id_kunjungan', 'indeks', 0],
-                [1, 'Nomor Antrian', 'nomor_antrian', 'jumlah', 1],
-                [1, 'ID Pendonor', 'id_pendonor', 'indeks', 1],
-                [1, 'Tanggal Kunjungan', 'tanggal_kunjungan', 'tanggal', 1],
-                [1, 'ID Status Kunjungan', 'id_status_kunjungan', 'status', 1],
+                [HIDE, 'ID Kunjungan', 'id_kunjungan', 'indeks', OPTIONAL],
+                [SHOW, 'Nomor Antrian', 'nomor_antrian', 'jumlah', REQUIRED],
+                [SHOW, 'ID Pendonor', 'id_pendonor', 'indeks', REQUIRED],
+                [SHOW, 'Tanggal Kunjungan', 'tanggal_kunjungan', 'tanggal', REQUIRED],
+                [SHOW, 'ID Status Kunjungan', 'id_status_kunjungan', 'status', REQUIRED],
             ],
         );
     }   

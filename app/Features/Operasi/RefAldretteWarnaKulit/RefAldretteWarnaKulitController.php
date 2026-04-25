@@ -23,9 +23,9 @@ final class RefAldretteWarnaKulitController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Warna',  'id_warna',   'indeks', 0],
-                [1, 'Nama Skala','nama_skala', 'teks',   1],
-                [1, 'Nilai',     'nilai',      'jumlah', 1],
+                [HIDE, 'ID Warna',  'id_warna',   'indeks', OPTIONAL],
+                [SHOW, 'Nama Skala','nama_skala', 'teks',   REQUIRED],
+                [SHOW, 'Nilai',     'nilai',      'jumlah', REQUIRED],
             ],
         );
     }

@@ -23,10 +23,10 @@ final class KasusReaktifController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Kasus', 'id_kasus', 'indeks', 0],
-                [1, 'ID Kunjungan', 'id_kunjungan', 'indeks', 1],
-                [1, 'Tanggal Ditetapkan', 'tanggal_ditetapkan', 'tanggal', 1],
-                [1, 'ID Status Kasus', 'id_status_kasus', 'status', 1],
+                [HIDE, 'ID Kasus', 'id_kasus', 'indeks', OPTIONAL],
+                [SHOW, 'ID Kunjungan', 'id_kunjungan', 'indeks', REQUIRED],
+                [SHOW, 'Tanggal Ditetapkan', 'tanggal_ditetapkan', 'tanggal', REQUIRED],
+                [SHOW, 'ID Status Kasus', 'id_status_kasus', 'status', REQUIRED],
             ],
         );
     }   

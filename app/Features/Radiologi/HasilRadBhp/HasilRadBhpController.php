@@ -23,12 +23,12 @@ final class HasilRadBhpController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Radiologi BHP', 'id_rad_bhp',      'indeks', 0],
-                [1, 'ID Hasil Rad',     'id_hasil_rad',    'indeks', 1],
-                [1, 'ID Barang Medis',  'id_barang_medis', 'indeks', 1],
-                [1, 'Jumlah Pakai',     'jumlah_pakai',    'jumlah', 1],
-                [1, 'Satuan',           'satuan',          'teks',   1],
-                [1, 'Harga Satuan',     'harga_satuan',    'uang',   1],
+                [HIDE, 'ID Radiologi BHP', 'id_rad_bhp',      'indeks', OPTIONAL],
+                [SHOW, 'ID Hasil Rad',     'id_hasil_rad',    'indeks', REQUIRED],
+                [SHOW, 'ID Barang Medis',  'id_barang_medis', 'indeks', REQUIRED],
+                [SHOW, 'Jumlah Pakai',     'jumlah_pakai',    'jumlah', REQUIRED],
+                [SHOW, 'Satuan',           'satuan',          'teks',   REQUIRED],
+                [SHOW, 'Harga Satuan',     'harga_satuan',    'uang',   REQUIRED],
             ],
         );
     }

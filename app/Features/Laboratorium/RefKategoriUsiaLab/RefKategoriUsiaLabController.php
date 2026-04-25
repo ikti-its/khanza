@@ -23,8 +23,8 @@ final class RefKategoriUsiaLabController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Kategori Usia',   'id_kategori_usia',   'indeks', 0],
-                [1, 'Nama Kategori Usia', 'nama_kategori_usia', 'teks',   1],
+                [HIDE, 'ID Kategori Usia',   'id_kategori_usia',   'indeks', OPTIONAL],
+                [SHOW, 'Nama Kategori Usia', 'nama_kategori_usia', 'teks',   REQUIRED],
             ],
         );
     }

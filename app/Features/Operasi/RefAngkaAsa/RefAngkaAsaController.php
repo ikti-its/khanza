@@ -23,8 +23,8 @@ final class RefAngkaAsaController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID ASA',   'id_asa',   'indeks', 0],
-                [1, 'Nama ASA', 'nama_asa', 'teks',   1],
+                [HIDE, 'ID ASA',   'id_asa',   'indeks', OPTIONAL],
+                [SHOW, 'Nama ASA', 'nama_asa', 'teks',   REQUIRED],
             ],
         );
     }

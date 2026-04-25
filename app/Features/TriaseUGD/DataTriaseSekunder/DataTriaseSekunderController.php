@@ -23,13 +23,13 @@ final class DataTriaseSekunderController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Triase Sekunder', 'id_triase_sekunder', 'indeks', 0],
-                [1, 'ID Triase', 'id_triase', 'indeks', 1],
-                [0, 'Anamnesa Singkat', 'anamnesa_singkat', 'teks', 1],
-                [0, 'Catatan', 'catatan', 'teks', 1],
-                [1, 'ID Plan Sekunder', 'id_plan_sekunder', 'indeks', 1],
-                [1, 'Tanggal Triase', 'tanggal_triase', 'tanggal_jam', 1],
-                [1, 'ID Petugas', 'id_petugas', 'indeks', 1],
+                [HIDE, 'ID Triase Sekunder', 'id_triase_sekunder', 'indeks', OPTIONAL],
+                [SHOW, 'ID Triase', 'id_triase', 'indeks', REQUIRED],
+                [HIDE, 'Anamnesa Singkat', 'anamnesa_singkat', 'teks', REQUIRED],
+                [HIDE, 'Catatan', 'catatan', 'teks', REQUIRED],
+                [SHOW, 'ID Plan Sekunder', 'id_plan_sekunder', 'indeks', REQUIRED],
+                [SHOW, 'Tanggal Triase', 'tanggal_triase', 'tanggal_jam', REQUIRED],
+                [SHOW, 'ID Petugas', 'id_petugas', 'indeks', REQUIRED],
             ],
         );
     }   

@@ -27,15 +27,15 @@ final class StokOpnameDetailController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [0, 'ID Detail',  'id_detail',   'indeks', 0],
-                [0, 'ID Opname',  'id_opname',   'indeks', 0],
-                [1, 'Barang',     'id_barang',   'status', 1],
-                [1, 'Stok Sistem','stok_sistem', 'jumlah', 1],
-                [1, 'Stok Fisik', 'stok_fisik',  'jumlah', 1],
-                [1, 'Selisih',    'selisih',     'jumlah', 0],
-                [1, 'Keterangan', 'keterangan',  'teks',   0],
+                [HIDE, 'ID Detail',  'id_detail',   'indeks', OPTIONAL],
+                [HIDE, 'ID Opname',  'id_opname',   'indeks', OPTIONAL],
+                [SHOW, 'Barang',     'id_barang',   'status', REQUIRED],
+                [SHOW, 'Stok Sistem','stok_sistem', 'jumlah', REQUIRED],
+                [SHOW, 'Stok Fisik', 'stok_fisik',  'jumlah', REQUIRED],
+                [SHOW, 'Selisih',    'selisih',     'jumlah', OPTIONAL],
+                [SHOW, 'Keterangan', 'keterangan',  'teks',   OPTIONAL],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => 1],
+            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

@@ -23,8 +23,8 @@ final class SumberDarahController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Sumber Darah', 'id_sumber_darah', 'indeks', 0],
-                [1, 'Nama Sumber Darah', 'nama_sumber_darah', 'teks', 1],
+                [HIDE, 'ID Sumber Darah', 'id_sumber_darah', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Sumber Darah', 'nama_sumber_darah', 'teks', REQUIRED],
             ],
         );
     }   

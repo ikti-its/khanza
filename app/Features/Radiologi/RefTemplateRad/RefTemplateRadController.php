@@ -23,9 +23,9 @@ final class RefTemplateRadController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Template',         'id_template',         'indeks', 0],
-                [1, 'Nama Template',       'nama_template',       'teks',   1],
-                [1, 'Isi Teks Ekspertise', 'isi_teks_ekspertise', 'teks',   1],
+                [HIDE, 'ID Template',         'id_template',         'indeks', OPTIONAL],
+                [SHOW, 'Nama Template',       'nama_template',       'teks',   REQUIRED],
+                [SHOW, 'Isi Teks Ekspertise', 'isi_teks_ekspertise', 'teks',   REQUIRED],
             ],
         );
     }

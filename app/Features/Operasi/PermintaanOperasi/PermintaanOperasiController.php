@@ -23,11 +23,11 @@ final class PermintaanOperasiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Permintaan',   'id_permintaan', 'indeks',  0],
-                [1, 'Nomor Registrasi','nomor_reg',     'teks',    1],
-                [1, 'Kode Dokter',     'kode_dokter',   'teks',    1],
-                [1, 'Tanggal Minta',   'tanggal_minta', 'tanggal', 1],
-                [1, 'CITO',            'is_cito',       'status',  1],
+                [HIDE, 'ID Permintaan',   'id_permintaan', 'indeks',  OPTIONAL],
+                [SHOW, 'Nomor Registrasi','nomor_reg',     'teks',    REQUIRED],
+                [SHOW, 'Kode Dokter',     'kode_dokter',   'teks',    REQUIRED],
+                [SHOW, 'Tanggal Minta',   'tanggal_minta', 'tanggal', REQUIRED],
+                [SHOW, 'CITO',            'is_cito',       'status',  REQUIRED],
             ],
         );
     }

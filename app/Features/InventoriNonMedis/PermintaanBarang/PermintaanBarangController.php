@@ -26,14 +26,14 @@ final class PermintaanBarangController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [0, 'ID',           'id_permintaan', 'indeks',  0],
-                [1, 'Unit Pemohon', 'unit_pemohon',  'teks',    1],
-                [1, 'Tipe',         'tipe',          'status',  1],
-                [1, 'Tanggal',      'tanggal',       'tanggal', 1],
-                [1, 'Status',       'status',        'status',  0],
-                [1, 'Catatan',      'catatan',       'teks',    0],
+                [HIDE, 'ID',           'id_permintaan', 'indeks',  OPTIONAL],
+                [SHOW, 'Unit Pemohon', 'unit_pemohon',  'teks',    REQUIRED],
+                [SHOW, 'Tipe',         'tipe',          'status',  REQUIRED],
+                [SHOW, 'Tanggal',      'tanggal',       'tanggal', REQUIRED],
+                [SHOW, 'Status',       'status',        'status',  OPTIONAL],
+                [SHOW, 'Catatan',      'catatan',       'teks',    OPTIONAL],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => 1],
+            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

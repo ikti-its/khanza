@@ -23,10 +23,10 @@ final class TimeOutSebelumInsisiPenunjangController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Penunjang',  'id_penunjang',   'indeks', 0],
-                [0, 'ID Time Out',   'id_timeout',     'indeks', 0],
-                [1, 'Jenis Penunjang','jenis_penunjang','teks',   1],
-                [1, 'Status',        'id_status',      'indeks', 1],
+                [HIDE, 'ID Penunjang',  'id_penunjang',   'indeks', OPTIONAL],
+                [HIDE, 'ID Time Out',   'id_timeout',     'indeks', OPTIONAL],
+                [SHOW, 'Jenis Penunjang','jenis_penunjang','teks',   REQUIRED],
+                [SHOW, 'Status',        'id_status',      'indeks', REQUIRED],
             ],
         );
     }

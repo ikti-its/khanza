@@ -23,8 +23,8 @@ final class RefKeadaanUmumTransferController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Keadaan Umum', 'id_keadaan_umum', 'indeks', 0],
-                [1, 'Nama Keadaan',    'nama_keadaan',    'teks',   1],
+                [HIDE, 'ID Keadaan Umum', 'id_keadaan_umum', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Keadaan',    'nama_keadaan',    'teks',   REQUIRED],
             ],
         );
     }

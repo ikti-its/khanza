@@ -23,14 +23,14 @@ final class HasilRadController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Hasil Radiologi',  'id_hasil_rad',        'indeks',  0],
-                [1, 'ID Permintaan Rad',   'id_permintaan_rad',   'indeks',  1],
-                [1, 'Nomor Registrasi',    'nomor_reg',           'teks',    1],
-                [1, 'Kode Dokter PJ',      'kode_dokter_pj',      'teks',    1],
-                [1, 'ID Petugas Rad',      'id_petugas_rad',      'teks',    1],
-                [1, 'Kode Dokter Perujuk', 'kode_dokter_perujuk', 'teks',    1],
-                [1, 'Tanggal & Jam Hasil', 'tgl_jam_hasil',       'tanggal', 1],
-                [1, 'Catatan',             'catatan',             'teks',    1],
+                [HIDE, 'ID Hasil Radiologi',  'id_hasil_rad',        'indeks',  OPTIONAL],
+                [SHOW, 'ID Permintaan Rad',   'id_permintaan_rad',   'indeks',  REQUIRED],
+                [SHOW, 'Nomor Registrasi',    'nomor_reg',           'teks',    REQUIRED],
+                [SHOW, 'Kode Dokter PJ',      'kode_dokter_pj',      'teks',    REQUIRED],
+                [SHOW, 'ID Petugas Rad',      'id_petugas_rad',      'teks',    REQUIRED],
+                [SHOW, 'Kode Dokter Perujuk', 'kode_dokter_perujuk', 'teks',    REQUIRED],
+                [SHOW, 'Tanggal & Jam Hasil', 'tgl_jam_hasil',       'tanggal', REQUIRED],
+                [SHOW, 'Catatan',             'catatan',             'teks',    REQUIRED],
             ],
         );
     }

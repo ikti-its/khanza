@@ -23,11 +23,11 @@ final class PermintaanDarahController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Permintaan', 'id_permintaan', 'indeks', 0],
-                [1, 'No. Rawat', 'no_rawat', 'teks', 1],
-                [1, 'Kode Dokter Pengirim', 'kode_dokter_pengirim', 'teks', 1],
-                [1, 'Tanggal Permintaan', 'tanggal_permintaan', 'tanggal_jam', 1],
-                [1, 'ID Status Permintaan', 'id_status_permintaan', 'status', 1],
+                [HIDE, 'ID Permintaan', 'id_permintaan', 'indeks', OPTIONAL],
+                [SHOW, 'No. Rawat', 'no_rawat', 'teks', REQUIRED],
+                [SHOW, 'Kode Dokter Pengirim', 'kode_dokter_pengirim', 'teks', REQUIRED],
+                [SHOW, 'Tanggal Permintaan', 'tanggal_permintaan', 'tanggal_jam', REQUIRED],
+                [SHOW, 'ID Status Permintaan', 'id_status_permintaan', 'status', REQUIRED],
             ],
         );
     }   

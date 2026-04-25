@@ -23,8 +23,8 @@ final class RefJenisSedasiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Jenis Sedasi', 'id_jenis_sedasi', 'indeks', 0],
-                [1, 'Nama Sedasi',     'nama_sedasi',     'teks',   1],
+                [HIDE, 'ID Jenis Sedasi', 'id_jenis_sedasi', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Sedasi',     'nama_sedasi',     'teks',   REQUIRED],
             ],
         );
     }

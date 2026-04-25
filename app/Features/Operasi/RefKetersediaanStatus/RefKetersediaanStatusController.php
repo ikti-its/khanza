@@ -23,8 +23,8 @@ final class RefKetersediaanStatusController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Ketersediaan Status', 'id_ketersediaan_status', 'indeks', 0],
-                [1, 'Nama Ketersediaan',      'nama_ketersediaan',      'teks',   1],
+                [HIDE, 'ID Ketersediaan Status', 'id_ketersediaan_status', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Ketersediaan',      'nama_ketersediaan',      'teks',   REQUIRED],
             ],
         );
     }

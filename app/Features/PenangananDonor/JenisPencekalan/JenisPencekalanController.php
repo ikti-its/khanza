@@ -23,8 +23,8 @@ final class JenisPencekalanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Jenis Pencekalan', 'id_jenis_pencekalan', 'indeks', 0],
-                [1, 'Nama Jenis Pencekalan', 'nama_jenis_pencekalan', 'teks', 1],
+                [HIDE, 'ID Jenis Pencekalan', 'id_jenis_pencekalan', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Jenis Pencekalan', 'nama_jenis_pencekalan', 'teks', REQUIRED],
             ],
         );
     }   

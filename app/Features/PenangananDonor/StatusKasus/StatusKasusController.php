@@ -23,8 +23,8 @@ final class StatusKasusController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Status Kasus', 'id_status_kasus', 'indeks', 0],
-                [1, 'Nama Status Kasus', 'nama_status_kasus', 'teks', 1],
+                [HIDE, 'ID Status Kasus', 'id_status_kasus', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Status Kasus', 'nama_status_kasus', 'teks', REQUIRED],
             ],
         );
     }   

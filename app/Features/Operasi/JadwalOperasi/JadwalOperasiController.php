@@ -23,16 +23,16 @@ final class JadwalOperasiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID Jadwal',           'id_jadwal',            'indeks',  0],
-                [1, 'ID Permintaan',       'id_permintaan',        'indeks',  1],
-                [1, 'ID Ruangan',          'id_ruangan',           'indeks',  1],
-                [1, 'ID Tindakan',         'id_tindakan',          'indeks',  1],
-                [1, 'Kode Dokter Bedah',   'kode_dokter_bedah',    'teks',    1],
-                [1, 'Kode Dokter Anestesi','kode_dokter_anestesi', 'teks',    1],
-                [1, 'Tanggal',             'tanggal',              'tanggal', 1],
-                [1, 'Waktu Mulai',         'waktu_mulai',          'jam',     1],
-                [1, 'Waktu Selesai',       'waktu_selesai',        'jam',     1],
-                [1, 'Status',              'id_status',            'indeks',  1],
+                [HIDE, 'ID Jadwal',           'id_jadwal',            'indeks',  OPTIONAL],
+                [SHOW, 'ID Permintaan',       'id_permintaan',        'indeks',  REQUIRED],
+                [SHOW, 'ID Ruangan',          'id_ruangan',           'indeks',  REQUIRED],
+                [SHOW, 'ID Tindakan',         'id_tindakan',          'indeks',  REQUIRED],
+                [SHOW, 'Kode Dokter Bedah',   'kode_dokter_bedah',    'teks',    REQUIRED],
+                [SHOW, 'Kode Dokter Anestesi','kode_dokter_anestesi', 'teks',    REQUIRED],
+                [SHOW, 'Tanggal',             'tanggal',              'tanggal', REQUIRED],
+                [SHOW, 'Waktu Mulai',         'waktu_mulai',          'jam',     REQUIRED],
+                [SHOW, 'Waktu Selesai',       'waktu_selesai',        'jam',     REQUIRED],
+                [SHOW, 'Status',              'id_status',            'indeks',  REQUIRED],
             ],
         );
     }

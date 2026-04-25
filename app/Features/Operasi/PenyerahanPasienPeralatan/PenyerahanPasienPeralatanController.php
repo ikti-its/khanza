@@ -23,10 +23,10 @@ final class PenyerahanPasienPeralatanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [0, 'ID',             'id',             'indeks', 0],
-                [0, 'ID Penyerahan',  'id_penyerahan',  'indeks', 0],
-                [1, 'Peralatan',      'id_peralatan',   'indeks', 1],
-                [1, 'Keterangan',     'keterangan',     'teks',   1],
+                [HIDE, 'ID',             'id',             'indeks', OPTIONAL],
+                [HIDE, 'ID Penyerahan',  'id_penyerahan',  'indeks', OPTIONAL],
+                [SHOW, 'Peralatan',      'id_peralatan',   'indeks', REQUIRED],
+                [SHOW, 'Keterangan',     'keterangan',     'teks',   REQUIRED],
             ],
         );
     }

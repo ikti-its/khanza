@@ -23,14 +23,14 @@ final class TarifKomponenController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Tarif', 'id_tarif', 'indeks', 0],
-                [1, 'ID Komponen', 'id_komponen', 'indeks', 1],
-                [1, 'Jasa Sarana', 'jasa_sarana', 'uang', 1],
-                [1, 'Paket BHP', 'paket_bhp', 'uang', 1],
-                [1, 'KSO', 'kso', 'uang', 1],
-                [1, 'Manajemen', 'manajemen', 'uang', 1],
-                [0, 'Pembatalan', 'pembatalan', 'uang', 1],
-                [1, 'Tanggal Berlaku', 'tanggal_berlaku', 'tanggal', 1],
+                [HIDE, 'ID Tarif', 'id_tarif', 'indeks', OPTIONAL],
+                [SHOW, 'ID Komponen', 'id_komponen', 'indeks', REQUIRED],
+                [SHOW, 'Jasa Sarana', 'jasa_sarana', 'uang', REQUIRED],
+                [SHOW, 'Paket BHP', 'paket_bhp', 'uang', REQUIRED],
+                [SHOW, 'KSO', 'kso', 'uang', REQUIRED],
+                [SHOW, 'Manajemen', 'manajemen', 'uang', REQUIRED],
+                [HIDE, 'Pembatalan', 'pembatalan', 'uang', REQUIRED],
+                [SHOW, 'Tanggal Berlaku', 'tanggal_berlaku', 'tanggal', REQUIRED],
             ],
         );
     }   

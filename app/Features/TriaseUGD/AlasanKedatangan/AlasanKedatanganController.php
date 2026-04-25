@@ -23,8 +23,8 @@ final class AlasanKedatanganController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Alasan', 'id_alasan', 'indeks', 0],
-                [1, 'Nama Alasan Kedatangan', 'nama_alasan', 'teks', 1],
+                [HIDE, 'ID Alasan', 'id_alasan', 'indeks', OPTIONAL],
+                [SHOW, 'Nama Alasan Kedatangan', 'nama_alasan', 'teks', REQUIRED],
             ],
         );
     }   

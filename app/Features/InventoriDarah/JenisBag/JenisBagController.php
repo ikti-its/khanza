@@ -23,9 +23,9 @@ final class JenisBagController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [0, 'ID Jenis Bag', 'id_jenis_bag', 'indeks', 0],
-                [1, 'Kode', 'kode_jenis_bag', 'teks', 1],
-                [1, 'Nama Jenis Bag', 'nama_jenis_bag', 'teks', 1],
+                [HIDE, 'ID Jenis Bag', 'id_jenis_bag', 'indeks', OPTIONAL],
+                [SHOW, 'Kode', 'kode_jenis_bag', 'teks', REQUIRED],
+                [SHOW, 'Nama Jenis Bag', 'nama_jenis_bag', 'teks', REQUIRED],
             ],
         );
     }   
