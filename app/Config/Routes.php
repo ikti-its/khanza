@@ -8,13 +8,14 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->get('/', 'Home::index');
 $routes->post('/jwt',  [\App\Core\Auth\AuthController::class, 'jwt2']);
 $routes->get('/', [\App\Core\Auth\AuthController::class, 'index']);
-$routes->get('/', 'userPegawai::lihatDashboard', ['filter' => 'auth']);
 $routes->get('/login', [\App\Core\Auth\AuthController::class, 'index']);
-$routes->post('/logout', 'auth::logout', ['filter' => 'auth']);
+$routes->post('/login', [\App\Core\Auth\AuthController::class, 'login'], ['filter' => 'noauth']);
+$routes->post('/logout', [\App\Core\Auth\AuthController::class, 'logout'], ['filter' => 'auth']);
+
+$routes->get('/', 'userPegawai::lihatDashboard', ['filter' => 'auth']);
 
 $routes->get('/dashboard', 'userPegawai::lihatDashboard', ['filter' => 'auth']);
 // $routes->post('/dashboard', [App\Controllers\auth::class, 'login'], ['filter' => 'noauth']);
-$routes->post('/login', [\App\Core\Auth\AuthController::class, 'login'], ['filter' => 'noauth']);
 
 $routes->get('/profile', 'userPegawai::lihatProfil', ['filter' => 'auth']);
 $routes->post('/submiteditprofil/(:segment)', 'userPegawai::submitEditProfil/$1', ['filter' => 'auth']);

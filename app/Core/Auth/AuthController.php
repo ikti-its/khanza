@@ -129,6 +129,13 @@ final class AuthController extends Controller
             ->with('user_details', '');
     }
 
+    public function logout()
+    {
+        $session = session();
+        $session->destroy();
+        return redirect()->to(base_url("/login"));
+    }
+
     public function login2()
     {
         if (!$this->request->getPost()) {
