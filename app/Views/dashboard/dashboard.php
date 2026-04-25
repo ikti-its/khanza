@@ -8,7 +8,6 @@
 
     <div class="absolute inset-0">
         <img class="object-cover w-full h-full" src="/img/dashboard.png" alt="Dashboard Background">
-        <div class="absolute inset-0"></div>
     </div>
     <div class="relative max-w-5xl mx-auto px-4 xl:px-4 pt-10 lg:pt-16 pb-8 text-white">
         <div class="font-medium text-m md:text-l">
@@ -17,7 +16,6 @@
         <h1 class="font-bold text-3xl md:text-4xl">
             <span class="text-black">
                 <?php
-                    // Retrieve session data
                     $userData = session()->get('user_specific_data');
     
                     $nama = '';                    
@@ -40,17 +38,14 @@
             <div class="group mt-28 pt-10 items-center py-2 px-2 text-lg font-medium text-white">
                 <span>Status </span>
                 <p class="text-white mt-1 flex items-center">
-                    <?php
-                    if (session()->has('user_specific_data') && isset(session('user_specific_data')['status']) && session('user_specific_data')['status'] === true) {
-                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class="mr-2">
-                    <circle cx="4" cy="4" r="4" fill="#30DFC4"/>
-                  </svg> Hadir';
-                    } else {
-                        echo '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none" class="mr-2">
-                    <circle cx="4" cy="4" r="4" fill="#EF4444"/>
-                  </svg> Belum Absen';
-                    }
-                    ?>
+                    
+                    <?php if (session()->has('user_specific_data') && isset(session('user_specific_data')['status']) && session('user_specific_data')['status'] === true) :?>
+                        <img src="<?= base_url('svg/layouts/dashboard/presensi/hadir.svg')?>"">
+                        &nbsp; Hadir
+                    <?php else : ?>
+                        <img src="<?= base_url('svg/layouts/dashboard/presensi/absen.svg')?>"">
+                        &nbsp; Belum Absen
+                    <?php endif; ?>
                 </p>
             </div>
 
