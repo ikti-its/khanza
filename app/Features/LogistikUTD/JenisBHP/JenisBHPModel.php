@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\LogistikUTD\JenisBHP;
-
-use App\Core\ModelTemplate;
+use App\Core\Model\ModelTemplate;
 
 final class JenisBHPModel extends ModelTemplate
 {

@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefHubunganKeluarga;
-
-use App\Core\ModelTemplate;
+use App\Core\Model\ModelTemplate;
 
 final class RefHubunganKeluargaModel extends ModelTemplate
 {

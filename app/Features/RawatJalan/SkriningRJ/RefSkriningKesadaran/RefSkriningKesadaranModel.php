@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningKesadaran;
-
-use App\Core\ModelTemplate;
+use App\Core\Model\ModelTemplate;
 
 final class RefSkriningKesadaranModel extends ModelTemplate
 {

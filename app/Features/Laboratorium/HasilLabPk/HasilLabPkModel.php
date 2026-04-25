@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\HasilLabPk;
-
-use App\Core\ModelTemplate;
+use App\Core\Model\ModelTemplate;
 
 final class HasilLabPkModel extends ModelTemplate
 {

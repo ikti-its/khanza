@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningSkalaNyeri;
-
-use App\Core\ModelTemplate;
+use App\Core\Model\ModelTemplate;
 
 final class RefSkriningSkalaNyeriModel extends ModelTemplate
 {

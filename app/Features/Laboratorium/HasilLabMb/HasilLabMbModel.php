@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\HasilLabMb;
-
-use App\Core\ModelTemplate;
+use App\Core\Model\ModelTemplate;
 
 final class HasilLabMbModel extends ModelTemplate
 {

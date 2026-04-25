@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PermintaanBarangDetail;
-
-use App\Core\ModelTemplate;
+use App\Core\Model\ModelTemplate;
 
 final class PermintaanBarangDetailModel extends ModelTemplate
 {

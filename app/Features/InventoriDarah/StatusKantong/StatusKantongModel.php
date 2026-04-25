@@ -2,8 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriDarah\StatusKantong;
-
-use App\Core\ModelTemplate;
+use App\Core\Model\ModelTemplate;
 
 final class StatusKantongModel extends ModelTemplate
 {

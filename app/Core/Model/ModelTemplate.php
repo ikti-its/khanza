@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core;
+namespace App\Core\Model;
 use CodeIgniter\Model;
 
 class ModelTemplate extends Model
