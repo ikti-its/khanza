@@ -1,5 +1,5 @@
-<input 
-    id="<?= $id ?>" 
+<input
+    id="<?= $id ?>"
     type="text"
     name="<?= $kolom ?>"
     value="<?= $value ?>"

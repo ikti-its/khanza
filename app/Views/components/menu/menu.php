@@ -17,9 +17,7 @@
         // $foto  = $userDetails['foto']  ?? $foto;
         $email = $userDetails['email'] ?? $email;
     }
-?>
 
-<?php
     $TEKS     = 0;
     $LINK     = 1;
     $ICON     = 2;

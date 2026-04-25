@@ -9,7 +9,7 @@
             'judul' => $judul
         ]) ?>
         <form action="<?= $modul_path . $form_action ?>" id="myForm" onsubmit="return validateForm()" method="post">
-           <?php 
+            <?php
                 echo csrf_field();
                 echo view('components/form/isian', ['konfig' => $konfig, 'baris' => $baris ??  '']);
                 echo view('components/form/submit_button')
@@ -20,7 +20,6 @@
 </div>
 <!-- End Card Section -->
 <script>
-
     function validateForm() {
         var requiredFields = document.querySelectorAll('select[required], input[required]');
         for (var i = 0; i < requiredFields.length; i++) {

@@ -2,7 +2,7 @@
     <?php if (strtolower($baris['pengantaran']) === 'ambulans'): ?>
         <div class="px-3 py-1.5">
             <a id="btn-panggil-<?= $baris['nomor_rujuk'] ?>"
-                href="javascript:void(0);" 
+                href="javascript:void(0);"
                 class="text-sm text-red-600 hover:underline font-semibold"
                 onclick="requestAmbulanceModal('<?= esc($baris['nomor_rujuk']) ?>')">
                 Panggil Ambulans

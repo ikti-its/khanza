@@ -12,13 +12,13 @@
 
 <script>
     function myFunction() {
-        let table  = document.getElementById("myTable"); // Pastikan ini mengacu pada ID tabel yang benar
+        let table = document.getElementById("myTable"); // Pastikan ini mengacu pada ID tabel yang benar
         if (!table) return; // Pastikan tabel ada sebelum melanjutkan
 
-        let input  = document.getElementById("myInput");
+        let input = document.getElementById("myInput");
         let filter = input.value.toUpperCase();
         let tr = table.getElementsByTagName("tr");
-        if(!tr || tr.length <= 1) return;
+        if (!tr || tr.length <= 1) return;
 
         // Iterate over all table rows (excluding header row)
         for (let i = 1; i < tr.length; i++) {
@@ -33,7 +33,7 @@
                 let text = nested.textContent;
 
                 // Reset cell text (remove any old highlights)
-                
+
                 nested.innerHTML = text;
 
                 let index = text.toUpperCase().indexOf(filter);

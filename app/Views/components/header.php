@@ -33,7 +33,7 @@
             </div>
 
             <div class="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
-                
+
 
                 <div class="">
                     <label for="icon" class="sr-only">Search</label>
@@ -136,39 +136,50 @@
                                 name: 'Akun',
                                 url: '/profile'
                             },
-                            <?php //if (session('user_specific_data')['status'] === false) : ?> {
+                            <?php //if (session('user_specific_data')['status'] === false) : 
+                            ?> {
                                     name: 'Presensi Masuk',
                                     url: '/menukehadiran'
                                 },
-                            <?php //else : ?> {
+                            <?php //else : 
+                            ?> {
                                     name: 'Presensi Pulang',
-                                    url: '/absenpulang/<?php //echo session('user_specific_data')['pegawai'] ?>'
+                                    url: '/absenpulang/<?php //echo session('user_specific_data')['pegawai'] 
+                                                        ?>'
                                 },
-                            <?php //endif; ?> {
+                            <?php //endif; 
+                            ?> {
                                 name: 'Pengajuan Izin Cuti',
                                 url: '/izincuti'
                             },
                             {
                                 name: 'Peninjauan Catatan Kehadiran',
-                                url: '/catatankehadiran/<?php //echo session('user_specific_data')['pegawai'] ?>'
+                                url: '/catatankehadiran/<?php //echo session('user_specific_data')['pegawai'] 
+                                                        ?>'
                             },
                             {
                                 name: 'Peninjauan Jadwal Kerja',
-                                url: '/lihatjadwal/<?php //echo session('user_specific_data')['pegawai'] ?>'
+                                url: '/lihatjadwal/<?php //echo session('user_specific_data')['pegawai'] 
+                                                    ?>'
                             },
                             {
                                 name: 'Peninjauan Daftar Pengajuan Cuti',
-                                url: '/lihatizincuti/<?php //echo session('user_specific_data')['pegawai'] ?>'
+                                url: '/lihatizincuti/<?php //echo session('user_specific_data')['pegawai'] 
+                                                        ?>'
                             },
-                            <?php //if (session('user_details')['role'] === 1) : ?> {
+                            <?php //if (session('user_details')['role'] === 1) : 
+                            ?> {
                                     name: 'Data Pegawai',
                                     url: '/datauserpegawai'
                                 }
-                            <?php //else : ?> {
+                            <?php //else : 
+                            ?> {
                                     name: 'Data Pegawai',
-                                    url: '/detailberkaspegawai/<?php //echo session('user_specific_data')['pegawai'] ?>'
+                                    url: '/detailberkaspegawai/<?php //echo session('user_specific_data')['pegawai'] 
+                                                                ?>'
                                 }
-                            <?php //endif; ?>
+                            <?php //endif; 
+                            ?>
                         ];
 
                         searchInput.addEventListener('input', function() {
@@ -280,7 +291,8 @@
                     <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
 
                         <button id="hs-dropdown-with-header" type="button" class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                            <img class="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-gray-800" src="<?php //echo session('user_specific_data')['profil'] ?>" alt="Image Description">
+                            <img class="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-gray-800" src="<?php //echo session('user_specific_data')['profil'] 
+                                                                                                                            ?>" alt="Image Description">
                         </button>
 
                         <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700" aria-labelledby="hs-dropdown-with-header">
@@ -291,14 +303,14 @@
                                 </p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">
                                     (<?= match ($role) {
-                                        1337 => 'Super Admin',
-                                        1    => 'Admin',
-                                        2    => 'Petugas',
-                                        3    => 'Dokter',
-                                        4001 => 'Role 4001',
-                                        5001 => 'Role 5001',
-                                        default => 'Guest'
-                                    } ?>)
+                                            1337 => 'Super Admin',
+                                            1    => 'Admin',
+                                            2    => 'Petugas',
+                                            3    => 'Dokter',
+                                            4001 => 'Role 4001',
+                                            5001 => 'Role 5001',
+                                            default => 'Guest'
+                                        } ?>)
                                 </p>
                             </div>
                             <div class="mt-2 py-2 first:pt-0 last:pb-0">
@@ -356,20 +368,20 @@
     <!-- ========== MAIN CONTENT ========== -->
     <!-- Sidebar Toggle -->
 
-            <!-- Breadcrumb -->
-            <ol class="ms-3 flex items-center whitespace-nowrap" aria-label="Breadcrumb">
-                <li class="flex items-center text-sm text-gray-800 dark:text-gray-400">
-                    Omnia
-                    <!-- <svg class="flex-shrink-0 mx-3 overflow-visible size-2.5 text-gray-400 dark:text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Breadcrumb -->
+    <ol class="ms-3 flex items-center whitespace-nowrap" aria-label="Breadcrumb">
+        <li class="flex items-center text-sm text-gray-800 dark:text-gray-400">
+            Omnia
+            <!-- <svg class="flex-shrink-0 mx-3 overflow-visible size-2.5 text-gray-400 dark:text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                     </svg> -->
-                </li>
-                <!-- <li class="text-sm font-semibold text-gray-800 truncate dark:text-gray-400" aria-current="page">
+        </li>
+        <!-- <li class="text-sm font-semibold text-gray-800 truncate dark:text-gray-400" aria-current="page">
                     Dashboard
                 </li> -->
-            </ol>
-            <!-- End Breadcrumb -->
-        </div>
+    </ol>
+    <!-- End Breadcrumb -->
+    </div>
     </div>
     <!-- End Sidebar Toggle -->
 
@@ -632,8 +644,9 @@
 
 
                 <li>
-                    <?php if (isset(session('user_details')['role']) &&(session('user_details')['role'] === 2)) : ?>
-                        <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-teal-200 dark:hover:bg-teal-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/detailberkaspegawai/<?php //echo session('user_specific_data')['pegawai'] ?>">
+                    <?php if (isset(session('user_details')['role']) && (session('user_details')['role'] === 2)) : ?>
+                        <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-teal-200 dark:hover:bg-teal-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/detailberkaspegawai/<?php //echo session('user_specific_data')['pegawai'] 
+                                                                                                                                                                                                                                                                                                            ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M15.8334 5H13.3334V4.16667C13.3334 3.25 12.5834 2.5 11.6667 2.5H8.33341C7.41675 2.5 6.66675 3.25 6.66675 4.16667V5H4.16675C2.75008 5 1.66675 6.08333 1.66675 7.5V15C1.66675 16.4167 2.75008 17.5 4.16675 17.5H15.8334C17.2501 17.5 18.3334 16.4167 18.3334 15V7.5C18.3334 6.08333 17.2501 5 15.8334 5ZM8.33341 4.16667H11.6667V5H8.33341V4.16667ZM16.6667 15C16.6667 15.5 16.3334 15.8333 15.8334 15.8333H4.16675C3.66675 15.8333 3.33341 15.5 3.33341 15V10.3333H7.00024C7.00024 10.3333 7.00024 10.3333 7.00024 10.3333C7.00024 10.3333 12.4169 10.3333 12.5002 10.3333C12.5836 10.3333 13.4246 10.3333 13.4246 10.3333L16.6667 10.25V15Z" fill="#272727" />
                                 <path d="M15.8332 5H4.1665C3.50346 5 2.86758 5.26339 2.39874 5.73223C1.9299 6.20107 1.6665 6.83696 1.6665 7.5V9.76667L6.74797 11.4612C7.15599 11.5973 7.58328 11.6667 8.01338 11.6667H11.9863C12.4164 11.6667 12.8437 11.5973 13.2517 11.4612L18.3332 9.76667V7.5C18.3332 6.83696 18.0698 6.20107 17.6009 5.73223C17.1321 5.26339 16.4962 5 15.8332 5Z" fill="#272727" />
@@ -663,7 +676,8 @@
                     <div id="account-accordion-content" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
                         <ul class="pt-2 ps-2">
                             <li>
-                                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-teal-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300" href="/detailberkaspegawai/<?php echo session('user_specific_data')//['pegawai'] ?>">
+                                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-700 rounded-lg hover:bg-teal-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-300" href="/detailberkaspegawai/<?php echo session('user_specific_data') //['pegawai'] 
+                                                                                                                                                                                                                                        ?>">
                                     Data Pegawai
                                 </a>
                             </li>
@@ -896,7 +910,7 @@
                         ['Hasil Radiologi Tindakan',      '/hasil-rad-tindakan',      ''],
                         // Referensi
                         ['Referensi Item Radiologi',      '/ref-item-rad',            ''],
-                        ['Referensi Status Permintaan',   '/ref-status-permintaan-rad',''],
+                        ['Referensi Status Permintaan',   '/ref-status-permintaan-rad', ''],
                         ['Referensi Template Radiologi',  '/ref-template-rad',        ''],
                     ]],
                     ['Rawat Jalan', '', 'rawat_jalan', '/rawat-jalan', $petugasrole, [
@@ -914,7 +928,7 @@
                         // Catatan Anestesi Sedasi
                         ['Catatan Anestesi Sedasi',             '/catatan-anestesi-sedasi',           ''],
                         ['Catatan Anestesi Sedasi Alat',        '/catatan-anestesi-sedasi-alat',      ''],
-                        ['Catatan Anestesi Sedasi Monitoring',  '/catatan-anestesi-sedasi-monitoring',''],
+                        ['Catatan Anestesi Sedasi Monitoring',  '/catatan-anestesi-sedasi-monitoring', ''],
                         // Catatan Paska Operasi
                         ['Catatan Paska Operasi',               '/catatan-paska-operasi',             ''],
                         // Checklist Post Operasi
@@ -984,14 +998,14 @@
                 ?>
                 <li>
                     <button onclick=" event.preventDefault(); openModal('modelLogout')" class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:hover:bg-teal-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                        <path d="M11.26 2C10.79 2 10.4 2.38 10.4 2.86V21.15C10.4 21.62 10.78 22.01 11.26 22.01C17.15 22.01 21.26 17.9 21.26 12.01C21.26 6.12 17.14 2 11.26 2Z" fill="#FEE2E2" />
-                        <path d="M3.96012 11.5399L6.80012 8.68991C7.09012 8.39991 7.57012 8.39991 7.86012 8.68991C8.15012 8.97991 8.15012 9.45991 7.86012 9.74991L6.30012 11.3099H15.8701C16.2801 11.3099 16.6201 11.6499 16.6201 12.0599C16.6201 12.4699 16.2801 12.8099 15.8701 12.8099H6.30012L7.86012 14.3699C8.15012 14.6599 8.15012 15.1399 7.86012 15.4299C7.71012 15.5799 7.52012 15.6499 7.33012 15.6499C7.14012 15.6499 6.95012 15.5799 6.80012 15.4299L3.96012 12.5799C3.67012 12.2999 3.67012 11.8299 3.96012 11.5399Z" fill="#DA4141" />
-                    </svg>
-                    Keluar akun
-                    </button>
-                </li>
-            </ul>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                        <path d="M11.26 2C10.79 2 10.4 2.38 10.4 2.86V21.15C10.4 21.62 10.78 22.01 11.26 22.01C17.15 22.01 21.26 17.9 21.26 12.01C21.26 6.12 17.14 2 11.26 2Z" fill="#FEE2E2" />
+                                        <path d="M3.96012 11.5399L6.80012 8.68991C7.09012 8.39991 7.57012 8.39991 7.86012 8.68991C8.15012 8.97991 8.15012 9.45991 7.86012 9.74991L6.30012 11.3099H15.8701C16.2801 11.3099 16.6201 11.6499 16.6201 12.0599C16.6201 12.4699 16.2801 12.8099 15.8701 12.8099H6.30012L7.86012 14.3699C8.15012 14.6599 8.15012 15.1399 7.86012 15.4299C7.71012 15.5799 7.52012 15.6499 7.33012 15.6499C7.14012 15.6499 6.95012 15.5799 6.80012 15.4299L3.96012 12.5799C3.67012 12.2999 3.67012 11.8299 3.96012 11.5399Z" fill="#DA4141" />
+                                    </svg>
+                                    Keluar akun
+                                    </button>
+                            </li>
+                        </ul>
         </nav>
     </div>
     <!-- End Sidebar -->

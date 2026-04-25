@@ -12,7 +12,7 @@
     // Event listener untuk menutup pop up saat mengklik di luar pop up
     document.addEventListener('click', function(event) {
         const notifPopup = document.getElementById('notif-popup');
-        const notifIcon  = document.getElementById('notif-icon');
+        const notifIcon = document.getElementById('notif-icon');
 
         // Periksa apakah yang diklik bukan bagian dari pop up notifikasi
         if (!notifPopup.contains(event.target) && event.target !== notifIcon) {

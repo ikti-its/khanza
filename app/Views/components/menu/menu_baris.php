@@ -8,7 +8,7 @@
             <?= view('components/menu/submenu', [
                 'submenu' => $submenu,
                 'prefiks' => $prefiks,
-            ]) ?>      
+            ]) ?>
         </ul>
     </div>
 </li>

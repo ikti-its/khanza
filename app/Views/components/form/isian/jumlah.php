@@ -1,9 +1,9 @@
-<input 
+<input
     id="<? $id ?>"
-    type="number" 
+    type="number"
     name="<?= $kolom ?>"
     value="<?= $value ?>"
-    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full md:w-1/4 dark:border-gray-600 dark:text-white" 
-    placeholder="0"v 
+    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full md:w-1/4 dark:border-gray-600 dark:text-white"
+    placeholder="0" v
     <?= $req  === 1   ? 'required' : ''; ?>
 >
