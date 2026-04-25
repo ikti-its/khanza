@@ -2,12 +2,12 @@
 <?= $this->section('content'); ?>
 
 <div class="absolute inset-0">
-    <img class="object-cover w-full h-[72%]" src="/img/fix-background-dashboard-image.png" alt="Dashboard Background">
+    <img class="object-cover w-full h-[72%]" src="/img/background.png" alt="Dashboard Background">
 </div>
 <div class="relative overflow-x-auto mt-5 ml-4 mr-4  bg-white shadow-xl rounded-lg text-gray-900">
 
     <div class="absolute inset-0">
-        <img class="object-cover w-full h-full" src="/img/fix-dashboard-image.png" alt="Dashboard Background">
+        <img class="object-cover w-full h-full" src="/img/dashboard.png" alt="Dashboard Background">
         <div class="absolute inset-0"></div>
     </div>
     <div class="relative max-w-5xl mx-auto px-4 xl:px-4 pt-10 lg:pt-16 pb-8 text-white">
