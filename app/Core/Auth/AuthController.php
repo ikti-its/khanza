@@ -96,19 +96,11 @@ final class AuthController extends Controller
         if(session()->has('jwt_token')){
             return redirect()->to('/dashboard');
         }
-        return view('login');
+        return view('layouts/login');
     }
 
     public function login()
     {
-        if(session()->has('jwt_token')){
-            return redirect()->to('/dashboard');
-        }
-
-        if (!$this->request->getPost()) {
-            return view('login');
-        }
-
         $login_data = [
             'email'    => $this->request->getPost('email'),
             'password' => $this->request->getPost('password')
