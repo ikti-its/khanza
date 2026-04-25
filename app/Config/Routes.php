@@ -974,6 +974,15 @@ $features = [
         ['TriasePemeriksaan', 'triase-pemeriksaan'],
         ['TriaseSkala', 'triase-skala'],
     ]],
+    ['LogistikUTD', 'logistik-utd/', [
+        ['BHPRusak', 'bhp-rusak'],
+        ['JenisBHP', 'jenis-bhp'],
+        ['PengambilanMedis', 'pengambilan-medis'],
+        ['PengambilanPenunjang', 'pengambilan-non-medis'],
+        ['PenggunaanBHPDonor', 'penggunaan-bhp-donor'],
+        ['PenggunaanBHPPemisahan', 'penggunaan-bhp-pemisahan'],
+        ['PenggunaanBHPPenyerahan', 'penggunaan-bhp-penyerahan'],
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];

@@ -871,6 +871,15 @@
                         ['Status Permintaan', '/status-permintaan', ''],
                         ['Status Pembayaran', '/status-pembayaran', '']
                     ]],
+                    ['Logistik UTD', '', 'logistik_utd', '/logistik-utd', $petugasrole, [
+                        ['Penggunaan BHP Donor', '/penggunaan-bhp-donor', ''],
+                        ['Penggunaan BHP Pemisahan', '/penggunaan-bhp-pemisahan', ''],
+                        ['Penggunaan BHP Penyerahan', '/penggunaan-bhp-penyerahan', ''],
+                        ['BHP Rusak', '/bhp-rusak', ''],
+                        ['Pengambilan BHP Medis', '/pengambilan-medis', ''],
+                        ['Pengambilan BHP Non Medis', '/pengambilan-non-medis', ''],
+                        ['Jenis BHP', '/jenis-bhp', '']
+                    ]],
                     ['Penanganan Donor', '', 'penanganan_donor', '/penanganan-donor', $petugasrole, [
                         ['Kasus Reaktif', '/kasus-reaktif', ''],
                         ['Kasus Reaktif Detail', '/kasus-reaktif-detail', ''],
