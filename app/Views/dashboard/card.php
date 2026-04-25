@@ -1,6 +1,6 @@
 <div class="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
     <div class="px-5 py-5 flex flex-col justify-center items-start bg-white rounded-t-xl">
-        <img src="<?= base_url('svg/layouts/dashboard/' . $image) ?>" alt="Icon">
+        <img src="<?= base_url('svg/layouts/dashboard/card/' . $image) ?>" alt="Icon">
     </div>
     <div class="p-4 md:p-6">
         <h3 class="text-xl font-bold text-gray-800 dark:text-neutral-300 dark:hover:text-white">
