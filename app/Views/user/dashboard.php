@@ -15,41 +15,29 @@
             <span class="text-black">Selamat Datang, </span>
         </div>
         <h1 class="font-bold text-3xl md:text-4xl">
-            <span class="text-black"><?php
-                                        // Retrieve session data
-                                        $userData = session()->get('user_specific_data');
-
-                                        // dd($userData);
-                                        
-                                        // Check if the session data is valid
-                                        error_reporting(E_ALL);
-                                        ini_set('display_errors', 1);
-                                        
-                                        // Example user data (change this based on your actual login system)
-                                        // $userData = [
-                                        //     'email' => 'admin@fathoor.dev' // Example email
-                                            // 'nama' => 'John Doe' // Uncomment to test when 'nama' is available
-                                        // ];
-                                        
-                                        // Check if $userData is an array and contains 'nama'
-                                        if (is_array($userData) && isset($userData['nama']) && !empty(trim($userData['nama']))) {
-                                            $nama = trim($userData['nama']);
-                                        } elseif (isset($userData['email'])) {
-                                            // Extract the first part of the email before '@'
-                                            $nama = explode('@', $userData['email'])[0];
-                                        } else {
-                                            $nama = 'Admins'; // Default fallback if email is also missing
-                                        }
-                                        
-                                        // Extract the first word from the determined name
-                                        $firstWord = explode(' ', trim($nama))[0];
-                                        
-                                        echo $firstWord;
-
-                                        // $nama = session('user_specific_data')['nama'];
-                                        // $firstWord = explode(' ', trim($nama))[0];
-                                        // echo $firstWord;
-                                        ?></span>
+            <span class="text-black">
+                <?php
+                    // Retrieve session data
+                    $userData = session()->get('user_specific_data');
+                    $userData = "akun not found";
+    
+                    $nama = '';                    
+                    // Check if $userData is an array and contains 'nama'
+                    if (is_array($userData) && isset($userData['nama']) && !empty(trim($userData['nama']))) {
+                        $nama = trim($userData['nama']);
+                    } elseif (isset($userData['email'])) {
+                        // Extract the first part of the email before '@'
+                        $nama = explode('@', $userData['email'])[0];
+                    } else {
+                        $nama = 'Admins'; // Default fallback if email is also missing
+                    }
+                    
+                    // Extract the first word from the determined name
+                    $firstWord = explode(' ', trim($nama))[0];
+                    
+                    echo $firstWord;
+                ?>
+            </span>
         </h1>
         <div class="max-w-4xl flex justify-between">
 
