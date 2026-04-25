@@ -23,10 +23,10 @@ final class HasilUjiSaringDetailController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Uji Saring Detail', 'id_uji_saring_detail', 'indeks', OPTIONAL],
-                [SHOW, 'ID Uji Saring', 'id_uji_saring', 'indeks', REQUIRED],
-                [SHOW, 'ID Parameter Uji', 'id_parameter_uji', 'indeks', REQUIRED],
-                [SHOW, 'ID Nilai Saring', 'id_nilai_saring', 'indeks', REQUIRED],
+                [HIDE, 'ID Uji Saring Detail', 'id_uji_saring_detail', I::INDEX, OPTIONAL],
+                [SHOW, 'ID Uji Saring', 'id_uji_saring', I::INDEX, REQUIRED],
+                [SHOW, 'ID Parameter Uji', 'id_parameter_uji', I::INDEX, REQUIRED],
+                [SHOW, 'ID Nilai Saring', 'id_nilai_saring', I::INDEX, REQUIRED],
                 [SHOW, 'Nilai Absorbance', 'nilai_absorbance', 'desimal', OPTIONAL],
             ],
         );

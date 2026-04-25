@@ -24,8 +24,8 @@ final class RefSkriningKesadaranController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Kesadaran', 'id_kesadaran', 'indeks', OPTIONAL],
-                [SHOW, 'Kesadaran',    'kesadaran',    'teks',   REQUIRED],
+                [HIDE, 'ID Kesadaran', 'id_kesadaran', I::INDEX, OPTIONAL],
+                [SHOW, 'Kesadaran',    'kesadaran',    I::TEXT,   REQUIRED],
             ],
         );
     }

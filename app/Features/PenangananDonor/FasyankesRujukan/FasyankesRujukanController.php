@@ -23,10 +23,10 @@ final class FasyankesRujukanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Fasyankes', 'id_fasyankes', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Fasyankes', 'nama_fasyankes', 'teks', REQUIRED],
-                [SHOW, 'ID Alamat', 'id_alamat', 'indeks', REQUIRED],
-                [SHOW, 'Kode Pos', 'kode_pos', 'teks', REQUIRED],
+                [HIDE, 'ID Fasyankes', 'id_fasyankes', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Fasyankes', 'nama_fasyankes', I::TEXT, REQUIRED],
+                [SHOW, 'ID Alamat', 'id_alamat', I::INDEX, REQUIRED],
+                [SHOW, 'Kode Pos', 'kode_pos', I::TEXT, REQUIRED],
             ],
         );
     }   

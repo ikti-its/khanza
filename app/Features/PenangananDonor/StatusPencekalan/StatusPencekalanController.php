@@ -23,8 +23,8 @@ final class StatusPencekalanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Status Pencekalan', 'id_status_pencekalan', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Status Pencekalan', 'nama_status_pencekalan', 'teks', REQUIRED],
+                [HIDE, 'ID Status Pencekalan', 'id_status_pencekalan', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Status Pencekalan', 'nama_status_pencekalan', I::TEXT, REQUIRED],
             ],
         );
     }   

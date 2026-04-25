@@ -24,8 +24,8 @@ final class RefHubunganKeluargaController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Hubungan Keluarga', 'id_hubungan_keluarga', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Hubungan',        'nama_hubungan',        'teks',   REQUIRED],
+                [HIDE, 'ID Hubungan Keluarga', 'id_hubungan_keluarga', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Hubungan',        'nama_hubungan',        I::TEXT,   REQUIRED],
             ],
         );
     }

@@ -24,8 +24,8 @@ final class RefSkriningPernafasanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Pernafasan', 'id_pernafasan', 'indeks', OPTIONAL],
-                [SHOW, 'Pernafasan',    'pernafasan',    'teks',   REQUIRED],
+                [HIDE, 'ID Pernafasan', 'id_pernafasan', I::INDEX, OPTIONAL],
+                [SHOW, 'Pernafasan',    'pernafasan',    I::TEXT,   REQUIRED],
             ],
         );
     }

@@ -23,8 +23,8 @@ final class LokasiPengambilanDarahController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Lokasi Pengambilan', 'id_lokasi_pengambilan', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Lokasi', 'nama_lokasi', 'teks', REQUIRED],
+                [HIDE, 'ID Lokasi Pengambilan', 'id_lokasi_pengambilan', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Lokasi', 'nama_lokasi', I::TEXT, REQUIRED],
             ],
         );
     }   

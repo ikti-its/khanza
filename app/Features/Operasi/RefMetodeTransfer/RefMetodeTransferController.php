@@ -24,8 +24,8 @@ final class RefMetodeTransferController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Metode',   'id_metode',   'indeks', OPTIONAL],
-                [SHOW, 'Nama Metode', 'nama_metode', 'teks',   REQUIRED],
+                [HIDE, 'ID Metode',   'id_metode',   I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Metode', 'nama_metode', I::TEXT,   REQUIRED],
             ],
         );
     }

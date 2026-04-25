@@ -23,10 +23,10 @@ final class KantongDarahController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Bag', 'id_bag', 'indeks', OPTIONAL],
-                [SHOW, 'ID Pengambilan Darah', 'id_pengambilan_darah', 'indeks', REQUIRED],
-                [SHOW, 'Nomor Bag', 'no_bag', 'teks', REQUIRED],
-                [SHOW, 'ID Jenis Bag', 'id_jenis_bag', 'indeks', REQUIRED],
+                [HIDE, 'ID Bag', 'id_bag', I::INDEX, OPTIONAL],
+                [SHOW, 'ID Pengambilan Darah', 'id_pengambilan_darah', I::INDEX, REQUIRED],
+                [SHOW, 'Nomor Bag', 'no_bag', I::TEXT, REQUIRED],
+                [SHOW, 'ID Jenis Bag', 'id_jenis_bag', I::INDEX, REQUIRED],
             ],
         );
     }   

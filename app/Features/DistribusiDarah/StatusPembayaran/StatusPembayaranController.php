@@ -23,8 +23,8 @@ final class StatusPembayaranController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Status Pembayaran', 'id_status_pembayaran', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Status Pembayaran', 'nama_status_pembayaran', 'teks', REQUIRED],
+                [HIDE, 'ID Status Pembayaran', 'id_status_pembayaran', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Status Pembayaran', 'nama_status_pembayaran', I::TEXT, REQUIRED],
             ],
         );
     }   

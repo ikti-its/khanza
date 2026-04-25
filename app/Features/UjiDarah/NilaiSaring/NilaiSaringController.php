@@ -23,8 +23,8 @@ final class NilaiSaringController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Nilai Saring', 'id_nilai_saring', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Nilai Saring', 'nama_nilai_saring', 'teks', REQUIRED],
+                [HIDE, 'ID Nilai Saring', 'id_nilai_saring', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Nilai Saring', 'nama_nilai_saring', I::TEXT, REQUIRED],
             ],
         );
     }   

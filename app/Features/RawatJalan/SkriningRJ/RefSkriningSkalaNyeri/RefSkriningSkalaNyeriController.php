@@ -24,8 +24,8 @@ final class RefSkriningSkalaNyeriController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Skala Nyeri', 'id_skala_nyeri', 'indeks', OPTIONAL],
-                [SHOW, 'Skala Nyeri',    'skala_nyeri',    'teks',   REQUIRED],
+                [HIDE, 'ID Skala Nyeri', 'id_skala_nyeri', I::INDEX, OPTIONAL],
+                [SHOW, 'Skala Nyeri',    'skala_nyeri',    I::TEXT,   REQUIRED],
             ],
         );
     }

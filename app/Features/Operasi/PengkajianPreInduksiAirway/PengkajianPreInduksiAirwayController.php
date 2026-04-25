@@ -24,13 +24,13 @@ final class PengkajianPreInduksiAirwayController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Airway',     'id_airway',     'indeks', OPTIONAL],
-                [HIDE, 'ID Pengkajian', 'id_pengkajian', 'indeks', OPTIONAL],
-                [SHOW, 'Jenis Airway',  'jenis_airway',  'teks',   REQUIRED],
-                [SHOW, 'Nomor',         'nomor',         'teks',   REQUIRED],
-                [SHOW, 'Jenis',         'jenis',         'teks',   REQUIRED],
-                [SHOW, 'Fiksasi (cm)',  'fiksasi_cm',    'jumlah', REQUIRED],
-                [SHOW, 'Keterangan',    'keterangan',    'teks',   REQUIRED],
+                [HIDE, 'ID Airway',     'id_airway',     I::INDEX, OPTIONAL],
+                [HIDE, 'ID Pengkajian', 'id_pengkajian', I::INDEX, OPTIONAL],
+                [SHOW, 'Jenis Airway',  'jenis_airway',  I::TEXT,   REQUIRED],
+                [SHOW, 'Nomor',         'nomor',         I::TEXT,   REQUIRED],
+                [SHOW, 'Jenis',         'jenis',         I::TEXT,   REQUIRED],
+                [SHOW, 'Fiksasi (cm)',  'fiksasi_cm',    I::NUMBER, REQUIRED],
+                [SHOW, 'Keterangan',    'keterangan',    I::TEXT,   REQUIRED],
             ],
         );
     }

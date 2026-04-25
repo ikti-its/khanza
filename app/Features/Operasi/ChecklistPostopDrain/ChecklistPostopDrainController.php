@@ -24,12 +24,12 @@ final class ChecklistPostopDrainController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Drain',          'id_drain',          'indeks', OPTIONAL],
-                [HIDE, 'ID Checklist Post', 'id_checklist_post', 'indeks', OPTIONAL],
-                [SHOW, 'Ketersediaan',      'id_ketersediaan',   'indeks', REQUIRED],
-                [SHOW, 'Jumlah',            'jumlah',            'jumlah', REQUIRED],
-                [SHOW, 'Letak',             'letak',             'teks',   REQUIRED],
-                [SHOW, 'Warna',             'warna',             'teks',   REQUIRED],
+                [HIDE, 'ID Drain',          'id_drain',          I::INDEX, OPTIONAL],
+                [HIDE, 'ID Checklist Post', 'id_checklist_post', I::INDEX, OPTIONAL],
+                [SHOW, 'Ketersediaan',      'id_ketersediaan',   I::INDEX, REQUIRED],
+                [SHOW, I::NUMBER,            I::NUMBER,            I::NUMBER, REQUIRED],
+                [SHOW, 'Letak',             'letak',             I::TEXT,   REQUIRED],
+                [SHOW, 'Warna',             'warna',             I::TEXT,   REQUIRED],
             ],
         );
     }

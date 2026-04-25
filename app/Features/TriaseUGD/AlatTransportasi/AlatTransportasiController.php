@@ -23,8 +23,8 @@ final class AlatTransportasiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Transportasi', 'id_transportasi', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Transportasi', 'nama_transportasi', 'teks', REQUIRED],
+                [HIDE, 'ID Transportasi', 'id_transportasi', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Transportasi', 'nama_transportasi', I::TEXT, REQUIRED],
             ],
         );
     }   

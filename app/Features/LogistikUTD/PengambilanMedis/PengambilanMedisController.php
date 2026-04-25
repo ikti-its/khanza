@@ -23,15 +23,15 @@ final class PengambilanMedisController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Pengambilan Medis', 'id_pengambilan_medis', 'indeks', OPTIONAL],
-                [SHOW, 'ID Barang', 'id_barang', 'indeks', REQUIRED],
-                [SHOW, 'Jumlah', 'jumlah', 'jumlah', REQUIRED],
-                [SHOW, 'Harga Beli', 'harga_beli', 'uang', REQUIRED],
-                [SHOW, 'Nama Bangsal', 'nama_bangsal', 'teks', REQUIRED],
+                [HIDE, 'ID Pengambilan Medis', 'id_pengambilan_medis', I::INDEX, OPTIONAL],
+                [SHOW, 'ID Barang', 'id_barang', I::INDEX, REQUIRED],
+                [SHOW, I::NUMBER, I::NUMBER, I::NUMBER, REQUIRED],
+                [SHOW, 'Harga Beli', 'harga_beli', I::MONEY, REQUIRED],
+                [SHOW, 'Nama Bangsal', 'nama_bangsal', I::TEXT, REQUIRED],
                 [SHOW, 'Tanggal Pengambilan', 'tanggal_pengambilan', 'tanggal_jam', REQUIRED],
-                [HIDE, 'Keterangan', 'keterangan', 'teks', REQUIRED],
-                [HIDE, 'Nomor Batch', 'nomor_batch', 'teks', OPTIONAL],
-                [HIDE, 'Nomor Faktur', 'nomor_faktur', 'teks', OPTIONAL],
+                [HIDE, 'Keterangan', 'keterangan', I::TEXT, REQUIRED],
+                [HIDE, 'Nomor Batch', 'nomor_batch', I::TEXT, OPTIONAL],
+                [HIDE, 'Nomor Faktur', 'nomor_faktur', I::TEXT, OPTIONAL],
             ],
         );
     }   

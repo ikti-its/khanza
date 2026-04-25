@@ -23,8 +23,8 @@ final class JenisBHPController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Jenis BHP', 'id_jenis_bhp', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Jenis BHP', 'nama_jenis_bhp', 'teks', REQUIRED],
+                [HIDE, 'ID Jenis BHP', 'id_jenis_bhp', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Jenis BHP', 'nama_jenis_bhp', I::TEXT, REQUIRED],
             ],
         );
     }   

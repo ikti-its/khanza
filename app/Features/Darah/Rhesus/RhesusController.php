@@ -23,8 +23,8 @@ final class RhesusController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Rhesus', 'id_rhesus', 'indeks', OPTIONAL],
-                [SHOW, 'Kode Rhesus', 'kode_rhesus', 'teks', REQUIRED],
+                [HIDE, 'ID Rhesus', 'id_rhesus', I::INDEX, OPTIONAL],
+                [SHOW, 'Kode Rhesus', 'kode_rhesus', I::TEXT, REQUIRED],
             ],
         );
     }   

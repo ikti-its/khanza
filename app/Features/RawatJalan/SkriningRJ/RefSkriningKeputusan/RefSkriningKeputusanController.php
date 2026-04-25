@@ -24,8 +24,8 @@ final class RefSkriningKeputusanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Keputusan',       'id_keputusan',       'indeks', OPTIONAL],
-                [SHOW, 'Skrining Keputusan', 'skrining_keputusan', 'teks',   REQUIRED],
+                [HIDE, 'ID Keputusan',       'id_keputusan',       I::INDEX, OPTIONAL],
+                [SHOW, 'Skrining Keputusan', 'skrining_keputusan', I::TEXT,   REQUIRED],
             ],
         );
     }

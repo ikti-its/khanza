@@ -24,8 +24,8 @@ final class RefKesiapanAnestesiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Kesiapan',   'id_kesiapan',   'indeks', OPTIONAL],
-                [SHOW, 'Nama Kesiapan', 'nama_kesiapan', 'teks',   REQUIRED],
+                [HIDE, 'ID Kesiapan',   'id_kesiapan',   I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Kesiapan', 'nama_kesiapan', I::TEXT,   REQUIRED],
             ],
         );
     }

@@ -24,9 +24,9 @@ final class RefStewardMotorikController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Motorik', 'id_motorik', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Skala', 'nama_skala', 'teks',   REQUIRED],
-                [SHOW, 'Nilai',      'nilai',      'jumlah', REQUIRED],
+                [HIDE, 'ID Motorik', 'id_motorik', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Skala', 'nama_skala', I::TEXT,   REQUIRED],
+                [SHOW, 'Nilai',      'nilai',      I::NUMBER, REQUIRED],
             ],
         );
     }

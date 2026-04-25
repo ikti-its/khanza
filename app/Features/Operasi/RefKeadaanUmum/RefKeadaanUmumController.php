@@ -24,8 +24,8 @@ final class RefKeadaanUmumController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Keadaan Umum', 'id_keadaan_umum', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Keadaan',    'nama_keadaan',    'teks',   REQUIRED],
+                [HIDE, 'ID Keadaan Umum', 'id_keadaan_umum', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Keadaan',    'nama_keadaan',    I::TEXT,   REQUIRED],
             ],
         );
     }

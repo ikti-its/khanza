@@ -23,8 +23,8 @@ final class PilihanJawabanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Pilihan', 'id_pilihan', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Pilihan', 'nama_pilihan', 'teks', REQUIRED],
+                [HIDE, 'ID Pilihan', 'id_pilihan', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Pilihan', 'nama_pilihan', I::TEXT, REQUIRED],
             ],
         );
     }   

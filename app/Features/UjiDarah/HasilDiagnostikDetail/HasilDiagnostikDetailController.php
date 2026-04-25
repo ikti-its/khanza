@@ -23,10 +23,10 @@ final class HasilDiagnostikDetailController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Diagnostik Detail', 'id_diagnostik_detail', 'indeks', OPTIONAL],
-                [SHOW, 'ID Diagnostik', 'id_diagnostik', 'indeks', REQUIRED],
-                [SHOW, 'ID Parameter Uji', 'id_parameter_uji', 'indeks', REQUIRED],
-                [SHOW, 'ID Nilai Diagnostik', 'id_nilai_diagnostik', 'indeks', REQUIRED],
+                [HIDE, 'ID Diagnostik Detail', 'id_diagnostik_detail', I::INDEX, OPTIONAL],
+                [SHOW, 'ID Diagnostik', 'id_diagnostik', I::INDEX, REQUIRED],
+                [SHOW, 'ID Parameter Uji', 'id_parameter_uji', I::INDEX, REQUIRED],
+                [SHOW, 'ID Nilai Diagnostik', 'id_nilai_diagnostik', I::INDEX, REQUIRED],
             ],
         );
     }   

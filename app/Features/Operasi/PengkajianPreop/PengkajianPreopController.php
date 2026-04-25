@@ -24,17 +24,17 @@ final class PengkajianPreopController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Pengkajian',            'id_pengkajian',            'indeks',   OPTIONAL],
-                [SHOW, 'Nomor Registrasi',         'nomor_reg',                'teks',     REQUIRED],
-                [SHOW, 'Kode Dokter Bedah',        'kode_dokter_bedah',        'teks',     REQUIRED],
-                [SHOW, 'Waktu Pengkajian',         'waktu_pengkajian',         'jam',      REQUIRED],
-                [SHOW, 'Ringkasan Klinik',         'ringkasan_klinik',         'teks',     REQUIRED],
-                [SHOW, 'Pemeriksaan Fisik',        'pemeriksaan_fisik',        'teks',     REQUIRED],
-                [SHOW, 'Pemeriksaan Diagnostik',   'pemeriksaan_diagnostik',   'teks',     REQUIRED],
-                [SHOW, 'Diagnosa Pre-Operasi',     'diagnosa_pre_operasi',     'teks',     REQUIRED],
-                [SHOW, 'Rencana Tindakan',         'rencana_tindakan',         'teks',     REQUIRED],
-                [SHOW, 'Persiapan Khusus',         'persiapan_khusus',         'teks',     REQUIRED],
-                [SHOW, 'Terapi Pre-Operasi',       'terapi_pre_operasi',       'teks',     REQUIRED],
+                [HIDE, 'ID Pengkajian',            'id_pengkajian',            I::INDEX,   OPTIONAL],
+                [SHOW, 'Nomor Registrasi',         'nomor_reg',                I::TEXT,     REQUIRED],
+                [SHOW, 'Kode Dokter Bedah',        'kode_dokter_bedah',        I::TEXT,     REQUIRED],
+                [SHOW, 'Waktu Pengkajian',         'waktu_pengkajian',         I::TIME,      REQUIRED],
+                [SHOW, 'Ringkasan Klinik',         'ringkasan_klinik',         I::TEXT,     REQUIRED],
+                [SHOW, 'Pemeriksaan Fisik',        'pemeriksaan_fisik',        I::TEXT,     REQUIRED],
+                [SHOW, 'Pemeriksaan Diagnostik',   'pemeriksaan_diagnostik',   I::TEXT,     REQUIRED],
+                [SHOW, 'Diagnosa Pre-Operasi',     'diagnosa_pre_operasi',     I::TEXT,     REQUIRED],
+                [SHOW, 'Rencana Tindakan',         'rencana_tindakan',         I::TEXT,     REQUIRED],
+                [SHOW, 'Persiapan Khusus',         'persiapan_khusus',         I::TEXT,     REQUIRED],
+                [SHOW, 'Terapi Pre-Operasi',       'terapi_pre_operasi',       I::TEXT,     REQUIRED],
             ],
         );
     }

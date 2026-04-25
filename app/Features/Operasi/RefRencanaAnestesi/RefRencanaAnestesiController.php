@@ -24,8 +24,8 @@ final class RefRencanaAnestesiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Rencana Anestesi', 'id_rencana_anestesi', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Rencana',        'nama_rencana',        'teks',   REQUIRED],
+                [HIDE, 'ID Rencana Anestesi', 'id_rencana_anestesi', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Rencana',        'nama_rencana',        I::TEXT,   REQUIRED],
             ],
         );
     }

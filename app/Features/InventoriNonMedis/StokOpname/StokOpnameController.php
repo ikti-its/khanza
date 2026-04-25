@@ -27,11 +27,11 @@ final class StokOpnameController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [HIDE, 'ID Opname',      'id_opname',      'indeks',  OPTIONAL],
-                [SHOW, 'Tanggal',        'tanggal',        'tanggal', REQUIRED],
-                [SHOW, 'Status',         'status',         'status',  OPTIONAL],
-                [SHOW, 'Catatan',        'catatan',        'teks',    OPTIONAL],
-                [SHOW, 'Catatan Atasan', 'catatan_atasan', 'teks',    OPTIONAL],
+                [HIDE, 'ID Opname',      'id_opname',      I::INDEX,  OPTIONAL],
+                [SHOW, I::DATE,        I::DATE,        I::DATE, REQUIRED],
+                [SHOW, I::SELECT,         I::SELECT,         I::SELECT,  OPTIONAL],
+                [SHOW, 'Catatan',        'catatan',        I::TEXT,    OPTIONAL],
+                [SHOW, 'Catatan Atasan', 'catatan_atasan', I::TEXT,    OPTIONAL],
             ],
             meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );

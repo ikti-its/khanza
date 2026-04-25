@@ -24,8 +24,8 @@ final class RefInduksiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Induksi',   'id_induksi',   'indeks', OPTIONAL],
-                [SHOW, 'Nama Induksi', 'nama_induksi', 'teks',   REQUIRED],
+                [HIDE, 'ID Induksi',   'id_induksi',   I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Induksi', 'nama_induksi', I::TEXT,   REQUIRED],
             ],
         );
     }

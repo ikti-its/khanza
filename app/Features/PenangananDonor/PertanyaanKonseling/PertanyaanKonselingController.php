@@ -23,8 +23,8 @@ final class PertanyaanKonselingController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Pertanyaan', 'id_pertanyaan', 'indeks', OPTIONAL],
-                [SHOW, 'Teks Pertanyaan', 'teks_pertanyaan', 'teks', REQUIRED],
+                [HIDE, 'ID Pertanyaan', 'id_pertanyaan', I::INDEX, OPTIONAL],
+                [SHOW, 'Teks Pertanyaan', 'teks_pertanyaan', I::TEXT, REQUIRED],
             ],
         );
     }   

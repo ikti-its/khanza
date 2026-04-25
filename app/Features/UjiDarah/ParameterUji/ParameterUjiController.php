@@ -23,8 +23,8 @@ final class ParameterUjiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Parameter Uji', 'id_parameter_uji', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Parameter', 'nama_parameter', 'teks', REQUIRED],
+                [HIDE, 'ID Parameter Uji', 'id_parameter_uji', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Parameter', 'nama_parameter', I::TEXT, REQUIRED],
             ],
         );
     }   

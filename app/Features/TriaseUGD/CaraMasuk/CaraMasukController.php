@@ -23,8 +23,8 @@ final class CaraMasukController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Cara', 'id_cara', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Cara', 'nama_cara', 'teks', REQUIRED],
+                [HIDE, 'ID Cara', 'id_cara', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Cara', 'nama_cara', I::TEXT, REQUIRED],
             ],
         );
     }   

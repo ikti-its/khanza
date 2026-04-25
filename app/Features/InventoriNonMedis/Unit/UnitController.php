@@ -27,8 +27,8 @@ final class UnitController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [HIDE, 'ID',        'id_unit',   'indeks', OPTIONAL],
-                [SHOW, 'Nama Unit', 'nama_unit', 'nama',   REQUIRED],
+                [HIDE, 'ID',        'id_unit',   I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Unit', 'nama_unit', I::NAME,   REQUIRED],
             ],
             meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );

@@ -24,9 +24,9 @@ final class RefAldretteTekananDarahController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Tekanan Darah', 'id_td',      'indeks', OPTIONAL],
-                [SHOW, 'Nama Skala',       'nama_skala', 'teks',   REQUIRED],
-                [SHOW, 'Nilai',            'nilai',      'jumlah', REQUIRED],
+                [HIDE, 'ID Tekanan Darah', 'id_td',      I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Skala',       'nama_skala', I::TEXT,   REQUIRED],
+                [SHOW, 'Nilai',            'nilai',      I::NUMBER, REQUIRED],
             ],
         );
     }

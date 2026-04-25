@@ -24,9 +24,9 @@ final class RefStewardKesadaranController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Kesadaran', 'id_kesadaran', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Skala',   'nama_skala',   'teks',   REQUIRED],
-                [SHOW, 'Nilai',        'nilai',        'jumlah', REQUIRED],
+                [HIDE, 'ID Kesadaran', 'id_kesadaran', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Skala',   'nama_skala',   I::TEXT,   REQUIRED],
+                [SHOW, 'Nilai',        'nilai',        I::NUMBER, REQUIRED],
             ],
         );
     }

@@ -23,12 +23,12 @@ final class PermintaanDarahDetailController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Permintaan Detail', 'id_permintaan_detail', 'indeks', OPTIONAL],
-                [SHOW, 'ID Permintaan', 'id_permintaan', 'indeks', REQUIRED],
-                [SHOW, 'ID Komponen', 'id_komponen', 'indeks', REQUIRED],
-                [SHOW, 'ID Golongan Darah', 'id_golongan_darah', 'indeks', REQUIRED],
-                [SHOW, 'ID Rhesus', 'id_rhesus', 'indeks', REQUIRED],
-                [SHOW, 'Jumlah Unit', 'jumlah', 'jumlah', REQUIRED],
+                [HIDE, 'ID Permintaan Detail', 'id_permintaan_detail', I::INDEX, OPTIONAL],
+                [SHOW, 'ID Permintaan', 'id_permintaan', I::INDEX, REQUIRED],
+                [SHOW, 'ID Komponen', 'id_komponen', I::INDEX, REQUIRED],
+                [SHOW, 'ID Golongan Darah', 'id_golongan_darah', I::INDEX, REQUIRED],
+                [SHOW, 'ID Rhesus', 'id_rhesus', I::INDEX, REQUIRED],
+                [SHOW, 'Jumlah Unit', I::NUMBER, I::NUMBER, REQUIRED],
             ],
         );
     }   

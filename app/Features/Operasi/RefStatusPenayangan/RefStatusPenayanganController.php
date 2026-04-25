@@ -24,8 +24,8 @@ final class RefStatusPenayanganController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Status Penayangan', 'id_status_penayangan', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Status',          'nama_status',          'teks',   REQUIRED],
+                [HIDE, 'ID Status Penayangan', 'id_status_penayangan', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Status',          'nama_status',          I::TEXT,   REQUIRED],
             ],
         );
     }

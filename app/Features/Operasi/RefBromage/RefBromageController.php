@@ -24,11 +24,11 @@ final class RefBromageController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Bromage',   'id_bromage',   'indeks', OPTIONAL],
-                [SHOW, 'Nama Skala',   'nama_skala',   'teks',   REQUIRED],
-                [SHOW, 'Tingkat Blok', 'tingkat_blok', 'teks',   REQUIRED],
-                [SHOW, 'Nilai',        'nilai',        'jumlah', REQUIRED],
-                [SHOW, 'Gambar',       'gambar',       'teks',   OPTIONAL],
+                [HIDE, 'ID Bromage',   'id_bromage',   I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Skala',   'nama_skala',   I::TEXT,   REQUIRED],
+                [SHOW, 'Tingkat Blok', 'tingkat_blok', I::TEXT,   REQUIRED],
+                [SHOW, 'Nilai',        'nilai',        I::NUMBER, REQUIRED],
+                [SHOW, 'Gambar',       'gambar',       I::TEXT,   OPTIONAL],
             ],
         );
     }

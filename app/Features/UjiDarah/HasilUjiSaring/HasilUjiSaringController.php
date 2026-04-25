@@ -23,11 +23,11 @@ final class HasilUjiSaringController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Uji Saring', 'id_uji_saring', 'indeks', OPTIONAL],
-                [SHOW, 'ID Bag', 'id_bag', 'indeks', REQUIRED],
-                [SHOW, 'ID Metode Uji', 'id_metode_uji', 'indeks', REQUIRED],
-                [SHOW, 'Tanggal Uji', 'tanggal_uji', 'tanggal', REQUIRED],
-                [SHOW, 'ID Petugas', 'id_petugas', 'indeks', REQUIRED],
+                [HIDE, 'ID Uji Saring', 'id_uji_saring', I::INDEX, OPTIONAL],
+                [SHOW, 'ID Bag', 'id_bag', I::INDEX, REQUIRED],
+                [SHOW, 'ID Metode Uji', 'id_metode_uji', I::INDEX, REQUIRED],
+                [SHOW, 'Tanggal Uji', 'tanggal_uji', I::DATE, REQUIRED],
+                [SHOW, 'ID Petugas', 'id_petugas', I::INDEX, REQUIRED],
             ],
         );
     }   

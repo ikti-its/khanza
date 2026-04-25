@@ -21,6 +21,7 @@ class ControllerTemplate extends Controller
         protected string $api_url =  '',
     ) {
         $this->api_url = getenv('api_URL');
+        $this->process_config();
     }
 
     private function get_uri_path(){
@@ -48,6 +49,13 @@ class ControllerTemplate extends Controller
             $postData[$kolom] = $raw_data;
         }
         return $postData;
+    }
+
+    private function process_config(){
+        $JENIS = 3;
+        for($i = 0; $i < count($this->konfig); $i++){
+            $this->konfig[$i][$JENIS] = $this->konfig[$i][$JENIS]->value;
+        }
     }
 
     final public function index()

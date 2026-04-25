@@ -23,8 +23,8 @@ final class StatusKunjunganController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Status Kunjungan', 'id_status_kunjungan', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Status Kunjungan', 'nama_status_kunjungan', 'teks', REQUIRED],
+                [HIDE, 'ID Status Kunjungan', 'id_status_kunjungan', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Status Kunjungan', 'nama_status_kunjungan', I::TEXT, REQUIRED],
             ],
         );
     }   

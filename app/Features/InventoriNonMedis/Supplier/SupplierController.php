@@ -27,10 +27,10 @@ final class SupplierController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [HIDE, 'ID Supplier',   'id_supplier',   'indeks', OPTIONAL],
-                [SHOW, 'Nama Supplier', 'nama_supplier', 'nama',   REQUIRED],
-                [SHOW, 'No. Telepon',   'no_telp',       'teks',   OPTIONAL],
-                [HIDE, 'ID Alamat',     'id_alamat',     'indeks', OPTIONAL],
+                [HIDE, 'ID Supplier',   'id_supplier',   I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Supplier', 'nama_supplier', I::NAME,   REQUIRED],
+                [SHOW, 'No. Telepon',   'no_telp',       I::TEXT,   OPTIONAL],
+                [HIDE, 'ID Alamat',     'id_alamat',     I::INDEX, OPTIONAL],
             ],
             meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );

@@ -23,12 +23,12 @@ final class BPJSController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                // [SHOW, 'Nomor BPJS', 'no_bpjs', 'indeks', REQUIRED],
-                [SHOW, 'Program', 'nama_program', 'teks', REQUIRED],
-                [SHOW, 'Penyelenggara', 'penyelenggara', 'status', REQUIRED],
-                [SHOW, 'Tarif (%)', 'tarif', 'jumlah', REQUIRED],
-                [SHOW, 'Limit', 'batas_atas', 'uang', REQUIRED],
-                [SHOW, 'Threshold', 'batas_bawah', 'uang', REQUIRED],
+                // [SHOW, 'Nomor BPJS', 'no_bpjs', I::INDEX, REQUIRED],
+                [SHOW, 'Program', 'nama_program', I::TEXT, REQUIRED],
+                [SHOW, 'Penyelenggara', 'penyelenggara', I::SELECT, REQUIRED],
+                [SHOW, 'Tarif (%)', 'tarif', I::NUMBER, REQUIRED],
+                [SHOW, 'Limit', 'batas_atas', I::MONEY, REQUIRED],
+                [SHOW, 'Threshold', 'batas_bawah', I::MONEY, REQUIRED],
             ],
         );
     }   

@@ -23,8 +23,8 @@ final class PlanSekunderController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Plan Sekunder', 'id_plan_sekunder', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Plan Sekunder', 'nama_plan_sekunder', 'teks', REQUIRED],
+                [HIDE, 'ID Plan Sekunder', 'id_plan_sekunder', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Plan Sekunder', 'nama_plan_sekunder', I::TEXT, REQUIRED],
             ],
         );
     }   

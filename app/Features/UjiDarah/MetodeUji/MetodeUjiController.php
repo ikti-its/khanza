@@ -23,8 +23,8 @@ final class MetodeUjiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Metode Uji', 'id_metode_uji', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Metode', 'nama_metode', 'teks', REQUIRED],
+                [HIDE, 'ID Metode Uji', 'id_metode_uji', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Metode', 'nama_metode', I::TEXT, REQUIRED],
             ],
         );
     }   

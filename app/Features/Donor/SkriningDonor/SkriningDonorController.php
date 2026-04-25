@@ -23,14 +23,14 @@ final class SkriningDonorController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Skrining', 'id_skrining', 'indeks', OPTIONAL],
-                [SHOW, 'ID Kunjungan', 'id_kunjungan', 'indeks', REQUIRED],
-                [SHOW, 'Tekanan Sistolik', 'sistolik', 'jumlah', REQUIRED],
-                [SHOW, 'Tekanan Diastolik', 'diastolik', 'jumlah', REQUIRED],
+                [HIDE, 'ID Skrining', 'id_skrining', I::INDEX, OPTIONAL],
+                [SHOW, 'ID Kunjungan', 'id_kunjungan', I::INDEX, REQUIRED],
+                [SHOW, 'Tekanan Sistolik', 'sistolik', I::NUMBER, REQUIRED],
+                [SHOW, 'Tekanan Diastolik', 'diastolik', I::NUMBER, REQUIRED],
                 [SHOW, 'Berat Badan', 'berat_badan', 'desimal', REQUIRED],
                 [SHOW, 'Kadar Hemoglobin', 'kadar_hemoglobin', 'desimal', REQUIRED],
                 [SHOW, 'Suhu', 'suhu_tubuh', 'suhu', REQUIRED],
-                [SHOW, 'ID Hasil Anamnesis', 'id_hasil_anamnesis', 'indeks', REQUIRED],
+                [SHOW, 'ID Hasil Anamnesis', 'id_hasil_anamnesis', I::INDEX, REQUIRED],
             ],
         );
     }   

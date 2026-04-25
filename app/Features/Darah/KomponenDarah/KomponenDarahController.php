@@ -23,10 +23,10 @@ final class KomponenDarahController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Komponen', 'id_komponen', 'indeks', OPTIONAL],
-                [SHOW, 'Kode', 'kode_komponen', 'teks', REQUIRED],
-                [SHOW, 'Nama Komponen', 'nama_komponen', 'teks', REQUIRED],
-                [SHOW, 'Masa Berlaku (Hari)', 'masa_berlaku_hari', 'jumlah', REQUIRED],
+                [HIDE, 'ID Komponen', 'id_komponen', I::INDEX, OPTIONAL],
+                [SHOW, 'Kode', 'kode_komponen', I::TEXT, REQUIRED],
+                [SHOW, 'Nama Komponen', 'nama_komponen', I::TEXT, REQUIRED],
+                [SHOW, 'Masa Berlaku (Hari)', 'masa_berlaku_hari', I::NUMBER, REQUIRED],
             ],
         );
     }   

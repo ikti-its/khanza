@@ -24,16 +24,16 @@ final class JadwalOperasiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Jadwal',           'id_jadwal',            'indeks',  OPTIONAL],
-                [SHOW, 'ID Permintaan',       'id_permintaan',        'indeks',  REQUIRED],
-                [SHOW, 'ID Ruangan',          'id_ruangan',           'indeks',  REQUIRED],
-                [SHOW, 'ID Tindakan',         'id_tindakan',          'indeks',  REQUIRED],
-                [SHOW, 'Kode Dokter Bedah',   'kode_dokter_bedah',    'teks',    REQUIRED],
-                [SHOW, 'Kode Dokter Anestesi','kode_dokter_anestesi', 'teks',    REQUIRED],
-                [SHOW, 'Tanggal',             'tanggal',              'tanggal', REQUIRED],
-                [SHOW, 'Waktu Mulai',         'waktu_mulai',          'jam',     REQUIRED],
-                [SHOW, 'Waktu Selesai',       'waktu_selesai',        'jam',     REQUIRED],
-                [SHOW, 'Status',              'id_status',            'indeks',  REQUIRED],
+                [HIDE, 'ID Jadwal',           'id_jadwal',            I::INDEX,  OPTIONAL],
+                [SHOW, 'ID Permintaan',       'id_permintaan',        I::INDEX,  REQUIRED],
+                [SHOW, 'ID Ruangan',          'id_ruangan',           I::INDEX,  REQUIRED],
+                [SHOW, 'ID Tindakan',         'id_tindakan',          I::INDEX,  REQUIRED],
+                [SHOW, 'Kode Dokter Bedah',   'kode_dokter_bedah',    I::TEXT,    REQUIRED],
+                [SHOW, 'Kode Dokter Anestesi','kode_dokter_anestesi', I::TEXT,    REQUIRED],
+                [SHOW, I::DATE,             I::DATE,              I::DATE, REQUIRED],
+                [SHOW, 'Waktu Mulai',         'waktu_mulai',          I::TIME,     REQUIRED],
+                [SHOW, 'Waktu Selesai',       'waktu_selesai',        I::TIME,     REQUIRED],
+                [SHOW, I::SELECT,              'id_status',            I::INDEX,  REQUIRED],
             ],
         );
     }

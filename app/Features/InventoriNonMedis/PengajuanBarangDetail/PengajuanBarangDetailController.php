@@ -28,12 +28,12 @@ final class PengajuanBarangDetailController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [HIDE, 'ID Detail',        'id_detail',        'indeks', OPTIONAL],
-                [HIDE, 'ID Pengajuan',     'id_pengajuan',     'indeks', OPTIONAL],
-                [SHOW, 'Barang',           'id_barang',        'status', OPTIONAL],
-                [SHOW, 'Nama Barang Baru', 'nama_barang_baru', 'teks',   OPTIONAL],
-                [SHOW, 'Qty',              'qty',              'jumlah', REQUIRED],
-                [SHOW, 'Harga Estimasi',   'harga_estimasi',   'uang',   OPTIONAL],
+                [HIDE, 'ID Detail',        'id_detail',        I::INDEX, OPTIONAL],
+                [HIDE, 'ID Pengajuan',     'id_pengajuan',     I::INDEX, OPTIONAL],
+                [SHOW, 'Barang',           'id_barang',        I::SELECT, OPTIONAL],
+                [SHOW, 'Nama Barang Baru', 'nama_barang_baru', I::TEXT,   OPTIONAL],
+                [SHOW, 'Qty',              'qty',              I::NUMBER, REQUIRED],
+                [SHOW, 'Harga Estimasi',   'harga_estimasi',   I::MONEY,   OPTIONAL],
             ],
             meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );

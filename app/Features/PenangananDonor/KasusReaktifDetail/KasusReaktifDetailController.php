@@ -23,9 +23,9 @@ final class KasusReaktifDetailController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Kasus Detail', 'id_kasus_detail', 'indeks', OPTIONAL],
-                [SHOW, 'ID Kasus', 'id_kasus', 'indeks', REQUIRED],
-                [SHOW, 'ID Uji Saring Detail', 'id_uji_saring_detail', 'indeks', REQUIRED],
+                [HIDE, 'ID Kasus Detail', 'id_kasus_detail', I::INDEX, OPTIONAL],
+                [SHOW, 'ID Kasus', 'id_kasus', I::INDEX, REQUIRED],
+                [SHOW, 'ID Uji Saring Detail', 'id_uji_saring_detail', I::INDEX, REQUIRED],
             ],
         );
     }   

@@ -27,8 +27,8 @@ final class JenisBarangController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [HIDE, 'ID',               'id_jenis_barang',   'indeks', OPTIONAL],
-                [SHOW, 'Nama Jenis Barang','nama_jenis_barang',  'nama',   REQUIRED],
+                [HIDE, 'ID',               'id_jenis_barang',   I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Jenis Barang','nama_jenis_barang',  I::NAME,   REQUIRED],
             ],
             meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );

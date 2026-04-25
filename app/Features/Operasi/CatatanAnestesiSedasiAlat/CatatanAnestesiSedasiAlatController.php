@@ -24,11 +24,11 @@ final class CatatanAnestesiSedasiAlatController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Alat',            'id_alat',             'indeks', OPTIONAL],
-                [HIDE, 'ID Catatan Anestesi','id_catatan_anestesi', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Alat',          'nama_alat',           'teks',   REQUIRED],
-                [SHOW, 'Digunakan',          'is_digunakan',        'status', REQUIRED],
-                [SHOW, 'Keterangan',         'keterangan',          'teks',   REQUIRED],
+                [HIDE, 'ID Alat',            'id_alat',             I::INDEX, OPTIONAL],
+                [HIDE, 'ID Catatan Anestesi','id_catatan_anestesi', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Alat',          'nama_alat',           I::TEXT,   REQUIRED],
+                [SHOW, 'Digunakan',          'is_digunakan',        I::SELECT, REQUIRED],
+                [SHOW, 'Keterangan',         'keterangan',          I::TEXT,   REQUIRED],
             ],
         );
     }

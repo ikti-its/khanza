@@ -24,8 +24,8 @@ final class RefKesadaranController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Kesadaran',   'id_kesadaran',   'indeks', OPTIONAL],
-                [SHOW, 'Nama Kesadaran', 'nama_kesadaran', 'teks',   REQUIRED],
+                [HIDE, 'ID Kesadaran',   'id_kesadaran',   I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Kesadaran', 'nama_kesadaran', I::TEXT,   REQUIRED],
             ],
         );
     }

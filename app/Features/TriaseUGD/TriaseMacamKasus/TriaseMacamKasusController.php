@@ -23,9 +23,9 @@ final class TriaseMacamKasusController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Macam Kasus', 'id_macam_kasus', 'indeks', OPTIONAL],
-                [SHOW, 'Kode', 'kode_macam_kasus', 'teks', REQUIRED],
-                [SHOW, 'Nama Macam Kasus', 'nama_macam_kasus', 'teks', REQUIRED],
+                [HIDE, 'ID Macam Kasus', 'id_macam_kasus', I::INDEX, OPTIONAL],
+                [SHOW, 'Kode', 'kode_macam_kasus', I::TEXT, REQUIRED],
+                [SHOW, 'Nama Macam Kasus', 'nama_macam_kasus', I::TEXT, REQUIRED],
             ],
         );
     }   

@@ -24,8 +24,8 @@ final class RefStatusSpesimenController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Status Spesimen', 'id_status_spesimen', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Status',        'nama_status',        'teks',   REQUIRED],
+                [HIDE, 'ID Status Spesimen', 'id_status_spesimen', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Status',        'nama_status',        I::TEXT,   REQUIRED],
             ],
         );
     }

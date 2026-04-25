@@ -23,8 +23,8 @@ final class PlanPrimerController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Plan Primer', 'id_plan_primer', 'indeks', OPTIONAL],
-                [SHOW, 'Nama Plan Primer', 'nama_plan_primer', 'teks', REQUIRED],
+                [HIDE, 'ID Plan Primer', 'id_plan_primer', I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Plan Primer', 'nama_plan_primer', I::TEXT, REQUIRED],
             ],
         );
     }   
