@@ -1,14 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Database;
+namespace App\Core\Database\Special;
 use CodeIgniter\Database\Migration;
-use App\Core\Assert;
 
-
-class Audit extends Migration
+class Encrypt extends Migration
 {
-    const string PATH = APPPATH . 'Core/Database/Audit/';
+    const string PATH = APPPATH . 'Core/Database/Encrypt/';
     public function up()
     {
         // $config = new \Config\Database()->default;
@@ -17,9 +15,11 @@ class Audit extends Migration
         // $this->forge = \Config\Database::forge($this->db);
 
         // $this->db->query('CREATE EXTENSION IF NOT EXISTS pgcrypto;');
-        // $this->db->query(file_get_contents(self::PATH . 'create_audit_table.sql'));
-        // $this->db->query(file_get_contents(self::PATH . 'create_audit_view.sql'));
+        // $this->db->query(file_get_contents(self::PATH . 'rename_original_table.sql'));
+        // $this->db->query(file_get_contents(self::PATH . 'create_encrypted_table.sql'));
+        // $this->db->query(file_get_contents(self::PATH . 'create_encrypted_view.sql'));
     }
+    
     public function down()
     {
         // $config = new \Config\Database()->default;
@@ -27,7 +27,8 @@ class Audit extends Migration
         // $this->db = \Config\Database::connect($config);
         // $this->forge = \Config\Database::forge($this->db);
 
-        // $this->db->query(file_get_contents(self::PATH . 'drop_audit_table.sql'));
-        // $this->db->query(file_get_contents(self::PATH . 'drop_audit_view.sql'));
+        // $this->db->query(file_get_contents(self::PATH . 'drop_function.sql'));
+        // $this->db->query(file_get_contents(self::PATH . 'drop_encrypted_view.sql'));
+        // $this->db->query(file_get_contents(self::PATH . 'drop_encrypted_table.sql'));
     }
 }

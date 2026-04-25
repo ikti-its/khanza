@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Database;
+namespace App\Core\Database\Special;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
 
@@ -28,6 +28,7 @@ class Init extends Migration
             $db->query($sql);
         }
     }
+    
     public function down()
     {
         $forge = \Config\Database::forge();
