@@ -8,7 +8,7 @@ use Firebase\JWT\Key;
 use App\Core\Controller\CURL;
 use App\Core\ModelTemplate;
 
-class AuthController extends Controller
+final class AuthController extends Controller
 {
     public function __construct(
         private string $key = '',
@@ -91,6 +91,11 @@ class AuthController extends Controller
         ];    
     }
 
+    public function index()
+    {
+        return view('login');
+    }
+
     public function login()
     {
         if (!$this->request->getPost()) {
@@ -106,9 +111,9 @@ class AuthController extends Controller
         $code = $data['code'];
 
         if ($code === 402) {
-            return redirect('login')->with('passwordsalah', 'Password salah, mohon dicoba kembali');
+            return redirect('login')->with('error', 'Password salah, mohon dicoba kembali');
         } elseif ($code === 401) {
-            return redirect('login')->with('akunsalah', 'Akun tidak ditemukan, mohon hubungi admin');
+            return redirect('login')->with('error', 'Akun tidak ditemukan, mohon hubungi admin');
         }
 
         $token = $data['token'];

@@ -7,9 +7,9 @@ use CodeIgniter\Router\RouteCollection;
  */
 // $routes->get('/', 'Home::index');
 $routes->post('/jwt',  [\App\Core\Auth\AuthController::class, 'jwt2']);
-$routes->get('/', 'auth::index');
+$routes->get('/', [\App\Core\Auth\AuthController::class, 'index']);
 $routes->get('/', 'userPegawai::lihatDashboard', ['filter' => 'auth']);
-$routes->get('/login', 'auth::index');
+$routes->get('/login', [\App\Core\Auth\AuthController::class, 'index']);
 $routes->post('/logout', 'auth::logout', ['filter' => 'auth']);
 
 $routes->get('/dashboard', 'userPegawai::lihatDashboard', ['filter' => 'auth']);
