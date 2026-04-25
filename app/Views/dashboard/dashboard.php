@@ -2,12 +2,11 @@
 <?= $this->section('content'); ?>
 
 <div class="absolute inset-0">
-    <img class="object-cover w-full h-[72%]" src="/img/background.png" alt="Dashboard Background">
+    <img class="object-cover w-full h-[72%]" src="<?= base_url('/img/background.png') ?>" alt="Dashboard Background">
 </div>
 <div class="relative overflow-x-auto mt-5 ml-4 mr-4  bg-white shadow-xl rounded-lg text-gray-900">
-
     <div class="absolute inset-0">
-        <img class="object-cover w-full h-full" src="/img/dashboard.png" alt="Dashboard Background">
+        <img class="object-cover w-full h-full" src="<?= base_url('/img/dashboard.png') ?>" alt="Dashboard Background">
     </div>
     <div class="relative max-w-5xl mx-auto px-4 xl:px-4 pt-10 lg:pt-16 pb-8 text-white">
         <div class="font-medium text-m md:text-l">
@@ -19,7 +18,6 @@
             <?= $this->include('dashboard/shift') ?>
         </div>
     </div>
-
 </div>
 
 <?= $this->include('dashboard/card_list'); ?>
