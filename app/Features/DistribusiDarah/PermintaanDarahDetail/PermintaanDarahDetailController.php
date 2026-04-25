@@ -28,7 +28,7 @@ final class PermintaanDarahDetailController extends ControllerTemplate
                 [SHOW, 'ID Komponen', 'id_komponen', I::INDEX, REQUIRED],
                 [SHOW, 'ID Golongan Darah', 'id_golongan_darah', I::INDEX, REQUIRED],
                 [SHOW, 'ID Rhesus', 'id_rhesus', I::INDEX, REQUIRED],
-                [SHOW, 'Jumlah Unit', I::NUMBER, I::NUMBER, REQUIRED],
+                [SHOW, 'Jumlah Unit', 'jumlah', I::NUMBER, REQUIRED],
             ],
         );
     }   
