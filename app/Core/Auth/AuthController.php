@@ -93,11 +93,18 @@ final class AuthController extends Controller
 
     public function index()
     {
+        if(session()->has('jwt_token')){
+            return redirect()->to('/dashboard');
+        }
         return view('login');
     }
 
     public function login()
     {
+        if(session()->has('jwt_token')){
+            return redirect()->to('/dashboard');
+        }
+
         if (!$this->request->getPost()) {
             return view('login');
         }
@@ -111,9 +118,9 @@ final class AuthController extends Controller
         $code = $data['code'];
 
         if ($code === 402) {
-            return redirect('login')->with('error', 'Password salah, mohon dicoba kembali');
+            return redirect()->back()->withInput()->with('error', 'Password salah, mohon dicoba kembali');
         } elseif ($code === 401) {
-            return redirect('login')->with('error', 'Akun tidak ditemukan, mohon hubungi admin');
+            return redirect()->back()->withInput()->with('error', 'Akun tidak ditemukan, mohon hubungi admin');
         }
 
         $token = $data['token'];
