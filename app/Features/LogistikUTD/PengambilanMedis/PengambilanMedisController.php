@@ -25,7 +25,7 @@ final class PengambilanMedisController extends ControllerTemplate
                 //visible, display, kolom, jenis, required, *opsi
                 [HIDE, 'ID Pengambilan Medis', 'id_pengambilan_medis', I::INDEX, OPTIONAL],
                 [SHOW, 'ID Barang', 'id_barang', I::INDEX, REQUIRED],
-                [SHOW, I::NUMBER, I::NUMBER, I::NUMBER, REQUIRED],
+                [SHOW, 'Jumlah', 'jumlah', I::NUMBER, REQUIRED],
                 [SHOW, 'Harga Beli', 'harga_beli', I::MONEY, REQUIRED],
                 [SHOW, 'Nama Bangsal', 'nama_bangsal', I::TEXT, REQUIRED],
                 [SHOW, 'Tanggal Pengambilan', 'tanggal_pengambilan', 'tanggal_jam', REQUIRED],
