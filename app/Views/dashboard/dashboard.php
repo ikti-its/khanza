@@ -22,11 +22,4 @@
 
 <?= $this->include('dashboard/card_list'); ?>
 
-<?php if (session()->has('jwt_token')): ?>
-<script>
-    // Simpan token ke sessionStorage untuk digunakan oleh fetch()
-    sessionStorage.setItem("token", "<?= session('jwt_token') ?>");
-    console.log("✅ JWT disimpan ke sessionStorage");
-</script>
-<?php endif; ?>
 <?= $this->endSection(); ?>
