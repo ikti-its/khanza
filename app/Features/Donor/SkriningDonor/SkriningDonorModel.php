@@ -5,7 +5,7 @@ namespace App\Features\Donor\SkriningDonor;
 
 use App\Core\ModelTemplate;
 
-class SkriningDonorModel extends ModelTemplate
+final class SkriningDonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

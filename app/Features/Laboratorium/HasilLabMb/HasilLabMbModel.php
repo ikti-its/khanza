@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\HasilLabMb;
 
 use App\Core\ModelTemplate;
 
-class HasilLabMbModel extends ModelTemplate
+final class HasilLabMbModel extends ModelTemplate
 {
     public function __construct()
     {

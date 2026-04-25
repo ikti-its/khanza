@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefObatBebas;
 
 use App\Core\ModelTemplate;
 
-class RefObatBebasModel extends ModelTemplate
+final class RefObatBebasModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

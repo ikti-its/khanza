@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefMetodeTransfer;
 
 use App\Core\ModelTemplate;
 
-class RefMetodeTransferModel extends ModelTemplate
+final class RefMetodeTransferModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

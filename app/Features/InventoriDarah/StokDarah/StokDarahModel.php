@@ -5,7 +5,7 @@ namespace App\Features\InventoriDarah\StokDarah;
 
 use App\Core\ModelTemplate;
 
-class StokDarahModel extends ModelTemplate
+final class StokDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

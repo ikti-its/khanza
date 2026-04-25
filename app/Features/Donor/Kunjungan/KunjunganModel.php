@@ -5,7 +5,7 @@ namespace App\Features\Donor\Kunjungan;
 
 use App\Core\ModelTemplate;
 
-class KunjunganModel extends ModelTemplate
+final class KunjunganModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

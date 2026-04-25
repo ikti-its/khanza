@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\TriaseSkala;
 
 use App\Core\ModelTemplate;
 
-class TriaseSkalaModel extends ModelTemplate
+final class TriaseSkalaModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

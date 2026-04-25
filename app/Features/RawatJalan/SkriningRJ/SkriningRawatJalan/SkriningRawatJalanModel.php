@@ -5,7 +5,7 @@ namespace App\Features\RawatJalan\SkriningRJ\SkriningRawatJalan;
 
 use App\Core\ModelTemplate;
 
-class SkriningRawatJalanModel extends ModelTemplate
+final class SkriningRawatJalanModel extends ModelTemplate
 {
     public function __construct()
     {

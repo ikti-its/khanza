@@ -5,7 +5,7 @@ namespace App\Features\DistribusiDarah\PermintaanDarah;
 
 use App\Core\ModelTemplate;
 
-class PermintaanDarahModel extends ModelTemplate
+final class PermintaanDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

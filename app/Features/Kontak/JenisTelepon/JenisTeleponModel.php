@@ -5,7 +5,7 @@ namespace App\Features\Kontak\JenisTelepon;
 
 use App\Core\ModelTemplate;
 
-class JenisTeleponModel extends ModelTemplate
+final class JenisTeleponModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

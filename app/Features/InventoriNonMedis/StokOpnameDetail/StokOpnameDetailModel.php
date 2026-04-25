@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\StokOpnameDetail;
 
 use App\Core\ModelTemplate;
 
-class StokOpnameDetailModel extends ModelTemplate
+final class StokOpnameDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

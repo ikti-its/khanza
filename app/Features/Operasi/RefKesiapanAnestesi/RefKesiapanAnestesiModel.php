@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefKesiapanAnestesi;
 
 use App\Core\ModelTemplate;
 
-class RefKesiapanAnestesiModel extends ModelTemplate
+final class RefKesiapanAnestesiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

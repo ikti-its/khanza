@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefBromage;
 
 use App\Core\ModelTemplate;
 
-class RefBromageModel extends ModelTemplate
+final class RefBromageModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefAldretteWarnaKulit;
 
 use App\Core\ModelTemplate;
 
-class RefAldretteWarnaKulitModel extends ModelTemplate
+final class RefAldretteWarnaKulitModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

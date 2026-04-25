@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefAngkaAsa;
 
 use App\Core\ModelTemplate;
 
-class RefAngkaAsaModel extends ModelTemplate
+final class RefAngkaAsaModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

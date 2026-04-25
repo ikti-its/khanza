@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefJenisSedasi;
 
 use App\Core\ModelTemplate;
 
-class RefJenisSedasiModel extends ModelTemplate
+final class RefJenisSedasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

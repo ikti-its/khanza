@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefHubunganKeluarga;
 
 use App\Core\ModelTemplate;
 
-class RefHubunganKeluargaModel extends ModelTemplate
+final class RefHubunganKeluargaModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

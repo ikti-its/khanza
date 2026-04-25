@@ -5,7 +5,7 @@ namespace App\Features\PenangananDonor\StatusPencekalan;
 
 use App\Core\ModelTemplate;
 
-class StatusPencekalanModel extends ModelTemplate
+final class StatusPencekalanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

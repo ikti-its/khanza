@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PenyerahanPasienPeralatan;
 
 use App\Core\ModelTemplate;
 
-class PenyerahanPasienPeralatanModel extends ModelTemplate
+final class PenyerahanPasienPeralatanModel extends ModelTemplate
 {
     public function __construct()
     {

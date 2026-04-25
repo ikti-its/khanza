@@ -5,7 +5,7 @@ namespace App\Features\PenangananDonor\Konseling;
 
 use App\Core\ModelTemplate;
 
-class KonselingModel extends ModelTemplate
+final class KonselingModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

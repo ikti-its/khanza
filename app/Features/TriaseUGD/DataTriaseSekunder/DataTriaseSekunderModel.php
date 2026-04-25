@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\DataTriaseSekunder;
 
 use App\Core\ModelTemplate;
 
-class DataTriaseSekunderModel extends ModelTemplate
+final class DataTriaseSekunderModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

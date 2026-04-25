@@ -5,7 +5,7 @@ namespace App\Features\Operasional\Shift;
 
 use App\Core\ModelTemplate;
 
-class ShiftModel extends ModelTemplate
+final class ShiftModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

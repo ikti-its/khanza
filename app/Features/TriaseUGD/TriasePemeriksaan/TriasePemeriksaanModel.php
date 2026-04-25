@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\TriasePemeriksaan;
 
 use App\Core\ModelTemplate;
 
-class TriasePemeriksaanModel extends ModelTemplate
+final class TriasePemeriksaanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

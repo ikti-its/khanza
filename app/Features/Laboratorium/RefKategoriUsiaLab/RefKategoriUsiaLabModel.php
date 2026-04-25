@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\RefKategoriUsiaLab;
 
 use App\Core\ModelTemplate;
 
-class RefKategoriUsiaLabModel extends ModelTemplate
+final class RefKategoriUsiaLabModel extends ModelTemplate
 {
     public function __construct()
     {

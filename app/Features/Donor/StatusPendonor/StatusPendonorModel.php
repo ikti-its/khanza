@@ -5,7 +5,7 @@ namespace App\Features\Donor\StatusPendonor;
 
 use App\Core\ModelTemplate;
 
-class StatusPendonorModel extends ModelTemplate
+final class StatusPendonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

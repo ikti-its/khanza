@@ -5,7 +5,7 @@ namespace App\Features\RawatJalan\SkriningRJ\RefSkriningBatuk;
 
 use App\Core\ModelTemplate;
 
-class RefSkriningBatukModel extends ModelTemplate
+final class RefSkriningBatukModel extends ModelTemplate
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\TriaseMacamKasus;
 
 use App\Core\ModelTemplate;
 
-class TriaseMacamKasusModel extends ModelTemplate
+final class TriaseMacamKasusModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

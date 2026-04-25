@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\PlanSekunder;
 
 use App\Core\ModelTemplate;
 
-class PlanSekunderModel extends ModelTemplate
+final class PlanSekunderModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

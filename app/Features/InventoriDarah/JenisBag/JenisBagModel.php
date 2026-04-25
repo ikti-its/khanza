@@ -5,7 +5,7 @@ namespace App\Features\InventoriDarah\JenisBag;
 
 use App\Core\ModelTemplate;
 
-class JenisBagModel extends ModelTemplate
+final class JenisBagModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefStatusPenayangan;
 
 use App\Core\ModelTemplate;
 
-class RefStatusPenayanganModel extends ModelTemplate
+final class RefStatusPenayanganModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

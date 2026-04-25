@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\TransaksiStok;
 
 use App\Core\ModelTemplate;
 
-class TransaksiStokModel extends ModelTemplate
+final class TransaksiStokModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

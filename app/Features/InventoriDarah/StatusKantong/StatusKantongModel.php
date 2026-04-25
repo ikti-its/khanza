@@ -5,7 +5,7 @@ namespace App\Features\InventoriDarah\StatusKantong;
 
 use App\Core\ModelTemplate;
 
-class StatusKantongModel extends ModelTemplate
+final class StatusKantongModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

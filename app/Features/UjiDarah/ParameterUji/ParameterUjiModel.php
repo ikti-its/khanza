@@ -5,7 +5,7 @@ namespace App\Features\UjiDarah\ParameterUji;
 
 use App\Core\ModelTemplate;
 
-class ParameterUjiModel extends ModelTemplate
+final class ParameterUjiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

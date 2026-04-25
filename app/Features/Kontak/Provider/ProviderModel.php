@@ -5,7 +5,7 @@ namespace App\Features\Kontak\Provider;
 
 use App\Core\ModelTemplate;
 
-class ProviderModel extends ModelTemplate
+final class ProviderModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

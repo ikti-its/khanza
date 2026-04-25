@@ -5,7 +5,7 @@ namespace App\Features\Person\Agama;
 
 use App\Core\ModelTemplate;
 
-class AgamaModel extends ModelTemplate
+final class AgamaModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

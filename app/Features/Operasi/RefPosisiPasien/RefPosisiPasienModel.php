@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefPosisiPasien;
 
 use App\Core\ModelTemplate;
 
-class RefPosisiPasienModel extends ModelTemplate
+final class RefPosisiPasienModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

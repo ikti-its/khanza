@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefInduksi;
 
 use App\Core\ModelTemplate;
 
-class RefInduksiModel extends ModelTemplate
+final class RefInduksiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

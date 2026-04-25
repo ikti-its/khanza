@@ -5,7 +5,7 @@ namespace App\Features\RawatJalan\SkriningRJ\RefSkriningNyeriDada;
 
 use App\Core\ModelTemplate;
 
-class RefSkriningNyeriDadaModel extends ModelTemplate
+final class RefSkriningNyeriDadaModel extends ModelTemplate
 {
     public function __construct()
     {

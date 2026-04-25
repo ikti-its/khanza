@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\PermintaanBarangDetail;
 
 use App\Core\ModelTemplate;
 
-class PermintaanBarangDetailModel extends ModelTemplate
+final class PermintaanBarangDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

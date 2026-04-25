@@ -5,7 +5,7 @@ namespace App\Features\Operasi\SignoutSebelumTutupLuka;
 
 use App\Core\ModelTemplate;
 
-class SignoutSebelumTutupLukaModel extends ModelTemplate
+final class SignoutSebelumTutupLukaModel extends ModelTemplate
 {
     public function __construct()
     {

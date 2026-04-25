@@ -5,7 +5,7 @@ namespace App\Features\LogistikUTD\PenggunaanBHPDonor;
 
 use App\Core\ModelTemplate;
 
-class PenggunaanBHPDonorModel extends ModelTemplate
+final class PenggunaanBHPDonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

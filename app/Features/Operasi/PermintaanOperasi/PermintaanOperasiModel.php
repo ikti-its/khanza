@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PermintaanOperasi;
 
 use App\Core\ModelTemplate;
 
-class PermintaanOperasiModel extends ModelTemplate
+final class PermintaanOperasiModel extends ModelTemplate
 {
     public function __construct()
     {

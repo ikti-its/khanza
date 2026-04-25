@@ -5,7 +5,7 @@ namespace App\Features\DistribusiDarah\PenyerahanDarahDetail;
 
 use App\Core\ModelTemplate;
 
-class PenyerahanDarahDetailModel extends ModelTemplate
+final class PenyerahanDarahDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

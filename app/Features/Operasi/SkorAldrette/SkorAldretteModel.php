@@ -5,7 +5,7 @@ namespace App\Features\Operasi\SkorAldrette;
 
 use App\Core\ModelTemplate;
 
-class SkorAldretteModel extends ModelTemplate
+final class SkorAldretteModel extends ModelTemplate
 {
     public function __construct()
     {

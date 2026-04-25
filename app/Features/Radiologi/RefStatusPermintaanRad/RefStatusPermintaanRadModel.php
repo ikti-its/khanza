@@ -5,7 +5,7 @@ namespace App\Features\Radiologi\RefStatusPermintaanRad;
 
 use App\Core\ModelTemplate;
 
-class RefStatusPermintaanRadModel extends ModelTemplate
+final class RefStatusPermintaanRadModel extends ModelTemplate
 {
     public function __construct()
     {

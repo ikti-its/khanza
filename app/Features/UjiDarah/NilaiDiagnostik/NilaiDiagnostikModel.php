@@ -5,7 +5,7 @@ namespace App\Features\UjiDarah\NilaiDiagnostik;
 
 use App\Core\ModelTemplate;
 
-class NilaiDiagnostikModel extends ModelTemplate
+final class NilaiDiagnostikModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\PenangananDonor\Pencekalan;
 
 use App\Core\ModelTemplate;
 
-class PencekalanModel extends ModelTemplate
+final class PencekalanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

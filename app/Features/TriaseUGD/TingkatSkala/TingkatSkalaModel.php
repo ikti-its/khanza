@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\TingkatSkala;
 
 use App\Core\ModelTemplate;
 
-class TingkatSkalaModel extends ModelTemplate
+final class TingkatSkalaModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

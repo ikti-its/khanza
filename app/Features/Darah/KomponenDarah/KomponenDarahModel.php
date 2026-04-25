@@ -5,7 +5,7 @@ namespace App\Features\Darah\KomponenDarah;
 
 use App\Core\ModelTemplate;
 
-class KomponenDarahModel extends ModelTemplate
+final class KomponenDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Darah\Rhesus;
 
 use App\Core\ModelTemplate;
 
-class RhesusModel extends ModelTemplate
+final class RhesusModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

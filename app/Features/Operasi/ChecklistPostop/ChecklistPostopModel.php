@@ -5,7 +5,7 @@ namespace App\Features\Operasi\ChecklistPostop;
 
 use App\Core\ModelTemplate;
 
-class ChecklistPostopModel extends ModelTemplate
+final class ChecklistPostopModel extends ModelTemplate
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@ namespace App\Features\PenangananDonor\FasyankesRujukan;
 
 use App\Core\ModelTemplate;
 
-class FasyankesRujukanModel extends ModelTemplate
+final class FasyankesRujukanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

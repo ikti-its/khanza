@@ -5,7 +5,7 @@ namespace App\Features\Operasi\SkorSteward;
 
 use App\Core\ModelTemplate;
 
-class SkorStewardModel extends ModelTemplate
+final class SkorStewardModel extends ModelTemplate
 {
     public function __construct()
     {

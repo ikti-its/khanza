@@ -5,7 +5,7 @@ namespace App\Features\Operasi\ChecklistPreOperasi;
 
 use App\Core\ModelTemplate;
 
-class ChecklistPreOperasiModel extends ModelTemplate
+final class ChecklistPreOperasiModel extends ModelTemplate
 {
     public function __construct()
     {

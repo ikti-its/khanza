@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\Lokasi;
 
 use App\Core\ModelTemplate;
 
-class LokasiModel extends ModelTemplate
+final class LokasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

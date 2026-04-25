@@ -5,7 +5,7 @@ namespace App\Features\LogistikUTD\PengambilanMedis;
 
 use App\Core\ModelTemplate;
 
-class PengambilanMedisModel extends ModelTemplate
+final class PengambilanMedisModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

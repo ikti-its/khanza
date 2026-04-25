@@ -5,7 +5,7 @@ namespace App\Features\RawatJalan\SkriningRJ\RefSkriningSkalaNyeri;
 
 use App\Core\ModelTemplate;
 
-class RefSkriningSkalaNyeriModel extends ModelTemplate
+final class RefSkriningSkalaNyeriModel extends ModelTemplate
 {
     public function __construct()
     {

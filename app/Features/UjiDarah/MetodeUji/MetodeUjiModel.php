@@ -5,7 +5,7 @@ namespace App\Features\UjiDarah\MetodeUji;
 
 use App\Core\ModelTemplate;
 
-class MetodeUjiModel extends ModelTemplate
+final class MetodeUjiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Donor\JenisDonor;
 
 use App\Core\ModelTemplate;
 
-class JenisDonorModel extends ModelTemplate
+final class JenisDonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\UjiDarah\NilaiSaring;
 
 use App\Core\ModelTemplate;
 
-class NilaiSaringModel extends ModelTemplate
+final class NilaiSaringModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

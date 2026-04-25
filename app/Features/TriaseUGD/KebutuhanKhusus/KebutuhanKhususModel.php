@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\KebutuhanKhusus;
 
 use App\Core\ModelTemplate;
 
-class KebutuhanKhususModel extends ModelTemplate
+final class KebutuhanKhususModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

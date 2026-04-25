@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefKeadaanUmumTransfer;
 
 use App\Core\ModelTemplate;
 
-class RefKeadaanUmumTransferModel extends ModelTemplate
+final class RefKeadaanUmumTransferModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

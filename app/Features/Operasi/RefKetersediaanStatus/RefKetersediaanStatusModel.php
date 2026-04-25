@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefKetersediaanStatus;
 
 use App\Core\ModelTemplate;
 
-class RefKetersediaanStatusModel extends ModelTemplate
+final class RefKetersediaanStatusModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

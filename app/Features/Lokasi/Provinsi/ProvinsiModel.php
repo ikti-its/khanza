@@ -5,7 +5,7 @@ namespace App\Features\Lokasi\Provinsi;
 
 use App\Core\ModelTemplate;
 
-class ProvinsiModel extends ModelTemplate
+final class ProvinsiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

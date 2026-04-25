@@ -5,7 +5,7 @@ namespace App\Features\PenangananDonor\PilihanJawaban;
 
 use App\Core\ModelTemplate;
 
-class PilihanJawabanModel extends ModelTemplate
+final class PilihanJawabanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

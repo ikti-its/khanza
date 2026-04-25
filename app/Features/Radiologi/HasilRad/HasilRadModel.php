@@ -5,7 +5,7 @@ namespace App\Features\Radiologi\HasilRad;
 
 use App\Core\ModelTemplate;
 
-class HasilRadModel extends ModelTemplate
+final class HasilRadModel extends ModelTemplate
 {
     public function __construct()
     {

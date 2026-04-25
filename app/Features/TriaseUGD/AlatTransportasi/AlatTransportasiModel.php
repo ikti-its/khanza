@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\AlatTransportasi;
 
 use App\Core\ModelTemplate;
 
-class AlatTransportasiModel extends ModelTemplate
+final class AlatTransportasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

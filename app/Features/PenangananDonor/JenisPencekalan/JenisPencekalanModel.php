@@ -5,7 +5,7 @@ namespace App\Features\PenangananDonor\JenisPencekalan;
 
 use App\Core\ModelTemplate;
 
-class JenisPencekalanModel extends ModelTemplate
+final class JenisPencekalanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

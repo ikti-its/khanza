@@ -5,7 +5,7 @@ namespace App\Features\InventoriDarah\TarifKomponen;
 
 use App\Core\ModelTemplate;
 
-class TarifKomponenModel extends ModelTemplate
+final class TarifKomponenModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

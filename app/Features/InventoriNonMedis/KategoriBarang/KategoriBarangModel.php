@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\KategoriBarang;
 
 use App\Core\ModelTemplate;
 
-class KategoriBarangModel extends ModelTemplate
+final class KategoriBarangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

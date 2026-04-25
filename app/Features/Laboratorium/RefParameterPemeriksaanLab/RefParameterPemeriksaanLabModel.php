@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\RefParameterPemeriksaanLab;
 
 use App\Core\ModelTemplate;
 
-class RefParameterPemeriksaanLabModel extends ModelTemplate
+final class RefParameterPemeriksaanLabModel extends ModelTemplate
 {
     public function __construct()
     {

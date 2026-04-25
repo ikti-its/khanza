@@ -5,7 +5,7 @@ namespace App\Features\PenangananDonor\KasusReaktif;
 
 use App\Core\ModelTemplate;
 
-class KasusReaktifModel extends ModelTemplate
+final class KasusReaktifModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

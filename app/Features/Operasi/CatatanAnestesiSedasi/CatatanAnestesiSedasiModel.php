@@ -5,7 +5,7 @@ namespace App\Features\Operasi\CatatanAnestesiSedasi;
 
 use App\Core\ModelTemplate;
 
-class CatatanAnestesiSedasiModel extends ModelTemplate
+final class CatatanAnestesiSedasiModel extends ModelTemplate
 {
     public function __construct()
     {

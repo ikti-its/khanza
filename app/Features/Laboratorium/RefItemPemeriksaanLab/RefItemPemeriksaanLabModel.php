@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\RefItemPemeriksaanLab;
 
 use App\Core\ModelTemplate;
 
-class RefItemPemeriksaanLabModel extends ModelTemplate
+final class RefItemPemeriksaanLabModel extends ModelTemplate
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@ namespace App\Core\Auth;
 
 use App\Core\ModelTemplate;
 
-class AuthModel extends ModelTemplate
+final class AuthModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\SkorBromage;
 
 use App\Core\ModelTemplate;
 
-class SkorBromageModel extends ModelTemplate
+final class SkorBromageModel extends ModelTemplate
 {
     public function __construct()
     {

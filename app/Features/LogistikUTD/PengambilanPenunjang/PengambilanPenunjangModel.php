@@ -5,7 +5,7 @@ namespace App\Features\LogistikUTD\PengambilanPenunjang;
 
 use App\Core\ModelTemplate;
 
-class PengambilanPenunjangModel extends ModelTemplate
+final class PengambilanPenunjangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

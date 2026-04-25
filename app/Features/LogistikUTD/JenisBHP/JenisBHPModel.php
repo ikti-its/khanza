@@ -5,7 +5,7 @@ namespace App\Features\LogistikUTD\JenisBHP;
 
 use App\Core\ModelTemplate;
 
-class JenisBHPModel extends ModelTemplate
+final class JenisBHPModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\JadwalOperasi;
 
 use App\Core\ModelTemplate;
 
-class JadwalOperasiModel extends ModelTemplate
+final class JadwalOperasiModel extends ModelTemplate
 {
     public function __construct()
     {

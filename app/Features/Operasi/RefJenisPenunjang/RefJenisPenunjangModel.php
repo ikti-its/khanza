@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefJenisPenunjang;
 
 use App\Core\ModelTemplate;
 
-class RefJenisPenunjangModel extends ModelTemplate
+final class RefJenisPenunjangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

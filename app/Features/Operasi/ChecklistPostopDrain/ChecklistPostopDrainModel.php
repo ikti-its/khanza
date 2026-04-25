@@ -5,7 +5,7 @@ namespace App\Features\Operasi\ChecklistPostopDrain;
 
 use App\Core\ModelTemplate;
 
-class ChecklistPostopDrainModel extends ModelTemplate
+final class ChecklistPostopDrainModel extends ModelTemplate
 {
     public function __construct()
     {

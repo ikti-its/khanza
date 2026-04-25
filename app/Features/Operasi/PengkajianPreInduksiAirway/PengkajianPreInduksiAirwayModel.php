@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PengkajianPreInduksiAirway;
 
 use App\Core\ModelTemplate;
 
-class PengkajianPreInduksiAirwayModel extends ModelTemplate
+final class PengkajianPreInduksiAirwayModel extends ModelTemplate
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\CatatanPaskaOperasi;
 
 use App\Core\ModelTemplate;
 
-class CatatanPaskaOperasiModel extends ModelTemplate
+final class CatatanPaskaOperasiModel extends ModelTemplate
 {
     public function __construct()
     {

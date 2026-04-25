@@ -5,7 +5,7 @@ namespace App\Features\Operasi\TimeOutSebelumInsisi;
 
 use App\Core\ModelTemplate;
 
-class TimeOutSebelumInsisiModel extends ModelTemplate
+final class TimeOutSebelumInsisiModel extends ModelTemplate
 {
     public function __construct()
     {

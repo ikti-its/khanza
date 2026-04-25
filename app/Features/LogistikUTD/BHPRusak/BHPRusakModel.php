@@ -5,7 +5,7 @@ namespace App\Features\LogistikUTD\BHPRusak;
 
 use App\Core\ModelTemplate;
 
-class BHPRusakModel extends ModelTemplate
+final class BHPRusakModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

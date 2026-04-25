@@ -5,7 +5,7 @@ namespace App\Features\Lokasi\Pulau;
 
 use App\Core\ModelTemplate;
 
-class PulauModel extends ModelTemplate
+final class PulauModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

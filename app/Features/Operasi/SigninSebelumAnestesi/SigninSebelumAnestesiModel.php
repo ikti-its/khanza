@@ -5,7 +5,7 @@ namespace App\Features\Operasi\SigninSebelumAnestesi;
 
 use App\Core\ModelTemplate;
 
-class SigninSebelumAnestesiModel extends ModelTemplate
+final class SigninSebelumAnestesiModel extends ModelTemplate
 {
     public function __construct()
     {

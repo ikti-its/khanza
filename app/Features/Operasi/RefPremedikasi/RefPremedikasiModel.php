@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefPremedikasi;
 
 use App\Core\ModelTemplate;
 
-class RefPremedikasiModel extends ModelTemplate
+final class RefPremedikasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

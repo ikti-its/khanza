@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefAldretteTekananDarah;
 
 use App\Core\ModelTemplate;
 
-class RefAldretteTekananDarahModel extends ModelTemplate
+final class RefAldretteTekananDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

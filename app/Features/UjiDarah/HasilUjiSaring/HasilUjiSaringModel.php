@@ -5,7 +5,7 @@ namespace App\Features\UjiDarah\HasilUjiSaring;
 
 use App\Core\ModelTemplate;
 
-class HasilUjiSaringModel extends ModelTemplate
+final class HasilUjiSaringModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

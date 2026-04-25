@@ -5,7 +5,7 @@ namespace App\Features\InventoriDarah\PemisahanKomponen;
 
 use App\Core\ModelTemplate;
 
-class PemisahanKomponenModel extends ModelTemplate
+final class PemisahanKomponenModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

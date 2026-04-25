@@ -5,7 +5,7 @@ namespace App\Features\Kontak\Email;
 
 use App\Core\ModelTemplate;
 
-class EmailModel extends ModelTemplate
+final class EmailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

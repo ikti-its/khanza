@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\JenisBarang;
 
 use App\Core\ModelTemplate;
 
-class JenisBarangModel extends ModelTemplate
+final class JenisBarangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

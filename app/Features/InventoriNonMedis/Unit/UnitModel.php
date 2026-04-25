@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\Unit;
 
 use App\Core\ModelTemplate;
 
-class UnitModel extends ModelTemplate
+final class UnitModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

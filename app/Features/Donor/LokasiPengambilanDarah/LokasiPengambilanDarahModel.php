@@ -5,7 +5,7 @@ namespace App\Features\Donor\LokasiPengambilanDarah;
 
 use App\Core\ModelTemplate;
 
-class LokasiPengambilanDarahModel extends ModelTemplate
+final class LokasiPengambilanDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

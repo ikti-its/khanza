@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefKesadaran;
 
 use App\Core\ModelTemplate;
 
-class RefKesadaranModel extends ModelTemplate
+final class RefKesadaranModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

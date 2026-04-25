@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefKeadaanUmum;
 
 use App\Core\ModelTemplate;
 
-class RefKeadaanUmumModel extends ModelTemplate
+final class RefKeadaanUmumModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

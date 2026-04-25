@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefIndikasiPindah;
 
 use App\Core\ModelTemplate;
 
-class RefIndikasiPindahModel extends ModelTemplate
+final class RefIndikasiPindahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

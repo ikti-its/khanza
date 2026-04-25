@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\HasilLabPk;
 
 use App\Core\ModelTemplate;
 
-class HasilLabPkModel extends ModelTemplate
+final class HasilLabPkModel extends ModelTemplate
 {
     public function __construct()
     {

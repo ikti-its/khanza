@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefStewardMotorik;
 
 use App\Core\ModelTemplate;
 
-class RefStewardMotorikModel extends ModelTemplate
+final class RefStewardMotorikModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\UjiDarah\HasilDiagnostikDetail;
 
 use App\Core\ModelTemplate;
 
-class HasilDiagnostikDetailModel extends ModelTemplate
+final class HasilDiagnostikDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

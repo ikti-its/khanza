@@ -5,7 +5,7 @@ namespace App\Features\Operasi\PengkajianPreop;
 
 use App\Core\ModelTemplate;
 
-class PengkajianPreopModel extends ModelTemplate
+final class PengkajianPreopModel extends ModelTemplate
 {
     public function __construct()
     {

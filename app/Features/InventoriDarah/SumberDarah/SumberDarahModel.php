@@ -5,7 +5,7 @@ namespace App\Features\InventoriDarah\SumberDarah;
 
 use App\Core\ModelTemplate;
 
-class SumberDarahModel extends ModelTemplate
+final class SumberDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

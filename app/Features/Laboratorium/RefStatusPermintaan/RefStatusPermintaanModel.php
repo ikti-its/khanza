@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\RefStatusPermintaan;
 
 use App\Core\ModelTemplate;
 
-class RefStatusPermintaanModel extends ModelTemplate
+final class RefStatusPermintaanModel extends ModelTemplate
 {
     public function __construct()
     {

@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\CaraMasuk;
 
 use App\Core\ModelTemplate;
 
-class CaraMasukModel extends ModelTemplate
+final class CaraMasukModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

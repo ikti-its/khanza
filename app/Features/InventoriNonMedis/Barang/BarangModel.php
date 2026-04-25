@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\Barang;
 
 use App\Core\ModelTemplate;
 
-class BarangModel extends ModelTemplate
+final class BarangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

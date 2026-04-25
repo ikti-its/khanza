@@ -5,7 +5,7 @@ namespace App\Features\DistribusiDarah\StatusPermintaan;
 
 use App\Core\ModelTemplate;
 
-class StatusPermintaanModel extends ModelTemplate
+final class StatusPermintaanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

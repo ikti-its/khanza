@@ -5,7 +5,7 @@ namespace App\Features\PenangananDonor\StatusKasus;
 
 use App\Core\ModelTemplate;
 
-class StatusKasusModel extends ModelTemplate
+final class StatusKasusModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

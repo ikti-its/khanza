@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefKesadaranPascaop;
 
 use App\Core\ModelTemplate;
 
-class RefKesadaranPascaopModel extends ModelTemplate
+final class RefKesadaranPascaopModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefPeralatanTransfer;
 
 use App\Core\ModelTemplate;
 
-class RefPeralatanTransferModel extends ModelTemplate
+final class RefPeralatanTransferModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

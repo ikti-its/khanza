@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\Supplier;
 
 use App\Core\ModelTemplate;
 
-class SupplierModel extends ModelTemplate
+final class SupplierModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefRuanganOperasi;
 
 use App\Core\ModelTemplate;
 
-class RefRuanganOperasiModel extends ModelTemplate
+final class RefRuanganOperasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

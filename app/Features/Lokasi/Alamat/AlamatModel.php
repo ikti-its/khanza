@@ -5,7 +5,7 @@ namespace App\Features\Lokasi\Alamat;
 
 use App\Core\ModelTemplate;
 
-class AlamatModel extends ModelTemplate
+final class AlamatModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefWarnaUrine;
 
 use App\Core\ModelTemplate;
 
-class RefWarnaUrineModel extends ModelTemplate
+final class RefWarnaUrineModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Person\Orang;
 
 use App\Core\ModelTemplate;
 
-class OrangModel extends ModelTemplate
+final class OrangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Pemusnahan\PemusnahanDarah;
 
 use App\Core\ModelTemplate;
 
-class PemusnahanDarahModel extends ModelTemplate
+final class PemusnahanDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

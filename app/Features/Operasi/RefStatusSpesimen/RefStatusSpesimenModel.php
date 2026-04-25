@@ -5,7 +5,7 @@ namespace App\Features\Operasi\RefStatusSpesimen;
 
 use App\Core\ModelTemplate;
 
-class RefStatusSpesimenModel extends ModelTemplate
+final class RefStatusSpesimenModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

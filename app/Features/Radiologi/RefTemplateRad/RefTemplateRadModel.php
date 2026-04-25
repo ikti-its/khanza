@@ -5,7 +5,7 @@ namespace App\Features\Radiologi\RefTemplateRad;
 
 use App\Core\ModelTemplate;
 
-class RefTemplateRadModel extends ModelTemplate
+final class RefTemplateRadModel extends ModelTemplate
 {
     public function __construct()
     {

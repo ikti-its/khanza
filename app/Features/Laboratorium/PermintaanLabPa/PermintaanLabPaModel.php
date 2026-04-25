@@ -5,7 +5,7 @@ namespace App\Features\Laboratorium\PermintaanLabPa;
 
 use App\Core\ModelTemplate;
 
-class PermintaanLabPaModel extends ModelTemplate
+final class PermintaanLabPaModel extends ModelTemplate
 {
     public function __construct()
     {

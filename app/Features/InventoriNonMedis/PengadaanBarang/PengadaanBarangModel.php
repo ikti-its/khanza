@@ -5,7 +5,7 @@ namespace App\Features\InventoriNonMedis\PengadaanBarang;
 
 use App\Core\ModelTemplate;
 
-class PengadaanBarangModel extends ModelTemplate
+final class PengadaanBarangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

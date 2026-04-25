@@ -5,7 +5,7 @@ namespace App\Features\RawatJalan\SkriningRJ\RefSkriningKeputusan;
 
 use App\Core\ModelTemplate;
 
-class RefSkriningKeputusanModel extends ModelTemplate
+final class RefSkriningKeputusanModel extends ModelTemplate
 {
     public function __construct()
     {

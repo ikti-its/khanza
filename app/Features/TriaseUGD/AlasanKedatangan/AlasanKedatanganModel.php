@@ -5,7 +5,7 @@ namespace App\Features\TriaseUGD\AlasanKedatangan;
 
 use App\Core\ModelTemplate;
 
-class AlasanKedatanganModel extends ModelTemplate
+final class AlasanKedatanganModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

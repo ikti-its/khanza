@@ -5,7 +5,7 @@ namespace App\Features\Darah\GolonganDarah;
 
 use App\Core\ModelTemplate;
 
-class GolonganDarahModel extends ModelTemplate
+final class GolonganDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

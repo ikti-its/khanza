@@ -5,7 +5,7 @@ namespace App\Features\Role\Pendonor;
 
 use App\Core\ModelTemplate;
 
-class PendonorModel extends ModelTemplate
+final class PendonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

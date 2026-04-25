@@ -5,7 +5,7 @@ namespace App\Features\Person\JenisKelamin;
 
 use App\Core\ModelTemplate;
 
-class JenisKelaminModel extends ModelTemplate
+final class JenisKelaminModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

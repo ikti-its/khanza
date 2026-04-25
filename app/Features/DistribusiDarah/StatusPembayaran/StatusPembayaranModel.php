@@ -5,7 +5,7 @@ namespace App\Features\DistribusiDarah\StatusPembayaran;
 
 use App\Core\ModelTemplate;
 
-class StatusPembayaranModel extends ModelTemplate
+final class StatusPembayaranModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -5,7 +5,7 @@ namespace App\Features\Donor\HasilAnamnesis;
 
 use App\Core\ModelTemplate;
 
-class HasilAnamnesisModel extends ModelTemplate
+final class HasilAnamnesisModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(

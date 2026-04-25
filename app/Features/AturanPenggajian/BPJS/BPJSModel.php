@@ -5,7 +5,7 @@ namespace App\Features\AturanPenggajian\BPJS;
 
 use App\Core\ModelTemplate;
 
-class BPJSModel extends ModelTemplate
+final class BPJSModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
