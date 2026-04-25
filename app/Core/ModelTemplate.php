@@ -27,7 +27,6 @@ class ModelTemplate extends Model
         $config = new \Config\Database()->default;
         $config['database'] = env('database.default.khanza_db');
         $this->db = \Config\Database::connect($config);
-        $this->forge = \Config\Database::forge($this->db);
         
         // $this->setValidationRules($fields);
         
