@@ -749,58 +749,51 @@ public function submitTambahCuti()
         $title = 'Dashboard';
         date_default_timezone_set('Asia/Bangkok');
 
-        // Check if the user is logged in by checking the presence of the JWT token in the session
-        if (session()->has('jwt_token')) {
+        $token = session()->get('jwt_token');
+        $headers = [
+            'Authorization: Bearer ' . $token,
+            'Content-Type: application/json'
+        ];
 
-            $token = session()->get('jwt_token');
-            $headers = [
-                'Authorization: Bearer ' . $token,
-                'Content-Type: application/json'
-            ];
+        $tanggal = date('Y-m-d');
 
-            $tanggal = date('Y-m-d');
+        $user_specific_url = $this->api_url . '/w/home/pegawai?tanggal=' . $tanggal;
+        $user_details_url = $this->api_url . '/auth';
 
-            $user_specific_url = $this->api_url . '/w/home/pegawai?tanggal=' . $tanggal;
-            $user_details_url = $this->api_url . '/auth';
+        $ch = curl_init($user_details_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-            $ch = curl_init($user_details_url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-            $response = curl_exec($ch);
-            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // dd(session()->get('user_details'));
+        
+        if ($http_code === 200 && $response) {
+            $user_details_data = json_decode($response, true);
             
-            if ($http_code === 200 && $response) {
-                $user_details_data = json_decode($response, true);
-            
-                // Optional: dd($user_details_data);
-            
-                if (isset($user_details_data['data'])) {
-                    session()->set('user_details', $user_details_data['data']);
-                }
-            }
-
-            // dd($user_specific_url);
-
-            // Initialize cURL session for user specific data
-            $user_specific_ch = curl_init($user_specific_url);
-            curl_setopt($user_specific_ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($user_specific_ch, CURLOPT_HTTPHEADER, $headers);
-
-            // Execute the cURL request for user specific data
-            $user_specific_response = curl_exec($user_specific_ch);
-
-            if ($user_specific_response) {
-                // Decode the JSON response
-                $user_specific_data = json_decode($user_specific_response, true);
-
-                // Store the user specific data in session or handle it as needed
+            // Optional:         
+            if (isset($user_details_data['data'])) {
                 session()->set('user_details', $user_details_data['data']);
-                session()->set('user_specific_data', $user_specific_data['data']);
-                return view('/user/dashboard', ['title' => $title]);
+                // dd($user_details_data['data']);
             }
         }
+
+        // Initialize cURL session for user specific data
+        $user_specific_ch = curl_init($user_specific_url);
+        curl_setopt($user_specific_ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($user_specific_ch, CURLOPT_HTTPHEADER, $headers);
+
+        // Execute the cURL request for user specific data
+        $user_specific_response = curl_exec($user_specific_ch);
+
+        if ($user_specific_response) {
+            // Decode the JSON response
+            $user_specific_data = json_decode($user_specific_response, true);
+            // Store the user specific data in session or handle it as needed
+            session()->set('user_specific_data', $user_specific_data['data']);
+        }
+
+        return view('/user/dashboard', ['title' => $title]);
     }
 
     public function tambahPresensi()
