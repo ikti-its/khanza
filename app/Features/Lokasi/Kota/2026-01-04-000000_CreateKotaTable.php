@@ -25,7 +25,7 @@ use App\Core\Database\DatabaseType as T;
  *  3515 = Kabupaten Sidoarjo
  */
 
-class CreateKotaTable extends DatabaseTemplate
+final class CreateKotaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

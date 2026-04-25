@@ -28,7 +28,7 @@ use App\Core\Database\DatabaseType as T;
  *  35.78.09.1001   = Kelurahan Keputih
  */
 
-class CreateDesaTable extends DatabaseTemplate
+final class CreateDesaTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

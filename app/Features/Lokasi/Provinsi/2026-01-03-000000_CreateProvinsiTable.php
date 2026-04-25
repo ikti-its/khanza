@@ -21,7 +21,7 @@ use App\Core\Database\DatabaseType as T;
  *  11 = Provinsi Aceh 
  */
 
-class CreateProvinsiTable extends DatabaseTemplate
+final class CreateProvinsiTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

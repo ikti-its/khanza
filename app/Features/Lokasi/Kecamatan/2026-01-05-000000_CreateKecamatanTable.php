@@ -25,7 +25,7 @@ use App\Core\Database\DatabaseType as T;
  *  35.78.09 = Kecamatan Sukolilo
  */
 
-class CreateKecamatanTable extends DatabaseTemplate
+final class CreateKecamatanTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

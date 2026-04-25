@@ -5,7 +5,7 @@ namespace App\Features\Pendidikan\Sekolah;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateSekolahTable extends DatabaseTemplate
+final class CreateSekolahTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

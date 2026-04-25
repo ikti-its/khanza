@@ -6,7 +6,7 @@ namespace App\Features\Lokasi\Negara;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateNegaraTable extends DatabaseTemplate
+final class CreateNegaraTable extends DatabaseTemplate
 {   
     public function __construct(){
         parent::__construct(

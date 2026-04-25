@@ -6,7 +6,7 @@ namespace App\Features\Finansial\PemilikBank;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreatePemilikBankTable extends DatabaseTemplate
+final class CreatePemilikBankTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

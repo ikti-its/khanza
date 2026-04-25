@@ -6,7 +6,7 @@ namespace App\Features\Kontak\Telepon;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateTeleponTable extends DatabaseTemplate
+final class CreateTeleponTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -29,7 +29,7 @@ use App\Core\Database\DatabaseType as T;
  *  35 = Provinsi Jawa Timur
  */
 
-class CreatePulauTable extends DatabaseTemplate
+final class CreatePulauTable extends DatabaseTemplate
 {   
     public function __construct(){
         parent::__construct(

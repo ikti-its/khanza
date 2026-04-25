@@ -6,7 +6,7 @@ namespace App\Features\Finansial\Bank;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateBankTable extends DatabaseTemplate
+final class CreateBankTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

@@ -6,7 +6,7 @@ namespace App\Features\Lokasi\Alamat;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateAlamatTable extends DatabaseTemplate
+final class CreateAlamatTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

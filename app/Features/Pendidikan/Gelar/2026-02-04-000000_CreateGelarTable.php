@@ -5,7 +5,7 @@ namespace App\Features\Pendidikan\Gelar;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-class CreateGelarTable extends DatabaseTemplate
+final class CreateGelarTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

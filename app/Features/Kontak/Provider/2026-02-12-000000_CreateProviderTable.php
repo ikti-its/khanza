@@ -6,7 +6,7 @@ namespace App\Features\Kontak\Provider;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateProviderTable extends DatabaseTemplate
+final class CreateProviderTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(

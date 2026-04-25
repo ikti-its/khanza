@@ -6,7 +6,7 @@ namespace App\Features\Finansial\Rekening;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-class CreateRekeningTable extends DatabaseTemplate
+final class CreateRekeningTable extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
