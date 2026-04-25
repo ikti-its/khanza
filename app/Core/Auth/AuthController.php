@@ -52,9 +52,9 @@ final class AuthController extends Controller
                 'code'  => 200,
                 'token' => $this->generate_JWT($user),
                 'user_details' => [
-                    'sub'   => $user['id'],
+                    'id'    => $user['id'],
                     'email' => $user['email'],
-                    'role'  => $user['role'],
+                    'role'  => (int) $user['role'],
                 ]
             ]);    
     }
@@ -84,9 +84,9 @@ final class AuthController extends Controller
             'code'  => 200,
             'token' => $this->generate_JWT($user),
             'user_details' => [
-                'sub'   => $user['id'],
+                'id'    => $user['id'],
                 'email' => $user['email'],
-                'role'  => $user['role'],
+                'role'  => (int) $user['role'],
             ]
         ];    
     }
@@ -121,7 +121,7 @@ final class AuthController extends Controller
         $user_details = $data['user_details'];
         session()->set('user_details', $user_details);
 
-        $role = $user_details['role'];
+        session()->set('user_specific_data', 'Akun not found');
 
         return redirect()->to('/dashboard')
             ->with('title', 'Dashboard')
@@ -137,8 +137,46 @@ final class AuthController extends Controller
 
     public function dashboard()
     {
-        $data = ['title' => 'Dashboard Admin'];
-        return  view('/dashboard/dashboard', $data);
+        $title = 'Dashboard';
+        date_default_timezone_set('Asia/Bangkok');
+
+        $token = session()->get('jwt_token');
+        $headers = [
+            'Authorization: Bearer ' . $token,
+            'Content-Type: application/json'
+        ];
+
+        $tanggal = date('Y-m-d');
+
+        $user_specific_url = getenv('api_URL') . '/w/home/pegawai?tanggal=' . $tanggal;
+        $user_details_url = getenv('api_URL') . '/auth';
+
+        $ch = curl_init($user_details_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        
+        if ($http_code === 200 && $response) {
+            $user_details_data = json_decode($response, true);
+            if (isset($user_details_data['data'])) {
+                session()->set('user_details', $user_details_data['data']);
+            }
+        }
+
+        $user_specific_ch = curl_init($user_specific_url);
+        curl_setopt($user_specific_ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($user_specific_ch, CURLOPT_HTTPHEADER, $headers);
+
+        $user_specific_response = curl_exec($user_specific_ch);
+
+        if ($user_specific_response) {
+            $user_specific_data = json_decode($user_specific_response, true);
+            session()->set('user_specific_data', $user_specific_data['data']);
+        }
+
+        return view('/dashboard/dashboard', ['title' => $title]);
     }
 
     public function login2()
