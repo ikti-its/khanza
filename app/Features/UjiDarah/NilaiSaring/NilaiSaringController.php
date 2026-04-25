@@ -6,8 +6,7 @@ use App\Core\Controller\ControllerTemplate;
 
 final class NilaiSaringController extends ControllerTemplate
 {
-    public function __construct(
-    ){
+    public function __construct(){
         parent::__construct(
             model: new NilaiSaringModel(),
             breadcrumbs: [
