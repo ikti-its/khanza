@@ -16,9 +16,6 @@ final class UnitController extends ControllerTemplate
                 ['title' => 'Unit',                'icon' => 'unit'],
             ],
             judul: 'Unit',
-            modul_path: '/inventori-non-medis/unit',
-            nama_tabel: 'unit',
-            kolom_id: 'id_unit',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,

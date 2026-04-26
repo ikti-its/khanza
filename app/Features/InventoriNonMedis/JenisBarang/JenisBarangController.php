@@ -16,9 +16,6 @@ final class JenisBarangController extends ControllerTemplate
                 ['title' => 'Jenis Barang',        'icon' => 'jenis_barang'],
             ],
             judul: 'Jenis Barang',
-            modul_path: '/inventori-non-medis/jenis-barang',
-            nama_tabel: 'jenis_barang',
-            kolom_id: 'id_jenis_barang',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,

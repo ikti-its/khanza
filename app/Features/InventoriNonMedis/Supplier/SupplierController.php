@@ -16,9 +16,6 @@ final class SupplierController extends ControllerTemplate
                 ['title' => 'Supplier',            'icon' => 'supplier'],
             ],
             judul: 'Supplier',
-            modul_path: '/inventori-non-medis/supplier',
-            nama_tabel: 'supplier',
-            kolom_id: 'id_supplier',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,

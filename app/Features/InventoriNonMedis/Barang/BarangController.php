@@ -16,9 +16,6 @@ final class BarangController extends ControllerTemplate
                 ['title' => 'Barang',              'icon' => 'barang'],
             ],
             judul: 'Barang',
-            modul_path: '/inventori-non-medis/barang',
-            nama_tabel: 'barang',
-            kolom_id: 'id_barang',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,

@@ -16,9 +16,6 @@ final class TransaksiStokController extends ControllerTemplate
                 ['title' => 'Transaksi Stok',      'icon' => 'transaksi_stok'],
             ],
             judul: 'Transaksi Stok',
-            modul_path: '/inventori-non-medis/transaksi-stok',
-            nama_tabel: 'transaksi_stok',
-            kolom_id: 'id_transaksi',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,

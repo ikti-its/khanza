@@ -17,9 +17,6 @@ final class PengajuanBarangDetailController extends ControllerTemplate
                 ['title' => 'Detail',              'icon' => 'detail'],
             ],
             judul: 'Detail Pengajuan Barang',
-            modul_path: '/inventori-non-medis/pengajuan-barang',
-            nama_tabel: 'pengajuan_barang_detail',
-            kolom_id: 'id_detail',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,

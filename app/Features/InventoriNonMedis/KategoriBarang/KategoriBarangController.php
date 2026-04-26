@@ -16,9 +16,6 @@ final class KategoriBarangController extends ControllerTemplate
                 ['title' => 'Kategori Barang',     'icon' => 'kategori_barang'],
             ],
             judul: 'Kategori Barang',
-            modul_path: '/inventori-non-medis/kategori-barang',
-            nama_tabel: 'kategori_barang',
-            kolom_id: 'id_kategori',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,

@@ -16,9 +16,6 @@ final class LokasiController extends ControllerTemplate
                 ['title' => 'Lokasi',              'icon' => 'lokasi'],
             ],
             judul: 'Lokasi',
-            modul_path: '/inventori-non-medis/lokasi',
-            nama_tabel: 'lokasi',
-            kolom_id: 'id_lokasi',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,

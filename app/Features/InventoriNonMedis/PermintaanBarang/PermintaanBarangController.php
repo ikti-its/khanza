@@ -16,9 +16,6 @@ final class PermintaanBarangController extends ControllerTemplate
                 ['title' => 'Permintaan Barang',   'icon' => 'permintaan_barang'],
             ],
             judul: 'Permintaan Barang',
-            modul_path: '/inventori-non-medis/permintaan-barang',
-            nama_tabel: 'permintaan_barang',
-            kolom_id: 'id_permintaan',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,

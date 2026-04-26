@@ -16,9 +16,6 @@ final class StokOpnameController extends ControllerTemplate
                 ['title' => 'Stok Opname',         'icon' => 'stok_opname'],
             ],
             judul: 'Stok Opname',
-            modul_path: '/inventori-non-medis/stok-opname',
-            nama_tabel: 'stok_opname',
-            kolom_id: 'id_opname',
             aksi: [
                 'tambah' => true,
                 'audit'  => false,
