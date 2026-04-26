@@ -19,6 +19,7 @@ class ControllerTemplate extends Controller
         $this->reorder_fields();
         $this->process_fields();
         $this->process_action();
+        $this->process_breadcrumbs();
         $this->primary_keys = $this->model->get_primary_key();
         $this->meta_data = ['page' => 1, 'size' => 10, 'total' => 1];
     }
@@ -71,15 +72,25 @@ class ControllerTemplate extends Controller
             'tambah' => false,
             'audit'  => false,
             'ubah'   => false,
-            'hapus'  => false
+            'hapus'  => false,
         ];
         foreach($this->action as $a){
-            if ($a instanceof ActionType){
+            if ($a instanceof ActionType)
                 $action[$a->value] = true;
-            }
         }
-
         $this->action = $action;
+    }
+
+    private function process_breadcrumbs(){
+        for($i = 0; $i < count($this->breadcrumbs); $i++){
+            $curr = $this->breadcrumbs[$i];
+            $title = $curr[0];
+            $icon  = $curr[1];
+            $this->breadcrumbs[$i] = [
+                'title' => $title,
+                'icon'  => $icon,
+            ];
+        }
     }
 
     final public function index()
