@@ -27,6 +27,8 @@ final class CreatePengambilanPenunjangTable extends DatabaseTemplate
                 // ['id_barang', 'inventori_non_medis.barang', 'id_barang'],
                 // ['id_petugas_gudang', 'sik.pegawai_structure', 'id'],
             ],
+            false,
+            __DIR__ . '/pengambilan_penunjang.csv'
         );
     }
 }
