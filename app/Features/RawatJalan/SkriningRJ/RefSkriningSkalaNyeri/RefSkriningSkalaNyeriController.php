@@ -11,19 +11,19 @@ final class RefSkriningSkalaNyeriController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefSkriningSkalaNyeriModel(),
-            breadcrumbs: [
+            new RefSkriningSkalaNyeriModel(),
+            [
                 ['Rawat Jalan', 'rawat_jalan'],
                 ['Referensi Skrining Skala Nyeri', 'ref_skrining_skala_nyeri'],
             ],
-            title: 'Referensi Skrining Skala Nyeri',
-            action: [
+            'Referensi Skrining Skala Nyeri',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skala_nyeri', 'ID Skala Nyeri'],
                 [SHOW, REQUIRED, I::TEXT, 'skala_nyeri', 'Skala Nyeri'],
             ],

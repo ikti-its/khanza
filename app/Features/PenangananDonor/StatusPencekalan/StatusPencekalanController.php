@@ -10,19 +10,19 @@ final class StatusPencekalanController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new StatusPencekalanModel(),
-            breadcrumbs: [
+            new StatusPencekalanModel(),
+            [
                 ['Penanganan Donor', 'penanganan_donor'],
                 ['Status Pencekalan', 'status_pencekalan'],
             ],
-            title: 'Status Pencekalan',
-            action: [
+            'Status Pencekalan',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_pencekalan', 'ID Status Pencekalan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_pencekalan', 'Nama Status Pencekalan'],
             ],

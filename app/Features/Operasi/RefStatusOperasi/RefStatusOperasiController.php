@@ -11,19 +11,19 @@ final class RefStatusOperasiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefStatusOperasiModel(),
-            breadcrumbs: [
+            new RefStatusOperasiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Status Operasi', 'ref_status_operasi'],
             ],
-            title: 'Referensi Status Operasi',
-            action: [
+            'Referensi Status Operasi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status', 'ID Status'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status', 'Nama Status'],
             ],

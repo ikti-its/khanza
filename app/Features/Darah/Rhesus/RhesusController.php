@@ -10,19 +10,19 @@ final class RhesusController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new RhesusModel(),
-            breadcrumbs: [
+            new RhesusModel(),
+            [
                 ['Darah', 'darah'],
                 ['Rhesus', 'rhesus'],
             ],
-            title: 'Rhesus',
-            action: [
+            'Rhesus',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rhesus', 'ID Rhesus'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_rhesus', 'Kode Rhesus'],
             ],

@@ -10,19 +10,19 @@ final class BHPRusakController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new BHPRusakModel(),
-            breadcrumbs: [
+            new BHPRusakModel(),
+            [
                 ['Logistik UTD', 'logistik_utd'],
                 ['BHP Rusak', 'bhp_rusak'],
             ],
-            title: 'BHP Rusak',
-            action: [
+            'BHP Rusak',
+            [
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE,
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_rusak', 'ID BHP Rusak'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],
                 [SHOW, OPTIONAL, I::INDEX, 'id_barang_medis', 'ID Barang Medis'],

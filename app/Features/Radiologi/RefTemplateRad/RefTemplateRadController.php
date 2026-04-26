@@ -11,19 +11,19 @@ final class RefTemplateRadController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefTemplateRadModel(),
-            breadcrumbs: [
+            new RefTemplateRadModel(),
+            [
                 ['Radiologi', 'radiologi'],
                 ['Referensi Template Radiologi', 'ref_template_rad'],
             ],
-            title: 'Referensi Template Radiologi',
-            action: [
+            'Referensi Template Radiologi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_template', 'ID Template'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_template', 'Nama Template'],
                 [SHOW, REQUIRED, I::TEXT, 'isi_teks_ekspertise', 'Isi Teks Ekspertise'],

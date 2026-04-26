@@ -11,19 +11,19 @@ final class TimeOutSebelumInsisiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new TimeOutSebelumInsisiModel(),
-            breadcrumbs: [
+            new TimeOutSebelumInsisiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Time Out Sebelum Insisi', 'time_out_sebelum_insisi'],
             ],
-            title: 'Time Out Sebelum Insisi',
-            action: [
+            'Time Out Sebelum Insisi',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_timeout', 'ID Time Out'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_timeout', 'Waktu Time Out'],

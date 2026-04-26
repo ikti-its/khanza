@@ -10,19 +10,19 @@ final class JenisBHPController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new JenisBHPModel(),
-            breadcrumbs: [
+            new JenisBHPModel(),
+            [
                 ['Logistik UTD', 'logistik_utd'],
                 ['Jenis BHP', 'jenis_bhp'],
             ],
-            title: 'Jenis BHP',
-            action: [
+            'Jenis BHP',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis_bhp', 'Nama Jenis BHP'],
             ],

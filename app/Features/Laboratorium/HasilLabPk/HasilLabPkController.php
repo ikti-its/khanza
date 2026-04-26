@@ -11,19 +11,19 @@ final class HasilLabPkController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new HasilLabPkModel(),
-            breadcrumbs: [
+            new HasilLabPkModel(),
+            [
                 ['Laboratorium', 'laboratorium'],
                 ['Hasil Lab PK', 'hasil_lab_pk'],
             ],
-            title: 'Hasil Lab PK',
-            action: [
+            'Hasil Lab PK',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_pk', 'ID Hasil PK'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],

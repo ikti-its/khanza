@@ -10,19 +10,19 @@ final class MetodeUjiController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new MetodeUjiModel(),
-            breadcrumbs: [
+            new MetodeUjiModel(),
+            [
                 ['Uji Darah', 'uji_darah'],
                 ['Metode Uji', 'metode_uji'],
             ],
-            title: 'Metode Uji',
-            action: [
+            'Metode Uji',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_metode_uji', 'ID Metode Uji'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_metode', 'Nama Metode'],
             ],

@@ -11,19 +11,19 @@ final class HasilRadTindakanController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new HasilRadTindakanModel(),
-            breadcrumbs: [
+            new HasilRadTindakanModel(),
+            [
                 ['Radiologi', 'radiologi'],
                 ['Hasil Radiologi Tindakan', 'hasil_rad_tindakan'],
             ],
-            title: 'Hasil Radiologi Tindakan',
-            action: [
+            'Hasil Radiologi Tindakan',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_tindakan', 'ID Hasil Tindakan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_hasil_rad', 'ID Hasil Rad'],
                 [SHOW, REQUIRED, I::INDEX, 'id_item_rad', 'Item Radiologi'],

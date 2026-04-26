@@ -10,19 +10,19 @@ final class PengambilanPenunjangController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new PengambilanPenunjangModel(),
-            breadcrumbs: [
+            new PengambilanPenunjangModel(),
+            [
                 ['Logistik UTD', 'logistik_utd'],
                 ['Pengambilan BHP Non Medis', 'pengambilan_bhp_non_medis'],
             ],
-            title: 'Pengambilan BHP Non Medis',
-            action: [
+            'Pengambilan BHP Non Medis',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_penunjang', 'ID Pengambilan Penunjang'],
                 [SHOW, REQUIRED, I::INDEX, 'id_barang', 'ID Barang'],
                 [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],

@@ -11,19 +11,19 @@ final class RefPremedikasiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefPremedikasiModel(),
-            breadcrumbs: [
+            new RefPremedikasiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Premedikasi', 'ref_premedikasi'],
             ],
-            title: 'Referensi Premedikasi',
-            action: [
+            'Referensi Premedikasi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_premedikasi', 'ID Premedikasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_premedikasi', 'Nama Premedikasi'],
             ],

@@ -11,19 +11,19 @@ final class ChecklistPostopDrainController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new ChecklistPostopDrainModel(),
-            breadcrumbs: [
+            new ChecklistPostopDrainModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Checklist Post Operasi Drain', 'checklist_postop_drain'],
             ],
-            title: 'Checklist Post Operasi Drain',
-            action: [
+            'Checklist Post Operasi Drain',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_drain', 'ID Drain'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
                 [SHOW, REQUIRED, I::INDEX, 'id_ketersediaan', 'Ketersediaan'],

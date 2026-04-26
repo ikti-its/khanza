@@ -11,19 +11,19 @@ final class RefSkriningBatukController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefSkriningBatukModel(),
-            breadcrumbs: [
+            new RefSkriningBatukModel(),
+            [
                 ['Rawat Jalan', 'rawat_jalan'],
                 ['Referensi Skrining Batuk', 'ref_skrining_batuk'],
             ],
-            title: 'Referensi Skrining Batuk',
-            action: [
+            'Referensi Skrining Batuk',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_batuk', 'ID Batuk'],
                 [SHOW, REQUIRED, I::TEXT, 'kategori_batuk', 'Kategori Batuk'],
             ],

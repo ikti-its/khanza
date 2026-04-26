@@ -10,19 +10,19 @@ final class StatusPermintaanController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new StatusPermintaanModel(),
-            breadcrumbs: [
+            new StatusPermintaanModel(),
+            [
                 ['Pelayanan Darah', 'pelayanan_darah'],
                 ['Status Permintaan', 'status_permintaan'],
             ],
-            title: 'Status Permintaan',
-            action: [
+            'Status Permintaan',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_permintaan', 'ID Status Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_permintaan', 'Nama Status Permintaan'],
             ],

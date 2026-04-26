@@ -11,19 +11,19 @@ final class RefSkriningNyeriDadaController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefSkriningNyeriDadaModel(),
-            breadcrumbs: [
+            new RefSkriningNyeriDadaModel(),
+            [
                 ['Rawat Jalan', 'rawat_jalan'],
                 ['Referensi Skrining Nyeri Dada', 'ref_skrining_nyeri_dada'],
             ],
-            title: 'Referensi Skrining Nyeri Dada',
-            action: [
+            'Referensi Skrining Nyeri Dada',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_nyeri_dada', 'ID Nyeri Dada'],
                 [SHOW, REQUIRED, I::TEXT, 'nyeri_dada', 'Nyeri Dada'],
             ],

@@ -10,19 +10,19 @@ final class AlasanPemusnahanController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new AlasanPemusnahanModel(),
-            breadcrumbs: [
+            new AlasanPemusnahanModel(),
+            [
                 ['Pemusnahan Darah', 'pemusnahan_darah'],
                 ['Alasan Pemusnahan', 'alasan_pemusnahan'],
             ],
-            title: 'Alasan Pemusnahan',
-            action: [
+            'Alasan Pemusnahan',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_alasan', 'ID Alasan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_alasan', 'Nama Alasan Pemusnahan'],
             ],

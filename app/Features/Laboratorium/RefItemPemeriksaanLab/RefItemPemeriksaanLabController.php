@@ -11,19 +11,19 @@ final class RefItemPemeriksaanLabController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefItemPemeriksaanLabModel(),
-            breadcrumbs: [
+            new RefItemPemeriksaanLabModel(),
+            [
                 ['Laboratorium', 'laboratorium'],
                 ['Referensi Item Pemeriksaan', 'ref_item_pemeriksaan_lab'],
             ],
-            title: 'Referensi Item Pemeriksaan Lab',
-            action: [
+            'Referensi Item Pemeriksaan Lab',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_item_lab', 'ID Item Lab'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kategori', 'Kategori'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_periksa', 'Kode Periksa'],

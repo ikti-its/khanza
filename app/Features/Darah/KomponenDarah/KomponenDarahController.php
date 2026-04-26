@@ -10,19 +10,19 @@ final class KomponenDarahController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new KomponenDarahModel(),
-            breadcrumbs: [
+            new KomponenDarahModel(),
+            [
                 ['Darah', 'darah'],
                 ['Komponen Darah', 'komponen_darah'],
             ],
-            title: 'Komponen Darah',
-            action: [
+            'Komponen Darah',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_komponen', 'ID Komponen'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_komponen', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_komponen', 'Nama Komponen'],

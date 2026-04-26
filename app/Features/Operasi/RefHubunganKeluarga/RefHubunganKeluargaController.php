@@ -11,19 +11,19 @@ final class RefHubunganKeluargaController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefHubunganKeluargaModel(),
-            breadcrumbs: [
+            new RefHubunganKeluargaModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Hubungan Keluarga', 'ref_hubungan_keluarga'],
             ],
-            title: 'Referensi Hubungan Keluarga',
-            action: [
+            'Referensi Hubungan Keluarga',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hubungan_keluarga', 'ID Hubungan Keluarga'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_hubungan', 'Nama Hubungan'],
             ],

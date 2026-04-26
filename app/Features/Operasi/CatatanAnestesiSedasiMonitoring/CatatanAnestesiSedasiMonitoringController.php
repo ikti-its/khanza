@@ -11,19 +11,19 @@ final class CatatanAnestesiSedasiMonitoringController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new CatatanAnestesiSedasiMonitoringModel(),
-            breadcrumbs: [
+            new CatatanAnestesiSedasiMonitoringModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Catatan Anestesi Sedasi Monitoring', 'catatan_anestesi_sedasi_monitoring'],
             ],
-            title: 'Catatan Anestesi Sedasi Monitoring',
-            action: [
+            'Catatan Anestesi Sedasi Monitoring',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_monitoring', 'ID Monitoring'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_catatan_anestesi', 'ID Catatan Anestesi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_monitoring', 'Nama Monitoring'],

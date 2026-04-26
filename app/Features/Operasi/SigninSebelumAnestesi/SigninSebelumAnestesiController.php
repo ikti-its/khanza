@@ -11,19 +11,19 @@ final class SigninSebelumAnestesiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new SigninSebelumAnestesiModel(),
-            breadcrumbs: [
+            new SigninSebelumAnestesiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Sign In Sebelum Anestesi', 'signin_sebelum_anestesi'],
             ],
-            title: 'Sign In Sebelum Anestesi',
-            action: [
+            'Sign In Sebelum Anestesi',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_signin', 'ID Sign In'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_signin', 'Waktu Sign In'],

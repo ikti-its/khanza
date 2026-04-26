@@ -11,19 +11,19 @@ final class RefAngkaAsaController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefAngkaAsaModel(),
-            breadcrumbs: [
+            new RefAngkaAsaModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Angka ASA', 'ref_angka_asa'],
             ],
-            title: 'Referensi Angka ASA',
-            action: [
+            'Referensi Angka ASA',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_asa', 'ID ASA'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_asa', 'Nama ASA'],
             ],

@@ -10,19 +10,19 @@ final class PertanyaanKonselingController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new PertanyaanKonselingModel(),
-            breadcrumbs: [
+            new PertanyaanKonselingModel(),
+            [
                 ['Penanganan Donor', 'penanganan_donor'],
                 ['Pertanyaan Konseling', 'pertanyaan_konseling'],
             ],
-            title: 'Pertanyaan Konseling',
-            action: [
+            'Pertanyaan Konseling',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pertanyaan', 'ID Pertanyaan'],
                 [SHOW, REQUIRED, I::TEXT, 'teks_pertanyaan', 'Teks Pertanyaan'],
             ],

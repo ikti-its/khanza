@@ -11,19 +11,19 @@ final class RefJenisPenunjangController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefJenisPenunjangModel(),
-            breadcrumbs: [
+            new RefJenisPenunjangModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Jenis Penunjang', 'ref_jenis_penunjang'],
             ],
-            title: 'Referensi Jenis Penunjang',
-            action: [
+            'Referensi Jenis Penunjang',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_penunjang', 'ID Jenis Penunjang'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis', 'Nama Jenis'],
             ],

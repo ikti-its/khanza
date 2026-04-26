@@ -11,19 +11,19 @@ final class RefInduksiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefInduksiModel(),
-            breadcrumbs: [
+            new RefInduksiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Induksi', 'ref_induksi'],
             ],
-            title: 'Referensi Induksi',
-            action: [
+            'Referensi Induksi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_induksi', 'ID Induksi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_induksi', 'Nama Induksi'],
             ],

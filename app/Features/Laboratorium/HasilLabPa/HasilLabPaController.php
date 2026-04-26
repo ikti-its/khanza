@@ -11,19 +11,19 @@ final class HasilLabPaController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new HasilLabPaModel(),
-            breadcrumbs: [
+            new HasilLabPaModel(),
+            [
                 ['Laboratorium', 'laboratorium'],
                 ['Hasil Lab PA', 'hasil_lab_pa'],
             ],
-            title: 'Hasil Lab PA',
-            action: [
+            'Hasil Lab PA',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_pa', 'ID Hasil PA'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],

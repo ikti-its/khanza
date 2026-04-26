@@ -11,19 +11,19 @@ final class RefItemRadController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefItemRadModel(),
-            breadcrumbs: [
+            new RefItemRadModel(),
+            [
                 ['Radiologi', 'radiologi'],
                 ['Referensi Item Radiologi', 'ref_item_rad'],
             ],
-            title: 'Referensi Item Radiologi',
-            action: [
+            'Referensi Item Radiologi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_item', 'ID Item'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_periksa', 'Kode Periksa'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_pemeriksaan', 'Nama Pemeriksaan'],

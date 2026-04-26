@@ -11,19 +11,19 @@ final class UnitController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new UnitModel(),
-            breadcrumbs: [
+            new UnitModel(),
+            [
                 ['Inventori Non Medis', 'inventori_non_medis'],
                 ['Unit',                'unit'],
             ],
-            title: 'Unit',
-            action: [
+            'Unit',
+            [
                 A::CREATE,
                 // A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_unit', 'ID'],
                 [SHOW, REQUIRED, I::NAME, 'nama_unit', 'Nama Unit'],
             ],

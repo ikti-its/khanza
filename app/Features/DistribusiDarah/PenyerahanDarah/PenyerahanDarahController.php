@@ -10,19 +10,19 @@ final class PenyerahanDarahController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new PenyerahanDarahModel(),
-            breadcrumbs: [
+            new PenyerahanDarahModel(),
+            [
                 ['Pelayanan Darah', 'pelayanan_darah'],
                 ['Penyerahan Darah', 'penyerahan_darah'],
             ],
-            title: 'Penyerahan Darah',
-            action: [
+            'Penyerahan Darah',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_penyerahan', 'No. Penyerahan'],

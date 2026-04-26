@@ -10,19 +10,19 @@ final class PermintaanDarahDetailController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new PermintaanDarahDetailModel(),
-            breadcrumbs: [
+            new PermintaanDarahDetailModel(),
+            [
                 ['Pelayanan Darah', 'pelayanan_darah'],
                 ['Permintaan Darah Detail', 'permintaan_darah_detail'],
             ],
-            title: 'Permintaan Darah Detail',
-            action: [
+            'Permintaan Darah Detail',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_detail', 'ID Permintaan Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_komponen', 'ID Komponen'],

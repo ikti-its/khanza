@@ -11,19 +11,19 @@ final class ChecklistPostopPenunjangController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new ChecklistPostopPenunjangModel(),
-            breadcrumbs: [
+            new ChecklistPostopPenunjangModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Checklist Post Operasi Penunjang', 'checklist_postop_penunjang'],
             ],
-            title: 'Checklist Post Operasi Penunjang',
-            action: [
+            'Checklist Post Operasi Penunjang',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penunjang', 'ID Penunjang'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
                 [SHOW, REQUIRED, I::TEXT, 'jenis_penunjang', 'Jenis Penunjang'],

@@ -10,19 +10,19 @@ final class DataTriaseSekunderController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new DataTriaseSekunderModel(),
-            breadcrumbs: [
+            new DataTriaseSekunderModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Data Triase Sekunder', 'data_triase_sekunder'],
             ],
-            title: 'Data Triase Sekunder',
-            action: [
+            'Data Triase Sekunder',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase_sekunder', 'ID Triase Sekunder'],
                 [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
                 [HIDE, REQUIRED, I::TEXT, 'anamnesa_singkat', 'Anamnesa Singkat'],

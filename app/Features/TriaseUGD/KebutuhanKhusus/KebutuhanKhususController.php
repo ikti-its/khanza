@@ -10,19 +10,19 @@ final class KebutuhanKhususController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new KebutuhanKhususModel(),
-            breadcrumbs: [
+            new KebutuhanKhususModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Kebutuhan Khusus', 'kebutuhan_khusus'],
             ],
-            title: 'Kebutuhan Khusus',
-            action: [
+            'Kebutuhan Khusus',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kebutuhan', 'ID Kebutuhan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kebutuhan', 'Nama Kebutuhan'],
             ],

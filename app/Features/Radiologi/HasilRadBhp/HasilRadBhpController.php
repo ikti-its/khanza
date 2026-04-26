@@ -11,19 +11,19 @@ final class HasilRadBhpController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new HasilRadBhpModel(),
-            breadcrumbs: [
+            new HasilRadBhpModel(),
+            [
                 ['Radiologi', 'radiologi'],
                 ['Hasil Radiologi BHP', 'hasil_rad_bhp'],
             ],
-            title: 'Hasil Radiologi BHP',
-            action: [
+            'Hasil Radiologi BHP',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rad_bhp', 'ID Radiologi BHP'],
                 [SHOW, REQUIRED, I::INDEX, 'id_hasil_rad', 'ID Hasil Rad'],
                 [SHOW, REQUIRED, I::INDEX, 'id_barang_medis', 'ID Barang Medis'],

@@ -10,19 +10,19 @@ final class AlatTransportasiController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new AlatTransportasiModel(),
-            breadcrumbs: [
+            new AlatTransportasiModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Alat Transportasi', 'alat_transportasi'],
             ],
-            title: 'Alat Transportasi',
-            action: [
+            'Alat Transportasi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_transportasi', 'ID Transportasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_transportasi', 'Nama Transportasi'],
             ],

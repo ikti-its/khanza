@@ -10,19 +10,19 @@ final class HasilUjiSaringDetailController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new HasilUjiSaringDetailModel(),
-            breadcrumbs: [
+            new HasilUjiSaringDetailModel(),
+            [
                 ['Uji Darah', 'uji_darah'],
                 ['Hasil Uji Saring Detail', 'hasil_uji_saring_detail'],
             ],
-            title: 'Hasil Uji Saring Detail',
-            action: [
+            'Hasil Uji Saring Detail',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_uji_saring_detail', 'ID Uji Saring Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_uji_saring', 'ID Uji Saring'],
                 [SHOW, REQUIRED, I::INDEX, 'id_parameter_uji', 'ID Parameter Uji'],

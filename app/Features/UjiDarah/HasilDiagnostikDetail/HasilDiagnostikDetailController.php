@@ -10,19 +10,19 @@ final class HasilDiagnostikDetailController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new HasilDiagnostikDetailModel(),
-            breadcrumbs: [
+            new HasilDiagnostikDetailModel(),
+            [
                 ['Uji Darah', 'uji_darah'],
                 ['Hasil Diagnostik Detail', 'hasil_diagnostik_detail'],
             ],
-            title: 'Hasil Diagnostik Detail',
-            action: [
+            'Hasil Diagnostik Detail',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_diagnostik_detail', 'ID Diagnostik Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_diagnostik', 'ID Diagnostik'],
                 [SHOW, REQUIRED, I::INDEX, 'id_parameter_uji', 'ID Parameter Uji'],

@@ -11,19 +11,19 @@ final class PengadaanBarangController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PengadaanBarangModel(),
-            breadcrumbs: [
+            new PengadaanBarangModel(),
+            [
                 ['Inventori Non Medis', 'inventori_non_medis'],
                 ['Pengadaan Barang',    'pengadaan_barang'],
             ],
-            title: 'Pengadaan Barang',
-            action: [
+            'Pengadaan Barang',
+            [
                 A::CREATE,
                 // A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengadaan', 'ID Pengadaan'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengajuan', 'ID Pengajuan'],
                 [SHOW, REQUIRED, I::SELECT, 'id_supplier', 'Supplier'],

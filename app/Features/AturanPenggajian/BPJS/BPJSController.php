@@ -10,19 +10,19 @@ final class BPJSController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new BPJSModel(),
-            breadcrumbs: [
+            new BPJSModel(),
+            [
                 ['User', 'user'],
                 ['BPJS', 'bpjs'],
             ],
-            title: 'BPJS',
-            action: [
+            'BPJS',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 // [SHOW, REQUIRED, I::INDEX, 'no_bpjs', 'Nomor BPJS'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_program', 'Program'],
                 [SHOW, REQUIRED, I::SELECT, 'penyelenggara', 'Penyelenggara'],

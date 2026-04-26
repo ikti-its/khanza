@@ -11,19 +11,19 @@ final class RefRencanaAnestesiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefRencanaAnestesiModel(),
-            breadcrumbs: [
+            new RefRencanaAnestesiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Rencana Anestesi', 'ref_rencana_anestesi'],
             ],
-            title: 'Referensi Rencana Anestesi',
-            action: [
+            'Referensi Rencana Anestesi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rencana_anestesi', 'ID Rencana Anestesi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_rencana', 'Nama Rencana'],
             ],

@@ -10,19 +10,19 @@ final class LokasiPengambilanDarahController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new LokasiPengambilanDarahModel(),
-            breadcrumbs: [
+            new LokasiPengambilanDarahModel(),
+            [
                 ['Donor', 'donor'],
                 ['Lokasi Pengambilan Darah', 'lokasi_pengambilan_darah'],
             ],
-            title: 'Lokasi Pengambilan Darah',
-            action: [
+            'Lokasi Pengambilan Darah',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_lokasi_pengambilan', 'ID Lokasi Pengambilan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_lokasi', 'Nama Lokasi'],
             ],

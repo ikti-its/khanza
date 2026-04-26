@@ -11,19 +11,19 @@ final class SkorAldretteController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new SkorAldretteModel(),
-            breadcrumbs: [
+            new SkorAldretteModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Skor Aldrette', 'skor_aldrette'],
             ],
-            title: 'Skor Aldrette',
-            action: [
+            'Skor Aldrette',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skor_aldrette', 'ID Skor Aldrette'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_penilaian', 'Waktu Penilaian'],

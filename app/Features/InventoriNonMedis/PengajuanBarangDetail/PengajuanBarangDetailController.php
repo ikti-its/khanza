@@ -11,20 +11,20 @@ final class PengajuanBarangDetailController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PengajuanBarangDetailModel(),
-            breadcrumbs: [
+            new PengajuanBarangDetailModel(),
+            [
                 ['Inventori Non Medis', 'inventori_non_medis'],
                 ['Pengajuan Barang',    'pengajuan_barang'],
                 ['Detail',              'detail'],
             ],
-            title: 'Detail Pengajuan Barang',
-            action: [
+            'Detail Pengajuan Barang',
+            [
                 A::CREATE,
                 // A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_detail', 'ID Detail'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengajuan', 'ID Pengajuan'],
                 [SHOW, OPTIONAL, I::SELECT, 'id_barang', 'Barang'],

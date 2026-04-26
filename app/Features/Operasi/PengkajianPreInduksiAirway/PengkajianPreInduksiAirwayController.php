@@ -11,19 +11,19 @@ final class PengkajianPreInduksiAirwayController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PengkajianPreInduksiAirwayModel(),
-            breadcrumbs: [
+            new PengkajianPreInduksiAirwayModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Pengkajian Pre Induksi Airway', 'pengkajian_pre_induksi_airway'],
             ],
-            title: 'Pengkajian Pre Induksi Airway',
-            action: [
+            'Pengkajian Pre Induksi Airway',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_airway', 'ID Airway'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengkajian', 'ID Pengkajian'],
                 [SHOW, REQUIRED, I::TEXT, 'jenis_airway', 'Jenis Airway'],

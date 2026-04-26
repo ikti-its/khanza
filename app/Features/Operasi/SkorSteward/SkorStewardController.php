@@ -11,19 +11,19 @@ final class SkorStewardController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new SkorStewardModel(),
-            breadcrumbs: [
+            new SkorStewardModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Skor Steward', 'skor_steward'],
             ],
-            title: 'Skor Steward',
-            action: [
+            'Skor Steward',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skor_steward', 'ID Skor Steward'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_penilaian', 'Waktu Penilaian'],

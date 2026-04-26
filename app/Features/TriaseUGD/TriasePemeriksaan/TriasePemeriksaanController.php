@@ -10,19 +10,19 @@ final class TriasePemeriksaanController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new TriasePemeriksaanModel(),
-            breadcrumbs: [
+            new TriasePemeriksaanModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Triase Pemeriksaan', 'triase_pemeriksaan'],
             ],
-            title: 'Triase Pemeriksaan',
-            action: [
+            'Triase Pemeriksaan',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemeriksaan', 'ID Pemeriksaan'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_pemeriksaan', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_pemeriksaan', 'Nama Pemeriksaan'],

@@ -11,19 +11,19 @@ final class RefWarnaUrineController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefWarnaUrineModel(),
-            breadcrumbs: [
+            new RefWarnaUrineModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Warna Urine', 'ref_warna_urine'],
             ],
-            title: 'Referensi Warna Urine',
-            action: [
+            'Referensi Warna Urine',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_warna_urine', 'ID Warna Urine'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_warna', 'Nama Warna'],
             ],

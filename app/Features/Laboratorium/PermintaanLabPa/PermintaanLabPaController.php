@@ -11,19 +11,19 @@ final class PermintaanLabPaController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PermintaanLabPaModel(),
-            breadcrumbs: [
+            new PermintaanLabPaModel(),
+            [
                 ['Laboratorium', 'laboratorium'],
                 ['Permintaan Lab PA', 'permintaan_lab_pa'],
             ],
-            title: 'Permintaan Lab PA',
-            action: [
+            'Permintaan Lab PA',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_pa', 'ID Permintaan PA'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
                 [SHOW, REQUIRED, I::DATE, 'tgl_pengambilan_bahan', 'Tanggal Pengambilan Bahan'],

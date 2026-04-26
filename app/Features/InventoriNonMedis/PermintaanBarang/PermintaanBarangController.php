@@ -11,19 +11,19 @@ final class PermintaanBarangController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PermintaanBarangModel(),
-            breadcrumbs: [
+            new PermintaanBarangModel(),
+            [
                 ['Inventori Non Medis', 'inventori_non_medis'],
                 ['Permintaan Barang',   'permintaan_barang'],
             ],
-            title: 'Permintaan Barang',
-            action: [
+            'Permintaan Barang',
+            [
                 A::CREATE,
                 // A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID'],
                 [SHOW, REQUIRED, I::TEXT, 'unit_pemohon', 'Unit Pemohon'],
                 [SHOW, REQUIRED, I::SELECT, 'tipe', 'Tipe'],

@@ -11,19 +11,19 @@ final class SkriningRawatJalanController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new SkriningRawatJalanModel(),
-            breadcrumbs: [
+            new SkriningRawatJalanModel(),
+            [
                 ['Rawat Jalan', 'rawat_jalan'],
                 ['Skrining Rawat Jalan', 'skrining_rawat_jalan'],
             ],
-            title: 'Skrining Rawat Jalan',
-            action: [
+            'Skrining Rawat Jalan',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skrining', 'ID Skrining'],
                 [SHOW, REQUIRED, I::TEXT, 'no_rm', 'No. Rekam Medis'],
                 [SHOW, REQUIRED, I::DATE, 'tgl_jam_skrining', 'Tanggal Skrining'],

@@ -11,19 +11,19 @@ final class RefSkriningKesadaranController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefSkriningKesadaranModel(),
-            breadcrumbs: [
+            new RefSkriningKesadaranModel(),
+            [
                 ['Rawat Jalan', 'rawat_jalan'],
                 ['Referensi Skrining Kesadaran', 'ref_skrining_kesadaran'],
             ],
-            title: 'Referensi Skrining Kesadaran',
-            action: [
+            'Referensi Skrining Kesadaran',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
                 [SHOW, REQUIRED, I::TEXT, 'kesadaran', 'Kesadaran'],
             ],

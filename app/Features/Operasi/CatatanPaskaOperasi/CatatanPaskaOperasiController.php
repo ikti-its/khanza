@@ -11,19 +11,19 @@ final class CatatanPaskaOperasiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new CatatanPaskaOperasiModel(),
-            breadcrumbs: [
+            new CatatanPaskaOperasiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Catatan Paska Operasi', 'catatan_paska_operasi'],
             ],
-            title: 'Catatan Paska Operasi',
-            action: [
+            'Catatan Paska Operasi',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_catatan_paska', 'ID Catatan Paska'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_dokter_bedah', 'Kode Dokter Bedah'],

@@ -11,19 +11,19 @@ final class JadwalOperasiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new JadwalOperasiModel(),
-            breadcrumbs: [
+            new JadwalOperasiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Jadwal Operasi', 'jadwal_operasi'],
             ],
-            title: 'Jadwal Operasi',
-            action: [
+            'Jadwal Operasi',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jadwal', 'ID Jadwal'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_ruangan', 'ID Ruangan'],

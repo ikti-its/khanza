@@ -11,19 +11,19 @@ final class HasilLabMbController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new HasilLabMbModel(),
-            breadcrumbs: [
+            new HasilLabMbModel(),
+            [
                 ['Laboratorium', 'laboratorium'],
                 ['Hasil Lab MB', 'hasil_lab_mb'],
             ],
-            title: 'Hasil Lab MB',
-            action: [
+            'Hasil Lab MB',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_mb', 'ID Hasil MB'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],

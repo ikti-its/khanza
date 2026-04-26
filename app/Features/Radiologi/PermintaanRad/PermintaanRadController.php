@@ -11,19 +11,19 @@ final class PermintaanRadController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PermintaanRadModel(),
-            breadcrumbs: [
+            new PermintaanRadModel(),
+            [
                 ['Radiologi', 'radiologi'],
                 ['Permintaan Radiologi', 'permintaan_rad'],
             ],
-            title: 'Permintaan Radiologi',
-            action: [
+            'Permintaan Radiologi',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_permintaan', 'No. Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],

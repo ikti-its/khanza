@@ -10,19 +10,19 @@ final class SumberDarahController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new SumberDarahModel(),
-            breadcrumbs: [
+            new SumberDarahModel(),
+            [
                 ['Inventaris Darah', 'inventaris_darah'],
                 ['Sumber Darah', 'sumber_darah'],
             ],
-            title: 'Sumber Darah',
-            action: [
+            'Sumber Darah',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_sumber_darah', 'ID Sumber Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_sumber_darah', 'Nama Sumber Darah'],
             ],

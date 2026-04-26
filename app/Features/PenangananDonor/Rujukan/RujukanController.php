@@ -10,19 +10,19 @@ final class RujukanController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new RujukanModel(),
-            breadcrumbs: [
+            new RujukanModel(),
+            [
                 ['Penanganan Donor', 'penanganan_donor'],
                 ['Rujukan', 'rujukan'],
             ],
-            title: 'Rujukan',
-            action: [
+            'Rujukan',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rujukan', 'ID Rujukan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_surat', 'Nomor Surat'],

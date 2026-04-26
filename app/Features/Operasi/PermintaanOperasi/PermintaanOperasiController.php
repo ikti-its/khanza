@@ -11,19 +11,19 @@ final class PermintaanOperasiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PermintaanOperasiModel(),
-            breadcrumbs: [
+            new PermintaanOperasiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Permintaan Operasi', 'permintaan_operasi'],
             ],
-            title: 'Permintaan Operasi',
-            action: [
+            'Permintaan Operasi',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_dokter', 'Kode Dokter'],

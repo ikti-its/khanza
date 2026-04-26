@@ -11,19 +11,19 @@ final class CatatanAnestesiSedasiAlatController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new CatatanAnestesiSedasiAlatModel(),
-            breadcrumbs: [
+            new CatatanAnestesiSedasiAlatModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Catatan Anestesi Sedasi Alat', 'catatan_anestesi_sedasi_alat'],
             ],
-            title: 'Catatan Anestesi Sedasi Alat',
-            action: [
+            'Catatan Anestesi Sedasi Alat',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_alat', 'ID Alat'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_catatan_anestesi', 'ID Catatan Anestesi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_alat', 'Nama Alat'],

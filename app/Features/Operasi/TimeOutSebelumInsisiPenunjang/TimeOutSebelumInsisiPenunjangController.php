@@ -11,19 +11,19 @@ final class TimeOutSebelumInsisiPenunjangController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new TimeOutSebelumInsisiPenunjangModel(),
-            breadcrumbs: [
+            new TimeOutSebelumInsisiPenunjangModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Time Out Sebelum Insisi Penunjang', 'time_out_sebelum_insisi_penunjang'],
             ],
-            title: 'Time Out Sebelum Insisi Penunjang',
-            action: [
+            'Time Out Sebelum Insisi Penunjang',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penunjang', 'ID Penunjang'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_timeout', 'ID Time Out'],
                 [SHOW, REQUIRED, I::TEXT, 'jenis_penunjang', 'Jenis Penunjang'],

@@ -10,19 +10,19 @@ final class StatusKunjunganController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new StatusKunjunganModel(),
-            breadcrumbs: [
+            new StatusKunjunganModel(),
+            [
                 ['Donor', 'donor'],
                 ['Status Kunjungan', 'status_kunjungan'],
             ],
-            title: 'Status Kunjungan',
-            action: [
+            'Status Kunjungan',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_kunjungan', 'ID Status Kunjungan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_kunjungan', 'Nama Status Kunjungan'],
             ],

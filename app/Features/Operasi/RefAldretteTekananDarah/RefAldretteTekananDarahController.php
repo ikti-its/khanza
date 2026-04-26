@@ -11,19 +11,19 @@ final class RefAldretteTekananDarahController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefAldretteTekananDarahModel(),
-            breadcrumbs: [
+            new RefAldretteTekananDarahModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Aldrette Tekanan Darah', 'ref_aldrette_tekanan_darah'],
             ],
-            title: 'Referensi Aldrette Tekanan Darah',
-            action: [
+            'Referensi Aldrette Tekanan Darah',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_td', 'ID Tekanan Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

@@ -11,19 +11,19 @@ final class RefJenisSedasiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefJenisSedasiModel(),
-            breadcrumbs: [
+            new RefJenisSedasiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Jenis Sedasi', 'ref_jenis_sedasi'],
             ],
-            title: 'Referensi Jenis Sedasi',
-            action: [
+            'Referensi Jenis Sedasi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_sedasi', 'ID Jenis Sedasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_sedasi', 'Nama Sedasi'],
             ],

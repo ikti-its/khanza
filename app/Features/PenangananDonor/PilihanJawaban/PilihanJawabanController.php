@@ -10,19 +10,19 @@ final class PilihanJawabanController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new PilihanJawabanModel(),
-            breadcrumbs: [
+            new PilihanJawabanModel(),
+            [
                 ['Penanganan Donor', 'penanganan_donor'],
                 ['Pilihan Jawaban', 'pilihan_jawaban'],
             ],
-            title: 'Pilihan Jawaban',
-            action: [
+            'Pilihan Jawaban',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pilihan', 'ID Pilihan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_pilihan', 'Nama Pilihan'],
             ],

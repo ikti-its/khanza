@@ -10,19 +10,19 @@ final class StokDarahController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new StokDarahModel(),
-            breadcrumbs: [
+            new StokDarahModel(),
+            [
                 ['Inventaris Darah', 'inventaris_darah'],
                 ['Stok Darah', 'stok_darah'],
             ],
-            title: 'Stok Darah',
-            action: [
+            'Stok Darah',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_stok_darah', 'ID Stok Darah'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_kantong', 'Nomor Kantong'],

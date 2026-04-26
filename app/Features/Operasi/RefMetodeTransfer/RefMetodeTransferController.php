@@ -11,19 +11,19 @@ final class RefMetodeTransferController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefMetodeTransferModel(),
-            breadcrumbs: [
+            new RefMetodeTransferModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Metode Transfer', 'ref_metode_transfer'],
             ],
-            title: 'Referensi Metode Transfer',
-            action: [
+            'Referensi Metode Transfer',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_metode', 'ID Metode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_metode', 'Nama Metode'],
             ],

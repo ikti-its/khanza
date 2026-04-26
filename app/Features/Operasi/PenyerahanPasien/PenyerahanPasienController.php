@@ -11,19 +11,19 @@ final class PenyerahanPasienController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PenyerahanPasienModel(),
-            breadcrumbs: [
+            new PenyerahanPasienModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Penyerahan Pasien', 'penyerahan_pasien'],
             ],
-            title: 'Penyerahan Pasien',
-            action: [
+            'Penyerahan Pasien',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_masuk_asal', 'Waktu Masuk Asal'],

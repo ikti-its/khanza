@@ -10,19 +10,19 @@ final class DataTriaseController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new DataTriaseModel(),
-            breadcrumbs: [
+            new DataTriaseModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Data Triase', 'data_triase'],
             ],
-            title: 'Data Triase',
-            action: [
+            'Data Triase',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase', 'ID Triase'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DTIME, 'tanggal_kunjungan', 'Tanggal Kunjungan'],

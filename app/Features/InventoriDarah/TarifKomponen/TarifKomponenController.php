@@ -10,19 +10,19 @@ final class TarifKomponenController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new TarifKomponenModel(),
-            breadcrumbs: [
+            new TarifKomponenModel(),
+            [
                 ['Inventaris Darah', 'inventaris_darah'],
                 ['Tarif Komponen', 'tarif_komponen'],
             ],
-            title: 'Tarif Komponen',
-            action: [
+            'Tarif Komponen',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_tarif', 'ID Tarif'],
                 [SHOW, REQUIRED, I::INDEX, 'id_komponen', 'ID Komponen'],
                 [SHOW, REQUIRED, I::MONEY, 'jasa_sarana', 'Jasa Sarana'],

@@ -10,19 +10,19 @@ final class SkriningDonorController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new SkriningDonorModel(),
-            breadcrumbs: [
+            new SkriningDonorModel(),
+            [
                 ['Donor', 'donor'],
                 ['Skrining Donor', 'skrining_donor'],
             ],
-            title: 'Skrining Donor',
-            action: [
+            'Skrining Donor',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skrining', 'ID Skrining'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::NUMBER, 'sistolik', 'Tekanan Sistolik'],

@@ -11,19 +11,19 @@ final class RefKategoriLabController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefKategoriLabModel(),
-            breadcrumbs: [
+            new RefKategoriLabModel(),
+            [
                 ['Laboratorium', 'laboratorium'],
                 ['Referensi Kategori Lab', 'ref_kategori_lab'],
             ],
-            title: 'Referensi Kategori Lab',
-            action: [
+            'Referensi Kategori Lab',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kategori', 'ID Kategori'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_kategori', 'Kode Kategori'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kategori', 'Nama Kategori'],

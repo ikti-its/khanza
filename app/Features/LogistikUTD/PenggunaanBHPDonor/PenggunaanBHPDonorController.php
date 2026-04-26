@@ -10,19 +10,19 @@ final class PenggunaanBHPDonorController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new PenggunaanBHPDonorModel(),
-            breadcrumbs: [
+            new PenggunaanBHPDonorModel(),
+            [
                 ['Logistik UTD', 'logistik_utd'],
                 ['Penggunaan BHP Donor', 'penggunaan_bhp_donor'],
             ],
-            title: 'Penggunaan BHP Donor',
-            action: [
+            'Penggunaan BHP Donor',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_donor', 'ID BHP Donor'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],

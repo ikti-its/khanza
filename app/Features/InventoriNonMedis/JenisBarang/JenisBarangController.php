@@ -11,19 +11,19 @@ final class JenisBarangController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new JenisBarangModel(),
-            breadcrumbs: [
+            new JenisBarangModel(),
+            [
                 ['Inventori Non Medis', 'inventori_non_medis'],
                 ['Jenis Barang',        'jenis_barang'],
             ],
-            title: 'Jenis Barang',
-            action: [
+            'Jenis Barang',
+            [
                 A::CREATE,
                 // A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, 'ID',               'id_jenis_barang',   I::INDEX, OPTIONAL],
                 [SHOW, 'Nama Jenis Barang','nama_jenis_barang',  I::NAME,   REQUIRED],
             ],

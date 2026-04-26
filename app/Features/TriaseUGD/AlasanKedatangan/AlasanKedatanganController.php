@@ -10,19 +10,19 @@ final class AlasanKedatanganController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new AlasanKedatanganModel(),
-            breadcrumbs: [
+            new AlasanKedatanganModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Alasan Kedatangan', 'alasan_kedatangan'],
             ],
-            title: 'Alasan Kedatangan',
-            action: [
+            'Alasan Kedatangan',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_alasan', 'ID Alasan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_alasan', 'Nama Alasan Kedatangan'],
             ],

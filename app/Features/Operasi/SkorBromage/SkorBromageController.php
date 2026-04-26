@@ -11,19 +11,19 @@ final class SkorBromageController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new SkorBromageModel(),
-            breadcrumbs: [
+            new SkorBromageModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Skor Bromage', 'skor_bromage'],
             ],
-            title: 'Skor Bromage',
-            action: [
+            'Skor Bromage',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skor_bromage', 'ID Skor Bromage'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_penilaian', 'Waktu Penilaian'],

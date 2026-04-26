@@ -10,19 +10,19 @@ final class PemusnahanDetailController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new PemusnahanDetailModel(),
-            breadcrumbs: [
+            new PemusnahanDetailModel(),
+            [
                 ['Pemusnahan Darah', 'pemusnahan_darah'],
                 ['Pemusnahan Detail', 'pemusnahan_detail'],
             ],
-            title: 'Pemusnahan Detail',
-            action: [
+            'Pemusnahan Detail',
+            [
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE,
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemusnahan_detail', 'ID Pemusnahan Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pemusnahan', 'ID Pemusnahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_stok_darah', 'ID Stok Darah'],

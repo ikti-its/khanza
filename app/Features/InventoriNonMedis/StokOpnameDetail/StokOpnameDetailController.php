@@ -11,20 +11,20 @@ final class StokOpnameDetailController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new StokOpnameDetailModel(),
-            breadcrumbs: [
+            new StokOpnameDetailModel(),
+            [
                 ['Inventori Non Medis', 'inventori_non_medis'],
                 ['Stok Opname',         'stok_opname'],
                 ['Detail',              'detail'],
             ],
-            title: 'Detail Stok Opname',
-            action: [
+            'Detail Stok Opname',
+            [
                 A::CREATE,
                 // A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_detail', 'ID Detail'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_opname', 'ID Opname'],
                 [SHOW, REQUIRED, I::SELECT, 'id_barang', 'Barang'],

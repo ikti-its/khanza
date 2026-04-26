@@ -10,19 +10,19 @@ final class StatusKasusController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new StatusKasusModel(),
-            breadcrumbs: [
+            new StatusKasusModel(),
+            [
                 ['Penanganan Donor', 'penanganan_donor'],
                 ['Status Kasus', 'status_kasus'],
             ],
-            title: 'Status Kasus',
-            action: [
+            'Status Kasus',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_kasus', 'ID Status Kasus'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_kasus', 'Nama Status Kasus'],
             ],

@@ -11,19 +11,19 @@ final class RefPosisiPasienController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefPosisiPasienModel(),
-            breadcrumbs: [
+            new RefPosisiPasienModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Posisi Pasien', 'ref_posisi_pasien'],
             ],
-            title: 'Referensi Posisi Pasien',
-            action: [
+            'Referensi Posisi Pasien',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_posisi', 'ID Posisi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_posisi', 'Nama Posisi'],
             ],

@@ -10,19 +10,19 @@ final class KunjunganController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new KunjunganModel(),
-            breadcrumbs: [
+            new KunjunganModel(),
+            [
                 ['Donor', 'donor'],
                 ['Kunjungan', 'kunjungan'],
             ],
-            title: 'Kunjungan',
-            action: [
+            'Kunjungan',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::NUMBER, 'nomor_antrian', 'Nomor Antrian'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pendonor', 'ID Pendonor'],

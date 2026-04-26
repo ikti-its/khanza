@@ -10,19 +10,19 @@ final class FasyankesRujukanController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new FasyankesRujukanModel(),
-            breadcrumbs: [
+            new FasyankesRujukanModel(),
+            [
                 ['Penanganan Donor', 'penanganan_donor'],
                 ['Fasyankes Rujukan', 'fasyankes_rujukan'],
             ],
-            title: 'Fasyankes Rujukan',
-            action: [
+            'Fasyankes Rujukan',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_fasyankes', 'ID Fasyankes'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_fasyankes', 'Nama Fasyankes'],
                 [SHOW, REQUIRED, I::INDEX, 'id_alamat', 'ID Alamat'],

@@ -11,19 +11,19 @@ final class PengkajianPreopController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PengkajianPreopModel(),
-            breadcrumbs: [
+            new PengkajianPreopModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Pengkajian Pre-Operasi', 'pengkajian_pre_op'],
             ],
-            title: 'Pengkajian Pre-Operasi',
-            action: [
+            'Pengkajian Pre-Operasi',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengkajian', 'ID Pengkajian'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_dokter_bedah', 'Kode Dokter Bedah'],

@@ -11,19 +11,19 @@ final class PermintaanLabMbController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new PermintaanLabMbModel(),
-            breadcrumbs: [
+            new PermintaanLabMbModel(),
+            [
                 ['Laboratorium', 'laboratorium'],
                 ['Permintaan Lab MB', 'permintaan_lab_mb'],
             ],
-            title: 'Permintaan Lab MB',
-            action: [
+            'Permintaan Lab MB',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_mb', 'ID Permintaan MB'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
                 [SHOW, REQUIRED, I::INDEX, 'id_item_pemeriksaan', 'ID Item Pemeriksaan'],

@@ -11,19 +11,19 @@ final class RefKesadaranPascaopController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefKesadaranPascaopModel(),
-            breadcrumbs: [
+            new RefKesadaranPascaopModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Kesadaran Pasca Operasi', 'ref_kesadaran_pascaop'],
             ],
-            title: 'Referensi Kesadaran Pasca Operasi',
-            action: [
+            'Referensi Kesadaran Pasca Operasi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kesadaran', 'Nama Kesadaran'],
             ],

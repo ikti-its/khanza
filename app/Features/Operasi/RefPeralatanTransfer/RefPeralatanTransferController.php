@@ -11,19 +11,19 @@ final class RefPeralatanTransferController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefPeralatanTransferModel(),
-            breadcrumbs: [
+            new RefPeralatanTransferModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Peralatan Transfer', 'ref_peralatan_transfer'],
             ],
-            title: 'Referensi Peralatan Transfer',
-            action: [
+            'Referensi Peralatan Transfer',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_peralatan', 'ID Peralatan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_peralatan', 'Nama Peralatan'],
             ],

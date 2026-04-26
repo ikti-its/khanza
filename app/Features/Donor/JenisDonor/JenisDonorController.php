@@ -10,19 +10,19 @@ final class JenisDonorController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new JenisDonorModel(),
-            breadcrumbs: [
+            new JenisDonorModel(),
+            [
                 ['Donor', 'donor'],
                 ['Jenis Donor', 'jenis_donor'],
             ],
-            title: 'Jenis Donor',
-            action: [
+            'Jenis Donor',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_donor', 'ID Jenis Donor'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_jenis_donor', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis_donor', 'Nama Jenis Donor'],

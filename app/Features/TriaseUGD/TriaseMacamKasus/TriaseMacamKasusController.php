@@ -10,19 +10,19 @@ final class TriaseMacamKasusController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new TriaseMacamKasusModel(),
-            breadcrumbs: [
+            new TriaseMacamKasusModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Triase Macam Kasus', 'triase_macam_kasus'],
             ],
-            title: 'Triase Macam Kasus',
-            action: [
+            'Triase Macam Kasus',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_macam_kasus', 'ID Macam Kasus'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_macam_kasus', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_macam_kasus', 'Nama Macam Kasus'],

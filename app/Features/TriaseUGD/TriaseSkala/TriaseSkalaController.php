@@ -10,19 +10,19 @@ final class TriaseSkalaController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new TriaseSkalaModel(),
-            breadcrumbs: [
+            new TriaseSkalaModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Triase Skala', 'triase_skala'],
             ],
-            title: 'Triase Skala',
-            action: [
+            'Triase Skala',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skala', 'ID Skala'],
                 [SHOW, REQUIRED, I::INDEX, 'id_tingkat_skala', 'ID Tingkat Skala'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_skala', 'Kode'],

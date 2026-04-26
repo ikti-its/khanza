@@ -11,19 +11,19 @@ final class RefStewardKesadaranController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefStewardKesadaranModel(),
-            breadcrumbs: [
+            new RefStewardKesadaranModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Steward Kesadaran', 'ref_steward_kesadaran'],
             ],
-            title: 'Referensi Steward Kesadaran',
-            action: [
+            'Referensi Steward Kesadaran',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

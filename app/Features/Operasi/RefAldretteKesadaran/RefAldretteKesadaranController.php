@@ -11,19 +11,19 @@ final class RefAldretteKesadaranController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefAldretteKesadaranModel(),
-            breadcrumbs: [
+            new RefAldretteKesadaranModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Aldrette Kesadaran', 'ref_aldrette_kesadaran'],
             ],
-            title: 'Referensi Aldrette Kesadaran',
-            action: [
+            'Referensi Aldrette Kesadaran',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

@@ -10,19 +10,19 @@ final class StatusPembayaranController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new StatusPembayaranModel(),
-            breadcrumbs: [
+            new StatusPembayaranModel(),
+            [
                 ['Pelayanan Darah', 'pelayanan_darah'],
                 ['Status Pembayaran', 'status_pembayaran'],
             ],
-            title: 'Status Pembayaran',
-            action: [
+            'Status Pembayaran',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_pembayaran', 'ID Status Pembayaran'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_pembayaran', 'Nama Status Pembayaran'],
             ],

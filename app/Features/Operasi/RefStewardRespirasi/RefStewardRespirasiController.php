@@ -11,19 +11,19 @@ final class RefStewardRespirasiController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefStewardRespirasiModel(),
-            breadcrumbs: [
+            new RefStewardRespirasiModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Steward Respirasi', 'ref_steward_respirasi'],
             ],
-            title: 'Referensi Steward Respirasi',
-            action: [
+            'Referensi Steward Respirasi',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_respirasi', 'ID Respirasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

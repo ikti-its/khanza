@@ -11,19 +11,19 @@ final class ChecklistPreOperasiPenunjangController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new ChecklistPreOperasiPenunjangModel(),
-            breadcrumbs: [
+            new ChecklistPreOperasiPenunjangModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Checklist Pre Operasi Penunjang', 'checklist_pre_operasi_penunjang'],
             ],
-            title: 'Checklist Pre Operasi Penunjang',
-            action: [
+            'Checklist Pre Operasi Penunjang',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penunjang', 'ID Penunjang'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist', 'ID Checklist'],
                 [SHOW, REQUIRED, I::TEXT, 'jenis_penunjang', 'Jenis Penunjang'],

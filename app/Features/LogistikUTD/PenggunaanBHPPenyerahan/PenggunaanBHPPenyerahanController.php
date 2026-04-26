@@ -10,19 +10,19 @@ final class PenggunaanBHPPenyerahanController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new PenggunaanBHPPenyerahanModel(),
-            breadcrumbs: [
+            new PenggunaanBHPPenyerahanModel(),
+            [
                 ['Logistik UTD', 'logistik_utd'],
                 ['Penggunaan BHP Penyerahan', 'penggunaan_bhp_penyerahan'],
             ],
-            title: 'Penggunaan BHP Penyerahan',
-            action: [
+            'Penggunaan BHP Penyerahan',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_penyerahan', 'ID BHP Penyerahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],

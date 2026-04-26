@@ -11,19 +11,19 @@ final class SupplierController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new SupplierModel(),
-            breadcrumbs: [
+            new SupplierModel(),
+            [
                 ['Inventori Non Medis', 'inventori_non_medis'],
                 ['Supplier',            'supplier'],
             ],
-            title: 'Supplier',
-            action: [
+            'Supplier',
+            [
                 A::CREATE,
                 // A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_supplier', 'ID Supplier'],
                 [SHOW, REQUIRED, I::NAME, 'nama_supplier', 'Nama Supplier'],
                 [SHOW, OPTIONAL, I::TEXT, 'no_telp', 'No. Telepon'],

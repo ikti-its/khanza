@@ -10,19 +10,19 @@ final class KasusReaktifController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new KasusReaktifModel(),
-            breadcrumbs: [
+            new KasusReaktifModel(),
+            [
                 ['Penanganan Donor', 'penanganan_donor'],
                 ['Kasus Reaktif', 'kasus_reaktif'],
             ],
-            title: 'Kasus Reaktif',
-            action: [
+            'Kasus Reaktif',
+            [
                 // A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kasus', 'ID Kasus'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_ditetapkan', 'Tanggal Ditetapkan'],

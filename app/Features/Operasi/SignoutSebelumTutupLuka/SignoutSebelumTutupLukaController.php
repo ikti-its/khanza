@@ -11,19 +11,19 @@ final class SignoutSebelumTutupLukaController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new SignoutSebelumTutupLukaModel(),
-            breadcrumbs: [
+            new SignoutSebelumTutupLukaModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Sign Out Sebelum Tutup Luka', 'signout_sebelum_tutupluka'],
             ],
-            title: 'Sign Out Sebelum Tutup Luka',
-            action: [
+            'Sign Out Sebelum Tutup Luka',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_signout', 'ID Sign Out'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_signout', 'Waktu Sign Out'],

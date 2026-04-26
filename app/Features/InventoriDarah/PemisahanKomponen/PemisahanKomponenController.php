@@ -10,19 +10,19 @@ final class PemisahanKomponenController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new PemisahanKomponenModel(),
-            breadcrumbs: [
+            new PemisahanKomponenModel(),
+            [
                 ['Inventaris Darah', 'inventaris_darah'],
                 ['Pemisahan Komponen', 'pemisahan_komponen'],
             ],
-            title: 'Pemisahan Komponen',
-            action: [
+            'Pemisahan Komponen',
+            [
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_bag', 'ID Bag'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_pemisahan', 'Tanggal Pemisahan'],

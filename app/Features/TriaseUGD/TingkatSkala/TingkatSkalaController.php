@@ -10,19 +10,19 @@ final class TingkatSkalaController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new TingkatSkalaModel(),
-            breadcrumbs: [
+            new TingkatSkalaModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Tingkat Skala', 'tingkat_skala'],
             ],
-            title: 'Tingkat Skala',
-            action: [
+            'Tingkat Skala',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 
                 // A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_tingkat', 'ID Tingkat'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_tingkat', 'Nama Tingkat'],
             ],

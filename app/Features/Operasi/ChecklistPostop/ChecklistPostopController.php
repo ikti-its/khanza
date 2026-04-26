@@ -11,19 +11,19 @@ final class ChecklistPostopController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new ChecklistPostopModel(),
-            breadcrumbs: [
+            new ChecklistPostopModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Checklist Post Operasi', 'checklist_postop'],
             ],
-            title: 'Checklist Post Operasi',
-            action: [
+            'Checklist Post Operasi',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_checklist', 'Waktu Checklist'],

@@ -11,19 +11,19 @@ final class RefBromageController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new RefBromageModel(),
-            breadcrumbs: [
+            new RefBromageModel(),
+            [
                 ['Operasi', 'operasi'],
                 ['Referensi Bromage', 'ref_bromage'],
             ],
-            title: 'Referensi Bromage',
-            action: [
+            'Referensi Bromage',
+            [
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
                 // A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bromage', 'ID Bromage'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::TEXT, 'tingkat_blok', 'Tingkat Blok'],

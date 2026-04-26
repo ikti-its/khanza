@@ -10,19 +10,19 @@ final class DataTriasePrimerController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            model: new DataTriasePrimerModel(),
-            breadcrumbs: [
+            new DataTriasePrimerModel(),
+            [
                 ['Triase UGD', 'triase_ugd'],
                 ['Data Triase Primer', 'data_triase_primer'],
             ],
-            title: 'Data Triase Primer',
-            action: [
+            'Data Triase Primer',
+            [
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase_primer', 'ID Triase Primer'],
                 [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
                 [HIDE, REQUIRED, I::TEXT, 'keluhan_utama', 'Keluhan Utama'],

@@ -11,19 +11,19 @@ final class BarangController extends ControllerTemplate
     public function __construct()
     {
         parent::__construct(
-            model: new BarangModel(),
-            breadcrumbs: [
+            new BarangModel(),
+            [
                 ['Inventori Non Medis', 'inventori_non_medis'],
                 ['Barang',              'barang'],
             ],
-            title: 'Barang',
-            action: [
+            'Barang',
+            [
                 A::CREATE,
                 // A::AUDIT,
                 A::UPDATE,
                 A::DELETE,,
             ],
-            fields: [
+            [
                 [HIDE, OPTIONAL, I::INDEX, 'id_barang', 'ID Barang'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_barang', 'Kode Barang'],
                 [SHOW, REQUIRED, I::NAME, 'nama_barang', 'Nama Barang'],
