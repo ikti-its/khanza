@@ -15,14 +15,14 @@ final class HasilRadBhpController extends ControllerTemplate
                 ['title' => 'Radiologi', 'icon' => 'radiologi'],
                 ['title' => 'Hasil Radiologi BHP', 'icon' => 'hasil_rad_bhp'],
             ],
-            judul: 'Hasil Radiologi BHP',
-            aksi: [
+            title: 'Hasil Radiologi BHP',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rad_bhp', 'ID Radiologi BHP'],
                 [SHOW, REQUIRED, I::INDEX, 'id_hasil_rad', 'ID Hasil Rad'],
                 [SHOW, REQUIRED, I::INDEX, 'id_barang_medis', 'ID Barang Medis'],

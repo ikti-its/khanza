@@ -15,14 +15,14 @@ final class HasilLabPkController extends ControllerTemplate
                 ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
                 ['title' => 'Hasil Lab PK', 'icon' => 'hasil_lab_pk'],
             ],
-            judul: 'Hasil Lab PK',
-            aksi: [
+            title: 'Hasil Lab PK',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_pk', 'ID Hasil PK'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],

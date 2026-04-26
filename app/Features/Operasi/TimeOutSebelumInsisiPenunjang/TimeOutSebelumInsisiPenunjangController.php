@@ -15,14 +15,14 @@ final class TimeOutSebelumInsisiPenunjangController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Time Out Sebelum Insisi Penunjang', 'icon' => 'time_out_sebelum_insisi_penunjang'],
             ],
-            judul: 'Time Out Sebelum Insisi Penunjang',
-            aksi: [
+            title: 'Time Out Sebelum Insisi Penunjang',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penunjang', 'ID Penunjang'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_timeout', 'ID Time Out'],
                 [SHOW, REQUIRED, I::TEXT, 'jenis_penunjang', 'Jenis Penunjang'],

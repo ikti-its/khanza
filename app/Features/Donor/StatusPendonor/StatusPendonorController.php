@@ -14,14 +14,14 @@ final class StatusPendonorController extends ControllerTemplate
                 ['title' => 'Donor', 'icon' => 'donor'],
                 ['title' => 'Status Pendonor', 'icon' => 'status_pendonor'],
             ],
-            judul: 'Status Pendonor',
-            aksi: [
+            title: 'Status Pendonor',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_pendonor', 'ID Status Pendonor'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_pendonor', 'Nama Status Pendonor'],
             ],

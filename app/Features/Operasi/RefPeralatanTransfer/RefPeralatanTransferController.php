@@ -15,14 +15,14 @@ final class RefPeralatanTransferController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Peralatan Transfer', 'icon' => 'ref_peralatan_transfer'],
             ],
-            judul: 'Referensi Peralatan Transfer',
-            aksi: [
+            title: 'Referensi Peralatan Transfer',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_peralatan', 'ID Peralatan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_peralatan', 'Nama Peralatan'],
             ],

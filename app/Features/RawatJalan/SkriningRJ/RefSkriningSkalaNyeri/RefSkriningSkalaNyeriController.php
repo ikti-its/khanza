@@ -15,14 +15,14 @@ final class RefSkriningSkalaNyeriController extends ControllerTemplate
                 ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
                 ['title' => 'Referensi Skrining Skala Nyeri', 'icon' => 'ref_skrining_skala_nyeri'],
             ],
-            judul: 'Referensi Skrining Skala Nyeri',
-            aksi: [
+            title: 'Referensi Skrining Skala Nyeri',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skala_nyeri', 'ID Skala Nyeri'],
                 [SHOW, REQUIRED, I::TEXT, 'skala_nyeri', 'Skala Nyeri'],
             ],

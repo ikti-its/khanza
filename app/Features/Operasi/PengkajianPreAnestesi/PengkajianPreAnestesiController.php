@@ -15,14 +15,14 @@ final class PengkajianPreAnestesiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Pengkajian Pre Anestesi', 'icon' => 'pengkajian_pre_anestesi'],
             ],
-            judul: 'Pengkajian Pre Anestesi',
-            aksi: [
+            title: 'Pengkajian Pre Anestesi',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pre_anestesi', 'ID Pre Anestesi'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_dokter', 'Kode Dokter'],

@@ -14,14 +14,14 @@ final class KomponenDarahController extends ControllerTemplate
                 ['title' => 'Darah', 'icon' => 'darah'],
                 ['title' => 'Komponen Darah', 'icon' => 'komponen_darah'],
             ],
-            judul: 'Komponen Darah',
-            aksi: [
+            title: 'Komponen Darah',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_komponen', 'ID Komponen'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_komponen', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_komponen', 'Nama Komponen'],

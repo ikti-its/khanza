@@ -15,14 +15,14 @@ final class SkriningRawatJalanController extends ControllerTemplate
                 ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
                 ['title' => 'Skrining Rawat Jalan', 'icon' => 'skrining_rawat_jalan'],
             ],
-            judul: 'Skrining Rawat Jalan',
-            aksi: [
+            title: 'Skrining Rawat Jalan',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skrining', 'ID Skrining'],
                 [SHOW, REQUIRED, I::TEXT, 'no_rm', 'No. Rekam Medis'],
                 [SHOW, REQUIRED, I::DATE, 'tgl_jam_skrining', 'Tanggal Skrining'],

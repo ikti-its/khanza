@@ -14,14 +14,14 @@ final class StatusStokController extends ControllerTemplate
                 ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
                 ['title' => 'Status Stok', 'icon' => 'status_stok'],
             ],
-            judul: 'Status Stok',
-            aksi: [
+            title: 'Status Stok',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_stok', 'ID Status Stok'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_stok', 'Nama Status Stok'],
             ],

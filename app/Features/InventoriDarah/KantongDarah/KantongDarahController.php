@@ -14,14 +14,14 @@ final class KantongDarahController extends ControllerTemplate
                 ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
                 ['title' => 'Kantong Darah', 'icon' => 'kantong_darah'],
             ],
-            judul: 'Kantong Darah',
-            aksi: [
+            title: 'Kantong Darah',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bag', 'ID Bag'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'no_bag', 'Nomor Bag'],

@@ -15,14 +15,14 @@ final class RefAldretteRespirasiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Aldrette Respirasi', 'icon' => 'ref_aldrette_respirasi'],
             ],
-            judul: 'Referensi Aldrette Respirasi',
-            aksi: [
+            title: 'Referensi Aldrette Respirasi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_respirasi', 'ID Respirasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

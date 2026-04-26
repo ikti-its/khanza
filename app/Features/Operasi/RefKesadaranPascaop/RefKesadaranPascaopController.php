@@ -15,14 +15,14 @@ final class RefKesadaranPascaopController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Kesadaran Pasca Operasi', 'icon' => 'ref_kesadaran_pascaop'],
             ],
-            judul: 'Referensi Kesadaran Pasca Operasi',
-            aksi: [
+            title: 'Referensi Kesadaran Pasca Operasi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kesadaran', 'Nama Kesadaran'],
             ],

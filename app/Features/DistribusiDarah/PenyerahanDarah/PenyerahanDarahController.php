@@ -14,14 +14,14 @@ final class PenyerahanDarahController extends ControllerTemplate
                 ['title' => 'Pelayanan Darah', 'icon' => 'pelayanan_darah'],
                 ['title' => 'Penyerahan Darah', 'icon' => 'penyerahan_darah'],
             ],
-            judul: 'Penyerahan Darah',
-            aksi: [
+            title: 'Penyerahan Darah',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_penyerahan', 'No. Penyerahan'],

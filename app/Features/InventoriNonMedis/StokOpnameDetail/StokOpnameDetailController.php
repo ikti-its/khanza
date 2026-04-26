@@ -16,17 +16,14 @@ final class StokOpnameDetailController extends ControllerTemplate
                 ['title' => 'Stok Opname',         'icon' => 'stok_opname'],
                 ['title' => 'Detail',              'icon' => 'detail'],
             ],
-            judul: 'Detail Stok Opname',
-            modul_path: '/inventori-non-medis/stok-opname',
-            nama_tabel: 'stok_opname_detail',
-            kolom_id: 'id_detail',
-            aksi: [
+            title: 'Detail Stok Opname',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_detail', 'ID Detail'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_opname', 'ID Opname'],
                 [SHOW, REQUIRED, I::SELECT, 'id_barang', 'Barang'],

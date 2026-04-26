@@ -15,14 +15,14 @@ final class JadwalOperasiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Jadwal Operasi', 'icon' => 'jadwal_operasi'],
             ],
-            judul: 'Jadwal Operasi',
-            aksi: [
+            title: 'Jadwal Operasi',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jadwal', 'ID Jadwal'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_ruangan', 'ID Ruangan'],

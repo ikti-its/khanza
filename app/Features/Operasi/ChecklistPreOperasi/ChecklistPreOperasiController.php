@@ -15,14 +15,14 @@ final class ChecklistPreOperasiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Checklist Pre Operasi', 'icon' => 'checklist_pre_operasi'],
             ],
-            judul: 'Checklist Pre Operasi',
-            aksi: [
+            title: 'Checklist Pre Operasi',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist', 'ID Checklist'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_checklist', 'Waktu Checklist'],

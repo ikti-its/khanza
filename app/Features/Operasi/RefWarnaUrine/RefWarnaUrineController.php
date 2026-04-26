@@ -15,14 +15,14 @@ final class RefWarnaUrineController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Warna Urine', 'icon' => 'ref_warna_urine'],
             ],
-            judul: 'Referensi Warna Urine',
-            aksi: [
+            title: 'Referensi Warna Urine',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_warna_urine', 'ID Warna Urine'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_warna', 'Nama Warna'],
             ],

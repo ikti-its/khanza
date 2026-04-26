@@ -15,14 +15,14 @@ final class SignoutSebelumTutupLukaController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Sign Out Sebelum Tutup Luka', 'icon' => 'signout_sebelum_tutupluka'],
             ],
-            judul: 'Sign Out Sebelum Tutup Luka',
-            aksi: [
+            title: 'Sign Out Sebelum Tutup Luka',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_signout', 'ID Sign Out'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_signout', 'Waktu Sign Out'],

@@ -15,17 +15,14 @@ final class LokasiController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Lokasi',              'icon' => 'lokasi'],
             ],
-            judul: 'Lokasi',
-            modul_path: '/inventori-non-medis/lokasi',
-            nama_tabel: 'lokasi',
-            kolom_id: 'id_lokasi',
-            aksi: [
+            title: 'Lokasi',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_lokasi', 'ID'],
                 [SHOW, REQUIRED, I::NAME, 'nama_lokasi', 'Nama Lokasi'],
             ],

@@ -14,14 +14,14 @@ final class DataTriaseSekunderController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Data Triase Sekunder', 'icon' => 'data_triase_sekunder'],
             ],
-            judul: 'Data Triase Sekunder',
-            aksi: [
+            title: 'Data Triase Sekunder',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase_sekunder', 'ID Triase Sekunder'],
                 [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
                 [HIDE, REQUIRED, I::TEXT, 'anamnesa_singkat', 'Anamnesa Singkat'],

@@ -15,14 +15,14 @@ final class CatatanAnestesiSedasiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Catatan Anestesi Sedasi', 'icon' => 'catatan_anestesi_sedasi'],
             ],
-            judul: 'Catatan Anestesi Sedasi',
-            aksi: [
+            title: 'Catatan Anestesi Sedasi',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_catatan_anestesi', 'ID Catatan Anestesi'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_catatan', 'Waktu Catatan'],

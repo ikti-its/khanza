@@ -14,14 +14,14 @@ final class PilihanJawabanController extends ControllerTemplate
                 ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
                 ['title' => 'Pilihan Jawaban', 'icon' => 'pilihan_jawaban'],
             ],
-            judul: 'Pilihan Jawaban',
-            aksi: [
+            title: 'Pilihan Jawaban',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pilihan', 'ID Pilihan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_pilihan', 'Nama Pilihan'],
             ],

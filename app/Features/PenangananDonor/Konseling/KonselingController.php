@@ -14,14 +14,14 @@ final class KonselingController extends ControllerTemplate
                 ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
                 ['title' => 'Konseling', 'icon' => 'konseling'],
             ],
-            judul: 'Konseling',
-            aksi: [
+            title: 'Konseling',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_konseling', 'ID Konseling'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_konseling', 'Tanggal Konseling'],

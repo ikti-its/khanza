@@ -14,14 +14,14 @@ final class CaraMasukController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Cara Masuk', 'icon' => 'cara_masuk'],
             ],
-            judul: 'Cara Masuk',
-            aksi: [
+            title: 'Cara Masuk',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_cara', 'ID Cara'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_cara', 'Nama Cara'],
             ],

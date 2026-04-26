@@ -15,14 +15,14 @@ final class RefStatusPermintaanController extends ControllerTemplate
                 ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
                 ['title' => 'Referensi Status Permintaan', 'icon' => 'ref_status_permintaan'],
             ],
-            judul: 'Referensi Status Permintaan',
-            aksi: [
+            title: 'Referensi Status Permintaan',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status', 'ID Status'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status', 'Nama Status'],
             ],

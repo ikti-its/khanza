@@ -15,14 +15,14 @@ final class TimeOutSebelumInsisiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Time Out Sebelum Insisi', 'icon' => 'time_out_sebelum_insisi'],
             ],
-            judul: 'Time Out Sebelum Insisi',
-            aksi: [
+            title: 'Time Out Sebelum Insisi',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_timeout', 'ID Time Out'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_timeout', 'Waktu Time Out'],

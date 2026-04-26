@@ -14,14 +14,14 @@ final class KasusReaktifDetailController extends ControllerTemplate
                 ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
                 ['title' => 'Kasus Reaktif Detail', 'icon' => 'kasus_reaktif_detail'],
             ],
-            judul: 'Kasus Reaktif Detail',
-            aksi: [
+            title: 'Kasus Reaktif Detail',
+            action: [
                 'tambah' => false,
                 'audit'  => true,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kasus_detail', 'ID Kasus Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
                 [SHOW, REQUIRED, I::INDEX, 'id_uji_saring_detail', 'ID Uji Saring Detail'],

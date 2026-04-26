@@ -15,17 +15,14 @@ final class UnitController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Unit',                'icon' => 'unit'],
             ],
-            judul: 'Unit',
-            modul_path: '/inventori-non-medis/unit',
-            nama_tabel: 'unit',
-            kolom_id: 'id_unit',
-            aksi: [
+            title: 'Unit',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_unit', 'ID'],
                 [SHOW, REQUIRED, I::NAME, 'nama_unit', 'Nama Unit'],
             ],

@@ -15,14 +15,14 @@ final class SigninSebelumAnestesiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Sign In Sebelum Anestesi', 'icon' => 'signin_sebelum_anestesi'],
             ],
-            judul: 'Sign In Sebelum Anestesi',
-            aksi: [
+            title: 'Sign In Sebelum Anestesi',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_signin', 'ID Sign In'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_signin', 'Waktu Sign In'],

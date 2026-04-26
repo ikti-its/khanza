@@ -14,14 +14,14 @@ final class PengambilanMedisController extends ControllerTemplate
                 ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
                 ['title' => 'Pengambilan BHP Medis', 'icon' => 'pengambilan_bhp_medis'],
             ],
-            judul: 'Pengambilan BHP Medis',
-            aksi: [
+            title: 'Pengambilan BHP Medis',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_medis', 'ID Pengambilan Medis'],
                 [SHOW, REQUIRED, I::INDEX, 'id_barang', 'ID Barang'],
                 [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],

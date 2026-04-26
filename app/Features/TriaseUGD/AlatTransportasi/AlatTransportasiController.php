@@ -14,14 +14,14 @@ final class AlatTransportasiController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Alat Transportasi', 'icon' => 'alat_transportasi'],
             ],
-            judul: 'Alat Transportasi',
-            aksi: [
+            title: 'Alat Transportasi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_transportasi', 'ID Transportasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_transportasi', 'Nama Transportasi'],
             ],

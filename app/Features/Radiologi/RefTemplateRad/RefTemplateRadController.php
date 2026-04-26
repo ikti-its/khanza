@@ -15,14 +15,14 @@ final class RefTemplateRadController extends ControllerTemplate
                 ['title' => 'Radiologi', 'icon' => 'radiologi'],
                 ['title' => 'Referensi Template Radiologi', 'icon' => 'ref_template_rad'],
             ],
-            judul: 'Referensi Template Radiologi',
-            aksi: [
+            title: 'Referensi Template Radiologi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_template', 'ID Template'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_template', 'Nama Template'],
                 [SHOW, REQUIRED, I::TEXT, 'isi_teks_ekspertise', 'Isi Teks Ekspertise'],

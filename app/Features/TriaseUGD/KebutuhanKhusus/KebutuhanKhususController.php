@@ -14,14 +14,14 @@ final class KebutuhanKhususController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Kebutuhan Khusus', 'icon' => 'kebutuhan_khusus'],
             ],
-            judul: 'Kebutuhan Khusus',
-            aksi: [
+            title: 'Kebutuhan Khusus',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kebutuhan', 'ID Kebutuhan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kebutuhan', 'Nama Kebutuhan'],
             ],

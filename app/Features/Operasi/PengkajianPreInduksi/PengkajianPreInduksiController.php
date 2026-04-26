@@ -15,14 +15,14 @@ final class PengkajianPreInduksiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Pengkajian Pre Induksi', 'icon' => 'pengkajian_pre_induksi'],
             ],
-            judul: 'Pengkajian Pre Induksi',
-            aksi: [
+            title: 'Pengkajian Pre Induksi',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengkajian', 'ID Pengkajian'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_dokter', 'Kode Dokter'],

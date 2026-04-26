@@ -15,14 +15,14 @@ final class RefSkriningNyeriDadaController extends ControllerTemplate
                 ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
                 ['title' => 'Referensi Skrining Nyeri Dada', 'icon' => 'ref_skrining_nyeri_dada'],
             ],
-            judul: 'Referensi Skrining Nyeri Dada',
-            aksi: [
+            title: 'Referensi Skrining Nyeri Dada',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_nyeri_dada', 'ID Nyeri Dada'],
                 [SHOW, REQUIRED, I::TEXT, 'nyeri_dada', 'Nyeri Dada'],
             ],

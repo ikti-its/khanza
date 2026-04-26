@@ -15,17 +15,14 @@ final class PengajuanBarangController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Pengajuan Barang',    'icon' => 'pengajuan_barang'],
             ],
-            judul: 'Pengajuan Barang',
-            modul_path: '/inventori-non-medis/pengajuan-barang',
-            nama_tabel: 'pengajuan_barang',
-            kolom_id: 'id_pengajuan',
-            aksi: [
+            title: 'Pengajuan Barang',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengajuan', 'ID Pengajuan'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::DATE,  'tanggal','Tanggal'],

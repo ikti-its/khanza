@@ -16,17 +16,14 @@ final class PengajuanBarangDetailController extends ControllerTemplate
                 ['title' => 'Pengajuan Barang',    'icon' => 'pengajuan_barang'],
                 ['title' => 'Detail',              'icon' => 'detail'],
             ],
-            judul: 'Detail Pengajuan Barang',
-            modul_path: '/inventori-non-medis/pengajuan-barang',
-            nama_tabel: 'pengajuan_barang_detail',
-            kolom_id: 'id_detail',
-            aksi: [
+            title: 'Detail Pengajuan Barang',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_detail', 'ID Detail'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengajuan', 'ID Pengajuan'],
                 [SHOW, OPTIONAL, I::SELECT, 'id_barang', 'Barang'],

@@ -15,14 +15,14 @@ final class PenyerahanPasienPeralatanController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Penyerahan Pasien Peralatan', 'icon' => 'penyerahan_pasien_peralatan'],
             ],
-            judul: 'Penyerahan Pasien Peralatan',
-            aksi: [
+            title: 'Penyerahan Pasien Peralatan',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id', 'ID'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_peralatan', 'Peralatan'],

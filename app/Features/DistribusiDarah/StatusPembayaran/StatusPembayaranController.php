@@ -14,14 +14,14 @@ final class StatusPembayaranController extends ControllerTemplate
                 ['title' => 'Pelayanan Darah', 'icon' => 'pelayanan_darah'],
                 ['title' => 'Status Pembayaran', 'icon' => 'status_pembayaran'],
             ],
-            judul: 'Status Pembayaran',
-            aksi: [
+            title: 'Status Pembayaran',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_pembayaran', 'ID Status Pembayaran'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_pembayaran', 'Nama Status Pembayaran'],
             ],

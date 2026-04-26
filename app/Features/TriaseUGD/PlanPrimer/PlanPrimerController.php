@@ -14,14 +14,14 @@ final class PlanPrimerController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Plan Primer', 'icon' => 'plan_primer'],
             ],
-            judul: 'Plan Primer',
-            aksi: [
+            title: 'Plan Primer',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_plan_primer', 'ID Plan Primer'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_plan_primer', 'Nama Plan Primer'],
             ],

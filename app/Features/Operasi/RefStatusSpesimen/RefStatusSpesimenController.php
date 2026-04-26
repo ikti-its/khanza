@@ -15,14 +15,14 @@ final class RefStatusSpesimenController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Status Spesimen', 'icon' => 'ref_status_spesimen'],
             ],
-            judul: 'Referensi Status Spesimen',
-            aksi: [
+            title: 'Referensi Status Spesimen',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_spesimen', 'ID Status Spesimen'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status', 'Nama Status'],
             ],

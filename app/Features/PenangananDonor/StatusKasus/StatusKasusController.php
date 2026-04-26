@@ -14,14 +14,14 @@ final class StatusKasusController extends ControllerTemplate
                 ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
                 ['title' => 'Status Kasus', 'icon' => 'status_kasus'],
             ],
-            judul: 'Status Kasus',
-            aksi: [
+            title: 'Status Kasus',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_kasus', 'ID Status Kasus'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_kasus', 'Nama Status Kasus'],
             ],

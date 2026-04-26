@@ -15,14 +15,14 @@ final class RefItemRadController extends ControllerTemplate
                 ['title' => 'Radiologi', 'icon' => 'radiologi'],
                 ['title' => 'Referensi Item Radiologi', 'icon' => 'ref_item_rad'],
             ],
-            judul: 'Referensi Item Radiologi',
-            aksi: [
+            title: 'Referensi Item Radiologi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_item', 'ID Item'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_periksa', 'Kode Periksa'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_pemeriksaan', 'Nama Pemeriksaan'],

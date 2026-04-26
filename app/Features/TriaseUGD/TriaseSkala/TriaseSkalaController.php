@@ -14,14 +14,14 @@ final class TriaseSkalaController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Triase Skala', 'icon' => 'triase_skala'],
             ],
-            judul: 'Triase Skala',
-            aksi: [
+            title: 'Triase Skala',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skala', 'ID Skala'],
                 [SHOW, REQUIRED, I::INDEX, 'id_tingkat_skala', 'ID Tingkat Skala'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_skala', 'Kode'],

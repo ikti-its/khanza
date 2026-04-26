@@ -16,17 +16,14 @@ final class PengadaanBarangDetailController extends ControllerTemplate
                 ['title' => 'Pengadaan Barang',    'icon' => 'pengadaan_barang'],
                 ['title' => 'Detail',              'icon' => 'detail'],
             ],
-            judul: 'Detail Pengadaan Barang',
-            modul_path: '/inventori-non-medis/pengadaan-barang',
-            nama_tabel: 'pengadaan_barang_detail',
-            kolom_id: 'id_detail',
-            aksi: [
+            title: 'Detail Pengadaan Barang',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_detail', 'ID Detail'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengadaan', 'ID Pengadaan'],
                 [SHOW, REQUIRED, I::SELECT, 'id_barang', 'Barang'],

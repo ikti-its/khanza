@@ -15,14 +15,14 @@ final class RefPosisiPasienController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Posisi Pasien', 'icon' => 'ref_posisi_pasien'],
             ],
-            judul: 'Referensi Posisi Pasien',
-            aksi: [
+            title: 'Referensi Posisi Pasien',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_posisi', 'ID Posisi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_posisi', 'Nama Posisi'],
             ],

@@ -14,14 +14,14 @@ final class TriasePemeriksaanController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Triase Pemeriksaan', 'icon' => 'triase_pemeriksaan'],
             ],
-            judul: 'Triase Pemeriksaan',
-            aksi: [
+            title: 'Triase Pemeriksaan',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemeriksaan', 'ID Pemeriksaan'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_pemeriksaan', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_pemeriksaan', 'Nama Pemeriksaan'],

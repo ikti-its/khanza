@@ -15,14 +15,14 @@ final class RefObatBebasController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Obat Bebas', 'icon' => 'ref_obat_bebas'],
             ],
-            judul: 'Referensi Obat Bebas',
-            aksi: [
+            title: 'Referensi Obat Bebas',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_obat_bebas', 'ID Obat Bebas'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kategori', 'Nama Kategori'],
             ],

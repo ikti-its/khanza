@@ -15,14 +15,14 @@ final class RefAldretteTekananDarahController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Aldrette Tekanan Darah', 'icon' => 'ref_aldrette_tekanan_darah'],
             ],
-            judul: 'Referensi Aldrette Tekanan Darah',
-            aksi: [
+            title: 'Referensi Aldrette Tekanan Darah',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_td', 'ID Tekanan Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

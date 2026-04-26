@@ -15,14 +15,14 @@ final class RefSkriningBatukController extends ControllerTemplate
                 ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
                 ['title' => 'Referensi Skrining Batuk', 'icon' => 'ref_skrining_batuk'],
             ],
-            judul: 'Referensi Skrining Batuk',
-            aksi: [
+            title: 'Referensi Skrining Batuk',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_batuk', 'ID Batuk'],
                 [SHOW, REQUIRED, I::TEXT, 'kategori_batuk', 'Kategori Batuk'],
             ],

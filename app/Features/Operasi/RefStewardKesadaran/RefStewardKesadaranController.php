@@ -15,14 +15,14 @@ final class RefStewardKesadaranController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Steward Kesadaran', 'icon' => 'ref_steward_kesadaran'],
             ],
-            judul: 'Referensi Steward Kesadaran',
-            aksi: [
+            title: 'Referensi Steward Kesadaran',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

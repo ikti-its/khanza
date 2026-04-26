@@ -15,14 +15,14 @@ final class RefKetersediaanStatusController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Ketersediaan Status', 'icon' => 'ref_ketersediaan_status'],
             ],
-            judul: 'Referensi Ketersediaan Status',
-            aksi: [
+            title: 'Referensi Ketersediaan Status',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_ketersediaan_status', 'ID Ketersediaan Status'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_ketersediaan', 'Nama Ketersediaan'],
             ],

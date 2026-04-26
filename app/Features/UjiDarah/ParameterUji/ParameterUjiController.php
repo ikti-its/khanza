@@ -14,14 +14,14 @@ final class ParameterUjiController extends ControllerTemplate
                 ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
                 ['title' => 'Parameter Uji', 'icon' => 'parameter_uji'],
             ],
-            judul: 'Parameter Uji',
-            aksi: [
+            title: 'Parameter Uji',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_parameter_uji', 'ID Parameter Uji'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_parameter', 'Nama Parameter'],
             ],

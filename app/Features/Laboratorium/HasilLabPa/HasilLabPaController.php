@@ -15,14 +15,14 @@ final class HasilLabPaController extends ControllerTemplate
                 ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
                 ['title' => 'Hasil Lab PA', 'icon' => 'hasil_lab_pa'],
             ],
-            judul: 'Hasil Lab PA',
-            aksi: [
+            title: 'Hasil Lab PA',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_pa', 'ID Hasil PA'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],

@@ -14,14 +14,14 @@ final class SumberDarahController extends ControllerTemplate
                 ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
                 ['title' => 'Sumber Darah', 'icon' => 'sumber_darah'],
             ],
-            judul: 'Sumber Darah',
-            aksi: [
+            title: 'Sumber Darah',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_sumber_darah', 'ID Sumber Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_sumber_darah', 'Nama Sumber Darah'],
             ],

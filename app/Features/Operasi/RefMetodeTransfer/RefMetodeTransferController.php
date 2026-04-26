@@ -15,14 +15,14 @@ final class RefMetodeTransferController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Metode Transfer', 'icon' => 'ref_metode_transfer'],
             ],
-            judul: 'Referensi Metode Transfer',
-            aksi: [
+            title: 'Referensi Metode Transfer',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_metode', 'ID Metode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_metode', 'Nama Metode'],
             ],

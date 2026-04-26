@@ -14,14 +14,14 @@ final class StatusKunjunganController extends ControllerTemplate
                 ['title' => 'Donor', 'icon' => 'donor'],
                 ['title' => 'Status Kunjungan', 'icon' => 'status_kunjungan'],
             ],
-            judul: 'Status Kunjungan',
-            aksi: [
+            title: 'Status Kunjungan',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_kunjungan', 'ID Status Kunjungan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_kunjungan', 'Nama Status Kunjungan'],
             ],

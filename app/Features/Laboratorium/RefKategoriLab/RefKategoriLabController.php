@@ -15,14 +15,14 @@ final class RefKategoriLabController extends ControllerTemplate
                 ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
                 ['title' => 'Referensi Kategori Lab', 'icon' => 'ref_kategori_lab'],
             ],
-            judul: 'Referensi Kategori Lab',
-            aksi: [
+            title: 'Referensi Kategori Lab',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kategori', 'ID Kategori'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_kategori', 'Kode Kategori'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kategori', 'Nama Kategori'],

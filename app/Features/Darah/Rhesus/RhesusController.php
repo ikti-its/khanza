@@ -14,14 +14,14 @@ final class RhesusController extends ControllerTemplate
                 ['title' => 'Darah', 'icon' => 'darah'],
                 ['title' => 'Rhesus', 'icon' => 'rhesus'],
             ],
-            judul: 'Rhesus',
-            aksi: [
+            title: 'Rhesus',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rhesus', 'ID Rhesus'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_rhesus', 'Kode Rhesus'],
             ],

@@ -15,14 +15,14 @@ final class RefKeadaanUmumController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Keadaan Umum', 'icon' => 'ref_keadaan_umum'],
             ],
-            judul: 'Referensi Keadaan Umum',
-            aksi: [
+            title: 'Referensi Keadaan Umum',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_keadaan_umum', 'ID Keadaan Umum'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_keadaan', 'Nama Keadaan'],
             ],
