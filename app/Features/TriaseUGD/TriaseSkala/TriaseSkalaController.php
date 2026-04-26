@@ -23,11 +23,11 @@ final class TriaseSkalaController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Skala', 'id_skala', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Tingkat Skala', 'id_tingkat_skala', I::INDEX, REQUIRED],
-                [SHOW, 'Kode', 'kode_skala', I::TEXT, REQUIRED],
-                [SHOW, 'ID Pemeriksaan', 'id_pemeriksaan', I::INDEX, REQUIRED],
-                [SHOW, 'Pengkajian', 'pengkajian', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_skala', 'ID Skala'],
+                [SHOW, REQUIRED, I::INDEX, 'id_tingkat_skala', 'ID Tingkat Skala'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_skala', 'Kode'],
+                [SHOW, REQUIRED, I::INDEX, 'id_pemeriksaan', 'ID Pemeriksaan'],
+                [SHOW, REQUIRED, I::TEXT, 'pengkajian', 'Pengkajian'],
             ],
         );
     }   

@@ -23,8 +23,8 @@ final class StatusPendonorController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Status Pendonor', 'id_status_pendonor', I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Status Pendonor', 'nama_status_pendonor', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_status_pendonor', 'ID Status Pendonor'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_status_pendonor', 'Nama Status Pendonor'],
             ],
         );
     }   

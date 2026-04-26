@@ -24,8 +24,8 @@ final class RefPosisiPasienController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Posisi',   'id_posisi',   I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Posisi', 'nama_posisi', I::TEXT,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_posisi', 'ID Posisi'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_posisi', 'Nama Posisi'],
             ],
         );
     }

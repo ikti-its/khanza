@@ -24,11 +24,11 @@ final class PermintaanOperasiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Permintaan',   'id_permintaan', I::INDEX,  OPTIONAL],
-                [SHOW, 'Nomor Registrasi','nomor_reg',     I::TEXT,    REQUIRED],
-                [SHOW, 'Kode Dokter',     'kode_dokter',   I::TEXT,    REQUIRED],
-                [SHOW, 'Tanggal Minta',   'tanggal_minta', I::DATE, REQUIRED],
-                [SHOW, 'CITO',            'is_cito',       I::SELECT,  REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
+                [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_dokter', 'Kode Dokter'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal_minta', 'Tanggal Minta'],
+                [SHOW, REQUIRED, I::SELECT, 'is_cito', 'CITO'],
             ],
         );
     }

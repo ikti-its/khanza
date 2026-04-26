@@ -23,10 +23,10 @@ final class KonselingController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Konseling', 'id_konseling', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Kasus', 'id_kasus', I::INDEX, REQUIRED],
-                [SHOW, 'Tanggal Konseling', 'tanggal_konseling', I::DATE, REQUIRED],
-                [SHOW, 'ID Petugas', 'id_petugas', I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_konseling', 'ID Konseling'],
+                [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal_konseling', 'Tanggal Konseling'],
+                [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
             ],
         );
     }   

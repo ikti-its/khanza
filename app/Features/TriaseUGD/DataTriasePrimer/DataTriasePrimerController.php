@@ -23,14 +23,14 @@ final class DataTriasePrimerController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Triase Primer', 'id_triase_primer', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Triase', 'id_triase', I::INDEX, REQUIRED],
-                [HIDE, 'Keluhan Utama', 'keluhan_utama', I::TEXT, REQUIRED],
-                [HIDE, 'ID Kebutuhan Khusus', 'id_kebutuhan_khusus', I::INDEX, REQUIRED],
-                [HIDE, 'Catatan', 'catatan', I::TEXT, REQUIRED],
-                [SHOW, 'ID Plan Primer', 'id_plan_primer', I::INDEX, REQUIRED],
-                [SHOW, 'Tanggal Triase', 'tanggal_triase', 'tanggal_jam', REQUIRED],
-                [SHOW, 'ID Petugas', 'id_petugas', I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_triase_primer', 'ID Triase Primer'],
+                [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
+                [HIDE, REQUIRED, I::TEXT, 'keluhan_utama', 'Keluhan Utama'],
+                [HIDE, REQUIRED, I::INDEX, 'id_kebutuhan_khusus', 'ID Kebutuhan Khusus'],
+                [HIDE, REQUIRED, I::TEXT, 'catatan', 'Catatan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_plan_primer', 'ID Plan Primer'],
+                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_triase', 'Tanggal Triase'],
+                [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
             ],
         );
     }   

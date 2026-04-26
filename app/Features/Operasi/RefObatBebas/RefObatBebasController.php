@@ -24,8 +24,8 @@ final class RefObatBebasController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Obat Bebas',  'id_obat_bebas',  I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Kategori',  'nama_kategori',  I::TEXT,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_obat_bebas', 'ID Obat Bebas'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_kategori', 'Nama Kategori'],
             ],
         );
     }

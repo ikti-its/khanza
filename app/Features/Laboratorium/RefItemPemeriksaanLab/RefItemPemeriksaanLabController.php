@@ -24,11 +24,11 @@ final class RefItemPemeriksaanLabController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Item Lab',   'id_item_lab',  I::INDEX, OPTIONAL],
-                [SHOW, 'Kategori',      'id_kategori',  I::INDEX, REQUIRED],
-                [SHOW, 'Kode Periksa', 'kode_periksa', I::TEXT,   REQUIRED],
-                [SHOW, 'Nama Item',    'nama_item',    I::TEXT,   REQUIRED],
-                [SHOW, 'Tarif',        'tarif',        I::MONEY,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_item_lab', 'ID Item Lab'],
+                [SHOW, REQUIRED, I::INDEX, 'id_kategori', 'Kategori'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_periksa', 'Kode Periksa'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_item', 'Nama Item'],
+                [SHOW, REQUIRED, I::MONEY, 'tarif', 'Tarif'],
             ],
         );
     }

@@ -24,11 +24,11 @@ final class ChecklistPostopPenunjangController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Penunjang',      'id_penunjang',      I::INDEX, OPTIONAL],
-                [HIDE, 'ID Checklist Post', 'id_checklist_post', I::INDEX, OPTIONAL],
-                [SHOW, 'Jenis Penunjang',   'jenis_penunjang',   I::TEXT,   REQUIRED],
-                [SHOW, 'Ketersediaan',      'id_ketersediaan',   I::INDEX, REQUIRED],
-                [SHOW, 'Keterangan',        'keterangan',        I::TEXT,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_penunjang', 'ID Penunjang'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
+                [SHOW, REQUIRED, I::TEXT, 'jenis_penunjang', 'Jenis Penunjang'],
+                [SHOW, REQUIRED, I::INDEX, 'id_ketersediaan', 'Ketersediaan'],
+                [SHOW, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
             ],
         );
     }

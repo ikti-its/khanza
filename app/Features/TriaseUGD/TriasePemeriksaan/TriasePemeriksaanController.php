@@ -23,9 +23,9 @@ final class TriasePemeriksaanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Pemeriksaan', 'id_pemeriksaan', I::INDEX, OPTIONAL],
-                [SHOW, 'Kode', 'kode_pemeriksaan', I::TEXT, REQUIRED],
-                [SHOW, 'Nama Pemeriksaan', 'nama_pemeriksaan', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_pemeriksaan', 'ID Pemeriksaan'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_pemeriksaan', 'Kode'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_pemeriksaan', 'Nama Pemeriksaan'],
             ],
         );
     }   

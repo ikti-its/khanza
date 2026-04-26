@@ -24,13 +24,13 @@ final class RefParameterPemeriksaanLabController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Parameter',   'id_parameter',   I::INDEX, OPTIONAL],
-                [SHOW, 'Item Lab',       'id_item_lab',    I::INDEX, REQUIRED],
-                [SHOW, 'Nama Parameter', 'nama_parameter', I::TEXT,   REQUIRED],
-                [SHOW, 'Satuan',         'satuan',         I::TEXT,   OPTIONAL],
-                [SHOW, 'Nilai Rujukan',  'nilai_rujukan',  I::TEXT,   OPTIONAL],
-                [SHOW, 'Keterangan',     'keterangan',     I::TEXT,   OPTIONAL],
-                [SHOW, 'Biaya Item',     'biaya_item',     I::MONEY,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_parameter', 'ID Parameter'],
+                [SHOW, REQUIRED, I::INDEX, 'id_item_lab', 'Item Lab'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_parameter', 'Nama Parameter'],
+                [SHOW, OPTIONAL, I::TEXT, 'satuan', 'Satuan'],
+                [SHOW, OPTIONAL, I::TEXT, 'nilai_rujukan', 'Nilai Rujukan'],
+                [SHOW, OPTIONAL, I::TEXT, 'keterangan', 'Keterangan'],
+                [SHOW, REQUIRED, I::MONEY, 'biaya_item', 'Biaya Item'],
             ],
         );
     }

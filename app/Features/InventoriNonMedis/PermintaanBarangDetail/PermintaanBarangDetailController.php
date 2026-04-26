@@ -28,13 +28,13 @@ final class PermintaanBarangDetailController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [HIDE, 'ID Detail',        'id_detail',        I::INDEX, OPTIONAL],
-                [HIDE, 'ID Permintaan',    'id_permintaan',    I::INDEX, OPTIONAL],
-                [SHOW, 'Barang',           'id_barang',        I::SELECT, OPTIONAL],
-                [SHOW, 'Nama Barang Baru', 'nama_barang_baru', I::TEXT,   OPTIONAL],
-                [SHOW, 'Qty',              'qty',              I::NUMBER, REQUIRED],
-                [SHOW, 'Qty Disetujui',    'qty_disetujui',    I::NUMBER, OPTIONAL],
-                [SHOW, 'Catatan',          'catatan',          I::TEXT,   OPTIONAL],
+                [HIDE, OPTIONAL, I::INDEX, 'id_detail', 'ID Detail'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
+                [SHOW, OPTIONAL, I::SELECT, 'id_barang', 'Barang'],
+                [SHOW, OPTIONAL, I::TEXT, 'nama_barang_baru', 'Nama Barang Baru'],
+                [SHOW, REQUIRED, I::NUMBER, 'qty', 'Qty'],
+                [SHOW, OPTIONAL, I::NUMBER, 'qty_disetujui', 'Qty Disetujui'],
+                [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
             ],
             meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );

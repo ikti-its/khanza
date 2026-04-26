@@ -24,10 +24,10 @@ final class RefItemRadController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Item',          'id_item',          I::INDEX, OPTIONAL],
-                [SHOW, 'Kode Periksa',     'kode_periksa',     I::TEXT,   REQUIRED],
-                [SHOW, 'Nama Pemeriksaan', 'nama_pemeriksaan', I::TEXT,   REQUIRED],
-                [SHOW, 'Tarif Dasar',      'tarif_dasar',      I::MONEY,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_item', 'ID Item'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_periksa', 'Kode Periksa'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_pemeriksaan', 'Nama Pemeriksaan'],
+                [SHOW, REQUIRED, I::MONEY, 'tarif_dasar', 'Tarif Dasar'],
             ],
         );
     }

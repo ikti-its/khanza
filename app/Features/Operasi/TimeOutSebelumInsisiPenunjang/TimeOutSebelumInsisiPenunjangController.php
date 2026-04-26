@@ -24,10 +24,10 @@ final class TimeOutSebelumInsisiPenunjangController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Penunjang',  'id_penunjang',   I::INDEX, OPTIONAL],
-                [HIDE, 'ID Time Out',   'id_timeout',     I::INDEX, OPTIONAL],
-                [SHOW, 'Jenis Penunjang','jenis_penunjang',I::TEXT,   REQUIRED],
-                [SHOW, I::SELECT,        'id_status',      I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_penunjang', 'ID Penunjang'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_timeout', 'ID Time Out'],
+                [SHOW, REQUIRED, I::TEXT, 'jenis_penunjang', 'Jenis Penunjang'],
+                [SHOW, REQUIRED, I::INDEX,'id_status', 'Status'],
             ],
         );
     }

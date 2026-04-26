@@ -24,8 +24,8 @@ final class RefSkriningNyeriDadaController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Nyeri Dada', 'id_nyeri_dada', I::INDEX, OPTIONAL],
-                [SHOW, 'Nyeri Dada',    'nyeri_dada',    I::TEXT,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_nyeri_dada', 'ID Nyeri Dada'],
+                [SHOW, REQUIRED, I::TEXT, 'nyeri_dada', 'Nyeri Dada'],
             ],
         );
     }

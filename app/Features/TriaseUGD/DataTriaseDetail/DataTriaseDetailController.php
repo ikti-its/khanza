@@ -23,9 +23,9 @@ final class DataTriaseDetailController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Triase Detail', 'id_triase_detail', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Triase', 'id_triase', I::INDEX, REQUIRED],
-                [SHOW, 'ID Skala', 'id_skala', I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_triase_detail', 'ID Triase Detail'],
+                [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
+                [SHOW, REQUIRED, I::INDEX, 'id_skala', 'ID Skala'],
             ],
         );
     }   

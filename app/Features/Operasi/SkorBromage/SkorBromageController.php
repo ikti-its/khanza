@@ -24,15 +24,15 @@ final class SkorBromageController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Skor Bromage', 'id_skor_bromage',    I::INDEX,  OPTIONAL],
-                [SHOW, 'Nomor Registrasi', 'nomor_reg',          I::TEXT,    REQUIRED],
-                [SHOW, 'Waktu Penilaian',  'waktu_penilaian',    I::DATE, REQUIRED],
-                [SHOW, 'ID Petugas',       'id_petugas',         I::TEXT,    REQUIRED],
-                [SHOW, 'Dokter Anestesi',  'id_dokter_anestesi', I::TEXT,    REQUIRED],
-                [SHOW, 'Skor Bromage',     'skor_bromage',       I::NUMBER,  REQUIRED],
-                [SHOW, 'Boleh Pindah',     'is_boleh_pindah',    I::SELECT,  REQUIRED],
-                [SHOW, 'Catatan Keluar',   'catatan_keluar',     I::TEXT,    REQUIRED],
-                [SHOW, 'Instruksi RR',     'instruksi_rr',       I::TEXT,    REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_skor_bromage', 'ID Skor Bromage'],
+                [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
+                [SHOW, REQUIRED, I::DATE, 'waktu_penilaian', 'Waktu Penilaian'],
+                [SHOW, REQUIRED, I::TEXT, 'id_petugas', 'ID Petugas'],
+                [SHOW, REQUIRED, I::TEXT, 'id_dokter_anestesi', 'Dokter Anestesi'],
+                [SHOW, REQUIRED, I::NUMBER, 'skor_bromage', 'Skor Bromage'],
+                [SHOW, REQUIRED, I::SELECT, 'is_boleh_pindah', 'Boleh Pindah'],
+                [SHOW, REQUIRED, I::TEXT, 'catatan_keluar', 'Catatan Keluar'],
+                [SHOW, REQUIRED, I::TEXT, 'instruksi_rr', 'Instruksi RR'],
             ],
         );
     }

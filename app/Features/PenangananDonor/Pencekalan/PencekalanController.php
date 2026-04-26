@@ -23,15 +23,15 @@ final class PencekalanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Pencekalan', 'id_pencekalan', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Kunjungan', 'id_kunjungan', I::INDEX, REQUIRED],
-                [SHOW, 'ID Jenis Pencekalan', 'id_jenis_pencekalan', I::INDEX, REQUIRED],
-                [SHOW, 'Tanggal Mulai', 'tanggal_mulai', I::DATE, REQUIRED],
-                [SHOW, 'Tanggal Selesai', 'tanggal_selesai', I::DATE, OPTIONAL],
-                [HIDE, 'ID Shift', 'id_shift', I::INDEX, REQUIRED],
-                [HIDE, 'ID Petugas', 'id_petugas', I::INDEX, REQUIRED],
-                [SHOW, 'Keterangan', 'keterangan', I::TEXT, REQUIRED],
-                [SHOW, 'ID Status Pencekalan', 'id_status_pencekalan', I::SELECT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_pencekalan', 'ID Pencekalan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_jenis_pencekalan', 'ID Jenis Pencekalan'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal_mulai', 'Tanggal Mulai'],
+                [SHOW, OPTIONAL, I::DATE, 'tanggal_selesai', 'Tanggal Selesai'],
+                [HIDE, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
+                [HIDE, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
+                [SHOW, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
+                [SHOW, REQUIRED, I::SELECT, 'id_status_pencekalan', 'ID Status Pencekalan'],
             ],
         );
     }   

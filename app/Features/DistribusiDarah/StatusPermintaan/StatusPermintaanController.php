@@ -23,8 +23,8 @@ final class StatusPermintaanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Status Permintaan', 'id_status_permintaan', I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Status Permintaan', 'nama_status_permintaan', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_status_permintaan', 'ID Status Permintaan'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_status_permintaan', 'Nama Status Permintaan'],
             ],
         );
     }   

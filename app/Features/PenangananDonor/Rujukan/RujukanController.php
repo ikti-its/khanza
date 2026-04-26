@@ -23,11 +23,11 @@ final class RujukanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Rujukan', 'id_rujukan', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Kasus', 'id_kasus', I::INDEX, REQUIRED],
-                [SHOW, 'Nomor Surat', 'nomor_surat', I::TEXT, REQUIRED],
-                [SHOW, 'Tanggal Rujukan', 'tanggal_rujukan', I::DATE, REQUIRED],
-                [SHOW, 'ID Fasyankes Tujuan', 'id_fasyankes', I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_rujukan', 'ID Rujukan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
+                [SHOW, REQUIRED, I::TEXT, 'nomor_surat', 'Nomor Surat'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal_rujukan', 'Tanggal Rujukan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_fasyankes', 'ID Fasyankes Tujuan'],
             ],
         );
     }   

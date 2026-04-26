@@ -23,14 +23,14 @@ final class SkriningDonorController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Skrining', 'id_skrining', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Kunjungan', 'id_kunjungan', I::INDEX, REQUIRED],
-                [SHOW, 'Tekanan Sistolik', 'sistolik', I::NUMBER, REQUIRED],
-                [SHOW, 'Tekanan Diastolik', 'diastolik', I::NUMBER, REQUIRED],
-                [SHOW, 'Berat Badan', 'berat_badan', 'desimal', REQUIRED],
-                [SHOW, 'Kadar Hemoglobin', 'kadar_hemoglobin', 'desimal', REQUIRED],
-                [SHOW, 'Suhu', 'suhu_tubuh', 'suhu', REQUIRED],
-                [SHOW, 'ID Hasil Anamnesis', 'id_hasil_anamnesis', I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_skrining', 'ID Skrining'],
+                [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
+                [SHOW, REQUIRED, I::NUMBER, 'sistolik', 'Tekanan Sistolik'],
+                [SHOW, REQUIRED, I::NUMBER, 'diastolik', 'Tekanan Diastolik'],
+                [SHOW, REQUIRED, 'desimal', 'berat_badan', 'Berat Badan'],
+                [SHOW, REQUIRED, 'desimal', 'kadar_hemoglobin', 'Kadar Hemoglobin'],
+                [SHOW, REQUIRED, 'suhu', 'suhu_tubuh', 'Suhu'],
+                [SHOW, REQUIRED, I::INDEX, 'id_hasil_anamnesis', 'ID Hasil Anamnesis'],
             ],
         );
     }   

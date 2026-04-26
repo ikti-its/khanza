@@ -23,16 +23,16 @@ final class StokDarahController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Stok Darah', 'id_stok_darah', I::INDEX, OPTIONAL],
-                [HIDE, 'ID Pemisahan', 'id_pemisahan', I::INDEX, OPTIONAL],
-                [SHOW, 'Nomor Kantong', 'no_kantong', I::TEXT, REQUIRED],
-                [HIDE, 'ID Komponen', 'id_komponen', I::INDEX, REQUIRED],
-                [SHOW, 'ID Golongan Darah', 'id_golongan_darah', I::INDEX, REQUIRED],
-                [SHOW, 'ID Rhesus', 'id_rhesus', I::INDEX, REQUIRED],
-                [SHOW, 'Tanggal Pengambilan', 'tanggal_pengambilan', I::DATE, REQUIRED],
-                [SHOW, 'Tanggal Kadaluarsa', 'tanggal_kadaluarsa', I::DATE, REQUIRED],
-                [SHOW, 'ID Sumber Darah', 'id_sumber_darah', I::INDEX, REQUIRED],
-                [SHOW, 'ID Status Stok', 'id_status_stok', I::SELECT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_stok_darah', 'ID Stok Darah'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
+                [SHOW, REQUIRED, I::TEXT, 'no_kantong', 'Nomor Kantong'],
+                [HIDE, REQUIRED, I::INDEX, 'id_komponen', 'ID Komponen'],
+                [SHOW, REQUIRED, I::INDEX, 'id_golongan_darah', 'ID Golongan Darah'],
+                [SHOW, REQUIRED, I::INDEX, 'id_rhesus', 'ID Rhesus'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal_pengambilan', 'Tanggal Pengambilan'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal_kadaluarsa', 'Tanggal Kadaluarsa'],
+                [SHOW, REQUIRED, I::INDEX, 'id_sumber_darah', 'ID Sumber Darah'],
+                [SHOW, REQUIRED, I::SELECT, 'id_status_stok', 'ID Status Stok'],
             ],
         );
     }   

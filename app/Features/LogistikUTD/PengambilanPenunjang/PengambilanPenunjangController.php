@@ -23,13 +23,13 @@ final class PengambilanPenunjangController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Pengambilan Penunjang', 'id_pengambilan_penunjang', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Barang', 'id_barang', I::INDEX, REQUIRED],
-                [SHOW, 'Jumlah', 'jumlah', I::NUMBER, REQUIRED],
-                [SHOW, 'Harga Beli', 'harga_beli', I::MONEY, REQUIRED],
-                [HIDE, 'ID Petugas Gudang', 'id_petugas_gudang', I::INDEX, REQUIRED],
-                [SHOW, 'Tanggal Pengambilan', 'tanggal_pengambilan', 'tanggal_jam', REQUIRED],
-                [HIDE, 'Keterangan', 'keterangan', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_penunjang', 'ID Pengambilan Penunjang'],
+                [SHOW, REQUIRED, I::INDEX, 'id_barang', 'ID Barang'],
+                [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],
+                [SHOW, REQUIRED, I::MONEY, 'harga_beli', 'Harga Beli'],
+                [HIDE, REQUIRED, I::INDEX, 'id_petugas_gudang', 'ID Petugas Gudang'],
+                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_pengambilan', 'Tanggal Pengambilan'],
+                [HIDE, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
             ],
         );
     }   

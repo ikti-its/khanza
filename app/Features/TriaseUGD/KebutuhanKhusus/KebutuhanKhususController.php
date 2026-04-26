@@ -23,8 +23,8 @@ final class KebutuhanKhususController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Kebutuhan', 'id_kebutuhan', I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Kebutuhan', 'nama_kebutuhan', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_kebutuhan', 'ID Kebutuhan'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_kebutuhan', 'Nama Kebutuhan'],
             ],
         );
     }   

@@ -23,10 +23,10 @@ final class PermintaanLabMbController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                [HIDE, 'ID Permintaan MB',         'id_permintaan_mb',         I::INDEX, OPTIONAL],
-                [SHOW, 'ID Permintaan Lab',        'id_permintaan_lab',        I::INDEX, REQUIRED],
-                [SHOW, 'ID Item Pemeriksaan',      'id_item_pemeriksaan',      I::INDEX, REQUIRED],
-                [SHOW, 'ID Parameter Pemeriksaan', 'id_parameter_pemeriksaan', I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_mb', 'ID Permintaan MB'],
+                [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
+                [SHOW, REQUIRED, I::INDEX, 'id_item_pemeriksaan', 'ID Item Pemeriksaan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_parameter_pemeriksaan', 'ID Parameter Pemeriksaan'],
             ],
         );
     }

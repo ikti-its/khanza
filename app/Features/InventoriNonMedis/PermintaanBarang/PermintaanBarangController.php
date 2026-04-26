@@ -27,12 +27,12 @@ final class PermintaanBarangController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [HIDE, 'ID',           'id_permintaan', I::INDEX,  OPTIONAL],
-                [SHOW, 'Unit Pemohon', 'unit_pemohon',  I::TEXT,    REQUIRED],
-                [SHOW, 'Tipe',         'tipe',          I::SELECT,  REQUIRED],
-                [SHOW, I::DATE,      I::DATE,       I::DATE, REQUIRED],
-                [SHOW, I::SELECT,       I::SELECT,        I::SELECT,  OPTIONAL],
-                [SHOW, 'Catatan',      'catatan',       I::TEXT,    OPTIONAL],
+                [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID'],
+                [SHOW, REQUIRED, I::TEXT, 'unit_pemohon', 'Unit Pemohon'],
+                [SHOW, REQUIRED, I::SELECT, 'tipe', 'Tipe'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal', 'Tanggal'],
+                [SHOW, OPTIONAL, I::SELECT,'status', 'Status'],
+                [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
             ],
             meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );

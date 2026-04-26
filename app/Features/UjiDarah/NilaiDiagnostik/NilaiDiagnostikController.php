@@ -23,8 +23,8 @@ final class NilaiDiagnostikController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Nilai Diagnostik', 'id_nilai_diagnostik', I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Nilai Diagnostik', 'nama_nilai_diagnostik', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_nilai_diagnostik', 'ID Nilai Diagnostik'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_nilai_diagnostik', 'Nama Nilai Diagnostik'],
             ],
         );
     }   

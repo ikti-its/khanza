@@ -23,13 +23,13 @@ final class PenggunaanBHPDonorController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID BHP Donor', 'id_bhp_donor', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Pengambilan Darah', 'id_pengambilan_darah', I::INDEX, REQUIRED],
-                [SHOW, 'ID Jenis BHP', 'id_jenis_bhp', I::INDEX, REQUIRED],
-                [SHOW, 'ID Barang Medis', 'id_barang_medis', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Barang Non Medis', 'id_barang_penunjang', I::INDEX, OPTIONAL],
-                [SHOW, 'Jumlah', 'jumlah', I::NUMBER, REQUIRED],
-                [SHOW, 'Harga', 'harga', I::MONEY, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_bhp_donor', 'ID BHP Donor'],
+                [SHOW, REQUIRED, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
+                [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],
+                [SHOW, OPTIONAL, I::INDEX, 'id_barang_medis', 'ID Barang Medis'],
+                [SHOW, OPTIONAL, I::INDEX, 'id_barang_penunjang', 'ID Barang Non Medis'],
+                [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],
+                [SHOW, REQUIRED, I::MONEY, 'harga', 'Harga'],
             ],
         );
     }   

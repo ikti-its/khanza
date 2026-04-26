@@ -23,15 +23,15 @@ final class PengambilanMedisController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Pengambilan Medis', 'id_pengambilan_medis', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Barang', 'id_barang', I::INDEX, REQUIRED],
-                [SHOW, 'Jumlah', 'jumlah', I::NUMBER, REQUIRED],
-                [SHOW, 'Harga Beli', 'harga_beli', I::MONEY, REQUIRED],
-                [SHOW, 'Nama Bangsal', 'nama_bangsal', I::TEXT, REQUIRED],
-                [SHOW, 'Tanggal Pengambilan', 'tanggal_pengambilan', 'tanggal_jam', REQUIRED],
-                [HIDE, 'Keterangan', 'keterangan', I::TEXT, REQUIRED],
-                [HIDE, 'Nomor Batch', 'nomor_batch', I::TEXT, OPTIONAL],
-                [HIDE, 'Nomor Faktur', 'nomor_faktur', I::TEXT, OPTIONAL],
+                [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_medis', 'ID Pengambilan Medis'],
+                [SHOW, REQUIRED, I::INDEX, 'id_barang', 'ID Barang'],
+                [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],
+                [SHOW, REQUIRED, I::MONEY, 'harga_beli', 'Harga Beli'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_bangsal', 'Nama Bangsal'],
+                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_pengambilan', 'Tanggal Pengambilan'],
+                [HIDE, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
+                [HIDE, OPTIONAL, I::TEXT, 'nomor_batch', 'Nomor Batch'],
+                [HIDE, OPTIONAL, I::TEXT, 'nomor_faktur', 'Nomor Faktur'],
             ],
         );
     }   

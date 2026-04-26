@@ -24,8 +24,8 @@ final class RefStatusPermintaanRadController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Status',   'id_status',   I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Status', 'nama_status', I::TEXT,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_status', 'ID Status'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_status', 'Nama Status'],
             ],
         );
     }

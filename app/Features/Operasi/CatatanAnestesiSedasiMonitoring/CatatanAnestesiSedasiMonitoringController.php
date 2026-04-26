@@ -24,11 +24,11 @@ final class CatatanAnestesiSedasiMonitoringController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Monitoring',      'id_monitoring',       I::INDEX, OPTIONAL],
-                [HIDE, 'ID Catatan Anestesi','id_catatan_anestesi', I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Monitoring',    'nama_monitoring',     I::TEXT,   REQUIRED],
-                [SHOW, 'Digunakan',          'is_digunakan',        I::SELECT, REQUIRED],
-                [SHOW, 'Keterangan',         'keterangan',          I::TEXT,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_monitoring', 'ID Monitoring'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_catatan_anestesi', 'ID Catatan Anestesi'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_monitoring', 'Nama Monitoring'],
+                [SHOW, REQUIRED, I::SELECT, 'is_digunakan', 'Digunakan'],
+                [SHOW, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
             ],
         );
     }

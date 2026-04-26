@@ -27,9 +27,9 @@ final class KategoriBarangController extends ControllerTemplate
             ],
             konfig: [
                 // [visible, 'Display', 'kolom', 'jenis', required]
-                [HIDE, 'ID',                   'id_kategori',          I::INDEX, OPTIONAL],
-                [HIDE, 'Kode Kategori',        'kode_kategori_barang', I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Kategori Barang', 'nama_kategori_barang', I::NAME,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_kategori', 'ID'],
+                [HIDE, OPTIONAL, I::INDEX, 'kode_kategori_barang', 'Kode Kategori'],
+                [SHOW, REQUIRED, I::NAME, 'nama_kategori_barang', 'Nama Kategori Barang'],
             ],
             meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );

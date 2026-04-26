@@ -23,9 +23,9 @@ final class JenisDonorController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Jenis Donor', 'id_jenis_donor', I::INDEX, OPTIONAL],
-                [SHOW, 'Kode', 'kode_jenis_donor', I::TEXT, REQUIRED],
-                [SHOW, 'Nama Jenis Donor', 'nama_jenis_donor', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_jenis_donor', 'ID Jenis Donor'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_jenis_donor', 'Kode'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_jenis_donor', 'Nama Jenis Donor'],
             ],
         );
     }   

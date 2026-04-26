@@ -23,11 +23,11 @@ final class PemisahanKomponenController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Pemisahan', 'id_pemisahan', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Bag', 'id_bag', I::INDEX, REQUIRED],
-                [SHOW, 'Tanggal Pemisahan', 'tanggal_pemisahan', I::DATE, REQUIRED],
-                [SHOW, 'ID Shift', 'id_shift', I::INDEX, REQUIRED],
-                [SHOW, 'ID Petugas', 'id_petugas', I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_bag', 'ID Bag'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal_pemisahan', 'Tanggal Pemisahan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
+                [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
             ],
         );
     }   

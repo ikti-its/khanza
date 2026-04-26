@@ -23,8 +23,8 @@ final class JenisPencekalanController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Jenis Pencekalan', 'id_jenis_pencekalan', I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Jenis Pencekalan', 'nama_jenis_pencekalan', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_jenis_pencekalan', 'ID Jenis Pencekalan'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_jenis_pencekalan', 'Nama Jenis Pencekalan'],
             ],
         );
     }   

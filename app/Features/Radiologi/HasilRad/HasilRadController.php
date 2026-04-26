@@ -24,14 +24,14 @@ final class HasilRadController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Hasil Radiologi',  'id_hasil_rad',        I::INDEX,  OPTIONAL],
-                [SHOW, 'ID Permintaan Rad',   'id_permintaan_rad',   I::INDEX,  REQUIRED],
-                [SHOW, 'Nomor Registrasi',    'nomor_reg',           I::TEXT,    REQUIRED],
-                [SHOW, 'Kode Dokter PJ',      'kode_dokter_pj',      I::TEXT,    REQUIRED],
-                [SHOW, 'ID Petugas Rad',      'id_petugas_rad',      I::TEXT,    REQUIRED],
-                [SHOW, 'Kode Dokter Perujuk', 'kode_dokter_perujuk', I::TEXT,    REQUIRED],
-                [SHOW, 'Tanggal & Jam Hasil', 'tgl_jam_hasil',       I::DATE, REQUIRED],
-                [SHOW, 'Catatan',             'catatan',             I::TEXT,    REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_hasil_rad', 'ID Hasil Radiologi'],
+                [SHOW, REQUIRED, I::INDEX, 'id_permintaan_rad', 'ID Permintaan Rad'],
+                [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_pj', 'Kode Dokter PJ'],
+                [SHOW, REQUIRED, I::TEXT, 'id_petugas_rad', 'ID Petugas Rad'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_perujuk', 'Kode Dokter Perujuk'],
+                [SHOW, REQUIRED, I::DATE, 'tgl_jam_hasil', 'Tanggal & Jam Hasil'],
+                [SHOW, REQUIRED, I::TEXT, 'catatan', 'Catatan'],
             ],
         );
     }

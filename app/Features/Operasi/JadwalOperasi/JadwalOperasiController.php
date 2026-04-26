@@ -24,16 +24,16 @@ final class JadwalOperasiController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required
-                [HIDE, 'ID Jadwal',           'id_jadwal',            I::INDEX,  OPTIONAL],
-                [SHOW, 'ID Permintaan',       'id_permintaan',        I::INDEX,  REQUIRED],
-                [SHOW, 'ID Ruangan',          'id_ruangan',           I::INDEX,  REQUIRED],
-                [SHOW, 'ID Tindakan',         'id_tindakan',          I::INDEX,  REQUIRED],
-                [SHOW, 'Kode Dokter Bedah',   'kode_dokter_bedah',    I::TEXT,    REQUIRED],
-                [SHOW, 'Kode Dokter Anestesi','kode_dokter_anestesi', I::TEXT,    REQUIRED],
-                [SHOW, I::DATE,             I::DATE,              I::DATE, REQUIRED],
-                [SHOW, 'Waktu Mulai',         'waktu_mulai',          I::TIME,     REQUIRED],
-                [SHOW, 'Waktu Selesai',       'waktu_selesai',        I::TIME,     REQUIRED],
-                [SHOW, I::SELECT,              'id_status',            I::INDEX,  REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_jadwal', 'ID Jadwal'],
+                [SHOW, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_ruangan', 'ID Ruangan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_tindakan', 'ID Tindakan'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_bedah', 'Kode Dokter Bedah'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_anestesi', 'Kode Dokter Anestesi'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal', 'Tanggal'],
+                [SHOW, REQUIRED, I::TIME, 'waktu_mulai', 'Waktu Mulai'],
+                [SHOW, REQUIRED, I::TIME, 'waktu_selesai', 'Waktu Selesai'],
+                [SHOW, REQUIRED, I::INDEX, 'id_status', 'Status'],
             ],
         );
     }

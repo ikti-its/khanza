@@ -23,10 +23,10 @@ final class JawabanKonselingController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Jawaban', 'id_jawaban', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Konseling', 'id_konseling', I::INDEX, REQUIRED],
-                [SHOW, 'ID Pertanyaan', 'id_pertanyaan', I::INDEX, REQUIRED],
-                [SHOW, 'ID Pilihan Jawaban', 'id_pilihan', I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_jawaban', 'ID Jawaban'],
+                [SHOW, REQUIRED, I::INDEX, 'id_konseling', 'ID Konseling'],
+                [SHOW, REQUIRED, I::INDEX, 'id_pertanyaan', 'ID Pertanyaan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_pilihan', 'ID Pilihan Jawaban'],
             ],
         );
     }   

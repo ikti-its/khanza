@@ -23,8 +23,8 @@ final class StatusStokController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Status Stok', 'id_status_stok', I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Status Stok', 'nama_status_stok', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_status_stok', 'ID Status Stok'],
+                [SHOW, REQUIRED, I::TEXT, 'nama_status_stok', 'Nama Status Stok'],
             ],
         );
     }   

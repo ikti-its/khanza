@@ -23,14 +23,14 @@ final class PengambilanDarahController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID Pengambilan Darah', 'id_pengambilan_darah', I::INDEX, OPTIONAL],
-                [SHOW, 'Nomor Pengambilan', 'nomor_pengambilan', I::TEXT, REQUIRED],
-                [SHOW, 'ID Kunjungan', 'id_kunjungan', I::INDEX, REQUIRED],
-                [SHOW, 'Tanggal Pengambilan', 'tanggal_pengambilan', I::DATE, REQUIRED],
-                [SHOW, 'ID Shift', 'id_shift', I::INDEX, REQUIRED],
-                [HIDE, 'ID Jenis Donor', 'id_jenis_donor', I::INDEX, REQUIRED],
-                [SHOW, 'ID Lokasi Pengambilan', 'id_lokasi_pengambilan', I::INDEX, REQUIRED],
-                [HIDE, 'ID Petugas', 'id_petugas', I::INDEX, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
+                [SHOW, REQUIRED, I::TEXT, 'nomor_pengambilan', 'Nomor Pengambilan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
+                [SHOW, REQUIRED, I::DATE, 'tanggal_pengambilan', 'Tanggal Pengambilan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
+                [HIDE, REQUIRED, I::INDEX, 'id_jenis_donor', 'ID Jenis Donor'],
+                [SHOW, REQUIRED, I::INDEX, 'id_lokasi_pengambilan', 'ID Lokasi Pengambilan'],
+                [HIDE, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
             ],
         );
     }   

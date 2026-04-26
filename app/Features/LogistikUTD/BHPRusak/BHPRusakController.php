@@ -23,15 +23,15 @@ final class BHPRusakController extends ControllerTemplate
             ],
             konfig: [
                 //visible, display, kolom, jenis, required, *opsi
-                [HIDE, 'ID BHP Rusak', 'id_bhp_rusak', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Jenis BHP', 'id_jenis_bhp', I::INDEX, REQUIRED],
-                [SHOW, 'ID Barang Medis', 'id_barang_medis', I::INDEX, OPTIONAL],
-                [SHOW, 'ID Barang Non Medis', 'id_barang_penunjang', I::INDEX, OPTIONAL],
-                [SHOW, 'Jumlah', 'jumlah', I::NUMBER, REQUIRED],
-                [SHOW, 'Harga Beli', 'harga_beli', I::MONEY, REQUIRED],
-                [HIDE, 'ID Petugas', 'id_petugas', I::INDEX, REQUIRED],
-                [SHOW, 'Tanggal Rusak', 'tanggal_rusak', 'tanggal_jam', REQUIRED],
-                [SHOW, 'Keterangan', 'keterangan', I::TEXT, REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_bhp_rusak', 'ID BHP Rusak'],
+                [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],
+                [SHOW, OPTIONAL, I::INDEX, 'id_barang_medis', 'ID Barang Medis'],
+                [SHOW, OPTIONAL, I::INDEX, 'id_barang_penunjang', 'ID Barang Non Medis'],
+                [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],
+                [SHOW, REQUIRED, I::MONEY, 'harga_beli', 'Harga Beli'],
+                [HIDE, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
+                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_rusak', 'Tanggal Rusak'],
+                [SHOW, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
             ],
         );
     }   
