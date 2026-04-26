@@ -11,16 +11,10 @@ class ControllerTemplate extends Controller
         protected ModelTemplate|null $model = null,
         protected array $breadcrumbs = [],
         protected string $judul = '',
-        protected string $modul_path = '',
-        protected string $api_path = '',
-        protected string $nama_tabel = '',
-        protected string $kolom_id = '',
         protected array $aksi = [],
         protected array $konfig = [],
-        protected array $meta_data = ['page' => 1, 'size' => 10, 'total' => 1],
-        protected string $api_url =  '',
+        private array $meta_data = ['page' => 1, 'size' => 10, 'total' => 1],
     ) {
-        $this->api_url = getenv('api_URL');
         $this->reorder_config();
         $this->process_config();
     }
