@@ -1,0 +1,2 @@
+id_permintaan,no_permintaan,nomor_reg,id_kategori_lab,kode_dokter_perujuk,tgl_permintaan,indikasi_klinis,informasi_tambahan,id_status_permintaan
+1,PL202604260001,REG-2026-001,1,D001,2026-04-26 08:00:00,Demam berdarah?,Puasa 10 jam,1

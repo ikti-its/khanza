@@ -30,6 +30,8 @@ final class CreatePermintaanLabHeaderTable extends DatabaseTemplate
             // ['kode_dokter_perujuk', 'sik.dokter_structure', 'kode_dokter'],
             ['id_status_permintaan', 'laboratorium.ref_status_permintaan', 'id_status'],
         ],
+        false,
+        __DIR__ . '/permintaan_lab_header.csv'
     );
 }
 }
