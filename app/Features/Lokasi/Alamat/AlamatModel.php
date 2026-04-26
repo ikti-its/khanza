@@ -18,6 +18,21 @@ final class AlamatModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
+                'id_provinsi' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'id_kota_lokal' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
+                'id_kecamatan_lokal' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
                 'id_desa_lokal' => [
                     'allowed' => false,
                     'rules'   => '',
