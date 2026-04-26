@@ -18,6 +18,7 @@ class ControllerTemplate extends Controller
     ) {
         $this->reorder_fields();
         $this->process_fields();
+        $this->process_action();
         $this->primary_keys = $this->model->get_primary_key();
         $this->meta_data = ['page' => 1, 'size' => 10, 'total' => 1];
     }
@@ -63,6 +64,22 @@ class ControllerTemplate extends Controller
             $c = $this->fields[$i];
             $this->fields[$i] = [$c[0], $c[4], $c[3], $c[2], $c[1]];
         }
+    }
+
+    private function process_action(){
+        $action = [
+            'tambah' => false,
+            'audit'  => false,
+            'ubah'   => false,
+            'hapus'  => false
+        ];
+        foreach($this->action as $a){
+            if ($a instanceof ActionType){
+                $action[$a->value] = true;
+            }
+        }
+
+        $this->action = $action;
     }
 
     final public function index()
