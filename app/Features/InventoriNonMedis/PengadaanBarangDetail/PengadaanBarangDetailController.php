@@ -33,7 +33,6 @@ final class PengadaanBarangDetailController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'qty', 'Qty'],
                 [SHOW, OPTIONAL, I::MONEY, 'harga_satuan', 'Harga Satuan'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

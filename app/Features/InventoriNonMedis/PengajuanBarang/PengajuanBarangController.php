@@ -33,7 +33,6 @@ final class PengajuanBarangController extends ControllerTemplate
                 [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan_atasan', 'Catatan Atasan'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

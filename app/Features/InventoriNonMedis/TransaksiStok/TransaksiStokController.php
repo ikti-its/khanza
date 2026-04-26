@@ -33,7 +33,6 @@ final class TransaksiStokController extends ControllerTemplate
                 [SHOW, REQUIRED, I::DATE, 'tanggal', 'Tanggal'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

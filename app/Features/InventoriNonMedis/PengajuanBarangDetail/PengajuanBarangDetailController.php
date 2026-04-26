@@ -34,7 +34,6 @@ final class PengajuanBarangDetailController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'qty', 'Qty'],
                 [SHOW, OPTIONAL, I::MONEY, 'harga_estimasi', 'Harga Estimasi'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

@@ -35,7 +35,6 @@ final class StokOpnameDetailController extends ControllerTemplate
                 [SHOW, OPTIONAL, I::NUMBER, 'selisih', 'Selisih'],
                 [SHOW, OPTIONAL, I::TEXT, 'keterangan', 'Keterangan'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

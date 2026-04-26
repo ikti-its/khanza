@@ -35,7 +35,6 @@ final class PermintaanBarangDetailController extends ControllerTemplate
                 [SHOW, OPTIONAL, I::NUMBER, 'qty_disetujui', 'Qty Disetujui'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

@@ -38,7 +38,6 @@ final class BarangController extends ControllerTemplate
                 [SHOW, OPTIONAL, I::NUMBER, 'stok_minimum', 'Stok Minimum'],
                 [SHOW, OPTIONAL, I::MONEY, 'harga_satuan', 'Harga Satuan'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

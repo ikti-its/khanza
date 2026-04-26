@@ -33,7 +33,6 @@ final class PermintaanBarangController extends ControllerTemplate
                 [SHOW, OPTIONAL, I::SELECT,'status', 'Status'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

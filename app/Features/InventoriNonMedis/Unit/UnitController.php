@@ -29,7 +29,6 @@ final class UnitController extends ControllerTemplate
                 [HIDE, OPTIONAL, I::INDEX, 'id_unit', 'ID'],
                 [SHOW, REQUIRED, I::NAME, 'nama_unit', 'Nama Unit'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

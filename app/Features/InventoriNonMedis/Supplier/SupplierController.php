@@ -31,7 +31,6 @@ final class SupplierController extends ControllerTemplate
                 [SHOW, OPTIONAL, I::TEXT, 'no_telp', 'No. Telepon'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_alamat', 'ID Alamat'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }

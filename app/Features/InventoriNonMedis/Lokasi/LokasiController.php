@@ -29,7 +29,6 @@ final class LokasiController extends ControllerTemplate
                 [HIDE, OPTIONAL, I::INDEX, 'id_lokasi', 'ID'],
                 [SHOW, REQUIRED, I::NAME, 'nama_lokasi', 'Nama Lokasi'],
             ],
-            meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );
     }
 }
