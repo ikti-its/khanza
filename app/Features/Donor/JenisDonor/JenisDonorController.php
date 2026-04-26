@@ -22,7 +22,6 @@ final class JenisDonorController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_donor', 'ID Jenis Donor'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_jenis_donor', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis_donor', 'Nama Jenis Donor'],

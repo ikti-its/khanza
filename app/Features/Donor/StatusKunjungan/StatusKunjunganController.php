@@ -22,7 +22,6 @@ final class StatusKunjunganController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_kunjungan', 'ID Status Kunjungan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_kunjungan', 'Nama Status Kunjungan'],
             ],

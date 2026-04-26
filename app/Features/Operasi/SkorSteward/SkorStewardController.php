@@ -23,7 +23,6 @@ final class SkorStewardController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_skor_steward', 'ID Skor Steward'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_penilaian', 'Waktu Penilaian'],

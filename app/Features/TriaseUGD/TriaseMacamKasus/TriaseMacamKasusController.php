@@ -22,7 +22,6 @@ final class TriaseMacamKasusController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_macam_kasus', 'ID Macam Kasus'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_macam_kasus', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_macam_kasus', 'Nama Macam Kasus'],

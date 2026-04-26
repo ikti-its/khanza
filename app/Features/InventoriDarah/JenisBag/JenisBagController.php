@@ -22,7 +22,6 @@ final class JenisBagController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_bag', 'ID Jenis Bag'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_jenis_bag', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis_bag', 'Nama Jenis Bag'],

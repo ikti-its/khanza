@@ -22,7 +22,6 @@ final class PermintaanDarahController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_rawat', 'No. Rawat'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_dokter_pengirim', 'Kode Dokter Pengirim'],

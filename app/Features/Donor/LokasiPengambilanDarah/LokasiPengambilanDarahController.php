@@ -22,7 +22,6 @@ final class LokasiPengambilanDarahController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_lokasi_pengambilan', 'ID Lokasi Pengambilan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_lokasi', 'Nama Lokasi'],
             ],

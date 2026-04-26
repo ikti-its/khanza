@@ -22,7 +22,6 @@ final class HasilAnamnesisController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil', 'ID Hasil'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_hasil', 'Nama Hasil'],
             ],

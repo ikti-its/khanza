@@ -22,7 +22,6 @@ final class StatusPendonorController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_pendonor', 'ID Status Pendonor'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_pendonor', 'Nama Status Pendonor'],
             ],

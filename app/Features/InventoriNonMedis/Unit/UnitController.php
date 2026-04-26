@@ -26,7 +26,6 @@ final class UnitController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
                 [HIDE, OPTIONAL, I::INDEX, 'id_unit', 'ID'],
                 [SHOW, REQUIRED, I::NAME, 'nama_unit', 'Nama Unit'],
             ],

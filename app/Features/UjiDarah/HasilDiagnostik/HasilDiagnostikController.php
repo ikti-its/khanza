@@ -22,7 +22,6 @@ final class HasilDiagnostikController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_diagnostik', 'ID Diagnostik'],
                 [SHOW, REQUIRED, I::INDEX, 'id_rujukan', 'ID Rujukan'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_hasil', 'Tanggal Hasil'],

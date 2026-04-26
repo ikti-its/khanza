@@ -22,7 +22,6 @@ final class HasilUjiSaringController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_uji_saring', 'ID Uji Saring'],
                 [SHOW, REQUIRED, I::INDEX, 'id_bag', 'ID Bag'],
                 [SHOW, REQUIRED, I::INDEX, 'id_metode_uji', 'ID Metode Uji'],

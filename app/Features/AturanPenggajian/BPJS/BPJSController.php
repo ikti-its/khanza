@@ -22,7 +22,6 @@ final class BPJSController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 // [SHOW, REQUIRED, I::INDEX, 'no_bpjs', 'Nomor BPJS'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_program', 'Program'],
                 [SHOW, REQUIRED, I::SELECT, 'penyelenggara', 'Penyelenggara'],

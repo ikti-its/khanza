@@ -23,7 +23,6 @@ final class RefTemplateRadController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_template', 'ID Template'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_template', 'Nama Template'],
                 [SHOW, REQUIRED, I::TEXT, 'isi_teks_ekspertise', 'Isi Teks Ekspertise'],

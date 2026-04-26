@@ -22,7 +22,6 @@ final class NilaiDiagnostikController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_nilai_diagnostik', 'ID Nilai Diagnostik'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_nilai_diagnostik', 'Nama Nilai Diagnostik'],
             ],

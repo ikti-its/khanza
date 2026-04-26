@@ -22,7 +22,6 @@ final class PemisahanKomponenController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_bag', 'ID Bag'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_pemisahan', 'Tanggal Pemisahan'],

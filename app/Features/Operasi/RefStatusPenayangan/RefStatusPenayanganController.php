@@ -23,7 +23,6 @@ final class RefStatusPenayanganController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_penayangan', 'ID Status Penayangan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status', 'Nama Status'],
             ],

@@ -22,7 +22,6 @@ final class ParameterUjiController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_parameter_uji', 'ID Parameter Uji'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_parameter', 'Nama Parameter'],
             ],

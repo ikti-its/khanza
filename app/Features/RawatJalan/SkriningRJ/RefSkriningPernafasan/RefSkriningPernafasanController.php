@@ -23,7 +23,6 @@ final class RefSkriningPernafasanController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_pernafasan', 'ID Pernafasan'],
                 [SHOW, REQUIRED, I::TEXT, 'pernafasan', 'Pernafasan'],
             ],

@@ -23,7 +23,6 @@ final class RefAngkaAsaController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_asa', 'ID ASA'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_asa', 'Nama ASA'],
             ],

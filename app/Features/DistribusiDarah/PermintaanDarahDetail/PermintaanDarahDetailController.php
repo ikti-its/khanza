@@ -22,7 +22,6 @@ final class PermintaanDarahDetailController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_detail', 'ID Permintaan Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_komponen', 'ID Komponen'],

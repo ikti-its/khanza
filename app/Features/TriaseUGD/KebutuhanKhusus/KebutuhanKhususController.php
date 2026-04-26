@@ -22,7 +22,6 @@ final class KebutuhanKhususController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_kebutuhan', 'ID Kebutuhan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kebutuhan', 'Nama Kebutuhan'],
             ],

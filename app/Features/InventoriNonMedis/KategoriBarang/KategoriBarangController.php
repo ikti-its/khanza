@@ -26,7 +26,6 @@ final class KategoriBarangController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
                 [HIDE, OPTIONAL, I::INDEX, 'id_kategori', 'ID'],
                 [HIDE, OPTIONAL, I::INDEX, 'kode_kategori_barang', 'Kode Kategori'],
                 [SHOW, REQUIRED, I::NAME, 'nama_kategori_barang', 'Nama Kategori Barang'],

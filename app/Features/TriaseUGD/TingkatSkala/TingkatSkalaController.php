@@ -22,7 +22,6 @@ final class TingkatSkalaController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_tingkat', 'ID Tingkat'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_tingkat', 'Nama Tingkat'],
             ],

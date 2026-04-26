@@ -22,7 +22,6 @@ final class TriasePemeriksaanController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemeriksaan', 'ID Pemeriksaan'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_pemeriksaan', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_pemeriksaan', 'Nama Pemeriksaan'],

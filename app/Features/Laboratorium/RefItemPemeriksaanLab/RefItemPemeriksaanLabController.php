@@ -23,7 +23,6 @@ final class RefItemPemeriksaanLabController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_item_lab', 'ID Item Lab'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kategori', 'Kategori'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_periksa', 'Kode Periksa'],

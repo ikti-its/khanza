@@ -22,7 +22,6 @@ final class AlasanKedatanganController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_alasan', 'ID Alasan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_alasan', 'Nama Alasan Kedatangan'],
             ],

@@ -22,7 +22,6 @@ final class JawabanKonselingController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_jawaban', 'ID Jawaban'],
                 [SHOW, REQUIRED, I::INDEX, 'id_konseling', 'ID Konseling'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pertanyaan', 'ID Pertanyaan'],

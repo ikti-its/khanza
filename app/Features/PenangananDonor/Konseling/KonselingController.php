@@ -22,7 +22,6 @@ final class KonselingController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_konseling', 'ID Konseling'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_konseling', 'Tanggal Konseling'],

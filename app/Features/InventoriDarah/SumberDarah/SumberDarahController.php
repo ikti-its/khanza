@@ -22,7 +22,6 @@ final class SumberDarahController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_sumber_darah', 'ID Sumber Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_sumber_darah', 'Nama Sumber Darah'],
             ],

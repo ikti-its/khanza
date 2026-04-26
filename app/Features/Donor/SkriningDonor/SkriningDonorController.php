@@ -22,7 +22,6 @@ final class SkriningDonorController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_skrining', 'ID Skrining'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::NUMBER, 'sistolik', 'Tekanan Sistolik'],

@@ -26,7 +26,6 @@ final class StokOpnameController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
                 [HIDE, OPTIONAL, I::INDEX, 'id_opname', 'ID Opname'],
                 [SHOW, REQUIRED, I::DATE,  'tanggal', 'Tanggal'],
                 [SHOW, OPTIONAL, I::SELECT,'status',  'Status'],

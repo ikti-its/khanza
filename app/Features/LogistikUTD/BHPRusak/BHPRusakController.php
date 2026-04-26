@@ -22,7 +22,6 @@ final class BHPRusakController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_rusak', 'ID BHP Rusak'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],
                 [SHOW, OPTIONAL, I::INDEX, 'id_barang_medis', 'ID Barang Medis'],

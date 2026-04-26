@@ -23,7 +23,6 @@ final class RefParameterPemeriksaanLabController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_parameter', 'ID Parameter'],
                 [SHOW, REQUIRED, I::INDEX, 'id_item_lab', 'Item Lab'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_parameter', 'Nama Parameter'],

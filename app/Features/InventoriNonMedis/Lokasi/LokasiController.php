@@ -26,7 +26,6 @@ final class LokasiController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
                 [HIDE, OPTIONAL, I::INDEX, 'id_lokasi', 'ID'],
                 [SHOW, REQUIRED, I::NAME, 'nama_lokasi', 'Nama Lokasi'],
             ],

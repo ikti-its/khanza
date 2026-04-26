@@ -23,7 +23,6 @@ final class ChecklistPostopPenunjangController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_penunjang', 'ID Penunjang'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
                 [SHOW, REQUIRED, I::TEXT, 'jenis_penunjang', 'Jenis Penunjang'],

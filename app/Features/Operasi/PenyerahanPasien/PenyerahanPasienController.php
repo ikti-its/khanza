@@ -23,7 +23,6 @@ final class PenyerahanPasienController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_masuk_asal', 'Waktu Masuk Asal'],

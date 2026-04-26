@@ -23,7 +23,6 @@ final class ChecklistPostopController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_checklist', 'Waktu Checklist'],

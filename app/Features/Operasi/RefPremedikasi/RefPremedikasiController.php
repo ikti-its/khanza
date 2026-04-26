@@ -23,7 +23,6 @@ final class RefPremedikasiController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_premedikasi', 'ID Premedikasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_premedikasi', 'Nama Premedikasi'],
             ],

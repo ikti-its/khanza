@@ -26,9 +26,8 @@ final class JenisBarangController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
-                [HIDE, OPTIONAL, I::INDEX, 'id_jenis_barang', 'ID'],
-                [SHOW, REQUIRED, I::NAME, 'nama_jenis_barang', 'Nama Jenis Barang'],
+                [HIDE, 'ID',               'id_jenis_barang',   I::INDEX, OPTIONAL],
+                [SHOW, 'Nama Jenis Barang','nama_jenis_barang',  I::NAME,   REQUIRED],
             ],
             meta_data: ['page' => 1, 'size' => 10, 'total' => REQUIRED],
         );

@@ -23,7 +23,6 @@ final class RefRencanaAnestesiController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_rencana_anestesi', 'ID Rencana Anestesi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_rencana', 'Nama Rencana'],
             ],

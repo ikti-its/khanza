@@ -23,7 +23,6 @@ final class RefStewardMotorikController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_motorik', 'ID Motorik'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

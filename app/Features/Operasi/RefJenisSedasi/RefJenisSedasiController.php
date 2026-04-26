@@ -23,7 +23,6 @@ final class RefJenisSedasiController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_sedasi', 'ID Jenis Sedasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_sedasi', 'Nama Sedasi'],
             ],

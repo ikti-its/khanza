@@ -26,7 +26,6 @@ final class BarangController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
                 [HIDE, OPTIONAL, I::INDEX, 'id_barang', 'ID Barang'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_barang', 'Kode Barang'],
                 [SHOW, REQUIRED, I::NAME, 'nama_barang', 'Nama Barang'],

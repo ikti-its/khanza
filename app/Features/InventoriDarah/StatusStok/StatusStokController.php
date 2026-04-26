@@ -22,7 +22,6 @@ final class StatusStokController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_stok', 'ID Status Stok'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_stok', 'Nama Status Stok'],
             ],

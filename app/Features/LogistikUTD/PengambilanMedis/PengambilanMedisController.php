@@ -22,7 +22,6 @@ final class PengambilanMedisController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_medis', 'ID Pengambilan Medis'],
                 [SHOW, REQUIRED, I::INDEX, 'id_barang', 'ID Barang'],
                 [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],

@@ -22,7 +22,6 @@ final class RhesusController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_rhesus', 'ID Rhesus'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_rhesus', 'Kode Rhesus'],
             ],

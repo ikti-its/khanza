@@ -26,7 +26,6 @@ final class PermintaanBarangController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID'],
                 [SHOW, REQUIRED, I::TEXT, 'unit_pemohon', 'Unit Pemohon'],
                 [SHOW, REQUIRED, I::SELECT, 'tipe', 'Tipe'],

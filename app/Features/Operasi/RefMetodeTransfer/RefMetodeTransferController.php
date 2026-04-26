@@ -23,7 +23,6 @@ final class RefMetodeTransferController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_metode', 'ID Metode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_metode', 'Nama Metode'],
             ],

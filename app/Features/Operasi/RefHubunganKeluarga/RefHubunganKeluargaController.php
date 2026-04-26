@@ -23,7 +23,6 @@ final class RefHubunganKeluargaController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_hubungan_keluarga', 'ID Hubungan Keluarga'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_hubungan', 'Nama Hubungan'],
             ],

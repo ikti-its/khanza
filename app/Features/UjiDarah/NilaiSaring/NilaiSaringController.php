@@ -22,7 +22,6 @@ final class NilaiSaringController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_nilai_saring', 'ID Nilai Saring'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_nilai_saring', 'Nama Nilai Saring'],
             ],

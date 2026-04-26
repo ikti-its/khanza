@@ -22,7 +22,6 @@ final class KasusReaktifController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_kasus', 'ID Kasus'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_ditetapkan', 'Tanggal Ditetapkan'],

@@ -23,7 +23,6 @@ final class RefKeadaanUmumTransferController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_keadaan_umum', 'ID Keadaan Umum'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_keadaan', 'Nama Keadaan'],
             ],

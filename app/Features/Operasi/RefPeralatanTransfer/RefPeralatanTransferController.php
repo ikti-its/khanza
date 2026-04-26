@@ -23,7 +23,6 @@ final class RefPeralatanTransferController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_peralatan', 'ID Peralatan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_peralatan', 'Nama Peralatan'],
             ],

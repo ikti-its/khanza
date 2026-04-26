@@ -23,7 +23,6 @@ final class RefPosisiPasienController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_posisi', 'ID Posisi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_posisi', 'Nama Posisi'],
             ],

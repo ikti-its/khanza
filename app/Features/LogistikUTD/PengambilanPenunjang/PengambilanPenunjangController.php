@@ -22,7 +22,6 @@ final class PengambilanPenunjangController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_penunjang', 'ID Pengambilan Penunjang'],
                 [SHOW, REQUIRED, I::INDEX, 'id_barang', 'ID Barang'],
                 [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],

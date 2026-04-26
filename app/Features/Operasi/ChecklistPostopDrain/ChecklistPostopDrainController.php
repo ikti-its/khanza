@@ -23,7 +23,6 @@ final class ChecklistPostopDrainController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_drain', 'ID Drain'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
                 [SHOW, REQUIRED, I::INDEX, 'id_ketersediaan', 'Ketersediaan'],

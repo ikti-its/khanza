@@ -22,7 +22,6 @@ final class JenisPencekalanController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_pencekalan', 'ID Jenis Pencekalan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis_pencekalan', 'Nama Jenis Pencekalan'],
             ],

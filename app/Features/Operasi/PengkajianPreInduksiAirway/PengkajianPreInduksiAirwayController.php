@@ -23,7 +23,6 @@ final class PengkajianPreInduksiAirwayController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_airway', 'ID Airway'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengkajian', 'ID Pengkajian'],
                 [SHOW, REQUIRED, I::TEXT, 'jenis_airway', 'Jenis Airway'],

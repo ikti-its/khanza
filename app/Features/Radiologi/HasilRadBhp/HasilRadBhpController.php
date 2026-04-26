@@ -23,7 +23,6 @@ final class HasilRadBhpController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_rad_bhp', 'ID Radiologi BHP'],
                 [SHOW, REQUIRED, I::INDEX, 'id_hasil_rad', 'ID Hasil Rad'],
                 [SHOW, REQUIRED, I::INDEX, 'id_barang_medis', 'ID Barang Medis'],

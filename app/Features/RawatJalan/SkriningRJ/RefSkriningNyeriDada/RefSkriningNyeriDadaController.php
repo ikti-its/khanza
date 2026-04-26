@@ -23,7 +23,6 @@ final class RefSkriningNyeriDadaController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_nyeri_dada', 'ID Nyeri Dada'],
                 [SHOW, REQUIRED, I::TEXT, 'nyeri_dada', 'Nyeri Dada'],
             ],

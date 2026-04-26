@@ -26,7 +26,6 @@ final class PengajuanBarangController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengajuan', 'ID Pengajuan'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::DATE,  'tanggal','Tanggal'],

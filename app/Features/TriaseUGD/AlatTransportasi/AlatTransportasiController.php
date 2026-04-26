@@ -22,7 +22,6 @@ final class AlatTransportasiController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_transportasi', 'ID Transportasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_transportasi', 'Nama Transportasi'],
             ],

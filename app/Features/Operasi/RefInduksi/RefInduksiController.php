@@ -23,7 +23,6 @@ final class RefInduksiController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_induksi', 'ID Induksi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_induksi', 'Nama Induksi'],
             ],

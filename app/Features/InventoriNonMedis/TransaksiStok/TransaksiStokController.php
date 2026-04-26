@@ -26,7 +26,6 @@ final class TransaksiStokController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
                 [HIDE, OPTIONAL, I::INDEX, 'id_transaksi', 'ID Transaksi'],
                 [SHOW, REQUIRED, I::SELECT, 'id_barang', 'Barang'],
                 [SHOW, REQUIRED, I::SELECT, 'tipe_transaksi', 'Tipe Transaksi'],

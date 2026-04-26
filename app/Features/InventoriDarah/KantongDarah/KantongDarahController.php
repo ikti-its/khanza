@@ -22,7 +22,6 @@ final class KantongDarahController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_bag', 'ID Bag'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'no_bag', 'Nomor Bag'],

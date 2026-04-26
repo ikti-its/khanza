@@ -22,7 +22,6 @@ final class StatusPencekalanController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_pencekalan', 'ID Status Pencekalan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_pencekalan', 'Nama Status Pencekalan'],
             ],

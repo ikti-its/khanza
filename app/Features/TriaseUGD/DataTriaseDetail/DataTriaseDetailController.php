@@ -22,7 +22,6 @@ final class DataTriaseDetailController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase_detail', 'ID Triase Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
                 [SHOW, REQUIRED, I::INDEX, 'id_skala', 'ID Skala'],

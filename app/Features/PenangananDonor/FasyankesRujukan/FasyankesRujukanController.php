@@ -22,7 +22,6 @@ final class FasyankesRujukanController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_fasyankes', 'ID Fasyankes'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_fasyankes', 'Nama Fasyankes'],
                 [SHOW, REQUIRED, I::INDEX, 'id_alamat', 'ID Alamat'],

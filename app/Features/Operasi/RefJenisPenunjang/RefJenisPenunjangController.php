@@ -23,7 +23,6 @@ final class RefJenisPenunjangController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_penunjang', 'ID Jenis Penunjang'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis', 'Nama Jenis'],
             ],

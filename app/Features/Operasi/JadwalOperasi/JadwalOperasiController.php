@@ -23,7 +23,6 @@ final class JadwalOperasiController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_jadwal', 'ID Jadwal'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_ruangan', 'ID Ruangan'],

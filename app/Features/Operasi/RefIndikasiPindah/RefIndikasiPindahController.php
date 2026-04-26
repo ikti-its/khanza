@@ -23,7 +23,6 @@ final class RefIndikasiPindahController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_indikasi', 'ID Indikasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_indikasi', 'Nama Indikasi'],
             ],

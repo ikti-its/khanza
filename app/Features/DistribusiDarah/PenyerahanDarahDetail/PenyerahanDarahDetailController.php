@@ -22,7 +22,6 @@ final class PenyerahanDarahDetailController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan_detail', 'ID Penyerahan Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_stok_darah', 'ID Stok Darah'],

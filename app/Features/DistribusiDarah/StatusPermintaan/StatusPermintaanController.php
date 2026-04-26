@@ -22,7 +22,6 @@ final class StatusPermintaanController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_permintaan', 'ID Status Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_permintaan', 'Nama Status Permintaan'],
             ],

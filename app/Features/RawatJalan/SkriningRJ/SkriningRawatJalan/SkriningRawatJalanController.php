@@ -23,7 +23,6 @@ final class SkriningRawatJalanController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_skrining', 'ID Skrining'],
                 [SHOW, REQUIRED, I::TEXT, 'no_rm', 'No. Rekam Medis'],
                 [SHOW, REQUIRED, I::DATE, 'tgl_jam_skrining', 'Tanggal Skrining'],

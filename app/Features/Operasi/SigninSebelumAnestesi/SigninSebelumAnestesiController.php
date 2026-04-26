@@ -23,7 +23,6 @@ final class SigninSebelumAnestesiController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_signin', 'ID Sign In'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_signin', 'Waktu Sign In'],

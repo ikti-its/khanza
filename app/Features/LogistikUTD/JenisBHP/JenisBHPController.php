@@ -22,7 +22,6 @@ final class JenisBHPController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis_bhp', 'Nama Jenis BHP'],
             ],

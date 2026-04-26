@@ -23,7 +23,6 @@ final class RefSkriningSkalaNyeriController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_skala_nyeri', 'ID Skala Nyeri'],
                 [SHOW, REQUIRED, I::TEXT, 'skala_nyeri', 'Skala Nyeri'],
             ],

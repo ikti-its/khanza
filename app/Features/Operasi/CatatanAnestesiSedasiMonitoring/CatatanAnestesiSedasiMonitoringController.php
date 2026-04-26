@@ -23,7 +23,6 @@ final class CatatanAnestesiSedasiMonitoringController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_monitoring', 'ID Monitoring'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_catatan_anestesi', 'ID Catatan Anestesi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_monitoring', 'Nama Monitoring'],

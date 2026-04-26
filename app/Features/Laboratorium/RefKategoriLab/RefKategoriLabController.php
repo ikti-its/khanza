@@ -23,7 +23,6 @@ final class RefKategoriLabController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_kategori', 'ID Kategori'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_kategori', 'Kode Kategori'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kategori', 'Nama Kategori'],

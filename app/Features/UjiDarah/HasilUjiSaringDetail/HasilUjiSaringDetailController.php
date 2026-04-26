@@ -22,7 +22,6 @@ final class HasilUjiSaringDetailController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_uji_saring_detail', 'ID Uji Saring Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_uji_saring', 'ID Uji Saring'],
                 [SHOW, REQUIRED, I::INDEX, 'id_parameter_uji', 'ID Parameter Uji'],

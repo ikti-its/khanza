@@ -23,7 +23,6 @@ final class RefItemRadController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_item', 'ID Item'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_periksa', 'Kode Periksa'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_pemeriksaan', 'Nama Pemeriksaan'],

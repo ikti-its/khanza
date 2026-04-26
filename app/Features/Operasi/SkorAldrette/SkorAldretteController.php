@@ -23,7 +23,6 @@ final class SkorAldretteController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_skor_aldrette', 'ID Skor Aldrette'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_penilaian', 'Waktu Penilaian'],

@@ -22,7 +22,6 @@ final class PengambilanDarahController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_pengambilan', 'Nomor Pengambilan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],

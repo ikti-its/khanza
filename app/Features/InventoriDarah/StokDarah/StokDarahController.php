@@ -22,7 +22,6 @@ final class StokDarahController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_stok_darah', 'ID Stok Darah'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_kantong', 'Nomor Kantong'],

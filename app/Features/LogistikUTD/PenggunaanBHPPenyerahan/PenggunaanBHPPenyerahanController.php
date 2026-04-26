@@ -22,7 +22,6 @@ final class PenggunaanBHPPenyerahanController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_penyerahan', 'ID BHP Penyerahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],

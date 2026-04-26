@@ -22,7 +22,6 @@ final class RujukanController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_rujukan', 'ID Rujukan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_surat', 'Nomor Surat'],

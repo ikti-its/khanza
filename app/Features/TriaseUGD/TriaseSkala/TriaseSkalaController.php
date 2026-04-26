@@ -22,7 +22,6 @@ final class TriaseSkalaController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_skala', 'ID Skala'],
                 [SHOW, REQUIRED, I::INDEX, 'id_tingkat_skala', 'ID Tingkat Skala'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_skala', 'Kode'],

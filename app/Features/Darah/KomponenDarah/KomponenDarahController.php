@@ -22,7 +22,6 @@ final class KomponenDarahController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_komponen', 'ID Komponen'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_komponen', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_komponen', 'Nama Komponen'],

@@ -22,7 +22,6 @@ final class DataTriaseSekunderController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase_sekunder', 'ID Triase Sekunder'],
                 [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
                 [HIDE, REQUIRED, I::TEXT, 'anamnesa_singkat', 'Anamnesa Singkat'],

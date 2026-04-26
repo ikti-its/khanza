@@ -23,7 +23,6 @@ final class ChecklistPreOperasiPenunjangController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_penunjang', 'ID Penunjang'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist', 'ID Checklist'],
                 [SHOW, REQUIRED, I::TEXT, 'jenis_penunjang', 'Jenis Penunjang'],

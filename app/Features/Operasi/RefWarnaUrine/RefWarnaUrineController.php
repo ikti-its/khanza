@@ -23,7 +23,6 @@ final class RefWarnaUrineController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_warna_urine', 'ID Warna Urine'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_warna', 'Nama Warna'],
             ],

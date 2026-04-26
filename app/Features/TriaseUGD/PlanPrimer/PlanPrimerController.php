@@ -22,7 +22,6 @@ final class PlanPrimerController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_plan_primer', 'ID Plan Primer'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_plan_primer', 'Nama Plan Primer'],
             ],

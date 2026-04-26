@@ -23,7 +23,6 @@ final class PenyerahanPasienPeralatanController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id', 'ID'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_peralatan', 'Peralatan'],

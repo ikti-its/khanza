@@ -26,7 +26,6 @@ final class SupplierController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                // [visible, 'Display', 'kolom', 'jenis', required]
                 [HIDE, OPTIONAL, I::INDEX, 'id_supplier', 'ID Supplier'],
                 [SHOW, REQUIRED, I::NAME, 'nama_supplier', 'Nama Supplier'],
                 [SHOW, OPTIONAL, I::TEXT, 'no_telp', 'No. Telepon'],

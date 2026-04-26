@@ -23,7 +23,6 @@ final class RefStatusPermintaanRadController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_status', 'ID Status'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status', 'Nama Status'],
             ],

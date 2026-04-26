@@ -23,7 +23,6 @@ final class PengkajianPreAnestesiController extends ControllerTemplate
                 'hapus'  => true,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_pre_anestesi', 'ID Pre Anestesi'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_dokter', 'Kode Dokter'],

@@ -23,7 +23,6 @@ final class RefSkriningBatukController extends ControllerTemplate
                 'hapus'  => false,
             ],
             konfig: [
-                //visible, display, kolom, jenis, required
                 [HIDE, OPTIONAL, I::INDEX, 'id_batuk', 'ID Batuk'],
                 [SHOW, REQUIRED, I::TEXT, 'kategori_batuk', 'Kategori Batuk'],
             ],

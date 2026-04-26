@@ -22,7 +22,6 @@ final class KunjunganController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::NUMBER, 'nomor_antrian', 'Nomor Antrian'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pendonor', 'ID Pendonor'],

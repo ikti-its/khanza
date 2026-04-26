@@ -22,7 +22,6 @@ final class TarifKomponenController extends ControllerTemplate
                 'hapus'  => true
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_tarif', 'ID Tarif'],
                 [SHOW, REQUIRED, I::INDEX, 'id_komponen', 'ID Komponen'],
                 [SHOW, REQUIRED, I::MONEY, 'jasa_sarana', 'Jasa Sarana'],

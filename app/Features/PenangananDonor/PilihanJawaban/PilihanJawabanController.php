@@ -22,7 +22,6 @@ final class PilihanJawabanController extends ControllerTemplate
                 'hapus'  => false
             ],
             konfig: [
-                //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_pilihan', 'ID Pilihan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_pilihan', 'Nama Pilihan'],
             ],
