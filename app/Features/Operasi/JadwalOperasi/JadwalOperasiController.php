@@ -13,8 +13,8 @@ final class JadwalOperasiController extends ControllerTemplate
         parent::__construct(
             model: new JadwalOperasiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Jadwal Operasi', 'icon' => 'jadwal_operasi'],
+                ['Operasi', 'operasi'],
+                ['Jadwal Operasi', 'jadwal_operasi'],
             ],
             title: 'Jadwal Operasi',
             action: [

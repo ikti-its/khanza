@@ -13,8 +13,8 @@ final class RefAngkaAsaController extends ControllerTemplate
         parent::__construct(
             model: new RefAngkaAsaModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Angka ASA', 'icon' => 'ref_angka_asa'],
+                ['Operasi', 'operasi'],
+                ['Referensi Angka ASA', 'ref_angka_asa'],
             ],
             title: 'Referensi Angka ASA',
             action: [

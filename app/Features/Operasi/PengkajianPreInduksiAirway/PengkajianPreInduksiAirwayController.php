@@ -13,8 +13,8 @@ final class PengkajianPreInduksiAirwayController extends ControllerTemplate
         parent::__construct(
             model: new PengkajianPreInduksiAirwayModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Pengkajian Pre Induksi Airway', 'icon' => 'pengkajian_pre_induksi_airway'],
+                ['Operasi', 'operasi'],
+                ['Pengkajian Pre Induksi Airway', 'pengkajian_pre_induksi_airway'],
             ],
             title: 'Pengkajian Pre Induksi Airway',
             action: [

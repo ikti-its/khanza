@@ -12,8 +12,8 @@ final class StokDarahController extends ControllerTemplate
         parent::__construct(
             model: new StokDarahModel(),
             breadcrumbs: [
-                ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
-                ['title' => 'Stok Darah', 'icon' => 'stok_darah'],
+                ['Inventaris Darah', 'inventaris_darah'],
+                ['Stok Darah', 'stok_darah'],
             ],
             title: 'Stok Darah',
             action: [

@@ -12,8 +12,8 @@ final class StatusPencekalanController extends ControllerTemplate
         parent::__construct(
             model: new StatusPencekalanModel(),
             breadcrumbs: [
-                ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
-                ['title' => 'Status Pencekalan', 'icon' => 'status_pencekalan'],
+                ['Penanganan Donor', 'penanganan_donor'],
+                ['Status Pencekalan', 'status_pencekalan'],
             ],
             title: 'Status Pencekalan',
             action: [

@@ -13,8 +13,8 @@ final class RefStatusPermintaanRadController extends ControllerTemplate
         parent::__construct(
             model: new RefStatusPermintaanRadModel(),
             breadcrumbs: [
-                ['title' => 'Radiologi', 'icon' => 'radiologi'],
-                ['title' => 'Referensi Status Permintaan Radiologi', 'icon' => 'ref_status_permintaan_rad'],
+                ['Radiologi', 'radiologi'],
+                ['Referensi Status Permintaan Radiologi', 'ref_status_permintaan_rad'],
             ],
             title: 'Referensi Status Permintaan Radiologi',
             action: [

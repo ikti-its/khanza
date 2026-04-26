@@ -12,8 +12,8 @@ final class StatusKunjunganController extends ControllerTemplate
         parent::__construct(
             model: new StatusKunjunganModel(),
             breadcrumbs: [
-                ['title' => 'Donor', 'icon' => 'donor'],
-                ['title' => 'Status Kunjungan', 'icon' => 'status_kunjungan'],
+                ['Donor', 'donor'],
+                ['Status Kunjungan', 'status_kunjungan'],
             ],
             title: 'Status Kunjungan',
             action: [

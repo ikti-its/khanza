@@ -13,8 +13,8 @@ final class SkriningRawatJalanController extends ControllerTemplate
         parent::__construct(
             model: new SkriningRawatJalanModel(),
             breadcrumbs: [
-                ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
-                ['title' => 'Skrining Rawat Jalan', 'icon' => 'skrining_rawat_jalan'],
+                ['Rawat Jalan', 'rawat_jalan'],
+                ['Skrining Rawat Jalan', 'skrining_rawat_jalan'],
             ],
             title: 'Skrining Rawat Jalan',
             action: [

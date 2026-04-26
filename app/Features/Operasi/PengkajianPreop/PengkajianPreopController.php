@@ -13,8 +13,8 @@ final class PengkajianPreopController extends ControllerTemplate
         parent::__construct(
             model: new PengkajianPreopModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Pengkajian Pre-Operasi', 'icon' => 'pengkajian_pre_op'],
+                ['Operasi', 'operasi'],
+                ['Pengkajian Pre-Operasi', 'pengkajian_pre_op'],
             ],
             title: 'Pengkajian Pre-Operasi',
             action: [

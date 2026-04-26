@@ -13,8 +13,8 @@ final class HasilRadTindakanController extends ControllerTemplate
         parent::__construct(
             model: new HasilRadTindakanModel(),
             breadcrumbs: [
-                ['title' => 'Radiologi', 'icon' => 'radiologi'],
-                ['title' => 'Hasil Radiologi Tindakan', 'icon' => 'hasil_rad_tindakan'],
+                ['Radiologi', 'radiologi'],
+                ['Hasil Radiologi Tindakan', 'hasil_rad_tindakan'],
             ],
             title: 'Hasil Radiologi Tindakan',
             action: [

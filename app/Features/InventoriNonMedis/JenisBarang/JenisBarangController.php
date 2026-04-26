@@ -13,8 +13,8 @@ final class JenisBarangController extends ControllerTemplate
         parent::__construct(
             model: new JenisBarangModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Jenis Barang',        'icon' => 'jenis_barang'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Jenis Barang',        'jenis_barang'],
             ],
             title: 'Jenis Barang',
             action: [

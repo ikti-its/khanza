@@ -12,8 +12,8 @@ final class JenisDonorController extends ControllerTemplate
         parent::__construct(
             model: new JenisDonorModel(),
             breadcrumbs: [
-                ['title' => 'Donor', 'icon' => 'donor'],
-                ['title' => 'Jenis Donor', 'icon' => 'jenis_donor'],
+                ['Donor', 'donor'],
+                ['Jenis Donor', 'jenis_donor'],
             ],
             title: 'Jenis Donor',
             action: [

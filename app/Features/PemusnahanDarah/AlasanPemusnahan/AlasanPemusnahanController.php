@@ -12,8 +12,8 @@ final class AlasanPemusnahanController extends ControllerTemplate
         parent::__construct(
             model: new AlasanPemusnahanModel(),
             breadcrumbs: [
-                ['title' => 'Pemusnahan Darah', 'icon' => 'pemusnahan_darah'],
-                ['title' => 'Alasan Pemusnahan', 'icon' => 'alasan_pemusnahan'],
+                ['Pemusnahan Darah', 'pemusnahan_darah'],
+                ['Alasan Pemusnahan', 'alasan_pemusnahan'],
             ],
             title: 'Alasan Pemusnahan',
             action: [

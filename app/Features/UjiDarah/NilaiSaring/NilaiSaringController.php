@@ -12,8 +12,8 @@ final class NilaiSaringController extends ControllerTemplate
         parent::__construct(
             model: new NilaiSaringModel(),
             breadcrumbs: [
-                ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
-                ['title' => 'Nilai Saring', 'icon' => 'nilai_saring'],
+                ['Uji Darah', 'uji_darah'],
+                ['Nilai Saring', 'nilai_saring'],
             ],
             title: 'Nilai Saring',
             action: [

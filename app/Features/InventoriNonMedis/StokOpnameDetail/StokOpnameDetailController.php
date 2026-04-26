@@ -13,9 +13,9 @@ final class StokOpnameDetailController extends ControllerTemplate
         parent::__construct(
             model: new StokOpnameDetailModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Stok Opname',         'icon' => 'stok_opname'],
-                ['title' => 'Detail',              'icon' => 'detail'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Stok Opname',         'stok_opname'],
+                ['Detail',              'detail'],
             ],
             title: 'Detail Stok Opname',
             action: [

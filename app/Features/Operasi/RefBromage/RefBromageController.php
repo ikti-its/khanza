@@ -13,8 +13,8 @@ final class RefBromageController extends ControllerTemplate
         parent::__construct(
             model: new RefBromageModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Bromage', 'icon' => 'ref_bromage'],
+                ['Operasi', 'operasi'],
+                ['Referensi Bromage', 'ref_bromage'],
             ],
             title: 'Referensi Bromage',
             action: [

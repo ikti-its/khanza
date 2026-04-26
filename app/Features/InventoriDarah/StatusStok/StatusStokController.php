@@ -12,8 +12,8 @@ final class StatusStokController extends ControllerTemplate
         parent::__construct(
             model: new StatusStokModel(),
             breadcrumbs: [
-                ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
-                ['title' => 'Status Stok', 'icon' => 'status_stok'],
+                ['Inventaris Darah', 'inventaris_darah'],
+                ['Status Stok', 'status_stok'],
             ],
             title: 'Status Stok',
             action: [

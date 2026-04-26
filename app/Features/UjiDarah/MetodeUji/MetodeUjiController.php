@@ -12,8 +12,8 @@ final class MetodeUjiController extends ControllerTemplate
         parent::__construct(
             model: new MetodeUjiModel(),
             breadcrumbs: [
-                ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
-                ['title' => 'Metode Uji', 'icon' => 'metode_uji'],
+                ['Uji Darah', 'uji_darah'],
+                ['Metode Uji', 'metode_uji'],
             ],
             title: 'Metode Uji',
             action: [

@@ -13,8 +13,8 @@ final class RefPosisiPasienController extends ControllerTemplate
         parent::__construct(
             model: new RefPosisiPasienModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Posisi Pasien', 'icon' => 'ref_posisi_pasien'],
+                ['Operasi', 'operasi'],
+                ['Referensi Posisi Pasien', 'ref_posisi_pasien'],
             ],
             title: 'Referensi Posisi Pasien',
             action: [

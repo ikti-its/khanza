@@ -12,8 +12,8 @@ final class JenisBHPController extends ControllerTemplate
         parent::__construct(
             model: new JenisBHPModel(),
             breadcrumbs: [
-                ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
-                ['title' => 'Jenis BHP', 'icon' => 'jenis_bhp'],
+                ['Logistik UTD', 'logistik_utd'],
+                ['Jenis BHP', 'jenis_bhp'],
             ],
             title: 'Jenis BHP',
             action: [

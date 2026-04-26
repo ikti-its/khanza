@@ -13,8 +13,8 @@ final class RefStatusOperasiController extends ControllerTemplate
         parent::__construct(
             model: new RefStatusOperasiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Status Operasi', 'icon' => 'ref_status_operasi'],
+                ['Operasi', 'operasi'],
+                ['Referensi Status Operasi', 'ref_status_operasi'],
             ],
             title: 'Referensi Status Operasi',
             action: [

@@ -13,8 +13,8 @@ final class PengadaanBarangController extends ControllerTemplate
         parent::__construct(
             model: new PengadaanBarangModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Pengadaan Barang',    'icon' => 'pengadaan_barang'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Pengadaan Barang',    'pengadaan_barang'],
             ],
             title: 'Pengadaan Barang',
             action: [

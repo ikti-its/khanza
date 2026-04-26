@@ -12,8 +12,8 @@ final class HasilUjiSaringController extends ControllerTemplate
         parent::__construct(
             model: new HasilUjiSaringModel(),
             breadcrumbs: [
-                ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
-                ['title' => 'Hasil Uji Saring', 'icon' => 'hasil_uji_saring'],
+                ['Uji Darah', 'uji_darah'],
+                ['Hasil Uji Saring', 'hasil_uji_saring'],
             ],
             title: 'Hasil Uji Saring',
             action: [

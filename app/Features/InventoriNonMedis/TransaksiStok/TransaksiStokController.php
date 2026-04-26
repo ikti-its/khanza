@@ -13,8 +13,8 @@ final class TransaksiStokController extends ControllerTemplate
         parent::__construct(
             model: new TransaksiStokModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Transaksi Stok',      'icon' => 'transaksi_stok'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Transaksi Stok',      'transaksi_stok'],
             ],
             title: 'Transaksi Stok',
             action: [

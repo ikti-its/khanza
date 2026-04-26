@@ -12,8 +12,8 @@ final class SkriningDonorController extends ControllerTemplate
         parent::__construct(
             model: new SkriningDonorModel(),
             breadcrumbs: [
-                ['title' => 'Donor', 'icon' => 'donor'],
-                ['title' => 'Skrining Donor', 'icon' => 'skrining_donor'],
+                ['Donor', 'donor'],
+                ['Skrining Donor', 'skrining_donor'],
             ],
             title: 'Skrining Donor',
             action: [

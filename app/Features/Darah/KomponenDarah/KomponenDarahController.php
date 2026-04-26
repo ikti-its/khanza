@@ -12,8 +12,8 @@ final class KomponenDarahController extends ControllerTemplate
         parent::__construct(
             model: new KomponenDarahModel(),
             breadcrumbs: [
-                ['title' => 'Darah', 'icon' => 'darah'],
-                ['title' => 'Komponen Darah', 'icon' => 'komponen_darah'],
+                ['Darah', 'darah'],
+                ['Komponen Darah', 'komponen_darah'],
             ],
             title: 'Komponen Darah',
             action: [

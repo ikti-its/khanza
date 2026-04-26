@@ -13,8 +13,8 @@ final class RefKetersediaanStatusController extends ControllerTemplate
         parent::__construct(
             model: new RefKetersediaanStatusModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Ketersediaan Status', 'icon' => 'ref_ketersediaan_status'],
+                ['Operasi', 'operasi'],
+                ['Referensi Ketersediaan Status', 'ref_ketersediaan_status'],
             ],
             title: 'Referensi Ketersediaan Status',
             action: [

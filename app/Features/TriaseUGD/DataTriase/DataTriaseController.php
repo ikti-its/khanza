@@ -12,8 +12,8 @@ final class DataTriaseController extends ControllerTemplate
         parent::__construct(
             model: new DataTriaseModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Data Triase', 'icon' => 'data_triase'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Data Triase', 'data_triase'],
             ],
             title: 'Data Triase',
             action: [

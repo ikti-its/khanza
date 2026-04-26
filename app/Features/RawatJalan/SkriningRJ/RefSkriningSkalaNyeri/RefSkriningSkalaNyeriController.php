@@ -13,8 +13,8 @@ final class RefSkriningSkalaNyeriController extends ControllerTemplate
         parent::__construct(
             model: new RefSkriningSkalaNyeriModel(),
             breadcrumbs: [
-                ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
-                ['title' => 'Referensi Skrining Skala Nyeri', 'icon' => 'ref_skrining_skala_nyeri'],
+                ['Rawat Jalan', 'rawat_jalan'],
+                ['Referensi Skrining Skala Nyeri', 'ref_skrining_skala_nyeri'],
             ],
             title: 'Referensi Skrining Skala Nyeri',
             action: [

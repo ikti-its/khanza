@@ -13,8 +13,8 @@ final class LokasiController extends ControllerTemplate
         parent::__construct(
             model: new LokasiModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Lokasi',              'icon' => 'lokasi'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Lokasi',              'lokasi'],
             ],
             title: 'Lokasi',
             action: [

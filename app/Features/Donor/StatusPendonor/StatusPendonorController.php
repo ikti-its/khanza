@@ -12,8 +12,8 @@ final class StatusPendonorController extends ControllerTemplate
         parent::__construct(
             model: new StatusPendonorModel(),
             breadcrumbs: [
-                ['title' => 'Donor', 'icon' => 'donor'],
-                ['title' => 'Status Pendonor', 'icon' => 'status_pendonor'],
+                ['Donor', 'donor'],
+                ['Status Pendonor', 'status_pendonor'],
             ],
             title: 'Status Pendonor',
             action: [

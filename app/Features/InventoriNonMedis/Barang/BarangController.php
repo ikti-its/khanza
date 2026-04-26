@@ -13,8 +13,8 @@ final class BarangController extends ControllerTemplate
         parent::__construct(
             model: new BarangModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Barang',              'icon' => 'barang'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Barang',              'barang'],
             ],
             title: 'Barang',
             action: [

@@ -13,8 +13,8 @@ final class CatatanPaskaOperasiController extends ControllerTemplate
         parent::__construct(
             model: new CatatanPaskaOperasiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Catatan Paska Operasi', 'icon' => 'catatan_paska_operasi'],
+                ['Operasi', 'operasi'],
+                ['Catatan Paska Operasi', 'catatan_paska_operasi'],
             ],
             title: 'Catatan Paska Operasi',
             action: [

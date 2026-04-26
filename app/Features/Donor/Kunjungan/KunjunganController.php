@@ -12,8 +12,8 @@ final class KunjunganController extends ControllerTemplate
         parent::__construct(
             model: new KunjunganModel(),
             breadcrumbs: [
-                ['title' => 'Donor', 'icon' => 'donor'],
-                ['title' => 'Kunjungan', 'icon' => 'kunjungan'],
+                ['Donor', 'donor'],
+                ['Kunjungan', 'kunjungan'],
             ],
             title: 'Kunjungan',
             action: [

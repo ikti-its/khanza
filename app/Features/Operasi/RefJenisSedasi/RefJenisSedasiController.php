@@ -13,8 +13,8 @@ final class RefJenisSedasiController extends ControllerTemplate
         parent::__construct(
             model: new RefJenisSedasiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Jenis Sedasi', 'icon' => 'ref_jenis_sedasi'],
+                ['Operasi', 'operasi'],
+                ['Referensi Jenis Sedasi', 'ref_jenis_sedasi'],
             ],
             title: 'Referensi Jenis Sedasi',
             action: [

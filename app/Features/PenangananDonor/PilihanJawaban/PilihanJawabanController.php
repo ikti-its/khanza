@@ -12,8 +12,8 @@ final class PilihanJawabanController extends ControllerTemplate
         parent::__construct(
             model: new PilihanJawabanModel(),
             breadcrumbs: [
-                ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
-                ['title' => 'Pilihan Jawaban', 'icon' => 'pilihan_jawaban'],
+                ['Penanganan Donor', 'penanganan_donor'],
+                ['Pilihan Jawaban', 'pilihan_jawaban'],
             ],
             title: 'Pilihan Jawaban',
             action: [

@@ -13,8 +13,8 @@ final class RefStatusPenayanganController extends ControllerTemplate
         parent::__construct(
             model: new RefStatusPenayanganModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Status Penayangan', 'icon' => 'ref_status_penayangan'],
+                ['Operasi', 'operasi'],
+                ['Referensi Status Penayangan', 'ref_status_penayangan'],
             ],
             title: 'Referensi Status Penayangan',
             action: [

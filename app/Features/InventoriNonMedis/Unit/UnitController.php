@@ -13,8 +13,8 @@ final class UnitController extends ControllerTemplate
         parent::__construct(
             model: new UnitModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Unit',                'icon' => 'unit'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Unit',                'unit'],
             ],
             title: 'Unit',
             action: [

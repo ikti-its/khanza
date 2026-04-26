@@ -12,8 +12,8 @@ final class CaraMasukController extends ControllerTemplate
         parent::__construct(
             model: new CaraMasukModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Cara Masuk', 'icon' => 'cara_masuk'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Cara Masuk', 'cara_masuk'],
             ],
             title: 'Cara Masuk',
             action: [

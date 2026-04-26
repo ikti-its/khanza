@@ -12,8 +12,8 @@ final class PertanyaanKonselingController extends ControllerTemplate
         parent::__construct(
             model: new PertanyaanKonselingModel(),
             breadcrumbs: [
-                ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
-                ['title' => 'Pertanyaan Konseling', 'icon' => 'pertanyaan_konseling'],
+                ['Penanganan Donor', 'penanganan_donor'],
+                ['Pertanyaan Konseling', 'pertanyaan_konseling'],
             ],
             title: 'Pertanyaan Konseling',
             action: [

@@ -13,8 +13,8 @@ final class SkorStewardController extends ControllerTemplate
         parent::__construct(
             model: new SkorStewardModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Skor Steward', 'icon' => 'skor_steward'],
+                ['Operasi', 'operasi'],
+                ['Skor Steward', 'skor_steward'],
             ],
             title: 'Skor Steward',
             action: [

@@ -13,8 +13,8 @@ final class RefAldretteKesadaranController extends ControllerTemplate
         parent::__construct(
             model: new RefAldretteKesadaranModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Aldrette Kesadaran', 'icon' => 'ref_aldrette_kesadaran'],
+                ['Operasi', 'operasi'],
+                ['Referensi Aldrette Kesadaran', 'ref_aldrette_kesadaran'],
             ],
             title: 'Referensi Aldrette Kesadaran',
             action: [

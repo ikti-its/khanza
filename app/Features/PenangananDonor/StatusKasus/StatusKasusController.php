@@ -12,8 +12,8 @@ final class StatusKasusController extends ControllerTemplate
         parent::__construct(
             model: new StatusKasusModel(),
             breadcrumbs: [
-                ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
-                ['title' => 'Status Kasus', 'icon' => 'status_kasus'],
+                ['Penanganan Donor', 'penanganan_donor'],
+                ['Status Kasus', 'status_kasus'],
             ],
             title: 'Status Kasus',
             action: [

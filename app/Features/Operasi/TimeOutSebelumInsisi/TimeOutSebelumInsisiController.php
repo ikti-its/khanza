@@ -13,8 +13,8 @@ final class TimeOutSebelumInsisiController extends ControllerTemplate
         parent::__construct(
             model: new TimeOutSebelumInsisiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Time Out Sebelum Insisi', 'icon' => 'time_out_sebelum_insisi'],
+                ['Operasi', 'operasi'],
+                ['Time Out Sebelum Insisi', 'time_out_sebelum_insisi'],
             ],
             title: 'Time Out Sebelum Insisi',
             action: [

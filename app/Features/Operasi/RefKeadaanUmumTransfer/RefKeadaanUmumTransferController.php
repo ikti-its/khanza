@@ -13,8 +13,8 @@ final class RefKeadaanUmumTransferController extends ControllerTemplate
         parent::__construct(
             model: new RefKeadaanUmumTransferModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Keadaan Umum Transfer', 'icon' => 'ref_keadaan_umum_transfer'],
+                ['Operasi', 'operasi'],
+                ['Referensi Keadaan Umum Transfer', 'ref_keadaan_umum_transfer'],
             ],
             title: 'Referensi Keadaan Umum Transfer',
             action: [

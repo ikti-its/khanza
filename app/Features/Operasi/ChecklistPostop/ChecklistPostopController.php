@@ -13,8 +13,8 @@ final class ChecklistPostopController extends ControllerTemplate
         parent::__construct(
             model: new ChecklistPostopModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Checklist Post Operasi', 'icon' => 'checklist_postop'],
+                ['Operasi', 'operasi'],
+                ['Checklist Post Operasi', 'checklist_postop'],
             ],
             title: 'Checklist Post Operasi',
             action: [

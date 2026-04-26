@@ -13,8 +13,8 @@ final class RefAldretteRespirasiController extends ControllerTemplate
         parent::__construct(
             model: new RefAldretteRespirasiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Aldrette Respirasi', 'icon' => 'ref_aldrette_respirasi'],
+                ['Operasi', 'operasi'],
+                ['Referensi Aldrette Respirasi', 'ref_aldrette_respirasi'],
             ],
             title: 'Referensi Aldrette Respirasi',
             action: [

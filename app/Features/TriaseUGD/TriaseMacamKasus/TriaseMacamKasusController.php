@@ -12,8 +12,8 @@ final class TriaseMacamKasusController extends ControllerTemplate
         parent::__construct(
             model: new TriaseMacamKasusModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Triase Macam Kasus', 'icon' => 'triase_macam_kasus'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Triase Macam Kasus', 'triase_macam_kasus'],
             ],
             title: 'Triase Macam Kasus',
             action: [

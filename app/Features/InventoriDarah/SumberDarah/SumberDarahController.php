@@ -12,8 +12,8 @@ final class SumberDarahController extends ControllerTemplate
         parent::__construct(
             model: new SumberDarahModel(),
             breadcrumbs: [
-                ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
-                ['title' => 'Sumber Darah', 'icon' => 'sumber_darah'],
+                ['Inventaris Darah', 'inventaris_darah'],
+                ['Sumber Darah', 'sumber_darah'],
             ],
             title: 'Sumber Darah',
             action: [

@@ -12,8 +12,8 @@ final class TingkatSkalaController extends ControllerTemplate
         parent::__construct(
             model: new TingkatSkalaModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Tingkat Skala', 'icon' => 'tingkat_skala'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Tingkat Skala', 'tingkat_skala'],
             ],
             title: 'Tingkat Skala',
             action: [

@@ -13,8 +13,8 @@ final class ChecklistPostopDrainController extends ControllerTemplate
         parent::__construct(
             model: new ChecklistPostopDrainModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Checklist Post Operasi Drain', 'icon' => 'checklist_postop_drain'],
+                ['Operasi', 'operasi'],
+                ['Checklist Post Operasi Drain', 'checklist_postop_drain'],
             ],
             title: 'Checklist Post Operasi Drain',
             action: [

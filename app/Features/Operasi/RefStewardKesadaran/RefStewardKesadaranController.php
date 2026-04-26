@@ -13,8 +13,8 @@ final class RefStewardKesadaranController extends ControllerTemplate
         parent::__construct(
             model: new RefStewardKesadaranModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Steward Kesadaran', 'icon' => 'ref_steward_kesadaran'],
+                ['Operasi', 'operasi'],
+                ['Referensi Steward Kesadaran', 'ref_steward_kesadaran'],
             ],
             title: 'Referensi Steward Kesadaran',
             action: [

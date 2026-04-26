@@ -13,8 +13,8 @@ final class RefHubunganKeluargaController extends ControllerTemplate
         parent::__construct(
             model: new RefHubunganKeluargaModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Hubungan Keluarga', 'icon' => 'ref_hubungan_keluarga'],
+                ['Operasi', 'operasi'],
+                ['Referensi Hubungan Keluarga', 'ref_hubungan_keluarga'],
             ],
             title: 'Referensi Hubungan Keluarga',
             action: [

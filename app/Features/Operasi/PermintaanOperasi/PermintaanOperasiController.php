@@ -13,8 +13,8 @@ final class PermintaanOperasiController extends ControllerTemplate
         parent::__construct(
             model: new PermintaanOperasiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Permintaan Operasi', 'icon' => 'permintaan_operasi'],
+                ['Operasi', 'operasi'],
+                ['Permintaan Operasi', 'permintaan_operasi'],
             ],
             title: 'Permintaan Operasi',
             action: [

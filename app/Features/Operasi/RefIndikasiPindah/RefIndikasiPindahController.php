@@ -13,8 +13,8 @@ final class RefIndikasiPindahController extends ControllerTemplate
         parent::__construct(
             model: new RefIndikasiPindahModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Indikasi Pindah', 'icon' => 'ref_indikasi_pindah'],
+                ['Operasi', 'operasi'],
+                ['Referensi Indikasi Pindah', 'ref_indikasi_pindah'],
             ],
             title: 'Referensi Indikasi Pindah',
             action: [

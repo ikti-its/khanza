@@ -12,8 +12,8 @@ final class BHPRusakController extends ControllerTemplate
         parent::__construct(
             model: new BHPRusakModel(),
             breadcrumbs: [
-                ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
-                ['title' => 'BHP Rusak', 'icon' => 'bhp_rusak'],
+                ['Logistik UTD', 'logistik_utd'],
+                ['BHP Rusak', 'bhp_rusak'],
             ],
             title: 'BHP Rusak',
             action: [

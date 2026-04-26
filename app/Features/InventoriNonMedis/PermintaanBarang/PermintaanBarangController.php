@@ -13,8 +13,8 @@ final class PermintaanBarangController extends ControllerTemplate
         parent::__construct(
             model: new PermintaanBarangModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Permintaan Barang',   'icon' => 'permintaan_barang'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Permintaan Barang',   'permintaan_barang'],
             ],
             title: 'Permintaan Barang',
             action: [

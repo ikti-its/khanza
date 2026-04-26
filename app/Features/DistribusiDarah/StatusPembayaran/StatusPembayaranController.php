@@ -12,8 +12,8 @@ final class StatusPembayaranController extends ControllerTemplate
         parent::__construct(
             model: new StatusPembayaranModel(),
             breadcrumbs: [
-                ['title' => 'Pelayanan Darah', 'icon' => 'pelayanan_darah'],
-                ['title' => 'Status Pembayaran', 'icon' => 'status_pembayaran'],
+                ['Pelayanan Darah', 'pelayanan_darah'],
+                ['Status Pembayaran', 'status_pembayaran'],
             ],
             title: 'Status Pembayaran',
             action: [

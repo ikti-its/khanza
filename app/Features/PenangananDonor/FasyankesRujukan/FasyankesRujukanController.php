@@ -12,8 +12,8 @@ final class FasyankesRujukanController extends ControllerTemplate
         parent::__construct(
             model: new FasyankesRujukanModel(),
             breadcrumbs: [
-                ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
-                ['title' => 'Fasyankes Rujukan', 'icon' => 'fasyankes_rujukan'],
+                ['Penanganan Donor', 'penanganan_donor'],
+                ['Fasyankes Rujukan', 'fasyankes_rujukan'],
             ],
             title: 'Fasyankes Rujukan',
             action: [

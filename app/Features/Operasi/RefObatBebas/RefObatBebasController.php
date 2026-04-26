@@ -13,8 +13,8 @@ final class RefObatBebasController extends ControllerTemplate
         parent::__construct(
             model: new RefObatBebasModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Obat Bebas', 'icon' => 'ref_obat_bebas'],
+                ['Operasi', 'operasi'],
+                ['Referensi Obat Bebas', 'ref_obat_bebas'],
             ],
             title: 'Referensi Obat Bebas',
             action: [

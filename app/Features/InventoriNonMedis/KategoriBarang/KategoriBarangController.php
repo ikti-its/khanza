@@ -13,8 +13,8 @@ final class KategoriBarangController extends ControllerTemplate
         parent::__construct(
             model: new KategoriBarangModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Kategori Barang',     'icon' => 'kategori_barang'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Kategori Barang',     'kategori_barang'],
             ],
             title: 'Kategori Barang',
             action: [

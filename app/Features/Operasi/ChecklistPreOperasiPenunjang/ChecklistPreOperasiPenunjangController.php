@@ -13,8 +13,8 @@ final class ChecklistPreOperasiPenunjangController extends ControllerTemplate
         parent::__construct(
             model: new ChecklistPreOperasiPenunjangModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Checklist Pre Operasi Penunjang', 'icon' => 'checklist_pre_operasi_penunjang'],
+                ['Operasi', 'operasi'],
+                ['Checklist Pre Operasi Penunjang', 'checklist_pre_operasi_penunjang'],
             ],
             title: 'Checklist Pre Operasi Penunjang',
             action: [

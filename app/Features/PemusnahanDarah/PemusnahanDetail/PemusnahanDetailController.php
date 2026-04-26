@@ -12,8 +12,8 @@ final class PemusnahanDetailController extends ControllerTemplate
         parent::__construct(
             model: new PemusnahanDetailModel(),
             breadcrumbs: [
-                ['title' => 'Pemusnahan Darah', 'icon' => 'pemusnahan_darah'],
-                ['title' => 'Pemusnahan Detail', 'icon' => 'pemusnahan_detail'],
+                ['Pemusnahan Darah', 'pemusnahan_darah'],
+                ['Pemusnahan Detail', 'pemusnahan_detail'],
             ],
             title: 'Pemusnahan Detail',
             action: [

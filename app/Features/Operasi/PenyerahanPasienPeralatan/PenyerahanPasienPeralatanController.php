@@ -13,8 +13,8 @@ final class PenyerahanPasienPeralatanController extends ControllerTemplate
         parent::__construct(
             model: new PenyerahanPasienPeralatanModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Penyerahan Pasien Peralatan', 'icon' => 'penyerahan_pasien_peralatan'],
+                ['Operasi', 'operasi'],
+                ['Penyerahan Pasien Peralatan', 'penyerahan_pasien_peralatan'],
             ],
             title: 'Penyerahan Pasien Peralatan',
             action: [

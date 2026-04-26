@@ -13,8 +13,8 @@ final class HasilLabPkController extends ControllerTemplate
         parent::__construct(
             model: new HasilLabPkModel(),
             breadcrumbs: [
-                ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
-                ['title' => 'Hasil Lab PK', 'icon' => 'hasil_lab_pk'],
+                ['Laboratorium', 'laboratorium'],
+                ['Hasil Lab PK', 'hasil_lab_pk'],
             ],
             title: 'Hasil Lab PK',
             action: [

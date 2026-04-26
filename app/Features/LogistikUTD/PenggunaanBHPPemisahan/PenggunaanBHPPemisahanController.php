@@ -12,8 +12,8 @@ final class PenggunaanBHPPemisahanController extends ControllerTemplate
         parent::__construct(
             model: new PenggunaanBHPPemisahanModel(),
             breadcrumbs: [
-                ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
-                ['title' => 'Penggunaan BHP Pemisahan', 'icon' => 'penggunaan_bhp_pemisahan'],
+                ['Logistik UTD', 'logistik_utd'],
+                ['Penggunaan BHP Pemisahan', 'penggunaan_bhp_pemisahan'],
             ],
             title: 'Penggunaan BHP Pemisahan',
             action: [

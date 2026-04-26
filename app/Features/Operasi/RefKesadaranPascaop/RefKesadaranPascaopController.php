@@ -13,8 +13,8 @@ final class RefKesadaranPascaopController extends ControllerTemplate
         parent::__construct(
             model: new RefKesadaranPascaopModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Kesadaran Pasca Operasi', 'icon' => 'ref_kesadaran_pascaop'],
+                ['Operasi', 'operasi'],
+                ['Referensi Kesadaran Pasca Operasi', 'ref_kesadaran_pascaop'],
             ],
             title: 'Referensi Kesadaran Pasca Operasi',
             action: [

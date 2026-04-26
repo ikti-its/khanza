@@ -13,8 +13,8 @@ final class SigninSebelumAnestesiController extends ControllerTemplate
         parent::__construct(
             model: new SigninSebelumAnestesiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Sign In Sebelum Anestesi', 'icon' => 'signin_sebelum_anestesi'],
+                ['Operasi', 'operasi'],
+                ['Sign In Sebelum Anestesi', 'signin_sebelum_anestesi'],
             ],
             title: 'Sign In Sebelum Anestesi',
             action: [

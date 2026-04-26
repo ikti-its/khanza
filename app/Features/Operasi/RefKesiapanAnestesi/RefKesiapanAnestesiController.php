@@ -13,8 +13,8 @@ final class RefKesiapanAnestesiController extends ControllerTemplate
         parent::__construct(
             model: new RefKesiapanAnestesiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Kesiapan Anestesi', 'icon' => 'ref_kesiapan_anestesi'],
+                ['Operasi', 'operasi'],
+                ['Referensi Kesiapan Anestesi', 'ref_kesiapan_anestesi'],
             ],
             title: 'Referensi Kesiapan Anestesi',
             action: [

@@ -13,8 +13,8 @@ final class RefAldretteWarnaKulitController extends ControllerTemplate
         parent::__construct(
             model: new RefAldretteWarnaKulitModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Aldrette Warna Kulit', 'icon' => 'ref_aldrette_warna_kulit'],
+                ['Operasi', 'operasi'],
+                ['Referensi Aldrette Warna Kulit', 'ref_aldrette_warna_kulit'],
             ],
             title: 'Referensi Aldrette Warna Kulit',
             action: [

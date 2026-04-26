@@ -13,8 +13,8 @@ final class PermintaanRadController extends ControllerTemplate
         parent::__construct(
             model: new PermintaanRadModel(),
             breadcrumbs: [
-                ['title' => 'Radiologi', 'icon' => 'radiologi'],
-                ['title' => 'Permintaan Radiologi', 'icon' => 'permintaan_rad'],
+                ['Radiologi', 'radiologi'],
+                ['Permintaan Radiologi', 'permintaan_rad'],
             ],
             title: 'Permintaan Radiologi',
             action: [

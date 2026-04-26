@@ -13,8 +13,8 @@ final class RefStatusPermintaanController extends ControllerTemplate
         parent::__construct(
             model: new RefStatusPermintaanModel(),
             breadcrumbs: [
-                ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
-                ['title' => 'Referensi Status Permintaan', 'icon' => 'ref_status_permintaan'],
+                ['Laboratorium', 'laboratorium'],
+                ['Referensi Status Permintaan', 'ref_status_permintaan'],
             ],
             title: 'Referensi Status Permintaan',
             action: [

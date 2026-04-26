@@ -13,8 +13,8 @@ final class RefStewardMotorikController extends ControllerTemplate
         parent::__construct(
             model: new RefStewardMotorikModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Steward Motorik', 'icon' => 'ref_steward_motorik'],
+                ['Operasi', 'operasi'],
+                ['Referensi Steward Motorik', 'ref_steward_motorik'],
             ],
             title: 'Referensi Steward Motorik',
             action: [

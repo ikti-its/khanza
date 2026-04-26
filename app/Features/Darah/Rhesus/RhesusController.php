@@ -12,8 +12,8 @@ final class RhesusController extends ControllerTemplate
         parent::__construct(
             model: new RhesusModel(),
             breadcrumbs: [
-                ['title' => 'Darah', 'icon' => 'darah'],
-                ['title' => 'Rhesus', 'icon' => 'rhesus'],
+                ['Darah', 'darah'],
+                ['Rhesus', 'rhesus'],
             ],
             title: 'Rhesus',
             action: [

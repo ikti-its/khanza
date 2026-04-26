@@ -13,8 +13,8 @@ final class RefSkriningPernafasanController extends ControllerTemplate
         parent::__construct(
             model: new RefSkriningPernafasanModel(),
             breadcrumbs: [
-                ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
-                ['title' => 'Referensi Skrining Pernafasan', 'icon' => 'ref_skrining_pernafasan'],
+                ['Rawat Jalan', 'rawat_jalan'],
+                ['Referensi Skrining Pernafasan', 'ref_skrining_pernafasan'],
             ],
             title: 'Referensi Skrining Pernafasan',
             action: [

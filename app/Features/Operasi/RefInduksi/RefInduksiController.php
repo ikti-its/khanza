@@ -13,8 +13,8 @@ final class RefInduksiController extends ControllerTemplate
         parent::__construct(
             model: new RefInduksiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Induksi', 'icon' => 'ref_induksi'],
+                ['Operasi', 'operasi'],
+                ['Referensi Induksi', 'ref_induksi'],
             ],
             title: 'Referensi Induksi',
             action: [

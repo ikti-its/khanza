@@ -12,8 +12,8 @@ final class KebutuhanKhususController extends ControllerTemplate
         parent::__construct(
             model: new KebutuhanKhususModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Kebutuhan Khusus', 'icon' => 'kebutuhan_khusus'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Kebutuhan Khusus', 'kebutuhan_khusus'],
             ],
             title: 'Kebutuhan Khusus',
             action: [

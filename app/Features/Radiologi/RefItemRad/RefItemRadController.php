@@ -13,8 +13,8 @@ final class RefItemRadController extends ControllerTemplate
         parent::__construct(
             model: new RefItemRadModel(),
             breadcrumbs: [
-                ['title' => 'Radiologi', 'icon' => 'radiologi'],
-                ['title' => 'Referensi Item Radiologi', 'icon' => 'ref_item_rad'],
+                ['Radiologi', 'radiologi'],
+                ['Referensi Item Radiologi', 'ref_item_rad'],
             ],
             title: 'Referensi Item Radiologi',
             action: [

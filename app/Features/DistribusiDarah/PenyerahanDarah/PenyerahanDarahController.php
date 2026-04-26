@@ -12,8 +12,8 @@ final class PenyerahanDarahController extends ControllerTemplate
         parent::__construct(
             model: new PenyerahanDarahModel(),
             breadcrumbs: [
-                ['title' => 'Pelayanan Darah', 'icon' => 'pelayanan_darah'],
-                ['title' => 'Penyerahan Darah', 'icon' => 'penyerahan_darah'],
+                ['Pelayanan Darah', 'pelayanan_darah'],
+                ['Penyerahan Darah', 'penyerahan_darah'],
             ],
             title: 'Penyerahan Darah',
             action: [

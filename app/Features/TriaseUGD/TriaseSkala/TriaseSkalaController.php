@@ -12,8 +12,8 @@ final class TriaseSkalaController extends ControllerTemplate
         parent::__construct(
             model: new TriaseSkalaModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Triase Skala', 'icon' => 'triase_skala'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Triase Skala', 'triase_skala'],
             ],
             title: 'Triase Skala',
             action: [

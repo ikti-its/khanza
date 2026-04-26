@@ -12,8 +12,8 @@ final class TriasePemeriksaanController extends ControllerTemplate
         parent::__construct(
             model: new TriasePemeriksaanModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Triase Pemeriksaan', 'icon' => 'triase_pemeriksaan'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Triase Pemeriksaan', 'triase_pemeriksaan'],
             ],
             title: 'Triase Pemeriksaan',
             action: [

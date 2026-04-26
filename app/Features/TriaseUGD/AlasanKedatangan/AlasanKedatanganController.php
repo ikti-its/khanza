@@ -12,8 +12,8 @@ final class AlasanKedatanganController extends ControllerTemplate
         parent::__construct(
             model: new AlasanKedatanganModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Alasan Kedatangan', 'icon' => 'alasan_kedatangan'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Alasan Kedatangan', 'alasan_kedatangan'],
             ],
             title: 'Alasan Kedatangan',
             action: [

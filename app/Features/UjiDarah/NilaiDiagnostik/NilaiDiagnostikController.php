@@ -12,8 +12,8 @@ final class NilaiDiagnostikController extends ControllerTemplate
         parent::__construct(
             model: new NilaiDiagnostikModel(),
             breadcrumbs: [
-                ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
-                ['title' => 'Nilai Diagnostik', 'icon' => 'nilai_diagnostik'],
+                ['Uji Darah', 'uji_darah'],
+                ['Nilai Diagnostik', 'nilai_diagnostik'],
             ],
             title: 'Nilai Diagnostik',
             action: [

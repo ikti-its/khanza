@@ -13,8 +13,8 @@ final class RefItemPemeriksaanLabController extends ControllerTemplate
         parent::__construct(
             model: new RefItemPemeriksaanLabModel(),
             breadcrumbs: [
-                ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
-                ['title' => 'Referensi Item Pemeriksaan', 'icon' => 'ref_item_pemeriksaan_lab'],
+                ['Laboratorium', 'laboratorium'],
+                ['Referensi Item Pemeriksaan', 'ref_item_pemeriksaan_lab'],
             ],
             title: 'Referensi Item Pemeriksaan Lab',
             action: [

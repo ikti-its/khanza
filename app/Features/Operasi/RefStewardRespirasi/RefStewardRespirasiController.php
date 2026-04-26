@@ -13,8 +13,8 @@ final class RefStewardRespirasiController extends ControllerTemplate
         parent::__construct(
             model: new RefStewardRespirasiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Steward Respirasi', 'icon' => 'ref_steward_respirasi'],
+                ['Operasi', 'operasi'],
+                ['Referensi Steward Respirasi', 'ref_steward_respirasi'],
             ],
             title: 'Referensi Steward Respirasi',
             action: [

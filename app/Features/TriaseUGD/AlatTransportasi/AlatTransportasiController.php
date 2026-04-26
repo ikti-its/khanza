@@ -12,8 +12,8 @@ final class AlatTransportasiController extends ControllerTemplate
         parent::__construct(
             model: new AlatTransportasiModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Alat Transportasi', 'icon' => 'alat_transportasi'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Alat Transportasi', 'alat_transportasi'],
             ],
             title: 'Alat Transportasi',
             action: [

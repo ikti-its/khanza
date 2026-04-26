@@ -13,8 +13,8 @@ final class RefParameterPemeriksaanLabController extends ControllerTemplate
         parent::__construct(
             model: new RefParameterPemeriksaanLabModel(),
             breadcrumbs: [
-                ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
-                ['title' => 'Referensi Parameter Pemeriksaan', 'icon' => 'ref_parameter_pemeriksaan_lab'],
+                ['Laboratorium', 'laboratorium'],
+                ['Referensi Parameter Pemeriksaan', 'ref_parameter_pemeriksaan_lab'],
             ],
             title: 'Referensi Parameter Pemeriksaan Lab',
             action: [

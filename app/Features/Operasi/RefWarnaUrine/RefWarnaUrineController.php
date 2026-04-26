@@ -13,8 +13,8 @@ final class RefWarnaUrineController extends ControllerTemplate
         parent::__construct(
             model: new RefWarnaUrineModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Warna Urine', 'icon' => 'ref_warna_urine'],
+                ['Operasi', 'operasi'],
+                ['Referensi Warna Urine', 'ref_warna_urine'],
             ],
             title: 'Referensi Warna Urine',
             action: [

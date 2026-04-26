@@ -13,8 +13,8 @@ final class RefPremedikasiController extends ControllerTemplate
         parent::__construct(
             model: new RefPremedikasiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Premedikasi', 'icon' => 'ref_premedikasi'],
+                ['Operasi', 'operasi'],
+                ['Referensi Premedikasi', 'ref_premedikasi'],
             ],
             title: 'Referensi Premedikasi',
             action: [

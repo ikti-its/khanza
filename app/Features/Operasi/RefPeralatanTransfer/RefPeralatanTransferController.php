@@ -13,8 +13,8 @@ final class RefPeralatanTransferController extends ControllerTemplate
         parent::__construct(
             model: new RefPeralatanTransferModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Peralatan Transfer', 'icon' => 'ref_peralatan_transfer'],
+                ['Operasi', 'operasi'],
+                ['Referensi Peralatan Transfer', 'ref_peralatan_transfer'],
             ],
             title: 'Referensi Peralatan Transfer',
             action: [

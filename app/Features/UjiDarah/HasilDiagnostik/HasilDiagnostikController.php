@@ -12,8 +12,8 @@ final class HasilDiagnostikController extends ControllerTemplate
         parent::__construct(
             model: new HasilDiagnostikModel(),
             breadcrumbs: [
-                ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
-                ['title' => 'Hasil Diagnostik', 'icon' => 'hasil_diagnostik'],
+                ['Uji Darah', 'uji_darah'],
+                ['Hasil Diagnostik', 'hasil_diagnostik'],
             ],
             title: 'Hasil Diagnostik',
             action: [

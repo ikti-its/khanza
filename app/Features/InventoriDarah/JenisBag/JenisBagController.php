@@ -12,8 +12,8 @@ final class JenisBagController extends ControllerTemplate
         parent::__construct(
             model: new JenisBagModel(),
             breadcrumbs: [
-                ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
-                ['title' => 'Jenis Bag', 'icon' => 'jenis_bag'],
+                ['Inventaris Darah', 'inventaris_darah'],
+                ['Jenis Bag', 'jenis_bag'],
             ],
             title: 'Jenis Bag',
             action: [

@@ -13,8 +13,8 @@ final class RefMetodeTransferController extends ControllerTemplate
         parent::__construct(
             model: new RefMetodeTransferModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Metode Transfer', 'icon' => 'ref_metode_transfer'],
+                ['Operasi', 'operasi'],
+                ['Referensi Metode Transfer', 'ref_metode_transfer'],
             ],
             title: 'Referensi Metode Transfer',
             action: [

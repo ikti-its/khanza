@@ -12,8 +12,8 @@ final class ParameterUjiController extends ControllerTemplate
         parent::__construct(
             model: new ParameterUjiModel(),
             breadcrumbs: [
-                ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
-                ['title' => 'Parameter Uji', 'icon' => 'parameter_uji'],
+                ['Uji Darah', 'uji_darah'],
+                ['Parameter Uji', 'parameter_uji'],
             ],
             title: 'Parameter Uji',
             action: [

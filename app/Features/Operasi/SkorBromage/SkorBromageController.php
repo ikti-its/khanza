@@ -13,8 +13,8 @@ final class SkorBromageController extends ControllerTemplate
         parent::__construct(
             model: new SkorBromageModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Skor Bromage', 'icon' => 'skor_bromage'],
+                ['Operasi', 'operasi'],
+                ['Skor Bromage', 'skor_bromage'],
             ],
             title: 'Skor Bromage',
             action: [

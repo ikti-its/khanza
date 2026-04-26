@@ -12,8 +12,8 @@ final class TarifKomponenController extends ControllerTemplate
         parent::__construct(
             model: new TarifKomponenModel(),
             breadcrumbs: [
-                ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
-                ['title' => 'Tarif Komponen', 'icon' => 'tarif_komponen'],
+                ['Inventaris Darah', 'inventaris_darah'],
+                ['Tarif Komponen', 'tarif_komponen'],
             ],
             title: 'Tarif Komponen',
             action: [

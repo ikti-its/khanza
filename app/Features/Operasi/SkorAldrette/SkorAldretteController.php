@@ -13,8 +13,8 @@ final class SkorAldretteController extends ControllerTemplate
         parent::__construct(
             model: new SkorAldretteModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Skor Aldrette', 'icon' => 'skor_aldrette'],
+                ['Operasi', 'operasi'],
+                ['Skor Aldrette', 'skor_aldrette'],
             ],
             title: 'Skor Aldrette',
             action: [

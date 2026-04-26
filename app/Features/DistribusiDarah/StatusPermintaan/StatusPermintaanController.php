@@ -12,8 +12,8 @@ final class StatusPermintaanController extends ControllerTemplate
         parent::__construct(
             model: new StatusPermintaanModel(),
             breadcrumbs: [
-                ['title' => 'Pelayanan Darah', 'icon' => 'pelayanan_darah'],
-                ['title' => 'Status Permintaan', 'icon' => 'status_permintaan'],
+                ['Pelayanan Darah', 'pelayanan_darah'],
+                ['Status Permintaan', 'status_permintaan'],
             ],
             title: 'Status Permintaan',
             action: [

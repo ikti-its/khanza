@@ -13,8 +13,8 @@ final class RefSkriningBatukController extends ControllerTemplate
         parent::__construct(
             model: new RefSkriningBatukModel(),
             breadcrumbs: [
-                ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
-                ['title' => 'Referensi Skrining Batuk', 'icon' => 'ref_skrining_batuk'],
+                ['Rawat Jalan', 'rawat_jalan'],
+                ['Referensi Skrining Batuk', 'ref_skrining_batuk'],
             ],
             title: 'Referensi Skrining Batuk',
             action: [

@@ -12,8 +12,8 @@ final class PlanPrimerController extends ControllerTemplate
         parent::__construct(
             model: new PlanPrimerModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Plan Primer', 'icon' => 'plan_primer'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Plan Primer', 'plan_primer'],
             ],
             title: 'Plan Primer',
             action: [

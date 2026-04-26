@@ -12,8 +12,8 @@ final class BPJSController extends ControllerTemplate
         parent::__construct(
             model: new BPJSModel(),
             breadcrumbs: [
-                ['title' => 'User', 'icon' => 'user'],
-                ['title' => 'BPJS', 'icon' => 'bpjs'],
+                ['User', 'user'],
+                ['BPJS', 'bpjs'],
             ],
             title: 'BPJS',
             action: [

@@ -12,8 +12,8 @@ final class PencekalanController extends ControllerTemplate
         parent::__construct(
             model: new PencekalanModel(),
             breadcrumbs: [
-                ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
-                ['title' => 'Pencekalan', 'icon' => 'pencekalan'],
+                ['Penanganan Donor', 'penanganan_donor'],
+                ['Pencekalan', 'pencekalan'],
             ],
             title: 'Pencekalan',
             action: [

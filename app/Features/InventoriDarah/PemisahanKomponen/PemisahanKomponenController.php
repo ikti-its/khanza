@@ -12,8 +12,8 @@ final class PemisahanKomponenController extends ControllerTemplate
         parent::__construct(
             model: new PemisahanKomponenModel(),
             breadcrumbs: [
-                ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
-                ['title' => 'Pemisahan Komponen', 'icon' => 'pemisahan_komponen'],
+                ['Inventaris Darah', 'inventaris_darah'],
+                ['Pemisahan Komponen', 'pemisahan_komponen'],
             ],
             title: 'Pemisahan Komponen',
             action: [

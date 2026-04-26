@@ -12,8 +12,8 @@ final class HasilAnamnesisController extends ControllerTemplate
         parent::__construct(
             model: new HasilAnamnesisModel(),
             breadcrumbs: [
-                ['title' => 'Donor', 'icon' => 'donor'],
-                ['title' => 'Hasil Anamnesis', 'icon' => 'hasil_anamnesis'],
+                ['Donor', 'donor'],
+                ['Hasil Anamnesis', 'hasil_anamnesis'],
             ],
             title: 'Hasil Anamnesis',
             action: [

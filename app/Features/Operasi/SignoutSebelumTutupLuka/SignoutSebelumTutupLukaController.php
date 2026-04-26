@@ -13,8 +13,8 @@ final class SignoutSebelumTutupLukaController extends ControllerTemplate
         parent::__construct(
             model: new SignoutSebelumTutupLukaModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Sign Out Sebelum Tutup Luka', 'icon' => 'signout_sebelum_tutupluka'],
+                ['Operasi', 'operasi'],
+                ['Sign Out Sebelum Tutup Luka', 'signout_sebelum_tutupluka'],
             ],
             title: 'Sign Out Sebelum Tutup Luka',
             action: [

@@ -12,8 +12,8 @@ final class RujukanController extends ControllerTemplate
         parent::__construct(
             model: new RujukanModel(),
             breadcrumbs: [
-                ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
-                ['title' => 'Rujukan', 'icon' => 'rujukan'],
+                ['Penanganan Donor', 'penanganan_donor'],
+                ['Rujukan', 'rujukan'],
             ],
             title: 'Rujukan',
             action: [

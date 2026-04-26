@@ -12,8 +12,8 @@ final class GolonganDarahController extends ControllerTemplate
         parent::__construct(
             model: new GolonganDarahModel(),
             breadcrumbs: [
-                ['title' => 'Darah', 'icon' => 'darah'],
-                ['title' => 'Golongan Darah', 'icon' => 'golongan_darah'],
+                ['Darah', 'darah'],
+                ['Golongan Darah', 'golongan_darah'],
             ],
             title: 'Golongan Darah',
             action: [

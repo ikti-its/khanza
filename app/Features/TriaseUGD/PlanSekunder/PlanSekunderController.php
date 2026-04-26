@@ -12,8 +12,8 @@ final class PlanSekunderController extends ControllerTemplate
         parent::__construct(
             model: new PlanSekunderModel(),
             breadcrumbs: [
-                ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
-                ['title' => 'Plan Sekunder', 'icon' => 'plan_sekunder'],
+                ['Triase UGD', 'triase_ugd'],
+                ['Plan Sekunder', 'plan_sekunder'],
             ],
             title: 'Plan Sekunder',
             action: [

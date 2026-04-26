@@ -13,8 +13,8 @@ final class PengkajianPreAnestesiController extends ControllerTemplate
         parent::__construct(
             model: new PengkajianPreAnestesiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Pengkajian Pre Anestesi', 'icon' => 'pengkajian_pre_anestesi'],
+                ['Operasi', 'operasi'],
+                ['Pengkajian Pre Anestesi', 'pengkajian_pre_anestesi'],
             ],
             title: 'Pengkajian Pre Anestesi',
             action: [

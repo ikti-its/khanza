@@ -12,8 +12,8 @@ final class PengambilanPenunjangController extends ControllerTemplate
         parent::__construct(
             model: new PengambilanPenunjangModel(),
             breadcrumbs: [
-                ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
-                ['title' => 'Pengambilan BHP Non Medis', 'icon' => 'pengambilan_bhp_non_medis'],
+                ['Logistik UTD', 'logistik_utd'],
+                ['Pengambilan BHP Non Medis', 'pengambilan_bhp_non_medis'],
             ],
             title: 'Pengambilan BHP Non Medis',
             action: [

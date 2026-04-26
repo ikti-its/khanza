@@ -13,8 +13,8 @@ final class CatatanAnestesiSedasiMonitoringController extends ControllerTemplate
         parent::__construct(
             model: new CatatanAnestesiSedasiMonitoringModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Catatan Anestesi Sedasi Monitoring', 'icon' => 'catatan_anestesi_sedasi_monitoring'],
+                ['Operasi', 'operasi'],
+                ['Catatan Anestesi Sedasi Monitoring', 'catatan_anestesi_sedasi_monitoring'],
             ],
             title: 'Catatan Anestesi Sedasi Monitoring',
             action: [

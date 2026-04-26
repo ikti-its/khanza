@@ -13,8 +13,8 @@ final class RefJenisPenunjangController extends ControllerTemplate
         parent::__construct(
             model: new RefJenisPenunjangModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Jenis Penunjang', 'icon' => 'ref_jenis_penunjang'],
+                ['Operasi', 'operasi'],
+                ['Referensi Jenis Penunjang', 'ref_jenis_penunjang'],
             ],
             title: 'Referensi Jenis Penunjang',
             action: [

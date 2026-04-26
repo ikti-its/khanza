@@ -12,8 +12,8 @@ final class KasusReaktifController extends ControllerTemplate
         parent::__construct(
             model: new KasusReaktifModel(),
             breadcrumbs: [
-                ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
-                ['title' => 'Kasus Reaktif', 'icon' => 'kasus_reaktif'],
+                ['Penanganan Donor', 'penanganan_donor'],
+                ['Kasus Reaktif', 'kasus_reaktif'],
             ],
             title: 'Kasus Reaktif',
             action: [

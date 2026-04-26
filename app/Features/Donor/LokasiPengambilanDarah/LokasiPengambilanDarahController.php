@@ -12,8 +12,8 @@ final class LokasiPengambilanDarahController extends ControllerTemplate
         parent::__construct(
             model: new LokasiPengambilanDarahModel(),
             breadcrumbs: [
-                ['title' => 'Donor', 'icon' => 'donor'],
-                ['title' => 'Lokasi Pengambilan Darah', 'icon' => 'lokasi_pengambilan_darah'],
+                ['Donor', 'donor'],
+                ['Lokasi Pengambilan Darah', 'lokasi_pengambilan_darah'],
             ],
             title: 'Lokasi Pengambilan Darah',
             action: [

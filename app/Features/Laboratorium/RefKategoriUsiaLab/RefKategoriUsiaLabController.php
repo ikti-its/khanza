@@ -13,8 +13,8 @@ final class RefKategoriUsiaLabController extends ControllerTemplate
         parent::__construct(
             model: new RefKategoriUsiaLabModel(),
             breadcrumbs: [
-                ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
-                ['title' => 'Referensi Kategori Usia Lab', 'icon' => 'ref_kategori_usia_lab'],
+                ['Laboratorium', 'laboratorium'],
+                ['Referensi Kategori Usia Lab', 'ref_kategori_usia_lab'],
             ],
             title: 'Referensi Kategori Usia Lab',
             action: [

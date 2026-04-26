@@ -13,8 +13,8 @@ final class RefAldretteAktivitasController extends ControllerTemplate
         parent::__construct(
             model: new RefAldretteAktivitasModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Aldrette Aktivitas', 'icon' => 'ref_aldrette_aktivitas'],
+                ['Operasi', 'operasi'],
+                ['Referensi Aldrette Aktivitas', 'ref_aldrette_aktivitas'],
             ],
             title: 'Referensi Aldrette Aktivitas',
             action: [

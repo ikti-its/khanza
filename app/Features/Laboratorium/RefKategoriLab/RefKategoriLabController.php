@@ -13,8 +13,8 @@ final class RefKategoriLabController extends ControllerTemplate
         parent::__construct(
             model: new RefKategoriLabModel(),
             breadcrumbs: [
-                ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
-                ['title' => 'Referensi Kategori Lab', 'icon' => 'ref_kategori_lab'],
+                ['Laboratorium', 'laboratorium'],
+                ['Referensi Kategori Lab', 'ref_kategori_lab'],
             ],
             title: 'Referensi Kategori Lab',
             action: [

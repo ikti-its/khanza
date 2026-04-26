@@ -13,8 +13,8 @@ final class RefRuanganOperasiController extends ControllerTemplate
         parent::__construct(
             model: new RefRuanganOperasiModel(),
             breadcrumbs: [
-                ['title' => 'Operasi', 'icon' => 'operasi'],
-                ['title' => 'Referensi Ruangan Operasi', 'icon' => 'ref_ruangan_operasi'],
+                ['Operasi', 'operasi'],
+                ['Referensi Ruangan Operasi', 'ref_ruangan_operasi'],
             ],
             title: 'Referensi Ruangan Operasi',
             action: [

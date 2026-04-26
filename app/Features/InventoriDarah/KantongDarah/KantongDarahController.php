@@ -12,8 +12,8 @@ final class KantongDarahController extends ControllerTemplate
         parent::__construct(
             model: new KantongDarahModel(),
             breadcrumbs: [
-                ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
-                ['title' => 'Kantong Darah', 'icon' => 'kantong_darah'],
+                ['Inventaris Darah', 'inventaris_darah'],
+                ['Kantong Darah', 'kantong_darah'],
             ],
             title: 'Kantong Darah',
             action: [

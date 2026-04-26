@@ -13,8 +13,8 @@ final class SupplierController extends ControllerTemplate
         parent::__construct(
             model: new SupplierModel(),
             breadcrumbs: [
-                ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
-                ['title' => 'Supplier',            'icon' => 'supplier'],
+                ['Inventori Non Medis', 'inventori_non_medis'],
+                ['Supplier',            'supplier'],
             ],
             title: 'Supplier',
             action: [

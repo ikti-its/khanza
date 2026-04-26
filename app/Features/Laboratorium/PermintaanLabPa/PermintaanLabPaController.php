@@ -13,8 +13,8 @@ final class PermintaanLabPaController extends ControllerTemplate
         parent::__construct(
             model: new PermintaanLabPaModel(),
             breadcrumbs: [
-                ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
-                ['title' => 'Permintaan Lab PA', 'icon' => 'permintaan_lab_pa'],
+                ['Laboratorium', 'laboratorium'],
+                ['Permintaan Lab PA', 'permintaan_lab_pa'],
             ],
             title: 'Permintaan Lab PA',
             action: [
