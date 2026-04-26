@@ -28,7 +28,7 @@ final class DataTriaseSekunderController extends ControllerTemplate
                 [HIDE, REQUIRED, I::TEXT, 'anamnesa_singkat', 'Anamnesa Singkat'],
                 [HIDE, REQUIRED, I::TEXT, 'catatan', 'Catatan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_plan_sekunder', 'ID Plan Sekunder'],
-                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_triase', 'Tanggal Triase'],
+                [SHOW, REQUIRED, I::DTIME, 'tanggal_triase', 'Tanggal Triase'],
                 [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
             ],
         );

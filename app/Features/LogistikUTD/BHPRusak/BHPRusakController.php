@@ -30,7 +30,7 @@ final class BHPRusakController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],
                 [SHOW, REQUIRED, I::MONEY, 'harga_beli', 'Harga Beli'],
                 [HIDE, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
-                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_rusak', 'Tanggal Rusak'],
+                [SHOW, REQUIRED, I::DTIME, 'tanggal_rusak', 'Tanggal Rusak'],
                 [SHOW, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
             ],
         );

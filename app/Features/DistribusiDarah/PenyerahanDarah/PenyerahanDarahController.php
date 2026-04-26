@@ -26,7 +26,7 @@ final class PenyerahanDarahController extends ControllerTemplate
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_penyerahan', 'No. Penyerahan'],
-                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_penyerahan', 'Tanggal Penyerahan'],
+                [SHOW, REQUIRED, I::DTIME, 'tanggal_penyerahan', 'Tanggal Penyerahan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
                 [HIDE, REQUIRED, I::INDEX, 'id_petugas_cross', 'ID Petugas Crossmatch'],
                 [HIDE, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
@@ -34,7 +34,7 @@ final class PenyerahanDarahController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NAME, 'pengambil_darah', 'Pengambil Darah'],
                 [HIDE, REQUIRED, I::TEXT, 'alamat_pengambil', 'Alamat Pengambil'],
                 [HIDE, REQUIRED, I::INDEX, 'id_penanggung_jawab', 'ID Penanggung Jawab'],
-                [HIDE, REQUIRED, 'desimal', 'besar_ppn', 'PPN (%)'],
+                [HIDE, REQUIRED, I::FLOAT, 'besar_ppn', 'PPN (%)'],
                 [SHOW, REQUIRED, I::SELECT, 'id_status_pembayaran', 'ID Status Pembayaran'],
             ],
         );

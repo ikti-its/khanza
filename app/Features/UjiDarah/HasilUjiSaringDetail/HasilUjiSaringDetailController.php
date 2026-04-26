@@ -27,7 +27,7 @@ final class HasilUjiSaringDetailController extends ControllerTemplate
                 [SHOW, REQUIRED, I::INDEX, 'id_uji_saring', 'ID Uji Saring'],
                 [SHOW, REQUIRED, I::INDEX, 'id_parameter_uji', 'ID Parameter Uji'],
                 [SHOW, REQUIRED, I::INDEX, 'id_nilai_saring', 'ID Nilai Saring'],
-                [SHOW, OPTIONAL, 'desimal', 'nilai_absorbance', 'Nilai Absorbance'],
+                [SHOW, OPTIONAL, I::FLOAT, 'nilai_absorbance', 'Nilai Absorbance'],
             ],
         );
     }   

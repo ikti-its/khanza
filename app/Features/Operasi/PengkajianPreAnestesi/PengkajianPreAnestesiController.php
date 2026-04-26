@@ -37,7 +37,7 @@ final class PengkajianPreAnestesiController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'diastolik', 'Diastolik'],
                 [SHOW, REQUIRED, I::NUMBER, 'saturasi_o2', 'Saturasi O2'],
                 [SHOW, REQUIRED, I::NUMBER, 'nadi', 'Nadi'],
-                [SHOW, REQUIRED, 'suhu', 'suhu', 'Suhu'],
+                [SHOW, REQUIRED, I::TEMP, 'suhu', 'Suhu'],
                 [SHOW, REQUIRED, I::NUMBER, 'pernapasan', 'Pernapasan'],
                 [SHOW, REQUIRED, I::TEXT, 'fisik_cardiovascular', 'Fisik Cardiovascular'],
                 [SHOW, REQUIRED, I::TEXT, 'fisik_paru', 'Fisik Paru'],

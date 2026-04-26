@@ -28,7 +28,7 @@ final class PengambilanMedisController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],
                 [SHOW, REQUIRED, I::MONEY, 'harga_beli', 'Harga Beli'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_bangsal', 'Nama Bangsal'],
-                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_pengambilan', 'Tanggal Pengambilan'],
+                [SHOW, REQUIRED, I::DTIME, 'tanggal_pengambilan', 'Tanggal Pengambilan'],
                 [HIDE, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
                 [HIDE, OPTIONAL, I::TEXT, 'nomor_batch', 'Nomor Batch'],
                 [HIDE, OPTIONAL, I::TEXT, 'nomor_faktur', 'Nomor Faktur'],

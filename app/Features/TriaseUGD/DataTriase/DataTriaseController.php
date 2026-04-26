@@ -25,7 +25,7 @@ final class DataTriaseController extends ControllerTemplate
                 //visible, display, kolom, jenis, required, *opsi
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase', 'ID Triase'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
-                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_kunjungan', 'Tanggal Kunjungan'],
+                [SHOW, REQUIRED, I::DTIME, 'tanggal_kunjungan', 'Tanggal Kunjungan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_cara_masuk', 'ID Cara Masuk'],
                 [HIDE, REQUIRED, I::INDEX, 'id_alat_transportasi', 'ID Alat Transportasi'],
                 [HIDE, REQUIRED, I::INDEX, 'id_alasan_kedatangan', 'ID Alasan Kedatangan'],
@@ -35,7 +35,7 @@ final class DataTriaseController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'diastolik', 'Tekanan Diastolik'],
                 [SHOW, REQUIRED, I::NUMBER, 'nadi', 'Nadi (x/menit)'],
                 [HIDE, REQUIRED, I::NUMBER, 'pernapasan', 'Pernapasan (x/menit)'],
-                [SHOW, REQUIRED, 'suhu', 'suhu', 'Suhu'],
+                [SHOW, REQUIRED, I::TEMP, 'suhu', 'Suhu'],
                 [SHOW, REQUIRED, I::NUMBER, 'saturasi_o2', 'Saturasi O2 (%)'],
                 [HIDE, REQUIRED, I::NUMBER, 'nyeri', 'Nyeri (0-10)'],
             ],

@@ -40,7 +40,7 @@ final class CatatanAnestesiSedasiController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'diastolik', 'Diastolik'],
                 [SHOW, REQUIRED, I::NUMBER, 'nadi', 'Nadi'],
                 [SHOW, REQUIRED, I::NUMBER, 'respiratory_rate', 'Respiratory Rate'],
-                [SHOW, REQUIRED, 'suhu', 'suhu', 'Suhu'],
+                [SHOW, REQUIRED, I::TEMP, 'suhu', 'Suhu'],
                 [SHOW, REQUIRED, I::NUMBER, 'saturasi_o2', 'Saturasi O2'],
                 [SHOW, REQUIRED, I::NUMBER, 'tinggi_badan_cm', 'Tinggi Badan (cm)'],
                 [SHOW, REQUIRED, I::NUMBER, 'berat_badan_kg', 'Berat Badan (kg)'],

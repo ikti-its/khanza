@@ -29,7 +29,7 @@ final class DataTriasePrimerController extends ControllerTemplate
                 [HIDE, REQUIRED, I::INDEX, 'id_kebutuhan_khusus', 'ID Kebutuhan Khusus'],
                 [HIDE, REQUIRED, I::TEXT, 'catatan', 'Catatan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_plan_primer', 'ID Plan Primer'],
-                [SHOW, REQUIRED, 'tanggal_jam', 'tanggal_triase', 'Tanggal Triase'],
+                [SHOW, REQUIRED, I::DTIME, 'tanggal_triase', 'Tanggal Triase'],
                 [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
             ],
         );

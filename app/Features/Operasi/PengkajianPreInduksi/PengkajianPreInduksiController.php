@@ -32,7 +32,7 @@ final class PengkajianPreInduksiController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'diastolik', 'Diastolik'],
                 [SHOW, REQUIRED, I::NUMBER, 'nadi', 'Nadi'],
                 [SHOW, REQUIRED, I::NUMBER, 'respiratory_rate', 'Respiratory Rate'],
-                [SHOW, REQUIRED, 'suhu', 'suhu', 'Suhu'],
+                [SHOW, REQUIRED, I::TEMP, 'suhu', 'Suhu'],
                 [SHOW, REQUIRED, I::TEXT, 'elektrokardiogram', 'Elektrokardiogram'],
                 [SHOW, REQUIRED, I::TEXT, 'vital_lain_lain', 'Vital Lain-lain'],
                 [SHOW, REQUIRED, I::SELECT, 'is_sesuai_asesmen', 'Sesuai Asesmen'],
