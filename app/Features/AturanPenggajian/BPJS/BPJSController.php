@@ -17,10 +17,10 @@ final class BPJSController extends ControllerTemplate
             ],
             title: 'BPJS',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true, 
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE, 
+                A::DELETE,
             ],
             fields: [
                 // [SHOW, REQUIRED, I::INDEX, 'no_bpjs', 'Nomor BPJS'],

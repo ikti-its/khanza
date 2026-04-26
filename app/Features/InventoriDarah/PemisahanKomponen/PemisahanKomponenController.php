@@ -17,10 +17,10 @@ final class PemisahanKomponenController extends ControllerTemplate
             ],
             title: 'Pemisahan Komponen',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => false, 
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                // A::UPDATE, 
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],

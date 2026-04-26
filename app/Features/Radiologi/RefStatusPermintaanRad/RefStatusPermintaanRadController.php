@@ -18,10 +18,10 @@ final class RefStatusPermintaanRadController extends ControllerTemplate
             ],
             title: 'Referensi Status Permintaan Radiologi',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status', 'ID Status'],

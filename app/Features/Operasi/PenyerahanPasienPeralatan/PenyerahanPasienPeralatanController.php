@@ -18,10 +18,10 @@ final class PenyerahanPasienPeralatanController extends ControllerTemplate
             ],
             title: 'Penyerahan Pasien Peralatan',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id', 'ID'],

@@ -18,10 +18,10 @@ final class RefIndikasiPindahController extends ControllerTemplate
             ],
             title: 'Referensi Indikasi Pindah',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_indikasi', 'ID Indikasi'],

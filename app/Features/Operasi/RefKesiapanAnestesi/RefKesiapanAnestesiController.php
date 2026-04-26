@@ -18,10 +18,10 @@ final class RefKesiapanAnestesiController extends ControllerTemplate
             ],
             title: 'Referensi Kesiapan Anestesi',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesiapan', 'ID Kesiapan'],

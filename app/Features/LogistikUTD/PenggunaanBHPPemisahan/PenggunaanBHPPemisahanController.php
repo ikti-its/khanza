@@ -17,10 +17,10 @@ final class PenggunaanBHPPemisahanController extends ControllerTemplate
             ],
             title: 'Penggunaan BHP Pemisahan',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => false, 
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                // A::UPDATE, 
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_pemisahan', 'ID BHP Pemisahan'],

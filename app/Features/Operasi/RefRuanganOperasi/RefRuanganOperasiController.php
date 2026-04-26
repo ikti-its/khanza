@@ -18,10 +18,10 @@ final class RefRuanganOperasiController extends ControllerTemplate
             ],
             title: 'Referensi Ruangan Operasi',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_ruangan', 'ID Ruangan'],

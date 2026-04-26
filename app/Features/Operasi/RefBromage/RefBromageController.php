@@ -18,10 +18,10 @@ final class RefBromageController extends ControllerTemplate
             ],
             title: 'Referensi Bromage',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bromage', 'ID Bromage'],

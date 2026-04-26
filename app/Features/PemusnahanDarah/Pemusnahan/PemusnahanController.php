@@ -16,10 +16,10 @@ final class PemusnahanController extends ControllerTemplate
             ],
             title: 'Pemusnahan',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => false, 
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                // A::UPDATE, 
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemusnahan', 'ID Pemusnahan'],

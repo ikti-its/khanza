@@ -18,10 +18,10 @@ final class RefAldretteTekananDarahController extends ControllerTemplate
             ],
             title: 'Referensi Aldrette Tekanan Darah',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_td', 'ID Tekanan Darah'],

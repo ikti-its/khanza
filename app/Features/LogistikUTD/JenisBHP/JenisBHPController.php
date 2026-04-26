@@ -17,10 +17,10 @@ final class JenisBHPController extends ControllerTemplate
             ],
             title: 'Jenis BHP',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false, 
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE, 
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],

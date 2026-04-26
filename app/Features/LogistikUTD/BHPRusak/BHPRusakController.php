@@ -17,10 +17,10 @@ final class BHPRusakController extends ControllerTemplate
             ],
             title: 'BHP Rusak',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => false,
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                // A::UPDATE,
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_rusak', 'ID BHP Rusak'],

@@ -17,10 +17,10 @@ final class PermintaanDarahDetailController extends ControllerTemplate
             ],
             title: 'Permintaan Darah Detail',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_detail', 'ID Permintaan Detail'],

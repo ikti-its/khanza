@@ -18,10 +18,10 @@ final class SkriningRawatJalanController extends ControllerTemplate
             ],
             title: 'Skrining Rawat Jalan',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skrining', 'ID Skrining'],

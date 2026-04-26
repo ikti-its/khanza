@@ -18,10 +18,10 @@ final class PengkajianPreInduksiAirwayController extends ControllerTemplate
             ],
             title: 'Pengkajian Pre Induksi Airway',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_airway', 'ID Airway'],

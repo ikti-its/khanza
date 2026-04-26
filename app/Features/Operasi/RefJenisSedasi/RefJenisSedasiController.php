@@ -18,10 +18,10 @@ final class RefJenisSedasiController extends ControllerTemplate
             ],
             title: 'Referensi Jenis Sedasi',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_sedasi', 'ID Jenis Sedasi'],

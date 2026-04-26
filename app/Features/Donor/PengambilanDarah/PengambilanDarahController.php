@@ -17,10 +17,10 @@ final class PengambilanDarahController extends ControllerTemplate
             ],
             title: 'Pengambilan Darah',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true, 
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE, 
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],

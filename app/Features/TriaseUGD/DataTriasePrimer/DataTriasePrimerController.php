@@ -17,10 +17,10 @@ final class DataTriasePrimerController extends ControllerTemplate
             ],
             title: 'Data Triase Primer',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true, 
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE, 
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase_primer', 'ID Triase Primer'],

@@ -18,10 +18,10 @@ final class LokasiController extends ControllerTemplate
             ],
             title: 'Lokasi',
             action: [
-                'tambah' => true,
-                'audit'  => false,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                // A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_lokasi', 'ID'],

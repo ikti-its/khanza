@@ -18,10 +18,10 @@ final class SkorStewardController extends ControllerTemplate
             ],
             title: 'Skor Steward',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skor_steward', 'ID Skor Steward'],

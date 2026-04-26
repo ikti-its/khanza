@@ -17,10 +17,10 @@ final class KasusReaktifController extends ControllerTemplate
             ],
             title: 'Kasus Reaktif',
             action: [
-                'tambah' => false,
-                'audit'  => true,
-                'ubah'   => true, 
-                'hapus'  => false
+                // A::CREATE,
+                A::AUDIT,
+                A::UPDATE, 
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kasus', 'ID Kasus'],

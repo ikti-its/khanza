@@ -18,10 +18,10 @@ final class RefKesadaranPascaopController extends ControllerTemplate
             ],
             title: 'Referensi Kesadaran Pasca Operasi',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],

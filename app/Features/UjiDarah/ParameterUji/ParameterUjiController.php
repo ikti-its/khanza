@@ -17,10 +17,10 @@ final class ParameterUjiController extends ControllerTemplate
             ],
             title: 'Parameter Uji',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_parameter_uji', 'ID Parameter Uji'],

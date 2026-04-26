@@ -17,10 +17,10 @@ final class NilaiDiagnostikController extends ControllerTemplate
             ],
             title: 'Nilai Diagnostik',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_nilai_diagnostik', 'ID Nilai Diagnostik'],

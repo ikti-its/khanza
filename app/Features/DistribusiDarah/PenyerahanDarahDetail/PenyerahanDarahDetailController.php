@@ -17,10 +17,10 @@ final class PenyerahanDarahDetailController extends ControllerTemplate
             ],
             title: 'Penyerahan Darah Detail',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => false,
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                // A::UPDATE,
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan_detail', 'ID Penyerahan Detail'],

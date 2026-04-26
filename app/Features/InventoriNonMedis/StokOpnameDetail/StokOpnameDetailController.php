@@ -19,10 +19,10 @@ final class StokOpnameDetailController extends ControllerTemplate
             ],
             title: 'Detail Stok Opname',
             action: [
-                'tambah' => true,
-                'audit'  => false,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                // A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_detail', 'ID Detail'],

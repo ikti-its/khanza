@@ -17,10 +17,10 @@ final class StokDarahController extends ControllerTemplate
             ],
             title: 'Stok Darah',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true, 
-                'hapus'  => false
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE, 
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_stok_darah', 'ID Stok Darah'],

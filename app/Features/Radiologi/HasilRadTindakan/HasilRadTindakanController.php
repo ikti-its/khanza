@@ -18,10 +18,10 @@ final class HasilRadTindakanController extends ControllerTemplate
             ],
             title: 'Hasil Radiologi Tindakan',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_tindakan', 'ID Hasil Tindakan'],

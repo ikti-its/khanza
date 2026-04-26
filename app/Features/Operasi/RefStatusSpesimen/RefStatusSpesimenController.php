@@ -18,10 +18,10 @@ final class RefStatusSpesimenController extends ControllerTemplate
             ],
             title: 'Referensi Status Spesimen',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_spesimen', 'ID Status Spesimen'],

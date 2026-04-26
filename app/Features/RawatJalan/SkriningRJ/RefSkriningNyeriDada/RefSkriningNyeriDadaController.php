@@ -18,10 +18,10 @@ final class RefSkriningNyeriDadaController extends ControllerTemplate
             ],
             title: 'Referensi Skrining Nyeri Dada',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_nyeri_dada', 'ID Nyeri Dada'],

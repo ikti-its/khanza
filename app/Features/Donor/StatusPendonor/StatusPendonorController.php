@@ -17,10 +17,10 @@ final class StatusPendonorController extends ControllerTemplate
             ],
             title: 'Status Pendonor',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false, 
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE, 
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_pendonor', 'ID Status Pendonor'],

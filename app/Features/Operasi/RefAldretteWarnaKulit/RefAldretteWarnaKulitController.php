@@ -18,10 +18,10 @@ final class RefAldretteWarnaKulitController extends ControllerTemplate
             ],
             title: 'Referensi Aldrette Warna Kulit',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_warna', 'ID Warna'],

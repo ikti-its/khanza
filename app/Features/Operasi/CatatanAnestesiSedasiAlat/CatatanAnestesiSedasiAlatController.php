@@ -18,10 +18,10 @@ final class CatatanAnestesiSedasiAlatController extends ControllerTemplate
             ],
             title: 'Catatan Anestesi Sedasi Alat',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_alat', 'ID Alat'],

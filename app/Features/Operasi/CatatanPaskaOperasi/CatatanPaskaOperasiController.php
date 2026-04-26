@@ -18,10 +18,10 @@ final class CatatanPaskaOperasiController extends ControllerTemplate
             ],
             title: 'Catatan Paska Operasi',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_catatan_paska', 'ID Catatan Paska'],

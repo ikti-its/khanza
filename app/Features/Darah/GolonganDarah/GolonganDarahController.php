@@ -17,10 +17,10 @@ final class GolonganDarahController extends ControllerTemplate
             ],
             title: 'Golongan Darah',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false, 
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE, 
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_golongan_darah', 'ID Golongan Darah'],

@@ -18,10 +18,10 @@ final class JenisBarangController extends ControllerTemplate
             ],
             title: 'Jenis Barang',
             action: [
-                'tambah' => true,
-                'audit'  => false,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                // A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, 'ID',               'id_jenis_barang',   I::INDEX, OPTIONAL],

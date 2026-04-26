@@ -17,10 +17,10 @@ final class HasilDiagnostikDetailController extends ControllerTemplate
             ],
             title: 'Hasil Diagnostik Detail',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_diagnostik_detail', 'ID Diagnostik Detail'],

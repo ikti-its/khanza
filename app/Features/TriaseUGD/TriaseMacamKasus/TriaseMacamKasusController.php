@@ -17,10 +17,10 @@ final class TriaseMacamKasusController extends ControllerTemplate
             ],
             title: 'Triase Macam Kasus',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true, 
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE, 
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_macam_kasus', 'ID Macam Kasus'],

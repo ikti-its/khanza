@@ -18,10 +18,10 @@ final class RefKeadaanUmumTransferController extends ControllerTemplate
             ],
             title: 'Referensi Keadaan Umum Transfer',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_keadaan_umum', 'ID Keadaan Umum'],

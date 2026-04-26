@@ -17,10 +17,10 @@ final class DataTriaseSekunderController extends ControllerTemplate
             ],
             title: 'Data Triase Sekunder',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true, 
-                'hapus'  => true
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE, 
+                A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase_sekunder', 'ID Triase Sekunder'],

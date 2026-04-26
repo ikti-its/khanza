@@ -18,10 +18,10 @@ final class RefSkriningPernafasanController extends ControllerTemplate
             ],
             title: 'Referensi Skrining Pernafasan',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pernafasan', 'ID Pernafasan'],

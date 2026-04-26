@@ -17,10 +17,10 @@ final class PertanyaanKonselingController extends ControllerTemplate
             ],
             title: 'Pertanyaan Konseling',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false, 
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE, 
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pertanyaan', 'ID Pertanyaan'],

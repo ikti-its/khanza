@@ -17,10 +17,10 @@ final class SumberDarahController extends ControllerTemplate
             ],
             title: 'Sumber Darah',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false, 
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE, 
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_sumber_darah', 'ID Sumber Darah'],

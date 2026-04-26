@@ -18,10 +18,10 @@ final class RefWarnaUrineController extends ControllerTemplate
             ],
             title: 'Referensi Warna Urine',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_warna_urine', 'ID Warna Urine'],

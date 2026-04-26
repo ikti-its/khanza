@@ -18,10 +18,10 @@ final class RefStatusPenayanganController extends ControllerTemplate
             ],
             title: 'Referensi Status Penayangan',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_penayangan', 'ID Status Penayangan'],

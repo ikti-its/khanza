@@ -17,10 +17,10 @@ final class HasilAnamnesisController extends ControllerTemplate
             ],
             title: 'Hasil Anamnesis',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false, 
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE, 
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil', 'ID Hasil'],

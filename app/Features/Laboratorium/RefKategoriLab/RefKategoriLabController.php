@@ -18,10 +18,10 @@ final class RefKategoriLabController extends ControllerTemplate
             ],
             title: 'Referensi Kategori Lab',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kategori', 'ID Kategori'],

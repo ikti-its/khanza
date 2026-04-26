@@ -17,10 +17,10 @@ final class NilaiSaringController extends ControllerTemplate
             ],
             title: 'Nilai Saring',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_nilai_saring', 'ID Nilai Saring'],

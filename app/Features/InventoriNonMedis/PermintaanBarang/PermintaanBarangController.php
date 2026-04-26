@@ -18,10 +18,10 @@ final class PermintaanBarangController extends ControllerTemplate
             ],
             title: 'Permintaan Barang',
             action: [
-                'tambah' => true,
-                'audit'  => false,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                // A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID'],

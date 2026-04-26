@@ -18,10 +18,10 @@ final class PermintaanLabPaController extends ControllerTemplate
             ],
             title: 'Permintaan Lab PA',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_pa', 'ID Permintaan PA'],

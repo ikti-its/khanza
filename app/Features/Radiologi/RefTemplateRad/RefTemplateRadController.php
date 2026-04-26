@@ -18,10 +18,10 @@ final class RefTemplateRadController extends ControllerTemplate
             ],
             title: 'Referensi Template Radiologi',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false,
-                'hapus'  => false,
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE,
+                // A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_template', 'ID Template'],

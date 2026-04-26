@@ -17,10 +17,10 @@ final class PlanPrimerController extends ControllerTemplate
             ],
             title: 'Plan Primer',
             action: [
-                'tambah' => false,
-                'audit'  => false,
-                'ubah'   => false, 
-                'hapus'  => false
+                // A::CREATE,
+                // A::AUDIT,
+                // A::UPDATE, 
+                // A::DELETE,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_plan_primer', 'ID Plan Primer'],

@@ -18,10 +18,10 @@ final class ChecklistPostopController extends ControllerTemplate
             ],
             title: 'Checklist Post Operasi',
             action: [
-                'tambah' => true,
-                'audit'  => true,
-                'ubah'   => true,
-                'hapus'  => true,
+                A::CREATE,
+                A::AUDIT,
+                A::UPDATE,
+                A::DELETE,,
             ],
             fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
