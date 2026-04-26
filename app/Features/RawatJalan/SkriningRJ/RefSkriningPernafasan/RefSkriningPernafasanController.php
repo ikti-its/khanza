@@ -15,14 +15,14 @@ final class RefSkriningPernafasanController extends ControllerTemplate
                 ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
                 ['title' => 'Referensi Skrining Pernafasan', 'icon' => 'ref_skrining_pernafasan'],
             ],
-            judul: 'Referensi Skrining Pernafasan',
-            aksi: [
+            title: 'Referensi Skrining Pernafasan',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pernafasan', 'ID Pernafasan'],
                 [SHOW, REQUIRED, I::TEXT, 'pernafasan', 'Pernafasan'],
             ],

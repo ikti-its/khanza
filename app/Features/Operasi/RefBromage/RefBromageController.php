@@ -15,14 +15,14 @@ final class RefBromageController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Bromage', 'icon' => 'ref_bromage'],
             ],
-            judul: 'Referensi Bromage',
-            aksi: [
+            title: 'Referensi Bromage',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bromage', 'ID Bromage'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::TEXT, 'tingkat_blok', 'Tingkat Blok'],

@@ -14,14 +14,14 @@ final class HasilAnamnesisController extends ControllerTemplate
                 ['title' => 'Donor', 'icon' => 'donor'],
                 ['title' => 'Hasil Anamnesis', 'icon' => 'hasil_anamnesis'],
             ],
-            judul: 'Hasil Anamnesis',
-            aksi: [
+            title: 'Hasil Anamnesis',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil', 'ID Hasil'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_hasil', 'Nama Hasil'],
             ],

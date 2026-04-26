@@ -15,14 +15,14 @@ final class RefStewardMotorikController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Steward Motorik', 'icon' => 'ref_steward_motorik'],
             ],
-            judul: 'Referensi Steward Motorik',
-            aksi: [
+            title: 'Referensi Steward Motorik',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_motorik', 'ID Motorik'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

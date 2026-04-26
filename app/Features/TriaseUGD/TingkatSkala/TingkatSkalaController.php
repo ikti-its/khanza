@@ -14,14 +14,14 @@ final class TingkatSkalaController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Tingkat Skala', 'icon' => 'tingkat_skala'],
             ],
-            judul: 'Tingkat Skala',
-            aksi: [
+            title: 'Tingkat Skala',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_tingkat', 'ID Tingkat'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_tingkat', 'Nama Tingkat'],
             ],

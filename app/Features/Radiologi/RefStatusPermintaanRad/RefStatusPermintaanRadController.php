@@ -15,14 +15,14 @@ final class RefStatusPermintaanRadController extends ControllerTemplate
                 ['title' => 'Radiologi', 'icon' => 'radiologi'],
                 ['title' => 'Referensi Status Permintaan Radiologi', 'icon' => 'ref_status_permintaan_rad'],
             ],
-            judul: 'Referensi Status Permintaan Radiologi',
-            aksi: [
+            title: 'Referensi Status Permintaan Radiologi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status', 'ID Status'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status', 'Nama Status'],
             ],

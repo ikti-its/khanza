@@ -15,14 +15,14 @@ final class RefItemPemeriksaanLabController extends ControllerTemplate
                 ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
                 ['title' => 'Referensi Item Pemeriksaan', 'icon' => 'ref_item_pemeriksaan_lab'],
             ],
-            judul: 'Referensi Item Pemeriksaan Lab',
-            aksi: [
+            title: 'Referensi Item Pemeriksaan Lab',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_item_lab', 'ID Item Lab'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kategori', 'Kategori'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_periksa', 'Kode Periksa'],

@@ -15,14 +15,14 @@ final class PermintaanBarangController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Permintaan Barang',   'icon' => 'permintaan_barang'],
             ],
-            judul: 'Permintaan Barang',
-            aksi: [
+            title: 'Permintaan Barang',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID'],
                 [SHOW, REQUIRED, I::TEXT, 'unit_pemohon', 'Unit Pemohon'],
                 [SHOW, REQUIRED, I::SELECT, 'tipe', 'Tipe'],

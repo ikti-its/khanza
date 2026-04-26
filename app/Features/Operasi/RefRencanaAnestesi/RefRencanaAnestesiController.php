@@ -15,14 +15,14 @@ final class RefRencanaAnestesiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Rencana Anestesi', 'icon' => 'ref_rencana_anestesi'],
             ],
-            judul: 'Referensi Rencana Anestesi',
-            aksi: [
+            title: 'Referensi Rencana Anestesi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rencana_anestesi', 'ID Rencana Anestesi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_rencana', 'Nama Rencana'],
             ],

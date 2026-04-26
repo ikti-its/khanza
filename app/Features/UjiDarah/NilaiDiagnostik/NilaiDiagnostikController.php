@@ -14,14 +14,14 @@ final class NilaiDiagnostikController extends ControllerTemplate
                 ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
                 ['title' => 'Nilai Diagnostik', 'icon' => 'nilai_diagnostik'],
             ],
-            judul: 'Nilai Diagnostik',
-            aksi: [
+            title: 'Nilai Diagnostik',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_nilai_diagnostik', 'ID Nilai Diagnostik'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_nilai_diagnostik', 'Nama Nilai Diagnostik'],
             ],

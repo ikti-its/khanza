@@ -15,14 +15,14 @@ final class HasilRadTindakanController extends ControllerTemplate
                 ['title' => 'Radiologi', 'icon' => 'radiologi'],
                 ['title' => 'Hasil Radiologi Tindakan', 'icon' => 'hasil_rad_tindakan'],
             ],
-            judul: 'Hasil Radiologi Tindakan',
-            aksi: [
+            title: 'Hasil Radiologi Tindakan',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_tindakan', 'ID Hasil Tindakan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_hasil_rad', 'ID Hasil Rad'],
                 [SHOW, REQUIRED, I::INDEX, 'id_item_rad', 'Item Radiologi'],

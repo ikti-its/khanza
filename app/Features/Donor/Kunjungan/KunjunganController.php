@@ -14,14 +14,14 @@ final class KunjunganController extends ControllerTemplate
                 ['title' => 'Donor', 'icon' => 'donor'],
                 ['title' => 'Kunjungan', 'icon' => 'kunjungan'],
             ],
-            judul: 'Kunjungan',
-            aksi: [
+            title: 'Kunjungan',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::NUMBER, 'nomor_antrian', 'Nomor Antrian'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pendonor', 'ID Pendonor'],

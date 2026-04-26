@@ -14,14 +14,14 @@ final class PermintaanDarahDetailController extends ControllerTemplate
                 ['title' => 'Pelayanan Darah', 'icon' => 'pelayanan_darah'],
                 ['title' => 'Permintaan Darah Detail', 'icon' => 'permintaan_darah_detail'],
             ],
-            judul: 'Permintaan Darah Detail',
-            aksi: [
+            title: 'Permintaan Darah Detail',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_detail', 'ID Permintaan Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_komponen', 'ID Komponen'],

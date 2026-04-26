@@ -14,14 +14,14 @@ final class TarifKomponenController extends ControllerTemplate
                 ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
                 ['title' => 'Tarif Komponen', 'icon' => 'tarif_komponen'],
             ],
-            judul: 'Tarif Komponen',
-            aksi: [
+            title: 'Tarif Komponen',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_tarif', 'ID Tarif'],
                 [SHOW, REQUIRED, I::INDEX, 'id_komponen', 'ID Komponen'],
                 [SHOW, REQUIRED, I::MONEY, 'jasa_sarana', 'Jasa Sarana'],

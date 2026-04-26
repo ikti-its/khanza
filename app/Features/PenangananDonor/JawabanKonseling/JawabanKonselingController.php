@@ -14,14 +14,14 @@ final class JawabanKonselingController extends ControllerTemplate
                 ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
                 ['title' => 'Jawaban Konseling', 'icon' => 'jawaban_konseling'],
             ],
-            judul: 'Jawaban Konseling',
-            aksi: [
+            title: 'Jawaban Konseling',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jawaban', 'ID Jawaban'],
                 [SHOW, REQUIRED, I::INDEX, 'id_konseling', 'ID Konseling'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pertanyaan', 'ID Pertanyaan'],

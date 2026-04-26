@@ -14,14 +14,14 @@ final class PertanyaanKonselingController extends ControllerTemplate
                 ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
                 ['title' => 'Pertanyaan Konseling', 'icon' => 'pertanyaan_konseling'],
             ],
-            judul: 'Pertanyaan Konseling',
-            aksi: [
+            title: 'Pertanyaan Konseling',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pertanyaan', 'ID Pertanyaan'],
                 [SHOW, REQUIRED, I::TEXT, 'teks_pertanyaan', 'Teks Pertanyaan'],
             ],

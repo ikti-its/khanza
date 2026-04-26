@@ -14,14 +14,14 @@ final class PenggunaanBHPDonorController extends ControllerTemplate
                 ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
                 ['title' => 'Penggunaan BHP Donor', 'icon' => 'penggunaan_bhp_donor'],
             ],
-            judul: 'Penggunaan BHP Donor',
-            aksi: [
+            title: 'Penggunaan BHP Donor',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_donor', 'ID BHP Donor'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],

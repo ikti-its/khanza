@@ -15,14 +15,14 @@ final class PermintaanLabPkController extends ControllerTemplate
                 ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
                 ['title' => 'Permintaan Lab PK', 'icon' => 'permintaan_lab_pk'],
             ],
-            judul: 'Permintaan Lab PK',
-            aksi: [
+            title: 'Permintaan Lab PK',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_pk', 'ID Permintaan PK'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
                 [SHOW, REQUIRED, I::INDEX, 'id_item_pemeriksaan', 'ID Item Pemeriksaan'],

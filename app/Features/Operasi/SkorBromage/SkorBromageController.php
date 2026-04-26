@@ -15,14 +15,14 @@ final class SkorBromageController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Skor Bromage', 'icon' => 'skor_bromage'],
             ],
-            judul: 'Skor Bromage',
-            aksi: [
+            title: 'Skor Bromage',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skor_bromage', 'ID Skor Bromage'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_penilaian', 'Waktu Penilaian'],

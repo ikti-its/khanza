@@ -15,14 +15,14 @@ final class StokOpnameController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Stok Opname',         'icon' => 'stok_opname'],
             ],
-            judul: 'Stok Opname',
-            aksi: [
+            title: 'Stok Opname',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_opname', 'ID Opname'],
                 [SHOW, REQUIRED, I::DATE,  'tanggal', 'Tanggal'],
                 [SHOW, OPTIONAL, I::SELECT,'status',  'Status'],

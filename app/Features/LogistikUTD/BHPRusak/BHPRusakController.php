@@ -14,14 +14,14 @@ final class BHPRusakController extends ControllerTemplate
                 ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
                 ['title' => 'BHP Rusak', 'icon' => 'bhp_rusak'],
             ],
-            judul: 'BHP Rusak',
-            aksi: [
+            title: 'BHP Rusak',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => false,
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_rusak', 'ID BHP Rusak'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],
                 [SHOW, OPTIONAL, I::INDEX, 'id_barang_medis', 'ID Barang Medis'],

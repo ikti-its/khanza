@@ -15,14 +15,14 @@ final class RefAldretteAktivitasController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Aldrette Aktivitas', 'icon' => 'ref_aldrette_aktivitas'],
             ],
-            judul: 'Referensi Aldrette Aktivitas',
-            aksi: [
+            title: 'Referensi Aldrette Aktivitas',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_aktivitas', 'ID Aktivitas'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

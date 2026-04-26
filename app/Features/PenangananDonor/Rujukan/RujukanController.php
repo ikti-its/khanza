@@ -14,14 +14,14 @@ final class RujukanController extends ControllerTemplate
                 ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
                 ['title' => 'Rujukan', 'icon' => 'rujukan'],
             ],
-            judul: 'Rujukan',
-            aksi: [
+            title: 'Rujukan',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rujukan', 'ID Rujukan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_surat', 'Nomor Surat'],

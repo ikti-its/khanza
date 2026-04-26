@@ -14,14 +14,14 @@ final class StatusPencekalanController extends ControllerTemplate
                 ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
                 ['title' => 'Status Pencekalan', 'icon' => 'status_pencekalan'],
             ],
-            judul: 'Status Pencekalan',
-            aksi: [
+            title: 'Status Pencekalan',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_pencekalan', 'ID Status Pencekalan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_pencekalan', 'Nama Status Pencekalan'],
             ],

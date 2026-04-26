@@ -14,14 +14,14 @@ final class StokDarahController extends ControllerTemplate
                 ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
                 ['title' => 'Stok Darah', 'icon' => 'stok_darah'],
             ],
-            judul: 'Stok Darah',
-            aksi: [
+            title: 'Stok Darah',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_stok_darah', 'ID Stok Darah'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_kantong', 'Nomor Kantong'],

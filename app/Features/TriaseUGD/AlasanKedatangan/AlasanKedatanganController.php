@@ -14,14 +14,14 @@ final class AlasanKedatanganController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Alasan Kedatangan', 'icon' => 'alasan_kedatangan'],
             ],
-            judul: 'Alasan Kedatangan',
-            aksi: [
+            title: 'Alasan Kedatangan',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_alasan', 'ID Alasan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_alasan', 'Nama Alasan Kedatangan'],
             ],

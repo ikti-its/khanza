@@ -15,14 +15,14 @@ final class RefSkriningKesadaranController extends ControllerTemplate
                 ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
                 ['title' => 'Referensi Skrining Kesadaran', 'icon' => 'ref_skrining_kesadaran'],
             ],
-            judul: 'Referensi Skrining Kesadaran',
-            aksi: [
+            title: 'Referensi Skrining Kesadaran',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
                 [SHOW, REQUIRED, I::TEXT, 'kesadaran', 'Kesadaran'],
             ],

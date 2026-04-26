@@ -15,14 +15,14 @@ final class JenisBarangController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Jenis Barang',        'icon' => 'jenis_barang'],
             ],
-            judul: 'Jenis Barang',
-            aksi: [
+            title: 'Jenis Barang',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, 'ID',               'id_jenis_barang',   I::INDEX, OPTIONAL],
                 [SHOW, 'Nama Jenis Barang','nama_jenis_barang',  I::NAME,   REQUIRED],
             ],

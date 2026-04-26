@@ -14,14 +14,14 @@ final class SkriningDonorController extends ControllerTemplate
                 ['title' => 'Donor', 'icon' => 'donor'],
                 ['title' => 'Skrining Donor', 'icon' => 'skrining_donor'],
             ],
-            judul: 'Skrining Donor',
-            aksi: [
+            title: 'Skrining Donor',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skrining', 'ID Skrining'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::NUMBER, 'sistolik', 'Tekanan Sistolik'],

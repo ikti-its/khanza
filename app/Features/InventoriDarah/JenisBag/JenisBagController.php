@@ -14,14 +14,14 @@ final class JenisBagController extends ControllerTemplate
                 ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
                 ['title' => 'Jenis Bag', 'icon' => 'jenis_bag'],
             ],
-            judul: 'Jenis Bag',
-            aksi: [
+            title: 'Jenis Bag',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_bag', 'ID Jenis Bag'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_jenis_bag', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis_bag', 'Nama Jenis Bag'],

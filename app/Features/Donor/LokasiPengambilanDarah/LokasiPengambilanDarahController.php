@@ -14,14 +14,14 @@ final class LokasiPengambilanDarahController extends ControllerTemplate
                 ['title' => 'Donor', 'icon' => 'donor'],
                 ['title' => 'Lokasi Pengambilan Darah', 'icon' => 'lokasi_pengambilan_darah'],
             ],
-            judul: 'Lokasi Pengambilan Darah',
-            aksi: [
+            title: 'Lokasi Pengambilan Darah',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_lokasi_pengambilan', 'ID Lokasi Pengambilan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_lokasi', 'Nama Lokasi'],
             ],

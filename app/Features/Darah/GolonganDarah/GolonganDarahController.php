@@ -14,14 +14,14 @@ final class GolonganDarahController extends ControllerTemplate
                 ['title' => 'Darah', 'icon' => 'darah'],
                 ['title' => 'Golongan Darah', 'icon' => 'golongan_darah'],
             ],
-            judul: 'Golongan Darah',
-            aksi: [
+            title: 'Golongan Darah',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_golongan_darah', 'ID Golongan Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_golongan_darah', 'Nama Golongan Darah'],
             ],

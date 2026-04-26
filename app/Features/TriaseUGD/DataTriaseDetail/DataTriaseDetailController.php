@@ -14,14 +14,14 @@ final class DataTriaseDetailController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Data Triase Detail', 'icon' => 'data_triase_detail'],
             ],
-            judul: 'Data Triase Detail',
-            aksi: [
+            title: 'Data Triase Detail',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase_detail', 'ID Triase Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
                 [SHOW, REQUIRED, I::INDEX, 'id_skala', 'ID Skala'],

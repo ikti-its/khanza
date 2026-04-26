@@ -14,14 +14,14 @@ final class HasilUjiSaringDetailController extends ControllerTemplate
                 ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
                 ['title' => 'Hasil Uji Saring Detail', 'icon' => 'hasil_uji_saring_detail'],
             ],
-            judul: 'Hasil Uji Saring Detail',
-            aksi: [
+            title: 'Hasil Uji Saring Detail',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_uji_saring_detail', 'ID Uji Saring Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_uji_saring', 'ID Uji Saring'],
                 [SHOW, REQUIRED, I::INDEX, 'id_parameter_uji', 'ID Parameter Uji'],

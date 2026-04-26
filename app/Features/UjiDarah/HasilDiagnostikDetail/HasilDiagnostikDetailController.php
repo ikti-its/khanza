@@ -14,14 +14,14 @@ final class HasilDiagnostikDetailController extends ControllerTemplate
                 ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
                 ['title' => 'Hasil Diagnostik Detail', 'icon' => 'hasil_diagnostik_detail'],
             ],
-            judul: 'Hasil Diagnostik Detail',
-            aksi: [
+            title: 'Hasil Diagnostik Detail',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_diagnostik_detail', 'ID Diagnostik Detail'],
                 [SHOW, REQUIRED, I::INDEX, 'id_diagnostik', 'ID Diagnostik'],
                 [SHOW, REQUIRED, I::INDEX, 'id_parameter_uji', 'ID Parameter Uji'],

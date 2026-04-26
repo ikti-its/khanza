@@ -14,14 +14,14 @@ final class JenisDonorController extends ControllerTemplate
                 ['title' => 'Donor', 'icon' => 'donor'],
                 ['title' => 'Jenis Donor', 'icon' => 'jenis_donor'],
             ],
-            judul: 'Jenis Donor',
-            aksi: [
+            title: 'Jenis Donor',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_donor', 'ID Jenis Donor'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_jenis_donor', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis_donor', 'Nama Jenis Donor'],

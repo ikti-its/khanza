@@ -15,14 +15,14 @@ final class TransaksiStokController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Transaksi Stok',      'icon' => 'transaksi_stok'],
             ],
-            judul: 'Transaksi Stok',
-            aksi: [
+            title: 'Transaksi Stok',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_transaksi', 'ID Transaksi'],
                 [SHOW, REQUIRED, I::SELECT, 'id_barang', 'Barang'],
                 [SHOW, REQUIRED, I::SELECT, 'tipe_transaksi', 'Tipe Transaksi'],

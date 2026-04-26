@@ -14,14 +14,14 @@ final class MetodeUjiController extends ControllerTemplate
                 ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
                 ['title' => 'Metode Uji', 'icon' => 'metode_uji'],
             ],
-            judul: 'Metode Uji',
-            aksi: [
+            title: 'Metode Uji',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_metode_uji', 'ID Metode Uji'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_metode', 'Nama Metode'],
             ],

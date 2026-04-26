@@ -14,14 +14,14 @@ final class StatusPermintaanController extends ControllerTemplate
                 ['title' => 'Pelayanan Darah', 'icon' => 'pelayanan_darah'],
                 ['title' => 'Status Permintaan', 'icon' => 'status_permintaan'],
             ],
-            judul: 'Status Permintaan',
-            aksi: [
+            title: 'Status Permintaan',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_permintaan', 'ID Status Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status_permintaan', 'Nama Status Permintaan'],
             ],

@@ -15,14 +15,14 @@ final class RefAngkaAsaController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Angka ASA', 'icon' => 'ref_angka_asa'],
             ],
-            judul: 'Referensi Angka ASA',
-            aksi: [
+            title: 'Referensi Angka ASA',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_asa', 'ID ASA'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_asa', 'Nama ASA'],
             ],

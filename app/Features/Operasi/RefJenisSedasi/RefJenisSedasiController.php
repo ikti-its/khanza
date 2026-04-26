@@ -15,14 +15,14 @@ final class RefJenisSedasiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Jenis Sedasi', 'icon' => 'ref_jenis_sedasi'],
             ],
-            judul: 'Referensi Jenis Sedasi',
-            aksi: [
+            title: 'Referensi Jenis Sedasi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_sedasi', 'ID Jenis Sedasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_sedasi', 'Nama Sedasi'],
             ],

@@ -15,14 +15,14 @@ final class RefKesadaranController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Kesadaran', 'icon' => 'ref_kesadaran'],
             ],
-            judul: 'Referensi Kesadaran',
-            aksi: [
+            title: 'Referensi Kesadaran',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_kesadaran', 'Nama Kesadaran'],
             ],

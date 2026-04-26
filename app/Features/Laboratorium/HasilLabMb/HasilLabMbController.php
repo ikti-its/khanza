@@ -15,14 +15,14 @@ final class HasilLabMbController extends ControllerTemplate
                 ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
                 ['title' => 'Hasil Lab MB', 'icon' => 'hasil_lab_mb'],
             ],
-            judul: 'Hasil Lab MB',
-            aksi: [
+            title: 'Hasil Lab MB',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_mb', 'ID Hasil MB'],
                 [SHOW, REQUIRED, I::INDEX, 'id_permintaan_lab', 'ID Permintaan Lab'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],

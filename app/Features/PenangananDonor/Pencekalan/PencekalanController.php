@@ -14,14 +14,14 @@ final class PencekalanController extends ControllerTemplate
                 ['title' => 'Penanganan Donor', 'icon' => 'penanganan_donor'],
                 ['title' => 'Pencekalan', 'icon' => 'pencekalan'],
             ],
-            judul: 'Pencekalan',
-            aksi: [
+            title: 'Pencekalan',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pencekalan', 'ID Pencekalan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_pencekalan', 'ID Jenis Pencekalan'],

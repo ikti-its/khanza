@@ -14,14 +14,14 @@ final class PlanSekunderController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Plan Sekunder', 'icon' => 'plan_sekunder'],
             ],
-            judul: 'Plan Sekunder',
-            aksi: [
+            title: 'Plan Sekunder',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_plan_sekunder', 'ID Plan Sekunder'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_plan_sekunder', 'Nama Plan Sekunder'],
             ],

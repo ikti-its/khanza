@@ -15,14 +15,14 @@ final class PengadaanBarangController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Pengadaan Barang',    'icon' => 'pengadaan_barang'],
             ],
-            judul: 'Pengadaan Barang',
-            aksi: [
+            title: 'Pengadaan Barang',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengadaan', 'ID Pengadaan'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengajuan', 'ID Pengajuan'],
                 [SHOW, REQUIRED, I::SELECT, 'id_supplier', 'Supplier'],

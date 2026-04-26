@@ -14,14 +14,14 @@ final class BPJSController extends ControllerTemplate
                 ['title' => 'User', 'icon' => 'user'],
                 ['title' => 'BPJS', 'icon' => 'bpjs'],
             ],
-            judul: 'BPJS',
-            aksi: [
+            title: 'BPJS',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 // [SHOW, REQUIRED, I::INDEX, 'no_bpjs', 'Nomor BPJS'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_program', 'Program'],
                 [SHOW, REQUIRED, I::SELECT, 'penyelenggara', 'Penyelenggara'],

@@ -14,14 +14,14 @@ final class JenisBHPController extends ControllerTemplate
                 ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
                 ['title' => 'Jenis BHP', 'icon' => 'jenis_bhp'],
             ],
-            judul: 'Jenis BHP',
-            aksi: [
+            title: 'Jenis BHP',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false, 
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_jenis_bhp', 'Nama Jenis BHP'],
             ],

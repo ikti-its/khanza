@@ -15,14 +15,14 @@ final class BarangController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Barang',              'icon' => 'barang'],
             ],
-            judul: 'Barang',
-            aksi: [
+            title: 'Barang',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_barang', 'ID Barang'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_barang', 'Kode Barang'],
                 [SHOW, REQUIRED, I::NAME, 'nama_barang', 'Nama Barang'],

@@ -14,14 +14,14 @@ final class TriaseMacamKasusController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Triase Macam Kasus', 'icon' => 'triase_macam_kasus'],
             ],
-            judul: 'Triase Macam Kasus',
-            aksi: [
+            title: 'Triase Macam Kasus',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_macam_kasus', 'ID Macam Kasus'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_macam_kasus', 'Kode'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_macam_kasus', 'Nama Macam Kasus'],

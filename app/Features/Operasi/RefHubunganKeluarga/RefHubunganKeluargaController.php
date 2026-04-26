@@ -15,14 +15,14 @@ final class RefHubunganKeluargaController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Hubungan Keluarga', 'icon' => 'ref_hubungan_keluarga'],
             ],
-            judul: 'Referensi Hubungan Keluarga',
-            aksi: [
+            title: 'Referensi Hubungan Keluarga',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hubungan_keluarga', 'ID Hubungan Keluarga'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_hubungan', 'Nama Hubungan'],
             ],

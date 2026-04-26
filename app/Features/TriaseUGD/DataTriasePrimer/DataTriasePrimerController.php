@@ -14,14 +14,14 @@ final class DataTriasePrimerController extends ControllerTemplate
                 ['title' => 'Triase UGD', 'icon' => 'triase_ugd'],
                 ['title' => 'Data Triase Primer', 'icon' => 'data_triase_primer'],
             ],
-            judul: 'Data Triase Primer',
-            aksi: [
+            title: 'Data Triase Primer',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_triase_primer', 'ID Triase Primer'],
                 [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
                 [HIDE, REQUIRED, I::TEXT, 'keluhan_utama', 'Keluhan Utama'],

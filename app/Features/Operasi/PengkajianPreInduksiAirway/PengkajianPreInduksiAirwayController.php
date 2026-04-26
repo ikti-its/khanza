@@ -15,14 +15,14 @@ final class PengkajianPreInduksiAirwayController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Pengkajian Pre Induksi Airway', 'icon' => 'pengkajian_pre_induksi_airway'],
             ],
-            judul: 'Pengkajian Pre Induksi Airway',
-            aksi: [
+            title: 'Pengkajian Pre Induksi Airway',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_airway', 'ID Airway'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengkajian', 'ID Pengkajian'],
                 [SHOW, REQUIRED, I::TEXT, 'jenis_airway', 'Jenis Airway'],

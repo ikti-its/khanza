@@ -15,14 +15,14 @@ final class RefRuanganOperasiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Ruangan Operasi', 'icon' => 'ref_ruangan_operasi'],
             ],
-            judul: 'Referensi Ruangan Operasi',
-            aksi: [
+            title: 'Referensi Ruangan Operasi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_ruangan', 'ID Ruangan'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_ruangan', 'Kode Ruangan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_ruangan', 'Nama Ruangan'],

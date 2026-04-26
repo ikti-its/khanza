@@ -15,14 +15,14 @@ final class RefParameterPemeriksaanLabController extends ControllerTemplate
                 ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
                 ['title' => 'Referensi Parameter Pemeriksaan', 'icon' => 'ref_parameter_pemeriksaan_lab'],
             ],
-            judul: 'Referensi Parameter Pemeriksaan Lab',
-            aksi: [
+            title: 'Referensi Parameter Pemeriksaan Lab',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_parameter', 'ID Parameter'],
                 [SHOW, REQUIRED, I::INDEX, 'id_item_lab', 'Item Lab'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_parameter', 'Nama Parameter'],

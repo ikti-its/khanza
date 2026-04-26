@@ -15,14 +15,14 @@ final class RefPremedikasiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Premedikasi', 'icon' => 'ref_premedikasi'],
             ],
-            judul: 'Referensi Premedikasi',
-            aksi: [
+            title: 'Referensi Premedikasi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_premedikasi', 'ID Premedikasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_premedikasi', 'Nama Premedikasi'],
             ],

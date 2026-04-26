@@ -14,14 +14,14 @@ final class NilaiSaringController extends ControllerTemplate
                 ['title' => 'Uji Darah', 'icon' => 'uji_darah'],
                 ['title' => 'Nilai Saring', 'icon' => 'nilai_saring'],
             ],
-            judul: 'Nilai Saring',
-            aksi: [
+            title: 'Nilai Saring',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_nilai_saring', 'ID Nilai Saring'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_nilai_saring', 'Nama Nilai Saring'],
             ],

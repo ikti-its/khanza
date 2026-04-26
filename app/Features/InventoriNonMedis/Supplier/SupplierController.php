@@ -15,14 +15,14 @@ final class SupplierController extends ControllerTemplate
                 ['title' => 'Inventori Non Medis', 'icon' => 'inventori_non_medis'],
                 ['title' => 'Supplier',            'icon' => 'supplier'],
             ],
-            judul: 'Supplier',
-            aksi: [
+            title: 'Supplier',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_supplier', 'ID Supplier'],
                 [SHOW, REQUIRED, I::NAME, 'nama_supplier', 'Nama Supplier'],
                 [SHOW, OPTIONAL, I::TEXT, 'no_telp', 'No. Telepon'],

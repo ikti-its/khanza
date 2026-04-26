@@ -15,14 +15,14 @@ final class RefIndikasiPindahController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Indikasi Pindah', 'icon' => 'ref_indikasi_pindah'],
             ],
-            judul: 'Referensi Indikasi Pindah',
-            aksi: [
+            title: 'Referensi Indikasi Pindah',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_indikasi', 'ID Indikasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_indikasi', 'Nama Indikasi'],
             ],

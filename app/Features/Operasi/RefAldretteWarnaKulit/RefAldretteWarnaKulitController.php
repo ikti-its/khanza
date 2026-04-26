@@ -15,14 +15,14 @@ final class RefAldretteWarnaKulitController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Aldrette Warna Kulit', 'icon' => 'ref_aldrette_warna_kulit'],
             ],
-            judul: 'Referensi Aldrette Warna Kulit',
-            aksi: [
+            title: 'Referensi Aldrette Warna Kulit',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_warna', 'ID Warna'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

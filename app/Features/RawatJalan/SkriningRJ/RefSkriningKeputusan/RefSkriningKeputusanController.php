@@ -15,14 +15,14 @@ final class RefSkriningKeputusanController extends ControllerTemplate
                 ['title' => 'Rawat Jalan', 'icon' => 'rawat_jalan'],
                 ['title' => 'Referensi Skrining Keputusan', 'icon' => 'ref_skrining_keputusan'],
             ],
-            judul: 'Referensi Skrining Keputusan',
-            aksi: [
+            title: 'Referensi Skrining Keputusan',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_keputusan', 'ID Keputusan'],
                 [SHOW, REQUIRED, I::TEXT, 'skrining_keputusan', 'Skrining Keputusan'],
             ],

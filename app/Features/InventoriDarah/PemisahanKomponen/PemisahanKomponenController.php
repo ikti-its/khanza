@@ -14,14 +14,14 @@ final class PemisahanKomponenController extends ControllerTemplate
                 ['title' => 'Inventaris Darah', 'icon' => 'inventaris_darah'],
                 ['title' => 'Pemisahan Komponen', 'icon' => 'pemisahan_komponen'],
             ],
-            judul: 'Pemisahan Komponen',
-            aksi: [
+            title: 'Pemisahan Komponen',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => false, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_bag', 'ID Bag'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_pemisahan', 'Tanggal Pemisahan'],

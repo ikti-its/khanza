@@ -14,14 +14,14 @@ final class PenggunaanBHPPemisahanController extends ControllerTemplate
                 ['title' => 'Logistik UTD', 'icon' => 'logistik_utd'],
                 ['title' => 'Penggunaan BHP Pemisahan', 'icon' => 'penggunaan_bhp_pemisahan'],
             ],
-            judul: 'Penggunaan BHP Pemisahan',
-            aksi: [
+            title: 'Penggunaan BHP Pemisahan',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => false, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_bhp_pemisahan', 'ID BHP Pemisahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_bhp', 'ID Jenis BHP'],

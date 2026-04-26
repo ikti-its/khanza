@@ -15,14 +15,14 @@ final class PermintaanLabHeaderController extends ControllerTemplate
                 ['title' => 'Laboratorium', 'icon' => 'laboratorium'],
                 ['title' => 'Permintaan Lab', 'icon' => 'permintaan_lab'],
             ],
-            judul: 'Permintaan Lab',
-            aksi: [
+            title: 'Permintaan Lab',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_permintaan', 'No. Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],

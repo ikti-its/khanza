@@ -15,14 +15,14 @@ final class ChecklistPostopDrainController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Checklist Post Operasi Drain', 'icon' => 'checklist_postop_drain'],
             ],
-            judul: 'Checklist Post Operasi Drain',
-            aksi: [
+            title: 'Checklist Post Operasi Drain',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_drain', 'ID Drain'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
                 [SHOW, REQUIRED, I::INDEX, 'id_ketersediaan', 'Ketersediaan'],

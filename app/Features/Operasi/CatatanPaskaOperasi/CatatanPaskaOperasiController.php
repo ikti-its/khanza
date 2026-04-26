@@ -15,14 +15,14 @@ final class CatatanPaskaOperasiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Catatan Paska Operasi', 'icon' => 'catatan_paska_operasi'],
             ],
-            judul: 'Catatan Paska Operasi',
-            aksi: [
+            title: 'Catatan Paska Operasi',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_catatan_paska', 'ID Catatan Paska'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::TEXT, 'kode_dokter_bedah', 'Kode Dokter Bedah'],

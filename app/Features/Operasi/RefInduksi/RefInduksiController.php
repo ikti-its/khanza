@@ -15,14 +15,14 @@ final class RefInduksiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Induksi', 'icon' => 'ref_induksi'],
             ],
-            judul: 'Referensi Induksi',
-            aksi: [
+            title: 'Referensi Induksi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_induksi', 'ID Induksi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_induksi', 'Nama Induksi'],
             ],

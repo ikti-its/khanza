@@ -15,14 +15,14 @@ final class RefStatusPenayanganController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Status Penayangan', 'icon' => 'ref_status_penayangan'],
             ],
-            judul: 'Referensi Status Penayangan',
-            aksi: [
+            title: 'Referensi Status Penayangan',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_penayangan', 'ID Status Penayangan'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_status', 'Nama Status'],
             ],

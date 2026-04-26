@@ -15,14 +15,14 @@ final class RefStewardRespirasiController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Referensi Steward Respirasi', 'icon' => 'ref_steward_respirasi'],
             ],
-            judul: 'Referensi Steward Respirasi',
-            aksi: [
+            title: 'Referensi Steward Respirasi',
+            action: [
                 'tambah' => false,
                 'audit'  => false,
                 'ubah'   => false,
                 'hapus'  => false,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_respirasi', 'ID Respirasi'],
                 [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
                 [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],

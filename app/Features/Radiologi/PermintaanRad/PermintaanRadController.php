@@ -15,14 +15,14 @@ final class PermintaanRadController extends ControllerTemplate
                 ['title' => 'Radiologi', 'icon' => 'radiologi'],
                 ['title' => 'Permintaan Radiologi', 'icon' => 'permintaan_rad'],
             ],
-            judul: 'Permintaan Radiologi',
-            aksi: [
+            title: 'Permintaan Radiologi',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_permintaan', 'No. Permintaan'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],

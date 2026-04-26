@@ -14,14 +14,14 @@ final class PengambilanDarahController extends ControllerTemplate
                 ['title' => 'Donor', 'icon' => 'donor'],
                 ['title' => 'Pengambilan Darah', 'icon' => 'pengambilan_darah'],
             ],
-            judul: 'Pengambilan Darah',
-            aksi: [
+            title: 'Pengambilan Darah',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true, 
                 'hapus'  => true
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_pengambilan', 'Nomor Pengambilan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],

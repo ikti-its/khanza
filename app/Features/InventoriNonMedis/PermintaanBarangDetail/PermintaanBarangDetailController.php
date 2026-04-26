@@ -16,14 +16,14 @@ final class PermintaanBarangDetailController extends ControllerTemplate
                 ['title' => 'Permintaan Barang',   'icon' => 'permintaan_barang'],
                 ['title' => 'Detail',              'icon' => 'detail'],
             ],
-            judul: 'Detail Permintaan Barang',
-            aksi: [
+            title: 'Detail Permintaan Barang',
+            action: [
                 'tambah' => true,
                 'audit'  => false,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_detail', 'ID Detail'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, OPTIONAL, I::SELECT, 'id_barang', 'Barang'],

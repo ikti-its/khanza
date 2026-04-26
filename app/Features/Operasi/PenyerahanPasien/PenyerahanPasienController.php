@@ -15,14 +15,14 @@ final class PenyerahanPasienController extends ControllerTemplate
                 ['title' => 'Operasi', 'icon' => 'operasi'],
                 ['title' => 'Penyerahan Pasien', 'icon' => 'penyerahan_pasien'],
             ],
-            judul: 'Penyerahan Pasien',
-            aksi: [
+            title: 'Penyerahan Pasien',
+            action: [
                 'tambah' => true,
                 'audit'  => true,
                 'ubah'   => true,
                 'hapus'  => true,
             ],
-            konfig: [
+            fields: [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
                 [SHOW, REQUIRED, I::DATE, 'waktu_masuk_asal', 'Waktu Masuk Asal'],
