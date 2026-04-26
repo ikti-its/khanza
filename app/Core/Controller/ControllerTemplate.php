@@ -21,6 +21,7 @@ class ControllerTemplate extends Controller
         protected string $api_url =  '',
     ) {
         $this->api_url = getenv('api_URL');
+        $this->reorder_config();
         $this->process_config();
     }
 
@@ -54,7 +55,16 @@ class ControllerTemplate extends Controller
     private function process_config(){
         $JENIS = 3;
         for($i = 0; $i < count($this->konfig); $i++){
-            $this->konfig[$i][$JENIS] = $this->konfig[$i][$JENIS]->value;
+            $input_type = $this->konfig[$i][$JENIS];
+            if($input_type instanceof InputType)
+                $this->konfig[$i][$JENIS] = $this->konfig[$i][$JENIS]->value;
+        }
+    }
+
+    private function reorder_config(){
+        for($i = 0; $i < count($this->konfig); $i++){
+            $c = $this->konfig[$i];
+            $this->konfig[$i] = [$c[0], $c[4], $c[3], $c[2], $c[1]];
         }
     }
 
