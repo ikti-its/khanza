@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Operasi\RefRuanganOperasi;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Core\Controller\ActionType as A;
 
 final class RefRuanganOperasiController extends ControllerTemplate
 {
