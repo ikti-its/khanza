@@ -10,13 +10,16 @@ class ControllerTemplate extends Controller
     public function __construct(
         protected ModelTemplate|null $model = null,
         protected array $breadcrumbs = [],
-        protected string $judul = '',
-        protected array $aksi = [],
-        protected array $konfig = [],
-        private array $meta_data = ['page' => 1, 'size' => 10, 'total' => 1],
+        protected string $title = '',
+        protected array $action = [],
+        protected array $fields = [],
+        private array $meta_data,
+        private array|string $primary_keys
     ) {
-        $this->reorder_config();
-        $this->process_config();
+        $this->reorder_fields();
+        $this->process_fields();
+        $this->primary_keys = $this->model->get_primary_key();
+        $this->meta_data = ['page' => 1, 'size' => 10, 'total' => 1];
     }
 
     private function get_uri_path(){
@@ -31,12 +34,12 @@ class ControllerTemplate extends Controller
 
     private function get_post_data()
     {
-        $KOLOM = 2;
-        $JENIS = 3;
+        $column = 2;
+        $type = 3;
         $postData = [];
-        foreach ($this->konfig as $k) {
-            $kolom = $k[$KOLOM];
-            $jenis = $k[$JENIS];
+        foreach ($this->fields as $k) {
+            $kolom = $k[$column];
+            $jenis = $k[$type];
             $raw_data = $this->request->getPost($kolom);
             if (in_array($jenis, ['jumlah', 'uang', 'suhu'])) {
                 $raw_data = floatval($raw_data);
@@ -46,32 +49,32 @@ class ControllerTemplate extends Controller
         return $postData;
     }
 
-    private function process_config(){
-        $JENIS = 3;
-        for($i = 0; $i < count($this->konfig); $i++){
-            $input_type = $this->konfig[$i][$JENIS];
+    private function process_fields(){
+        $type = 3;
+        for($i = 0; $i < count($this->fields); $i++){
+            $input_type = $this->fields[$i][$type];
             if($input_type instanceof InputType)
-                $this->konfig[$i][$JENIS] = $this->konfig[$i][$JENIS]->value;
+                $this->fields[$i][$type] = $this->fields[$i][$type]->value;
         }
     }
 
-    private function reorder_config(){
-        for($i = 0; $i < count($this->konfig); $i++){
-            $c = $this->konfig[$i];
-            $this->konfig[$i] = [$c[0], $c[4], $c[3], $c[2], $c[1]];
+    private function reorder_fields(){
+        for($i = 0; $i < count($this->fields); $i++){
+            $c = $this->fields[$i];
+            $this->fields[$i] = [$c[0], $c[4], $c[3], $c[2], $c[1]];
         }
     }
 
     final public function index()
     {
         return view('/layouts/data', [
-            'judul'       => $this->judul,
+            'judul'       => $this->title,
             'breadcrumbs' => $this->breadcrumbs,
             'meta_data'   => $this->meta_data,
             'modul_path'  => $this->get_uri_path(),
-            'kolom_id'    => $this->model->get_primary_key(),
-            'konfig'      => $this->konfig,
-            'aksi'        => $this->aksi,
+            'kolom_id'    => $this->primary_keys,
+            'konfig'      => $this->fields,
+            'aksi'        => $this->action,
             'tabel'       => $this->model->findAll(),
         ]);
     }
@@ -91,12 +94,12 @@ class ControllerTemplate extends Controller
             ['title' => 'Audit', 'icon', 'audit']
         ];
         return view('/layouts/audit', [
-            'judul'       => 'Audit ' . $this->judul,
+            'judul'       => 'Audit ' . $this->title,
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'meta_data'   => $this->meta_data,
             'modul_path'  => $this->get_uri_path(),
             'kolom_id'    => 'action',
-            'konfig'      => array_merge($audit_konfig, $this->konfig),
+            'konfig'      => array_merge($audit_konfig, $this->fields),
             'tabel'       => $this->model->audit(),
         ]);
     }
@@ -107,11 +110,11 @@ class ControllerTemplate extends Controller
             ['title' => 'Tambah', 'icon', 'tambah']
         ];
         return view('/layouts/tambah_ubah', [
-            'judul'       => 'Tambah ' . $this->judul,
+            'judul'       => 'Tambah ' . $this->title,
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->get_uri_path(),
-            'kolom_id'    => $this->model->get_primary_key(),
-            'konfig'      => $this->konfig,
+            'kolom_id'    => $this->primary_keys,
+            'konfig'      => $this->fields,
             'form_action' => '/submittambah/',
         ]);
     }
@@ -122,13 +125,13 @@ class ControllerTemplate extends Controller
         ];
         $data  = $this->model->find($id);
         return view('/layouts/tambah_ubah', [
-            'judul'       => 'Ubah ' . $this->judul,
+            'judul'       => 'Ubah ' . $this->title,
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->get_uri_path(),
-            'kolom_id'    => $this->model->get_primary_key(),
-            'konfig'      => $this->konfig,
+            'kolom_id'    => $this->primary_keys,
+            'konfig'      => $this->fields,
             'baris'       => $data,
-            'form_action' => '/submitedit/' . $data[$this->model->get_primary_key()],
+            'form_action' => '/submitedit/' . $data[$this->primary_keys],
         ]);
     }
 
