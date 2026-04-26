@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Features\PemusnahanDarah\Pemusnahan;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Core\Controller\ActionType as A;
 
 final class PemusnahanController extends ControllerTemplate
 {
