@@ -853,6 +853,11 @@
                         ['Sumber Darah', '/sumber-darah', ''],
                         ['Tarif Komponen', '/tarif-komponen', '']
                     ]],
+                    ['Pemusnahan Darah', '', 'pemusnahan_darah', '/pemusnahan-darah', $petugasrole, [
+                        ['Pemusnahan', '/pemusnahan', ''],
+                        ['Pemusnahan Detail', '/pemusnahan-detail', ''],
+                        ['Alasan Pemusnahan', '/alasan-pemusnahan', '']
+                    ]],
                     ['Uji Darah', '', 'uji_darah', '/uji-darah', $petugasrole, [
                         ['Hasil Uji Saring', '/hasil-uji-saring', ''],
                         ['Hasil Uji Saring Detail', '/hasil-uji-saring-detail', ''],

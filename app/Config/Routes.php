@@ -983,6 +983,11 @@ $features = [
         ['PenggunaanBHPPemisahan', 'penggunaan-bhp-pemisahan'],
         ['PenggunaanBHPPenyerahan', 'penggunaan-bhp-penyerahan'],
     ]],
+    ['PemusnahanDarah', 'pemusnahan-darah/', [
+        ['AlasanPemusnahan', 'alasan-pemusnahan'],
+        ['Pemusnahan', 'pemusnahan'],
+        ['PemusnahanDetail', 'pemusnahan-detail'],
+    ]],
 ];
 
 $filter = ['filter' => 'checkpermission:1337,1,2,3,4001,4002,4003,4004'];
