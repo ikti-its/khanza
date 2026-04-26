@@ -8,13 +8,13 @@ use CodeIgniter\Controller;
 class ControllerTemplate extends Controller
 {
     public function __construct(
-        protected ModelTemplate|null $model = null,
-        protected array $breadcrumbs = [],
-        protected string $title = '',
-        protected array $action = [],
-        protected array $fields = [],
-        private array $meta_data,
-        private array|string $primary_keys
+        protected ModelTemplate|null $model,
+        protected array $breadcrumbs,
+        protected string $title,
+        protected array $action,
+        protected array $fields,
+        private array $meta_data = [],
+        private array|string $primary_keys = ''
     ) {
         $this->reorder_fields();
         $this->process_fields();

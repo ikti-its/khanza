@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\Pemusnahan\PemusnahanDarah;
+namespace App\Features\PemusnahanDarah\Pemusnahan;
 use App\Core\Model\ModelTemplate;
 
-final class PemusnahanDarahModel extends ModelTemplate
+final class PemusnahanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
-            'pemusnahan',
             'pemusnahan_darah',
+            'pemusnahan',
             'id_pemusnahan',
             [
                 'id_pemusnahan' => [
