@@ -6,7 +6,7 @@ use CodeIgniter\Controller;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use App\Core\Controller\CURL;
-use App\Core\ModelTemplate;
+use App\Core\Model\ModelTemplate;
 
 final class AuthController extends Controller
 {
