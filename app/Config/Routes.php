@@ -1006,7 +1006,8 @@ foreach ($features as $feature) {
             $routes->get('edit/(:segment)',      "$f::update_page/$1", $filter);
             $routes->post('submitedit/(:segment)',"$f::update/$1", $filter);
             // $routes->patch('patch/(:segment)',   "$f::patch/$1", $filter);
-            $routes->delete('hapus/(:segment)', "$f::delete/$1", $filter);
+            $routes->delete('hapus/(:segment)' , "$f::delete/$1", $filter);
+            $routes->delete('cetak/'           , "$f::print", $filter);
         });
     }
 }

@@ -182,4 +182,12 @@ class ControllerTemplate extends Controller
         $this->model->delete($id);
         return $this->index();        
     }
+
+    final public function print(){
+        if(in_array(ActionType::PRINT, $this->action)){
+            echo view('components/cetak/template');
+        } else {
+            return $this->index();
+        }
+    }
 }
