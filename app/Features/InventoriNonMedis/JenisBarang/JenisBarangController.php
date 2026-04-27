@@ -21,11 +21,11 @@ final class JenisBarangController extends ControllerTemplate
                 A::CREATE,
                 // A::AUDIT,
                 A::UPDATE,
-                A::DELETE,,
+                A::DELETE,
             ],
             [
-                [HIDE, 'ID',               'id_jenis_barang',   I::INDEX, OPTIONAL],
-                [SHOW, 'Nama Jenis Barang','nama_jenis_barang',  I::NAME,   REQUIRED],
+                [HIDE, OPTIONAL, I::INDEX, 'id_jenis_barang'  ,'ID'],
+                [SHOW, REQUIRED, I::NAME,  'nama_jenis_barang','Nama Jenis Barang'],
             ],
         );
     }
