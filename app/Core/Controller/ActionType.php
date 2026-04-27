@@ -9,4 +9,5 @@ enum ActionType: string
     case UPDATE = 'ubah';
     case DELETE = 'hapus';
     case AUDIT  = 'audit';
+    case PRINT  = 'cetak';
 }
