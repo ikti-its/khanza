@@ -1,22 +1,19 @@
 <?php
     $user = session('user');
-
-    // dd($userDetails);
-    // Initialize defaults
     $role = null;
     $foto = '/img/default.png';
     $email = 'Guest';
+
+    if (is_array($user)) {
+        $role  ??= $user['role'];
+        $foto  ??= $user['foto'];
+        $email ??= $user['email'];
+    }
 
     $persetujuanrole   = [1337, 1, 2, 4001, 5001];
     $petugasrole       = [1337, 1, 2, 4001, 5001];
     $petugasdokterrole = [1337, 1, 2, 3, 4001, 5001];
     $dokterrole        = [1337, 1, 3, 4001, 5001];
-
-    if (is_array($userDetails)) {
-        $role  = $user['role']  ?? $role;
-        $foto  = $user['foto']  ?? $foto;
-        $email = $user['email'] ?? $email;
-    }
 
     $TEKS     = 0;
     $LINK     = 1;
@@ -38,9 +35,9 @@
             continue;
         }
 
-        // if (!in_array($role, $rolelist)){
-        //     continue;
-        // }
+        if (!in_array($role, $rolelist)){
+            continue;
+        }
 
         echo '<li class="hs-accordion" id="olahpasien-accordion">';
         if($submenu === []){
