@@ -10,7 +10,7 @@ class Auth implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(!session()->get('jwt_token'))
+        if(!session()->has('user'))
             return redirect()->to(base_url('/login'));
     }
 

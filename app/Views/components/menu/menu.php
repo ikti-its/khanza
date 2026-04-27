@@ -1,5 +1,5 @@
 <?php
-    $userDetails = session()->get('user_details');
+    $user = session('user');
 
     // dd($userDetails);
     // Initialize defaults
@@ -13,9 +13,9 @@
     $dokterrole        = [1337, 1, 3, 4001, 5001];
 
     if (is_array($userDetails)) {
-        $role  = $userDetails['role']  ?? null;
-        // $foto  = $userDetails['foto']  ?? $foto;
-        $email = $userDetails['email'] ?? $email;
+        $role  = $user['role']  ?? $role;
+        $foto  = $user['foto']  ?? $foto;
+        $email = $user['email'] ?? $email;
     }
 
     $TEKS     = 0;
@@ -38,9 +38,9 @@
             continue;
         }
 
-        if (!in_array($role, $rolelist)){
-            continue;
-        }
+        // if (!in_array($role, $rolelist)){
+        //     continue;
+        // }
 
         echo '<li class="hs-accordion" id="olahpasien-accordion">';
         if($submenu === []){

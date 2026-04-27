@@ -6,7 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 // $routes->get('/', 'Home::index');
-$routes->post('/jwt',      [\App\Core\Auth\AuthController::class, 'jwt2']);
 $routes->get('/',          [\App\Core\Auth\AuthController::class, 'index']);
 $routes->get('/login',     [\App\Core\Auth\AuthController::class, 'index']);
 $routes->post('/login',    [\App\Core\Auth\AuthController::class, 'login']);
