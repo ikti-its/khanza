@@ -6,7 +6,7 @@
     $REQUIRED = 4;
     $OPSI    = 5;
 
-    $list_jenis = ['indeks', 'tanggal', 'jam', 'uang', 'status', 'nama', 'teks', 'jumlah', 'kosong'];
+    $list_jenis = ['indeks', 'tanggal', 'jam', 'uang', 'status', 'nama', 'teks', 'jumlah', 'kosong', 'tanggal_jam'];
     $len = sizeof($konfig);
     if ($len % 2 !== 0) {
         array_push($konfig, [0, '', '', 'kosong', 0]);
