@@ -24,6 +24,8 @@ final class CreateKasusReaktifTable extends DatabaseTemplate
                 ['id_kunjungan', 'donor.kunjungan', 'id_kunjungan'],
                 ['id_status_kasus', 'status_kasus', 'id_status_kasus'],
             ],
+            false,
+            __DIR__ . '/kasus_reaktif.csv'
         );
     }
 }
