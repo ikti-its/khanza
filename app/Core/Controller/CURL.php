@@ -53,12 +53,12 @@ final readonly class CURL
 
         $http_success_codes = [200, 201, 204];
         if (!in_array($http_status_code, $http_success_codes)) {
-            log_message('error', $path . ' API error. Status: ' . $http_status_code . ', response: ' . $response);
+            // log_message('error', $path . ' API error. Status: ' . $http_status_code . ', response: ' . $response);
             echo HTTPError::renderErrorView($http_status_code);
         }
 
         if (json_last_error() !== JSON_ERROR_NONE || !isset($return_data['data'])) {
-            log_message('error', 'JSON decode error: ' . json_last_error_msg());
+            // log_message('error', 'JSON decode error: ' . json_last_error_msg());
             echo HTTPError::renderErrorView(status_code: 500);
         }
         return [
