@@ -24,6 +24,8 @@ final class CreateKonselingTable extends DatabaseTemplate
                 ['id_kasus', 'kasus_reaktif', 'id_kasus'],
                 // ['id_petugas', 'role.petugas', 'id_petugas'],
             ],
+            false,
+            __DIR__ . '/konseling.csv'
         );
     }
 }
