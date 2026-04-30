@@ -25,6 +25,8 @@ final class CreateJawabanKonselingTable extends DatabaseTemplate
                 ['id_pertanyaan', 'pertanyaan_konseling', 'id_pertanyaan'],
                 ['id_pilihan', 'pilihan_jawaban', 'id_pilihan'],
             ],
+            false,
+            __DIR__ . '/jawaban_konseling.csv'
         );
     }
 }
