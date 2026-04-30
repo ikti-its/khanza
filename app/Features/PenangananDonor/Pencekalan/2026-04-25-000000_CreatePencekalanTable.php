@@ -32,6 +32,8 @@ final class CreatePencekalanTable extends DatabaseTemplate
                 // ['id_petugas', 'role.petugas', 'id_petugas'],
                 ['id_status_pencekalan', 'status_pencekalan', 'id_status_pencekalan'],
             ],
+            false,
+            __DIR__ . '/pencekalan.csv'
         );
     }
 }
