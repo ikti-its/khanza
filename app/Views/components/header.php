@@ -765,7 +765,7 @@
                         ['Barang', '/barang', ''],
                         ['Jenis Barang', '/jenis-barang', ''],
                         ['Kategori Barang', '/kategori-barang', ''],
-                        ['Lokasi', '/lokasi', ''],
+                        ['Lokasi Penyimpanan', '/lokasi-penyimpanan', ''],
                         ['Pengadaan Barang', '/pengadaan-barang', ''],
                         ['Pengadaan Barang Detail', '/pengadaan-barang-detail', ''],
                         ['Pengajuan Barang', '/pengajuan-barang', ''],
@@ -776,7 +776,7 @@
                         ['Stok Opname Detail', '/stok-opname-detail', ''],
                         ['Supplier', '/supplier', ''],
                         ['Transaksi Stok', '/transaksi-stok', ''],
-                        ['Unit', '/unit', '']
+                        ['Satuan', '/satuan', '']
                     ]],
                     ['Rujukan', '', 'rujukan', '', $petugasdokterrole, [
                         ['Rujukan Masuk', '/rujukanmasuk', ''],

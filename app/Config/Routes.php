@@ -785,7 +785,7 @@ $features = [
         ['Barang', 'barang'],
         ['JenisBarang', 'jenis-barang'],
         ['KategoriBarang', 'kategori-barang'],
-        ['Lokasi', 'lokasi'],
+        ['LokasiPenyimpanan', 'lokasi-penyimpanan'],
         ['PengadaanBarang', 'pengadaan-barang'],
         ['PengadaanBarangDetail', 'pengadaan-barang-detail'],
         ['PengajuanBarang', 'pengajuan-barang'],
@@ -796,7 +796,7 @@ $features = [
         ['StokOpnameDetail', 'stok-opname-detail'],
         ['Supplier', 'supplier'],
         ['TransaksiStok', 'transaksi-stok'],
-        ['Unit', 'unit']
+        ['Satuan', 'satuan']
     ]],
     ['Laboratorium', 'laboratorium/', [
         // Hasil Lab

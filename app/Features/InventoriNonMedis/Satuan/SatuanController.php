@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\Lokasi;
+namespace App\Features\InventoriNonMedis\Satuan;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
 use App\Core\Controller\ActionType as A;
 
-final class LokasiController extends ControllerTemplate
+final class SatuanController extends ControllerTemplate
 {
     public function __construct()
     {
         parent::__construct(
-            new LokasiModel(),
+            new SatuanModel(),
             [
                 ['Inventori Non Medis', 'inventori_non_medis'],
-                ['Lokasi',              'lokasi'],
+                ['Satuan',              'satuan'],
             ],
-            'Lokasi',
+            'Satuan',
             [
                 A::CREATE,
                 // A::AUDIT,
@@ -24,8 +24,8 @@ final class LokasiController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_lokasi', 'ID'],
-                [SHOW, REQUIRED, I::NAME, 'nama_lokasi', 'Nama Lokasi'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_satuan', 'ID'],
+                [SHOW, REQUIRED, I::NAME, 'nama_satuan', 'Nama Satuan'],
             ],
         );
     }

@@ -21,8 +21,8 @@ final class CreateBarangTable extends DatabaseTemplate
 
                 'id_kategori'  => T::INT32(),
                 'id_supplier'  => T::INT32()->nullable(),
-                'id_unit'      => T::INT32(),
-                'id_lokasi'    => T::INT32(),
+                'id_satuan'              => T::INT32(),
+                'id_lokasi_penyimpanan'  => T::INT32(),
 
                 'stok'         => T::F64(),
                 'stok_minimum' => T::F64()->nullable(),
@@ -34,8 +34,8 @@ final class CreateBarangTable extends DatabaseTemplate
                 ['id_jenis_barang', 'jenis_barang', 'id_jenis_barang'],
                 ['id_kategori', 'kategori_barang', 'id_kategori'],
                 ['id_supplier', 'supplier', 'id_supplier'],
-                ['id_unit', 'unit', 'id_unit'],
-                ['id_lokasi', 'lokasi', 'id_lokasi'],
+                ['id_satuan', 'satuan', 'id_satuan'],
+                ['id_lokasi_penyimpanan', 'lokasi_penyimpanan', 'id_lokasi_penyimpanan'],
             ],
             true,
             __DIR__ . '/barang.csv'
