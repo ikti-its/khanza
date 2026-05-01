@@ -28,26 +28,33 @@ use App\Core\Database\DatabaseType as T;
  *  35.78.09.1001   = Kelurahan Keputih
  */
 
-final class CreateDesaTable extends DatabaseTemplate
+final class DesaDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'lokasi',
             'desa',
             [
-                'id_provinsi'       => T::INT8(),
-                'id_kota_lokal'     => T::INT8(),
-                'id_kecamatan_lokal'=> T::INT16(),
-                'id_desa_lokal'     => T::ID16(),
-                'nama_desa'         => T::TEXT(),
+                'id_desa'       => T::ID32(90000),        
+                'id_provinsi'   => T::FK_AUTO(),
+                'id_kota_lokal' => T::FK_AUTO(),
+                'id_kec_lokal'  => T::FK_AUTO(),
+                'id_desa_lokal' => T::INT16(),
+                'nama_desa'     => T::TEXT(),
             ],
-            ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal', 'id_desa_lokal'],
-            [],
+            'id_desa',
             [
-                [['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'], 'kecamatan', ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal']],
+                ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal', 'id_desa_lokal']
+            ],
+            [
+                [
+                    ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal'], 
+                    \App\Features\Lokasi\Kecamatan\KecamatanDatabase::class, 
+                    ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal']
+                ],
             ],
             true,
-            __DIR__ . '/desa.csv',
+            'desa.csv',
         );
     }
 }
