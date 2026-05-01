@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Core\Database\Special;
 use CodeIgniter\Database\Migration;
 
-class Encrypt extends Migration
+final class Encrypt extends Migration
 {
     const string PATH = APPPATH . 'Core/Database/Encrypt/';
     public function up()

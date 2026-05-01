@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Core\Database\Special;
 use CodeIgniter\Database\Migration;
 
-class SearchPath extends Migration
+final class SearchPath extends Migration
 {
     public function up()
     {

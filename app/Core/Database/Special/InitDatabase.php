@@ -5,7 +5,7 @@ namespace App\Core\Database\Special;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
 
-class Init extends Migration
+final class Init extends Migration
 {
     public function up()
     { 
