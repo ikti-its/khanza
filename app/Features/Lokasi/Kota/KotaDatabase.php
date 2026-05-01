@@ -25,22 +25,30 @@ use App\Core\Database\DatabaseType as T;
  *  3515 = Kabupaten Sidoarjo
  */
 
-final class CreateKotaTable extends DatabaseTemplate
+final class KotaDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'lokasi',
             'kota',
             [
-                'id_provinsi'   => T::INT8(),
-                'id_kota_lokal' => T::ID8(),
+                'id_kota'       => T::ID16(514),
+                'id_provinsi'   => T::FK_AUTO(),
+                'id_kota_lokal' => T::INT8(),
                 'nama_kota'     => T::TEXT(),
             ],
-            ['id_provinsi','id_kota_lokal'],
-            [],
-            ['id_provinsi', 'provinsi', 'id_provinsi'],
+            'id_kota',
+            [
+                ['id_provinsi','id_kota_lokal'],
+                ['id_kota_lokal', 'nama_kota'],
+            ],
+            [
+                'id_provinsi', 
+                \App\Features\Lokasi\Provinsi\ProvinsiDatabase::class, 
+                'id_provinsi'
+            ],
             true,
-            __DIR__ . '/kota.csv',
+            'kota.csv',
         );
     }
 }
