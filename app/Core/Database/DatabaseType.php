@@ -35,7 +35,7 @@ final class DatabaseType
             'default' => new RawSql('gen_random_uuid()')]);}
 
     public static function FK_AUTO() : self { 
-        return self::UUID();}
+        return new self(['type' => 'FK_AUTO']);}
 
     public static function ID8(int $max = 0) : self { 
         Assert::True($max > (2 << 31), 
