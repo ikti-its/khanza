@@ -8,9 +8,9 @@ use App\Core\Database\DatabaseType as T;
 
 /*
  *  Di Indonesia, 9 Kepulauan besar yang terdiri dari ribuan pulau kecil yaitu
- *  Sumatera, Jawa, Bali & Nusa Tenggara, Kalimantan, Sulawesi, Maluku, dan Papua 
+ *  Sumatera, Jawa, Bali & Nusa Tenggara, Kalimantan, Sulawesi, Maluku, Papua 
  *  
- *  Kode pulau merupakan digit pertama kode provinsi berdasarkan peraturan Kemendagri 
+ *  Kode pulau merupakan digit pertama kode provinsi berdasarkan Permendagri 
  *  https://peraturan.bpk.go.id/Details/196233/permendagri-no-58-tahun-2021
  *  Menurut pasal 5 ayat 1, digit pertama kode wilayah menunjukkan asal pulau
  *      1 = Sumatera
@@ -29,21 +29,21 @@ use App\Core\Database\DatabaseType as T;
  *  35 = Provinsi Jawa Timur
  */
 
-final class CreatePulauTable extends DatabaseTemplate
+final class PulauDatabase extends DatabaseTemplate
 {   
     public function __construct(){
         parent::__construct(
             'lokasi',
             'pulau',
             [
-                'id_pulau'   => T::ID8(),
+                'id_pulau'   => T::ID8(9),
                 'nama_pulau' => T::TEXT(),
             ],
             'id_pulau',
             [],
             [],
             true,
-            __DIR__ . '/pulau.csv',
+            'pulau.csv',
         );
     }
 }
