@@ -11,7 +11,7 @@ use App\Core\Database\DatabaseType as T;
  *  Kode provinsi menggunakan 2 digit berdasarkan peraturan Kemendagri 
  *  https://peraturan.bpk.go.id/Details/196233/permendagri-no-58-tahun-2021
  *  Menurut pasal 4 ayat 3a, digit pertama menunjukkan pulau asal provinsi
- *  dan digit kedua menunjukkan nomor urut pembentukan provinsi di pulau tersebut
+ *  dan digit kedua menunjukkan nomor urut provinsi di pulau tersebut
  *  Provinsi = 38 < 128 = ID8()
  *     
  *  Contoh provinsi Jawa Timur yang berada di pulau Jawa
@@ -21,23 +21,26 @@ use App\Core\Database\DatabaseType as T;
  *  11 = Provinsi Aceh 
  */
 
-final class CreateProvinsiTable extends DatabaseTemplate
+final class ProvinsiDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'lokasi',
             'provinsi',
             [
-                'id_pulau'      => T::INT8(),
-                'id_provinsi'   => T::ID8(),
+                'id_pulau'      => T::FK_AUTO(),
+                'id_provinsi'   => T::ID8(38),
                 'kode_provinsi' => T::TEXT(),
                 'nama_provinsi' => T::TEXT(),
             ],
             'id_provinsi',
             ['kode_provinsi', 'nama_provinsi'],
-            ['id_pulau', 'pulau', 'id_pulau'],
+            [
+                'id_pulau', 
+                \App\Features\Lokasi\Pulau\PulauDatabase::class, 
+                'id_pulau'],
             true,
-            __DIR__ . '/provinsi.csv',
+            'provinsi.csv',
         );
     }
 }
