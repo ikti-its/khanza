@@ -25,25 +25,32 @@ use App\Core\Database\DatabaseType as T;
  *  35.78.09 = Kecamatan Sukolilo
  */
 
-final class CreateKecamatanTable extends DatabaseTemplate
+final class KecamatanDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'lokasi',
             'kecamatan',
             [
-                'id_provinsi'       => T::INT8(),
-                'id_kota_lokal'     => T::INT8(),
-                'id_kecamatan_lokal'=> T::ID16(),
-                'nama_kecamatan'    => T::TEXT(),
+                'id_kecamatan'   => T::ID16(8000),
+                'id_provinsi'    => T::FK_AUTO(),
+                'id_kota_lokal'  => T::FK_AUTO(),
+                'id_kec_lokal'   => T::INT8(),
+                'nama_kecamatan' => T::TEXT(),
             ],
-            ['id_provinsi', 'id_kota_lokal', 'id_kecamatan_lokal'],
-            [],
+            'id_kecamatan',
             [
-                [['id_provinsi', 'id_kota_lokal'], 'kota', ['id_provinsi', 'id_kota_lokal']],
+                ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal'],
+            ],
+            [
+                [
+                    ['id_provinsi', 'id_kota_lokal'], 
+                    \App\Features\Lokasi\Kota\KotaDatabase::class, 
+                    ['id_provinsi', 'id_kota_lokal']
+                ],
             ],
             true,
-            __DIR__ . '/kecamatan.csv',
+            'kecamatan.csv',
         );
     }
 }
