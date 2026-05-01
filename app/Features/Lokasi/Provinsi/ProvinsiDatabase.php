@@ -34,7 +34,10 @@ final class ProvinsiDatabase extends DatabaseTemplate
                 'nama_provinsi' => T::TEXT(),
             ],
             'id_provinsi',
-            ['kode_provinsi', 'nama_provinsi'],
+            [
+                'kode_provinsi', 
+                'nama_provinsi',
+            ],
             [
                 'id_pulau', 
                 \App\Features\Lokasi\Pulau\PulauDatabase::class, 

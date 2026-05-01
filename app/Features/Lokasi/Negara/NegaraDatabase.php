@@ -18,7 +18,7 @@ final class NegaraDatabase extends DatabaseTemplate
                 'kode_telepon' => T::INT16(),
             ],
             'id_negara',
-            'nama_negara',
+            ['nama_negara'],
             [],
         );
     }
