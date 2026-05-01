@@ -19,7 +19,9 @@ final class AuthDatabase extends DatabaseTemplate
                 'role'     => T::INT32(),
             ],
             'id',
-            'email',
+            [
+                'email'
+            ],
             [],
             true,
             'auth.csv'
