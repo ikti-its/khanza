@@ -25,6 +25,8 @@ final class CreatePemusnahanDetailTable extends DatabaseTemplate
                 ['id_stok_darah', 'inventori_darah.stok_darah', 'id_stok_darah'],
                 ['id_alasan', 'alasan_pemusnahan', 'id_alasan'],
             ],
+            false,
+            __DIR__ . '/pemusnahan_detail.csv'
         );
     }
 }
