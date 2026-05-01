@@ -43,9 +43,11 @@ final class KotaDatabase extends DatabaseTemplate
                 ['id_kota_lokal', 'nama_kota'],
             ],
             [
-                'id_provinsi', 
-                \App\Features\Lokasi\Provinsi\ProvinsiDatabase::class, 
-                'id_provinsi'
+                [
+                    'id_provinsi', 
+                    \App\Features\Lokasi\Provinsi\ProvinsiDatabase::class, 
+                    'id_provinsi'
+                ]
             ],
             true,
             'kota.csv',

@@ -39,9 +39,12 @@ final class ProvinsiDatabase extends DatabaseTemplate
                 'nama_provinsi',
             ],
             [
-                'id_pulau', 
-                \App\Features\Lokasi\Pulau\PulauDatabase::class, 
-                'id_pulau'],
+                [
+                    'id_pulau', 
+                    \App\Features\Lokasi\Pulau\PulauDatabase::class, 
+                    'id_pulau'
+                ]
+            ],
             true,
             'provinsi.csv',
         );
