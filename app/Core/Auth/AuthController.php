@@ -28,16 +28,18 @@ final class AuthController extends Controller
         ];
 
         if (!isset($login_data['email'])|| !isset($login_data['password']))
-            return redirect()->back()->withInput()->with('error', 'Masukkan email dan password');
+            return redirect()->back()->withInput()
+                ->with('error', 'Masukkan email dan password');
 
         $user = $this->model->where('email',$login_data['email'])->first();
         
         if(!$user)
-            return redirect()->back()->withInput()->with('error', 'Akun tidak ditemukan, mohon hubungi admin');
+            return redirect()->back()->withInput()
+                ->with('error', 'Akun tidak ditemukan, mohon hubungi admin');
 
         if (!password_verify($login_data['password'], $user['password']))
-            return redirect()->back()->withInput()->with('error', 'Password salah, mohon dicoba kembali');
-
+            return redirect()->back()->withInput()
+                ->with('error', 'Password salah, mohon dicoba kembali');
 
         $user = [
             'id'    => $user['id'],
@@ -46,7 +48,6 @@ final class AuthController extends Controller
         ];
 
         session()->set('user', $user);
-
         session()->set('user_specific_data', 'Akun not found');
 
         return redirect()->to('/dashboard')
