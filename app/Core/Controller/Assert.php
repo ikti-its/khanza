@@ -9,4 +9,16 @@ final readonly class Assert
     {
         die($message);
     }
+
+    public static function True(bool $condition, string $message){
+        if($condition === false)
+            die($message);
+        return;
+    }
+
+    public static function False(bool $condition, string $message){
+        if($condition === true)
+            die($message);
+        return;
+    }
 }
