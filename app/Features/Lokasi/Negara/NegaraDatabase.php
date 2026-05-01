@@ -6,14 +6,14 @@ namespace App\Features\Lokasi\Negara;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateNegaraTable extends DatabaseTemplate
+final class NegaraDatabase extends DatabaseTemplate
 {   
     public function __construct(){
         parent::__construct(
             'lokasi',
             'negara',
             [
-                'id_negara'    => T::ID8(),
+                'id_negara'    => T::ID16(200),
                 'nama_negara'  => T::TEXT(),
                 'kode_telepon' => T::INT16(),
             ],
