@@ -23,6 +23,8 @@ final class CreatePemusnahanTable extends DatabaseTemplate
             [
                 // ['id_petugas', 'role.petugas', 'id_petugas'],
             ],
+            false,
+            __DIR__ . '/pemusnahan.csv'
         );
     }
 }
