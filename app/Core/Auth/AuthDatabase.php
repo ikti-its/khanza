@@ -6,7 +6,7 @@ namespace App\Core\Auth;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateAuthTable extends DatabaseTemplate
+final class AuthDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
@@ -22,7 +22,7 @@ final class CreateAuthTable extends DatabaseTemplate
             'email',
             [],
             true,
-            __DIR__ . '/auth.csv'
+            'auth.csv'
         );
     }
 }
