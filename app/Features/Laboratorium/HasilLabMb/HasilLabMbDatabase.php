@@ -1,0 +1,56 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\Laboratorium\HasilLabMb;
+
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
+
+final class HasilLabMbDatabase extends DatabaseTemplate
+{
+    public function __construct()
+    {
+        parent::__construct(
+            'laboratorium',
+            'hasil_lab_mb',
+            [
+                'id_hasil_mb' => T::ID64(100_000),
+                'id_permintaan_lab' => T::FK_AUTO(),
+                'nomor_reg' => T::FK_AUTO(),
+                'kode_dokter_pj' => T::FK_AUTO(),
+                'id_petugas_lab' => T::FK_AUTO(),
+                'kode_dokter_perujuk' => T::FK_AUTO(),
+                'tgl_jam_hasil' => T::DATETIME(),
+                'id_item_pemeriksaan' => T::FK_AUTO(),
+                'id_parameter_pemeriksaan' => T::FK_AUTO(),
+                'nilai_hasil' => T::TEXT(),
+                'keterangan_hasil' => T::TEXT(),
+            ],
+            'id_hasil_mb',
+            [],
+            [
+                [
+                    ['id_permintaan_lab'],
+                    \App\Features\Laboratorium\PermintaanLabHeader\PermintaanLabHeaderDatabase::class,
+                    ['id_permintaan'],
+                ],
+                // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+                // ['kode_dokter_pj', 'sik.dokter_structure', 'kode_dokter'],
+                // ['id_petugas_lab', 'sik.pegawai_structure', 'id'],
+                // ['kode_dokter_perujuk', 'sik.dokter_structure', 'kode_dokter'],
+                [
+                    ['id_item_pemeriksaan'],
+                    \App\Features\Laboratorium\PermintaanLabMb\PermintaanLabMbDatabase::class,
+                    ['id_permintaan_mb'],
+                ],
+                [
+                    ['id_parameter_pemeriksaan'],
+                    \App\Features\Laboratorium\PermintaanLabMb\PermintaanLabMbDatabase::class,
+                    ['id_permintaan_mb'],
+                ],
+            ],
+            false,
+            'hasil_lab_mb.csv'
+        );
+    }
+}
