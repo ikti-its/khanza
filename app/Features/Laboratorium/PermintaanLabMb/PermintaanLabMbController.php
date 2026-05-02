@@ -21,7 +21,7 @@ final class PermintaanLabMbController extends ControllerTemplate
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
-                A::DELETE,,
+                A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan_mb', 'ID Permintaan MB'],
