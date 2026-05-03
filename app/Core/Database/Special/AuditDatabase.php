@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Core\Database\Special;
 use CodeIgniter\Database\Migration;
 
-final class Audit extends Migration
+final class AuditDatabase extends Migration
 {
     const string PATH = APPPATH . 'Core/Database/Audit/';
     public function up()
