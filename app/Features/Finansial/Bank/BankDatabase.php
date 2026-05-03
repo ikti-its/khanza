@@ -6,16 +6,16 @@ namespace App\Features\Finansial\Bank;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateBankTable extends DatabaseTemplate
+final class BankDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'finansial',
             'bank',
             [
-                'id'             => T::ID8(),
-                'kode'           => T::INT16()->nullable(),
-                'nama'           => T::TEXT()->nullable(),
+                'id_bank'        => T::ID8(100),
+                'kode_bank'      => T::INT16()->nullable(),
+                'nama_bank'      => T::TEXT()->nullable(),
                 'sebutan'        => T::TEXT()->nullable(),
                 'pemilik_id'     => T::INT8(),
                 'prinsip_id'     => T::INT8(),
@@ -24,14 +24,22 @@ final class CreateBankTable extends DatabaseTemplate
                 'link_playstore' => T::TEXT(),
 
             ],
-            ['id'],
-            [['nama']],
+            'id',
+            ['nama'],
             [
-                [['pemilik_id'], 'pemilik_bank', ['id'], 'CASCADE', 'CASCADE'],
-                [['prinsip_id'], 'prinsip_bank', ['id'], 'CASCADE', 'CASCADE'],
+                [
+                    'pemilik_id', 
+                    \App\Features\Finansial\PemilikBank\PemilikBankDatabase::class, 
+                    'id',
+                ],
+                [
+                    'prinsip_id', 
+                    \App\Features\Finansial\PrinsipBank\PrinsipBankDatabase::class, 
+                    'id',
+                ],
             ],
             true,
-            __DIR__ . '/bank.csv'
+            'bank.csv'
         );
     }
 }

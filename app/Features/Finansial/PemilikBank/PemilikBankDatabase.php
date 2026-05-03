@@ -6,21 +6,21 @@ namespace App\Features\Finansial\PemilikBank;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreatePemilikBankTable extends DatabaseTemplate
+final class PemilikBankDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'finansial',
             'pemilik_bank',
             [
-                'id'      => T::ID8(),
+                'id'      => T::ID8(5),
                 'pemilik' => T::TEXT(),
             ],
-            ['id'],
-            [['pemilik']],
+            'id',
+            ['pemilik'],
             [],
             true,
-            __DIR__ . '/pemilik_bank.csv'
+            'pemilik_bank.csv'
         );
     }
 }
