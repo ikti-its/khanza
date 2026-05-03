@@ -6,21 +6,21 @@ namespace App\Features\Operasional\Shift;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateShiftTable extends DatabaseTemplate
+final class ShiftDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'operasional',
             'shift',
             [
-                'id_shift'         => T::ID8(),
+                'id_shift'         => T::ID8(4),
                 'nama_shift'       => T::TEXT(),
             ],
             'id_shift',
-            'nama_shift',
+            ['nama_shift'],
             [],
             true,
-            __DIR__ . '/shift.csv'
+            'shift.csv'
         );
     }
 }
