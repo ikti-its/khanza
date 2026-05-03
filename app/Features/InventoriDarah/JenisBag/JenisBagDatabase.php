@@ -6,14 +6,14 @@ namespace App\Features\InventoriDarah\JenisBag;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateJenisBagTable extends DatabaseTemplate
+final class JenisBagDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'inventori_darah',
             'jenis_bag',
             [
-                'id_jenis_bag'     => T::ID8(),
+                'id_jenis_bag'     => T::ID8(4),
                 'kode_jenis_bag'   => T::TEXT(),
                 'nama_jenis_bag'   => T::TEXT(),
             ],
@@ -21,7 +21,7 @@ final class CreateJenisBagTable extends DatabaseTemplate
             ['kode_jenis_bag', 'nama_jenis_bag'],
             [],
             true,
-            __DIR__ . '/jenis_bag.csv'
+            'jenis_bag.csv'
         );
     }
 }

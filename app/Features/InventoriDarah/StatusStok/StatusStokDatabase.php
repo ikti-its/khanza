@@ -6,21 +6,21 @@ namespace App\Features\InventoriDarah\StatusStok;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateStatusStokTable extends DatabaseTemplate
+final class StatusStokDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'inventori_darah',
             'status_stok',
             [
-                'id_status_stok'         => T::ID8(),
+                'id_status_stok'         => T::ID8(10),
                 'nama_status_stok'       => T::TEXT(),
             ],
             'id_status_stok',
-            'nama_status_stok',
+            ['nama_status_stok'],
             [],
             true,
-            __DIR__ . '/status_stok.csv'
+            'status_stok.csv'
         );
     }
 }
