@@ -6,18 +6,18 @@ namespace App\Features\Kontak\JenisTelepon;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateJenisTeleponTable extends DatabaseTemplate
+final class JenisTeleponDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'kontak',
             'jenis_telepon',
             [
-                'id_jenis_telepon'   => T::ID8(),
+                'id_jenis_telepon'   => T::ID8(5),
                 'nama_jenis_telepon' => T::TEXT(),
             ],
-            ['id_jenis_telepon'],
-            [['nama_jenis_telepon']],
+            'id_jenis_telepon',
+            ['nama_jenis_telepon'],
             [],
         );
     }
