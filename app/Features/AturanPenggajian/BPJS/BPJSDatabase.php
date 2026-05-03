@@ -6,14 +6,14 @@ namespace App\Features\AturanPenggajian\BPJS;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateBPJSTable extends DatabaseTemplate
+final class BPJSDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'penggajian',
             'bpjs',
             [
-                'no_bpjs'       => T::ID8(),
+                'no_bpjs'       => T::ID8(5),
                 'nama_program'  => T::TEXT(),
                 'penyelenggara' => T::TEXT(),
                 'tarif'         => T::F32(),
@@ -21,10 +21,10 @@ final class CreateBPJSTable extends DatabaseTemplate
                 'batas_bawah'   => T::INT32(),
             ],
             'no_bpjs',
-            'nama_program',
+            ['nama_program'],
             [],
             true,
-            __DIR__ . '/bpjs.csv'
+            'bpjs.csv'
         );
     }
 }

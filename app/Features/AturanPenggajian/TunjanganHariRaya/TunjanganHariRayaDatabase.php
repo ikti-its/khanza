@@ -1,24 +1,26 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\AturanPenggajian\Pesangon;
+namespace App\Features\AturanPenggajian\TunjanganHariRaya;
 
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreatePesangonTable extends DatabaseTemplate
+final class TunjanganHariRayaDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'penggajian',
-            'pesangon',
+            'thr',
             [
-                'no_pesangon'  => T::ID8(),
+                'no_thr'       => T::ID8(12),
                 'masa_kerja'   => T::INT8(),
                 'pengali_upah' => T::F32(),
             ],
-            'no_pesangon',
-            [],
+            'no_thr',
+            [
+                'masa_kerja',
+            ],
             [],
         );
     }

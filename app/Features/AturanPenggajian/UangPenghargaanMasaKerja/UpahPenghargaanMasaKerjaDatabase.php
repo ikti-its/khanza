@@ -6,19 +6,21 @@ namespace App\Features\AturanPenggajian\UangPenghargaanMasaKerja;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateUangPenghargaanMasaKerjaTable extends DatabaseTemplate
+final class UpahPenghargaanMasaKerjaDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'penggajian',
             'upmk',
             [
-                'no_upmk'      => T::ID8(),
+                'no_upmk'      => T::ID8(30),
                 'masa_kerja'   => T::INT8(),
                 'pengali_upah' => T::F32(),
             ],
             'no_upmk',
-            [],
+            [
+                'masa_kerja',
+            ],
             [],
         );
     }

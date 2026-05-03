@@ -6,21 +6,24 @@ namespace App\Features\AturanPenggajian\Golongan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateGolonganTable extends DatabaseTemplate
+final class GolonganDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'penggajian',
             'golongan',
             [
-                'no_golongan'   => T::ID8(),
+                'no_golongan'   => T::ID8(20),
                 'kode_golongan' => T::TEXT(),
                 'nama_golongan' => T::TEXT(),
                 'pendidikan'    => T::TEXT(),
                 'gaji_pokok'    => T::INT32(),
             ],
             'no_golongan',
-            ['nama_golongan', 'kode_golongan'],
+            [
+                'nama_golongan', 
+                'kode_golongan'
+            ],
             [],
         );
     }
