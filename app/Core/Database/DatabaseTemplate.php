@@ -41,6 +41,7 @@ class DatabaseTemplate extends Migration
         foreach ($this->fields as $name => $type) {
             $this->fields[$name] = $type->definition();
         }
+        $this->set_fk_auto();
     }
     
     private function setup() : void {
@@ -58,10 +59,11 @@ class DatabaseTemplate extends Migration
 
         Assert::True(array_key_exists($pk, $this->fields), 
             "Primary key '$pk' is not defined in fields: " 
-            . implode(", ", $this->fields));
+            . implode(", ", array_keys($this->fields)));
 
-        Assert::False(isset($this->fields[$pk]['null']),
-            "Primary key field '$pk' cannot be nullable");
+        Assert::False($this->fields[$pk]['null'] === true,
+            "Primary key field '$pk' cannot be nullable.
+            Schema : $this->schema, Table : $this->table");
 
         // Add more comprehensive checks
 
@@ -87,7 +89,7 @@ class DatabaseTemplate extends Migration
                     'Unique key must be an array of strings');
                 Assert::True(array_key_exists($key, $this->fields),
                     "Unique key '$key' is not defined in fields "
-                    . implode(", ", $this->fields));
+                    . implode(", ", array_keys($this->fields)));
                 Assert::False($key === $pk, 
                     "Unique key '$key' is the same as the primary key");
                 Assert::False(array_count_values($keys)[$key] > 1,
@@ -116,13 +118,12 @@ class DatabaseTemplate extends Migration
 
             [$fields, $ref_table_class, $ref_fields] = $fk;
             
-            
+            if(is_string($fields))
+                $fields = [$fields];
             foreach($fields as $field){
-                Assert::True(in_array($field, $this->fields), 
-                    "Foreign key field $field not found in fields");
-                Assert::True($field['type'] === T::FK_AUTO()->definition(),
-                    'Foreign key field must be of type T::FK_AUTO');
-            }
+                Assert::True(in_array($field, array_keys($this->fields)), 
+                    "Foreign key field $field not found in fields.");
+         }
             
             $ref_table = new $ref_table_class();
             Assert::True($ref_table instanceof self, 
@@ -133,7 +134,7 @@ class DatabaseTemplate extends Migration
             if(is_string($ref_fields))
                 $ref_fields = [$ref_fields];
             foreach($ref_fields as $ref_field){
-                Assert::True(in_array($ref_field, $ref_table->fields), 
+                Assert::True(in_array($ref_field, array_keys($ref_table->fields)), 
                     "Foreign key field $ref_field not found in reference table");
             }
 
@@ -156,6 +157,11 @@ class DatabaseTemplate extends Migration
             $ref_table = new $ref_table_class();
 
             if(is_string($fields))     $fields     = [$fields];
+            foreach($fields as $field){
+                $field_def = $this->fields[$field];
+                Assert::True($field_def === T::FK_AUTO()->definition(),
+                    'Foreign key field must be of type T::FK_AUTO');
+            }
             if(is_string($ref_fields)) $ref_fields = [$ref_fields];
 
             for($i = 0; $i < count($fields); $i++){    
@@ -177,11 +183,14 @@ class DatabaseTemplate extends Migration
         }
     }
 
-    private function read_csv(): void
+    private function seed(): void
     {
+        if($this->source === '')
+            return;
+        
         $root = match (getenv('platform')){
             'windows' => 'C:',
-            'linux'   => '/',
+            'linux'   => '',
             default   => Assert::Unreachable("Unsupported platform"),
         };
         $reflection = new \ReflectionClass($this);
@@ -189,6 +198,10 @@ class DatabaseTemplate extends Migration
 
         $csv_file = $dir . '/' . $this->source;
         $tmp_file = $root . '/tmp/' . $this->source;
+
+        Assert::True(file_exists($csv_file),
+            "Data file '$csv_file' does not exist");
+
         copy($csv_file, $tmp_file);
 
         $this->db->query("
@@ -198,20 +211,6 @@ class DatabaseTemplate extends Migration
         ");
 
         unlink($tmp_file);
-    }
-
-    private function generate_data() {
-        return null;
-    }
-
-    private function seed(): void
-    {
-        if($this->source === '')
-            return;
-        Assert::True(file_exists($this->source),
-            "Data file '$this->source' does not exist");
-
-        $this->read_csv();
     }
 
     final public function up(): void
@@ -225,7 +224,6 @@ class DatabaseTemplate extends Migration
         $this->add_primary_key();
         $this->add_unique_key();
         $this->add_foreign_key();
-        $this->set_fk_auto();
         $this->add_index();
 
         $this->forge->createTable($this->table);
