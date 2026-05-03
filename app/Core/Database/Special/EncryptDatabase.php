@@ -31,4 +31,8 @@ final class EncryptDatabase extends Migration
         // $this->db->query(file_get_contents(self::PATH . 'drop_encrypted_view.sql'));
         // $this->db->query(file_get_contents(self::PATH . 'drop_encrypted_table.sql'));
     }
+
+    public function dependencies(){
+        return [];
+    }
 }

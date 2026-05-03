@@ -34,4 +34,8 @@ final class InitDatabase extends Migration
         $forge = \Config\Database::forge();
         $forge->dropDatabase('khanza_db');
     }
+
+    public function dependencies(){
+        return [];
+    }
 }

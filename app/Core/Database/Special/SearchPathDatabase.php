@@ -50,4 +50,8 @@ final class SearchPathDatabase extends Migration
             RESET search_path
         ");
     }
+
+    public function dependencies(){
+        return [];
+    }
 }

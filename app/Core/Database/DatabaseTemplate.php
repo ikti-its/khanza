@@ -239,4 +239,21 @@ class DatabaseTemplate extends Migration
         $this->db->query("SET search_path TO public," . $this->schema);
         $this->forge->dropTable($this->table);
     }
+
+    final public function dependencies(): array {
+        $fks = $this->foreign_key;
+        $dependencies = [];
+        foreach($fks as $fk){
+            [$_fields, $ref_table_class, $_ref_fields] = $fk;
+            Assert::True(class_exists($ref_table_class), 
+                "Referenced nonexistent table: $ref_table_class");
+        
+            Assert::False($ref_table_class === static::class,
+                "Foreign key refer to itself : $ref_table_class");
+    
+            $dependencies[] = $ref_table_class;
+        }
+
+        return array_values(array_unique($dependencies));
+    }
 }
