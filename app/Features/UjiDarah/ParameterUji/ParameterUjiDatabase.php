@@ -6,21 +6,21 @@ namespace App\Features\UjiDarah\ParameterUji;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateParameterUjiTable extends DatabaseTemplate
+final class ParameterUjiDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'uji_darah',
             'parameter_uji',
             [
-                'id_parameter_uji'      => T::ID8(),
+                'id_parameter_uji'      => T::ID8(10),
                 'nama_parameter'        => T::TEXT(),
             ],
             'id_parameter_uji',
-            'nama_parameter',
+            ['nama_parameter'],
             [],
             true,
-            __DIR__ . '/parameter_uji.csv'
+            'parameter_uji.csv'
         );
     }
 }
