@@ -14,7 +14,7 @@ final class StokOpnameDetailDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'stok_opname_detail',
             [
-                'id_detail'   => T::ID32(),
+                'id_detail'   => T::ID32(100_000),
                 'id_opname'   => T::FK_AUTO(),
                 'id_barang'   => T::FK_AUTO(),
                 'stok_sistem' => T::F64(),

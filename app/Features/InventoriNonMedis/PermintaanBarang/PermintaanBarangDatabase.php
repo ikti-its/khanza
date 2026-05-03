@@ -14,7 +14,7 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'permintaan_barang',
             [
-                'id_permintaan' => T::ID32(),
+                'id_permintaan' => T::ID32(100_000),
                 'unit_pemohon'  => T::TEXT(),
                 'tipe'          => T::TEXT(),
                 'tanggal'       => T::DATETIME(),

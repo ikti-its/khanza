@@ -14,7 +14,7 @@ final class SatuanDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'satuan',
             [
-                'id_satuan'   => T::ID32(),
+                'id_satuan'   => T::ID8(30),
                 'nama_satuan' => T::TEXT(),
             ],
             'id_satuan',

@@ -14,7 +14,7 @@ final class PengadaanBarangDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'pengadaan_barang',
             [
-                'id_pengadaan'  => T::ID32(),
+                'id_pengadaan'  => T::ID32(50_000),
                 'id_pengajuan'  => T::FK_AUTO(),
                 'id_supplier'   => T::FK_AUTO(),
                 'tanggal'       => T::DATETIME(),

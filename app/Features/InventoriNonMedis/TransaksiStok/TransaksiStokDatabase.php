@@ -14,7 +14,7 @@ final class TransaksiStokDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'transaksi_stok',
             [
-                'id_transaksi'   => T::ID32(),
+                'id_transaksi'   => T::ID32(1_000_000),
                 'id_barang'      => T::FK_AUTO(),
                 'tipe_transaksi' => T::TEXT(),
                 'qty'            => T::F64(),

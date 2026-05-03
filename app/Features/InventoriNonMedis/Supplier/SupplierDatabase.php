@@ -14,7 +14,7 @@ final class SupplierDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'supplier',
             [
-                'id_supplier'   => T::ID32(),
+                'id_supplier'   => T::ID16(200),
                 'nama_supplier' => T::TEXT(),
                 'no_telp'       => T::TEXT()->nullable(),
                 'id_alamat'     => T::FK_AUTO()->nullable(),

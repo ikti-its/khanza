@@ -14,7 +14,7 @@ final class JenisBarangDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'jenis_barang',
             [
-                'id_jenis_barang'   => T::ID8(),
+                'id_jenis_barang'   => T::ID8(20),
                 'nama_jenis_barang' => T::TEXT(),
             ],
             'id_jenis_barang',

@@ -14,7 +14,7 @@ final class BarangDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'barang',
             [
-                'id_barang'       => T::ID32(),
+                'id_barang'       => T::ID16(2_000),
                 'kode_barang'     => T::TEXT(),
                 'nama_barang'     => T::TEXT(),
                 'id_jenis_barang'       => T::FK_AUTO(),

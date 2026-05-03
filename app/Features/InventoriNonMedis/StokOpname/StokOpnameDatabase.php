@@ -14,7 +14,7 @@ final class StokOpnameDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'stok_opname',
             [
-                'id_opname'      => T::ID32(),
+                'id_opname'      => T::ID32(10_000),
                 'tanggal'        => T::DATETIME(),
                 'status'         => T::TEXT(),
                 'catatan'        => T::TEXT()->nullable(),

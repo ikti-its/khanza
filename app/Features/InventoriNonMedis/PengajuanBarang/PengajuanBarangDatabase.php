@@ -14,7 +14,7 @@ final class PengajuanBarangDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'pengajuan_barang',
             [
-                'id_pengajuan'     => T::ID32(),
+                'id_pengajuan'     => T::ID32(100_000),
                 'id_permintaan'    => T::FK_AUTO()->nullable(),
                 'tanggal'          => T::DATETIME(),
                 'status'           => T::TEXT(),
