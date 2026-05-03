@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\Supplier;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateSupplierDatabase extends DatabaseTemplate
+final class SupplierDatabase extends DatabaseTemplate
 {
     public function __construct()
     {

@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\Satuan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateSatuanDatabase extends DatabaseTemplate
+final class SatuanDatabase extends DatabaseTemplate
 {
     public function __construct()
     {

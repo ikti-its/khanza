@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\PengadaanBarangDetail;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreatePengadaanBarangDetailDatabase extends DatabaseTemplate
+final class PengadaanBarangDetailDatabase extends DatabaseTemplate
 {
     public function __construct()
     {
