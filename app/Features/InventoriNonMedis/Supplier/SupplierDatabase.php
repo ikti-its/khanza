@@ -21,7 +21,11 @@ final class SupplierDatabase extends DatabaseTemplate
             ],
             'id_supplier',
             [],
-            ['id_alamat', 'lokasi.alamat', 'id_alamat'],
+            [
+                'id_alamat',
+                \App\Features\Lokasi\Alamat\AlamatDatabase::class,
+                'id_alamat',
+            ],
             true,
             __DIR__ . '/supplier.csv'
         );

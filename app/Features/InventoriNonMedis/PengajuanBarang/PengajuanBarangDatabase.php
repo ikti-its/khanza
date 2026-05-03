@@ -23,7 +23,11 @@ final class PengajuanBarangDatabase extends DatabaseTemplate
             ],
             'id_pengajuan',
             [],
-            ['id_permintaan', 'permintaan_barang', 'id_permintaan'],
+            [
+                'id_permintaan',
+                \App\Features\InventoriNonMedis\PermintaanBarang\PermintaanBarangDatabase::class,
+                'id_permintaan',
+            ],
             true,
             __DIR__ . '/pengajuan_barang.csv'
         );

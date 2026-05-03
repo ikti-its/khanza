@@ -31,11 +31,31 @@ final class BarangDatabase extends DatabaseTemplate
             'id_barang',
             'kode_barang',
             [
-                ['id_jenis_barang', 'jenis_barang', 'id_jenis_barang'],
-                ['id_kategori', 'kategori_barang', 'id_kategori'],
-                ['id_supplier', 'supplier', 'id_supplier'],
-                ['id_satuan', 'satuan', 'id_satuan'],
-                ['id_lokasi_penyimpanan', 'lokasi_penyimpanan', 'id_lokasi_penyimpanan'],
+                [
+                    'id_jenis_barang',
+                    \App\Features\InventoriNonMedis\JenisBarang\JenisBarangDatabase::class,
+                    'id_jenis_barang',
+                ],
+                [
+                    'id_kategori',
+                    \App\Features\InventoriNonMedis\KategoriBarang\KategoriBarangDatabase::class,
+                    'id_kategori',
+                ],
+                [
+                    'id_supplier',
+                    \App\Features\InventoriNonMedis\Supplier\SupplierDatabase::class,
+                    'id_supplier',
+                ],
+                [
+                    'id_satuan',
+                    \App\Features\InventoriNonMedis\Satuan\SatuanDatabase::class,
+                    'id_satuan',
+                ],
+                [
+                    'id_lokasi_penyimpanan',
+                    \App\Features\InventoriNonMedis\LokasiPenyimpanan\LokasiPenyimpananDatabase::class,
+                    'id_lokasi_penyimpanan',
+                ],
             ],
             true,
             __DIR__ . '/barang.csv'

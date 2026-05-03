@@ -25,8 +25,16 @@ final class PermintaanBarangDetailDatabase extends DatabaseTemplate
             'id_detail',
             [],
             [
-                ['id_permintaan', 'permintaan_barang', 'id_permintaan'],
-                ['id_barang', 'barang', 'id_barang'],
+                [
+                    'id_permintaan',
+                    \App\Features\InventoriNonMedis\PermintaanBarang\PermintaanBarangDatabase::class,
+                    'id_permintaan',
+                ],
+                [
+                    'id_barang',
+                    \App\Features\InventoriNonMedis\Barang\BarangDatabase::class,
+                    'id_barang',
+                ],
             ],
             true,
             __DIR__ . '/permintaan_barang_detail.csv'

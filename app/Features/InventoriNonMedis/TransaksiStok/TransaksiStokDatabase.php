@@ -27,10 +27,26 @@ final class TransaksiStokDatabase extends DatabaseTemplate
             'id_transaksi',
             [],
             [
-                ['id_barang', 'barang', 'id_barang'],
-                ['id_pengadaan', 'pengadaan_barang', 'id_pengadaan'],
-                ['id_permintaan', 'permintaan_barang', 'id_permintaan'],
-                ['id_opname', 'stok_opname', 'id_opname'],
+                [
+                    'id_barang',
+                    \App\Features\InventoriNonMedis\Barang\BarangDatabase::class,
+                    'id_barang',
+                ],
+                [
+                    'id_pengadaan',
+                    \App\Features\InventoriNonMedis\PengadaanBarang\PengadaanBarangDatabase::class,
+                    'id_pengadaan',
+                ],
+                [
+                    'id_permintaan',
+                    \App\Features\InventoriNonMedis\PermintaanBarang\PermintaanBarangDatabase::class,
+                    'id_permintaan',
+                ],
+                [
+                    'id_opname',
+                    \App\Features\InventoriNonMedis\StokOpname\StokOpnameDatabase::class,
+                    'id_opname',
+                ],
             ],
             true,
             __DIR__ . '/transaksi_stok.csv'

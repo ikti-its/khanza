@@ -25,8 +25,16 @@ final class StokOpnameDetailDatabase extends DatabaseTemplate
             'id_detail',
             [],
             [
-                ['id_opname', 'stok_opname', 'id_opname'],
-                ['id_barang', 'barang', 'id_barang'],
+                [
+                    'id_opname',
+                    \App\Features\InventoriNonMedis\StokOpname\StokOpnameDatabase::class,
+                    'id_opname',
+                ],
+                [
+                    'id_barang',
+                    \App\Features\InventoriNonMedis\Barang\BarangDatabase::class,
+                    'id_barang',
+                ],
             ],
             true,
             __DIR__ . '/stok_opname_detail.csv'

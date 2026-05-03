@@ -24,8 +24,16 @@ final class PengajuanBarangDetailDatabase extends DatabaseTemplate
             'id_detail',
             [],
             [
-                ['id_pengajuan', 'pengajuan_barang', 'id_pengajuan'],
-                ['id_barang', 'barang', 'id_barang'],
+                [
+                    'id_pengajuan',
+                    \App\Features\InventoriNonMedis\PengajuanBarang\PengajuanBarangDatabase::class,
+                    'id_pengajuan',
+                ],
+                [
+                    'id_barang',
+                    \App\Features\InventoriNonMedis\Barang\BarangDatabase::class,
+                    'id_barang',
+                ],
             ],
             true,
             __DIR__ . '/pengajuan_barang_detail.csv'
