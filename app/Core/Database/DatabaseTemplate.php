@@ -179,28 +179,32 @@ class DatabaseTemplate extends Migration
 
     private function read_csv(): void
     {
-        $tmp = match (getenv('platform')){
-            'windows' => $tmp = 'C:/tmp/',
-            'linux'   => $tmp = '//tmp/',
+        $root = match (getenv('platform')){
+            'windows' => 'C:',
+            'linux'   => '/',
             default   => Assert::Unreachable("Unsupported platform"),
         };
-        $tmp .= basename($this->source);
-        copy($this->source, $tmp);
+        $reflection = new \ReflectionClass($this);
+        $dir = dirname($reflection->getFileName());
+
+        $csv_file = $dir . '/' . $this->source;
+        $tmp_file = $root . '/tmp/' . $this->source;
+        copy($csv_file, $tmp_file);
 
         $this->db->query("
             COPY {$this->schema}.{$this->table}
-            FROM '{$tmp}'
+            FROM '{$tmp_file}'
             WITH (FORMAT csv, HEADER true)
         ");
 
-        unlink($tmp);
+        unlink($tmp_file);
     }
 
     private function generate_data() {
         return null;
     }
 
-    final public function seed(): void
+    private function seed(): void
     {
         if($this->source === '')
             return;
