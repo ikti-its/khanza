@@ -5,21 +5,21 @@ namespace App\Features\Person\Pernikahan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreatePernikahanTable extends DatabaseTemplate
+final class PernikahanDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'person',
             'pernikahan',
             [
-                'id_pernikahan'   => T::ID8(),
+                'id_pernikahan'     => T::ID8(10),
                 'status_pernikahan' => T::TEXT(),
             ],
             'id_pernikahan',
-            'status_pernikahan',
+            ['status_pernikahan'],
             [],
             true,
-            __DIR__ . '/pernikahan.csv'
+            'pernikahan.csv'
         );
     }
 }

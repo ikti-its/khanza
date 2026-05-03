@@ -5,21 +5,21 @@ namespace App\Features\Person\Agama;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateAgamaTable extends DatabaseTemplate
+final class AgamaDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'person',
             'agama',
             [
-                'id_agama'   => T::ID8(),
+                'id_agama'   => T::ID8(7),
                 'nama_agama' => T::TEXT(),
             ],
             'id_agama',
-            'nama_agama',
+            ['nama_agama'],
             [],
             true,
-            __DIR__ . '/agama.csv'
+            'agama.csv'
         );
     }
 }
