@@ -1,20 +1,21 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Features\Radiolgi\HasilRadTindakan;
+namespace App\Features\Radiologi\HasilRadTindakan;
 
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-final class CreateHasilRadTindakanTable extends DatabaseTemplate
+final class HasilRadTindakanDatabase extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
         'radiologi',
         'hasil_rad_tindakan',
         [
-            'id_hasil_tindakan'         => T::ID64(),
-            'id_hasil_rad'              => T::INT64(),
-            'id_item_rad'               => T::INT32(),
+            'id_hasil_tindakan'         => T::ID64(100_000),
+            'id_hasil_rad'              => T::FK_AUTO(),
+            'id_item_rad'               => T::FK_AUTO(),
             'tarif_tindakan'            => T::F32(),
             'kilovoltage_kv'            => T::F32(),
             'milliampere_second_mas'    => T::F32(),
@@ -29,9 +30,21 @@ final class CreateHasilRadTindakanTable extends DatabaseTemplate
         'id_hasil_tindakan',
         [],
         [
-            ['id_hasil_rad', 'radiologi.hasil_rad', 'id_hasil_rad'],
-            ['id_item_rad', 'radiologi.ref_item_rad', 'id_item'],
-            ['id_template_rad', 'radiologi.ref_template_rad', 'id_template'],
+            [
+                ['id_hasil_rad'],
+                \App\Features\Radiologi\HasilRad\HasilRadDatabase::class,
+                ['id_hasil_rad']
+            ],
+            [
+                ['id_item_rad'],
+                \App\Features\Radiologi\RefItemRad\RefItemRadDatabase::class,
+                ['id_item']
+            ],
+            [
+                ['id_template_rad'],
+                \App\Features\Radiologi\RefTemplateRad\RefTemplateRadDatabase::class,
+                ['id_template']
+            ],
         ],
     );
 }

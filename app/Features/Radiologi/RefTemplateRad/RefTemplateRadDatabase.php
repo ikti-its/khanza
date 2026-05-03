@@ -1,18 +1,19 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Features\Radiolgi\RefTemplateRad;
+namespace App\Features\Radiologi\RefTemplateRad;
 
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-final class CreateRefTemplateRadTable extends DatabaseTemplate
+final class RefTemplateRadDatabase extends DatabaseTemplate
 {
     public function __construct(){
     parent::__construct(
         'radiologi',
         'ref_template_rad',
         [
-            'id_template'        => T::ID32(),
+            'id_template'        => T::ID32(100),
             'nama_template'      => T::TEXT(),
             'isi_teks_ekspertise'=> T::TEXT(),
         ],
@@ -20,7 +21,7 @@ final class CreateRefTemplateRadTable extends DatabaseTemplate
         [],
         [],
         false,
-        __DIR__ . '/template_rad.csv'
+        'template_rad.csv'
     );
 }
 }
