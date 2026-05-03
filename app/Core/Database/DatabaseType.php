@@ -37,42 +37,50 @@ final class DatabaseType
     public static function FK_AUTO() : self { 
         return new self(['type' => 'FK_AUTO']);}
 
-    public static function ID8(int $max = 0) : self { 
-        Assert::True($max > (2 << 31), 
+    public static function ID8(int $max) : self { 
+        Assert::True($max > 0,
+        "Maximum value $max cannot be negative");
+        Assert::True($max < (1 << 31), 
         "Maximum value $max higher than 2^31, please use ID64");
-        Assert::True($max > (2 << 15), 
+        Assert::True($max < (1 << 15), 
         "Maximum value $max higher than 2^15, please use ID32");
-        Assert::True($max > (2 << 7), 
+        Assert::True($max < (1 << 7), 
         "Maximum value $max higher than 2^7, please use ID16");
 
         return new self(['type' => 'SMALLINT', 'auto_increment' => true]);
     }
-    public static function ID16(int $max = 0): self { 
-        Assert::True($max > (2 << 31), 
+    public static function ID16(int $max): self {
+        Assert::True($max > 0,
+        "Maximum value $max cannot be negative");
+        Assert::True($max < (1 << 31), 
         "Maximum value $max higher than 2^31, please use ID64");
-        Assert::True($max > (2 << 15), 
+        Assert::True($max < (1 << 15), 
         "Maximum value $max higher than 2^15, please use ID32");
-         Assert::True($max < (2 << 7), 
+         Assert::True($max > (1 << 7), 
         "Maximum value $max lower than 2^7, please use ID8");
 
         return new self(['type' => 'SMALLINT', 'auto_increment' => true]);
     }
-    public static function ID32(int $max = 0): self {
-        Assert::True($max > (2 << 31), 
+    public static function ID32(int $max): self {
+        Assert::True($max > 0,
+        "Maximum value $max cannot be negative");
+        Assert::True($max < (1 << 31), 
         "Maximum value $max higher than 2^31, please use ID64");
-        Assert::True($max < (2 << 7), 
+        Assert::True($max > (1 << 7), 
         "Maximum value $max lower than 2^7, please use ID8");
-        Assert::True($max < (2 << 15), 
+        Assert::True($max > (1 << 15), 
         "Maximum value $max lower than 2^15, please use ID16");
         
         return new self(['type' => 'INTEGER', 'auto_increment' => true]);
     }
-    public static function ID64(int $max = 0): self { 
-        Assert::True($max < (2 << 7), 
+    public static function ID64(int $max): self {
+        Assert::True($max > 0,
+        "Maximum value $max cannot be negative"); 
+        Assert::True($max > (1 << 7), 
         "Maximum value $max lower than 2^7, please use ID8");
-        Assert::True($max < (2 << 15), 
+        Assert::True($max > (1 << 15), 
         "Maximum value $max lower than 2^15, please use ID16");
-        Assert::True($max < (2 << 31), 
+        Assert::True($max > (1 << 31), 
         "Maximum value $max lower than 2^31, please use ID32");
 
         return new self(['type' => 'BIGINT', 'auto_increment' => true]);
