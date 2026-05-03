@@ -5,18 +5,18 @@ namespace App\Features\Pendidikan\Gelar;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
     
-final class CreateGelarTable extends DatabaseTemplate
+final class GelarDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'pendidikan',
             'gelar',
             [
-                'id_gelar'   => T::ID8(),
+                'id_gelar'   => T::ID8(100),
                 'nama_gelar' => T::TEXT(),
             ],
-            ['id_gelar'],
-            [['nama_gelar']],
+            'id_gelar',
+            ['nama_gelar'],
             [],
         );
     }
