@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\TransaksiStok;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateTransaksiStokTable extends DatabaseTemplate
+final class CreateTransaksiStokDatabase extends DatabaseTemplate
 {
     public function __construct()
     {

@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\StokOpname;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateStokOpnameTable extends DatabaseTemplate
+final class CreateStokOpnameDatabase extends DatabaseTemplate
 {
     public function __construct()
     {

@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\Barang;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateBarangTable extends DatabaseTemplate
+final class CreateBarangDatabase extends DatabaseTemplate
 {
     public function __construct()
     {

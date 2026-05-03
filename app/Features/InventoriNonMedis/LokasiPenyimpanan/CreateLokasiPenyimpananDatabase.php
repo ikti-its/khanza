@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\LokasiPenyimpanan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateLokasiPenyimpananTable extends DatabaseTemplate
+final class CreateLokasiPenyimpananDatabase extends DatabaseTemplate
 {
     public function __construct()
     {

@@ -6,7 +6,7 @@ namespace App\Features\InventoriNonMedis\JenisBarang;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateJenisBarangTable extends DatabaseTemplate
+final class CreateJenisBarangDatabase extends DatabaseTemplate
 {
     public function __construct()
     {
