@@ -21,7 +21,7 @@ final class LokasiPenyimpananDatabase extends DatabaseTemplate
             [],
             [],
             true,
-            __DIR__ . '/lokasi_penyimpanan.csv'
+            'lokasi_penyimpanan.csv'
         );
     }
 }

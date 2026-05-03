@@ -21,7 +21,7 @@ final class SatuanDatabase extends DatabaseTemplate
             'nama_satuan',
             [],
             true,
-            __DIR__ . '/satuan.csv'
+            'satuan.csv'
         );
     }
 }

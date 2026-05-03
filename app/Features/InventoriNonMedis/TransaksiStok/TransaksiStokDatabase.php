@@ -49,7 +49,7 @@ final class TransaksiStokDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            __DIR__ . '/transaksi_stok.csv'
+            'transaksi_stok.csv'
         );
     }
 }

@@ -35,7 +35,7 @@ final class PengadaanBarangDetailDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            __DIR__ . '/pengadaan_barang_detail.csv'
+            'pengadaan_barang_detail.csv'
         );
     }
 }

@@ -27,7 +27,7 @@ final class SupplierDatabase extends DatabaseTemplate
                 'id_alamat',
             ],
             true,
-            __DIR__ . '/supplier.csv'
+            'supplier.csv'
         );
     }
 }

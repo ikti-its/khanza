@@ -22,7 +22,7 @@ final class KategoriBarangDatabase extends DatabaseTemplate
             'kode_kategori_barang',
             [],
             true,
-            __DIR__ . '/kategori_barang.csv'
+            'kategori_barang.csv'
         );
     }
 }

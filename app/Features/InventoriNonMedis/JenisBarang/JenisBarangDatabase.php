@@ -21,7 +21,7 @@ final class JenisBarangDatabase extends DatabaseTemplate
             'nama_jenis_barang',
             [],
             true,
-            __DIR__ . '/jenis_barang.csv'
+            'jenis_barang.csv'
         );
     }
 }

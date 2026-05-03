@@ -37,7 +37,7 @@ final class PermintaanBarangDetailDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            __DIR__ . '/permintaan_barang_detail.csv'
+            'permintaan_barang_detail.csv'
         );
     }
 }

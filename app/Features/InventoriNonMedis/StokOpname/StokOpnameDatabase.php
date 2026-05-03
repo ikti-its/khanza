@@ -24,7 +24,7 @@ final class StokOpnameDatabase extends DatabaseTemplate
             [],
             [],
             true,
-            __DIR__ . '/stok_opname.csv'
+            'stok_opname.csv'
         );
     }
 }

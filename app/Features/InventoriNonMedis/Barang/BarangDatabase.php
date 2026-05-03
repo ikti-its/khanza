@@ -58,7 +58,7 @@ final class BarangDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            __DIR__ . '/barang.csv'
+            'barang.csv'
         );
     }
 }
