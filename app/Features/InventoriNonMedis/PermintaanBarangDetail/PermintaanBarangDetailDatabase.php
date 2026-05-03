@@ -15,8 +15,8 @@ final class PermintaanBarangDetailDatabase extends DatabaseTemplate
             'permintaan_barang_detail',
             [
                 'id_detail'      => T::ID32(),
-                'id_permintaan'  => T::INT32(),
-                'id_barang'      => T::INT32()->nullable(),
+                'id_permintaan'  => T::FK_AUTO(),
+                'id_barang'      => T::FK_AUTO()->nullable(),
                 'nama_barang_baru' => T::TEXT()->nullable(),
                 'qty'            => T::F64(),
                 'qty_disetujui'  => T::F64()->nullable(),

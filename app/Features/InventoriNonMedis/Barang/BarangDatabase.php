@@ -17,12 +17,12 @@ final class BarangDatabase extends DatabaseTemplate
                 'id_barang'       => T::ID32(),
                 'kode_barang'     => T::TEXT(),
                 'nama_barang'     => T::TEXT(),
-                'id_jenis_barang' => T::INT8(),
+                'id_jenis_barang'       => T::FK_AUTO(),
 
-                'id_kategori'  => T::INT32(),
-                'id_supplier'  => T::INT32()->nullable(),
-                'id_satuan'              => T::INT32(),
-                'id_lokasi_penyimpanan'  => T::INT32(),
+                'id_kategori'           => T::FK_AUTO(),
+                'id_supplier'           => T::FK_AUTO()->nullable(),
+                'id_satuan'             => T::FK_AUTO(),
+                'id_lokasi_penyimpanan' => T::FK_AUTO(),
 
                 'stok'         => T::F64(),
                 'stok_minimum' => T::F64()->nullable(),
