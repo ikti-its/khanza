@@ -6,21 +6,21 @@ namespace App\Features\PenangananDonor\PilihanJawaban;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreatePilihanJawabanTable extends DatabaseTemplate
+final class PilihanJawabanDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'penanganan_donor',
             'pilihan_jawaban',
             [
-                'id_pilihan'        => T::ID8(),
+                'id_pilihan'        => T::ID8(2),
                 'nama_pilihan'      => T::TEXT(),
             ],
             'id_pilihan',
-            'nama_pilihan',
+            ['nama_pilihan'],
             [],
             true,
-            __DIR__ . '/pilihan_jawaban.csv'
+            'pilihan_jawaban.csv'
         );
     }
 }

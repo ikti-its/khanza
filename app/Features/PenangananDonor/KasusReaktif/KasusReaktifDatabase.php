@@ -1,0 +1,39 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\PenangananDonor\KasusReaktif;
+
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\DatabaseType as T;
+
+final class KasusReaktifDatabase extends DatabaseTemplate
+{
+    public function __construct(){
+        parent::__construct(
+            'penanganan_donor',
+            'kasus_reaktif',
+            [
+                'id_kasus'               => T::ID32(5_000_000),
+                'id_kunjungan'           => T::FK_AUTO(),
+                'tanggal_ditetapkan'     => T::DATE(),
+                'id_status_kasus'        => T::FK_AUTO(),
+            ],
+            'id_kasus',
+            ['id_kunjungan'],
+            [
+                [
+                    'id_kunjungan', 
+                    \App\Features\Donor\Kunjungan\KunjunganDatabase::class, 
+                    'id_kunjungan'
+                ],
+                [
+                    'id_status_kasus', 
+                    \App\Features\PenangananDonor\StatusKasus\StatusKasusDatabase::class, 
+                    'id_status_kasus'
+                ],
+            ],
+            false,
+            'kasus_reaktif.csv'
+        );
+    }
+}

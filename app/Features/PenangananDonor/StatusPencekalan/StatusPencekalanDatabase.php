@@ -6,21 +6,21 @@ namespace App\Features\PenangananDonor\StatusPencekalan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateStatusPencekalanTable extends DatabaseTemplate
+final class StatusPencekalanDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'penanganan_donor',
             'status_pencekalan',
             [
-                'id_status_pencekalan'      => T::ID8(),
+                'id_status_pencekalan'      => T::ID8(10),
                 'nama_status_pencekalan'    => T::TEXT(),
             ],
             'id_status_pencekalan',
-            'nama_status_pencekalan',
+            ['nama_status_pencekalan'],
             [],
             true,
-            __DIR__ . '/status_pencekalan.csv'
+            'status_pencekalan.csv'
         );
     }
 }
