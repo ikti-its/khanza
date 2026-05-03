@@ -3,6 +3,8 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseService;
+use CodeIgniter\Database\ConnectionInterface;
+use App\Core\Config\KhanzaMigrationRunner;
 
 /**
  * Services Configuration file.
@@ -29,4 +31,15 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+
+    public static function migrations(?Migrations $config = null, ?ConnectionInterface $db = null, bool $getShared = true)
+    {
+        if ($getShared) {
+            return static::getSharedInstance('migrations', $config, $db);
+        }
+
+        $config ??= config(Migrations::class);
+
+        return new KhanzaMigrationRunner($config, $db);
+    }
 }
