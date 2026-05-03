@@ -6,14 +6,14 @@ namespace App\Features\Donor\JenisDonor;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateJenisDonorTable extends DatabaseTemplate
+final class JenisDonorDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'donor',
             'jenis_donor',
             [
-                'id_jenis_donor'      => T::ID8(),
+                'id_jenis_donor'      => T::ID8(10),
                 'kode_jenis_donor'    => T::TEXT(),
                 'nama_jenis_donor'    => T::TEXT(),
             ],
@@ -21,7 +21,7 @@ final class CreateJenisDonorTable extends DatabaseTemplate
             ['kode_jenis_donor', 'nama_jenis_donor'],
             [],
             true,
-            __DIR__ . '/jenis_donor.csv'
+            'jenis_donor.csv'
         );
     }
 }
