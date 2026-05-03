@@ -6,25 +6,29 @@ namespace App\Features\PemusnahanDarah\Pemusnahan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreatePemusnahanTable extends DatabaseTemplate
+final class PemusnahanDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'pemusnahan_darah',
             'pemusnahan',
             [
-                'id_pemusnahan'         => T::ID32(),
+                'id_pemusnahan'         => T::ID32(5_000_000),
                 'tanggal_pemusnahan'    => T::DATE(),
-                'id_petugas'            => T::UUID(),
+                'id_petugas'            => T::FK_AUTO(),
                 'keterangan'            => T::TEXT()->nullable(),
             ],
             'id_pemusnahan',
             [],
             [
-                // ['id_petugas', 'role.petugas', 'id_petugas'],
+                // [
+                //     'id_petugas', 
+                //     \App\Features\Role\Petugas\PetugasDatabase::class, 
+                //     'id_petugas'
+                // ],
             ],
             false,
-            __DIR__ . '/pemusnahan.csv'
+            'pemusnahan.csv'
         );
     }
 }

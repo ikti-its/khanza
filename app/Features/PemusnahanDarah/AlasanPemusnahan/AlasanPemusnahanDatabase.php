@@ -6,21 +6,21 @@ namespace App\Features\PemusnahanDarah\AlasanPemusnahan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateAlasanPemusnahanTable extends DatabaseTemplate
+final class AlasanPemusnahanDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'pemusnahan_darah',
             'alasan_pemusnahan',
             [
-                'id_alasan'        => T::ID8(),
+                'id_alasan'        => T::ID8(10),
                 'nama_alasan'      => T::TEXT(),
             ],
             'id_alasan',
-            'nama_alasan',
+            ['nama_alasan'],
             [],
             true,
-            __DIR__ . '/alasan_pemusnahan.csv'
+            'alasan_pemusnahan.csv'
         );
     }
 }
