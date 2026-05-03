@@ -29,7 +29,7 @@ final class BarangDatabase extends DatabaseTemplate
                 'harga_satuan' => T::F64()->nullable(),
             ],
             'id_barang',
-            'kode_barang',
+            ['kode_barang'],
             [
                 [
                     'id_jenis_barang',

@@ -19,7 +19,7 @@ final class KategoriBarangDatabase extends DatabaseTemplate
                 'nama_kategori_barang' => T::TEXT(),
             ],
             'id_kategori',
-            'kode_kategori_barang',
+            ['kode_kategori_barang'],
             [],
             true,
             'kategori_barang.csv'

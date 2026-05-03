@@ -18,7 +18,7 @@ final class JenisBarangDatabase extends DatabaseTemplate
                 'nama_jenis_barang' => T::TEXT(),
             ],
             'id_jenis_barang',
-            'nama_jenis_barang',
+            ['nama_jenis_barang'],
             [],
             true,
             'jenis_barang.csv'

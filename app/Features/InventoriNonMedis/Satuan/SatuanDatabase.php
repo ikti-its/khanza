@@ -18,7 +18,7 @@ final class SatuanDatabase extends DatabaseTemplate
                 'nama_satuan' => T::TEXT(),
             ],
             'id_satuan',
-            'nama_satuan',
+            ['nama_satuan'],
             [],
             true,
             'satuan.csv'
