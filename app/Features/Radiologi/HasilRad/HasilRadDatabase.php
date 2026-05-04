@@ -31,7 +31,11 @@ final class HasilRadDatabase extends DatabaseTemplate
                     \App\Features\Radiologi\PermintaanRad\PermintaanRadDatabase::class,
                     ['id_permintaan']
                 ],
-                // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+                [
+                    'nomor_reg', 
+                    \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class, 
+                    'nomor_reg',
+                ],
                 [
                     'kode_dokter_pj', 
                     \App\Features\Role\Dokter\DokterDatabase::class, 

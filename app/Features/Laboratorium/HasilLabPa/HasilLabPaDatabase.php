@@ -36,7 +36,11 @@ final class HasilLabPaDatabase extends DatabaseTemplate
                     \App\Features\Laboratorium\PermintaanLabHeader\PermintaanLabHeaderDatabase::class,
                     ['id_permintaan'],
                 ],
-                // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+                [
+                    'nomor_reg', 
+                    \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class, 
+                    'nomor_reg',
+                ],
                 [
                     'kode_dokter_pj', 
                     \App\Features\Role\Dokter\DokterDatabase::class, 

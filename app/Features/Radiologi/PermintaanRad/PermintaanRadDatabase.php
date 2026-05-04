@@ -26,7 +26,11 @@ final class PermintaanRadDatabase extends DatabaseTemplate
         'id_permintaan',
         ['no_permintaan'],
         [
-            // [['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            [
+                'nomor_reg', 
+                \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class, 
+                'nomor_reg',
+            ],
             [
                 'kode_dokter_perujuk', 
                 \App\Features\Role\Dokter\DokterDatabase::class,
