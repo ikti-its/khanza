@@ -28,7 +28,6 @@ final class SearchPathDatabase extends Migration
         }
 
         $schema_string = ''.implode(', ',  $schema_list);
-        echo $schema_string;
         $this->db->query("
             ALTER DATABASE $db_name
             SET search_path TO $schema_string
