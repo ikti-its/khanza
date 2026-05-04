@@ -6,14 +6,14 @@ namespace App\Features\TriaseUGD\TriaseMacamKasus;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateTriaseMacamKasusTable extends DatabaseTemplate
+final class TriaseMacamKasusDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'triase_ugd',
             'triase_macam_kasus',
             [
-                'id_macam_kasus'          => T::ID8(),
+                'id_macam_kasus'          => T::ID8(20),
                 'kode_macam_kasus'        => T::TEXT(),
                 'nama_macam_kasus'        => T::TEXT(),
             ],
@@ -21,7 +21,7 @@ final class CreateTriaseMacamKasusTable extends DatabaseTemplate
             ['kode_macam_kasus', 'nama_macam_kasus'],
             [],
             true,
-            __DIR__ . '/triase_macam_kasus.csv'
+            'triase_macam_kasus.csv'
         );
     }
 }

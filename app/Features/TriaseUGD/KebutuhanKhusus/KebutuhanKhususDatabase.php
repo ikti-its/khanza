@@ -6,21 +6,21 @@ namespace App\Features\TriaseUGD\KebutuhanKhusus;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateKebutuhanKhususTable extends DatabaseTemplate
+final class KebutuhanKhususDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'triase_ugd',
             'kebutuhan_khusus',
             [
-                'id_kebutuhan'          => T::ID8(),
+                'id_kebutuhan'          => T::ID8(10),
                 'nama_kebutuhan'        => T::TEXT(),
             ],
             'id_kebutuhan',
-            'nama_kebutuhan',
+            ['nama_kebutuhan'],
             [],
             true,
-            __DIR__ . '/kebutuhan_khusus.csv'
+            'kebutuhan_khusus.csv'
         );
     }
 }

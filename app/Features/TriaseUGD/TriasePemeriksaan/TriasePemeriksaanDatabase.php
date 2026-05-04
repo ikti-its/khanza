@@ -6,14 +6,14 @@ namespace App\Features\TriaseUGD\TriasePemeriksaan;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateTriasePemeriksaanTable extends DatabaseTemplate
+final class TriasePemeriksaanDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'triase_ugd',
             'triase_pemeriksaan',
             [
-                'id_pemeriksaan'          => T::ID8(),
+                'id_pemeriksaan'          => T::ID8(20),
                 'kode_pemeriksaan'        => T::TEXT(),
                 'nama_pemeriksaan'        => T::TEXT(),
             ],
@@ -21,7 +21,7 @@ final class CreateTriasePemeriksaanTable extends DatabaseTemplate
             ['kode_pemeriksaan', 'nama_pemeriksaan'],
             [],
             true,
-            __DIR__ . '/triase_pemeriksaan.csv'
+            'triase_pemeriksaan.csv'
         );
     }
 }

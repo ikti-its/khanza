@@ -6,21 +6,21 @@ namespace App\Features\TriaseUGD\AlatTransportasi;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreateAlatTransportasiTable extends DatabaseTemplate
+final class AlatTransportasiDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'triase_ugd',
             'alat_transportasi',
             [
-                'id_transportasi'          => T::ID8(),
+                'id_transportasi'          => T::ID8(10),
                 'nama_transportasi'        => T::TEXT(),
             ],
             'id_transportasi',
-            'nama_transportasi',
+            ['nama_transportasi'],
             [],
             true,
-            __DIR__ . '/alat_transportasi.csv'
+            'alat_transportasi.csv'
         );
     }
 }
