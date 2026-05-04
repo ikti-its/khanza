@@ -13,7 +13,7 @@ final class PermintaanRadDatabase extends DatabaseTemplate
         'radiologi',
         'permintaan_rad',
         [
-            'id_permintaan'         => T::ID64(100_000),
+            'id_permintaan'         => T::ID32(100_000_000),
             'no_permintaan'         => T::TEXT(),
             'nomor_reg'             => T::FK_AUTO(),
             'kode_dokter_perujuk'   => T::FK_AUTO(),

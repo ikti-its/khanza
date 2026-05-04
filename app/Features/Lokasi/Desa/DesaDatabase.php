@@ -53,8 +53,8 @@ final class DesaDatabase extends DatabaseTemplate
                     ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal']
                 ],
             ],
-            true,
-            'desa.csv',
+            // true,
+            // 'desa.csv',
         );
     }
 }

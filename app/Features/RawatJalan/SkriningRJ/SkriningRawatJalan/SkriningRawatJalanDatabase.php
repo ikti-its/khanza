@@ -14,8 +14,8 @@ final class SkriningRawatJalanDatabase extends DatabaseTemplate
             'skrining_rj',
             'skrining_rawat_jalan',
             [
-                'id_skrining' => T::ID64(100_000),
-                'no_rm' => T::FK_AUTO(),
+                'id_skrining' => T::ID32(100_000_000),
+                // 'no_rm' => T::FK_AUTO(),
                 'tgl_jam_skrining' => T::DATETIME(),
                 'id_kesadaran' => T::FK_AUTO(),
                 'id_pernafasan' => T::FK_AUTO(),

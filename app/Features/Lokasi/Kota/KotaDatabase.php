@@ -49,8 +49,8 @@ final class KotaDatabase extends DatabaseTemplate
                     'id_provinsi'
                 ]
             ],
-            true,
-            'kota.csv',
+            // true,
+            // 'kota.csv',
         );
     }
 }

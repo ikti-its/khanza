@@ -13,7 +13,7 @@ final class PermintaanLabHeaderDatabase extends DatabaseTemplate
             'laboratorium',
             'permintaan_lab_header',
             [
-                'id_permintaan' => T::ID64(100_000),
+                'id_permintaan' => T::ID32(100_000_000),
                 'no_permintaan' => T::TEXT(),
                 'nomor_reg' => T::TEXT(),
                 'id_kategori_lab' => T::FK_AUTO(),

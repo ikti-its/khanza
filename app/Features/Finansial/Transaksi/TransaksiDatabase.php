@@ -27,12 +27,12 @@ final class TransaksiDatabase extends DatabaseTemplate
             [
                 [
                     'rekening_sumber',
-                    \App\Features\Finansial\Transaksi\TransaksiDatabase::class,
+                    \App\Features\Finansial\Rekening\RekeningDatabase::class,
                     'id_rekening',
                 ],
                 [
                     'rekening_tujuan',
-                    \App\Features\Finansial\Transaksi\TransaksiDatabase::class,
+                    \App\Features\Finansial\Rekening\RekeningDatabase::class,
                     'id_rekening'
                 ],
                 [

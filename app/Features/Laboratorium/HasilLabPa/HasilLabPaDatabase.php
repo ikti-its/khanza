@@ -14,7 +14,7 @@ final class HasilLabPaDatabase extends DatabaseTemplate
             'laboratorium',
             'hasil_lab_pa',
             [
-                'id_hasil_pa' => T::ID64(100_000),
+                'id_hasil_pa' => T::ID32(100_000_000),
                 'id_permintaan_lab' => T::FK_AUTO(),
                 'nomor_reg' => T::FK_AUTO(),
                 'kode_dokter_pj' => T::FK_AUTO(),

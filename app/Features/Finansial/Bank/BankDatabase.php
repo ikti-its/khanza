@@ -17,15 +17,18 @@ final class BankDatabase extends DatabaseTemplate
                 'kode_bank'      => T::INT16()->nullable(),
                 'nama_bank'      => T::TEXT()->nullable(),
                 'sebutan'        => T::TEXT()->nullable(),
-                'pemilik_id'     => T::INT8(),
-                'prinsip_id'     => T::INT8(),
+                'pemilik_id'     => T::FK_AUTO(),
+                'prinsip_id'     => T::FK_AUTO(),
                 'is_bank_devisa' => T::BOOL()->nullable(),
                 'mobile_app'     => T::TEXT(),
                 'link_playstore' => T::TEXT(),
 
             ],
-            'id',
-            ['nama'],
+            'id_bank',
+            [
+                'kode_bank',
+                'nama_bank'
+            ],
             [
                 [
                     'pemilik_id', 

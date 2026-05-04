@@ -14,7 +14,7 @@ final class RefItemPemeriksaanLabDatabase extends DatabaseTemplate
             'laboratorium',
             'ref_item_pemeriksaan_lab',
             [
-                'id_item_lab' => T::ID32(),
+                'id_item_lab' => T::ID32(100_000_000),
                 'id_kategori' => T::FK_AUTO(),
                 'kode_periksa' => T::TEXT(),
                 'nama_item' => T::TEXT(),
