@@ -93,9 +93,19 @@ final class KhanzaMigrationRunner extends MigrationRunner
         foreach ($migrations as $m) {
             $map[$m->class] = $m;
         }
-
+        unset($migrations[\App\Core\Database\Special\InitDatabase::class]);
+        unset($migrations[\App\Core\Database\Special\SearchPathDatabase::class]);
+        unset($migrations[\App\Core\Database\Special\EncryptDatabase::class]);
+        unset($migrations[\App\Core\Database\Special\AuditDatabase::class]);
         $graph    = self::buildGraph($migrations);
         $ordered  = self::topoSort($graph);
+        $ordered = [
+            \App\Core\Database\Special\InitDatabase::class,
+            ...$ordered,
+            \App\Core\Database\Special\SearchPathDatabase::class,
+            \App\Core\Database\Special\EncryptDatabase::class,
+            \App\Core\Database\Special\AuditDatabase::class,
+        ];
         $versions = self::assignVersions($ordered);
         $this->versions = $versions;
 
