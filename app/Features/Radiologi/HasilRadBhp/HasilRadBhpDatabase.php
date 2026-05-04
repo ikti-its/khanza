@@ -15,7 +15,7 @@ final class HasilRadBhpDatabase extends DatabaseTemplate
         [
             'id_rad_bhp'     => T::ID32(100_000_000),
             'id_hasil_rad'   => T::FK_AUTO(),
-            'id_barang_medis'=> T::FK_AUTO(),
+            // 'id_barang_medis'=> T::FK_AUTO(),
             'jumlah_pakai'   => T::F32(),
             'satuan'         => T::TEXT(),
             'harga_satuan'   => T::F32(),
