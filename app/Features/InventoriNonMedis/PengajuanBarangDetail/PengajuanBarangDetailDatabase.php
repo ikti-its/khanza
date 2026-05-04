@@ -16,8 +16,8 @@ final class PengajuanBarangDetailDatabase extends DatabaseTemplate
             [
                 'id_detail'       => T::ID32(500_000),
                 'id_pengajuan'    => T::FK_AUTO(),
-                'id_barang'       => T::FK_AUTO()->nullable(),
-                'nama_barang_baru' => T::TEXT()->nullable(),
+                'id_barang'       => T::FK_AUTO(),
+                'nama_barang_baru'=> T::TEXT()->nullable(),
                 'qty'             => T::F64(),
                 'harga_estimasi'  => T::F64()->nullable(),
             ],

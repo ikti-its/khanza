@@ -17,7 +17,7 @@ final class SupplierDatabase extends DatabaseTemplate
                 'id_supplier'   => T::ID16(200),
                 'nama_supplier' => T::TEXT(),
                 'no_telp'       => T::TEXT()->nullable(),
-                'id_alamat'     => T::FK_AUTO()->nullable(),
+                'id_alamat'     => T::FK_AUTO(),
             ],
             'id_supplier',
             [],

@@ -20,7 +20,7 @@ final class BarangDatabase extends DatabaseTemplate
                 'id_jenis_barang'       => T::FK_AUTO(),
 
                 'id_kategori'           => T::FK_AUTO(),
-                'id_supplier'           => T::FK_AUTO()->nullable(),
+                'id_supplier'           => T::FK_AUTO(),
                 'id_satuan'             => T::FK_AUTO(),
                 'id_lokasi_penyimpanan' => T::FK_AUTO(),
 

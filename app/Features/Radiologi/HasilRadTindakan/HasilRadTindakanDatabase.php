@@ -25,7 +25,7 @@ final class HasilRadTindakanDatabase extends DatabaseTemplate
             'jumlah_penyinaran'         => T::INT32(),
             'dosis_radiasi'             => T::TEXT(),
             'hasil_ekspertise'          => T::TEXT(),
-            'id_template_rad'           => T::INT32()->nullable(),
+            'id_template_rad'           => T::FK_AUTO(),
         ],
         'id_hasil_tindakan',
         [],
