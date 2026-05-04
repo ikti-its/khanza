@@ -13,11 +13,11 @@ final class HasilUjiSaringDatabase extends DatabaseTemplate
             'uji_darah',
             'hasil_uji_saring',
             [
-                'id_uji_saring'         => T::ID32(100_000_000),
-                'id_bag'                => T::FK_AUTO(),
-                'id_metode_uji'         => T::FK_AUTO(),
-                'tanggal_uji'           => T::DATE(),
-                'id_petugas'            => T::FK_AUTO(),
+                'id_uji_saring' => T::ID32(100_000_000),
+                'id_bag'        => T::FK_AUTO(),
+                'id_metode_uji' => T::FK_AUTO(),
+                'tanggal_uji'   => T::DATE(),
+                'id_petugas'    => T::FK_AUTO(),
             ],
             'id_uji_saring',
             ['id_bag'],
@@ -32,11 +32,11 @@ final class HasilUjiSaringDatabase extends DatabaseTemplate
                     \App\Features\UjiDarah\MetodeUji\MetodeUjiDatabase::class, 
                     'id_metode_uji'
                 ],
-                // [
-                //     'id_petugas', 
-                //     \App\Features\Role\Petugas\PetugasDatabase::class, 
-                //     'id_petugas'
-                // ],
+                [
+                    'id_petugas', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas'
+                ],
             ],
             false,
             'hasil_uji_saring.csv'

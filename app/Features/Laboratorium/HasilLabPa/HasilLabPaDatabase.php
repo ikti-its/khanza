@@ -19,7 +19,7 @@ final class HasilLabPaDatabase extends DatabaseTemplate
                 'nomor_reg' => T::FK_AUTO(),
                 'kode_dokter_pj' => T::FK_AUTO(),
                 'id_petugas_lab' => T::FK_AUTO(),
-                'kode_dokter_perujuk' => T::TEXT(),
+                'kode_dokter_perujuk' => T::FK_AUTO(),
                 'tgl_jam_hasil' => T::DATETIME(),
                 'id_item_pemeriksaan' => T::FK_AUTO(),
                 'diagnosa_klinis' => T::TEXT(),
@@ -37,9 +37,21 @@ final class HasilLabPaDatabase extends DatabaseTemplate
                     ['id_permintaan'],
                 ],
                 // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
-                // ['kode_dokter_pj', 'sik.dokter_structure', 'kode_dokter'],
-                // ['id_petugas_lab', 'sik.pegawai_structure', 'id'],
-                // ['kode_dokter_perujuk', 'sik.dokter_structure', 'kode_dokter'],
+                [
+                    'kode_dokter_pj', 
+                    \App\Features\Role\Dokter\DokterDatabase::class, 
+                    'id_dokter',
+                ],
+                [
+                    'id_petugas_lab', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas',
+                ],
+                [
+                    'kode_dokter_perujuk', 
+                    \App\Features\Role\Dokter\DokterDatabase::class, 
+                    'id_dokter',
+                ],
                 [
                     ['id_item_pemeriksaan'],
                     \App\Features\Laboratorium\PermintaanLabPa\PermintaanLabPaDatabase::class,

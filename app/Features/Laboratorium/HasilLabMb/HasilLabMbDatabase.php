@@ -35,9 +35,21 @@ final class HasilLabMbDatabase extends DatabaseTemplate
                     ['id_permintaan'],
                 ],
                 // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
-                // ['kode_dokter_pj', 'sik.dokter_structure', 'kode_dokter'],
-                // ['id_petugas_lab', 'sik.pegawai_structure', 'id'],
-                // ['kode_dokter_perujuk', 'sik.dokter_structure', 'kode_dokter'],
+                [
+                    'kode_dokter_pj', 
+                    \App\Features\Role\Dokter\DokterDatabase::class, 
+                    'id_dokter',
+                ],
+                [
+                    'id_petugas_lab', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas',
+                ],
+                [
+                    'kode_dokter_perujuk', 
+                    \App\Features\Role\Dokter\DokterDatabase::class, 
+                    'id_dokter',
+                ],
                 [
                     ['id_item_pemeriksaan'],
                     \App\Features\Laboratorium\PermintaanLabMb\PermintaanLabMbDatabase::class,

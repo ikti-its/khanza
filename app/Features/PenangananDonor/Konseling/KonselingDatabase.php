@@ -26,11 +26,11 @@ final class KonselingDatabase extends DatabaseTemplate
                     \App\Features\PenangananDonor\KasusReaktif\KasusReaktifDatabase::class, 
                     'id_kasus'
                 ],
-                // [
-                //     'id_petugas', 
-                //     \App\Features\Role\Petugas\PetugasDatabase::class, 
-                //     'id_petugas'
-                // ],
+                [
+                    'id_petugas', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas'
+                ],
             ],
             false,
             'konseling.csv'

@@ -61,7 +61,11 @@ final class SkriningRawatJalanDatabase extends DatabaseTemplate
                     \App\Features\RawatJalan\SkriningRJ\RefSkriningKeputusan\RefSkriningKeputusanDatabase::class,
                     ['id_keputusan'],
                 ],
-                // ['id_petugas', 'sik.pegawai_structure', 'id'],
+                [
+                    'id_petugas', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas'
+                ],
             ],
         );
     }

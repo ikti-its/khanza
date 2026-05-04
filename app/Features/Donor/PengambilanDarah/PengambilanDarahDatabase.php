@@ -45,11 +45,11 @@ final class PengambilanDarahDatabase extends DatabaseTemplate
                     \App\Features\Donor\LokasiPengambilanDarah\LokasiPengambilanDarahDatabase::class, 
                     'id_lokasi_pengambilan'
                 ],
-                // [
-                //     'id_petugas', 
-                //     \App\Features\Role\Petugas\PetugasDatabase::class, 
-                //     'id_petugas'
-                // ],
+                [
+                    'id_petugas', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas'
+                ],
             ],
             false,
             'pengambilan_darah.csv'

@@ -41,11 +41,11 @@ final class PencekalanDatabase extends DatabaseTemplate
                     \App\Features\Operasional\Shift\ShiftDatabase::class, 
                     'id_shift'
                 ],
-                // [
-                //     'id_petugas', 
-                //     \App\Features\Role\Petugas\PetugasDatabase::class, 
-                //     'id_petugas'
-                // ],
+                [
+                    'id_petugas', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas'
+                ],
                 [
                     'id_status_pencekalan', 
                     \App\Features\PenangananDonor\StatusPencekalan\StatusPencekalanDatabase::class, 

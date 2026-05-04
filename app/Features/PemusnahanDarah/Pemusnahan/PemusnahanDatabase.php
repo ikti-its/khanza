@@ -21,11 +21,11 @@ final class PemusnahanDatabase extends DatabaseTemplate
             'id_pemusnahan',
             [],
             [
-                // [
-                //     'id_petugas', 
-                //     \App\Features\Role\Petugas\PetugasDatabase::class, 
-                //     'id_petugas'
-                // ],
+                [
+                    'id_petugas', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas'
+                ],
             ],
             false,
             'pemusnahan.csv'

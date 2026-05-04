@@ -40,26 +40,26 @@ final class PenyerahanDarahDatabase extends DatabaseTemplate
                     \App\Features\Operasional\Shift\ShiftDatabase::class, 
                     'id_shift'
                 ],
-                // [
-                //     'id_petugas', 
-                //     \App\Features\Role\Petugas\PetugasDatabase::class, 
-                //     'id_petugas'
-                // ],
+                [
+                    'id_petugas', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas'
+                ],
                 [
                     'id_status_pembayaran', 
                     \App\Features\DistribusiDarah\StatusPembayaran\StatusPembayaranDatabase::class, 
                     'id_status_pembayaran'
                 ],
-                // [
-                //     'id_rekening', 
-                //     \App\Features\Finansial\Rekening\RekeningDatabase::class, 
-                //     'id_rekening'
-                // ],
-                // [
-                //     'id_penanggung_jawab', 
-                //     \App\Features\Role\Petugas\PetugasDatabase::class, 
-                //     'id_petugas'
-                // ],
+                [
+                    'id_rekening', 
+                    \App\Features\Finansial\Rekening\RekeningDatabase::class, 
+                    'id_rekening'
+                ],
+                [
+                    'id_penanggung_jawab', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas'
+                ],
             ],
             false,
             'penyerahan_darah.csv'
