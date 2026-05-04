@@ -8,6 +8,7 @@ use App\Core\Controller\Assert;
 
 final class KhanzaMigrationRunner extends MigrationRunner
 {
+    private static array $ref_class_cache = [];
     public function __construct(
         MigrationsConfig $config, 
         $db = null, 
@@ -20,7 +21,6 @@ final class KhanzaMigrationRunner extends MigrationRunner
     private static function buildGraph(array $ref_table_classes): array
     {
         $graph = [];
-
         $classes = [];
         foreach ($ref_table_classes as $ref_table_class)
             $classes[] = $ref_table_class->class;
@@ -30,7 +30,7 @@ final class KhanzaMigrationRunner extends MigrationRunner
             $all[$class] = true;
 
         foreach ($classes as $class) {
-            $ref_table = new $class();
+            $ref_table = self::$ref_class_cache[$class] ??= new $class();
             $deps = $ref_table->dependencies();
             foreach ($deps as $dep) {
                 Assert::True(isset($all[$dep]),
@@ -88,15 +88,25 @@ final class KhanzaMigrationRunner extends MigrationRunner
     public function findMigrations(): array
     {
         $migrations = parent::findMigrations();
+
+        $map = [];
+        foreach ($migrations as $m) {
+            $map[$m->class] = $m;
+        }
+
         $graph    = self::buildGraph($migrations);
         $ordered  = self::topoSort($graph);
         $versions = self::assignVersions($ordered);
         $this->versions = $versions;
 
         $result = [];
-        foreach ($ordered as $class)
-            $result[$versions[$class]] = $class;
 
+        foreach ($ordered as $class) {
+            $migration = $map[$class];
+            $migration->version = $versions[$class];
+            $result[$versions[$class]] = $migration;
+        }
+        
         return $result;
     }
 

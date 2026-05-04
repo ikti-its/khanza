@@ -8,6 +8,7 @@ use App\Core\Database\DatabaseType as T;
 
 class DatabaseTemplate extends Migration
 {
+    private static array $ref_class_cache = [];
     public function __construct(
         protected string $schema,
         protected string $table,
@@ -154,13 +155,14 @@ class DatabaseTemplate extends Migration
 
         foreach($fks as $fk){
             [$fields, $ref_table_class, $ref_fields] = $fk;
-            $ref_table = new $ref_table_class();
+            $ref_table = self::$ref_class_cache[$ref_table_class] ??= new $ref_table_class();
 
             if(is_string($fields))     $fields     = [$fields];
             foreach($fields as $field){
                 $field_def = $this->fields[$field];
                 Assert::True($field_def === T::FK_AUTO()->definition(),
-                    'Foreign key field must be of type T::FK_AUTO');
+                    'Foreign key field must be of type T::FK_AUTO'.
+                    "Schema : $this->schema, table : $this->table");
             }
             if(is_string($ref_fields)) $ref_fields = [$ref_fields];
 
