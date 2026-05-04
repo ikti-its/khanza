@@ -41,7 +41,7 @@ final class PenyerahanDarahDatabase extends DatabaseTemplate
                     'id_shift'
                 ],
                 [
-                    'id_petugas', 
+                    'id_petugas_cross', 
                     \App\Features\Role\Petugas\PetugasDatabase::class, 
                     'id_petugas'
                 ],
