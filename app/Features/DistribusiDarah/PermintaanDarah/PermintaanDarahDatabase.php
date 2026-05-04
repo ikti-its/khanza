@@ -15,7 +15,7 @@ final class PermintaanDarahDatabase extends DatabaseTemplate
             [
                 'id_permintaan'           => T::ID32(30_000_000),
                 'no_rawat'                => T::TEXT(),
-                'kode_dokter_pengirim'    => T::TEXT(),
+                'id_dokter_pengirim'      => T::FK_AUTO(),
                 'tanggal_permintaan'      => T::DATETIME(),
                 'id_status_permintaan'    => T::FK_AUTO(),
             ],
@@ -23,7 +23,11 @@ final class PermintaanDarahDatabase extends DatabaseTemplate
             ['no_rawat'],
             [
                 // ['no_rawat', 'sik.rawat_inap', 'no_rawat'],
-                // ['kode_dokter_pengirim', 'sik.dokter', 'kode_dokter'],
+                [
+                    'id_dokter_pengirim', 
+                    \App\Features\Role\Dokter\DokterDatabase::class, 
+                    'id_dokter'
+                ],
                 [
                     'id_status_permintaan', 
                     \App\Features\DistribusiDarah\StatusPermintaan\StatusPermintaanDatabase::class, 
