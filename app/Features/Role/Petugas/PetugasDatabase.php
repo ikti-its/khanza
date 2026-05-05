@@ -26,6 +26,8 @@ final class PetugasDatabase extends DatabaseTemplate
                     'id_orang'
                 ],
             ],
+            false,
+            'petugas.csv'
         );
     }
 }
