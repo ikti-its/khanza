@@ -28,6 +28,8 @@ final class DokterDatabase extends DatabaseTemplate
                     'id_orang'
                 ],
             ],
+            false,
+            'dokter.csv'
         );
     }
 }
