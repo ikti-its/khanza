@@ -1,34 +1,24 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\LogistikUTD\BHPRusak;
+namespace App\Features\LogistikUTD\PenunjangRusak;
 use App\Core\Model\ModelTemplate;
 
-final class BHPRusakModel extends ModelTemplate
+final class PenunjangRusakModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
             'logistik_utd',
-            'bhp_rusak',
-            'id_bhp_rusak',
+            'penunjang_rusak',
+            'id_penunjang_rusak',
             [
-                'id_bhp_rusak' => [
+                'id_penunjang_rusak' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'id_jenis_bhp' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang_medis' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang_penunjang' => [
+                'id_barang' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],

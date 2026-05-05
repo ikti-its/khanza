@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\LogistikUTD\PenggunaanBHPDonor;
+namespace App\Features\LogistikUTD\PenggunaanMedisDonor;
 use App\Core\Model\ModelTemplate;
 
-final class PenggunaanBHPDonorModel extends ModelTemplate
+final class PenggunaanMedisDonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
             'logistik_utd',
-            'penggunaan_bhp_donor',
-            'id_bhp_donor',
+            'penggunaan_medis_donor',
+            'id_medis_donor',
             [
-                'id_bhp_donor' => [
+                'id_medis_donor' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
@@ -23,17 +23,7 @@ final class PenggunaanBHPDonorModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'id_jenis_bhp' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang_medis' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang_penunjang' => [
+                'id_barang' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],

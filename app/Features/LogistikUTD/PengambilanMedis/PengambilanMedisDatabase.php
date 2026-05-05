@@ -6,14 +6,14 @@ namespace App\Features\LogistikUTD\PengambilanMedis;
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class CreatePengambilanMedisTable extends DatabaseTemplate
+final class PengambilanMedisDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'logistik_utd',
             'pengambilan_medis',
             [
-                'id_pengambilan_medis'      => T::ID32(),
+                'id_pengambilan_medis'      => T::ID32(30_000_000),
                 'id_barang'                 => T::UUID(),
                 'jumlah'                    => T::INT32(),
                 'harga_beli'                => T::F64(),
