@@ -1,3 +1,10 @@
 ﻿id_alamat,id_provinsi,id_kota_lokal,id_kec_lokal,id_desa_lokal,rw,rt,alamat_lengkap
 1,1,1,1,2015,10,10,Jl. Utama Raya No. 45
 2,1,1,2,2001,9,15,Perumahan Griya Asri Blok C4/12
+3,1,1,1,2002,2,5,Gang Damai No. 7
+4,1,1,1,2017,5,11,Jl. Melati III No. 10
+5,1,1,1,2001,1,8,Jl. Lintas Desa No. 56
+6,1,1,2,2002,4,10,Kompleks Hijau Blok F/2
+7,1,1,2,2001,9,5,Perumahan Citra Indah I No. 44
+8,1,1,1,2016,1,1,Merdeka Residence Blok A1/5
+9,1,1,1,2004,8,9,Jl. Pesisir No. 101
