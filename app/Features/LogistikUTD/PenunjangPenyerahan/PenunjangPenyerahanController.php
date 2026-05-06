@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\LogistikUTD\PenggunaanMedisDonor;
+namespace App\Features\LogistikUTD\PenunjangPenyerahan;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
 use App\Core\Controller\ActionType as A;
 
-final class PenggunaanMedisDonorController extends ControllerTemplate
+final class PenunjangPenyerahanController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            new PenggunaanMedisDonorModel(),
+            new PenunjangPenyerahanModel(),
             [
                 ['Logistik UTD', 'logistik_utd'],
-                ['Penggunaan BHP Medis Donor', 'penggunaan_bhp_medis_donor'],
+                ['BHP Non Medis Penyerahan', 'bhp_non_medis_penyerahan'],
             ],
-            'Penggunaan BHP Medis Donor',
+            'Penggunaan BHP Non Medis Penyerahan',
             [
                 A::CREATE,
                 A::AUDIT,
@@ -23,8 +23,8 @@ final class PenggunaanMedisDonorController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_medis_donor', 'ID Medis Donor'],
-                [SHOW, REQUIRED, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_penunjang_penyerahan', 'ID Penunjang Penyerahan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
                 [SHOW, OPTIONAL, I::INDEX, 'id_barang', 'ID Barang'],
                 [SHOW, REQUIRED, I::NUMBER, 'jumlah', 'Jumlah'],
                 [SHOW, REQUIRED, I::MONEY, 'harga', 'Harga'],

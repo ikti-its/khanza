@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\LogistikUTD\PenggunaanMedisPenyerahan;
+namespace App\Features\LogistikUTD\PenunjangPenyerahan;
 use App\Core\Model\ModelTemplate;
 
-final class PenggunaanMedisPenyerahanModel extends ModelTemplate
+final class PenunjangPenyerahanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
             'logistik_utd',
-            'penggunaan_medis_penyerahan',
-            'id_medis_penyerahan',
+            'penunjang_penyerahan',
+            'id_penunjang_penyerahan',
             [
-                'id_medis_penyerahan' => [
+                'id_penunjang_penyerahan' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],

@@ -1,24 +1,24 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\LogistikUTD\PenggunaanPenunjangDonor;
+namespace App\Features\LogistikUTD\PenunjangPemisahan;
 use App\Core\Model\ModelTemplate;
 
-final class PenggunaanPenunjangDonorModel extends ModelTemplate
+final class PenunjangPemisahanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
             'logistik_utd',
-            'penggunaan_penunjang_donor',
-            'id_penunjang_donor',
+            'penunjang_pemisahan',
+            'id_penunjang_pemisahan',
             [
-                'id_penunjang_donor' => [
+                'id_penunjang_pemisahan' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'id_pengambilan_darah' => [
+                'id_pemisahan' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],

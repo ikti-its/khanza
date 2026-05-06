@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\LogistikUTD\PenggunaanPenunjangDonor;
+namespace App\Features\LogistikUTD\PenunjangDonor;
 
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class PenggunaanPenunjangDonorDatabase extends DatabaseTemplate
+final class PenunjangDonorDatabase extends DatabaseTemplate
 {
     public function __construct(){
         parent::__construct(
             'logistik_utd',
-            'penggunaan_penunjang_donor',
+            'penunjang_donor',
             [
                 'id_penunjang_donor'        => T::ID32(100_000_000),
                 'id_pengambilan_darah'      => T::FK_AUTO(),

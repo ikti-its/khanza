@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\LogistikUTD\PenggunaanPenunjangDonor;
+namespace App\Features\LogistikUTD\PenunjangDonor;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
 use App\Core\Controller\ActionType as A;
 
-final class PenggunaanPenunjangDonorController extends ControllerTemplate
+final class PenunjangDonorController extends ControllerTemplate
 {
     public function __construct(){
         parent::__construct(
-            new PenggunaanPenunjangDonorModel(),
+            new PenunjangDonorModel(),
             [
                 ['Logistik UTD', 'logistik_utd'],
-                ['Penggunaan BHP Non Medis Donor', 'penggunaan_bhp_non_medis_donor'],
+                ['BHP Non Medis Donor', 'bhp_non_medis_donor'],
             ],
             'Penggunaan BHP Non Medis Donor',
             [
