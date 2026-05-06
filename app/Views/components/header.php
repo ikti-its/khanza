@@ -877,13 +877,16 @@
                         ['Status Pembayaran', '/status-pembayaran', '']
                     ]],
                     ['Logistik UTD', '', 'logistik_utd', '/logistik-utd', $petugasrole, [
-                        ['Penggunaan BHP Donor', '/penggunaan-bhp-donor', ''],
-                        ['Penggunaan BHP Pemisahan', '/penggunaan-bhp-pemisahan', ''],
-                        ['Penggunaan BHP Penyerahan', '/penggunaan-bhp-penyerahan', ''],
-                        ['BHP Rusak', '/bhp-rusak', ''],
+                        ['BHP Medis Donor', '/medis-donor', ''],
+                        ['BHP Non Medis Donor', '/non-medis-donor', ''],
+                        ['BHP Medis Pemisahan', '/medis-pemisahan', ''],
+                        ['BHP Non Medis Pemisahan', '/non-medis-pemisahan', ''],
+                        ['BHP Medis Penyerahan', '/medis-penyerahan', ''],
+                        ['BHP Non Medis Penyerahan', '/non-medis-penyerahan', ''],
+                        ['BHP Medis Rusak', '/medis-rusak', ''],
+                        ['BHP Non Medis Rusak', '/non-medis-rusak', ''],
                         ['Pengambilan BHP Medis', '/pengambilan-medis', ''],
-                        ['Pengambilan BHP Non Medis', '/pengambilan-non-medis', ''],
-                        ['Jenis BHP', '/jenis-bhp', '']
+                        ['Pengambilan BHP Non Medis', '/pengambilan-non-medis', '']
                     ]],
                     ['Penanganan Donor', '', 'penanganan_donor', '/penanganan-donor', $petugasrole, [
                         ['Kasus Reaktif', '/kasus-reaktif', ''],
