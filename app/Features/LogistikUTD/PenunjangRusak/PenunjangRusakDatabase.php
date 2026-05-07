@@ -35,6 +35,8 @@ final class PenunjangRusakDatabase extends DatabaseTemplate
                     'id_petugas'
                 ],
             ],
+            false,
+            'penunjang_rusak.csv'
         );
     }
 }
