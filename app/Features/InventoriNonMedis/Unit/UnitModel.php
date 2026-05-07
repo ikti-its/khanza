@@ -1,24 +1,25 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\JenisBarang;
+namespace App\Features\InventoriNonMedis\Unit;
 use App\Core\Model\ModelTemplate;
 
-final class JenisBarangModel extends ModelTemplate
+final class UnitModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'REFS',
             'inventori_non_medis',
-            'jenis_barang',
-            'id_jenis_barang',
+            'unit',
+            'id_unit',
             [
-                'id_jenis_barang' => [
+                'id_unit' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'nama_jenis_barang' => [
+                'nama_unit' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],

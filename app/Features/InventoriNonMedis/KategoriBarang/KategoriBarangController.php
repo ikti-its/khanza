@@ -25,7 +25,7 @@ final class KategoriBarangController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kategori', 'ID'],
-                [HIDE, OPTIONAL, I::INDEX, 'kode_kategori_barang', 'Kode Kategori'],
+                [SHOW, REQUIRED, I::TEXT, 'kode_kategori_barang', 'Kode Kategori'],
                 [SHOW, REQUIRED, I::NAME, 'nama_kategori_barang', 'Nama Kategori Barang'],
             ],
         );

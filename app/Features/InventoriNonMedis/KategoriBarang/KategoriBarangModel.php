@@ -19,10 +19,10 @@ final class KategoriBarangModel extends ModelTemplate
                     'errors'  => [],
                 ], 
                 'kode_kategori_barang' => [
-                    'allowed' => false,
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
-                ], 
+                ],
                 'nama_kategori_barang' => [
                     'allowed' => true,
                     'rules'   => '',

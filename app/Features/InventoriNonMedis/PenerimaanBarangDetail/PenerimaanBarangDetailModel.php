@@ -1,44 +1,40 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\PermintaanBarang;
+namespace App\Features\InventoriNonMedis\PenerimaanBarangDetail;
 use App\Core\Model\ModelTemplate;
 
-final class PermintaanBarangModel extends ModelTemplate
+final class PenerimaanBarangDetailModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'BASE',
             'inventori_non_medis',
-            'permintaan_barang',
-            'id_permintaan',
+            'penerimaan_barang_detail',
+            'id_detail',
             [
-                'id_permintaan' => [
+                'id_detail' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'id_unit' => [
+                'id_penerimaan' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'tipe' => [
+                'id_barang' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'tanggal' => [
+                'qty_diterima' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'status' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'catatan' => [
+                'harga_satuan' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],

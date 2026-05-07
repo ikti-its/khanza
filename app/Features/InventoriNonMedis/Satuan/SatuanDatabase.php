@@ -15,10 +15,11 @@ final class SatuanDatabase extends DatabaseTemplate
             'satuan',
             [
                 'id_satuan'   => T::ID8(30),
+                'kode_satuan' => T::TEXT(),
                 'nama_satuan' => T::TEXT(),
             ],
             'id_satuan',
-            ['nama_satuan'],
+            ['kode_satuan', 'nama_satuan'],
             [],
             true,
             'satuan.csv'

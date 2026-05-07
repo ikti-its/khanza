@@ -27,7 +27,7 @@ class Pemesanan extends ControllerTemplate_LEGACY
             $pengajuan_url = $this->api_url . '/pengadaan/pengajuan';
             $pesanan_url = $this->api_url . '/pengadaan/pesanan';
             $pegawai_url = $this->api_url . '/pegawai';
-            $supplier_url = $this->api_url . '/inventaris/supplier';
+            $suplier_url = $this->api_url . '/inventaris/suplier';
             $medis_url = $this->api_url . '/inventaris/medis';
             $satuan_url = $this->api_url . '/inventaris/satuan';
 

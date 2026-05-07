@@ -28,17 +28,12 @@ final class BarangModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'id_jenis_barang' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
                 'id_kategori' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'id_supplier' => [
+                'id_suplier' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],

@@ -18,6 +18,11 @@ final class SatuanModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
+                'kode_satuan' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
                 'nama_satuan' => [
                     'allowed' => false,
                     'rules'   => '',

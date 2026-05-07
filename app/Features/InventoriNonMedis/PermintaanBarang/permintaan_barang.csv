@@ -1,6 +1,7 @@
-id_permintaan,unit_pemohon,tipe,tanggal,status,catatan
-1,IGD,barang_lama,2026-04-02 08:00:00,disetujui,
-2,Poli Umum,barang_lama,2026-04-02 09:30:00,disetujui,
-3,Farmasi,barang_lama,2026-04-03 10:15:00,disetujui,
-4,Administrasi,barang_baru,2026-04-03 11:00:00,menunggu,Butuh printer wireless untuk loket pendaftaran
-5,Rawat Inap,barang_lama,2026-04-03 13:45:00,menunggu,
+id_permintaan,id_unit,tipe,tanggal,status,catatan
+0,1,barang_lama,2026-01-01 00:00:00,selesai,
+1,1,barang_lama,2026-04-02 08:00:00,disetujui,
+2,2,barang_lama,2026-04-02 09:30:00,disetujui,
+3,7,barang_lama,2026-04-03 10:15:00,disetujui,
+4,11,barang_baru,2026-04-03 11:00:00,menunggu,Butuh printer wireless untuk loket pendaftaran
+5,4,barang_lama,2026-04-03 13:45:00,menunggu,

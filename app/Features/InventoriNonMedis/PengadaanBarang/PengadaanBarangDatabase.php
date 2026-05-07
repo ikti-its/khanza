@@ -16,7 +16,7 @@ final class PengadaanBarangDatabase extends DatabaseTemplate
             [
                 'id_pengadaan'  => T::ID32(50_000),
                 'id_pengajuan'  => T::FK_AUTO(),
-                'id_supplier'   => T::FK_AUTO(),
+                'id_suplier'    => T::FK_AUTO(),
                 'tanggal'       => T::DATETIME(),
                 'status'        => T::TEXT(),
                 'catatan'       => T::TEXT()->nullable(),
@@ -30,9 +30,9 @@ final class PengadaanBarangDatabase extends DatabaseTemplate
                     'id_pengajuan',
                 ],
                 [
-                    'id_supplier',
-                    \App\Features\InventoriNonMedis\Supplier\SupplierDatabase::class,
-                    'id_supplier',
+                    'id_suplier',
+                    \App\Features\InventoriNonMedis\Suplier\SuplierDatabase::class,
+                    'id_suplier',
                 ],
             ],
             true,

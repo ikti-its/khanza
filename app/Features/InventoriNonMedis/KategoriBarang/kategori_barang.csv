@@ -1,6 +1,6 @@
 id_kategori,kode_kategori_barang,nama_kategori_barang
-1,ATK,Alat Tulis Kantor
-2,KEBERSIHAN,Peralatan Kebersihan
-3,LAB_UMUM,Bahan Penunjang Laboratorium
-4,ELEKTRONIK,Peralatan Elektronik
-5,UMUM,Barang Umum Penunjang
+1,J01,Alat Tulis Kantor
+2,J02,Peralatan Kebersihan
+3,J03,Bahan Penunjang Laboratorium
+4,J04,Peralatan Elektronik
+5,J05,Barang Umum Penunjang

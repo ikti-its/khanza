@@ -49,8 +49,8 @@ final class KecamatanDatabase extends DatabaseTemplate
                     ['id_provinsi', 'id_kota_lokal']
                 ],
             ],
-            // true,
-            // 'kecamatan.csv',
+            true,
+            'kecamatan.csv',
         );
     }
 }

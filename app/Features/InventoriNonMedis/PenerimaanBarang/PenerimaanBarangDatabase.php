@@ -1,37 +1,36 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\PermintaanBarang;
+namespace App\Features\InventoriNonMedis\PenerimaanBarang;
 
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class PermintaanBarangDatabase extends DatabaseTemplate
+final class PenerimaanBarangDatabase extends DatabaseTemplate
 {
     public function __construct()
     {
         parent::__construct(
             'inventori_non_medis',
-            'permintaan_barang',
+            'penerimaan_barang',
             [
-                'id_permintaan' => T::ID32(100_000),
-                'id_unit'       => T::FK_AUTO(),
-                'tipe'          => T::TEXT(),
+                'id_penerimaan' => T::ID16(10_000),
+                'id_pengadaan'  => T::FK_AUTO(),
                 'tanggal'       => T::DATETIME(),
                 'status'        => T::TEXT(),
                 'catatan'       => T::TEXT()->nullable(),
             ],
-            'id_permintaan',
+            'id_penerimaan',
             [],
             [
                 [
-                    'id_unit',
-                    \App\Features\InventoriNonMedis\Unit\UnitDatabase::class,
-                    'id_unit',
+                    'id_pengadaan',
+                    \App\Features\InventoriNonMedis\PengadaanBarang\PengadaanBarangDatabase::class,
+                    'id_pengadaan',
                 ],
             ],
             true,
-            'permintaan_barang.csv'
+            'penerimaan_barang.csv'
         );
     }
 }

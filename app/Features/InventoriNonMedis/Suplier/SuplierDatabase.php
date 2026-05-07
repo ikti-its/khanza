@@ -1,25 +1,25 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\Supplier;
+namespace App\Features\InventoriNonMedis\Suplier;
 
 use App\Core\Database\DatabaseTemplate;
 use App\Core\Database\DatabaseType as T;
 
-final class SupplierDatabase extends DatabaseTemplate
+final class SuplierDatabase extends DatabaseTemplate
 {
     public function __construct()
     {
         parent::__construct(
             'inventori_non_medis',
-            'supplier',
+            'suplier',
             [
-                'id_supplier'   => T::ID16(200),
-                'nama_supplier' => T::TEXT(),
+                'id_suplier'    => T::ID16(200),
+                'nama_suplier'  => T::TEXT(),
                 'no_telp'       => T::TEXT()->nullable(),
                 'id_alamat'     => T::FK_AUTO(),
             ],
-            'id_supplier',
+            'id_suplier',
             [],
             [
                 [
@@ -29,7 +29,7 @@ final class SupplierDatabase extends DatabaseTemplate
                 ]
             ],
             true,
-            'supplier.csv'
+            'suplier.csv'
         );
     }
 }

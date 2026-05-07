@@ -23,7 +23,7 @@ final class PengadaanBarangModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'id_supplier' => [
+                'id_suplier' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],

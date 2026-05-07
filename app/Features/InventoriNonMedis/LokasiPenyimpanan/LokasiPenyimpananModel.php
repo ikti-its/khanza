@@ -19,7 +19,7 @@ final class LokasiPenyimpananModel extends ModelTemplate
                     'errors'  => [],
                 ],
                 'nama_lokasi_penyimpanan' => [
-                    'allowed' => false,
+                    'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],
                 ]

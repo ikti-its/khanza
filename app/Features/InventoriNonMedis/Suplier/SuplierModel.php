@@ -1,24 +1,24 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\Supplier;
+namespace App\Features\InventoriNonMedis\Suplier;
 use App\Core\Model\ModelTemplate;
 
-final class SupplierModel extends ModelTemplate
+final class SuplierModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
             'BASE',
             'inventori_non_medis',
-            'supplier',
-            'id_supplier',
+            'suplier',
+            'id_suplier',
             [
-                'id_supplier' => [
+                'id_suplier' => [
                     'allowed' => false,
                     'rules'   => '',
                     'errors'  => [],
                 ],
-                'nama_supplier' => [
+                'nama_suplier' => [
                     'allowed' => true,
                     'rules'   => '',
                     'errors'  => [],

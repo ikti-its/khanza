@@ -25,6 +25,7 @@ final class SatuanController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_satuan', 'ID'],
+                [SHOW, REQUIRED, I::NAME, 'kode_satuan', 'Kode Satuan'],
                 [SHOW, REQUIRED, I::NAME, 'nama_satuan', 'Nama Satuan'],
             ],
         );

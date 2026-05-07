@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\JenisBarang;
+namespace App\Features\InventoriNonMedis\Suplier;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
 use App\Core\Controller\ActionType as A;
 
-final class JenisBarangController extends ControllerTemplate
+final class SuplierController extends ControllerTemplate
 {
     public function __construct()
     {
         parent::__construct(
-            new JenisBarangModel(),
+            new SuplierModel(),
             [
                 ['Inventori Non Medis', 'inventori_non_medis'],
-                ['Jenis Barang',        'jenis_barang'],
+                ['Suplier',             'suplier'],
             ],
-            'Jenis Barang',
+            'Suplier',
             [
                 A::CREATE,
                 // A::AUDIT,
@@ -24,8 +24,10 @@ final class JenisBarangController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_jenis_barang'  ,'ID'],
-                [SHOW, REQUIRED, I::NAME,  'nama_jenis_barang','Nama Jenis Barang'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_suplier', 'ID Suplier'],
+                [SHOW, REQUIRED, I::NAME, 'nama_suplier', 'Nama Suplier'],
+                [SHOW, OPTIONAL, I::TEXT, 'no_telp', 'No. Telepon'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_alamat', 'ID Alamat'],
             ],
         );
     }

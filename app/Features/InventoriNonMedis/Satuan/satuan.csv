@@ -1,6 +1,47 @@
-id_unit,nama_unit
-1,pcs
-2,box
-3,pak
-4,liter
-5,set
+id_satuan,kode_satuan,nama_satuan
+1,AMP,Ampul
+2,AMP5,Ampul 5ml
+3,BAL,Bal
+4,BTL,Botol
+5,B010,Box (100)
+6,BOX,Box/Dus/Kotak
+7,BKS,Bungkus
+8,CC,CC
+9,CM,CM
+10,CRM,Cream
+11,DRP,Drop
+12,FLE,Fles
+13,GLN,Galon
+14,GAR,Gargle/Kumur
+15,GEL,Gel
+16,INF,Infusan Softbag
+17,ITM,Item
+18,KAL,Kaleng
+19,KAP,Kaplet
+20,CAP,Kapsul
+21,KG,Kilogram
+22,KIT,Kit
+23,LBR,Lembar
+24,LTR,Liter
+25,LUS,Lusin
+26,M,Meter
+27,MG,Miligram
+28,ML,Mililiter
+29,MIN,Minidose
+30,PAC,Patch
+31,PAK,Paket
+32,PEN,Pen Insulin
+33,PCS,Pieces
+34,PTG,Potong
+35,PUY,Puyer
+36,REC,Rectal
+37,REM,Rem
+38,RIM,Rim
+39,SAC,Sachet
+40,SAL,Salep
+41,SET,Set
+42,SUP,Suppositoria
+43,SYR,Sirup
+44,TAB,Tablet
+45,TUB,Tube
+46,VL,Vial

@@ -14,37 +14,29 @@ final class BarangDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'barang',
             [
-                'id_barang'       => T::ID16(2_000),
-                'kode_barang'     => T::TEXT(),
-                'nama_barang'     => T::TEXT(),
-                'id_jenis_barang'       => T::FK_AUTO(),
-
+                'id_barang'             => T::ID16(2_000),
+                'kode_barang'           => T::TEXT(),
+                'nama_barang'           => T::TEXT(),
                 'id_kategori'           => T::FK_AUTO(),
-                'id_supplier'           => T::FK_AUTO(),
+                'id_suplier'            => T::FK_AUTO(),
                 'id_satuan'             => T::FK_AUTO(),
                 'id_lokasi_penyimpanan' => T::FK_AUTO(),
-
-                'stok'         => T::F64(),
-                'stok_minimum' => T::F64()->nullable(),
-                'harga_satuan' => T::F64()->nullable(),
+                'stok'                  => T::F64(),
+                'stok_minimum'          => T::F64()->nullable(),
+                'harga_satuan'          => T::F64()->nullable(),
             ],
             'id_barang',
             ['kode_barang'],
             [
-                [
-                    'id_jenis_barang',
-                    \App\Features\InventoriNonMedis\JenisBarang\JenisBarangDatabase::class,
-                    'id_jenis_barang',
-                ],
                 [
                     'id_kategori',
                     \App\Features\InventoriNonMedis\KategoriBarang\KategoriBarangDatabase::class,
                     'id_kategori',
                 ],
                 [
-                    'id_supplier',
-                    \App\Features\InventoriNonMedis\Supplier\SupplierDatabase::class,
-                    'id_supplier',
+                    'id_suplier',
+                    \App\Features\InventoriNonMedis\Suplier\SuplierDatabase::class,
+                    'id_suplier',
                 ],
                 [
                     'id_satuan',
