@@ -33,6 +33,8 @@ final class PenunjangDonorDatabase extends DatabaseTemplate
                     'id_barang'
                 ],
             ],
+            false,
+            'penunjang_donor.csv'
         );
     }
 }
