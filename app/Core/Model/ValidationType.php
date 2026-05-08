@@ -2,8 +2,6 @@
 declare(strict_types=1);
 
 namespace App\Core\Model;
-use App\Core\Controller\Assert;
-use CodeIgniter\Database\RawSql;
 
 final class ValidationType
 {

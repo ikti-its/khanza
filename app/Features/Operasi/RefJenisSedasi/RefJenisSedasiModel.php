@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Operasi\RefJenisSedasi;
 use App\Core\Model\ModelTemplate;
+use App\Core\Model\ValidationType as V;
 
 final class RefJenisSedasiModel extends ModelTemplate
 {

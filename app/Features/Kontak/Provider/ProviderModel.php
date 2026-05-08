@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Kontak\Provider;
 use App\Core\Model\ModelTemplate;
+use App\Core\Model\ValidationType as V;
 
 final class ProviderModel extends ModelTemplate
 {

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\InventoriDarah\StatusKantong;
 use App\Core\Model\ModelTemplate;
+use App\Core\Model\ValidationType as V;
 
 final class StatusKantongModel extends ModelTemplate
 {

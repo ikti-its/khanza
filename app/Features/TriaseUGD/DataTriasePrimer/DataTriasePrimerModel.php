@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\DataTriasePrimer;
 use App\Core\Model\ModelTemplate;
+use App\Core\Model\ValidationType as V;
 
 final class DataTriasePrimerModel extends ModelTemplate
 {

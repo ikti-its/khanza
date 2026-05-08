@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\UjiDarah\HasilDiagnostik;
 use App\Core\Model\ModelTemplate;
+use App\Core\Model\ValidationType as V;
 
 final class HasilDiagnostikModel extends ModelTemplate
 {

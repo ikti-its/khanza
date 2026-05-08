@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Donor\StatusKunjungan;
 use App\Core\Model\ModelTemplate;
+use App\Core\Model\ValidationType as V;
 
 final class StatusKunjunganModel extends ModelTemplate
 {

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Darah\GolonganDarah;
 use App\Core\Model\ModelTemplate;
+use App\Core\Model\ValidationType as V;
 
 final class GolonganDarahModel extends ModelTemplate
 {
