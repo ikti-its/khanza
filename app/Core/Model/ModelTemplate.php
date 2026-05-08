@@ -8,15 +8,12 @@ class ModelTemplate extends Model
 {
     /**
      * @param 'BASE'| 'JOIN'| 'REFS' $type
-     * @param string $schema
-     * @param string $table
-     * @param string $primaryKey
      */
     public function __construct(
         protected string $type,
         protected string $schema,
         protected string $table_name,
-        protected string|array $primary_key,
+        protected string $primary_key,
         protected array $fields,
     ) {
         parent::__construct();
