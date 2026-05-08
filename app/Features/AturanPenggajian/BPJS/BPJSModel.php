@@ -18,7 +18,7 @@ final class BPJSModel extends ModelTemplate
                 'no_bpjs'       => V::DEFAULT(), 
                 'nama_program'  => V::DEFAULT(), 
                 'penyelenggara' => V::DEFAULT(),
-                'tarif'         => V::TODO(),
+                'tarif'         => V::DEFAULT(),
                 'batas_atas'    => V::DEFAULT(),
                 'batas_bawah'   => V::DEFAULT(),
             ],

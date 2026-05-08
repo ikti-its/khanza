@@ -140,4 +140,8 @@ final class DatabaseType
         return self::INT8();
     }
 
+    public static function PERCENT(): self {
+        return self::F32();
+    }
+
 }
