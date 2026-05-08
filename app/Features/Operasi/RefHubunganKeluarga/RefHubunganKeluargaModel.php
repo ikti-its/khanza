@@ -14,16 +14,8 @@ final class RefHubunganKeluargaModel extends ModelTemplate
             'ref_hubungan_keluarga',
             'id_hubungan_keluarga',
             [
-                'id_hubungan_keluarga' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_hubungan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_hubungan_keluarga' => V::TODO(),
+                'nama_hubungan' => V::TODO(),
             ],
         );
     }

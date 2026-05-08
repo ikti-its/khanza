@@ -14,31 +14,11 @@ final class TriaseSkalaModel extends ModelTemplate
             'triase_skala',
             'id_skala',
             [
-                'id_skala' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_tingkat_skala' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_skala' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pemeriksaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'pengkajian' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_skala' => V::TODO(),
+                'id_tingkat_skala' => V::TODO(),
+                'kode_skala' => V::TODO(),
+                'id_pemeriksaan' => V::TODO(),
+                'pengkajian' => V::TODO()
             ],
         );
     }

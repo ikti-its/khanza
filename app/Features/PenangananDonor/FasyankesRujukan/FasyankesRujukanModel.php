@@ -14,26 +14,10 @@ final class FasyankesRujukanModel extends ModelTemplate
             'fasyankes_rujukan',
             'id_fasyankes',
             [
-                'id_fasyankes' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_fasyankes' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_alamat' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_pos' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_fasyankes' => V::TODO(),
+                'nama_fasyankes' => V::TODO(),
+                'id_alamat' => V::TODO(),
+                'kode_pos' => V::TODO()
             ],
         );
     }

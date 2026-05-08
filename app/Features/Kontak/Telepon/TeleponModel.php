@@ -14,31 +14,11 @@ final class TeleponModel extends ModelTemplate
             'telepon',
             'id_telepon',
             [
-                'id_telepon' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_orang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nomor_telepon' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jenis_telepon' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_provider' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_telepon' => V::TODO(),
+                'id_orang' => V::TODO(),
+                'nomor_telepon' => V::TODO(),
+                'jenis_telepon' => V::TODO(),
+                'id_provider' => V::TODO()
             ],
         );
     }

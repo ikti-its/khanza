@@ -14,16 +14,8 @@ final class RefKesiapanAnestesiModel extends ModelTemplate
             'ref_kesiapan_anestesi',
             'id_kesiapan',
             [
-                'id_kesiapan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_kesiapan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_kesiapan' => V::TODO(),
+                'nama_kesiapan' => V::TODO(),
             ],
         );
     }

@@ -14,16 +14,8 @@ final class KebutuhanKhususModel extends ModelTemplate
             'kebutuhan_khusus',
             'id_kebutuhan',
             [
-                'id_kebutuhan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_kebutuhan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_kebutuhan' => V::TODO(),
+                'nama_kebutuhan' => V::TODO()
             ],
         );
     }

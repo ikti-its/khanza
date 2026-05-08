@@ -14,31 +14,11 @@ final class HasilUjiSaringDetailModel extends ModelTemplate
             'hasil_uji_saring_detail',
             'id_uji_saring_detail',
             [
-                'id_uji_saring_detail' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_uji_saring' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_parameter_uji' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_nilai_saring' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nilai_absorbance' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_uji_saring_detail' => V::TODO(),
+                'id_uji_saring' => V::TODO(),
+                'id_parameter_uji' => V::TODO(),
+                'id_nilai_saring' => V::TODO(),
+                'nilai_absorbance' => V::TODO()
             ],
         );
     }

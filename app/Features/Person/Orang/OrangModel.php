@@ -14,61 +14,17 @@ final class OrangModel extends ModelTemplate
             'orang',
             'id_orang',
             [
-                'id_orang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nik' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_jenis_kelamin' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_agama' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pernikahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_golongan_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_alamat' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tempat_lahir_prov' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tempat_lahir_kota' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_lahir' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_orang' => V::TODO(),
+                'nik' => V::TODO(),
+                'nama' => V::TODO(),
+                'id_jenis_kelamin' => V::TODO(),
+                'id_agama' => V::TODO(),
+                'id_pernikahan' => V::TODO(),
+                'id_golongan_darah' => V::TODO(),
+                'id_alamat' => V::TODO(),
+                'tempat_lahir_prov' => V::TODO(),
+                'tempat_lahir_kota' => V::TODO(),
+                'tanggal_lahir' => V::TODO(),
             ],
         );
     }

@@ -14,21 +14,9 @@ final class JenisBagModel extends ModelTemplate
             'jenis_bag',
             'id_jenis_bag',
             [
-                'id_jenis_bag' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_jenis_bag' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_jenis_bag' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_jenis_bag' => V::TODO(),
+                'kode_jenis_bag' => V::TODO(),
+                'nama_jenis_bag' => V::TODO()
             ],
         );
     }

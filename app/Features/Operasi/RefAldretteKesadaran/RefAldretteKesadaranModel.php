@@ -14,21 +14,9 @@ final class RefAldretteKesadaranModel extends ModelTemplate
             'ref_aldrette_kesadaran',
             'id_kesadaran',
             [
-                'id_kesadaran' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_skala' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nilai' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_kesadaran' => V::TODO(),
+                'nama_skala' => V::TODO(),
+                'nilai' => V::TODO(),
             ],
         );
     }

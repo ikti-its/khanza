@@ -14,47 +14,16 @@ final class AlamatModel extends ModelTemplate
             'alamat',
             'id_alamat',
             [
-                'id_alamat' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_provinsi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_kota_lokal' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_kecamatan_lokal' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_desa_lokal' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'rw' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'rt' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'alamat_lengkap' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_alamat' => V::TODO(),
+                'id_provinsi' => V::TODO(),
+                'id_kota_lokal' => V::TODO(),
+                'id_kecamatan_lokal' => V::TODO(),
+                'id_desa_lokal' => V::TODO(),
+                'rw' => V::TODO(),
+                'rt' => V::TODO(),
+                'alamat_lengkap' => V::TODO()
             ],
+            [],
         );
     }
 }

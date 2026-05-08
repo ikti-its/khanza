@@ -14,41 +14,13 @@ final class PengambilanPenunjangModel extends ModelTemplate
             'pengambilan_penunjang',
             'id_pengambilan_penunjang',
             [
-                'id_pengambilan_penunjang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jumlah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga_beli' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_petugas_gudang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_pengambilan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'keterangan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pengambilan_penunjang' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'jumlah' => V::TODO(),
+                'harga_beli' => V::TODO(),
+                'id_petugas_gudang' => V::TODO(),
+                'tanggal_pengambilan' => V::TODO(),
+                'keterangan' => V::TODO()
             ],
         );
     }

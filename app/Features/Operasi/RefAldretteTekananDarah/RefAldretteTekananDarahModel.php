@@ -14,21 +14,9 @@ final class RefAldretteTekananDarahModel extends ModelTemplate
             'ref_aldrette_tekanan_darah',
             'id_td',
             [
-                'id_td' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_skala' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nilai' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_td' => V::TODO(),
+                'nama_skala' => V::TODO(),
+                'nilai' => V::TODO(),
             ],
         );
     }

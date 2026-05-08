@@ -14,16 +14,8 @@ final class JenisPencekalanModel extends ModelTemplate
             'jenis_pencekalan',
             'id_jenis_pencekalan',
             [
-                'id_jenis_pencekalan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_jenis_pencekalan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_jenis_pencekalan' => V::TODO(),
+                'nama_jenis_pencekalan' => V::TODO()
             ],
         );
     }

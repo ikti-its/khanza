@@ -14,16 +14,8 @@ final class AlatTransportasiModel extends ModelTemplate
             'alat_transportasi',
             'id_transportasi',
             [
-                'id_transportasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_transportasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_transportasi' => V::TODO(),
+                'nama_transportasi' => V::TODO()
             ],
         );
     }

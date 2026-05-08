@@ -14,56 +14,16 @@ final class StokDarahModel extends ModelTemplate
             'stok_darah',
             'id_stok_darah',
             [
-                'id_stok_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pemisahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'no_kantong' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_komponen' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_golongan_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_rhesus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_pengambilan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_kadaluarsa' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_sumber_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_status_stok' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_stok_darah' => V::TODO(),
+                'id_pemisahan' => V::TODO(),
+                'no_kantong' => V::TODO(),
+                'id_komponen' => V::TODO(),
+                'id_golongan_darah' => V::TODO(),
+                'id_rhesus' => V::TODO(),
+                'tanggal_pengambilan' => V::TODO(),
+                'tanggal_kadaluarsa' => V::TODO(),
+                'id_sumber_darah' => V::TODO(),
+                'id_status_stok' => V::TODO()
             ],
         );
     }

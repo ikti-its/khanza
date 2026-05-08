@@ -14,21 +14,9 @@ final class ProvinsiModel extends ModelTemplate
             'provinsi',
             'id_provinsi',
             [
-                'id_pulau' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_provinsi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_provinsi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pulau' => V::TODO(),
+                'id_provinsi' => V::TODO(),
+                'nama_provinsi' => V::TODO()
             ],
         );
     }

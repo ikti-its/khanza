@@ -14,56 +14,16 @@ final class BarangModel extends ModelTemplate
             'barang',
             'id_barang',
             [
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_barang' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_barang' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_kategori' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_suplier' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_satuan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_lokasi_penyimpanan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'stok' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'stok_minimum' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga_satuan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_barang' => V::TODO(),
+                'kode_barang' => V::TODO(),
+                'nama_barang' => V::TODO(),
+                'id_kategori' => V::TODO(),
+                'id_suplier' => V::TODO(),
+                'id_satuan' => V::TODO(),
+                'id_lokasi_penyimpanan' => V::TODO(),
+                'stok' => V::TODO(),
+                'stok_minimum' => V::TODO(),
+                'harga_satuan' => V::TODO(),
             ],
         );
     }

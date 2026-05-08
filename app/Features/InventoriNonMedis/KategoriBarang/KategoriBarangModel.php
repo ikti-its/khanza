@@ -14,21 +14,9 @@ final class KategoriBarangModel extends ModelTemplate
             'kategori_barang',
             'id_kategori',
             [
-                'id_kategori' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'kode_kategori_barang' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_kategori_barang' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_kategori' => V::TODO(), 
+                'kode_kategori_barang' => V::TODO(),
+                'nama_kategori_barang' => V::TODO()
             ],
         );
     }

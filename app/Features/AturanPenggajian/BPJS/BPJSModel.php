@@ -14,36 +14,12 @@ final class BPJSModel extends ModelTemplate
             'bpjs',
             'no_bpjs',
             [
-                'no_bpjs' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'nama_program' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'penyelenggara' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tarif' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'batas_atas' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'batas_bawah' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'no_bpjs' => V::TODO(), 
+                'nama_program' => V::TODO(), 
+                'penyelenggara' => V::TODO(),
+                'tarif' => V::TODO(),
+                'batas_atas' => V::TODO(),
+                'batas_bawah' => V::TODO(),
             ],
         );
     }

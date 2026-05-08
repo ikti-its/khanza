@@ -14,41 +14,13 @@ final class PenyerahanDarahDetailModel extends ModelTemplate
             'penyerahan_darah_detail',
             'id_penyerahan_detail',
             [
-                'id_penyerahan_detail' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_penyerahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_stok_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jasa_sarana' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'paket_bhp' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kso' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'manajemen' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_penyerahan_detail' => V::TODO(),
+                'id_penyerahan' => V::TODO(),
+                'id_stok_darah' => V::TODO(),
+                'jasa_sarana' => V::TODO(),
+                'paket_bhp' => V::TODO(),
+                'kso' => V::TODO(),
+                'manajemen' => V::TODO(),
                 // 'total' => [
                 //     'allowed' => false,
                 //     'rules'   => '',

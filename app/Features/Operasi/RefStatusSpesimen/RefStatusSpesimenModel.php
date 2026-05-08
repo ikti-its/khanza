@@ -14,16 +14,8 @@ final class RefStatusSpesimenModel extends ModelTemplate
             'ref_status_spesimen',
             'id_status_spesimen',
             [
-                'id_status_spesimen' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_status_spesimen' => V::TODO(),
+                'nama_status' => V::TODO(),
             ],
         );
     }

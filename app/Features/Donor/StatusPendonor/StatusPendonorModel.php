@@ -14,16 +14,8 @@ final class StatusPendonorModel extends ModelTemplate
             'status_pendonor',
             'id_status_pendonor',
             [
-                'id_status_pendonor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status_pendonor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_status_pendonor' => V::TODO(),
+                'nama_status_pendonor' => V::TODO()
             ],
         );
     }

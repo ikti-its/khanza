@@ -14,16 +14,8 @@ final class StatusPembayaranModel extends ModelTemplate
             'status_pembayaran',
             'id_status_pembayaran',
             [
-                'id_status_pembayaran' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status_pembayaran' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_status_pembayaran' => V::TODO(),
+                'nama_status_pembayaran' => V::TODO()
             ],
         );
     }

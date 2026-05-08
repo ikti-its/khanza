@@ -14,16 +14,8 @@ final class RefObatBebasModel extends ModelTemplate
             'ref_obat_bebas',
             'id_obat_bebas',
             [
-                'id_obat_bebas' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_kategori' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_obat_bebas' => V::TODO(),
+                'nama_kategori' => V::TODO(),
             ],
         );
     }

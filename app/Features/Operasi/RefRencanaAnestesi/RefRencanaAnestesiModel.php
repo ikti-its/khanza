@@ -14,16 +14,8 @@ final class RefRencanaAnestesiModel extends ModelTemplate
             'ref_rencana_anestesi',
             'id_rencana_anestesi',
             [
-                'id_rencana_anestesi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_rencana' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_rencana_anestesi' => V::TODO(),
+                'nama_rencana' => V::TODO(),
             ],
         );
     }

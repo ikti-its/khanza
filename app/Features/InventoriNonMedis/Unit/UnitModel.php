@@ -15,16 +15,8 @@ final class UnitModel extends ModelTemplate
             'unit',
             'id_unit',
             [
-                'id_unit' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_unit' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_unit' => V::TODO(),
+                'nama_unit' => V::TODO(),
             ],
         );
     }

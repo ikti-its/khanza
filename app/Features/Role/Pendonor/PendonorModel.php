@@ -14,31 +14,11 @@ final class PendonorModel extends ModelTemplate
             'pendonor',
             'id_pendonor',
             [
-                'id_pendonor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_orang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nomor_pendonor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_rhesus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_status_pendonor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pendonor' => V::TODO(),
+                'id_orang' => V::TODO(),
+                'nomor_pendonor' => V::TODO(),
+                'id_rhesus' => V::TODO(),
+                'id_status_pendonor' => V::TODO()
             ],
         );
     }

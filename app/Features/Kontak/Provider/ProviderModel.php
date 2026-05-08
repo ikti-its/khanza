@@ -14,16 +14,8 @@ final class ProviderModel extends ModelTemplate
             'provider',
             'id_provider',
             [
-                'id_provider' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_provider' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_provider' => V::TODO(),
+                'nama_provider' => V::TODO()
             ],
         );
     }

@@ -14,21 +14,9 @@ final class RefAldretteRespirasiModel extends ModelTemplate
             'ref_aldrette_respirasi',
             'id_respirasi',
             [
-                'id_respirasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_skala' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nilai' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_respirasi' => V::TODO(),
+                'nama_skala' => V::TODO(),
+                'nilai' => V::TODO(),
             ],
         );
     }

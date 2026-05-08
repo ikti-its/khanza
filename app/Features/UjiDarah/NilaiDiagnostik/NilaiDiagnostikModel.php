@@ -14,16 +14,8 @@ final class NilaiDiagnostikModel extends ModelTemplate
             'nilai_diagnostik',
             'id_nilai_diagnostik',
             [
-                'id_nilai_diagnostik' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_nilai_diagnostik' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_nilai_diagnostik' => V::TODO(),
+                'nama_nilai_diagnostik' => V::TODO()
             ],
         );
     }

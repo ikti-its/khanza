@@ -14,31 +14,11 @@ final class PenunjangDonorModel extends ModelTemplate
             'penunjang_donor',
             'id_penunjang_donor',
             [
-                'id_penunjang_donor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pengambilan_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jumlah' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_penunjang_donor' => V::TODO(),
+                'id_pengambilan_darah' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'jumlah' => V::TODO(),
+                'harga' => V::TODO()
             ],
         );
     }

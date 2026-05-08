@@ -14,16 +14,8 @@ final class ShiftModel extends ModelTemplate
             'shift',
             'id_shift',
             [
-                'id_shift' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_shift' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_shift' => V::TODO(),
+                'nama_shift' => V::TODO()
             ],
         );
     }

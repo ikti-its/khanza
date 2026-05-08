@@ -14,16 +14,8 @@ final class SumberDarahModel extends ModelTemplate
             'sumber_darah',
             'id_sumber_darah',
             [
-                'id_sumber_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_sumber_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_sumber_darah' => V::TODO(),
+                'nama_sumber_darah' => V::TODO()
             ],
         );
     }

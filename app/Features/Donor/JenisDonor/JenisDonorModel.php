@@ -14,21 +14,9 @@ final class JenisDonorModel extends ModelTemplate
             'jenis_donor',
             'id_jenis_donor',
             [
-                'id_jenis_donor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_jenis_donor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_jenis_donor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_jenis_donor' => V::TODO(),
+                'kode_jenis_donor' => V::TODO(),
+                'nama_jenis_donor' => V::TODO()
             ],
         );
     }

@@ -14,46 +14,14 @@ final class TarifKomponenModel extends ModelTemplate
             'tarif_komponen',
             'id_tarif',
             [
-                'id_tarif' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_komponen' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jasa_sarana' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'paket_bhp' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kso' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'manajemen' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'pembatalan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_berlaku' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_tarif' => V::TODO(),
+                'id_komponen' => V::TODO(),
+                'jasa_sarana' => V::TODO(),
+                'paket_bhp' => V::TODO(),
+                'kso' => V::TODO(),
+                'manajemen' => V::TODO(),
+                'pembatalan' => V::TODO(),
+                'tanggal_berlaku' => V::TODO()
             ],
         );
     }

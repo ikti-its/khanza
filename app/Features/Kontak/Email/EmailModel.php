@@ -14,21 +14,9 @@ final class EmailModel extends ModelTemplate
             'email',
             'id_email',
             [
-                'id_email' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_orang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'alamat_email' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_email' => V::TODO(),
+                'id_orang' => V::TODO(),
+                'alamat_email' => V::TODO()
             ],
         );
     }

@@ -14,51 +14,15 @@ final class PencekalanModel extends ModelTemplate
             'pencekalan',
             'id_pencekalan',
             [
-                'id_pencekalan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_kunjungan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_jenis_pencekalan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_mulai' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_selesai' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_shift' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_petugas' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'keterangan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_status_pencekalan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pencekalan' => V::TODO(),
+                'id_kunjungan' => V::TODO(),
+                'id_jenis_pencekalan' => V::TODO(),
+                'tanggal_mulai' => V::TODO(),
+                'tanggal_selesai' => V::TODO(),
+                'id_shift' => V::TODO(),
+                'id_petugas' => V::TODO(),
+                'keterangan' => V::TODO(),
+                'id_status_pencekalan' => V::TODO()
             ],
         );
     }

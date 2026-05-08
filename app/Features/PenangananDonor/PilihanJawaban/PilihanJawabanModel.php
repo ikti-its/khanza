@@ -14,16 +14,8 @@ final class PilihanJawabanModel extends ModelTemplate
             'pilihan_jawaban',
             'id_pilihan',
             [
-                'id_pilihan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_pilihan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pilihan' => V::TODO(),
+                'nama_pilihan' => V::TODO()
             ],
         );
     }

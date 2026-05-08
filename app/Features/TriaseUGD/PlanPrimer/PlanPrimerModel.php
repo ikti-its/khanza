@@ -14,16 +14,8 @@ final class PlanPrimerModel extends ModelTemplate
             'plan_primer',
             'id_plan_primer',
             [
-                'id_plan_primer' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_plan_primer' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_plan_primer' => V::TODO(),
+                'nama_plan_primer' => V::TODO()
             ],
         );
     }

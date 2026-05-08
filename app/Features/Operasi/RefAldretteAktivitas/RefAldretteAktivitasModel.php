@@ -14,21 +14,9 @@ final class RefAldretteAktivitasModel extends ModelTemplate
             'ref_aldrette_aktivitas',
             'id_aktivitas',
             [
-                'id_aktivitas' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_skala' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nilai' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_aktivitas' => V::TODO(),
+                'nama_skala' => V::TODO(),
+                'nilai' => V::TODO(),
             ],
         );
     }

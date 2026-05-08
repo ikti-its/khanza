@@ -14,16 +14,8 @@ final class PlanSekunderModel extends ModelTemplate
             'plan_sekunder',
             'id_plan_sekunder',
             [
-                'id_plan_sekunder' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_plan_sekunder' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_plan_sekunder' => V::TODO(),
+                'nama_plan_sekunder' => V::TODO()
             ],
         );
     }

@@ -14,31 +14,11 @@ final class RujukanModel extends ModelTemplate
             'rujukan',
             'id_rujukan',
             [
-                'id_rujukan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_kasus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nomor_surat' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_rujukan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_fasyankes' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_rujukan' => V::TODO(),
+                'id_kasus' => V::TODO(),
+                'nomor_surat' => V::TODO(),
+                'tanggal_rujukan' => V::TODO(),
+                'id_fasyankes' => V::TODO()
             ],
         );
     }

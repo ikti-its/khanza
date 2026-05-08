@@ -14,16 +14,8 @@ final class ParameterUjiModel extends ModelTemplate
             'parameter_uji',
             'id_parameter_uji',
             [
-                'id_parameter_uji' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_parameter' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_parameter_uji' => V::TODO(),
+                'nama_parameter' => V::TODO()
             ],
         );
     }

@@ -14,16 +14,8 @@ final class AgamaModel extends ModelTemplate
             'agama',
             'id_agama',
             [
-                'id_agama' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_agama' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_agama' => V::TODO(),
+                'nama_agama' => V::TODO()
             ],
         );
     }

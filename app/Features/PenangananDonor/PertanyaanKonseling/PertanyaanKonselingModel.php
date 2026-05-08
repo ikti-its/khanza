@@ -14,16 +14,8 @@ final class PertanyaanKonselingModel extends ModelTemplate
             'pertanyaan_konseling',
             'id_pertanyaan',
             [
-                'id_pertanyaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'teks_pertanyaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pertanyaan' => V::TODO(),
+                'teks_pertanyaan' => V::TODO()
             ],
         );
     }

@@ -14,16 +14,8 @@ final class RefKeadaanUmumTransferModel extends ModelTemplate
             'ref_keadaan_umum_transfer',
             'id_keadaan_umum',
             [
-                'id_keadaan_umum' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_keadaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_keadaan_umum' => V::TODO(),
+                'nama_keadaan' => V::TODO(),
             ],
         );
     }

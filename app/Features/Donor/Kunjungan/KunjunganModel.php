@@ -14,31 +14,11 @@ final class KunjunganModel extends ModelTemplate
             'kunjungan',
             'id_kunjungan',
             [
-                'id_kunjungan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pendonor' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_kunjungan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nomor_antrian' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_status_kunjungan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_kunjungan' => V::TODO(),
+                'id_pendonor' => V::TODO(),
+                'tanggal_kunjungan' => V::TODO(),
+                'nomor_antrian' => V::TODO(),
+                'id_status_kunjungan' => V::TODO()
             ],
         );
     }

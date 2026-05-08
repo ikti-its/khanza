@@ -14,16 +14,8 @@ final class NilaiSaringModel extends ModelTemplate
             'nilai_saring',
             'id_nilai_saring',
             [
-                'id_nilai_saring' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_nilai_saring' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_nilai_saring' => V::TODO(),
+                'nama_nilai_saring' => V::TODO()
             ],
         );
     }

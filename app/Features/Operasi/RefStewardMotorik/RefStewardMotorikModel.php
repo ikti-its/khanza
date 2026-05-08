@@ -14,21 +14,9 @@ final class RefStewardMotorikModel extends ModelTemplate
             'ref_steward_motorik',
             'id_motorik',
             [
-                'id_motorik' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_skala' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nilai' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_motorik' => V::TODO(),
+                'nama_skala' => V::TODO(),
+                'nilai' => V::TODO(),
             ],
         );
     }

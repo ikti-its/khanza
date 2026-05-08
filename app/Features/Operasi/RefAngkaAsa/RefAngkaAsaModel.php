@@ -14,16 +14,8 @@ final class RefAngkaAsaModel extends ModelTemplate
             'ref_angka_asa',
             'id_asa',
             [
-                'id_asa' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_asa' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_asa' => V::TODO(),
+                'nama_asa' => V::TODO(),
             ],
         );
     }

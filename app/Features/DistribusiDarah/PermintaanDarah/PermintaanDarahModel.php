@@ -14,31 +14,11 @@ final class PermintaanDarahModel extends ModelTemplate
             'permintaan_darah',
             'id_permintaan',
             [
-                'id_permintaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'no_rawat' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_dokter_pengirim' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_permintaan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_status_permintaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_permintaan' => V::TODO(),
+                'no_rawat' => V::TODO(),
+                'kode_dokter_pengirim' => V::TODO(),
+                'tanggal_permintaan' => V::TODO(),
+                'id_status_permintaan' => V::TODO()
             ],
         );
     }

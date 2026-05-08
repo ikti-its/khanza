@@ -15,31 +15,11 @@ final class PenerimaanBarangDetailModel extends ModelTemplate
             'penerimaan_barang_detail',
             'id_detail',
             [
-                'id_detail' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_penerimaan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'qty_diterima' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga_satuan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_detail' => V::TODO(),
+                'id_penerimaan' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'qty_diterima' => V::TODO(),
+                'harga_satuan' => V::TODO(),
             ],
         );
     }

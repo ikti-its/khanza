@@ -14,16 +14,8 @@ final class RhesusModel extends ModelTemplate
             'rhesus',
             'id_rhesus',
             [
-                'id_rhesus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_rhesus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_rhesus' => V::TODO(),
+                'kode_rhesus' => V::TODO()
             ],
         );
     }

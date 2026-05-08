@@ -14,26 +14,10 @@ final class PemusnahanDetailModel extends ModelTemplate
             'pemusnahan_detail',
             'id_pemusnahan_detail',
             [
-                'id_pemusnahan_detail' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pemusnahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_stok_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_alasan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pemusnahan_detail' => V::TODO(),
+                'id_pemusnahan' => V::TODO(),
+                'id_stok_darah' => V::TODO(),
+                'id_alasan' => V::TODO()
             ],
         );
     }

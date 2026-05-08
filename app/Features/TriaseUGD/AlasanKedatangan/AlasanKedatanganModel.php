@@ -14,16 +14,8 @@ final class AlasanKedatanganModel extends ModelTemplate
             'alasan_kedatangan',
             'id_alasan',
             [
-                'id_alasan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_alasan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_alasan' => V::TODO(),
+                'nama_alasan' => V::TODO()
             ],
         );
     }

@@ -14,16 +14,8 @@ final class StatusKantongModel extends ModelTemplate
             'status_kantong',
             'id_status_kantong',
             [
-                'id_status_kantong' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status_kantong' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_status_kantong' => V::TODO(),
+                'nama_status_kantong' => V::TODO()
             ],
         );
     }

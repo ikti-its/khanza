@@ -14,16 +14,8 @@ final class RefMetodeTransferModel extends ModelTemplate
             'ref_metode_transfer',
             'id_metode',
             [
-                'id_metode' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_metode' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_metode' => V::TODO(),
+                'nama_metode' => V::TODO(),
             ],
         );
     }

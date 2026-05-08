@@ -14,41 +14,13 @@ final class StokOpnameDetailModel extends ModelTemplate
             'stok_opname_detail',
             'id_detail',
             [
-                'id_detail' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_opname' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'stok_sistem' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'stok_fisik' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'selisih' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'keterangan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_detail' => V::TODO(),
+                'id_opname' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'stok_sistem' => V::TODO(),
+                'stok_fisik' => V::TODO(),
+                'selisih' => V::TODO(),
+                'keterangan' => V::TODO(),
             ],
         );
     }

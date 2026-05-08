@@ -14,31 +14,11 @@ final class PemisahanKomponenModel extends ModelTemplate
             'pemisahan_komponen',
             'id_pemisahan',
             [
-                'id_pemisahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_bag' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_pemisahan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_shift' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_petugas' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pemisahan' => V::TODO(),
+                'id_bag' => V::TODO(),
+                'tanggal_pemisahan' => V::TODO(),
+                'id_shift' => V::TODO(),
+                'id_petugas' => V::TODO()
             ],
         );
     }

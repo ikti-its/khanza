@@ -14,41 +14,13 @@ final class PermintaanBarangDetailModel extends ModelTemplate
             'permintaan_barang_detail',
             'id_detail',
             [
-                'id_detail' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_permintaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_barang_baru' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'qty' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'qty_disetujui' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'catatan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_detail' => V::TODO(),
+                'id_permintaan' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'nama_barang_baru' => V::TODO(),
+                'qty' => V::TODO(),
+                'qty_disetujui' => V::TODO(),
+                'catatan' => V::TODO(),
             ],
         );
     }

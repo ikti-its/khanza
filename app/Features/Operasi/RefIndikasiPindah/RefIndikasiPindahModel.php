@@ -14,16 +14,8 @@ final class RefIndikasiPindahModel extends ModelTemplate
             'ref_indikasi_pindah',
             'id_indikasi',
             [
-                'id_indikasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_indikasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_indikasi' => V::TODO(),
+                'nama_indikasi' => V::TODO(),
             ],
         );
     }

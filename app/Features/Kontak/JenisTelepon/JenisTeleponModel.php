@@ -14,16 +14,8 @@ final class JenisTeleponModel extends ModelTemplate
             'jenis_telepon',
             'id_jenis_telepon',
             [
-                'id_jenis_telepon' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_jenis_telepon' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_jenis_telepon' => V::TODO(),
+                'nama_jenis_telepon' => V::TODO()
             ],
         );
     }

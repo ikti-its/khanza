@@ -14,16 +14,8 @@ final class StatusKasusModel extends ModelTemplate
             'status_kasus',
             'id_status_kasus',
             [
-                'id_status_kasus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status_kasus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_status_kasus' => V::TODO(),
+                'nama_status_kasus' => V::TODO()
             ],
         );
     }

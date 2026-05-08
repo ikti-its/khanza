@@ -14,16 +14,8 @@ final class RefPremedikasiModel extends ModelTemplate
             'ref_premedikasi',
             'id_premedikasi',
             [
-                'id_premedikasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_premedikasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_premedikasi' => V::TODO(),
+                'nama_premedikasi' => V::TODO(),
             ],
         );
     }

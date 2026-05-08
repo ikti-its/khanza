@@ -14,36 +14,12 @@ final class PengadaanBarangModel extends ModelTemplate
             'pengadaan_barang',
             'id_pengadaan',
             [
-                'id_pengadaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pengajuan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_suplier' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'status' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'catatan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_pengadaan' => V::TODO(),
+                'id_pengajuan' => V::TODO(),
+                'id_suplier' => V::TODO(),
+                'tanggal' => V::TODO(),
+                'status' => V::TODO(),
+                'catatan' => V::TODO(),
             ],
         );
     }

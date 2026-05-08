@@ -14,17 +14,10 @@ final class PulauModel extends ModelTemplate
             'pulau',
             'id_pulau',
             [
-                'id_pulau' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_pulau' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pulau' => V::TODO(),
+                'nama_pulau' => V::TODO()
             ],
+            [],
         );
     }
 }

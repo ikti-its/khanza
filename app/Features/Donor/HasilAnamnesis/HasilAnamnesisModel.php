@@ -14,16 +14,8 @@ final class HasilAnamnesisModel extends ModelTemplate
             'hasil_anamnesis',
             'id_hasil',
             [
-                'id_hasil' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_hasil' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_hasil' => V::TODO(),
+                'nama_hasil' => V::TODO()
             ],
         );
     }

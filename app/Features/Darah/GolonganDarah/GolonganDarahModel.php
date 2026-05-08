@@ -14,16 +14,8 @@ final class GolonganDarahModel extends ModelTemplate
             'golongan_darah',
             'id_golongan_darah',
             [
-                'id_golongan_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'nama_golongan_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_golongan_darah' => V::TODO(), 
+                'nama_golongan_darah' => V::TODO()
             ],
         );
     }

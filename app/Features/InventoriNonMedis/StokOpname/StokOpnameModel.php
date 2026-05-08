@@ -14,31 +14,11 @@ final class StokOpnameModel extends ModelTemplate
             'stok_opname',
             'id_opname',
             [
-                'id_opname' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'status' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'catatan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'catatan_atasan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_opname' => V::TODO(),
+                'tanggal' => V::TODO(),
+                'status' => V::TODO(),
+                'catatan' => V::TODO(),
+                'catatan_atasan' => V::TODO(),
             ],
         );
     }

@@ -14,26 +14,10 @@ final class KantongDarahModel extends ModelTemplate
             'kantong_darah',
             'id_bag',
             [
-                'id_bag' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pengambilan_darah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'no_bag' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_jenis_bag' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_bag' => V::TODO(),
+                'id_pengambilan_darah' => V::TODO(),
+                'no_bag' => V::TODO(),
+                'id_jenis_bag' => V::TODO()
             ],
         );
     }

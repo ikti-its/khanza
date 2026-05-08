@@ -14,26 +14,10 @@ final class KomponenDarahModel extends ModelTemplate
             'komponen_darah',
             'id_komponen',
             [
-                'id_komponen' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'kode_komponen' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_komponen' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'masa_berlaku_hari' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_komponen' => V::TODO(), 
+                'kode_komponen' => V::TODO(),
+                'nama_komponen' => V::TODO(),
+                'masa_berlaku_hari' => V::TODO()
             ],
         );
     }

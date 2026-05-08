@@ -14,16 +14,8 @@ final class PernikahanModel extends ModelTemplate
             'pernikahan',
             'id_pernikahan',
             [
-                'id_pernikahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'status_pernikahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pernikahan' => V::TODO(),
+                'status_pernikahan' => V::TODO()
             ],
         );
     }

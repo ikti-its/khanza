@@ -14,51 +14,15 @@ final class TransaksiStokModel extends ModelTemplate
             'transaksi_stok',
             'id_transaksi',
             [
-                'id_transaksi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tipe_transaksi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'qty' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pengadaan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_permintaan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_opname' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'catatan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_transaksi' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'tipe_transaksi' => V::TODO(),
+                'qty' => V::TODO(),
+                'tanggal' => V::TODO(),
+                'id_pengadaan' => V::TODO(),
+                'id_permintaan' => V::TODO(),
+                'id_opname' => V::TODO(),
+                'catatan' => V::TODO(),
             ],
         );
     }

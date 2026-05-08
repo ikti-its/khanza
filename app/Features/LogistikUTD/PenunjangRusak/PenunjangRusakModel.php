@@ -14,41 +14,13 @@ final class PenunjangRusakModel extends ModelTemplate
             'penunjang_rusak',
             'id_penunjang_rusak',
             [
-                'id_penunjang_rusak' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jumlah' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga_beli' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_petugas' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_rusak' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'keterangan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_penunjang_rusak' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'jumlah' => V::TODO(),
+                'harga_beli' => V::TODO(),
+                'id_petugas' => V::TODO(),
+                'tanggal_rusak' => V::TODO(),
+                'keterangan' => V::TODO()
             ],
         );
     }

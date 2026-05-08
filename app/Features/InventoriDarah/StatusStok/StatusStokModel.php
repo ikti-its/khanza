@@ -14,16 +14,8 @@ final class StatusStokModel extends ModelTemplate
             'status_stok',
             'id_status_stok',
             [
-                'id_status_stok' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status_stok' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_status_stok' => V::TODO(),
+                'nama_status_stok' => V::TODO()
             ],
         );
     }

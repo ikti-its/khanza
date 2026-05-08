@@ -14,26 +14,10 @@ final class JawabanKonselingModel extends ModelTemplate
             'jawaban_konseling',
             'id_jawaban',
             [
-                'id_jawaban' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_konseling' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pertanyaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pilihan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_jawaban' => V::TODO(),
+                'id_konseling' => V::TODO(),
+                'id_pertanyaan' => V::TODO(),
+                'id_pilihan' => V::TODO()
             ],
         );
     }

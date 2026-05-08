@@ -14,21 +14,9 @@ final class SatuanModel extends ModelTemplate
             'satuan',
             'id_satuan',
             [
-                'id_satuan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_satuan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_satuan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_satuan' => V::TODO(),
+                'kode_satuan' => V::TODO(),
+                'nama_satuan' => V::TODO()
             ],
         );
     }

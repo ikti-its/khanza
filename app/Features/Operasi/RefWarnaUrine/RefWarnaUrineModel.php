@@ -14,16 +14,8 @@ final class RefWarnaUrineModel extends ModelTemplate
             'ref_warna_urine',
             'id_warna_urine',
             [
-                'id_warna_urine' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_warna' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_warna_urine' => V::TODO(),
+                'nama_warna' => V::TODO(),
             ],
         );
     }

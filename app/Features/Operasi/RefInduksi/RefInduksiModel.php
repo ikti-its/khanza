@@ -14,16 +14,8 @@ final class RefInduksiModel extends ModelTemplate
             'ref_induksi',
             'id_induksi',
             [
-                'id_induksi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_induksi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_induksi' => V::TODO(),
+                'nama_induksi' => V::TODO(),
             ],
         );
     }

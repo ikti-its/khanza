@@ -14,41 +14,13 @@ final class DataTriaseSekunderModel extends ModelTemplate
             'data_triase_sekunder',
             'id_triase_sekunder',
             [
-                'id_triase_sekunder' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_triase' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'anamnesa_singkat' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'catatan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_plan_sekunder' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_triase' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_petugas' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_triase_sekunder' => V::TODO(),
+                'id_triase' => V::TODO(),
+                'anamnesa_singkat' => V::TODO(),
+                'catatan' => V::TODO(),
+                'id_plan_sekunder' => V::TODO(),
+                'tanggal_triase' => V::TODO(),
+                'id_petugas' => V::TODO()
             ],
         );
     }

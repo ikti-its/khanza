@@ -14,16 +14,8 @@ final class MetodeUjiModel extends ModelTemplate
             'metode_uji',
             'id_metode_uji',
             [
-                'id_metode_uji' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_metode' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_metode_uji' => V::TODO(),
+                'nama_metode' => V::TODO()
             ],
         );
     }

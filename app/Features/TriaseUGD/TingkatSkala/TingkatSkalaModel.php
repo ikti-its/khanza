@@ -14,16 +14,8 @@ final class TingkatSkalaModel extends ModelTemplate
             'tingkat_skala',
             'id_tingkat',
             [
-                'id_tingkat' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_tingkat' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_tingkat' => V::TODO(),
+                'nama_tingkat' => V::TODO()
             ],
         );
     }

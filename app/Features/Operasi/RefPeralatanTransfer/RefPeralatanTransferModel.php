@@ -14,16 +14,8 @@ final class RefPeralatanTransferModel extends ModelTemplate
             'ref_peralatan_transfer',
             'id_peralatan',
             [
-                'id_peralatan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_peralatan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_peralatan' => V::TODO(),
+                'nama_peralatan' => V::TODO(),
             ],
         );
     }

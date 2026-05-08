@@ -14,16 +14,8 @@ final class CaraMasukModel extends ModelTemplate
             'cara_masuk',
             'id_cara',
             [
-                'id_cara' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_cara' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_cara' => V::TODO(),
+                'nama_cara' => V::TODO()
             ],
         );
     }

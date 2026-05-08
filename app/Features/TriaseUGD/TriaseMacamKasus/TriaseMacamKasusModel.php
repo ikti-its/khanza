@@ -14,21 +14,9 @@ final class TriaseMacamKasusModel extends ModelTemplate
             'triase_macam_kasus',
             'id_macam_kasus',
             [
-                'id_macam_kasus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_macam_kasus' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_macam_kasus' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_macam_kasus' => V::TODO(),
+                'kode_macam_kasus' => V::TODO(),
+                'nama_macam_kasus' => V::TODO()
             ],
         );
     }

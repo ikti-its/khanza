@@ -14,26 +14,10 @@ final class HasilDiagnostikDetailModel extends ModelTemplate
             'hasil_diagnostik_detail',
             'id_diagnostik_detail',
             [
-                'id_diagnostik_detail' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_diagnostik' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_parameter_uji' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_nilai_diagnostik' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_diagnostik_detail' => V::TODO(),
+                'id_diagnostik' => V::TODO(),
+                'id_parameter_uji' => V::TODO(),
+                'id_nilai_diagnostik' => V::TODO()
             ],
         );
     }

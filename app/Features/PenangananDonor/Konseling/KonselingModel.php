@@ -14,26 +14,10 @@ final class KonselingModel extends ModelTemplate
             'konseling',
             'id_konseling',
             [
-                'id_konseling' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_kasus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_konseling' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_petugas' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_konseling' => V::TODO(),
+                'id_kasus' => V::TODO(),
+                'tanggal_konseling' => V::TODO(),
+                'id_petugas' => V::TODO()
             ],
         );
     }

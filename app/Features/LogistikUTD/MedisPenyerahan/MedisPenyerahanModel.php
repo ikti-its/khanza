@@ -14,31 +14,11 @@ final class MedisPenyerahanModel extends ModelTemplate
             'medis_penyerahan',
             'id_medis_penyerahan',
             [
-                'id_medis_penyerahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_penyerahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jumlah' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_medis_penyerahan' => V::TODO(),
+                'id_penyerahan' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'jumlah' => V::TODO(),
+                'harga' => V::TODO()
             ],
         );
     }

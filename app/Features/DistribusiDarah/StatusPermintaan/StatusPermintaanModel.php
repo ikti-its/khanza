@@ -14,16 +14,8 @@ final class StatusPermintaanModel extends ModelTemplate
             'status_permintaan',
             'id_status_permintaan',
             [
-                'id_status_permintaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status_permintaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_status_permintaan' => V::TODO(),
+                'nama_status_permintaan' => V::TODO()
             ],
         );
     }

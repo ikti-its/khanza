@@ -14,31 +14,11 @@ final class PenunjangPenyerahanModel extends ModelTemplate
             'penunjang_penyerahan',
             'id_penunjang_penyerahan',
             [
-                'id_penunjang_penyerahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_penyerahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jumlah' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_penunjang_penyerahan' => V::TODO(),
+                'id_penyerahan' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'jumlah' => V::TODO(),
+                'harga' => V::TODO()
             ],
         );
     }

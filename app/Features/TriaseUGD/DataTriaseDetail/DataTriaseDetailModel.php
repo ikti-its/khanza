@@ -14,21 +14,9 @@ final class DataTriaseDetailModel extends ModelTemplate
             'data_triase_detail',
             'id_triase_detail',
             [
-                'id_triase_detail' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_triase' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_skala' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_triase_detail' => V::TODO(),
+                'id_triase' => V::TODO(),
+                'id_skala' => V::TODO()
             ],
         );
     }

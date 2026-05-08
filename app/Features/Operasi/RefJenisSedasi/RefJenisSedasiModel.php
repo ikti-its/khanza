@@ -14,16 +14,8 @@ final class RefJenisSedasiModel extends ModelTemplate
             'ref_jenis_sedasi',
             'id_jenis_sedasi',
             [
-                'id_jenis_sedasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_sedasi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_jenis_sedasi' => V::TODO(),
+                'nama_sedasi' => V::TODO(),
             ],
         );
     }

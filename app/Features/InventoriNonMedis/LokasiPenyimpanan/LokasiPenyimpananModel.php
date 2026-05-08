@@ -14,16 +14,8 @@ final class LokasiPenyimpananModel extends ModelTemplate
             'lokasi_penyimpanan',
             'id_lokasi_penyimpanan',
             [
-                'id_lokasi_penyimpanan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_lokasi_penyimpanan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_lokasi_penyimpanan' => V::TODO(),
+                'nama_lokasi_penyimpanan' => V::TODO()
             ],
         );
     }

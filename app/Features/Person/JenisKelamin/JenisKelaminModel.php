@@ -14,16 +14,8 @@ final class JenisKelaminModel extends ModelTemplate
             'jenis_kelamin',
             'id_jenis_kelamin',
             [
-                'id_jenis_kelamin' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_jenis_kelamin' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_jenis_kelamin' => V::TODO(),
+                'nama_jenis_kelamin' => V::TODO()
             ],
         );
     }

@@ -14,16 +14,8 @@ final class RefPosisiPasienModel extends ModelTemplate
             'ref_posisi_pasien',
             'id_posisi',
             [
-                'id_posisi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_posisi' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_posisi' => V::TODO(),
+                'nama_posisi' => V::TODO(),
             ],
         );
     }

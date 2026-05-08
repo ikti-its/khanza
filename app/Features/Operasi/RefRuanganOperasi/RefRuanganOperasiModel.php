@@ -14,21 +14,9 @@ final class RefRuanganOperasiModel extends ModelTemplate
             'ref_ruangan_operasi',
             'id_ruangan',
             [
-                'id_ruangan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'kode_ruangan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_ruangan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_ruangan' => V::TODO(),
+                'kode_ruangan' => V::TODO(),
+                'nama_ruangan' => V::TODO(),
             ],
         );
     }

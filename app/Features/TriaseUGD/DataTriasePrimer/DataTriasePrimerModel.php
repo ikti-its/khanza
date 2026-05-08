@@ -14,46 +14,14 @@ final class DataTriasePrimerModel extends ModelTemplate
             'data_triase_primer',
             'id_triase_primer',
             [
-                'id_triase_primer' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_triase' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'keluhan_utama' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_kebutuhan_khusus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'catatan' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_plan_primer' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_triase' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_petugas' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_triase_primer' => V::TODO(),
+                'id_triase' => V::TODO(),
+                'keluhan_utama' => V::TODO(),
+                'id_kebutuhan_khusus' => V::TODO(),
+                'catatan' => V::TODO(),
+                'id_plan_primer' => V::TODO(),
+                'tanggal_triase' => V::TODO(),
+                'id_petugas' => V::TODO()
             ],
         );
     }

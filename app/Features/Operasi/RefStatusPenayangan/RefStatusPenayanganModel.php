@@ -14,16 +14,8 @@ final class RefStatusPenayanganModel extends ModelTemplate
             'ref_status_penayangan',
             'id_status_penayangan',
             [
-                'id_status_penayangan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_status_penayangan' => V::TODO(),
+                'nama_status' => V::TODO(),
             ],
         );
     }

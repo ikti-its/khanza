@@ -14,36 +14,12 @@ final class PengajuanBarangDetailModel extends ModelTemplate
             'pengajuan_barang_detail',
             'id_detail',
             [
-                'id_detail' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pengajuan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_barang_baru' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'qty' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga_estimasi' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_detail' => V::TODO(),
+                'id_pengajuan' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'nama_barang_baru' => V::TODO(),
+                'qty' => V::TODO(),
+                'harga_estimasi' => V::TODO(),
             ],
         );
     }

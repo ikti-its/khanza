@@ -14,16 +14,8 @@ final class StatusKunjunganModel extends ModelTemplate
             'status_kunjungan',
             'id_status_kunjungan',
             [
-                'id_status_kunjungan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status_kunjungan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_status_kunjungan' => V::TODO(),
+                'nama_status_kunjungan' => V::TODO()
             ],
         );
     }

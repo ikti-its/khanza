@@ -14,51 +14,15 @@ final class PengambilanMedisModel extends ModelTemplate
             'pengambilan_medis',
             'id_pengambilan_medis',
             [
-                'id_pengambilan_medis' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jumlah' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga_beli' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_bangsal' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_pengambilan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'keterangan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nomor_batch' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nomor_faktur' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_pengambilan_medis' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'jumlah' => V::TODO(),
+                'harga_beli' => V::TODO(),
+                'nama_bangsal' => V::TODO(),
+                'tanggal_pengambilan' => V::TODO(),
+                'keterangan' => V::TODO(),
+                'nomor_batch' => V::TODO(),
+                'nomor_faktur' => V::TODO()
             ],
         );
     }

@@ -14,26 +14,10 @@ final class SuplierModel extends ModelTemplate
             'suplier',
             'id_suplier',
             [
-                'id_suplier' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_suplier' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'no_telp' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_alamat' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_suplier' => V::TODO(),
+                'nama_suplier' => V::TODO(),
+                'no_telp' => V::TODO(),
+                'id_alamat' => V::TODO(),
             ],
         );
     }

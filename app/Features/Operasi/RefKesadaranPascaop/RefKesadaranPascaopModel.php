@@ -14,16 +14,8 @@ final class RefKesadaranPascaopModel extends ModelTemplate
             'ref_kesadaran_pascaop',
             'id_kesadaran',
             [
-                'id_kesadaran' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_kesadaran' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_kesadaran' => V::TODO(),
+                'nama_kesadaran' => V::TODO(),
             ],
         );
     }

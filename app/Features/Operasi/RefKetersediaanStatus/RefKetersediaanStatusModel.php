@@ -14,16 +14,8 @@ final class RefKetersediaanStatusModel extends ModelTemplate
             'ref_ketersediaan_status',
             'id_ketersediaan_status',
             [
-                'id_ketersediaan_status' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_ketersediaan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_ketersediaan_status' => V::TODO(),
+                'nama_ketersediaan' => V::TODO(),
             ],
         );
     }

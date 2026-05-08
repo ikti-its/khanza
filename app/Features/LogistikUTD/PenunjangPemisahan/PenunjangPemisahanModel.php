@@ -14,31 +14,11 @@ final class PenunjangPemisahanModel extends ModelTemplate
             'penunjang_pemisahan',
             'id_penunjang_pemisahan',
             [
-                'id_penunjang_pemisahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_pemisahan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_barang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'jumlah' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'harga' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_penunjang_pemisahan' => V::TODO(),
+                'id_pemisahan' => V::TODO(),
+                'id_barang' => V::TODO(),
+                'jumlah' => V::TODO(),
+                'harga' => V::TODO()
             ],
         );
     }

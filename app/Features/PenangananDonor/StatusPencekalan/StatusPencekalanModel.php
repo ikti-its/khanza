@@ -14,16 +14,8 @@ final class StatusPencekalanModel extends ModelTemplate
             'status_pencekalan',
             'id_status_pencekalan',
             [
-                'id_status_pencekalan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_status_pencekalan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_status_pencekalan' => V::TODO(),
+                'nama_status_pencekalan' => V::TODO()
             ],
         );
     }

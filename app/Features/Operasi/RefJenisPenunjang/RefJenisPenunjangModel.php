@@ -14,16 +14,8 @@ final class RefJenisPenunjangModel extends ModelTemplate
             'ref_jenis_penunjang',
             'id_jenis_penunjang',
             [
-                'id_jenis_penunjang' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'nama_jenis' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id_jenis_penunjang' => V::TODO(),
+                'nama_jenis' => V::TODO(),
             ],
         );
     }
