@@ -14,8 +14,7 @@ final class RegistrasiDatabase extends DatabaseTemplate
             'registrasi',
             [
                 'nomor_reg'   => T::ID32(100_000_000),
-                'nomor_rawat' => T::INT32(),
-                'nomor_rm'    => T::INT32(),
+                'nomor_rawat' => T::TEXT(),
                 'datetime'    => T::DATETIME(),
                 'id_dokter'   => T::FK_AUTO(),
                 'id_pasien'   => T::FK_AUTO(),
@@ -43,8 +42,8 @@ final class RegistrasiDatabase extends DatabaseTemplate
                     'id_orang'
                 ]
             ],
-            true,
-            'skrining_batuk.csv'
+            false,
+            'registrasi.csv'
         );
     }
 }
