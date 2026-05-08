@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Model;
 use CodeIgniter\Model;
+use App\Core\Database\DatabaseTemplate;
 
 class ModelTemplate extends Model
 {
@@ -10,11 +11,13 @@ class ModelTemplate extends Model
      * @param 'BASE'| 'JOIN'| 'REFS' $type
      */
     public function __construct(
+        protected DatabaseTemplate $database,
         protected string $type,
         protected string $schema,
         protected string $table_name,
         protected string $primary_key,
         protected array $fields,
+        protected array $join,
     ) {
         parent::__construct();
         $this->table = $this->schema . '.' . $this->table_name;
