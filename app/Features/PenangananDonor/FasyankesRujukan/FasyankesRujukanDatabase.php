@@ -27,6 +27,8 @@ final class FasyankesRujukanDatabase extends DatabaseTemplate
                     'id_alamat'
                 ],
             ],
+            false,
+            'fasyankes_rujukan.csv'
         );
     }
 }
