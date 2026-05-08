@@ -24,6 +24,11 @@ final class KasusReaktifModel extends ModelTemplate
                     'rules'   => '',
                     'errors'  => [],
                 ],
+                'id_uji_saring' => [
+                    'allowed' => false,
+                    'rules'   => '',
+                    'errors'  => [],
+                ],
                 'tanggal_ditetapkan' => [
                     'allowed' => false,
                     'rules'   => '',
