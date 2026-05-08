@@ -14,7 +14,6 @@ final class StokDarahDatabase extends DatabaseTemplate
             'stok_darah',
             [
                 'id_stok_darah'       => T::ID32(300_000_000),
-                'id_pemisahan'        => T::FK_AUTO(),
                 'no_kantong'          => T::TEXT(),
                 'id_komponen'         => T::FK_AUTO(),
                 'id_golongan_darah'   => T::FK_AUTO(),
@@ -27,11 +26,6 @@ final class StokDarahDatabase extends DatabaseTemplate
             'id_stok_darah',
             ['no_kantong'],
             [
-                [
-                    'id_pemisahan', 
-                    \App\Features\InventoriDarah\PemisahanKomponen\PemisahanKomponenDatabase::class, 
-                    'id_pemisahan'
-                ],
                 [
                     'id_komponen', 
                     \App\Features\Darah\KomponenDarah\KomponenDarahDatabase::class, 

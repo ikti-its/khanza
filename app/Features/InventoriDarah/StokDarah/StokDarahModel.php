@@ -15,7 +15,6 @@ final class StokDarahModel extends ModelTemplate
             'id_stok_darah',
             [
                 'id_stok_darah' => V::TODO(),
-                'id_pemisahan' => V::TODO(),
                 'no_kantong' => V::TODO(),
                 'id_komponen' => V::TODO(),
                 'id_golongan_darah' => V::TODO(),

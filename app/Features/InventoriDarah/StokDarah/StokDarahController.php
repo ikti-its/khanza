@@ -20,11 +20,10 @@ final class StokDarahController extends ControllerTemplate
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 
-                // A::DELETE,
+                A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_stok_darah', 'ID Stok Darah'],
-                [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
                 [SHOW, REQUIRED, I::TEXT, 'no_kantong', 'Nomor Kantong'],
                 [HIDE, REQUIRED, I::INDEX, 'id_komponen', 'ID Komponen'],
                 [SHOW, REQUIRED, I::INDEX, 'id_golongan_darah', 'ID Golongan Darah'],
