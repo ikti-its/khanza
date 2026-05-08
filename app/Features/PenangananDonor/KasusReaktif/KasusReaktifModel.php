@@ -14,31 +14,11 @@ final class KasusReaktifModel extends ModelTemplate
             'kasus_reaktif',
             'id_kasus',
             [
-                'id_kasus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_kunjungan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_uji_saring' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'tanggal_ditetapkan' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'id_status_kasus' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ]
+                'id_kasus' => V::TODO(),
+                'id_kunjungan' => V::TODO(),
+                'id_uji_saring' => V::TODO(),
+                'tanggal_ditetapkan' => V::TODO(),
+                'id_status_kasus' => V::TODO()
             ],
         );
     }
