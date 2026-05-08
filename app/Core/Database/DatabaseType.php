@@ -144,4 +144,8 @@ final class DatabaseType
         return self::F32();
     }
 
+    public static function CODE(): self {
+        return self::TEXT();
+    }
+
 }
