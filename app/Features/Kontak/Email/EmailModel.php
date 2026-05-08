@@ -9,6 +9,7 @@ final class EmailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new EmailDatabase(),
             'BASE',
             'kontak',
             'email',
@@ -18,6 +19,7 @@ final class EmailModel extends ModelTemplate
                 'id_orang' => V::TODO(),
                 'alamat_email' => V::TODO()
             ],
+            [],
         );
     }
 }

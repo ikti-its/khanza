@@ -9,6 +9,7 @@ final class ProviderModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new ProviderDatabase(),
             'REFS',
             'kontak',
             'provider',
@@ -17,6 +18,7 @@ final class ProviderModel extends ModelTemplate
                 'id_provider' => V::TODO(),
                 'nama_provider' => V::TODO()
             ],
+            [],
         );
     }
 }

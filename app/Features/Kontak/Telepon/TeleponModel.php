@@ -9,16 +9,19 @@ final class TeleponModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new TeleponDatabase(),
             'BASE',
             'kontak',
             'telepon',
             'id_telepon',
             [
-                'id_telepon' => V::TODO(),
-                'id_orang' => V::TODO(),
-                'nomor_telepon' => V::TODO(),
-                'jenis_telepon' => V::TODO(),
-                'id_provider' => V::TODO()
+                'id_telepon'    => V::DEFAULT(),
+                'nomor_telepon' => V::DEFAULT(),
+            ],
+            [
+                'id_orang'      => ['nik', 'nama'],
+                'jenis_telepon' => ['nama_jenis_telepon'],
+                'id_provider'   => ['nama_provider']
             ],
         );
     }
