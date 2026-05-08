@@ -15,9 +15,13 @@ final class PasienDatabase extends DatabaseTemplate
             [
                 'id_pasien'  => T::ID32(1_000_000),
                 'id_orang'   => T::FK_AUTO(),
+                'nomor_rm'   => T::TEXT(),
             ],
             'id_pasien',
-            ['id_orang'],
+            [
+                'id_orang',
+                'nomor_rm'
+            ],
             [
                 [
                     'id_orang', 
