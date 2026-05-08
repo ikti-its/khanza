@@ -127,5 +127,17 @@ final class DatabaseType
         return new self(['type' => 'MACADDR']);}
     public static function MAC64(): self { 
         return new self(['type' => 'MACADDR8']);}
-}
 
+    public static function MONEY(): self {
+        return self::INT64();
+    }
+
+    public static function NAME(): self {
+        return self::TEXT();
+    }
+
+    public static function TEMP(): self {
+        return self::INT8();
+    }
+
+}
