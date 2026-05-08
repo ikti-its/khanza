@@ -9,18 +9,20 @@ final class BPJSModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new BPJSDatabase(),
             'BASE',
             'penggajian',
             'bpjs',
             'no_bpjs',
             [
-                'no_bpjs' => V::TODO(), 
-                'nama_program' => V::TODO(), 
-                'penyelenggara' => V::TODO(),
-                'tarif' => V::TODO(),
-                'batas_atas' => V::TODO(),
-                'batas_bawah' => V::TODO(),
+                'no_bpjs'       => V::DEFAULT(), 
+                'nama_program'  => V::DEFAULT(), 
+                'penyelenggara' => V::DEFAULT(),
+                'tarif'         => V::TODO(),
+                'batas_atas'    => V::DEFAULT(),
+                'batas_bawah'   => V::DEFAULT(),
             ],
+            [],
         );
     }
 }
