@@ -14,17 +14,21 @@ final class GolonganDatabase extends DatabaseTemplate
             'golongan',
             [
                 'no_golongan'   => T::ID8(20),
-                'kode_golongan' => T::TEXT(),
-                'nama_golongan' => T::TEXT(),
-                'pendidikan'    => T::TEXT(),
-                'gaji_pokok'    => T::INT32(),
+                'kode_golongan' => T::CODE(),
+                'nama_golongan' => T::NAME(),
+                'pendidikan'    => T::FK_AUTO(),
+                'gaji_pokok'    => T::MONEY(),
             ],
             'no_golongan',
             [
                 'nama_golongan', 
                 'kode_golongan'
             ],
-            [],
+            [
+                'pendidikan',
+                \App\Features\Pendidikan\JenjangPendidikan\JenjangPendidikanDatabase::class,
+                'nama_jenjang_pendidikan',
+            ],
         );
     }
 }

@@ -1,0 +1,29 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\AturanPenggajian\BPJS;
+use App\Core\Model\ModelTemplate;
+use App\Core\Model\ValidationType as V;
+use App\Features\AturanPenggajian\Golongan\GolonganDatabase;
+
+final class GolonganModel extends ModelTemplate
+{
+    public function __construct(){
+        parent::__construct(
+            new GolonganDatabase(),
+            'BASE',
+            'penggajian',
+            'golongan',
+            'no_bpjs',
+            [
+                'no_golongan'   => V::DEFAULT(),
+                'kode_golongan' => V::DEFAULT(),
+                'nama_golongan' => V::DEFAULT(),
+                'gaji_pokok'    => V::DEFAULT(),
+            ],
+            [
+                'pendidikan' => ['nama_jenjang_pendidikan'],
+            ],
+        );
+    }
+}
