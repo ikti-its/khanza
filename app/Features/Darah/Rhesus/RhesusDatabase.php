@@ -14,7 +14,7 @@ final class RhesusDatabase extends DatabaseTemplate
             'rhesus',
             [
                 'id_rhesus'      => T::ID8(2),
-                'kode_rhesus'    => T::TEXT(),
+                'kode_rhesus'    => T::CODE(),
             ],
             'id_rhesus',
             ['kode_rhesus'],
