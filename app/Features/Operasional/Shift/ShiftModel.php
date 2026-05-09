@@ -15,8 +15,8 @@ final class ShiftModel extends ModelTemplate
             'shift',
             'id_shift',
             [
-                'id_shift'      => V::DEFAULT(),
-                'nama_shift'    => V::DEFAULT()
+                'id_shift'   => V::DEFAULT(),
+                'nama_shift' => V::DEFAULT()
             ],
             [],
         );
