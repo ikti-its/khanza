@@ -22,7 +22,7 @@ final class OrangDatabase extends DatabaseTemplate
             [
                 'id_orang'           => T::ID32(300_000_000),
                 'nik'                => T::TEXT(),
-                'nama'               => T::TEXT(),
+                'nama'               => T::NAME(),
                 'id_jenis_kelamin'   => T::FK_AUTO(),
                 'id_agama'           => T::FK_AUTO(),
                 'id_pernikahan'      => T::FK_AUTO(),

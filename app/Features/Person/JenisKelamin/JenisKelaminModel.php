@@ -9,14 +9,16 @@ final class JenisKelaminModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new JenisKelaminDatabase(),
             'REFS',
             'person',
             'jenis_kelamin',
             'id_jenis_kelamin',
             [
-                'id_jenis_kelamin' => V::TODO(),
-                'nama_jenis_kelamin' => V::TODO()
+                'id_jenis_kelamin'      => V::DEFAULT(),
+                'nama_jenis_kelamin'    => V::DEFAULT()
             ],
+            [],
         );
     }
 }

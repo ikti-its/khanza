@@ -31,8 +31,7 @@ final class OrangController extends ControllerTemplate
                 [HIDE, REQUIRED, I::INDEX, 'id_pernikahan', 'ID Pernikahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_golongan_darah', 'ID Golongan Darah'],
                 [HIDE, REQUIRED, I::INDEX, 'id_alamat', 'ID Alamat'],
-                [HIDE, REQUIRED, I::INDEX, 'tempat_lahir_prov', 'Tempat Lahir Provinsi'],
-                [SHOW, REQUIRED, I::INDEX, 'tempat_lahir_kota', 'Tempat Lahir Kota'],
+                [SHOW, REQUIRED, I::INDEX, 'tempat_lahir_kota', 'Tempat Lahir'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_lahir', 'Tanggal Lahir'],
             ],
         );

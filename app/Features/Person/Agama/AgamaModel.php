@@ -9,14 +9,16 @@ final class AgamaModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new AgamaDatabase(),
             'REFS',
             'person',
             'agama',
             'id_agama',
             [
-                'id_agama' => V::TODO(),
-                'nama_agama' => V::TODO()
+                'id_agama'      => V::DEFAULT(),
+                'nama_agama'    => V::DEFAULT()
             ],
+            [],
         );
     }
 }

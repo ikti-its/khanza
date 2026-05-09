@@ -13,7 +13,7 @@ final class AgamaDatabase extends DatabaseTemplate
             'agama',
             [
                 'id_agama'   => T::ID8(7),
-                'nama_agama' => T::TEXT(),
+                'nama_agama' => T::NAME(),
             ],
             'id_agama',
             ['nama_agama'],

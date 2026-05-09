@@ -22,7 +22,7 @@ final class JenisKelaminDatabase extends DatabaseTemplate
             'jenis_kelamin',
             [
                 'id_jenis_kelamin'   => T::ID8(2),
-                'nama_jenis_kelamin' => T::TEXT(),
+                'nama_jenis_kelamin' => T::NAME(),
             ],
             'id_jenis_kelamin',
             ['nama_jenis_kelamin'],

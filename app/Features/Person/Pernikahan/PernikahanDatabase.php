@@ -13,7 +13,7 @@ final class PernikahanDatabase extends DatabaseTemplate
             'pernikahan',
             [
                 'id_pernikahan'     => T::ID8(10),
-                'status_pernikahan' => T::TEXT(),
+                'status_pernikahan' => T::NAME(),
             ],
             'id_pernikahan',
             ['status_pernikahan'],
