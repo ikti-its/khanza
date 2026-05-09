@@ -9,14 +9,16 @@ final class RhesusModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RhesusDatabase(),
             'REFS',
             'darah',
             'rhesus',
             'id_rhesus',
             [
-                'id_rhesus' => V::TODO(),
-                'kode_rhesus' => V::TODO()
+                'id_rhesus'     => V::DEFAULT(),
+                'kode_rhesus'   => V::DEFAULT()
             ],
+            [],
         );
     }
 }

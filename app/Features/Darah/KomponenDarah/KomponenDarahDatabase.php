@@ -14,8 +14,8 @@ final class KomponenDarahDatabase extends DatabaseTemplate
             'komponen_darah',
             [
                 'id_komponen'           => T::ID8(20),
-                'kode_komponen'         => T::TEXT(),
-                'nama_komponen'         => T::TEXT(),
+                'kode_komponen'         => T::CODE(),
+                'nama_komponen'         => T::NAME(),
                 'masa_berlaku_hari'     => T::INT16(),
             ],
             'id_komponen',

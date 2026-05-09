@@ -14,7 +14,7 @@ final class GolonganDarahDatabase extends DatabaseTemplate
             'golongan_darah',
             [
                 'id_golongan_darah'      => T::ID8(5),
-                'nama_golongan_darah'    => T::TEXT(),
+                'nama_golongan_darah'    => T::NAME(),
             ],
             'id_golongan_darah',
             ['nama_golongan_darah'],
