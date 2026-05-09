@@ -13,8 +13,8 @@ final class CaraMasukDatabase extends DatabaseTemplate
             'triase_ugd',
             'cara_masuk',
             [
-                'id_cara'          => T::ID8(10),
-                'nama_cara'        => T::TEXT(),
+                'id_cara'   => T::ID8(10),
+                'nama_cara' => T::TEXT(),
             ],
             'id_cara',
             ['nama_cara'],

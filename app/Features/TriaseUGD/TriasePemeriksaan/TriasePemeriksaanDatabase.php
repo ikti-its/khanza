@@ -13,9 +13,9 @@ final class TriasePemeriksaanDatabase extends DatabaseTemplate
             'triase_ugd',
             'triase_pemeriksaan',
             [
-                'id_pemeriksaan'          => T::ID8(20),
-                'kode_pemeriksaan'        => T::TEXT(),
-                'nama_pemeriksaan'        => T::TEXT(),
+                'id_pemeriksaan'   => T::ID8(20),
+                'kode_pemeriksaan' => T::TEXT(),
+                'nama_pemeriksaan' => T::TEXT(),
             ],
             'id_pemeriksaan',
             ['kode_pemeriksaan', 'nama_pemeriksaan'],

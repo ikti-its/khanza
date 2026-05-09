@@ -13,8 +13,8 @@ final class KebutuhanKhususDatabase extends DatabaseTemplate
             'triase_ugd',
             'kebutuhan_khusus',
             [
-                'id_kebutuhan'          => T::ID8(10),
-                'nama_kebutuhan'        => T::TEXT(),
+                'id_kebutuhan'   => T::ID8(10),
+                'nama_kebutuhan' => T::TEXT(),
             ],
             'id_kebutuhan',
             ['nama_kebutuhan'],

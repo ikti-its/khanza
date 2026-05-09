@@ -13,8 +13,8 @@ final class TingkatSkalaDatabase extends DatabaseTemplate
             'triase_ugd',
             'tingkat_skala',
             [
-                'id_tingkat'          => T::ID8(5),
-                'nama_tingkat'        => T::TEXT(),
+                'id_tingkat'   => T::ID8(5),
+                'nama_tingkat' => T::TEXT(),
             ],
             'id_tingkat',
             ['nama_tingkat'],

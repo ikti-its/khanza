@@ -13,8 +13,8 @@ final class AlatTransportasiDatabase extends DatabaseTemplate
             'triase_ugd',
             'alat_transportasi',
             [
-                'id_transportasi'          => T::ID8(10),
-                'nama_transportasi'        => T::TEXT(),
+                'id_transportasi'   => T::ID8(10),
+                'nama_transportasi' => T::TEXT(),
             ],
             'id_transportasi',
             ['nama_transportasi'],

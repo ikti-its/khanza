@@ -13,8 +13,8 @@ final class PlanPrimerDatabase extends DatabaseTemplate
             'triase_ugd',
             'plan_primer',
             [
-                'id_plan_primer'          => T::ID8(2),
-                'nama_plan_primer'        => T::TEXT(),
+                'id_plan_primer'   => T::ID8(2),
+                'nama_plan_primer' => T::TEXT(),
             ],
             'id_plan_primer',
             ['nama_plan_primer'],

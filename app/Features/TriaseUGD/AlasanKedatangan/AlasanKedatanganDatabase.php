@@ -13,8 +13,8 @@ final class AlasanKedatanganDatabase extends DatabaseTemplate
             'triase_ugd',
             'alasan_kedatangan',
             [
-                'id_alasan'          => T::ID8(10),
-                'nama_alasan'        => T::TEXT(),
+                'id_alasan'   => T::ID8(10),
+                'nama_alasan' => T::TEXT(),
             ],
             'id_alasan',
             ['nama_alasan'],
