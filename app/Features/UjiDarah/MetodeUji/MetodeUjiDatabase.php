@@ -13,8 +13,8 @@ final class MetodeUjiDatabase extends DatabaseTemplate
             'uji_darah',
             'metode_uji',
             [
-                'id_metode_uji'       => T::ID8(4),
-                'nama_metode'         => T::TEXT(),
+                'id_metode_uji' => T::ID8(4),
+                'nama_metode'   => T::TEXT(),
             ],
             'id_metode_uji',
             ['nama_metode'],

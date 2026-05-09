@@ -13,8 +13,8 @@ final class NilaiDiagnostikDatabase extends DatabaseTemplate
             'uji_darah',
             'nilai_diagnostik',
             [
-                'id_nilai_diagnostik'      => T::ID8(2),
-                'nama_nilai_diagnostik'    => T::TEXT(),
+                'id_nilai_diagnostik'   => T::ID8(2),
+                'nama_nilai_diagnostik' => T::TEXT(),
             ],
             'id_nilai_diagnostik',
             ['nama_nilai_diagnostik'],

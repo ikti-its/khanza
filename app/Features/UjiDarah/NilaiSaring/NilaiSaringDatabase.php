@@ -13,8 +13,8 @@ final class NilaiSaringDatabase extends DatabaseTemplate
             'uji_darah',
             'nilai_saring',
             [
-                'id_nilai_saring'      => T::ID8(2),
-                'nama_nilai_saring'    => T::TEXT(),
+                'id_nilai_saring'   => T::ID8(2),
+                'nama_nilai_saring' => T::TEXT(),
             ],
             'id_nilai_saring',
             ['nama_nilai_saring'],
