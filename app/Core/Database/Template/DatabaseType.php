@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Core\Database;
 use App\Core\Controller\Assert;
 use CodeIgniter\Database\RawSql;
+use App\Core\Database\PostgreType as P;
 
 final class DatabaseType
 {
@@ -86,7 +87,6 @@ final class DatabaseType
         return new self(['type' => 'BIGINT', 'auto_increment' => true]);
     }
 
-    
     public static function INT8() : self { 
         return new self(['type' => 'SMALLINT']);}
     public static function INT16(): self { 
