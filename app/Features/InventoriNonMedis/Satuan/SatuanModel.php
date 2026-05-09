@@ -9,15 +9,17 @@ final class SatuanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new SatuanDatabase(),
             'REFS',
             'inventori_non_medis',
             'satuan',
             'id_satuan',
             [
-                'id_satuan' => V::TODO(),
-                'kode_satuan' => V::TODO(),
-                'nama_satuan' => V::TODO()
+                'id_satuan'   => V::DEFAULT(),
+                'kode_satuan' => V::DEFAULT(),
+                'nama_satuan' => V::DEFAULT(),
             ],
+            [],
         );
     }
 }

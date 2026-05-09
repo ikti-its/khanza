@@ -9,21 +9,24 @@ final class BarangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new BarangDatabase(),
             'BASE',
             'inventori_non_medis',
             'barang',
             'id_barang',
             [
-                'id_barang' => V::TODO(),
-                'kode_barang' => V::TODO(),
-                'nama_barang' => V::TODO(),
-                'id_kategori' => V::TODO(),
-                'id_suplier' => V::TODO(),
-                'id_satuan' => V::TODO(),
-                'id_lokasi_penyimpanan' => V::TODO(),
-                'stok' => V::TODO(),
+                'id_barang'    => V::DEFAULT(),
+                'kode_barang'  => V::DEFAULT(),
+                'nama_barang'  => V::DEFAULT(),
+                'stok'         => V::TODO(),
                 'stok_minimum' => V::TODO(),
-                'harga_satuan' => V::TODO(),
+                'harga_satuan' => V::DEFAULT(),
+            ],
+            [
+                'id_satuan'             => ['nama_satuan'],
+                'id_kategori'           => ['nama_kategori_barang'],
+                'id_lokasi_penyimpanan' => ['nama_lokasi_penyimpanan'],
+                'id_suplier'            => ['nama_suplier'],
             ],
         );
     }

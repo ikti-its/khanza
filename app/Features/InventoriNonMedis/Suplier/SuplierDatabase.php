@@ -15,7 +15,7 @@ final class SuplierDatabase extends DatabaseTemplate
             'suplier',
             [
                 'id_suplier'    => T::ID16(200),
-                'nama_suplier'  => T::TEXT(),
+                'nama_suplier'  => T::NAME(),
                 'no_telp'       => T::TEXT()->nullable(),
                 'id_alamat'     => T::FK_AUTO(),
             ],

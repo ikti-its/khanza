@@ -15,7 +15,7 @@ final class UnitDatabase extends DatabaseTemplate
             'unit',
             [
                 'id_unit'   => T::ID8(20),
-                'nama_unit' => T::TEXT(),
+                'nama_unit' => T::NAME(),
             ],
             'id_unit',
             ['nama_unit'],

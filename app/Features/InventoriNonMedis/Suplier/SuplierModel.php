@@ -9,16 +9,17 @@ final class SuplierModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new SuplierDatabase(),
             'BASE',
             'inventori_non_medis',
             'suplier',
             'id_suplier',
             [
-                'id_suplier' => V::TODO(),
-                'nama_suplier' => V::TODO(),
-                'no_telp' => V::TODO(),
-                'id_alamat' => V::TODO(),
+                'id_suplier'   => V::DEFAULT(),
+                'nama_suplier' => V::DEFAULT(),
+                'no_telp'      => V::TODO(),
             ],
+            [],
         );
     }
 }

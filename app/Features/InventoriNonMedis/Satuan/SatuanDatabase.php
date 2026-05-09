@@ -15,8 +15,8 @@ final class SatuanDatabase extends DatabaseTemplate
             'satuan',
             [
                 'id_satuan'   => T::ID8(30),
-                'kode_satuan' => T::TEXT(),
-                'nama_satuan' => T::TEXT(),
+                'kode_satuan' => T::CODE(),
+                'nama_satuan' => T::NAME(),
             ],
             'id_satuan',
             ['kode_satuan', 'nama_satuan'],

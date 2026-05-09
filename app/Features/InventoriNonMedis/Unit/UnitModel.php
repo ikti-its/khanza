@@ -10,14 +10,16 @@ final class UnitModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new UnitDatabase(),
             'REFS',
             'inventori_non_medis',
             'unit',
             'id_unit',
             [
-                'id_unit' => V::TODO(),
-                'nama_unit' => V::TODO(),
+                'id_unit'   => V::DEFAULT(),
+                'nama_unit' => V::DEFAULT(),
             ],
+            [],
         );
     }
 }

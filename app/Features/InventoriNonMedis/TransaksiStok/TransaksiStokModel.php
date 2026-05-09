@@ -9,20 +9,20 @@ final class TransaksiStokModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new TransaksiStokDatabase(),
             'BASE',
             'inventori_non_medis',
             'transaksi_stok',
             'id_transaksi',
             [
-                'id_transaksi' => V::TODO(),
-                'id_barang' => V::TODO(),
+                'id_transaksi'   => V::DEFAULT(),
                 'tipe_transaksi' => V::TODO(),
-                'qty' => V::TODO(),
-                'tanggal' => V::TODO(),
-                'id_pengadaan' => V::TODO(),
-                'id_permintaan' => V::TODO(),
-                'id_opname' => V::TODO(),
-                'catatan' => V::TODO(),
+                'qty'            => V::TODO(),
+                'tanggal'        => V::TODO(),
+                'catatan'        => V::TODO(),
+            ],
+            [
+                'id_barang' => ['kode_barang', 'nama_barang'],
             ],
         );
     }

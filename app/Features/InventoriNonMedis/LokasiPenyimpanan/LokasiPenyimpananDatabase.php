@@ -15,7 +15,7 @@ final class LokasiPenyimpananDatabase extends DatabaseTemplate
             'lokasi_penyimpanan',
             [
                 'id_lokasi_penyimpanan'   => T::ID8(30),
-                'nama_lokasi_penyimpanan' => T::TEXT(),
+                'nama_lokasi_penyimpanan' => T::NAME(),
             ],
             'id_lokasi_penyimpanan',
             [],

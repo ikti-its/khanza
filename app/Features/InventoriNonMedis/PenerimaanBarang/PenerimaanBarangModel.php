@@ -10,16 +10,19 @@ final class PenerimaanBarangModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new PenerimaanBarangDatabase(),
             'BASE',
             'inventori_non_medis',
             'penerimaan_barang',
             'id_penerimaan',
             [
-                'id_penerimaan' => V::TODO(),
-                'id_pengadaan' => V::TODO(),
-                'tanggal' => V::TODO(),
-                'status' => V::TODO(),
-                'catatan' => V::TODO(),
+                'id_penerimaan' => V::DEFAULT(),
+                'tanggal'       => V::TODO(),
+                'status'        => V::TODO(),
+                'catatan'       => V::TODO(),
+            ],
+            [
+                'id_pengadaan' => ['tanggal', 'status'],
             ],
         );
     }

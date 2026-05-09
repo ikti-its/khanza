@@ -9,17 +9,19 @@ final class PengadaanBarangModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PengadaanBarangDatabase(),
             'BASE',
             'inventori_non_medis',
             'pengadaan_barang',
             'id_pengadaan',
             [
-                'id_pengadaan' => V::TODO(),
-                'id_pengajuan' => V::TODO(),
-                'id_suplier' => V::TODO(),
-                'tanggal' => V::TODO(),
-                'status' => V::TODO(),
-                'catatan' => V::TODO(),
+                'id_pengadaan' => V::DEFAULT(),
+                'tanggal'      => V::TODO(),
+                'status'       => V::TODO(),
+                'catatan'      => V::TODO(),
+            ],
+            [
+                'id_suplier' => ['nama_suplier'],
             ],
         );
     }

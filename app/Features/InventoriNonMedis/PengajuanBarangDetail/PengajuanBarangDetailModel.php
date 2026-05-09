@@ -9,17 +9,19 @@ final class PengajuanBarangDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PengajuanBarangDetailDatabase(),
             'BASE',
             'inventori_non_medis',
             'pengajuan_barang_detail',
             'id_detail',
             [
-                'id_detail' => V::TODO(),
-                'id_pengajuan' => V::TODO(),
-                'id_barang' => V::TODO(),
-                'nama_barang_baru' => V::TODO(),
-                'qty' => V::TODO(),
-                'harga_estimasi' => V::TODO(),
+                'id_detail'        => V::DEFAULT(),
+                'nama_barang_baru' => V::DEFAULT(),
+                'qty'              => V::TODO(),
+                'harga_estimasi'   => V::TODO(),
+            ],
+            [
+                'id_barang' => ['kode_barang', 'nama_barang'],
             ],
         );
     }
