@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Lokasi\Desa;
 
 use App\Core\Database\DatabaseTemplate;
-use App\Core\Database\DatabaseType as T;
+use App\Core\Database\Template\SemanticType as T;
     
 /*
  *  Dalam 1 kecamatan terdapat 1 atau lebih desa

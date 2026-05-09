@@ -3,7 +3,7 @@
 namespace App\Features\Operasi\RefKeadaanUmumTransfer;
 
 use App\Core\Database\DatabaseTemplate;
-use App\Core\Database\DatabaseType as T;
+use App\Core\Database\Template\SemanticType as T;
     
 final class CreateRefKeadaanUmumTransferTable extends DatabaseTemplate
 {

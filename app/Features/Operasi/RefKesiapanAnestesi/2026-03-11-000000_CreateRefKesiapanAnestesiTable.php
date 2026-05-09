@@ -3,7 +3,7 @@
 namespace App\Features\Operasi\RefKesiapanAnestesi;
 
 use App\Core\Database\DatabaseTemplate;
-use App\Core\Database\DatabaseType as T;
+use App\Core\Database\Template\SemanticType as T;
     
 final class CreateRefKesiapanAnestesiTable extends DatabaseTemplate
 {

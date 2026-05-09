@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\InventoriDarah\StatusKantong;
 
 use App\Core\Database\DatabaseTemplate;
-use App\Core\Database\DatabaseType as T;
+use App\Core\Database\Template\SemanticType as T;
 
 final class StatusKantongDatabase extends DatabaseTemplate
 {

@@ -3,7 +3,7 @@
 namespace App\Features\Operasi\RefRuanganOperasi;
 
 use App\Core\Database\DatabaseTemplate;
-use App\Core\Database\DatabaseType as T;
+use App\Core\Database\Template\SemanticType as T;
     
 final class CreateRefRuanganOperasiTable extends DatabaseTemplate
 {

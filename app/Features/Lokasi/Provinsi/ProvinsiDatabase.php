@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Features\Lokasi\Provinsi;
 
 use App\Core\Database\DatabaseTemplate;
-use App\Core\Database\DatabaseType as T;
+use App\Core\Database\Template\SemanticType as T;
 
 /*
  *  Di Indonesia, terdapat 38 provinsi

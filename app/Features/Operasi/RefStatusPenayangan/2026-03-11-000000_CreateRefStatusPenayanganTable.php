@@ -3,7 +3,7 @@
 namespace App\Features\Operasi\RefStatusPenayangan;
 
 use App\Core\Database\DatabaseTemplate;
-use App\Core\Database\DatabaseType as T;
+use App\Core\Database\Template\SemanticType as T;
     
 final class CreateRefStatusPenayanganTable extends DatabaseTemplate
 {
