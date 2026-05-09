@@ -14,9 +14,9 @@ final class PermintaanLabMbDatabase extends DatabaseTemplate
             'laboratorium',
             'permintaan_lab_mb',
             [
-                'id_permintaan_mb' => T::ID32(100_000),
-                'id_permintaan_lab' => T::FK_AUTO(),
-                'id_item_pemeriksaan' => T::FK_AUTO(),
+                'id_permintaan_mb'         => T::ID32(100_000),
+                'id_permintaan_lab'        => T::FK_AUTO(),
+                'id_item_pemeriksaan'      => T::FK_AUTO(),
                 'id_parameter_pemeriksaan' => T::FK_AUTO(),
             ],
             'id_permintaan_mb',
