@@ -4,7 +4,8 @@ declare(strict_types=1);
 namespace App\Core\Database;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
-use App\Core\Database\DatabaseType as T;
+use App\Core\Database\Template\SemanticType as ST;
+use App\Core\Database\Template\ForgeType;
 
 class DatabaseTemplate extends Migration
 {
@@ -13,7 +14,7 @@ class DatabaseTemplate extends Migration
         protected string $schema,
         protected string $table,
         /**
-         * @var array<string, DatabaseType>
+         * @var array<string, ForgeType>
          */
         protected array $fields,
         protected string $primary_key,
@@ -160,7 +161,7 @@ class DatabaseTemplate extends Migration
             if(is_string($fields))     $fields     = [$fields];
             foreach($fields as $field){
                 $field_def = $this->fields[$field];
-                Assert::True($field_def === T::FK_AUTO()->definition(),
+                Assert::True($field_def === ST::FK_AUTO()->definition(),
                     'Foreign key field must be of type T::FK_AUTO'.
                     "Schema : $this->schema, table : $this->table");
             }
