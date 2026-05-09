@@ -13,8 +13,8 @@ final class StatusKasusDatabase extends DatabaseTemplate
             'penanganan_donor',
             'status_kasus',
             [
-                'id_status_kasus'       => T::ID8(10),
-                'nama_status_kasus'     => T::TEXT(),
+                'id_status_kasus'   => T::ID8(10),
+                'nama_status_kasus' => T::TEXT(),
             ],
             'id_status_kasus',
             ['nama_status_kasus'],

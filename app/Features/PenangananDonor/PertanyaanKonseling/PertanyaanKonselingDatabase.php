@@ -13,8 +13,8 @@ final class PertanyaanKonselingDatabase extends DatabaseTemplate
             'penanganan_donor',
             'pertanyaan_konseling',
             [
-                'id_pertanyaan'     => T::ID8(10),
-                'teks_pertanyaan'   => T::TEXT(),
+                'id_pertanyaan'   => T::ID8(10),
+                'teks_pertanyaan' => T::TEXT(),
             ],
             'id_pertanyaan',
             [],
