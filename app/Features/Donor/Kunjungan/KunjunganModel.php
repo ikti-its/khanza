@@ -15,9 +15,10 @@ final class KunjunganModel extends ModelTemplate
             'id_kunjungan',
             [
                 'id_kunjungan' => V::TODO(),
-                'id_pendonor' => V::TODO(),
-                'tanggal_kunjungan' => V::TODO(),
                 'nomor_antrian' => V::TODO(),
+                'nomor_kunjungan' => V::TODO(),
+                'tanggal_kunjungan' => V::TODO(),
+                'id_pendonor' => V::TODO(),
                 'id_status_kunjungan' => V::TODO()
             ],
         );

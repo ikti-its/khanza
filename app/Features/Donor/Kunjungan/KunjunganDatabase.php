@@ -14,13 +14,17 @@ final class KunjunganDatabase extends DatabaseTemplate
             'kunjungan',
             [
                 'id_kunjungan'          => T::ID32(100_000_000),
-                'id_pendonor'           => T::FK_AUTO(),
-                'tanggal_kunjungan'     => T::DATE(),
                 'nomor_antrian'         => T::TEXT(),
+                'nomor_kunjungan'       => T::TEXT(),
+                'tanggal_kunjungan'     => T::DTIME(),
+                'id_pendonor'           => T::FK_AUTO(),
                 'id_status_kunjungan'   => T::FK_AUTO(),
             ],
             'id_kunjungan',
-            [['tanggal_kunjungan', 'nomor_antrian']],
+            [
+                'nomor_kunjungan', 
+                ['nomor_antrian', 'tanggal_kunjungan']
+            ],
             [
                 [
                     'id_pendonor', 
