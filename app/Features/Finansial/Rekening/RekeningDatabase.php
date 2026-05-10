@@ -14,11 +14,12 @@ final class RekeningDatabase extends DatabaseTemplate
             'rekening',
             [
                 'id_rekening'    => T::ID32(10_000_000),
-                'bank'           => T::FK_AUTO(),       
+                'bank'           => T::FK_AUTO(),
+                'nama_akun'      => T::TEXT(),
                 'nomor_rekening' => T::TEXT(),
             ],
             'id_rekening',
-            ['nomor_rekening'],
+            ['nama_akun'],
             [
                 [
                     'bank',
@@ -26,6 +27,8 @@ final class RekeningDatabase extends DatabaseTemplate
                     'id_bank'
                 ]
             ],
+            false,
+            'rekening.csv'
         );
     }
 }
