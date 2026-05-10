@@ -29,6 +29,8 @@ final class PasienDatabase extends DatabaseTemplate
                     'id_orang'
                 ],
             ],
+            false,
+            'pasien.csv'
         );
     }
 }
