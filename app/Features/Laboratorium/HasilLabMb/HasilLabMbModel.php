@@ -10,6 +10,7 @@ final class HasilLabMbModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new HasilLabMbDatabase(),
             'BASE',
             'laboratorium',
             'hasil_lab_mb',
@@ -27,6 +28,19 @@ final class HasilLabMbModel extends ModelTemplate
                 'nilai_hasil' => V::TODO(),
                 'keterangan_hasil' => V::TODO(),
             ],
+            [
+                'id_permintaan_lab'        => [],
+                'nomor_reg'                => [],
+                'kode_dokter_pj'           => [
+                    'id_dokter' => ['id_orang' => ['nama']], 
+                    'spesialis'
+                ],
+                'id_petugas_lab'           => [/*BINGUNG*/],
+                'kode_dokter_perujuk'      => [/*BINGUNG*/],
+                'id_item_pemeriksaan'      => ['nama_item'],
+                'id_parameter_pemeriksaan' => ['nama_parameter', 'satuan', 'nilai_rujukan', 'keterangan', 'biaya_item'],
+            ]
+
         );
     }
 }
