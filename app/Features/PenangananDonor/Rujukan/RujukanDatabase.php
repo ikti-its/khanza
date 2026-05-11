@@ -13,11 +13,12 @@ final class RujukanDatabase extends DatabaseTemplate
             'penanganan_donor',
             'rujukan',
             [
-                'id_rujukan'      => T::ID32(5_000_000),
-                'id_kasus'        => T::FK_AUTO(),
-                'nomor_surat'     => T::TEXT(),
-                'tanggal_rujukan' => T::DATE(),
-                'id_fasyankes'    => T::FK_AUTO(),
+                'id_rujukan'            => T::ID32(5_000_000),
+                'id_kasus'              => T::FK_AUTO(),
+                'nomor_surat'           => T::TEXT(),
+                'tanggal_rujukan'       => T::DATE(),
+                'id_fasyankes'          => T::FK_AUTO(),
+                'id_petugas_perujuk'    => T::FK_AUTO(),
             ],
             'id_rujukan',
             ['nomor_surat'],
@@ -31,6 +32,11 @@ final class RujukanDatabase extends DatabaseTemplate
                     'id_fasyankes', 
                     \App\Features\PenangananDonor\FasyankesRujukan\FasyankesRujukanDatabase::class, 
                     'id_fasyankes'
+                ],
+                [
+                    'id_petugas_perujuk', 
+                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas'
                 ],
             ],
         );

@@ -18,7 +18,8 @@ final class RujukanModel extends ModelTemplate
                 'id_kasus' => V::TODO(),
                 'nomor_surat' => V::TODO(),
                 'tanggal_rujukan' => V::TODO(),
-                'id_fasyankes' => V::TODO()
+                'id_fasyankes' => V::TODO(),
+                'id_petugas_perujuk' => V::TODO()
             ],
         );
     }
