@@ -1,0 +1,27 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\Operasi\RefAldretteKesadaran;
+
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\SemanticType as T;
+    
+final class RefAldretteKesadaranDatabase extends DatabaseTemplate
+{
+    public function __construct(){
+    parent::__construct(
+        'operasi',
+        'ref_aldrette_kesadaran',
+        [
+            'id_kesadaran' => T::ID8(10),
+            'nama_skala'   => T::TEXT(),
+            'nilai'        => T::INT8(),
+        ],
+        'id_kesadaran',
+        [],
+        [],
+        true,
+        'aldrette_kesadaran.csv'
+    );
+}
+}

@@ -1,0 +1,27 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Features\Operasi\RefAldretteWarnaKulit;
+
+use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\SemanticType as T;
+    
+final class RefAldretteWarnaKulitDatabase extends DatabaseTemplate
+{
+    public function __construct(){
+    parent::__construct(
+        'operasi',
+        'ref_aldrette_warna_kulit',
+        [
+            'id_warna'   => T::ID8(10),
+            'nama_skala' => T::TEXT(),
+            'nilai'      => T::INT8(),
+        ],
+        'id_warna',
+        [],
+        [],
+        true,
+        'aldrette_warna_kulit.csv'
+    );
+}
+}
