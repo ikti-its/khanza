@@ -93,7 +93,7 @@ class ControllerTemplate extends Controller
         }
     }
 
-    final public function index()
+    public function index()
     {
         return view('/layouts/data', [
             'judul'       => $this->title,
@@ -107,7 +107,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    final public function audit()
+    public function audit()
     {
         $audit_konfig = [
             // [1, 'Nomor Perubahan'  , 'change_id' , 'indeks'],
@@ -132,7 +132,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    final public function create_page()
+    public function create_page()
     {
         $breadcrumbs = [
             ['title' => 'Tambah', 'icon', 'tambah']
@@ -146,7 +146,7 @@ class ControllerTemplate extends Controller
             'form_action' => '/submittambah/',
         ]);
     }
-    final public function update_page($id)
+    public function update_page($id)
     {
         $breadcrumbs = [
             ['title' => 'Ubah', 'icon', 'Ubah']
