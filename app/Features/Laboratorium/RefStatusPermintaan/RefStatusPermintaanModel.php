@@ -15,16 +15,8 @@ final class RefStatusPermintaanModel extends ModelTemplate
             'ref_status_permintaan',
             'id_status',
             [
-                'id_status' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nama_status' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_status' => V::TODO(),
+                'nama_status' => V::TODO(),
             ],
         );
     }

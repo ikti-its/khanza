@@ -15,16 +15,8 @@ final class RefSkriningSkalaNyeriModel extends ModelTemplate
             'ref_skrining_skala_nyeri',
             'id_skala_nyeri',
             [
-                'id_skala_nyeri' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'skala_nyeri' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_skala_nyeri' => V::TODO(),
+                'skala_nyeri' => V::TODO(),
             ],
         );
     }

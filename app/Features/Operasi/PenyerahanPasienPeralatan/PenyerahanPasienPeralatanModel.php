@@ -15,26 +15,10 @@ final class PenyerahanPasienPeralatanModel extends ModelTemplate
             'penyerahan_pasien_peralatan',
             'id',
             [
-                'id' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_penyerahan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_peralatan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'keterangan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id' => V::TODO(),
+                'id_penyerahan' => V::TODO(),
+                'id_peralatan' => V::TODO(),
+                'keterangan' => V::TODO(),
             ],
         );
     }

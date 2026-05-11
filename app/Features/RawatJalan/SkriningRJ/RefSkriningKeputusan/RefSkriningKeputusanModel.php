@@ -15,16 +15,8 @@ final class RefSkriningKeputusanModel extends ModelTemplate
             'ref_skrining_keputusan',
             'id_keputusan',
             [
-                'id_keputusan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'skrining_keputusan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_keputusan' => V::TODO(),
+                'skrining_keputusan' => V::TODO(),
             ],
         );
     }

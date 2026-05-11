@@ -15,26 +15,10 @@ final class TimeOutSebelumInsisiPenunjangModel extends ModelTemplate
             'timeout_sebelum_insisi_penunjang',
             'id_penunjang',
             [
-                'id_penunjang' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_timeout' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_jenis_penunjang' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_status' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_penunjang' => V::TODO(),
+                'id_timeout' => V::TODO(),
+                'id_jenis_penunjang' => V::TODO(),
+                'id_status' => V::TODO(),
             ],
         );
     }

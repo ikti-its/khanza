@@ -15,51 +15,15 @@ final class PermintaanLabHeaderModel extends ModelTemplate
             'permintaan_lab_header',
             'id_permintaan',
             [
-                'id_permintaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'no_permintaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nomor_reg' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_kategori_lab' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_perujuk' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tgl_permintaan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'indikasi_klinis' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'informasi_tambahan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_status_permintaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_permintaan' => V::TODO(),
+                'no_permintaan' => V::TODO(),
+                'nomor_reg' => V::TODO(),
+                'id_kategori_lab' => V::TODO(),
+                'kode_dokter_perujuk' => V::TODO(),
+                'tgl_permintaan' => V::TODO(),
+                'indikasi_klinis' => V::TODO(),
+                'informasi_tambahan' => V::TODO(),
+                'id_status_permintaan' => V::TODO(),
             ],
         );
     }

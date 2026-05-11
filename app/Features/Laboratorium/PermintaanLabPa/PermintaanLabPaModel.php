@@ -15,61 +15,17 @@ final class PermintaanLabPaModel extends ModelTemplate
             'permintaan_lab_pa',
             'id_permintaan_pa',
             [
-                'id_permintaan_pa' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_permintaan_lab' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tgl_pengambilan_bahan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'metode_diperoleh' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'lokasi_jaringan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'bahan_pengawet' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'riwayat_lokasi_lab' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'riwayat_tgl_sebelumnya' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'riwayat_no_pa_sebelumnya' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'riwayat_diagnosa_sebelumnya' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_item_pemeriksaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_permintaan_pa' => V::TODO(),
+                'id_permintaan_lab' => V::TODO(),
+                'tgl_pengambilan_bahan' => V::TODO(),
+                'metode_diperoleh' => V::TODO(),
+                'lokasi_jaringan' => V::TODO(),
+                'bahan_pengawet' => V::TODO(),
+                'riwayat_lokasi_lab' => V::TODO(),
+                'riwayat_tgl_sebelumnya' => V::TODO(),
+                'riwayat_no_pa_sebelumnya' => V::TODO(),
+                'riwayat_diagnosa_sebelumnya' => V::TODO(),
+                'id_item_pemeriksaan' => V::TODO(),
             ],
         );
     }

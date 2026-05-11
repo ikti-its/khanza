@@ -15,31 +15,11 @@ final class PermintaanOperasiModel extends ModelTemplate
             'permintaan_operasi',
             'id_permintaan',
             [
-                'id_permintaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nomor_reg' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tanggal_minta' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'is_cito' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_permintaan' => V::TODO(),
+                'nomor_reg' => V::TODO(),
+                'kode_dokter' => V::TODO(),
+                'tanggal_minta' => V::TODO(),
+                'is_cito' => V::TODO(),
             ],
         );
     }

@@ -15,71 +15,19 @@ final class HasilRadTindakanModel extends ModelTemplate
             'hasil_rad_tindakan',
             'id_hasil_tindakan',
             [
-                'id_hasil_tindakan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_hasil_rad' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_item_rad' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tarif_tindakan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kilovoltage_kv' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'milliampere_second_mas' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'focus_film_distance_ffd' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'back_scatter_factor_bsf' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'inaktivasi' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'jumlah_penyinaran' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'dosis_radiasi' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'hasil_ekspertise' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_template_rad' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_hasil_tindakan' => V::TODO(),
+                'id_hasil_rad' => V::TODO(),
+                'id_item_rad' => V::TODO(),
+                'tarif_tindakan' => V::TODO(),
+                'kilovoltage_kv' => V::TODO(),
+                'milliampere_second_mas' => V::TODO(),
+                'focus_film_distance_ffd' => V::TODO(),
+                'back_scatter_factor_bsf' => V::TODO(),
+                'inaktivasi' => V::TODO(),
+                'jumlah_penyinaran' => V::TODO(),
+                'dosis_radiasi' => V::TODO(),
+                'hasil_ekspertise' => V::TODO(),
+                'id_template_rad' => V::TODO(),
             ],
         );
     }

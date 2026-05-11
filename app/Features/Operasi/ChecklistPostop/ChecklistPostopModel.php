@@ -15,71 +15,19 @@ final class ChecklistPostopModel extends ModelTemplate
             'checklist_postop',
             'id_checklist_post',
             [
-                'id_checklist_post' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nomor_reg' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'waktu_checklist' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'sn_cn' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_bedah' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_anestesi' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tindakan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_kesadaran_pascaop' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'jenis_cairan_infus' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_jaringan_pa_vc' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_kateter_urine' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_petugas_anestesi' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_petugas_ok' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_checklist_post' => V::TODO(),
+                'nomor_reg' => V::TODO(),
+                'waktu_checklist' => V::TODO(),
+                'sn_cn' => V::TODO(),
+                'kode_dokter_bedah' => V::TODO(),
+                'kode_dokter_anestesi' => V::TODO(),
+                'tindakan' => V::TODO(),
+                'id_kesadaran_pascaop' => V::TODO(),
+                'jenis_cairan_infus' => V::TODO(),
+                'id_jaringan_pa_vc' => V::TODO(),
+                'id_kateter_urine' => V::TODO(),
+                'id_petugas_anestesi' => V::TODO(),
+                'id_petugas_ok' => V::TODO(),
             ],
         );
     }

@@ -15,16 +15,8 @@ final class RefSkriningNyeriDadaModel extends ModelTemplate
             'ref_skrining_nyeri_dada',
             'id_nyeri_dada',
             [
-                'id_nyeri_dada' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nyeri_dada' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_nyeri_dada' => V::TODO(),
+                'nyeri_dada' => V::TODO(),
             ],
         );
     }

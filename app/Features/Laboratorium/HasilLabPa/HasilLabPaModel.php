@@ -15,71 +15,19 @@ final class HasilLabPaModel extends ModelTemplate
             'hasil_lab_pa',
             'id_hasil_pa',
             [
-                'id_hasil_pa' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_permintaan_lab' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nomor_reg' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_pj' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_petugas_lab' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_perujuk' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tgl_jam_hasil' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_item_pemeriksaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'diagnosa_klinis' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'makroskopik' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'mikroskopik' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kesimpulan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kesan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_hasil_pa' => V::TODO(),
+                'id_permintaan_lab' => V::TODO(),
+                'nomor_reg' => V::TODO(),
+                'kode_dokter_pj' => V::TODO(),
+                'id_petugas_lab' => V::TODO(),
+                'kode_dokter_perujuk' => V::TODO(),
+                'tgl_jam_hasil' => V::TODO(),
+                'id_item_pemeriksaan' => V::TODO(),
+                'diagnosa_klinis' => V::TODO(),
+                'makroskopik' => V::TODO(),
+                'mikroskopik' => V::TODO(),
+                'kesimpulan' => V::TODO(),
+                'kesan' => V::TODO(),
             ],
         );
     }

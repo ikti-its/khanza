@@ -15,31 +15,11 @@ final class ChecklistPostopPenunjangModel extends ModelTemplate
             'checklist_postop_penunjang',
             'id_checklist_post',
             [
-                'id_penunjang' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_checklist_post' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_jenis_penunjang' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_ketersediaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'keterangan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_penunjang' => V::TODO(),
+                'id_checklist_post' => V::TODO(),
+                'id_jenis_penunjang' => V::TODO(),
+                'id_ketersediaan' => V::TODO(),
+                'keterangan' => V::TODO(),
             ],
         );
     }

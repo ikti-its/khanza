@@ -15,31 +15,11 @@ final class CatatanAnestesiSedasiAlatModel extends ModelTemplate
             'catatan_anestesi_sedasi_alat',
             'id_alat',
             [
-                'id_alat' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_catatan_anestesi' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nama_alat' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'is_digunakan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'keterangan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_alat' => V::TODO(),
+                'id_catatan_anestesi' => V::TODO(),
+                'nama_alat' => V::TODO(),
+                'is_digunakan' => V::TODO(),
+                'keterangan' => V::TODO(),
             ],
         );
     }

@@ -15,66 +15,18 @@ final class SkriningRawatJalanModel extends ModelTemplate
             'skrining_rawat_jalan',
             'id_skrining',
             [
-                'id_skrining' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'no_rm' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tgl_jam_skrining' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_kesadaran' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_pernafasan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_skala_nyeri' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_nyeri_dada' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_batuk' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'is_geriatri' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'is_risiko_jatuh' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_keputusan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_petugas' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_skrining' => V::TODO(),
+                'no_rm' => V::TODO(),
+                'tgl_jam_skrining' => V::TODO(),
+                'id_kesadaran' => V::TODO(),
+                'id_pernafasan' => V::TODO(),
+                'id_skala_nyeri' => V::TODO(),
+                'id_nyeri_dada' => V::TODO(),
+                'id_batuk' => V::TODO(),
+                'is_geriatri' => V::TODO(),
+                'is_risiko_jatuh' => V::TODO(),
+                'id_keputusan' => V::TODO(),
+                'id_petugas' => V::TODO(),
             ],
         );
     }

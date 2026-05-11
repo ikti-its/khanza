@@ -15,31 +15,11 @@ final class RefItemPemeriksaanLabModel extends ModelTemplate
             'ref_item_pemeriksaan_lab',
             'id_item_lab',
             [
-                'id_item_lab' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_kategori' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_periksa' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nama_item' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tarif' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_item_lab' => V::TODO(),
+                'id_kategori' => V::TODO(),
+                'kode_periksa' => V::TODO(),
+                'nama_item' => V::TODO(),
+                'tarif' => V::TODO(),
             ],
         );
     }

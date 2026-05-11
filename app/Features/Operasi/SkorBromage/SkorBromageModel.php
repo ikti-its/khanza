@@ -15,51 +15,15 @@ final class SkorBromageModel extends ModelTemplate
             'skor_bromage',
             'id_skor_bromage',
             [
-                'id_skor_bromage' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nomor_reg' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'waktu_penilaian' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_petugas' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_dokter_anestesi' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'skor_bromage' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'is_boleh_pindah' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'catatan_keluar' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'instruksi_rr' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_skor_bromage' => V::TODO(),
+                'nomor_reg' => V::TODO(),
+                'waktu_penilaian' => V::TODO(),
+                'id_petugas' => V::TODO(),
+                'id_dokter_anestesi' => V::TODO(),
+                'skor_bromage' => V::TODO(),
+                'is_boleh_pindah' => V::TODO(),
+                'catatan_keluar' => V::TODO(),
+                'instruksi_rr' => V::TODO(),
             ],
         );
     }

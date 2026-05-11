@@ -15,16 +15,8 @@ final class RefSkriningKesadaranModel extends ModelTemplate
             'ref_skrining_kesadaran',
             'id_kesadaran',
             [
-                'id_kesadaran' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kesadaran' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_kesadaran' => V::TODO(),
+                'kesadaran' => V::TODO(),
             ],
         );
     }

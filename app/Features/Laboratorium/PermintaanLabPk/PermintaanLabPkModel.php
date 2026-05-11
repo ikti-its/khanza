@@ -15,26 +15,10 @@ final class PermintaanLabPkModel extends ModelTemplate
             'permintaan_lab_pk',
             'id_permintaan_pk',
             [
-                'id_permintaan_pk' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_permintaan_lab' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_item_pemeriksaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_parameter_pemeriksaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_permintaan_pk' => V::TODO(),
+                'id_permintaan_lab' => V::TODO(),
+                'id_item_pemeriksaan' => V::TODO(),
+                'id_parameter_pemeriksaan' => V::TODO(),
             ],
         );
     }

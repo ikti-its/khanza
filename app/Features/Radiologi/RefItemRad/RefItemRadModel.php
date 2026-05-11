@@ -15,26 +15,10 @@ final class RefItemRadModel extends ModelTemplate
             'ref_item_rad',
             'id_item',
             [
-                'id_item' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_periksa' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nama_pemeriksaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tarif_dasar' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_item' => V::TODO(),
+                'kode_periksa' => V::TODO(),
+                'nama_pemeriksaan' => V::TODO(),
+                'tarif_dasar' => V::TODO(),
             ],
         );
     }

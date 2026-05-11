@@ -15,16 +15,8 @@ final class RefSkriningPernafasanModel extends ModelTemplate
             'ref_skrining_pernafasan',
             'id_pernafasan',
             [
-                'id_pernafasan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'pernafasan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_pernafasan' => V::TODO(),
+                'pernafasan' => V::TODO(),
             ],
         );
     }

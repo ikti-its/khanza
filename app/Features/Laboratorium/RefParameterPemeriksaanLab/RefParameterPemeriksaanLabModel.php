@@ -15,41 +15,13 @@ final class RefParameterPemeriksaanLabModel extends ModelTemplate
             'ref_parameter_pemeriksaan_lab',
             'id_parameter',
             [
-                'id_parameter' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_item_lab' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nama_parameter' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'satuan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nilai_rujukan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'keterangan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'biaya_item' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_parameter' => V::TODO(),
+                'id_item_lab' => V::TODO(),
+                'nama_parameter' => V::TODO(),
+                'satuan' => V::TODO(),
+                'nilai_rujukan' => V::TODO(),
+                'keterangan' => V::TODO(),
+                'biaya_item' => V::TODO(),
             ],
         );
     }

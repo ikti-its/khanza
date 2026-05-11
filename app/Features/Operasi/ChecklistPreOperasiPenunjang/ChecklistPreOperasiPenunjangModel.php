@@ -15,31 +15,11 @@ final class ChecklistPreOperasiPenunjangModel extends ModelTemplate
             'checklist_pre_operasi_penunjang',
             'id_penunjang',
             [
-                'id_penunjang' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_checklist' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_jenis_penunjang' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_ketersediaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'keterangan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_penunjang' => V::TODO(),
+                'id_checklist' => V::TODO(),
+                'id_jenis_penunjang' => V::TODO(),
+                'id_ketersediaan' => V::TODO(),
+                'keterangan' => V::TODO(),
             ],
         );
     }

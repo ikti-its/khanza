@@ -15,21 +15,9 @@ final class RefKategoriLabModel extends ModelTemplate
             'ref_kategori_lab',
             'id_kategori',
             [
-                'id_kategori' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_kategori' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nama_kategori' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_kategori' => V::TODO(),
+                'kode_kategori' => V::TODO(),
+                'nama_kategori' => V::TODO(),
             ],
         );
     }

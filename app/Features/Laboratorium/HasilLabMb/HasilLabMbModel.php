@@ -15,61 +15,17 @@ final class HasilLabMbModel extends ModelTemplate
             'hasil_lab_mb',
             'id_hasil_mb',
             [
-                'id_hasil_mb' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_permintaan_lab' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nomor_reg' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_pj' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_petugas_lab' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_perujuk' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tgl_jam_hasil' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_item_pemeriksaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_parameter_pemeriksaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nilai_hasil' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'keterangan_hasil' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_hasil_mb' => V::TODO(),
+                'id_permintaan_lab' => V::TODO(),
+                'nomor_reg' => V::TODO(),
+                'kode_dokter_pj' => V::TODO(),
+                'id_petugas_lab' => V::TODO(),
+                'kode_dokter_perujuk' => V::TODO(),
+                'tgl_jam_hasil' => V::TODO(),
+                'id_item_pemeriksaan' => V::TODO(),
+                'id_parameter_pemeriksaan' => V::TODO(),
+                'nilai_hasil' => V::TODO(),
+                'keterangan_hasil' => V::TODO(),
             ],
         );
     }

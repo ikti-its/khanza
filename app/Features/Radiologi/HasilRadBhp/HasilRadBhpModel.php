@@ -15,36 +15,12 @@ final class HasilRadBhpModel extends ModelTemplate
             'hasil_rad_bhp',
             'id_rad_bhp',
             [
-                'id_rad_bhp' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_hasil_rad' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_barang_medis' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'jumlah_pakai' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'satuan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'harga_satuan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_rad_bhp' => V::TODO(),
+                'id_hasil_rad' => V::TODO(),
+                'id_barang_medis' => V::TODO(),
+                'jumlah_pakai' => V::TODO(),
+                'satuan' => V::TODO(),
+                'harga_satuan' => V::TODO(),
             ],
         );
     }

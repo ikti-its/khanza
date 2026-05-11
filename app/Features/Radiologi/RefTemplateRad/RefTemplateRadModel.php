@@ -15,21 +15,9 @@ final class RefTemplateRadModel extends ModelTemplate
             'ref_template_rad',
             'id_template',
             [
-                'id_template' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nama_template' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'isi_teks_ekspertise' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_template' => V::TODO(),
+                'nama_template' => V::TODO(),
+                'isi_teks_ekspertise' => V::TODO(),
             ],
         );
     }

@@ -15,16 +15,8 @@ final class RefKategoriUsiaLabModel extends ModelTemplate
             'ref_kategori_usia_lab',
             'id_kategori_usia',
             [
-                'id_kategori_usia' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nama_kategori_usia' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_kategori_usia' => V::TODO(),
+                'nama_kategori_usia' => V::TODO(),
             ],
         );
     }

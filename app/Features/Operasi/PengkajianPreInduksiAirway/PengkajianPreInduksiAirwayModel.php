@@ -15,41 +15,13 @@ final class PengkajianPreInduksiAirwayModel extends ModelTemplate
             'pengkajian_pre_induksi_airway',
             'id_airway',
             [
-                'id_airway' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_pengkajian' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'jenis_airway' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nomor' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'jenis' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'fiksasi_cm' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'keterangan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_airway' => V::TODO(),
+                'id_pengkajian' => V::TODO(),
+                'jenis_airway' => V::TODO(),
+                'nomor' => V::TODO(),
+                'jenis' => V::TODO(),
+                'fiksasi_cm' => V::TODO(),
+                'keterangan' => V::TODO(),
             ],
         );
     }

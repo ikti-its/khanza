@@ -15,56 +15,16 @@ final class JadwalOperasiModel extends ModelTemplate
             'jadwal_operasi',
             'id_jadwal',
             [
-                'id_jadwal' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_permintaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_ruangan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_tindakan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_bedah' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_anestesi' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tanggal' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'waktu_mulai' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'waktu_selesai' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_status' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_jadwal' => V::TODO(),
+                'id_permintaan' => V::TODO(),
+                'id_ruangan' => V::TODO(),
+                'id_tindakan' => V::TODO(),
+                'kode_dokter_bedah' => V::TODO(),
+                'kode_dokter_anestesi' => V::TODO(),
+                'tanggal' => V::TODO(),
+                'waktu_mulai' => V::TODO(),
+                'waktu_selesai' => V::TODO(),
+                'id_status' => V::TODO(),
             ],
         );
     }

@@ -15,61 +15,17 @@ final class PengkajianPreopModel extends ModelTemplate
             'pengkajian_preop',
             'id_pengkajian_pre',
             [
-                'id_pengkajian_pre' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nomor_reg' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_bedah' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'waktu_pengkajian' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'ringkasan_klinik' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'pemeriksaan_fisik' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'pemeriksaan_diagnostik' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'diagnosa_pre_operasi' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'rencana_tindakan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'persiapan_khusus' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'terapi_pre_operasi' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_pengkajian_pre' => V::TODO(),
+                'nomor_reg' => V::TODO(),
+                'kode_dokter_bedah' => V::TODO(),
+                'waktu_pengkajian' => V::TODO(),
+                'ringkasan_klinik' => V::TODO(),
+                'pemeriksaan_fisik' => V::TODO(),
+                'pemeriksaan_diagnostik' => V::TODO(),
+                'diagnosa_pre_operasi' => V::TODO(),
+                'rencana_tindakan' => V::TODO(),
+                'persiapan_khusus' => V::TODO(),
+                'terapi_pre_operasi' => V::TODO(),
             ],
         );
     }

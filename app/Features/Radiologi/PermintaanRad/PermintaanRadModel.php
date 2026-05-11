@@ -15,51 +15,15 @@ final class PermintaanRadModel extends ModelTemplate
             'permintaan_rad',
             'id_permintaan',
             [
-                'id_permintaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'no_permintaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'nomor_reg' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kode_dokter_perujuk' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'tgl_jam_permintaan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'informasi_tambahan' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'indikasi_klinis' => [
-                    'allowed' => true,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_status_permintaan' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'id_item_rad' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_permintaan' => V::TODO(),
+                'no_permintaan' => V::TODO(),
+                'nomor_reg' => V::TODO(),
+                'kode_dokter_perujuk' => V::TODO(),
+                'tgl_jam_permintaan' => V::TODO(),
+                'informasi_tambahan' => V::TODO(),
+                'indikasi_klinis' => V::TODO(),
+                'id_status_permintaan' => V::TODO(),
+                'id_item_rad' => V::TODO(),
             ],
         );
     }

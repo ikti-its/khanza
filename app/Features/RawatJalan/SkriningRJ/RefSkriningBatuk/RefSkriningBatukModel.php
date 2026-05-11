@@ -15,16 +15,8 @@ final class RefSkriningBatukModel extends ModelTemplate
             'ref_skrining_batuk',
             'id_batuk',
             [
-                'id_batuk' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
-                'kategori_batuk' => [
-                    'allowed' => false,
-                    'rules' => '',
-                    'errors' => [],
-                ],
+                'id_batuk' => V::TODO(),
+                'kategori_batuk' => V::TODO(),
             ],
         );
     }
