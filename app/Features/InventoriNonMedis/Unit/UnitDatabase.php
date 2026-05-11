@@ -14,8 +14,8 @@ final class UnitDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'unit',
             [
-                'id_unit'   => T::ID8(20),
-                'nama_unit' => T::NAME(),
+                'id_unit'   => T::ID(20),
+                'nama_unit' => T::NAME(100),
             ],
             'id_unit',
             ['nama_unit'],

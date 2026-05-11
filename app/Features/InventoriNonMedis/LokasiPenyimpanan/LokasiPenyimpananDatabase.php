@@ -14,8 +14,8 @@ final class LokasiPenyimpananDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'lokasi_penyimpanan',
             [
-                'id_lokasi_penyimpanan'   => T::ID8(30),
-                'nama_lokasi_penyimpanan' => T::NAME(),
+                'id_lokasi_penyimpanan'   => T::ID(30),
+                'nama_lokasi_penyimpanan' => T::NAME(100),
             ],
             'id_lokasi_penyimpanan',
             [],

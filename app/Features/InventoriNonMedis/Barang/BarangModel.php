@@ -18,8 +18,8 @@ final class BarangModel extends ModelTemplate
                 'id_barang'    => V::DEFAULT(),
                 'kode_barang'  => V::DEFAULT(),
                 'nama_barang'  => V::DEFAULT(),
-                'stok'         => V::TODO(),
-                'stok_minimum' => V::TODO(),
+                'stok'         => V::DEFAULT(),
+                'stok_minimum' => V::DEFAULT(),
                 'harga_satuan' => V::DEFAULT(),
             ],
             [

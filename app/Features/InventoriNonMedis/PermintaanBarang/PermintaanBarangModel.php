@@ -16,10 +16,10 @@ final class PermintaanBarangModel extends ModelTemplate
             'id_permintaan',
             [
                 'id_permintaan' => V::DEFAULT(),
-                'tipe'          => V::TODO(),
-                'tanggal'       => V::TODO(),
-                'status'        => V::TODO(),
-                'catatan'       => V::TODO(),
+                'tipe'          => V::DEFAULT(),
+                'tanggal'       => V::DEFAULT(),
+                'status'        => V::DEFAULT(),
+                'catatan'       => V::DEFAULT(),
             ],
             [
                 'id_unit' => ['nama_unit'],

@@ -17,9 +17,11 @@ final class SuplierModel extends ModelTemplate
             [
                 'id_suplier'   => V::DEFAULT(),
                 'nama_suplier' => V::DEFAULT(),
-                'no_telp'      => V::TODO(),
+                'no_telp'      => V::DEFAULT(),
             ],
-            [],
+            [
+                'id_alamat' => ['alamat_lengkap'],
+            ],
         );
     }
 }

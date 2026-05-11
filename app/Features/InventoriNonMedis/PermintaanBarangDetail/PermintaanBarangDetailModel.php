@@ -17,12 +17,13 @@ final class PermintaanBarangDetailModel extends ModelTemplate
             [
                 'id_detail'        => V::DEFAULT(),
                 'nama_barang_baru' => V::DEFAULT(),
-                'qty'              => V::TODO(),
-                'qty_disetujui'    => V::TODO(),
-                'catatan'          => V::TODO(),
+                'qty'              => V::DEFAULT(),
+                'qty_disetujui'    => V::DEFAULT(),
+                'catatan'          => V::DEFAULT(),
             ],
             [
-                'id_barang' => ['kode_barang', 'nama_barang'],
+                'id_permintaan' => ['tipe', 'tanggal'],
+                'id_barang'     => ['kode_barang', 'nama_barang'],
             ],
         );
     }

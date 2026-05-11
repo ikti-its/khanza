@@ -17,11 +17,12 @@ final class PengajuanBarangDetailModel extends ModelTemplate
             [
                 'id_detail'        => V::DEFAULT(),
                 'nama_barang_baru' => V::DEFAULT(),
-                'qty'              => V::TODO(),
-                'harga_estimasi'   => V::TODO(),
+                'qty'              => V::DEFAULT(),
+                'harga_estimasi'   => V::DEFAULT(),
             ],
             [
-                'id_barang' => ['kode_barang', 'nama_barang'],
+                'id_pengajuan' => ['tanggal', 'status'],
+                'id_barang'    => ['kode_barang', 'nama_barang'],
             ],
         );
     }

@@ -14,9 +14,9 @@ final class KategoriBarangDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'kategori_barang',
             [
-                'id_kategori'   => T::ID8(50),
-                'kode_kategori_barang' => T::CODE(),
-                'nama_kategori_barang' => T::NAME(),
+                'id_kategori'   => T::ID(50),
+                'kode_kategori_barang' => T::CODE(3),
+                'nama_kategori_barang' => T::NAME(50),
             ],
             'id_kategori',
             ['kode_kategori_barang'],

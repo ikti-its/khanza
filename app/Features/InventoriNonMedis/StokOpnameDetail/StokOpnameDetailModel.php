@@ -16,12 +16,13 @@ final class StokOpnameDetailModel extends ModelTemplate
             'id_detail',
             [
                 'id_detail'   => V::DEFAULT(),
-                'stok_sistem' => V::TODO(),
-                'stok_fisik'  => V::TODO(),
-                'selisih'     => V::TODO(),
-                'keterangan'  => V::TODO(),
+                'stok_sistem' => V::DEFAULT(),
+                'stok_fisik'  => V::DEFAULT(),
+                'selisih'     => V::DEFAULT(),
+                'keterangan'  => V::DEFAULT(),
             ],
             [
+                'id_opname' => ['tanggal', 'status'],
                 'id_barang' => ['kode_barang', 'nama_barang'],
             ],
         );
