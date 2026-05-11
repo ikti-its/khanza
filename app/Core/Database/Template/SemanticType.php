@@ -8,6 +8,7 @@ use App\Core\Database\Template\ForgeType as FT;
 final readonly class SemanticType
 {
     public static function FK_AUTO(): FT { return new FT('FK_AUTO');}
+    public static function RECORD(): FT { return FT::TEXT();}
     public static function BOOL(): FT { return PT::BOOL();}
 
     public static function QTY(int $min, int $max): FT { return PT::INT($min, $max);}
@@ -16,12 +17,13 @@ final readonly class SemanticType
     public static function MONEY(): FT { return PT::NUMERIC(16, 4);}
     public static function QUEUE(): FT { return PT::INT16();}
     public static function SCORE(): FT { return PT::NUMERIC(8, 4);}
+    public static function MEDIC($ref): FT { return PT::NUMERIC(8, 4);}
     public static function PERCENT(): FT { return PT::NUMERIC(5, 2);}
 
     public static function DATE(): FT { return PT::DATE();}
     public static function TIME(): FT { return PT::TIME();}
     public static function DTIME(): FT { return PT::DTIME();}
-    public static function YEAR(string $column): FT { 
+    public static function YEAR(string $column): FT {
         return new FT('SMALLINT',check: "$column >= 1900 AND $column <= 2100");}
     public static function INTERVAL(): FT { return PT::INTERVAL();}
     public static function EXPIRY(): FT { return PT::DATE();}
