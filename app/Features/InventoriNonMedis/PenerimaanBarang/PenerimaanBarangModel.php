@@ -17,9 +17,9 @@ final class PenerimaanBarangModel extends ModelTemplate
             'id_penerimaan',
             [
                 'id_penerimaan' => V::DEFAULT(),
-                'tanggal'       => V::TODO(),
-                'status'        => V::TODO(),
-                'catatan'       => V::TODO(),
+                'tanggal'       => V::DEFAULT(),
+                'status'        => V::DEFAULT(),
+                'catatan'       => V::DEFAULT(),
             ],
             [
                 'id_pengadaan' => ['tanggal', 'status'],

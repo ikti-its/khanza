@@ -16,10 +16,10 @@ final class StokOpnameModel extends ModelTemplate
             'id_opname',
             [
                 'id_opname'      => V::DEFAULT(),
-                'tanggal'        => V::TODO(),
-                'status'         => V::TODO(),
-                'catatan'        => V::TODO(),
-                'catatan_atasan' => V::TODO(),
+                'tanggal'        => V::DEFAULT(),
+                'status'         => V::DEFAULT(),
+                'catatan'        => V::DEFAULT(),
+                'catatan_atasan' => V::DEFAULT(),
             ],
             [],
         );

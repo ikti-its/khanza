@@ -16,12 +16,14 @@ final class PengajuanBarangModel extends ModelTemplate
             'id_pengajuan',
             [
                 'id_pengajuan'   => V::DEFAULT(),
-                'tanggal'        => V::TODO(),
-                'status'         => V::TODO(),
-                'catatan'        => V::TODO(),
-                'catatan_atasan' => V::TODO(),
+                'tanggal'        => V::DEFAULT(),
+                'status'         => V::DEFAULT(),
+                'catatan'        => V::DEFAULT(),
+                'catatan_atasan' => V::DEFAULT(),
             ],
-            [],
+            [
+                'id_permintaan' => ['tipe', 'tanggal'],
+            ],
         );
     }
 }
