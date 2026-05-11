@@ -13,9 +13,9 @@ final class PesangonDatabase extends DatabaseTemplate
             'penggajian',
             'pesangon',
             [
-                'no_pesangon'  => T::ID8(30),
-                'masa_kerja'   => T::INT8(),
-                'pengali_upah' => T::F32(),
+                'no_pesangon'  => T::ID(30),
+                'masa_kerja'   => T::QTY(0, 30),
+                'pengali_upah' => T::MULT(),
             ],
             'no_pesangon',
             [

@@ -13,11 +13,11 @@ final class JabatanDatabase extends DatabaseTemplate
             'penggajian',
             'jabatan',
             [
-                'no_jabatan'    => T::ID8(20),
+                'no_jabatan'    => T::ID(20),
                 'jenis_jabatan' => T::TEXT(),
                 'nama_jabatan'  => T::TEXT(),
                 'jenjang'       => T::TEXT(),
-                'tunjangan'     => T::INT32(),
+                'tunjangan'     => T::MONEY(),
             ],
             'no_jabatan',
             ['nama_jabatan'],

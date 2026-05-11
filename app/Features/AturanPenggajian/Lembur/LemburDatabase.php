@@ -13,10 +13,10 @@ final class LemburDatabase extends DatabaseTemplate
             'penggajian',
             'lembur',
             [
-                'no_lembur'    => T::ID8(20),
+                'no_lembur'    => T::ID(20),
                 'jenis_lembur' => T::TEXT(),
-                'jam_lembur'   => T::INT8(),
-                'pengali_upah' => T::F32(),
+                'jam_lembur'   => T::QTY(0, 12),
+                'pengali_upah' => T::MULT(),
             ],
             'no_lembur',
             [

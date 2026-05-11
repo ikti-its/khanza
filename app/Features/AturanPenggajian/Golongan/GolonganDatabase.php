@@ -13,9 +13,9 @@ final class GolonganDatabase extends DatabaseTemplate
             'penggajian',
             'golongan',
             [
-                'no_golongan'   => T::ID8(20),
-                'kode_golongan' => T::CODE(),
-                'nama_golongan' => T::NAME(),
+                'no_golongan'   => T::ID(20),
+                'kode_golongan' => T::CODE(3),
+                'nama_golongan' => T::NAME(16),
                 'pendidikan'    => T::FK_AUTO(),
                 'gaji_pokok'    => T::MONEY(),
             ],

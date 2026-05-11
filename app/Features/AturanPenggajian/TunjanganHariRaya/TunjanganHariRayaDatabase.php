@@ -13,9 +13,9 @@ final class TunjanganHariRayaDatabase extends DatabaseTemplate
             'penggajian',
             'thr',
             [
-                'no_thr'       => T::ID8(12),
-                'masa_kerja'   => T::INT8(),
-                'pengali_upah' => T::F32(),
+                'no_thr'       => T::ID(12),
+                'masa_kerja'   => T::QTY(1, 12),
+                'pengali_upah' => T::MULT(),
             ],
             'no_thr',
             [

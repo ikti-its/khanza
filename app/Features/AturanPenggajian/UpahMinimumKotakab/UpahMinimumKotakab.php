@@ -13,10 +13,10 @@ final class UpahMinimumKotakab extends DatabaseTemplate
             'penggajian',
             'upah_minimum_kotakab',
             [
-                'no_ump'       => T::ID16(30000),
-                'tahun'        => T::YEAR(),
+                'no_ump'       => T::ID(30000),
+                'tahun'        => T::YEAR('tahun'),
                 'kotakab'      => T::FK_AUTO(),
-                'upah_minimum' => T::INT32(),
+                'upah_minimum' => T::MONEY(),
             ],
             'no_ump',
             [

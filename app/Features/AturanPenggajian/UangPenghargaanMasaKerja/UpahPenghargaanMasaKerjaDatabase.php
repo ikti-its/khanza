@@ -13,9 +13,9 @@ final class UpahPenghargaanMasaKerjaDatabase extends DatabaseTemplate
             'penggajian',
             'upmk',
             [
-                'no_upmk'      => T::ID8(30),
-                'masa_kerja'   => T::INT8(),
-                'pengali_upah' => T::F32(),
+                'no_upmk'      => T::ID(30),
+                'masa_kerja'   => T::QTY(0, 30),
+                'pengali_upah' => T::MULT(),
             ],
             'no_upmk',
             [

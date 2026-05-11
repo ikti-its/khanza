@@ -13,11 +13,11 @@ final class PenghasilanTidakKenaPajakDatabase extends DatabaseTemplate
             'penggajian',
             'ptkp',
             [
-                'no_ptkp'    => T::ID8(20),
-                'kode_ptkp'  => T::TEXT(),
+                'no_ptkp'    => T::ID(20),
+                'kode_ptkp'  => T::CODE(5),
                 'perkawinan' => T::TEXT(),
-                'tanggungan' => T::INT8(),
-                'nilai_ptkp' => T::INT32(),
+                'tanggungan' => T::QTY(0, 3),
+                'nilai_ptkp' => T::MONEY(),
             ],
             'no_ptkp',
             [

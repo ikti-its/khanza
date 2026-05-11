@@ -13,10 +13,10 @@ final class UpahMinimumProvinsiDatabase extends DatabaseTemplate
             'penggajian',
             'upah_minimum_provinsi',
             [
-                'no_ump'       => T::ID16(3000),
-                'tahun'        => T::YEAR(),
+                'no_ump'       => T::ID(3000),
+                'tahun'        => T::YEAR('tahun'),
                 'provinsi'     => T::FK_AUTO(),
-                'upah_minimum' => T::INT32(),
+                'upah_minimum' => T::MONEY(),
             ],
             'no_ump',
             [

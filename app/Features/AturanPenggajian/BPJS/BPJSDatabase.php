@@ -13,9 +13,9 @@ final class BPJSDatabase extends DatabaseTemplate
             'penggajian',
             'bpjs',
             [
-                'no_bpjs'         => T::ID8(5),
-                'nama_program'    => T::NAME(),
-                'penyelenggara'   => T::NAME(),
+                'no_bpjs'         => T::ID(5),
+                'nama_program'    => T::NAME(20),
+                'penyelenggara'   => T::NAME(20),
                 'tarif_persentase'=> T::PERCENT(),
                 'batas_atas'      => T::MONEY(),
                 'batas_bawah'     => T::MONEY(),
