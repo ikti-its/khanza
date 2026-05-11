@@ -9,16 +9,24 @@ final class HasilUjiSaringModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new HasilUjiSaringDatabase(),
             'BASE',
             'uji_darah',
             'hasil_uji_saring',
             'id_uji_saring',
             [
-                'id_uji_saring' => V::TODO(),
-                'id_bag' => V::TODO(),
-                'id_metode_uji' => V::TODO(),
-                'tanggal_uji' => V::TODO(),
-                'id_petugas' => V::TODO()
+                'id_uji_saring' => V::DEFAULT(),
+                'tanggal_uji'   => V::DEFAULT(),
+                'hbsag'         => V::DEFAULT(),
+                'hcv'           => V::DEFAULT(),
+                'hiv'           => V::DEFAULT(),
+                'sifilis'       => V::DEFAULT(),
+                'malaria'       => V::DEFAULT()
+            ],
+            [
+                'id_bag'        => ['no_bag'],
+                'id_metode_uji' => ['nama_metode'],
+                'id_petugas'    => ['']
             ],
         );
     }

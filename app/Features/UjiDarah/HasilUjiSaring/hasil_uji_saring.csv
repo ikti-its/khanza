@@ -1,3 +1,3 @@
-﻿id_uji_saring,id_bag,id_metode_uji,tanggal_uji,id_petugas
-1,1,2,2026-04-14,4
-2,2,2,2026-04-17,4
+﻿id_uji_saring,id_bag,tanggal_uji,id_metode_uji,id_petugas,hbsag,hcv,hiv,sifilis,malaria
+1,1,2026-04-14,2,4,0,0,0,0,0
+2,2,2026-04-17,2,4,0,1,0,0,0

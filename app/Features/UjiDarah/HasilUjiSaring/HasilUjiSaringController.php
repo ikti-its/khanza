@@ -25,9 +25,14 @@ final class HasilUjiSaringController extends ControllerTemplate
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_uji_saring', 'ID Uji Saring'],
                 [SHOW, REQUIRED, I::INDEX, 'id_bag', 'ID Bag'],
-                [SHOW, REQUIRED, I::INDEX, 'id_metode_uji', 'ID Metode Uji'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_uji', 'Tanggal Uji'],
+                [SHOW, REQUIRED, I::INDEX, 'id_metode_uji', 'ID Metode Uji'],
                 [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
+                [SHOW, REQUIRED, I::BOOL, 'hbsag', 'HBsAg'],
+                [SHOW, REQUIRED, I::BOOL, 'hcv', 'HCV'],
+                [SHOW, REQUIRED, I::BOOL, 'hiv', 'HIV'],
+                [SHOW, REQUIRED, I::BOOL, 'sifilis', 'Sifilis'],
+                [SHOW, REQUIRED, I::BOOL, 'malaria', 'Malaria'],
             ],
         );
     }   
