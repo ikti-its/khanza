@@ -1,7 +1,7 @@
 ﻿id_orang,nik,nama,id_jenis_kelamin,id_agama,id_pernikahan,id_golongan_darah,id_alamat,tempat_lahir_kota,tanggal_lahir
 1,3573015607030003,Awwaliyah Aliyah,2,1,2,2,1,259,2003-07-16
 2,3374016003070002,Hainun Anindita,2,1,2,4,2,220,2007-03-20
-3,3201092211960004,Andi Wijaya,1,1,2,2,3,161,1996-11-22
+3,3201092211960004,"dr. Andi Wijaya, Sp.PK",1,1,2,2,3,161,1996-11-22
 4,3174104509000002,Dewi Lestari,2,3,2,3,4,159,2000-09-05
 5,3578021206880001,Eko Prasetyo,1,1,1,1,5,264,1988-06-12
 6,3171011205860001,Rahmat Hidayat,1,1,1,4,6,156,1986-05-12
