@@ -36,7 +36,7 @@ final class HasilLabPaModel extends ModelTemplate
                 'kode_dokter_pj'      => [],
                 'id_petugas_lab'      => [],
                 'kode_dokter_perujuk' => [],
-                'id_item_pemeriksaan' => ['nama_item'],
+                'id_item_pemeriksaan' => ['kode_periksa', 'nama_item', 'tarif'],
             ]
         );
     }
