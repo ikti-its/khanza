@@ -13,8 +13,8 @@ final class ShiftDatabase extends DatabaseTemplate
             'operasional',
             'shift',
             [
-                'id_shift'   => T::ID8(4),
-                'nama_shift' => T::NAME(),
+                'id_shift'   => T::ID(4),
+                'nama_shift' => T::NAME(10),
             ],
             'id_shift',
             ['nama_shift'],
