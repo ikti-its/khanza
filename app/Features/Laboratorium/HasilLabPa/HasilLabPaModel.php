@@ -10,25 +10,35 @@ final class HasilLabPaModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new HasilLabPaDatabase(),
             'BASE',
             'laboratorium',
             'hasil_lab_pa',
             'id_hasil_pa',
             [
-                'id_hasil_pa' => V::TODO(),
-                'id_permintaan_lab' => V::TODO(),
-                'nomor_reg' => V::TODO(),
-                'kode_dokter_pj' => V::TODO(),
-                'id_petugas_lab' => V::TODO(),
-                'kode_dokter_perujuk' => V::TODO(),
-                'tgl_jam_hasil' => V::TODO(),
-                'id_item_pemeriksaan' => V::TODO(),
-                'diagnosa_klinis' => V::TODO(),
-                'makroskopik' => V::TODO(),
-                'mikroskopik' => V::TODO(),
-                'kesimpulan' => V::TODO(),
-                'kesan' => V::TODO(),
+                'id_hasil_pa'           => V::DEFAULT(),
+                'id_permintaan_lab'     => V::DEFAULT(),
+                'nomor_reg'             => V::DEFAULT(),
+                'kode_dokter_pj'        => V::DEFAULT(),
+                'id_petugas_lab'        => V::DEFAULT(),
+                'kode_dokter_perujuk'   => V::DEFAULT(),
+                'tgl_jam_hasil'         => V::DEFAULT(),
+                'id_item_pemeriksaan'   => V::DEFAULT(),
+                'diagnosa_klinis'       => V::DEFAULT(),
+                'makroskopik'           => V::DEFAULT(),
+                'mikroskopik'           => V::DEFAULT(),
+                'kesimpulan'            => V::DEFAULT(),
+                'kesan'                 => V::DEFAULT(),
             ],
+            [
+                'id_permintaan_lab'   => [],
+                'nomor_reg'           => ['nomor_rawat'],
+                'kode_dokter_pj'      => [],
+                'id_petugas_lab'      => [],
+                'kode_dokter_perujuk' => [],
+                'id_item_pemeriksaan' => ['nama_item'],
+            ]
         );
     }
 }
+
