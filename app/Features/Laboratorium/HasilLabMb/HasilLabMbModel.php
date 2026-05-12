@@ -30,15 +30,15 @@ final class HasilLabMbModel extends ModelTemplate
             ],
             [
                 'id_permintaan_lab'        => [],
-                'nomor_reg'                => [],
+                'nomor_reg'                => ['nomor_rawat'],
                 'kode_dokter_pj'           => [
                     'id_dokter' => ['id_orang' => ['nama']], 
                     'spesialis'
                 ],
                 'id_petugas_lab'           => [/*BINGUNG*/],
                 'kode_dokter_perujuk'      => [/*BINGUNG*/],
-                'id_item_pemeriksaan'      => ['nama_item'],
-                'id_parameter_pemeriksaan' => ['nama_parameter', 'satuan', 'nilai_rujukan', 'keterangan', 'biaya_item'],
+                'id_item_pemeriksaan'      => ['kode_periksa', 'nama_item', 'tarif'],
+                'id_parameter_pemeriksaan' => ['nama_parameter', 'nilai_rujukan', 'keterangan', 'biaya_item'],
             ]
 
         );
