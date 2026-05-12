@@ -10,21 +10,29 @@ final class PermintaanLabHeaderModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new PermintaanLabHeaderDatabase(),
             'BASE',
             'laboratorium',
             'permintaan_lab_header',
             'id_permintaan',
             [
-                'id_permintaan' => V::TODO(),
-                'no_permintaan' => V::TODO(),
-                'nomor_reg' => V::TODO(),
-                'id_kategori_lab' => V::TODO(),
-                'kode_dokter_perujuk' => V::TODO(),
-                'tgl_permintaan' => V::TODO(),
-                'indikasi_klinis' => V::TODO(),
-                'informasi_tambahan' => V::TODO(),
-                'id_status_permintaan' => V::TODO(),
+                'id_permintaan'         => V::DEFAULT(),
+                'no_permintaan'         => V::DEFAULT(),
+                'nomor_reg'             => V::DEFAULT(),
+                'id_kategori_lab'       => V::DEFAULT(),
+                'kode_dokter_perujuk'   => V::DEFAULT(),
+                'tgl_permintaan'        => V::DEFAULT(),
+                'indikasi_klinis'       => V::DEFAULT(),
+                'informasi_tambahan'    => V::DEFAULT(),
+                'id_status_permintaan'  => V::DEFAULT(),
             ],
+            [
+                'nomor_reg'            => ['nomor_rawat'],
+                'id_kategori_lab'      => ['nama_kategori'],
+                'kode_dokter_perujuk'  => [],
+                'id_status_permintaan' => ['nama_status'],
+            ]
         );
     }
 }
+                

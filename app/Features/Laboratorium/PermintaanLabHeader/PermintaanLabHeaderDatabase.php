@@ -13,12 +13,12 @@ final class PermintaanLabHeaderDatabase extends DatabaseTemplate
             'laboratorium',
             'permintaan_lab_header',
             [
-                'id_permintaan'        => T::ID32(100_000_000),
-                'no_permintaan'        => T::TEXT(),
-                'nomor_reg'            => T::TEXT(),
+                'id_permintaan'        => T::ID(100_000_000),
+                'no_permintaan'        => T::CODE(14),
+                'nomor_reg'            => T::FK_AUTO(),
                 'id_kategori_lab'      => T::FK_AUTO(),
-                'kode_dokter_perujuk'  => T::TEXT(),
-                'tgl_permintaan'       => T::DATETIME(),
+                'kode_dokter_perujuk'  => T::FK_AUTO(),
+                'tgl_permintaan'       => T::DTIME(),
                 'indikasi_klinis'      => T::TEXT(),
                 'informasi_tambahan'   => T::TEXT(),
                 'id_status_permintaan' => T::FK_AUTO(),
@@ -26,13 +26,21 @@ final class PermintaanLabHeaderDatabase extends DatabaseTemplate
             'id_permintaan',
             [],
             [
-                // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+                [
+                    'nomor_reg', 
+                    \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class, 
+                    'nomor_reg',
+                ],
                 [
                     ['id_kategori_lab'],
                     \App\Features\Laboratorium\RefKategoriLab\RefKategoriLabDatabase::class,
                     ['id_kategori'],
                 ],
-                // ['kode_dokter_perujuk', 'sik.dokter_structure', 'kode_dokter'],
+                [
+                    'kode_dokter_perujuk', 
+                    \App\Features\Role\Dokter\DokterDatabase::class, 
+                    'id_dokter',
+                ],
                 [
                     ['id_status_permintaan'],
                     \App\Features\Laboratorium\RefStatusPermintaan\RefStatusPermintaanDatabase::class,
