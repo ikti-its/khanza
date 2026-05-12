@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriDarah\JenisBag;
+namespace App\Features\Donor\JenisBag;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
 use App\Core\Controller\ActionType as A;
@@ -12,7 +12,7 @@ final class JenisBagController extends ControllerTemplate
         parent::__construct(
             new JenisBagModel(),
             [
-                ['Inventaris Darah', 'inventaris_darah'],
+                ['Donor', 'donor'],
                 ['Jenis Bag', 'jenis_bag'],
             ],
             'Jenis Bag',

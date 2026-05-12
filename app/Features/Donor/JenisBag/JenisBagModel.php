@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriDarah\JenisBag;
+namespace App\Features\Donor\JenisBag;
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -9,15 +9,17 @@ final class JenisBagModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new JenisBagDatabase(),
             'REFS',
-            'inventori_darah',
+            'donor',
             'jenis_bag',
             'id_jenis_bag',
             [
-                'id_jenis_bag' => V::TODO(),
-                'kode_jenis_bag' => V::TODO(),
-                'nama_jenis_bag' => V::TODO()
+                'id_jenis_bag'      => V::DEFAULT(),
+                'kode_jenis_bag'    => V::DEFAULT(),
+                'nama_jenis_bag'    => V::DEFAULT()
             ],
+            [],
         );
     }
 }
