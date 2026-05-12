@@ -56,13 +56,13 @@ final class HasilLabMbDatabase extends DatabaseTemplate
                 ],
                 [
                     ['id_item_pemeriksaan'],
-                    \App\Features\Laboratorium\PermintaanLabMb\PermintaanLabMbDatabase::class,
-                    ['id_permintaan_mb'],
+                    \App\Features\Laboratorium\RefItemPemeriksaanLab\RefItemPemeriksaanLabDatabase::class,
+                    ['id_item_lab'],
                 ],
                 [
                     ['id_parameter_pemeriksaan'],
-                    \App\Features\Laboratorium\PermintaanLabMb\PermintaanLabMbDatabase::class,
-                    ['id_permintaan_mb'],
+                    \App\Features\Laboratorium\RefParameterPemeriksaanLab\RefParameterPemeriksaanLabDatabase::class,
+                    ['id_parameter'],
                 ],
             ],
             false,
