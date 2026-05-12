@@ -41,7 +41,7 @@ func main() {
 
 	err := fiber.Listen(fmt.Sprintf("%s:%d",
 		cfg.GetString("APP_URL", "localhost"),
-		cfg.GetInt("APP_PORT", 8080)))
+		cfg.GetInt("APP_PORT", 8081)))
 	if err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}

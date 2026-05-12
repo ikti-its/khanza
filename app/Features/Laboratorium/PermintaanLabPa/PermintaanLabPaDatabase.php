@@ -14,9 +14,9 @@ final class PermintaanLabPaDatabase extends DatabaseTemplate
             'laboratorium',
             'permintaan_lab_pa',
             [
-                'id_permintaan_pa'            => T::ID32(100_000),
+                'id_permintaan_pa'            => T::ID(100_000),
                 'id_permintaan_lab'           => T::FK_AUTO(),
-                'tgl_pengambilan_bahan'       => T::DATETIME(),
+                'tgl_pengambilan_bahan'       => T::DTIME(),
                 'metode_diperoleh'            => T::TEXT(),
                 'lokasi_jaringan'             => T::TEXT(),
                 'bahan_pengawet'              => T::TEXT(),
