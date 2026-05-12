@@ -13,8 +13,8 @@ final class SumberDarahDatabase extends DatabaseTemplate
             'inventori_darah',
             'sumber_darah',
             [
-                'id_sumber_darah'         => T::ID8(3),
-                'nama_sumber_darah'       => T::TEXT(),
+                'id_sumber_darah'   => T::ID(5),
+                'nama_sumber_darah' => T::NAME(20),
             ],
             'id_sumber_darah',
             ['nama_sumber_darah'],

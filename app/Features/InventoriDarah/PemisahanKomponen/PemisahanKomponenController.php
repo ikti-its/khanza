@@ -24,7 +24,7 @@ final class PemisahanKomponenController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_bag', 'ID Bag'],
+                [SHOW, REQUIRED, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_pemisahan', 'Tanggal Pemisahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
                 [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
