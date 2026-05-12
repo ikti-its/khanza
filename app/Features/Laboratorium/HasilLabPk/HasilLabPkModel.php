@@ -10,24 +10,35 @@ final class HasilLabPkModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new HasilLabPkDatabase(),
             'BASE',
             'laboratorium',
             'hasil_lab_pk',
             'id_hasil_pk',
             [
-                'id_hasil_pk' => V::TODO(),
-                'id_permintaan_lab' => V::TODO(),
-                'nomor_reg' => V::TODO(),
-                'kode_dokter_pj' => V::TODO(),
-                'id_petugas_lab' => V::TODO(),
-                'kode_dokter_perujuk' => V::TODO(),
-                'tgl_jam_hasil' => V::TODO(),
-                'id_kategori_usia' => V::TODO(),
-                'id_item_pemeriksaan' => V::TODO(),
-                'id_parameter_pemeriksaan' => V::TODO(),
-                'nilai_hasil' => V::TODO(),
-                'keterangan_hasil' => V::TODO(),
+                'id_hasil_pk'               => V::DEFAULT(),
+                'id_permintaan_lab'         => V::DEFAULT(),
+                'nomor_reg'                 => V::DEFAULT(),
+                'kode_dokter_pj'            => V::DEFAULT(),
+                'id_petugas_lab'            => V::DEFAULT(),
+                'kode_dokter_perujuk'       => V::DEFAULT(),
+                'tgl_jam_hasil'             => V::DEFAULT(),
+                'id_kategori_usia'          => V::DEFAULT(),
+                'id_item_pemeriksaan'       => V::DEFAULT(),
+                'id_parameter_pemeriksaan'  => V::DEFAULT(),
+                'nilai_hasil'               => V::DEFAULT(),
+                'keterangan_hasil'          => V::DEFAULT(),
             ],
+            [
+                'id_permintaan_lab'        => [],
+                'nomor_reg'                => ['nomor_rawat'],
+                'kode_dokter_pj'           => [],
+                'id_petugas_lab'           => [],
+                'kode_dokter_perujuk'      => [],
+                'id_kategori_usia'         => ['nama_kategori_usia'],
+                'id_item_pemeriksaan'      => ['kode_periksa', 'nama_item', 'tarif'],
+                'id_parameter_pemeriksaan' => ['nama_parameter', 'satuan', 'nilai_rujukan', 'keterangan', 'biaya_item'],
+            ]
         );
     }
 }
