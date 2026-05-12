@@ -29,7 +29,6 @@ final class RefParameterPemeriksaanLabController extends ControllerTemplate
                 [SHOW, REQUIRED, I::TEXT, 'nama_parameter', 'Nama Parameter'],
                 [SHOW, OPTIONAL, I::TEXT, 'satuan', 'Satuan'],
                 [SHOW, OPTIONAL, I::TEXT, 'nilai_rujukan', 'Nilai Rujukan'],
-                [SHOW, OPTIONAL, I::TEXT, 'keterangan', 'Keterangan'],
                 [SHOW, REQUIRED, I::MONEY, 'biaya_item', 'Biaya Item'],
             ],
         );

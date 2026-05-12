@@ -18,7 +18,6 @@ final class RefParameterPemeriksaanLabDatabase extends DatabaseTemplate
             'nama_parameter'=> T::TEXT(),
             'satuan'        => T::TEXT()->nullable(),
             'nilai_rujukan' => T::TEXT()->nullable(),
-            'keterangan'    => T::TEXT()->nullable(),
             'biaya_item'    => T::F32(),
         ],
         'id_parameter',

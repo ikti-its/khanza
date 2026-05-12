@@ -20,7 +20,6 @@ final class RefParameterPemeriksaanLabModel extends ModelTemplate
                 'nama_parameter' => V::TODO(),
                 'satuan' => V::TODO(),
                 'nilai_rujukan' => V::TODO(),
-                'keterangan' => V::TODO(),
                 'biaya_item' => V::TODO(),
             ],
         );
