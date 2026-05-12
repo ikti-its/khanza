@@ -13,8 +13,8 @@ final class StatusPendonorDatabase extends DatabaseTemplate
             'donor',
             'status_pendonor',
             [
-                'id_status_pendonor'      => T::ID8(10),
-                'nama_status_pendonor'    => T::TEXT(),
+                'id_status_pendonor'      => T::ID(10),
+                'nama_status_pendonor'    => T::NAME(30),
             ],
             'id_status_pendonor',
             ['nama_status_pendonor'],

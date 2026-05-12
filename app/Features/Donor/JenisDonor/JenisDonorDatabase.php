@@ -13,9 +13,9 @@ final class JenisDonorDatabase extends DatabaseTemplate
             'donor',
             'jenis_donor',
             [
-                'id_jenis_donor'      => T::ID8(10),
-                'kode_jenis_donor'    => T::TEXT(),
-                'nama_jenis_donor'    => T::TEXT(),
+                'id_jenis_donor'      => T::ID(4),
+                'kode_jenis_donor'    => T::CODE(3),
+                'nama_jenis_donor'    => T::NAME(30),
             ],
             'id_jenis_donor',
             ['kode_jenis_donor', 'nama_jenis_donor'],

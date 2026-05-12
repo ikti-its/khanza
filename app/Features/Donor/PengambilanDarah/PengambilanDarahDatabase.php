@@ -13,8 +13,8 @@ final class PengambilanDarahDatabase extends DatabaseTemplate
             'donor',
             'pengambilan_darah',
             [
-                'id_pengambilan_darah'    => T::ID32(100_000_000),
-                'nomor_pengambilan'       => T::TEXT(),
+                'id_pengambilan_darah'    => T::ID(100_000_000),
+                'nomor_pengambilan'       => T::RECORD(20),
                 'id_kunjungan'            => T::FK_AUTO(),
                 'tanggal_pengambilan'     => T::DATE(),
                 'id_shift'                => T::FK_AUTO(),

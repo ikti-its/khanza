@@ -13,8 +13,8 @@ final class LokasiPengambilanDarahDatabase extends DatabaseTemplate
             'donor',
             'lokasi_pengambilan_darah',
             [
-                'id_lokasi_pengambilan'    => T::ID8(2),
-                'nama_lokasi'              => T::TEXT(),
+                'id_lokasi_pengambilan'    => T::ID(3),
+                'nama_lokasi'              => T::NAME(15),
             ],
             'id_lokasi_pengambilan',
             ['nama_lokasi'],

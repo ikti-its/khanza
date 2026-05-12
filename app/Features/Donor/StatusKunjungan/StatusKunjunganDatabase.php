@@ -13,8 +13,8 @@ final class StatusKunjunganDatabase extends DatabaseTemplate
             'donor',
             'status_kunjungan',
             [
-                'id_status_kunjungan'      => T::ID8(10),
-                'nama_status_kunjungan'    => T::TEXT(),
+                'id_status_kunjungan'      => T::ID(10),
+                'nama_status_kunjungan'    => T::NAME(20),
             ],
             'id_status_kunjungan',
             ['nama_status_kunjungan'],

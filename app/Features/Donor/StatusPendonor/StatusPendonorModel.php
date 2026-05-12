@@ -9,14 +9,16 @@ final class StatusPendonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new StatusPendonorDatabase(),
             'REFS',
             'donor',
             'status_pendonor',
             'id_status_pendonor',
             [
-                'id_status_pendonor' => V::TODO(),
-                'nama_status_pendonor' => V::TODO()
+                'id_status_pendonor'    => V::DEFAULT(),
+                'nama_status_pendonor'  => V::DEFAULT()
             ],
+            [],
         );
     }
 }
