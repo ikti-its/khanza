@@ -9,7 +9,7 @@ final readonly class SemanticType
 {
     public static function FK_AUTO(): FT { return new FT('FK_AUTO');}
     public static function ID(int $max): FT { return PT::ID($max); }
-    public static function RECORD(): FT { return PT::TEXT();}
+    public static function RECORD(int $len): FT { return PT::VARCHAR($len);}
     public static function BOOL(): FT { return PT::BOOL();}
 
     public static function QTY(int $min, int $max): FT { return PT::INT($min, $max);}
