@@ -10,14 +10,16 @@ final class RefKategoriUsiaLabModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new RefKategoriUsiaLabDatabase(),
             'REFS',
             'laboratorium',
             'ref_kategori_usia_lab',
             'id_kategori_usia',
             [
-                'id_kategori_usia' => V::TODO(),
-                'nama_kategori_usia' => V::TODO(),
+                'id_kategori_usia'      => V::TODO(),
+                'nama_kategori_usia'    => V::TODO(),
             ],
+            []  
         );
     }
 }
