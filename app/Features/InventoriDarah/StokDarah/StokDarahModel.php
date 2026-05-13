@@ -9,20 +9,23 @@ final class StokDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new StokDarahDatabase(),
             'BASE',
             'inventori_darah',
             'stok_darah',
             'id_stok_darah',
             [
-                'id_stok_darah' => V::TODO(),
-                'no_kantong' => V::TODO(),
-                'id_komponen' => V::TODO(),
-                'id_golongan_darah' => V::TODO(),
-                'id_rhesus' => V::TODO(),
-                'tanggal_pengambilan' => V::TODO(),
-                'tanggal_kadaluarsa' => V::TODO(),
-                'id_sumber_darah' => V::TODO(),
-                'id_status_stok' => V::TODO()
+                'id_stok_darah'         => V::DEFAULT(),
+                'no_kantong'            => V::DEFAULT(),
+                'tanggal_pengambilan'   => V::DEFAULT(),
+                'tanggal_kadaluarsa'    => V::DEFAULT()
+            ],
+            [
+                'id_komponen'       => ['nama_komponen'],
+                'id_golongan_darah' => ['nama_golongan_darah'],
+                'id_rhesus'         => ['kode_rhesus'],
+                'id_sumber_darah'   => ['nama_sumber_darah'],
+                'id_status_stok'    => ['nama_status_stok']
             ],
         );
     }

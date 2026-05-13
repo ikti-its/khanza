@@ -9,14 +9,16 @@ final class HasilAnamnesisModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new HasilAnamnesisDatabase(),
             'REFS',
             'donor',
             'hasil_anamnesis',
             'id_hasil',
             [
-                'id_hasil' => V::TODO(),
-                'nama_hasil' => V::TODO()
+                'id_hasil'      => V::DEFAULT(),
+                'nama_hasil'    => V::DEFAULT()
             ],
+            [],
         );
     }
 }

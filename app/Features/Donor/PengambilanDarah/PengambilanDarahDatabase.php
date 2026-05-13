@@ -13,17 +13,19 @@ final class PengambilanDarahDatabase extends DatabaseTemplate
             'donor',
             'pengambilan_darah',
             [
-                'id_pengambilan_darah'    => T::ID32(100_000_000),
-                'nomor_pengambilan'       => T::TEXT(),
+                'id_pengambilan_darah'    => T::ID(100_000_000),
+                'nomor_pengambilan'       => T::RECORD(20),
                 'id_kunjungan'            => T::FK_AUTO(),
                 'tanggal_pengambilan'     => T::DATE(),
                 'id_shift'                => T::FK_AUTO(),
+                'no_bag'                  => T::CODE(14),
+                'id_jenis_bag'            => T::FK_AUTO(),
                 'id_jenis_donor'          => T::FK_AUTO(),
                 'id_lokasi_pengambilan'   => T::FK_AUTO(),
                 'id_petugas'              => T::FK_AUTO(),
             ],
             'id_pengambilan_darah',
-            ['nomor_pengambilan'],
+            ['nomor_pengambilan', 'no_bag'],
             [
                 [
                     'id_kunjungan', 
@@ -34,6 +36,11 @@ final class PengambilanDarahDatabase extends DatabaseTemplate
                     'id_shift', 
                     \App\Features\Operasional\Shift\ShiftDatabase::class, 
                     'id_shift'
+                ],
+                [
+                    'id_jenis_bag', 
+                    \App\Features\Donor\JenisBag\JenisBagDatabase::class, 
+                    'id_jenis_bag'
                 ],
                 [
                     'id_jenis_donor', 

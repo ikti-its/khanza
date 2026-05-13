@@ -13,8 +13,8 @@ final class StatusStokDatabase extends DatabaseTemplate
             'inventori_darah',
             'status_stok',
             [
-                'id_status_stok'         => T::ID8(10),
-                'nama_status_stok'       => T::TEXT(),
+                'id_status_stok'    => T::ID(10),
+                'nama_status_stok'  => T::NAME(20),
             ],
             'id_status_stok',
             ['nama_status_stok'],

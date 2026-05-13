@@ -9,14 +9,16 @@ final class StatusKunjunganModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new StatusKunjunganDatabase(),
             'REFS',
             'donor',
             'status_kunjungan',
             'id_status_kunjungan',
             [
-                'id_status_kunjungan' => V::TODO(),
-                'nama_status_kunjungan' => V::TODO()
+                'id_status_kunjungan'   => V::DEFAULT(),
+                'nama_status_kunjungan' => V::DEFAULT()
             ],
+            [],
         );
     }
 }

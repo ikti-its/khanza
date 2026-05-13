@@ -28,6 +28,8 @@ final class PengambilanDarahController extends ControllerTemplate
                 [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_pengambilan', 'Tanggal Pengambilan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
+                [SHOW, REQUIRED, I::TEXT, 'no_bag', 'Nomor Bag'],
+                [SHOW, REQUIRED, I::INDEX, 'id_jenis_bag', 'ID Jenis Bag'],
                 [HIDE, REQUIRED, I::INDEX, 'id_jenis_donor', 'ID Jenis Donor'],
                 [SHOW, REQUIRED, I::INDEX, 'id_lokasi_pengambilan', 'ID Lokasi Pengambilan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],

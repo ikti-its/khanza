@@ -9,19 +9,24 @@ final class PengambilanDarahModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PengambilanDarahDatabase(),
             'BASE',
             'donor',
             'pengambilan_darah',
             'id_pengambilan_darah',
             [
-                'id_pengambilan_darah' => V::TODO(),
-                'nomor_pengambilan' => V::TODO(),
-                'id_kunjungan' => V::TODO(),
-                'tanggal_pengambilan' => V::TODO(),
-                'id_shift' => V::TODO(),
-                'id_jenis_donor' => V::TODO(),
-                'id_lokasi_pengambilan' => V::TODO(),
-                'id_petugas' => V::TODO()
+                'id_pengambilan_darah'  => V::DEFAULT(),
+                'nomor_pengambilan'     => V::DEFAULT(),
+                'tanggal_pengambilan'   => V::DEFAULT(),
+                'no_bag'                => V::DEFAULT()
+            ],
+            [
+                'id_kunjungan'          => ['nomor_kunjungan'],
+                'id_shift'              => ['nama_shift'],
+                'id_jenis_bag'          => ['nama_jenis_bag'],
+                'id_jenis_donor'        => ['nama_jenis_donor'],
+                'id_lokasi_pengambilan' => ['nama_lokasi'],
+                'id_petugas'            => ['']
             ],
         );
     }

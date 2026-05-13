@@ -9,15 +9,17 @@ final class JenisDonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new JenisDonorDatabase(),
             'REFS',
             'donor',
             'jenis_donor',
             'id_jenis_donor',
             [
-                'id_jenis_donor' => V::TODO(),
-                'kode_jenis_donor' => V::TODO(),
-                'nama_jenis_donor' => V::TODO()
+                'id_jenis_donor'    => V::DEFAULT(),
+                'kode_jenis_donor'  => V::DEFAULT(),
+                'nama_jenis_donor'  => V::DEFAULT()
             ],
+            [],
         );
     }
 }

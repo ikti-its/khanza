@@ -13,19 +13,19 @@ final class PemisahanKomponenDatabase extends DatabaseTemplate
             'inventori_darah',
             'pemisahan_komponen',
             [
-                'id_pemisahan'      => T::ID32(100_000_000),
-                'id_bag'            => T::FK_AUTO(),
-                'tanggal_pemisahan' => T::DATE(),
-                'id_shift'          => T::FK_AUTO(),
-                'id_petugas'        => T::FK_AUTO(),
+                'id_pemisahan'          => T::ID(100_000_000),
+                'id_pengambilan_darah'  => T::FK_AUTO(),
+                'tanggal_pemisahan'     => T::DATE(),
+                'id_shift'              => T::FK_AUTO(),
+                'id_petugas'            => T::FK_AUTO(),
             ],
             'id_pemisahan',
-            ['id_bag'],
+            ['id_pengambilan_darah'],
             [
                 [
-                    'id_bag', 
-                    \App\Features\InventoriDarah\KantongDarah\KantongDarahDatabase::class, 
-                    'id_bag'
+                    'id_pengambilan_darah', 
+                    \App\Features\Donor\PengambilanDarah\PengambilanDarahDatabase::class, 
+                    'id_pengambilan_darah'
                 ],
                 [
                     'id_shift', 

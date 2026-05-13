@@ -9,16 +9,19 @@ final class PemisahanKomponenModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PemisahanKomponenDatabase(),
             'BASE',
             'inventori_darah',
             'pemisahan_komponen',
             'id_pemisahan',
             [
-                'id_pemisahan' => V::TODO(),
-                'id_bag' => V::TODO(),
-                'tanggal_pemisahan' => V::TODO(),
-                'id_shift' => V::TODO(),
-                'id_petugas' => V::TODO()
+                'id_pemisahan'      => V::DEFAULT(),
+                'tanggal_pemisahan' => V::DEFAULT()
+            ],
+            [
+                'id_pengambilan_darah'  => ['nomor_pengambilan'],
+                'id_shift'              => ['nama_shift'],
+                'id_petugas'            => ['']
             ],
         );
     }

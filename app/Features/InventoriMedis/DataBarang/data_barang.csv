@@ -1,0 +1,4 @@
+﻿id_barang,kode_barang, nama,kode_satbesar,kode_sat,h_dasar,h_beli,h_ralan,h_kelas1,h_kelas2,h_kelas3,h_utama,h_vip,h_vvip,h_beliluar,h_jualbebas,h_karyawan,stok_minimum,kode_jenis,isi,kapasitas,kadaluwarsa,kode_industri,kode_kategori,kode_golongan
+1,B000001809,Alkohol Swab,BKS,BKS,400,400,480,480,480,480,480,480,480,760,480,480,0,JB03,1,0,2027-08-10,-,-,-
+2,A000000102,Masker,PCS,PCS,1500,1500,1800,1800,1800,1800,1800,1800,1800,2850,1800,1800,0,JB03,1,0,2028-02-14,-,-,-
+3,A000000074,Tranfusion Set/Blood set,PCS,PCS,38500,38500,46200,46200,46200,46200,46200,46200,46200,73150,46200,46200,0,JB03,1,0,2029-02-20,-,-,-
