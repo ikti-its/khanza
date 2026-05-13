@@ -10,14 +10,16 @@ final class RefStatusPermintaanModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new RefStatusPermintaanDatabase(),
             'REFS',
             'laboratorium',
             'ref_status_permintaan',
             'id_status',
             [
-                'id_status' => V::TODO(),
-                'nama_status' => V::TODO(),
+                'id_status'   => V::DEFAULT(),
+                'nama_status' => V::DEFAULT(),
             ],
+            []
         );
     }
 }
