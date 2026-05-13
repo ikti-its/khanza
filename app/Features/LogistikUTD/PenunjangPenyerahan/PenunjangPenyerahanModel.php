@@ -9,16 +9,19 @@ final class PenunjangPenyerahanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PenunjangPenyerahanDatabase(),
             'BASE',
             'logistik_utd',
             'penunjang_penyerahan',
             'id_penunjang_penyerahan',
             [
-                'id_penunjang_penyerahan' => V::TODO(),
-                'id_penyerahan' => V::TODO(),
-                'id_barang' => V::TODO(),
-                'jumlah' => V::TODO(),
-                'harga' => V::TODO()
+                'id_penunjang_penyerahan'   => V::DEFAULT(),
+                'jumlah'                    => V::DEFAULT(),
+                'harga'                     => V::DEFAULT()
+            ],
+            [
+                'id_penyerahan' => ['no_penyerahan'],
+                'id_barang'     => ['kode_barang', 'nama_barang']
             ],
         );
     }

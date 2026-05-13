@@ -13,20 +13,24 @@ final class PengambilanMedisDatabase extends DatabaseTemplate
             'logistik_utd',
             'pengambilan_medis',
             [
-                'id_pengambilan_medis' => T::ID32(30_000_000),
-                'id_barang'            => T::UUID(),
-                'jumlah'               => T::INT32(),
-                'harga_beli'           => T::F64(),
-                'nama_bangsal'         => T::TEXT(),
-                'tanggal_pengambilan'  => T::DATETIME(),
-                'keterangan'           => T::TEXT(),
-                'nomor_batch'          => T::TEXT()->nullable(),
-                'nomor_faktur'         => T::TEXT()->nullable(),
+                'id_pengambilan_medis' => T::ID(30_000_000),
+                'id_barang'            => T::FK_AUTO(),
+                'jumlah'               => T::QTY(1, 999),
+                'harga_beli'           => T::MONEY(),
+                'nama_bangsal'         => T::NAME(30),
+                'tanggal_pengambilan'  => T::DTIME(),
+                'keterangan'           => T::NOTE(),
+                'nomor_batch'          => T::RECORD(30)->nullable(),
+                'nomor_faktur'         => T::RECORD(30)->nullable(),
             ],
             'id_pengambilan_medis',
             [],
             [
-                // ['id_barang', 'sik.barang_medis_structure', 'id'],
+                [
+                    'id_barang', 
+                    \App\Features\InventoriMedis\DataBarang\DataBarangDatabase::class, 
+                    'id_barang'
+                ],
             ],
         );
     }

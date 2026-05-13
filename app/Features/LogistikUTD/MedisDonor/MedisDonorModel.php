@@ -9,16 +9,19 @@ final class MedisDonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new MedisDonorDatabase(),
             'BASE',
             'logistik_utd',
             'medis_donor',
             'id_medis_donor',
             [
-                'id_medis_donor' => V::TODO(),
-                'id_pengambilan_darah' => V::TODO(),
-                'id_barang' => V::TODO(),
-                'jumlah' => V::TODO(),
-                'harga' => V::TODO()
+                'id_medis_donor'    => V::DEFAULT(),
+                'jumlah'            => V::DEFAULT(),
+                'harga'             => V::DEFAULT()
+            ],
+            [
+                'id_pengambilan_darah'  => ['nomor_pengambilan'],
+                'id_barang'             => ['kode_barang', 'nama']
             ],
         );
     }

@@ -13,11 +13,11 @@ final class MedisDonorDatabase extends DatabaseTemplate
             'logistik_utd',
             'medis_donor',
             [
-                'id_medis_donor'       => T::ID32(100_000_000),
+                'id_medis_donor'       => T::ID(100_000_000),
                 'id_pengambilan_darah' => T::FK_AUTO(),
-                'id_barang'            => T::UUID(),
-                'jumlah'               => T::INT32(),
-                'harga'                => T::F64(),
+                'id_barang'            => T::FK_AUTO(),
+                'jumlah'               => T::QTY(1, 999),
+                'harga'                => T::MONEY(),
             ],
             'id_medis_donor',
             [],
@@ -27,7 +27,11 @@ final class MedisDonorDatabase extends DatabaseTemplate
                     \App\Features\Donor\PengambilanDarah\PengambilanDarahDatabase::class, 
                     'id_pengambilan_darah'
                 ],
-                // ['id_barang', 'sik.barang_medis_structure','id'],
+                [
+                    'id_barang', 
+                    \App\Features\InventoriMedis\DataBarang\DataBarangDatabase::class, 
+                    'id_barang'
+                ],
             ],
         );
     }

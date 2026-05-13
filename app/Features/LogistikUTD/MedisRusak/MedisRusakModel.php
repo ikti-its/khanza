@@ -9,18 +9,21 @@ final class MedisRusakModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new MedisRusakDatabase(),
             'BASE',
             'logistik_utd',
             'medis_rusak',
             'id_medis_rusak',
             [
-                'id_medis_rusak' => V::TODO(),
-                'id_barang' => V::TODO(),
-                'jumlah' => V::TODO(),
-                'harga_beli' => V::TODO(),
-                'id_petugas' => V::TODO(),
-                'tanggal_rusak' => V::TODO(),
-                'keterangan' => V::TODO()
+                'id_medis_rusak'    => V::DEFAULT(),
+                'jumlah'            => V::DEFAULT(),
+                'harga_beli'        => V::DEFAULT(),
+                'tanggal_rusak'     => V::DEFAULT(),
+                'keterangan'        => V::DEFAULT()
+            ],
+            [
+                'id_barang'     => ['kode_barang', 'nama'],
+                'id_petugas'    => ['']
             ],
         );
     }

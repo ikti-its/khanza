@@ -9,16 +9,19 @@ final class PenunjangPemisahanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PenunjangPemisahanDatabase(),
             'BASE',
             'logistik_utd',
             'penunjang_pemisahan',
             'id_penunjang_pemisahan',
             [
-                'id_penunjang_pemisahan' => V::TODO(),
-                'id_pemisahan' => V::TODO(),
-                'id_barang' => V::TODO(),
-                'jumlah' => V::TODO(),
-                'harga' => V::TODO()
+                'id_penunjang_pemisahan'    => V::DEFAULT(),
+                'jumlah'                    => V::DEFAULT(),
+                'harga'                     => V::DEFAULT()
+            ],
+            [
+                'id_pemisahan'  => [''],
+                'id_barang'     => ['kode_barang', 'nama_barang']
             ],
         );
     }

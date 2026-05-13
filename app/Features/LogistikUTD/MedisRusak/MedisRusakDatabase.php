@@ -13,18 +13,22 @@ final class MedisRusakDatabase extends DatabaseTemplate
             'logistik_utd',
             'medis_rusak',
             [
-                'id_medis_rusak' => T::ID32(10_000_000),
-                'id_barang'      => T::UUID(),
-                'jumlah'         => T::INT32(),
-                'harga_beli'     => T::F64(),
+                'id_medis_rusak' => T::ID(10_000_000),
+                'id_barang'      => T::FK_AUTO(),
+                'jumlah'         => T::QTY(1, 999),
+                'harga_beli'     => T::MONEY(),
                 'id_petugas'     => T::FK_AUTO(),
-                'tanggal_rusak'  => T::DATETIME(),
-                'keterangan'     => T::TEXT(),
+                'tanggal_rusak'  => T::DTIME(),
+                'keterangan'     => T::NOTE(),
             ],
             'id_medis_rusak',
             [],
             [
-                // ['id_barang', 'sik.barang_medis_structure','id'],
+                [
+                    'id_barang', 
+                    \App\Features\InventoriMedis\DataBarang\DataBarangDatabase::class, 
+                    'id_barang'
+                ],
                 [
                     'id_petugas', 
                     \App\Features\Role\Petugas\PetugasDatabase::class, 

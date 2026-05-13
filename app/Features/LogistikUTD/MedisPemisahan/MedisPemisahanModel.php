@@ -9,16 +9,19 @@ final class MedisPemisahanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new MedisPemisahanDatabase(),
             'BASE',
             'logistik_utd',
             'medis_pemisahan',
             'id_medis_pemisahan',
             [
-                'id_medis_pemisahan' => V::TODO(),
-                'id_pemisahan' => V::TODO(),
-                'id_barang' => V::TODO(),
-                'jumlah' => V::TODO(),
-                'harga' => V::TODO()
+                'id_medis_pemisahan'    => V::DEFAULT(),
+                'jumlah'                => V::DEFAULT(),
+                'harga'                 => V::DEFAULT()
+            ],
+            [
+                'id_pemisahan'  => [''],
+                'id_barang'     => ['kode_barang', 'nama']
             ],
         );
     }
