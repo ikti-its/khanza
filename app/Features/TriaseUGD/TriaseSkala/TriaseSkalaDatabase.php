@@ -13,11 +13,11 @@ final class TriaseSkalaDatabase extends DatabaseTemplate
             'triase_ugd',
             'triase_skala',
             [
-                'id_skala'         => T::ID16(200),
+                'id_skala'         => T::ID(200),
                 'id_tingkat_skala' => T::FK_AUTO(),
-                'kode_skala'       => T::TEXT(),
+                'kode_skala'       => T::CODE(3),
                 'id_pemeriksaan'   => T::FK_AUTO(),
-                'pengkajian'       => T::TEXT(),
+                'pengkajian'       => T::NAME(100),
             ],
             'id_skala',
             [

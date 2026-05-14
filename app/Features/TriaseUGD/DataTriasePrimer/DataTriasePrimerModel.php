@@ -9,19 +9,22 @@ final class DataTriasePrimerModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new DataTriasePrimerDatabase(),
             'BASE',
             'triase_ugd',
             'data_triase_primer',
             'id_triase_primer',
             [
-                'id_triase_primer' => V::TODO(),
-                'id_triase' => V::TODO(),
-                'keluhan_utama' => V::TODO(),
-                'id_kebutuhan_khusus' => V::TODO(),
-                'catatan' => V::TODO(),
-                'id_plan_primer' => V::TODO(),
-                'tanggal_triase' => V::TODO(),
-                'id_petugas' => V::TODO()
+                'id_triase_primer'      => V::DEFAULT(),
+                'keluhan_utama'         => V::DEFAULT(),
+                'catatan'               => V::DEFAULT(),
+                'tanggal_triase'        => V::DEFAULT()
+            ],
+            [
+                'id_triase'             => [''],
+                'id_kebutuhan_khusus'   => ['nama_kebutuhan'],
+                'id_plan_primer'        => ['nama_plan_primer'],
+                'id_petugas'            => ['']
             ],
         );
     }

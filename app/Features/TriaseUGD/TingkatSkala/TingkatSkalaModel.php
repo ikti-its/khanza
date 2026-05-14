@@ -9,14 +9,16 @@ final class TingkatSkalaModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new TingkatSkalaDatabase(),
             'REFS',
             'triase_ugd',
             'tingkat_skala',
             'id_tingkat',
             [
-                'id_tingkat' => V::TODO(),
-                'nama_tingkat' => V::TODO()
+                'id_tingkat'    => V::DEFAULT(),
+                'nama_tingkat'  => V::DEFAULT()
             ],
+            [],
         );
     }
 }

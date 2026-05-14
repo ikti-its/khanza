@@ -9,14 +9,17 @@ final class DataTriaseDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new DataTriaseDetailDatabase(),
             'BASE',
             'triase_ugd',
             'data_triase_detail',
             'id_triase_detail',
             [
-                'id_triase_detail' => V::TODO(),
-                'id_triase' => V::TODO(),
-                'id_skala' => V::TODO()
+                'id_triase_detail'  => V::DEFAULT()
+            ],
+            [
+                'id_triase' => [''],
+                'id_skala'  => ['pengkajian']
             ],
         );
     }

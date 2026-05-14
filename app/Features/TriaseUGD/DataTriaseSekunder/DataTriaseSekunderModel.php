@@ -9,18 +9,21 @@ final class DataTriaseSekunderModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new DataTriaseSekunderDatabase(),
             'BASE',
             'triase_ugd',
             'data_triase_sekunder',
             'id_triase_sekunder',
             [
-                'id_triase_sekunder' => V::TODO(),
-                'id_triase' => V::TODO(),
-                'anamnesa_singkat' => V::TODO(),
-                'catatan' => V::TODO(),
-                'id_plan_sekunder' => V::TODO(),
-                'tanggal_triase' => V::TODO(),
-                'id_petugas' => V::TODO()
+                'id_triase_sekunder'    => V::DEFAULT(),
+                'anamnesa_singkat'      => V::DEFAULT(),
+                'catatan'               => V::DEFAULT(),
+                'tanggal_triase'        => V::DEFAULT()
+            ],
+            [
+                'id_triase'             => [''],
+                'id_plan_sekunder'      => ['nama_plan_sekunder'],
+                'id_petugas'            => ['']
             ],
         );
     }

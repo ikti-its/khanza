@@ -9,15 +9,17 @@ final class TriasePemeriksaanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new TriasePemeriksaanDatabase(),
             'BASE',
             'triase_ugd',
             'triase_pemeriksaan',
             'id_pemeriksaan',
             [
-                'id_pemeriksaan' => V::TODO(),
-                'kode_pemeriksaan' => V::TODO(),
-                'nama_pemeriksaan' => V::TODO()
+                'id_pemeriksaan'    => V::DEFAULT(),
+                'kode_pemeriksaan'  => V::DEFAULT(),
+                'nama_pemeriksaan'  => V::DEFAULT()
             ],
+            [],
         );
     }
 }

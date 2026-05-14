@@ -13,9 +13,9 @@ final class TriaseMacamKasusDatabase extends DatabaseTemplate
             'triase_ugd',
             'triase_macam_kasus',
             [
-                'id_macam_kasus'   => T::ID8(20),
-                'kode_macam_kasus' => T::TEXT(),
-                'nama_macam_kasus' => T::TEXT(),
+                'id_macam_kasus'   => T::ID(20),
+                'kode_macam_kasus' => T::CODE(3),
+                'nama_macam_kasus' => T::NAME(100),
             ],
             'id_macam_kasus',
             ['kode_macam_kasus', 'nama_macam_kasus'],

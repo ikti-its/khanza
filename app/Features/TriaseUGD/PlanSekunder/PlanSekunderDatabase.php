@@ -13,8 +13,8 @@ final class PlanSekunderDatabase extends DatabaseTemplate
             'triase_ugd',
             'plan_sekunder',
             [
-                'id_plan_sekunder'   => T::ID8(2),
-                'nama_plan_sekunder' => T::TEXT(),
+                'id_plan_sekunder'   => T::ID(5),
+                'nama_plan_sekunder' => T::NAME(20),
             ],
             'id_plan_sekunder',
             ['nama_plan_sekunder'],

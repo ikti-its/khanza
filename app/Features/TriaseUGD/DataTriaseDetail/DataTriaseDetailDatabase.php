@@ -13,7 +13,7 @@ final class DataTriaseDetailDatabase extends DatabaseTemplate
             'triase_ugd',
             'data_triase_detail',
             [
-                'id_triase_detail' => T::ID32(300_000_000),
+                'id_triase_detail' => T::ID(300_000_000),
                 'id_triase'        => T::FK_AUTO(),
                 'id_skala'         => T::FK_AUTO(),
             ],

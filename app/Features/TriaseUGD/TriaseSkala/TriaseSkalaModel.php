@@ -9,16 +9,19 @@ final class TriaseSkalaModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new TriaseSkalaDatabase(),
             'BASE',
             'triase_ugd',
             'triase_skala',
             'id_skala',
             [
-                'id_skala' => V::TODO(),
-                'id_tingkat_skala' => V::TODO(),
-                'kode_skala' => V::TODO(),
-                'id_pemeriksaan' => V::TODO(),
-                'pengkajian' => V::TODO()
+                'id_skala'      => V::DEFAULT(),
+                'kode_skala'    => V::DEFAULT(),
+                'pengkajian'    => V::DEFAULT()
+            ],
+            [
+                'id_tingkat_skala'  => ['nama_tingkat'],
+                'id_pemeriksaan'    => ['nama_pemeriksaan']
             ],
         );
     }

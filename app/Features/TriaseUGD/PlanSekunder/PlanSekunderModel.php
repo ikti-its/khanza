@@ -9,14 +9,16 @@ final class PlanSekunderModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PlanSekunderDatabase(),
             'REFS',
             'triase_ugd',
             'plan_sekunder',
             'id_plan_sekunder',
             [
-                'id_plan_sekunder' => V::TODO(),
-                'nama_plan_sekunder' => V::TODO()
+                'id_plan_sekunder'      => V::DEFAULT(),
+                'nama_plan_sekunder'    => V::DEFAULT()
             ],
+            [],
         );
     }
 }
