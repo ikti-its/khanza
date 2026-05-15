@@ -13,7 +13,7 @@ final class RefJenisAirwayDatabase extends DatabaseTemplate
         'operasi',
         'ref_jenis_airway',
         [
-            'id_jenis'    => T::ID8(10),
+            'id_jenis'    => T::ID(10),
             'nama_jenis'  => T::TEXT(),
         ],
         'id_jenis',
