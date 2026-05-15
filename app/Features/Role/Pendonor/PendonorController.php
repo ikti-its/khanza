@@ -27,7 +27,7 @@ final class PendonorController extends ControllerTemplate
                 [SHOW, REQUIRED, I::TEXT, 'nomor_pendonor', 'Nomor Pendonor'],
                 [SHOW, REQUIRED, I::INDEX, 'id_orang', 'ID Orang'],
                 [SHOW, REQUIRED, I::INDEX, 'id_rhesus', 'ID Rhesus'],
-                [SHOW, REQUIRED, I::SELECT, 'id_status_pendonor', 'ID Status Pendonor'],
+                [SHOW, OPTIONAL, I::DATE, 'tanggal_donor_terakhir', 'Tanggal Donor Terakhir'],
             ],
         );
     }   

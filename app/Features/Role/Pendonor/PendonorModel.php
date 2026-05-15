@@ -9,16 +9,19 @@ final class PendonorModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PendonorDatabase(),
             'BASE',
             'role',
             'pendonor',
             'id_pendonor',
             [
-                'id_pendonor' => V::TODO(),
-                'id_orang' => V::TODO(),
-                'nomor_pendonor' => V::TODO(),
-                'id_rhesus' => V::TODO(),
-                'id_status_pendonor' => V::TODO()
+                'id_pendonor'               => V::DEFAULT(),
+                'nomor_pendonor'            => V::DEFAULT(),
+                'tanggal_donor_terakhir'    => V::DEFAULT()
+            ],
+            [
+                'id_orang'  => ['nik', 'nama', 'tanggal_lahir'],
+                'id_rhesus' => ['kode_rhesus']
             ],
         );
     }
