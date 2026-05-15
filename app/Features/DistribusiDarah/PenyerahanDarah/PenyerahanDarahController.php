@@ -24,8 +24,8 @@ final class PenyerahanDarahController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
+                [SHOW, REQUIRED, I::TEXT, 'no_penyerahan', 'Nomor Penyerahan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
-                [SHOW, REQUIRED, I::TEXT, 'no_penyerahan', 'No. Penyerahan'],
                 [SHOW, REQUIRED, I::DTIME, 'tanggal_penyerahan', 'Tanggal Penyerahan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
                 [HIDE, REQUIRED, I::INDEX, 'id_petugas_cross', 'ID Petugas Crossmatch'],

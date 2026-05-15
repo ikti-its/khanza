@@ -24,8 +24,9 @@ final class PermintaanDarahController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
-                [SHOW, REQUIRED, I::TEXT, 'no_rawat', 'No. Rawat'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_pengirim', 'Kode Dokter Pengirim'],
+                [SHOW, REQUIRED, I::TEXT, 'no_permintaan', 'Nomor Permintaan'],
+                [SHOW, REQUIRED, I::TEXT, 'id_rawat_inap', 'ID Rawat Inap'],
+                [SHOW, REQUIRED, I::TEXT, 'id_dokter_pengirim', 'ID Dokter Pengirim'],
                 [SHOW, REQUIRED, I::DTIME, 'tanggal_permintaan', 'Tanggal Permintaan'],
                 [SHOW, REQUIRED, I::SELECT, 'id_status_permintaan', 'ID Status Permintaan'],
             ],

@@ -13,8 +13,8 @@ final class StatusPembayaranDatabase extends DatabaseTemplate
             'distribusi_darah',
             'status_pembayaran',
             [
-                'id_status_pembayaran'    => T::ID8(2),
-                'nama_status_pembayaran'  => T::TEXT(),
+                'id_status_pembayaran'    => T::ID(5),
+                'nama_status_pembayaran'  => T::NAME(20),
             ],
             'id_status_pembayaran',
             ['nama_status_pembayaran'],

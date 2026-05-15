@@ -9,14 +9,16 @@ final class StatusPembayaranModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new StatusPembayaranDatabase(),
             'REFS',
             'distribusi_darah',
             'status_pembayaran',
             'id_status_pembayaran',
             [
-                'id_status_pembayaran' => V::TODO(),
-                'nama_status_pembayaran' => V::TODO()
+                'id_status_pembayaran'      => V::DEFAULT(),
+                'nama_status_pembayaran'    => V::DEFAULT()
             ],
+            [],
         );
     }
 }

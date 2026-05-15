@@ -13,12 +13,12 @@ final class PermintaanDarahDetailDatabase extends DatabaseTemplate
             'distribusi_darah',
             'permintaan_darah_detail',
             [
-                'id_permintaan_detail'      => T::ID32(100_000_000),
+                'id_permintaan_detail'      => T::ID(100_000_000),
                 'id_permintaan'             => T::FK_AUTO(),
                 'id_komponen'               => T::FK_AUTO(),
                 'id_golongan_darah'         => T::FK_AUTO(),
                 'id_rhesus'                 => T::FK_AUTO(),
-                'jumlah'                    => T::INT8(),
+                'jumlah'                    => T::QTY(1, 99),
             ],
             'id_permintaan_detail',
             [

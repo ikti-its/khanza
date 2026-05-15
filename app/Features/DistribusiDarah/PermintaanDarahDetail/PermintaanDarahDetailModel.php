@@ -9,18 +9,21 @@ final class PermintaanDarahDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PermintaanDarahDetailDatabase(),
             'BASE',
             'distribusi_darah',
             'permintaan_darah_detail',
             'id_permintaan_detail',
             [
-                'id_permintaan_detail' => V::TODO(),
-                'id_permintaan' => V::TODO(),
-                'id_komponen' => V::TODO(),
-                'id_golongan_darah' => V::TODO(),
-                'id_rhesus' => V::TODO(),
-                'jumlah' => V::TODO()
+                'id_permintaan_detail'  => V::DEFAULT(),
+                'jumlah'                => V::DEFAULT()
             ],
+            [
+                'id_permintaan'         => ['no_permintaan', 'tanggal_permintaan'],
+                'id_komponen'           => ['nama_komponen'],
+                'id_golongan_darah'     => ['nama_golongan_darah'],
+                'id_rhesus'             => ['kode_rhesus']
+            ]
         );
     }
 }
