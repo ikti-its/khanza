@@ -23,6 +23,7 @@ final class PengambilanDarahDatabase extends DatabaseTemplate
                 'id_jenis_donor'          => T::FK_AUTO(),
                 'id_lokasi_pengambilan'   => T::FK_AUTO(),
                 'id_petugas'              => T::FK_AUTO(),
+                'id_status_pengambilan'   => T::FK_AUTO()->nullable(),
             ],
             'id_pengambilan_darah',
             ['nomor_pengambilan', 'no_bag'],
@@ -56,6 +57,11 @@ final class PengambilanDarahDatabase extends DatabaseTemplate
                     'id_petugas', 
                     \App\Features\Role\Petugas\PetugasDatabase::class, 
                     'id_petugas'
+                ],
+                [
+                    'id_status_pengambilan', 
+                    \App\Features\Donor\StatusPengambilan\StatusPengambilanDatabase::class, 
+                    'id_status_pengambilan'
                 ],
             ],
             false,

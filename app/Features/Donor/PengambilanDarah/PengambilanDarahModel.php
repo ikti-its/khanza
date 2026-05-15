@@ -26,7 +26,8 @@ final class PengambilanDarahModel extends ModelTemplate
                 'id_jenis_bag'          => ['nama_jenis_bag'],
                 'id_jenis_donor'        => ['nama_jenis_donor'],
                 'id_lokasi_pengambilan' => ['nama_lokasi'],
-                'id_petugas'            => ['']
+                'id_petugas'            => [''],
+                'id_status_pengambilan' => ['nama_status_pengambilan']
             ],
         );
     }

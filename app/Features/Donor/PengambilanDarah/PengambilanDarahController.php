@@ -33,6 +33,7 @@ final class PengambilanDarahController extends ControllerTemplate
                 [HIDE, REQUIRED, I::INDEX, 'id_jenis_donor', 'ID Jenis Donor'],
                 [SHOW, REQUIRED, I::INDEX, 'id_lokasi_pengambilan', 'ID Lokasi Pengambilan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
+                [SHOW, OPTIONAL, I::SELECT, 'id_status_pengambilan', 'ID Status Pengambilan'],
             ],
         );
     }   
