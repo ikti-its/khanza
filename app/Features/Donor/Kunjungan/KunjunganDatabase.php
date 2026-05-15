@@ -18,7 +18,6 @@ final class KunjunganDatabase extends DatabaseTemplate
                 'nomor_kunjungan'       => T::RECORD(20),
                 'tanggal_kunjungan'     => T::DTIME(),
                 'id_pendonor'           => T::FK_AUTO(),
-                'id_status_kunjungan'   => T::FK_AUTO(),
             ],
             'id_kunjungan',
             [
@@ -30,11 +29,6 @@ final class KunjunganDatabase extends DatabaseTemplate
                     'id_pendonor', 
                     \App\Features\Role\Pendonor\PendonorDatabase::class, 
                     'id_pendonor'
-                ],
-                [
-                    'id_status_kunjungan', 
-                    \App\Features\Donor\StatusKunjungan\StatusKunjunganDatabase::class, 
-                    'id_status_kunjungan'
                 ],
             ],
             false,

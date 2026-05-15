@@ -21,8 +21,7 @@ final class KunjunganModel extends ModelTemplate
                 'tanggal_kunjungan'     => V::DEFAULT()
             ],
             [
-                'id_pendonor'           => ['nomor_pendonor'],
-                'id_status_kunjungan'   => ['nama_status_kunjungan']
+                'id_pendonor'           => ['nomor_pendonor']
             ],
         );
     }
