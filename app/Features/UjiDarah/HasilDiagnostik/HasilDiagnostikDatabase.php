@@ -13,10 +13,10 @@ final class HasilDiagnostikDatabase extends DatabaseTemplate
             'uji_darah',
             'hasil_diagnostik',
             [
-                'id_diagnostik'    => T::ID32(5_000_000),
+                'id_diagnostik'    => T::ID(5_000_000),
                 'id_rujukan'       => T::FK_AUTO(),
                 'tanggal_hasil'    => T::DATE(),
-                'dokter_pemeriksa' => T::TEXT(),
+                'dokter_pemeriksa' => T::NAME(50),
             ],
             'id_diagnostik',
             ['id_rujukan'],

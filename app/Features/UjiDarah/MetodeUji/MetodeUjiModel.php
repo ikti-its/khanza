@@ -9,14 +9,16 @@ final class MetodeUjiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new MetodeUjiDatabase(),
             'REFS',
             'uji_darah',
             'metode_uji',
             'id_metode_uji',
             [
-                'id_metode_uji' => V::TODO(),
-                'nama_metode' => V::TODO()
+                'id_metode_uji' => V::DEFAULT(),
+                'nama_metode'   => V::DEFAULT()
             ],
+            [],
         );
     }
 }

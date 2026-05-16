@@ -13,7 +13,7 @@ final class HasilDiagnostikDetailDatabase extends DatabaseTemplate
             'uji_darah',
             'hasil_diagnostik_detail',
             [
-                'id_diagnostik_detail' => T::ID32(10_000_000),
+                'id_diagnostik_detail' => T::ID(10_000_000),
                 'id_diagnostik'        => T::FK_AUTO(),
                 'id_parameter_uji'     => T::FK_AUTO(),
                 'id_nilai_diagnostik'  => T::FK_AUTO(),

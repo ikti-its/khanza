@@ -24,7 +24,7 @@ final class HasilUjiSaringController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_uji_saring', 'ID Uji Saring'],
-                [SHOW, REQUIRED, I::INDEX, 'id_bag', 'ID Bag'],
+                [SHOW, REQUIRED, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_uji', 'Tanggal Uji'],
                 [SHOW, REQUIRED, I::INDEX, 'id_metode_uji', 'ID Metode Uji'],
                 [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],

@@ -9,15 +9,18 @@ final class HasilDiagnostikModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new HasilDiagnostikDatabase(),
             'BASE',
             'uji_darah',
             'hasil_diagnostik',
             'id_diagnostik',
             [
-                'id_diagnostik' => V::TODO(),
-                'id_rujukan' => V::TODO(),
-                'tanggal_hasil' => V::TODO(),
-                'dokter_pemeriksa' => V::TODO()
+                'id_diagnostik'     => V::DEFAULT(),
+                'tanggal_hasil'     => V::DEFAULT(),
+                'dokter_pemeriksa'  => V::DEFAULT()
+            ],
+            [
+                'id_rujukan'    => ['nomor_rujukan']
             ],
         );
     }

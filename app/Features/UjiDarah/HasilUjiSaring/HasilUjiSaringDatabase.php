@@ -13,24 +13,24 @@ final class HasilUjiSaringDatabase extends DatabaseTemplate
             'uji_darah',
             'hasil_uji_saring',
             [
-                'id_uji_saring' => T::ID(100_000_000),
-                'id_bag'        => T::FK_AUTO(),
-                'tanggal_uji'   => T::DATE(),
-                'id_metode_uji' => T::FK_AUTO(),
-                'id_petugas'    => T::FK_AUTO(),
-                'hbsag'         => T::BOOL(),
-                'hcv'           => T::BOOL(),
-                'hiv'           => T::BOOL(),
-                'sifilis'       => T::BOOL(),
-                'malaria'       => T::BOOL(),
+                'id_uji_saring'         => T::ID(100_000_000),
+                'id_pengambilan_darah'  => T::FK_AUTO(),
+                'tanggal_uji'           => T::DATE(),
+                'id_metode_uji'         => T::FK_AUTO(),
+                'id_petugas'            => T::FK_AUTO(),
+                'hbsag'                 => T::BOOL(),
+                'hcv'                   => T::BOOL(),
+                'hiv'                   => T::BOOL(),
+                'sifilis'               => T::BOOL(),
+                'malaria'               => T::BOOL(),
             ],
             'id_uji_saring',
-            ['id_bag'],
+            ['id_pengambilan_darah'],
             [
                 [
-                    'id_bag',
-                    \App\Features\InventoriDarah\KantongDarah\KantongDarahDatabase::class, 
-                    'id_bag'
+                    'id_pengambilan_darah', 
+                    \App\Features\Donor\PengambilanDarah\PengambilanDarahDatabase::class, 
+                    'id_pengambilan_darah'
                 ],
                 [
                     'id_metode_uji', 

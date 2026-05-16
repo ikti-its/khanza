@@ -24,9 +24,9 @@ final class HasilUjiSaringModel extends ModelTemplate
                 'malaria'       => V::DEFAULT()
             ],
             [
-                'id_bag'        => ['no_bag'],
-                'id_metode_uji' => ['nama_metode'],
-                'id_petugas'    => ['']
+                'id_pengambilan_darah'  => ['nomor_pengambilan', 'no_bag'],
+                'id_metode_uji'         => ['nama_metode'],
+                'id_petugas'            => ['']
             ],
         );
     }
