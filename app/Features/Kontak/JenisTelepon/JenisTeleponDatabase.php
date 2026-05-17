@@ -13,7 +13,7 @@ final class JenisTeleponDatabase extends DatabaseTemplate
             'kontak',
             'jenis_telepon',
             [
-                'id_jenis_telepon'   => T::ID8(5),
+                'id_jenis_telepon'   => T::ID(5),
                 'nama_jenis_telepon' => T::TEXT(),
             ],
             'id_jenis_telepon',

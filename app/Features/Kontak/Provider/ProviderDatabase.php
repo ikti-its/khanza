@@ -13,7 +13,7 @@ final class ProviderDatabase extends DatabaseTemplate
             'kontak',
             'provider',
             [
-                'id_provider'   => T::ID8(20),
+                'id_provider'   => T::ID(20),
                 'nama_provider' => T::TEXT(),
             ],
             'id_provider',

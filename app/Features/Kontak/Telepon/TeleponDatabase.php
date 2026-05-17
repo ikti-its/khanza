@@ -13,7 +13,7 @@ final class TeleponDatabase extends DatabaseTemplate
             'kontak',
             'telepon',
             [
-                'id_telepon'    => T::ID32(300_000_000),
+                'id_telepon'    => T::ID(300_000_000),
                 'id_orang'      => T::FK_AUTO(),
                 'nomor_telepon' => T::TEXT(),
                 'jenis_telepon' => T::FK_AUTO(),
