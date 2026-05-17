@@ -21,7 +21,7 @@ final class RefMetodeTransferController extends ControllerTemplate
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
-                // A::DELETE,,
+                // A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_metode', 'ID Metode'],

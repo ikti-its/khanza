@@ -21,7 +21,7 @@ final class ChecklistPostopController extends ControllerTemplate
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
-                A::DELETE,,
+                A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],

@@ -14,7 +14,7 @@ final class RefKategoriLabDatabase extends DatabaseTemplate
             'laboratorium',
             'ref_kategori_lab',
             [
-                'id_kategori' => T::ID(10),
+                'id_kategori'   => T::ID(10),
                 'kode_kategori' => T::CODE(2),
                 'nama_kategori' => T::TEXT(),
             ],

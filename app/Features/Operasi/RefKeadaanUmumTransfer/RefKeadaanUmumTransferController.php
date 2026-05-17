@@ -21,7 +21,7 @@ final class RefKeadaanUmumTransferController extends ControllerTemplate
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
-                // A::DELETE,,
+                // A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_keadaan_umum', 'ID Keadaan Umum'],

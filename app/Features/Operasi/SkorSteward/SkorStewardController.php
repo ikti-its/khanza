@@ -21,7 +21,7 @@ final class SkorStewardController extends ControllerTemplate
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
-                A::DELETE,,
+                A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skor_steward', 'ID Skor Steward'],

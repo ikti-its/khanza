@@ -21,7 +21,7 @@ final class SigninSebelumAnestesiController extends ControllerTemplate
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
-                A::DELETE,,
+                A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_signin', 'ID Sign In'],

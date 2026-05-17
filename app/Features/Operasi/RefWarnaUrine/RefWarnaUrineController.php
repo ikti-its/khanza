@@ -21,7 +21,7 @@ final class RefWarnaUrineController extends ControllerTemplate
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
-                // A::DELETE,,
+                // A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_warna_urine', 'ID Warna Urine'],

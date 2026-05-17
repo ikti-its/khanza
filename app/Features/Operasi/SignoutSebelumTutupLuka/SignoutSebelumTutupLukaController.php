@@ -21,7 +21,7 @@ final class SignoutSebelumTutupLukaController extends ControllerTemplate
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
-                A::DELETE,,
+                A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_signout', 'ID Sign Out'],

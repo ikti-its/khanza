@@ -21,7 +21,7 @@ final class RefKategoriUsiaLabController extends ControllerTemplate
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
-                // A::DELETE,,
+                // A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kategori_usia', 'ID Kategori Usia'],

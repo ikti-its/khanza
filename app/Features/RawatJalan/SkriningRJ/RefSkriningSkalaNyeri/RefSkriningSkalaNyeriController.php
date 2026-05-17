@@ -21,7 +21,7 @@ final class RefSkriningSkalaNyeriController extends ControllerTemplate
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,
-                // A::DELETE,,
+                // A::DELETE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skala_nyeri', 'ID Skala Nyeri'],
