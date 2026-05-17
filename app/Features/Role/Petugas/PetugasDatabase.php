@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Role\Petugas;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PetugasDatabase extends DatabaseTemplate
@@ -13,9 +13,9 @@ final class PetugasDatabase extends DatabaseTemplate
             'role',
             'petugas',
             [
-                'id_petugas' => T::ID32(1_000_000),
+                'id_petugas' => T::ID(1_000_000),
                 'id_orang'   => T::FK_AUTO(),
-                'deskripsi'  => T::TEXT(),
+                'deskripsi'  => T::DESCR(),
             ],
             'id_petugas',
             [],

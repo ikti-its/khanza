@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\PilihanJawaban;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PilihanJawabanDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class PilihanJawabanDatabase extends DatabaseTemplate
             'penanganan_donor',
             'pilihan_jawaban',
             [
-                'id_pilihan'   => T::ID8(2),
+                'id_pilihan'   => T::ID(2),
                 'nama_pilihan' => T::TEXT(),
             ],
             'id_pilihan',

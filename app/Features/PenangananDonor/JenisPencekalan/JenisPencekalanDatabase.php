@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\JenisPencekalan;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class JenisPencekalanDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class JenisPencekalanDatabase extends DatabaseTemplate
             'penanganan_donor',
             'jenis_pencekalan',
             [
-                'id_jenis_pencekalan'   => T::ID8(2),
+                'id_jenis_pencekalan'   => T::ID(2),
                 'nama_jenis_pencekalan' => T::TEXT(),
             ],
             'id_jenis_pencekalan',

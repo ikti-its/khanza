@@ -2,7 +2,7 @@
 
 namespace App\Features\Pendidikan\JenjangPendidikan;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class JenjangPendidikanDatabase extends DatabaseTemplate
@@ -12,7 +12,7 @@ final class JenjangPendidikanDatabase extends DatabaseTemplate
             'pendidikan',
             'jenjang_pendidikan',
             [
-                'id_jenjang_pendidikan'   => T::ID8(9),
+                'id_jenjang_pendidikan'   => T::ID(9),
                 'nama_jenjang_pendidikan' => T::TEXT(),
             ],
             'id_jenjang_pendidikan',

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PermintaanBarang;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PermintaanBarangDatabase extends DatabaseTemplate
@@ -16,9 +16,9 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
             [
                 'id_permintaan' => T::ID(100_000),
                 'id_unit'       => T::FK_AUTO(),
-                'tipe'          => T::RECORD(),
+                'tipe'          => T::RECORD(12),
                 'tanggal'       => T::DTIME(),
-                'status'        => T::RECORD(),
+                'status'        => T::RECORD(12),
                 'catatan'       => T::NOTE()->nullable(),
             ],
             'id_permintaan',

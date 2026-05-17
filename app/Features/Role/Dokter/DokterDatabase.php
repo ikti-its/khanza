@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Role\Dokter;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class DokterDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class DokterDatabase extends DatabaseTemplate
             'role',
             'dokter',
             [
-                'id_dokter' => T::ID32(1_000_000),
+                'id_dokter' => T::ID(1_000_000),
                 'id_orang'  => T::FK_AUTO(),
                 'spesialis' => T::TEXT(),
             ],

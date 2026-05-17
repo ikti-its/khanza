@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Auth;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class AuthDatabase extends DatabaseTemplate
@@ -13,10 +13,10 @@ final class AuthDatabase extends DatabaseTemplate
             'auth',
             'akun',
             [
-                'id'       => T::UUID(),
+                'id'       => T::ID(1_000_000),
                 'email'    => T::TEXT(),
                 'password' => T::TEXT(),
-                'role'     => T::INT32(),
+                'role'     => T::QTY(1,6000),
             ],
             'id',
             [

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Operasi\CatatanAnestesiSedasi;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class CatatanAnestesiSedasiDatabase extends DatabaseTemplate
@@ -14,7 +14,9 @@ final class CatatanAnestesiSedasiDatabase extends DatabaseTemplate
             'catatan_anestesi_sedasi',
             [
                 'id_catatan_anestesi'  => T::ID(300_000_000),
+                'id_catatan_anestesi'  => T::ID(300_000_000),
                 'nomor_reg'            => T::FK_AUTO(),
+                'waktu_catatan'        => T::DTIME(),
                 'waktu_catatan'        => T::DTIME(),
                 'diagnosa_pra_bedah'   => T::TEXT(),
                 'tindakan'             => T::TEXT(),

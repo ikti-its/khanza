@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Radiologi\RefStatusPermintaanRad;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 final class RefStatusPermintaanRadDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class RefStatusPermintaanRadDatabase extends DatabaseTemplate
         'radiologi',
         'ref_status_permintaan_rad',
         [
-            'id_status'   => T::ID8(10),
+            'id_status'   => T::ID(10),
             'nama_status' => T::TEXT(),
         ],
         'id_status',

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Laboratorium\HasilLabPa;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class HasilLabPaDatabase extends DatabaseTemplate
@@ -59,7 +59,7 @@ final class HasilLabPaDatabase extends DatabaseTemplate
                 [
                     ['id_item_pemeriksaan'],
                     \App\Features\Laboratorium\RefItemPemeriksaanLab\RefItemPemeriksaanLabDatabase::class,
-                    ['id_item'],
+                    ['id_item_lab'],
                 ],
             ],
             false,

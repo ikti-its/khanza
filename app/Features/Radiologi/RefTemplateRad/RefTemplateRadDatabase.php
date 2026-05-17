@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Radiologi\RefTemplateRad;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 final class RefTemplateRadDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class RefTemplateRadDatabase extends DatabaseTemplate
         'radiologi',
         'ref_template_rad',
         [
-            'id_template'        => T::ID8(100),
+            'id_template'        => T::ID(100),
             'nama_template'      => T::TEXT(),
             'isi_teks_ekspertise'=> T::TEXT(),
         ],

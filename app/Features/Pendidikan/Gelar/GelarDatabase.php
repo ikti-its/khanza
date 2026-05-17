@@ -2,7 +2,7 @@
 
 namespace App\Features\Pendidikan\Gelar;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 final class GelarDatabase extends DatabaseTemplate
@@ -12,7 +12,7 @@ final class GelarDatabase extends DatabaseTemplate
             'pendidikan',
             'gelar',
             [
-                'id_gelar'   => T::ID8(100),
+                'id_gelar'   => T::ID(100),
                 'nama_gelar' => T::TEXT(),
             ],
             'id_gelar',

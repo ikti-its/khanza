@@ -2,7 +2,7 @@
 
 namespace App\Features\Person\Kewarganegaraan;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class KewarganegaraanDatabase extends DatabaseTemplate
@@ -12,7 +12,7 @@ final class KewarganegaraanDatabase extends DatabaseTemplate
             'person',
             'kewarganegaraan',
             [
-                'id_kewarganegaraan' => T::ID16(200),
+                'id_kewarganegaraan' => T::ID(200),
                 'id_negara'          => T::FK_AUTO(),
             ],
             'id_kewarganegaraan',

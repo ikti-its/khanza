@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Kontak\Email;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class EmailDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class EmailDatabase extends DatabaseTemplate
             'kontak',
             'email',
             [
-                'id_email' => T::ID32(300_000_000),
+                'id_email' => T::ID(300_000_000),
                 'id_orang' => T::FK_AUTO(),
                 'email'    => T::TEXT(),
             ],

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Finansial\PemilikBank;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PemilikBankDatabase extends DatabaseTemplate
@@ -13,8 +13,8 @@ final class PemilikBankDatabase extends DatabaseTemplate
             'finansial',
             'pemilik_bank',
             [
-                'id'      => T::ID8(5),
-                'pemilik' => T::TEXT(),
+                'id'      => T::ID(5),
+                'pemilik' => T::NAME(40),
             ],
             'id',
             ['pemilik'],

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Person\JenisKelamin;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 /*
@@ -21,8 +21,8 @@ final class JenisKelaminDatabase extends DatabaseTemplate
             'person',
             'jenis_kelamin',
             [
-                'id_jenis_kelamin'   => T::ID8(2),
-                'nama_jenis_kelamin' => T::NAME(),
+                'id_jenis_kelamin'   => T::ID(2),
+                'nama_jenis_kelamin' => T::NAME(10),
             ],
             'id_jenis_kelamin',
             ['nama_jenis_kelamin'],

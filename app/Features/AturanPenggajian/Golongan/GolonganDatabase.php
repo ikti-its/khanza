@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\AturanPenggajian\Golongan;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class GolonganDatabase extends DatabaseTemplate
@@ -25,9 +25,11 @@ final class GolonganDatabase extends DatabaseTemplate
                 'kode_golongan'
             ],
             [
-                'pendidikan',
-                \App\Features\Pendidikan\JenjangPendidikan\JenjangPendidikanDatabase::class,
-                'nama_jenjang_pendidikan',
+                [
+                    'pendidikan',
+                    \App\Features\Pendidikan\JenjangPendidikan\JenjangPendidikanDatabase::class,
+                    'nama_jenjang_pendidikan',
+                ]
             ],
         );
     }

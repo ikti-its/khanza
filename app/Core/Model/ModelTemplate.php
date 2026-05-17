@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Model;
 use CodeIgniter\Model;
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 
 class ModelTemplate extends Model
 {

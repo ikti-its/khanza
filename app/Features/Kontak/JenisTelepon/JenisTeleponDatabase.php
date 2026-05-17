@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Kontak\JenisTelepon;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class JenisTeleponDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class JenisTeleponDatabase extends DatabaseTemplate
             'kontak',
             'jenis_telepon',
             [
-                'id_jenis_telepon'   => T::ID8(5),
+                'id_jenis_telepon'   => T::ID(5),
                 'nama_jenis_telepon' => T::TEXT(),
             ],
             'id_jenis_telepon',

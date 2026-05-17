@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningBatuk;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 final class RefSkriningBatukDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class RefSkriningBatukDatabase extends DatabaseTemplate
         'skrining_rj',
         'ref_skrining_batuk',
         [
-            'id_batuk'      => T::ID8(5),
+            'id_batuk'      => T::ID(5),
             'kategori_batuk'=> T::TEXT(),
         ],
         'id_batuk',

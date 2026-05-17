@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Database;
+namespace App\Core\Database\Template;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
 use App\Core\Database\Template\SemanticType as ST;
@@ -161,7 +161,7 @@ class DatabaseTemplate extends Migration
             if(is_string($fields))     $fields     = [$fields];
             foreach($fields as $field){
                 $field_def = $this->fields[$field];
-                Assert::True($field_def === ST::FK_AUTO()->definition(),
+                Assert::True($field_def['type'] === ST::FK_AUTO()->definition()['type'],
                     'Foreign key field must be of type T::FK_AUTO'.
                     "Schema : $this->schema, table : $this->table");
             }

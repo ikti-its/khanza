@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\PemusnahanDarah\PemusnahanDetail;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PemusnahanDetailDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class PemusnahanDetailDatabase extends DatabaseTemplate
             'pemusnahan_darah',
             'pemusnahan_detail',
             [
-                'id_pemusnahan_detail' => T::ID32(30_000_000),
+                'id_pemusnahan_detail' => T::ID(30_000_000),
                 'id_pemusnahan'        => T::FK_AUTO(),
                 'id_stok_darah'        => T::FK_AUTO(),
                 'id_alasan'            => T::FK_AUTO(),

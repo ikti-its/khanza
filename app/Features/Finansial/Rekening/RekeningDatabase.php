@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Finansial\Rekening;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class RekeningDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class RekeningDatabase extends DatabaseTemplate
             'finansial',
             'rekening',
             [
-                'id_rekening'    => T::ID32(10_000_000),
+                'id_rekening'    => T::ID(10_000_000),
                 'bank'           => T::FK_AUTO(),
                 'nama_akun'      => T::TEXT(),
                 'nomor_rekening' => T::TEXT(),

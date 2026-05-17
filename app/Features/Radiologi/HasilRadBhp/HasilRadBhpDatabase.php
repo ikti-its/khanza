@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Radiologi\HasilRadBhp;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 final class HasilRadBhpDatabase extends DatabaseTemplate
@@ -13,12 +13,12 @@ final class HasilRadBhpDatabase extends DatabaseTemplate
         'radiologi',
         'hasil_rad_bhp',
         [
-            'id_rad_bhp'     => T::ID32(100_000_000),
+            'id_rad_bhp'     => T::ID(100_000_000),
             'id_hasil_rad'   => T::FK_AUTO(),
             // 'id_barang_medis'=> T::FK_AUTO(),
-            'jumlah_pakai'   => T::F32(),
+            // 'jumlah_pakai'   => T::QTY(),
             'satuan'         => T::TEXT(),
-            'harga_satuan'   => T::F32(),
+            'harga_satuan'   => T::MONEY(),
         ],
         'id_rad_bhp',
         [],

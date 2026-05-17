@@ -2,7 +2,7 @@
 
 namespace App\Features\Person\Orang;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 /*
@@ -20,9 +20,9 @@ final class OrangDatabase extends DatabaseTemplate
             'person',
             'orang',
             [
-                'id_orang'           => T::ID32(300_000_000),
-                'nik'                => T::TEXT(),
-                'nama'               => T::NAME(),
+                'id_orang'           => T::ID(300_000_000),
+                'nik'                => T::CODE(16),
+                'nama'               => T::NAME(100),
                 'id_jenis_kelamin'   => T::FK_AUTO(),
                 'id_agama'           => T::FK_AUTO(),
                 'id_pernikahan'      => T::FK_AUTO(),

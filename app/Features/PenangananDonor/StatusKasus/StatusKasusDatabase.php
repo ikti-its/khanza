@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\StatusKasus;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class StatusKasusDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class StatusKasusDatabase extends DatabaseTemplate
             'penanganan_donor',
             'status_kasus',
             [
-                'id_status_kasus'   => T::ID8(10),
+                'id_status_kasus'   => T::ID(10),
                 'nama_status_kasus' => T::TEXT(),
             ],
             'id_status_kasus',

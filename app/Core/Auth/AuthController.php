@@ -3,7 +3,6 @@
 namespace App\Core\Auth;
 
 use CodeIgniter\Controller;
-use App\Core\Controller\CURL;
 use App\Core\Model\ModelTemplate;
 
 final class AuthController extends Controller

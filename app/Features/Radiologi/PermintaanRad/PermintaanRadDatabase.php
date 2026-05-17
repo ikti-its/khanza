@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Radiologi\PermintaanRad;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 final class PermintaanRadDatabase extends DatabaseTemplate
@@ -13,11 +13,11 @@ final class PermintaanRadDatabase extends DatabaseTemplate
         'radiologi',
         'permintaan_rad',
         [
-            'id_permintaan'        => T::ID32(100_000_000),
+            'id_permintaan'        => T::ID(100_000_000),
             'no_permintaan'        => T::TEXT(),
             'nomor_reg'            => T::FK_AUTO(),
             'kode_dokter_perujuk'  => T::FK_AUTO(),
-            'tgl_jam_permintaan'   => T::DATETIME(),
+            'tgl_jam_permintaan'   => T::DTIME(),
             'informasi_tambahan'   => T::TEXT(),
             'indikasi_klinis'      => T::TEXT(),
             'id_status_permintaan' => T::FK_AUTO(),

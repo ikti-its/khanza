@@ -9,6 +9,7 @@ final class AuthModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new AuthDatabase(),
             'BASE',
             'auth',
             'akun',
@@ -35,6 +36,7 @@ final class AuthModel extends ModelTemplate
                     'errors'  => [],
                 ],
             ],
+            [],
         );
     }
 }

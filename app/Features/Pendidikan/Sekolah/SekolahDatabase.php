@@ -2,7 +2,7 @@
 
 namespace App\Features\Pendidikan\Sekolah;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class SekolahDatabase extends DatabaseTemplate
@@ -12,7 +12,7 @@ final class SekolahDatabase extends DatabaseTemplate
             'pendidikan',
             'sekolah',
             [
-                'id_sekolah'   => T::ID32(80_000),
+                'id_sekolah'   => T::ID(80_000),
                 'nama_sekolah' => T::TEXT(),
                 'jenis_id'     => T::FK_AUTO(),
                 'alamat_id'    => T::FK_AUTO(),

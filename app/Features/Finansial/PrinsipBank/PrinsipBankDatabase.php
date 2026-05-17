@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Finansial\PrinsipBank;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PrinsipBankDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class PrinsipBankDatabase extends DatabaseTemplate
             'finansial',
             'prinsip_bank',
             [
-                'id'      => T::ID8(4),
+                'id'      => T::ID(4),
                 'prinsip' => T::TEXT(),
             ],
             'id',

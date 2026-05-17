@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Lokasi\Kota;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 /*  Dalam 1 provinsi terdapat 5 atau lebih kota/kabupaten
@@ -32,10 +32,10 @@ final class KotaDatabase extends DatabaseTemplate
             'lokasi',
             'kota',
             [
-                'id_kota'       => T::ID16(514),
+                'id_kota'       => T::ID(514),
                 'id_provinsi'   => T::FK_AUTO(),
-                'id_kota_lokal' => T::INT8(),
-                'nama_kota'     => T::TEXT(),
+                'id_kota_lokal' => T::INT(11, 99),
+                'nama_kota'     => T::NAME(30),
             ],
             'id_kota',
             [

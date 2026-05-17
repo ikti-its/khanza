@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\JawabanKonseling;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class JawabanKonselingDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class JawabanKonselingDatabase extends DatabaseTemplate
             'penanganan_donor',
             'jawaban_konseling',
             [
-                'id_jawaban'    => T::ID32(30_000_000),
+                'id_jawaban'    => T::ID(30_000_000),
                 'id_konseling'  => T::FK_AUTO(),
                 'id_pertanyaan' => T::FK_AUTO(),
                 'id_pilihan'    => T::FK_AUTO(),

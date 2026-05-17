@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\Rujukan;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class RujukanDatabase extends DatabaseTemplate
@@ -13,7 +13,7 @@ final class RujukanDatabase extends DatabaseTemplate
             'penanganan_donor',
             'rujukan',
             [
-                'id_rujukan'            => T::ID32(5_000_000),
+                'id_rujukan'            => T::ID(5_000_000),
                 'id_kasus'              => T::FK_AUTO(),
                 'nomor_surat'           => T::TEXT(),
                 'tanggal_rujukan'       => T::DATE(),

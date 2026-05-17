@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\AturanPenggajian\UpahMinimumProvinsi;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class UpahMinimumProvinsiDatabase extends DatabaseTemplate
