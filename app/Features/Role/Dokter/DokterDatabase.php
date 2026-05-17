@@ -13,7 +13,7 @@ final class DokterDatabase extends DatabaseTemplate
             'role',
             'dokter',
             [
-                'id_dokter' => T::ID32(1_000_000),
+                'id_dokter' => T::ID(1_000_000),
                 'id_orang'  => T::FK_AUTO(),
                 'spesialis' => T::TEXT(),
             ],

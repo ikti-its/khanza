@@ -13,7 +13,7 @@ final class PasienDatabase extends DatabaseTemplate
             'role',
             'pasien',
             [
-                'id_pasien' => T::ID32(1_000_000),
+                'id_pasien' => T::ID(1_000_000),
                 'id_orang'  => T::FK_AUTO(),
                 'nomor_rm'  => T::TEXT(),
             ],
