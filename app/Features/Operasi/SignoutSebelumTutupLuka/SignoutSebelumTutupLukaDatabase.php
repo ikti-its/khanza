@@ -13,9 +13,9 @@ final class SignoutSebelumTutupLukaDatabase extends DatabaseTemplate
         'operasi',
         'signout_sebelum_tutupluka',
         [
-            'id_signout'              => T::ID32(300_000_000),
+            'id_signout'              => T::ID(300_000_000),
             'nomor_reg'               => T::FK_AUTO(),
-            'waktu_signout'           => T::DATETIME(),
+            'waktu_signout'           => T::DTIME(),
             'sn_cn'                   => T::TEXT(),
             'kode_dokter_bedah'       => T::FK_AUTO(),
             'kode_dokter_anestesi'    => T::FK_AUTO(),
@@ -29,13 +29,17 @@ final class SignoutSebelumTutupLukaDatabase extends DatabaseTemplate
             'is_konfirmasi_bedah'     => T::BOOL(),
             'is_konfirmasi_anestesi'  => T::BOOL(),
             'is_konfirmasi_perawat'   => T::BOOL(),
-            'catatan_pemulihan'       => T::TEXT(),
+            'catatan_pemulihan'       => T::NOTE(),
             'id_perawat_ok'           => T::FK_AUTO(),
         ],
         'id_signout',
         [],
         [
-            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            [
+                ['nomor_reg'],
+                \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class,
+                ['nomor_reg'],
+            ],
             [
                 ['kode_dokter_bedah'],
                 \App\Features\Role\Dokter\DokterDatabase::class,

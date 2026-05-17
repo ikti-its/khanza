@@ -13,9 +13,9 @@ final class ChecklistPreOperasiDatabase extends DatabaseTemplate
         'operasi',
         'checklist_pre_operasi',
         [
-            'id_checklist'           => T::ID32(300_000_000),
+            'id_checklist'           => T::ID(300_000_000),
             'nomor_reg'              => T::FK_AUTO(),
-            'waktu_checklist'        => T::DATETIME(),
+            'waktu_checklist'        => T::DTIME(),
             'sn_cn'                  => T::TEXT(),
             'kode_dokter_bedah'      => T::FK_AUTO(),
             'kode_dokter_anestesi'   => T::FK_AUTO(),
@@ -27,7 +27,7 @@ final class ChecklistPreOperasiDatabase extends DatabaseTemplate
             'is_ijin_anestesi'       => T::BOOL(),
             'id_ijin_transfusi'      => T::FK_AUTO(),
             'id_persiapan_darah'     => T::FK_AUTO(),
-            'ket_persiapan_darah'    => T::TEXT(),
+            'ket_persiapan_darah'    => T::NOTE(),
             'id_perlengkapan_khusus' => T::FK_AUTO(),
             'id_petugas_ruangan'     => T::FK_AUTO(),
             'id_petugas_ok'          => T::FK_AUTO(),
@@ -35,8 +35,12 @@ final class ChecklistPreOperasiDatabase extends DatabaseTemplate
         'id_checklist',
         [],
         [
-            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
-           [
+            [
+                ['nomor_reg'],
+                \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class,
+                ['nomor_reg'],
+            ],
+            [
                 ['kode_dokter_bedah'],
                 \App\Features\Role\Dokter\DokterDatabase::class,
                 ['id_dokter'],

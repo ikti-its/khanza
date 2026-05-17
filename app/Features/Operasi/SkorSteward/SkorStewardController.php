@@ -32,7 +32,7 @@ final class SkorStewardController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'skor_kesadaran', 'Skor Kesadaran'],
                 [SHOW, REQUIRED, I::NUMBER, 'skor_respirasi', 'Skor Respirasi'],
                 [SHOW, REQUIRED, I::NUMBER, 'skor_motorik', 'Skor Motorik'],
-                [SHOW, REQUIRED, I::NUMBER, 'total_skor', 'Total Skor'],
+                // [SHOW, REQUIRED, I::NUMBER, 'total_skor', 'Total Skor'],
                 [SHOW, REQUIRED, I::SELECT, 'is_boleh_pindah', 'Boleh Pindah'],
                 [SHOW, REQUIRED, I::TEXT, 'catatan_keluar', 'Catatan Keluar'],
                 [SHOW, REQUIRED, I::TEXT, 'instruksi_rr', 'Instruksi RR'],

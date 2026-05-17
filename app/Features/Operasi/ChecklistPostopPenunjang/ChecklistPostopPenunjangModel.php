@@ -10,17 +10,23 @@ final class ChecklistPostopPenunjangModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new ChecklistPostopPenunjangDatabase(),
             'BASE',
             'operasi',
             'checklist_postop_penunjang',
             'id_checklist_post',
             [
-                'id_penunjang' => V::TODO(),
-                'id_checklist_post' => V::TODO(),
-                'id_jenis_penunjang' => V::TODO(),
-                'id_ketersediaan' => V::TODO(),
-                'keterangan' => V::TODO(),
+                'id_penunjang'       => V::DEFAULT(),
+                'id_checklist_post'  => V::DEFAULT(),
+                'id_jenis_penunjang' => V::DEFAULT(),
+                'id_ketersediaan'    => V::DEFAULT(),
+                'keterangan'         => V::DEFAULT(),
             ],
+            [
+                'id_checklist_post'     => [],
+                'id_jenis_penunjang'    => ['nama_jenis'],
+                'id_ketersediaan'       => ['nama_ketersediaan'],
+            ]
         );
     }
 }

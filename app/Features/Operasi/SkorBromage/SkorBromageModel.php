@@ -10,21 +10,28 @@ final class SkorBromageModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new SkorBromageDatabase(),
             'BASE',
             'operasi',
             'skor_bromage',
             'id_skor_bromage',
             [
-                'id_skor_bromage' => V::TODO(),
-                'nomor_reg' => V::TODO(),
-                'waktu_penilaian' => V::TODO(),
-                'id_petugas' => V::TODO(),
-                'id_dokter_anestesi' => V::TODO(),
-                'skor_bromage' => V::TODO(),
-                'is_boleh_pindah' => V::TODO(),
-                'catatan_keluar' => V::TODO(),
-                'instruksi_rr' => V::TODO(),
+                'id_skor_bromage'    => V::DEFAULT(),
+                'nomor_reg'          => V::DEFAULT(),
+                'waktu_penilaian'    => V::DEFAULT(),
+                'id_petugas'         => V::DEFAULT(),
+                'id_dokter_anestesi' => V::DEFAULT(),
+                'skor_bromage'       => V::DEFAULT(),
+                'is_boleh_pindah'    => V::DEFAULT(),
+                'catatan_keluar'     => V::DEFAULT(),
+                'instruksi_rr'       => V::DEFAULT(),
             ],
+            [
+                'nomor_reg'          => ['nomor_rawat'],
+                'id_petugas'         => [],
+                'id_dokter_anestesi' => [],
+                'skor_bromage'       => ['nama_skala','tingkat_blok', 'nilai', 'gambar'],
+            ]
         );
     }
 }

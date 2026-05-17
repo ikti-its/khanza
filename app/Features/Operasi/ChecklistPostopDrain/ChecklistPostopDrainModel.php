@@ -10,18 +10,23 @@ final class ChecklistPostopDrainModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new ChecklistPostopDrainDatabase(),
             'BASE',
             'operasi',
             'checklist_postop_drain',
             'id_drain',
             [
-                'id_drain' => V::TODO(),
-                'id_checklist_post' => V::TODO(),
-                'id_ketersediaan' => V::TODO(),
-                'jumlah' => V::TODO(),
-                'letak' => V::TODO(),
-                'warna' => V::TODO(),
+                'id_drain'          => V::DEFAULT(),
+                'id_checklist_post' => V::DEFAULT(),
+                'id_ketersediaan'   => V::DEFAULT(),
+                'jumlah'            => V::DEFAULT(),
+                'letak'             => V::DEFAULT(),
+                'warna'             => V::DEFAULT(),
             ],
+            [
+                'id_checklist_post'  => [],
+                'id_ketersediaan'    => ['nama_ketersediaan'],
+            ]
         );
     }
 }

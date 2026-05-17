@@ -13,12 +13,12 @@ final class RefAldretteRespirasiDatabase extends DatabaseTemplate
         'operasi',
         'ref_aldrette_respirasi',
         [
-            'id_respirasi' => T::ID8(10),
+            'id_respirasi' => T::ID(10),
             'nama_skala'   => T::TEXT(),
-            'nilai'        => T::INT8(),
+            'nilai'        => T::VITAL(0, 10),
         ],
         'id_respirasi',
-        [],
+        ['nilai'],
         [],
         true,
         'aldrette_respirasi.csv'

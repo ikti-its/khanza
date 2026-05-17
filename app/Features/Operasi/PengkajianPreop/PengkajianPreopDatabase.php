@@ -13,10 +13,10 @@ final class PengkajianPreopDatabase extends DatabaseTemplate
         'operasi',
         'pengkajian_preop',
         [
-            'id_pengkajian_pre'         => T::ID32(300_000_000),
+            'id_pengkajian_pre'         => T::ID(300_000_000),
             'nomor_reg'                 => T::FK_AUTO(),
             'kode_dokter_bedah'         => T::FK_AUTO(),
-            'waktu_pengkajian'          => T::DATETIME(),
+            'waktu_pengkajian'          => T::DTIME(),
             'ringkasan_klinik'          => T::TEXT(),
             'pemeriksaan_fisik'         => T::TEXT(),
             'pemeriksaan_diagnostik'    => T::TEXT(),
@@ -28,7 +28,11 @@ final class PengkajianPreopDatabase extends DatabaseTemplate
         'id_pengkajian_pre',
         [],
         [
-            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            [
+                ['nomor_reg'],
+                \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class,
+                ['nomor_reg'],
+            ],
             [
                 ['kode_dokter_bedah'],
                 \App\Features\Role\Dokter\DokterDatabase::class,

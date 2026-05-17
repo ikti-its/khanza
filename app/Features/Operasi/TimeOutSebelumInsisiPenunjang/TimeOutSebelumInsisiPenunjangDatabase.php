@@ -13,7 +13,7 @@ final class TimeOutSebelumInsisiPenunjangDatabase extends DatabaseTemplate
         'operasi',
         'time_out_sebelum_insisi_penunjang',
         [
-            'id_penunjang'          => T::ID32(300_000_000),
+            'id_penunjang'          => T::ID(300_000_000),
             'id_timeout'            => T::FK_AUTO(),
             'id_jenis_penunjang'    => T::FK_AUTO(),
             'id_status'             => T::FK_AUTO(),

@@ -9,15 +9,17 @@ final class RefAldretteKesadaranModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefAldretteKesadaranDatabase(),
             'REFS',
             'operasi',
             'ref_aldrette_kesadaran',
             'id_kesadaran',
             [
-                'id_kesadaran' => V::TODO(),
-                'nama_skala' => V::TODO(),
-                'nilai' => V::TODO(),
+                'id_kesadaran' => V::DEFAULT(),
+                'nama_skala'   => V::DEFAULT(),
+                'nilai'        => V::DEFAULT(),
             ],
+            []
         );
     }
 }

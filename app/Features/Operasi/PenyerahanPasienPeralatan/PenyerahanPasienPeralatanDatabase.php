@@ -13,10 +13,10 @@ final class PenyerahanPasienPeralatanDatabase extends DatabaseTemplate
         'operasi',
         'penyerahan_pasien_peralatan',
         [
-            'id'             => T::ID32(300_000_000),
+            'id'             => T::ID(300_000_000),
             'id_penyerahan'  => T::FK_AUTO(),
             'id_peralatan'   => T::FK_AUTO(),
-            'keterangan'     => T::TEXT(),
+            'keterangan'     => T::NOTE(),
         ],
         'id',
         [],

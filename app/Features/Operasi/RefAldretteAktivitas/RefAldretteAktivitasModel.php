@@ -9,15 +9,17 @@ final class RefAldretteAktivitasModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefAldretteAktivitasDatabase(),
             'REFS',
             'operasi',
             'ref_aldrette_aktivitas',
             'id_aktivitas',
             [
-                'id_aktivitas' => V::TODO(),
-                'nama_skala' => V::TODO(),
-                'nilai' => V::TODO(),
+                'id_aktivitas'  => V::DEFAULT(),
+                'nama_skala'    => V::DEFAULT(),
+                'nilai'         => V::DEFAULT(),
             ],
+            []
         );
     }
 }

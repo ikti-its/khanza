@@ -9,15 +9,17 @@ final class RefRuanganOperasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefRuanganOperasiDatabase(),
             'REFS',
             'operasi',
             'ref_ruangan_operasi',
             'id_ruangan',
             [
-                'id_ruangan' => V::TODO(),
-                'kode_ruangan' => V::TODO(),
-                'nama_ruangan' => V::TODO(),
+                'id_ruangan'   => V::DEFAULT(),
+                'kode_ruangan' => V::DEFAULT(),
+                'nama_ruangan' => V::DEFAULT(),
             ],
+            []
         );
     }
 }

@@ -13,7 +13,7 @@ final class RefMetodeTransferDatabase extends DatabaseTemplate
         'operasi',
         'ref_metode_transfer',
         [
-            'id_metode'   => T::ID8(10),
+            'id_metode'   => T::ID(10),
             'nama_metode' => T::TEXT(),
         ],
         'id_metode',

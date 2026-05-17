@@ -13,7 +13,7 @@ final class JadwalOperasiDatabase extends DatabaseTemplate
         'operasi',
         'jadwal_operasi',
         [
-            'id_jadwal'             => T::ID32(300_000_000),
+            'id_jadwal'             => T::ID(300_000_000),
             'id_permintaan'         => T::FK_AUTO(),
             'id_ruangan'            => T::FK_AUTO(),
             'id_tindakan'           => T::FK_AUTO(),

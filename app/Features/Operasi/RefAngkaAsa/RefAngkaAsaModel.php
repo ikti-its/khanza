@@ -9,14 +9,16 @@ final class RefAngkaAsaModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefAngkaAsaDatabase(),
             'REFS',
             'operasi',
             'ref_angka_asa',
             'id_asa',
             [
-                'id_asa' => V::TODO(),
-                'nama_asa' => V::TODO(),
+                'id_asa'   => V::DEFAULT(),
+                'nama_asa' => V::DEFAULT(),
             ],
+            []
         );
     }
 }

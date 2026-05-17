@@ -13,11 +13,11 @@ final class ChecklistPreOperasiPenunjangDatabase extends DatabaseTemplate
         'operasi',
         'checklist_pre_operasi_penunjang',
         [
-            'id_penunjang'          => T::ID32(300_000_000),
+            'id_penunjang'          => T::ID(300_000_000),
             'id_checklist'          => T::FK_AUTO(),
             'id_jenis_penunjang'    => T::FK_AUTO(),
             'id_ketersediaan'       => T::FK_AUTO(),
-            'keterangan'            => T::TEXT(),
+            'keterangan'            => T::NOTE(),
         ],
         'id_penunjang',
         [],

@@ -10,22 +10,31 @@ final class JadwalOperasiModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new JadwalOperasiDatabase(),
             'BASE',
             'operasi',
             'jadwal_operasi',
             'id_jadwal',
             [
-                'id_jadwal' => V::TODO(),
-                'id_permintaan' => V::TODO(),
-                'id_ruangan' => V::TODO(),
-                'id_tindakan' => V::TODO(),
-                'kode_dokter_bedah' => V::TODO(),
-                'kode_dokter_anestesi' => V::TODO(),
-                'tanggal' => V::TODO(),
-                'waktu_mulai' => V::TODO(),
-                'waktu_selesai' => V::TODO(),
-                'id_status' => V::TODO(),
+                'id_jadwal'             => V::DEFAULT(),
+                'id_permintaan'         => V::DEFAULT(),
+                'id_ruangan'            => V::DEFAULT(),
+                'id_tindakan'           => V::DEFAULT(),
+                'kode_dokter_bedah'     => V::DEFAULT(),
+                'kode_dokter_anestesi'  => V::DEFAULT(),
+                'tanggal'               => V::DEFAULT(),
+                'waktu_mulai'           => V::DEFAULT(),
+                'waktu_selesai'         => V::DEFAULT(),
+                'id_status'             => V::DEFAULT(),
             ],
+            [
+                'id_permintaan'         => [],
+                'id_ruangan'            => ['kode_ruangan', 'nama_ruangan'],
+                'id_tindakan'           => [],
+                'kode_dokter_bedah'     => [],
+                'kode_dokter_anestesi'  => [],
+                'id_status'             => ['nama_status'],
+            ]
         );
     }
 }

@@ -13,7 +13,7 @@ final class RefInduksiDatabase extends DatabaseTemplate
         'operasi',
         'ref_induksi',
         [
-            'id_induksi'   => T::ID8(10),
+            'id_induksi'   => T::ID(10),
             'nama_induksi' => T::TEXT(),
         ],
         'id_induksi',

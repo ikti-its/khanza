@@ -9,14 +9,16 @@ final class RefMetodeTransferModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefMetodeTransferDatabase(),
             'REFS',
             'operasi',
             'ref_metode_transfer',
             'id_metode',
             [
-                'id_metode' => V::TODO(),
-                'nama_metode' => V::TODO(),
+                'id_metode'   => V::DEFAULT(),
+                'nama_metode' => V::DEFAULT(),
             ],
+            []
         );
     }
 }

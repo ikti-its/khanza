@@ -13,7 +13,7 @@ final class RefAngkaAsaDatabase extends DatabaseTemplate
         'operasi',
         'ref_angka_asa',
         [
-            'id_asa'   => T::ID8(10),
+            'id_asa'   => T::ID(10),
             'nama_asa' => T::TEXT(),
         ],
         'id_asa',

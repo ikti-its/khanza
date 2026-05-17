@@ -13,7 +13,7 @@ final class RefHubunganKeluargaDatabase extends DatabaseTemplate
         'operasi',
         'ref_hubungan_keluarga',
         [
-            'id_hubungan_keluarga' => T::ID8(15),
+            'id_hubungan_keluarga' => T::ID(15),
             'nama_hubungan'        => T::TEXT(),
         ],
         'id_hubungan_keluarga',

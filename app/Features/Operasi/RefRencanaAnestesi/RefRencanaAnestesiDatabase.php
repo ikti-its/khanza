@@ -13,7 +13,7 @@ final class RefRencanaAnestesiDatabase extends DatabaseTemplate
         'operasi',
         'ref_rencana_anestesi',
         [
-            'id_rencana_anestesi' => T::ID8(10),
+            'id_rencana_anestesi' => T::ID(10),
             'nama_rencana'        => T::TEXT(),
         ],
         'id_rencana_anestesi',

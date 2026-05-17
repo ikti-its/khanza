@@ -10,25 +10,30 @@ final class CatatanPaskaOperasiModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new CatatanPaskaOperasiDatabase(),
             'BASE',
             'operasi',
             'catatan_paska_operasi',
             'id_catatan_paska',
             [
-                'id_catatan_paska' => V::TODO(),
-                'nomor_reg' => V::TODO(),
-                'kode_dokter_bedah' => V::TODO(),
-                'waktu_penilaian' => V::TODO(),
-                'instruksi_rawat' => V::TODO(),
-                'instruksi_cairan' => V::TODO(),
-                'instruksi_antibiotik' => V::TODO(),
-                'instruksi_analgetik' => V::TODO(),
-                'instruksi_medikamentosa' => V::TODO(),
-                'instruksi_diet' => V::TODO(),
-                'instruksi_penunjang' => V::TODO(),
-                'instruksi_transfusi' => V::TODO(),
-                'instruksi_lainnya' => V::TODO(),
+                'id_catatan_paska'        => V::DEFAULT(),
+                'nomor_reg'               => V::DEFAULT(),
+                'kode_dokter_bedah'       => V::DEFAULT(),
+                'waktu_penilaian'         => V::DEFAULT(),
+                'instruksi_rawat'         => V::DEFAULT(),
+                'instruksi_cairan'        => V::DEFAULT(),
+                'instruksi_antibiotik'    => V::DEFAULT(),
+                'instruksi_analgetik'     => V::DEFAULT(),
+                'instruksi_medikamentosa' => V::DEFAULT(),
+                'instruksi_diet'          => V::DEFAULT(),
+                'instruksi_penunjang'     => V::DEFAULT(),
+                'instruksi_transfusi'     => V::DEFAULT(),
+                'instruksi_lainnya'       => V::DEFAULT(),
             ],
+            [
+                'nomor_reg'         => ['nomor_rawat'],
+                'kode_dokter_bedah' => [],
+            ]
         );
     }
 }

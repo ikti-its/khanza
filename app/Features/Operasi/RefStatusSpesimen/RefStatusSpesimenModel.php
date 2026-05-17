@@ -9,14 +9,16 @@ final class RefStatusSpesimenModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefStatusSpesimenDatabase(),
             'REFS',
             'operasi',
             'ref_status_spesimen',
             'id_status_spesimen',
             [
-                'id_status_spesimen' => V::TODO(),
-                'nama_status' => V::TODO(),
+                'id_status_spesimen' => V::DEFAULT(),
+                'nama_status'        => V::DEFAULT(),
             ],
+            []
         );
     }
 }

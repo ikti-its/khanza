@@ -9,14 +9,16 @@ final class RefObatBebasModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefObatBebasDatabase(),
             'REFS',
             'operasi',
             'ref_obat_bebas',
             'id_obat_bebas',
             [
-                'id_obat_bebas' => V::TODO(),
-                'nama_kategori' => V::TODO(),
+                'id_obat_bebas' => V::DEFAULT(),
+                'nama_kategori' => V::DEFAULT(),
             ],
+            []
         );
     }
 }

@@ -10,24 +10,33 @@ final class SkorStewardModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new SkorStewardDatabase(),
             'BASE',
             'operasi',
             'skor_steward',
             'id_skor_steward',
             [
-                'id_skor_steward' => V::TODO(),
-                'nomor_reg' => V::TODO(),
-                'waktu_penilaian' => V::TODO(),
-                'id_petugas' => V::TODO(),
-                'id_dokter_anestesi' => V::TODO(),
-                'skor_kesadaran' => V::TODO(),
-                'skor_respirasi' => V::TODO(),
-                'skor_motorik' => V::TODO(),
-                'total_skor' => V::TODO(),
-                'is_boleh_pindah' => V::TODO(),
-                'catatan_keluar' => V::TODO(),
-                'instruksi_rr' => V::TODO(),
+                'id_skor_steward'       => V::DEFAULT(),
+                'nomor_reg'             => V::DEFAULT(),
+                'waktu_penilaian'       => V::DEFAULT(),
+                'id_petugas'            => V::DEFAULT(),
+                'id_dokter_anestesi'    => V::DEFAULT(),
+                'skor_kesadaran'        => V::DEFAULT(),
+                'skor_respirasi'        => V::DEFAULT(),
+                'skor_motorik'          => V::DEFAULT(),
+                // 'total_skor'            => V::DEFAULT(),
+                'is_boleh_pindah'       => V::DEFAULT(),
+                'catatan_keluar'        => V::DEFAULT(),
+                'instruksi_rr'          => V::DEFAULT(),
             ],
+            [
+                'nomor_reg'          => ['nomor_rawat'],
+                'id_petugas'         => [],
+                'id_dokter_anestesi' => [],
+                'skor_kesadaran'     => ['nama_skala', 'nilai'],
+                'skor_respirasi'     => ['nama_skala', 'nilai'],
+                'skor_motorik'       => ['nama_skala', 'nilai'], 
+            ]
         );
     }
 }

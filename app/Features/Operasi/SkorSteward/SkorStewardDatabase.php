@@ -13,15 +13,15 @@ final class SkorStewardDatabase extends DatabaseTemplate
         'operasi',
         'skor_steward',
         [
-            'id_skor_steward'    => T::ID32(300_000_000),
+            'id_skor_steward'    => T::ID(300_000_000),
             'nomor_reg'          => T::FK_AUTO(),
-            'waktu_penilaian'    => T::DATETIME(),
+            'waktu_penilaian'    => T::DTIME(),
             'id_petugas'         => T::FK_AUTO(),
             'id_dokter_anestesi' => T::FK_AUTO(),
             'skor_kesadaran'     => T::FK_AUTO(),
             'skor_respirasi'     => T::FK_AUTO(),
             'skor_motorik'       => T::FK_AUTO(),
-            'total_skor'         => T::INT8(),
+            // 'total_skor'         => T::INT8(),
             'is_boleh_pindah'    => T::BOOL(),
             'catatan_keluar'     => T::TEXT(),
             'instruksi_rr'       => T::TEXT(),
@@ -29,7 +29,11 @@ final class SkorStewardDatabase extends DatabaseTemplate
         'id_skor_steward',
         [],
         [
-            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
+            [
+                ['nomor_reg'],
+                \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class,
+                ['nomor_reg'],
+            ],
             [
                 ['id_petugas'],
                 \App\Features\Role\Petugas\PetugasDatabase::class,

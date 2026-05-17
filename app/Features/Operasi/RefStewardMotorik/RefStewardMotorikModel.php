@@ -9,15 +9,17 @@ final class RefStewardMotorikModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefStewardMotorikDatabase(),
             'REFS',
             'operasi',
             'ref_steward_motorik',
             'id_motorik',
             [
-                'id_motorik' => V::TODO(),
-                'nama_skala' => V::TODO(),
-                'nilai' => V::TODO(),
+                'id_motorik' => V::DEFAULT(),
+                'nama_skala' => V::DEFAULT(),
+                'nilai'      => V::DEFAULT(),
             ],
+            []
         );
     }
 }

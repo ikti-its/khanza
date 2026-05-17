@@ -10,23 +10,28 @@ final class PengkajianPreopModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new PengkajianPreopDatabase(),
             'BASE',
             'operasi',
             'pengkajian_preop',
             'id_pengkajian_pre',
             [
-                'id_pengkajian_pre' => V::TODO(),
-                'nomor_reg' => V::TODO(),
-                'kode_dokter_bedah' => V::TODO(),
-                'waktu_pengkajian' => V::TODO(),
-                'ringkasan_klinik' => V::TODO(),
-                'pemeriksaan_fisik' => V::TODO(),
-                'pemeriksaan_diagnostik' => V::TODO(),
-                'diagnosa_pre_operasi' => V::TODO(),
-                'rencana_tindakan' => V::TODO(),
-                'persiapan_khusus' => V::TODO(),
-                'terapi_pre_operasi' => V::TODO(),
+                'id_pengkajian_pre'      => V::DEFAULT(),
+                'nomor_reg'              => V::DEFAULT(),
+                'kode_dokter_bedah'      => V::DEFAULT(),
+                'waktu_pengkajian'       => V::DEFAULT(),
+                'ringkasan_klinik'       => V::DEFAULT(),
+                'pemeriksaan_fisik'      => V::DEFAULT(),
+                'pemeriksaan_diagnostik' => V::DEFAULT(),
+                'diagnosa_pre_operasi'   => V::DEFAULT(),
+                'rencana_tindakan'       => V::DEFAULT(),
+                'persiapan_khusus'       => V::DEFAULT(),
+                'terapi_pre_operasi'     => V::DEFAULT(),
             ],
+            [
+                'nomor_reg'         => [],
+                'kode_dokter_bedah' => [],
+            ]
         );
     }
 }

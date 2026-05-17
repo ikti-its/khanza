@@ -13,7 +13,7 @@ final class RefJenisSedasiDatabase extends DatabaseTemplate
         'operasi',
         'ref_jenis_sedasi',
         [
-            'id_jenis_sedasi' => T::ID8(10),
+            'id_jenis_sedasi' => T::ID(10),
             'nama_sedasi'     => T::TEXT(),
         ],
         'id_jenis_sedasi',

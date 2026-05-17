@@ -13,12 +13,12 @@ final class RefAldretteAktivitasDatabase extends DatabaseTemplate
         'operasi',
         'ref_aldrette_aktivitas',
         [
-            'id_aktivitas' => T::ID8(10),
+            'id_aktivitas' => T::ID(10),
             'nama_skala'   => T::TEXT(),
-            'nilai'        => T::INT8(),
+            'nilai'        => T::VITAL(0, 10),
         ],
         'id_aktivitas',
-        [],
+        ['nilai'],
         [],
         true,
         'aldrette_aktivitas.csv'

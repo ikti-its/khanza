@@ -9,14 +9,16 @@ final class RefKeadaanUmumModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefKeadaanUmumDatabase(),
             'REFS',
             'operasi',
             'ref_keadaan_umum',
             'id_keadaan_umum',
             [
-                'id_keadaan_umum' => V::TODO(),
-                'nama_keadaan' => V::TODO(),
+                'id_keadaan_umum' => V::DEFAULT(),
+                'nama_keadaan'    => V::DEFAULT(),
             ],
+            []
         );
     }
 }

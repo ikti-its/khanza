@@ -13,7 +13,7 @@ final class RefStatusOperasiDatabase extends DatabaseTemplate
         'operasi',
         'ref_status_operasi',
         [
-            'id_status'   => T::ID8(5),
+            'id_status'   => T::ID(5),
             'nama_status' => T::TEXT(),
         ],
         'id_status',

@@ -13,7 +13,7 @@ final class RefWarnaUrineDatabase extends DatabaseTemplate
         'operasi',
         'ref_warna_urine',
         [
-            'id_warna_urine' => T::ID8(10),
+            'id_warna_urine' => T::ID(10),
             'nama_warna'     => T::TEXT(),
         ],
         'id_warna_urine',

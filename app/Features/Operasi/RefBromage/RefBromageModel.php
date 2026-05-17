@@ -9,17 +9,19 @@ final class RefBromageModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefBromageDatabase(),
             'REFS',
             'operasi',
             'ref_bromage',
             'id_bromage',
             [
-                'id_bromage' => V::TODO(),
-                'nama_skala' => V::TODO(),
-                'tingkat_blok' => V::TODO(),
-                'nilai' => V::TODO(),
-                'gambar' => V::TODO(),
+                'id_bromage'   => V::DEFAULT(),
+                'nama_skala'   => V::DEFAULT(),
+                'tingkat_blok' => V::DEFAULT(),
+                'nilai'        => V::DEFAULT(),
+                'gambar'       => V::DEFAULT(),
             ],
+            []
         );
     }
 }

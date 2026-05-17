@@ -10,17 +10,22 @@ final class PermintaanOperasiModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new PermintaanOperasiDatabase(),
             'BASE',
             'operasi',
             'permintaan_operasi',
             'id_permintaan',
             [
-                'id_permintaan' => V::TODO(),
-                'nomor_reg' => V::TODO(),
-                'kode_dokter' => V::TODO(),
-                'tanggal_minta' => V::TODO(),
-                'is_cito' => V::TODO(),
+                'id_permintaan' => V::DEFAULT(),
+                'nomor_reg'     => V::DEFAULT(),
+                'kode_dokter'   => V::DEFAULT(),
+                'tanggal_minta' => V::DEFAULT(),
+                'is_cito'       => V::DEFAULT(),
             ],
+            [
+                'nomor_reg'     => ['nomor_rawat'],
+                'kode_dokter'   => [],
+            ]
         );
     }
 }

@@ -13,8 +13,8 @@ final class RefRuanganOperasiDatabase extends DatabaseTemplate
         'operasi',
         'ref_ruangan_operasi',
         [
-            'id_ruangan'   => T::ID8(5),
-            'kode_ruangan' => T::TEXT(),
+            'id_ruangan'   => T::ID(5),
+            'kode_ruangan' => T::CODE(10),
             'nama_ruangan' => T::TEXT(),
         ],
         'id_ruangan',

@@ -13,9 +13,9 @@ final class SkorBromageDatabase extends DatabaseTemplate
         'operasi',
         'skor_bromage',
         [
-            'id_skor_bromage'    => T::ID32(300_000_000),
+            'id_skor_bromage'    => T::ID(300_000_000),
             'nomor_reg'          => T::FK_AUTO(),
-            'waktu_penilaian'    => T::DATETIME(),
+            'waktu_penilaian'    => T::DTIME(),
             'id_petugas'         => T::FK_AUTO(),
             'id_dokter_anestesi' => T::FK_AUTO(),
             'skor_bromage'       => T::FK_AUTO(),
@@ -26,8 +26,12 @@ final class SkorBromageDatabase extends DatabaseTemplate
         'id_skor_bromage',
         [],
         [
-            // ['nomor_reg', 'sik.registrasi_structure', 'nomor_reg'],
-           [
+            [
+                ['nomor_reg'],
+                \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class,
+                ['nomor_reg'],
+            ],
+            [
                 ['id_petugas'],
                 \App\Features\Role\Petugas\PetugasDatabase::class,
                 ['id_petugas'],

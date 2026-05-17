@@ -13,7 +13,7 @@ final class RefKesiapanAnestesiDatabase extends DatabaseTemplate
         'operasi',
         'ref_kesiapan_anestesi',
         [
-            'id_kesiapan'   => T::ID8(5),
+            'id_kesiapan'   => T::ID(5),
             'nama_kesiapan' => T::TEXT(),
         ],
         'id_kesiapan',

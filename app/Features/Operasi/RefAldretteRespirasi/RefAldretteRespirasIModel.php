@@ -9,15 +9,17 @@ final class RefAldretteRespirasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefAldretteRespirasiDatabase(),
             'REFS',
             'operasi',
             'ref_aldrette_respirasi',
             'id_respirasi',
             [
-                'id_respirasi' => V::TODO(),
-                'nama_skala' => V::TODO(),
-                'nilai' => V::TODO(),
+                'id_respirasi' => V::DEFAULT(),
+                'nama_skala'   => V::DEFAULT(),
+                'nilai'        => V::DEFAULT(),
             ],
+            []
         );
     }
 }

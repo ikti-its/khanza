@@ -10,17 +10,23 @@ final class ChecklistPreOperasiPenunjangModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new ChecklistPreOperasiPenunjangDatabase(),
             'BASE',
             'operasi',
             'checklist_pre_operasi_penunjang',
             'id_penunjang',
             [
-                'id_penunjang' => V::TODO(),
-                'id_checklist' => V::TODO(),
-                'id_jenis_penunjang' => V::TODO(),
-                'id_ketersediaan' => V::TODO(),
-                'keterangan' => V::TODO(),
+                'id_penunjang'       => V::DEFAULT(),
+                'id_checklist'       => V::DEFAULT(),
+                'id_jenis_penunjang' => V::DEFAULT(),
+                'id_ketersediaan'    => V::DEFAULT(),
+                'keterangan'         => V::DEFAULT(),
             ],
+            [
+                'id_checklist'          => [],
+                'id_jenis_penunjang'    => ['nama_jenis'],
+                'id_ketersediaan'       => ['nama_ketersediaan'],
+            ]
         );
     }
 }

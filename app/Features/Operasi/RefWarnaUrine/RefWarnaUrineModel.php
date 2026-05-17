@@ -9,14 +9,16 @@ final class RefWarnaUrineModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefWarnaUrineDatabase(),
             'REFS',
             'operasi',
             'ref_warna_urine',
             'id_warna_urine',
             [
-                'id_warna_urine' => V::TODO(),
-                'nama_warna' => V::TODO(),
+                'id_warna_urine' => V::DEFAULT(),
+                'nama_warna'     => V::DEFAULT(),
             ],
+            []
         );
     }
 }

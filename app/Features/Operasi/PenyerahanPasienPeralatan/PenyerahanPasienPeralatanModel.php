@@ -10,16 +10,21 @@ final class PenyerahanPasienPeralatanModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new PenyerahanPasienPeralatanDatabase(),
             'BASE',
             'operasi',
             'penyerahan_pasien_peralatan',
             'id',
             [
-                'id' => V::TODO(),
-                'id_penyerahan' => V::TODO(),
-                'id_peralatan' => V::TODO(),
-                'keterangan' => V::TODO(),
+                'id'            => V::DEFAULT(),
+                'id_penyerahan' => V::DEFAULT(),
+                'id_peralatan'  => V::DEFAULT(),
+                'keterangan'    => V::DEFAULT(),
             ],
+            [
+                'id_penyerahan'  => [],
+                'id_peralatan'   => ['nama_peralatan'],
+            ]
         );
     }
 }

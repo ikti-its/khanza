@@ -34,7 +34,7 @@ final class SkorAldretteController extends ControllerTemplate
                 [SHOW, REQUIRED, I::NUMBER, 'skor_tekanan_darah', 'Skor Tekanan Darah'],
                 [SHOW, REQUIRED, I::NUMBER, 'skor_kesadaran', 'Skor Kesadaran'],
                 [SHOW, REQUIRED, I::NUMBER, 'skor_warna_kulit', 'Skor Warna Kulit'],
-                [SHOW, REQUIRED, I::NUMBER, 'total_skor', 'Total Skor'],
+                // [SHOW, REQUIRED, I::NUMBER, 'total_skor', 'Total Skor'],
                 [SHOW, REQUIRED, I::SELECT, 'is_boleh_pindah', 'Boleh Pindah'],
                 [SHOW, REQUIRED, I::TEXT, 'catatan_keluar', 'Catatan Keluar'],
                 [SHOW, REQUIRED, I::TEXT, 'instruksi_rr', 'Instruksi RR'],

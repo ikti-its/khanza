@@ -9,15 +9,17 @@ final class RefAldretteWarnaKulitModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefAldretteWarnaKulitDatabase(),
             'REFS',
             'operasi',
             'ref_aldrette_warna_kulit',
             'id_warna',
             [
-                'id_warna' => V::TODO(),
-                'nama_skala' => V::TODO(),
-                'nilai' => V::TODO(),
+                'id_warna'   => V::DEFAULT(),
+                'nama_skala' => V::DEFAULT(),
+                'nilai'      => V::DEFAULT(),
             ],
+            []
         );
     }
 }

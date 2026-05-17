@@ -13,7 +13,7 @@ final class RefKesadaranDatabase extends DatabaseTemplate
         'operasi',
         'ref_kesadaran',
         [
-            'id_kesadaran'   => T::ID8(15),
+            'id_kesadaran'   => T::ID(15),
             'nama_kesadaran' => T::TEXT(),
         ],
         'id_kesadaran',

@@ -9,14 +9,16 @@ final class RefStatusOperasiModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RefStatusOperasiDatabase(),
             'REFS',
             'operasi',
             'ref_status_operasi',
             'id_status',
             [
-                'id_status' => V::TODO(),
-                'nama_status' => V::TODO(),
+                'id_status'   => V::DEFAULT(),
+                'nama_status' => V::DEFAULT(),
             ],
+            []
         );
     }
 }
