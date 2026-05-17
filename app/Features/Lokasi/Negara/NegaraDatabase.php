@@ -13,9 +13,9 @@ final class NegaraDatabase extends DatabaseTemplate
             'lokasi',
             'negara',
             [
-                'id_negara'    => T::ID16(200),
-                'nama_negara'  => T::TEXT(),
-                'kode_telepon' => T::INT16(),
+                'id_negara'    => T::ID(200),
+                'nama_negara'  => T::NAME(30),
+                'kode_telepon' => T::CODE(3),
             ],
             'id_negara',
             ['nama_negara'],

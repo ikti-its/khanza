@@ -35,12 +35,12 @@ final class DesaDatabase extends DatabaseTemplate
             'lokasi',
             'desa',
             [
-                'id_desa'       => T::ID32(90000),        
+                'id_desa'       => T::ID(90000),        
                 'id_provinsi'   => T::FK_AUTO(),
                 'id_kota_lokal' => T::FK_AUTO(),
                 'id_kec_lokal'  => T::FK_AUTO(),
-                'id_desa_lokal' => T::INT16(),
-                'nama_desa'     => T::TEXT(),
+                'id_desa_lokal' => T::INT(1001, 2999),
+                'nama_desa'     => T::NAME(30),
             ],
             'id_desa',
             [

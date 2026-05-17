@@ -36,8 +36,8 @@ final class PulauDatabase extends DatabaseTemplate
             'lokasi',
             'pulau',
             [
-                'id_pulau'   => T::ID8(9),
-                'nama_pulau' => T::TEXT(),
+                'id_pulau'   => T::ID(9),
+                'nama_pulau' => T::NAME(20),
             ],
             'id_pulau',
             [],

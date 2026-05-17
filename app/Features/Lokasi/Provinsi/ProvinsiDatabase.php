@@ -29,9 +29,9 @@ final class ProvinsiDatabase extends DatabaseTemplate
             'provinsi',
             [
                 'id_pulau'      => T::FK_AUTO(),
-                'id_provinsi'   => T::ID8(38),
-                'kode_provinsi' => T::TEXT(),
-                'nama_provinsi' => T::TEXT(),
+                'id_provinsi'   => T::ID(38),
+                'kode_provinsi' => T::CODE(2),
+                'nama_provinsi' => T::NAME(30),
             ],
             'id_provinsi',
             [

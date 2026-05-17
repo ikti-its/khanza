@@ -32,11 +32,11 @@ final class KecamatanDatabase extends DatabaseTemplate
             'lokasi',
             'kecamatan',
             [
-                'id_kecamatan'   => T::ID16(8000),
+                'id_kecamatan'   => T::ID(8000),
                 'id_provinsi'    => T::FK_AUTO(),
                 'id_kota_lokal'  => T::FK_AUTO(),
-                'id_kec_lokal'   => T::INT8(),
-                'nama_kecamatan' => T::TEXT(),
+                'id_kec_lokal'   => T::INT(11,99),
+                'nama_kecamatan' => T::NAME(30),
             ],
             'id_kecamatan',
             [
