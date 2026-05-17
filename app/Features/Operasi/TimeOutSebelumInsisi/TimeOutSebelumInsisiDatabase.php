@@ -24,7 +24,7 @@ final class TimeOutSebelumInsisiDatabase extends DatabaseTemplate
             'is_tindakan_sesuai'      => T::BOOL(),
             'is_area_insisi_sesuai'   => T::BOOL(),
             'id_penandaan_area'       => T::FK_AUTO(),
-            'perkiraan_waktu_jam'     => T::F32(),
+            // 'perkiraan_waktu_jam'     => T::F32(),
             'is_antibiotik'           => T::BOOL(),
             'nama_antibiotik'         => T::TEXT(),
             'waktu_antibiotik'        => T::TIME(),

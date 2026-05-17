@@ -16,7 +16,7 @@ final class ChecklistPostopDrainDatabase extends DatabaseTemplate
             'id_drain'           => T::ID(300_000_000),
             'id_checklist_post'  => T::FK_AUTO(),
             'id_ketersediaan'    => T::FK_AUTO(),
-            'jumlah'             => T::INT32(),
+            // 'jumlah'             => T::INT32(),
             'letak'              => T::TEXT(),
             'warna'              => T::TEXT(),
         ],

@@ -26,7 +26,7 @@ final class ChecklistPostopDatabase extends DatabaseTemplate
             'id_kateter_urine'     => T::FK_AUTO(),
             'waktu_pasang_kateter' => T::TIME(),
             'id_warna_urine'       => T::FK_AUTO(),
-            'jumlah_urine_cc'      => T::INT32(),
+            // 'jumlah_urine_cc'      => T::INT32(),
             'catatan_luka_operasi' => T::TEXT(),
             'id_petugas_anestesi'  => T::FK_AUTO(),
             'id_petugas_ok'        => T::FK_AUTO(),

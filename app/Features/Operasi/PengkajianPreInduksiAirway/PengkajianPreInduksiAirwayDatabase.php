@@ -18,7 +18,7 @@ final class PengkajianPreInduksiAirwayDatabase extends DatabaseTemplate
             'id_jenis_airway'   => T::FK_AUTO(),
             'nomor'             => T::TEXT()->nullable(),
             'jenis'             => T::TEXT()->nullable(),
-            'fiksasi_cm'        => T::INT8()->nullable(),
+            // 'fiksasi_cm'        => T::INT8()->nullable(),
             'keterangan'        => T::TEXT()->nullable(),
         ],
         'id_airway',
