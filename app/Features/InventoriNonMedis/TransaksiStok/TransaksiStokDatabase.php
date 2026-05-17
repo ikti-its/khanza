@@ -16,7 +16,7 @@ final class TransaksiStokDatabase extends DatabaseTemplate
             [
                 'id_transaksi'   => T::ID(1_000_000),
                 'id_barang'      => T::FK_AUTO(),
-                'tipe_transaksi' => T::RECORD(),
+                'tipe_transaksi' => T::RECORD(12),
                 'qty'            => T::QTY(0, 100_000),
                 'tanggal'        => T::DTIME(),
                 'id_pengadaan'   => T::FK_AUTO(),

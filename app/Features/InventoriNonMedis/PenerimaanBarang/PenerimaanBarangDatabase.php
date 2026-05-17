@@ -17,7 +17,7 @@ final class PenerimaanBarangDatabase extends DatabaseTemplate
                 'id_penerimaan' => T::ID(10_000),
                 'id_pengadaan'  => T::FK_AUTO(),
                 'tanggal'       => T::DTIME(),
-                'status'        => T::RECORD(),
+                'status'        => T::RECORD(12),
                 'catatan'       => T::NOTE()->nullable(),
             ],
             'id_penerimaan',

@@ -16,7 +16,7 @@ final class StokOpnameDatabase extends DatabaseTemplate
             [
                 'id_opname'      => T::ID(10_000_000),
                 'tanggal'        => T::DTIME(),
-                'status'         => T::RECORD(),
+                'status'         => T::RECORD(12),
                 'catatan'        => T::NOTE()->nullable(),
                 'catatan_atasan' => T::NOTE()->nullable(),
             ],
