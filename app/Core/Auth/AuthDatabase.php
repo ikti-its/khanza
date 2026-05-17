@@ -13,7 +13,7 @@ final class AuthDatabase extends DatabaseTemplate
             'auth',
             'akun',
             [
-                'id'       => T::ID(1<<128),
+                'id'       => T::ID(1_000_000),
                 'email'    => T::TEXT(),
                 'password' => T::TEXT(),
                 'role'     => T::QTY(1,6000),
