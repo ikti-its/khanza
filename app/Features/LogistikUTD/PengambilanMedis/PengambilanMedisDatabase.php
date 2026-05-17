@@ -32,6 +32,8 @@ final class PengambilanMedisDatabase extends DatabaseTemplate
                     'id_barang'
                 ],
             ],
+            false,
+            'pengambilan_medis.csv'
         );
     }
 }
