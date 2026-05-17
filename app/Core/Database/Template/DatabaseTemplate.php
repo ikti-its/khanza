@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Database;
+namespace App\Core\Database\Template;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
 use App\Core\Database\Template\SemanticType as ST;
