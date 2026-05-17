@@ -14,19 +14,13 @@ final class KasusReaktifDatabase extends DatabaseTemplate
             'kasus_reaktif',
             [
                 'id_kasus'           => T::ID(5_000_000),
-                'id_kunjungan'       => T::FK_AUTO(),
                 'id_uji_saring'      => T::FK_AUTO(),
                 'tanggal_ditetapkan' => T::DATE(),
                 'id_status_kasus'    => T::FK_AUTO(),
             ],
             'id_kasus',
-            ['id_kunjungan'],
+            ['id_uji_saring'],
             [
-                [
-                    'id_kunjungan', 
-                    \App\Features\Donor\Kunjungan\KunjunganDatabase::class, 
-                    'id_kunjungan'
-                ],
                 [
                     'id_uji_saring', 
                     \App\Features\UjiDarah\HasilUjiSaring\HasilUjiSaringDatabase::class, 

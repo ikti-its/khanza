@@ -9,15 +9,18 @@ final class KonselingModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new KonselingDatabase(),
             'BASE',
             'penanganan_donor',
             'konseling',
             'id_konseling',
             [
-                'id_konseling' => V::TODO(),
-                'id_kasus' => V::TODO(),
-                'tanggal_konseling' => V::TODO(),
-                'id_petugas' => V::TODO()
+                'id_konseling'      => V::DEFAULT(),
+                'tanggal_konseling' => V::DEFAULT()
+            ],
+            [
+                'id_kasus'      => [''],
+                'id_petugas'    => ['']
             ],
         );
     }

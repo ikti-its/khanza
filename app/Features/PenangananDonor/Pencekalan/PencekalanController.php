@@ -31,7 +31,6 @@ final class PencekalanController extends ControllerTemplate
                 [HIDE, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
                 [HIDE, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
                 [SHOW, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
-                [SHOW, REQUIRED, I::SELECT, 'id_status_pencekalan', 'ID Status Pencekalan'],
             ],
         );
     }   

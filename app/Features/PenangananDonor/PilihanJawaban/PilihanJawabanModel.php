@@ -9,14 +9,16 @@ final class PilihanJawabanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PilihanJawabanDatabase(),
             'REFS',
             'penanganan_donor',
             'pilihan_jawaban',
             'id_pilihan',
             [
-                'id_pilihan' => V::TODO(),
-                'nama_pilihan' => V::TODO()
+                'id_pilihan'    => V::DEFAULT(),
+                'nama_pilihan'  => V::DEFAULT()
             ],
+            [],
         );
     }
 }

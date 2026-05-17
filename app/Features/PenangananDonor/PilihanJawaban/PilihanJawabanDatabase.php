@@ -13,8 +13,8 @@ final class PilihanJawabanDatabase extends DatabaseTemplate
             'penanganan_donor',
             'pilihan_jawaban',
             [
-                'id_pilihan'   => T::ID(2),
-                'nama_pilihan' => T::TEXT(),
+                'id_pilihan'   => T::ID(3),
+                'nama_pilihan' => T::NAME(15),
             ],
             'id_pilihan',
             ['nama_pilihan'],

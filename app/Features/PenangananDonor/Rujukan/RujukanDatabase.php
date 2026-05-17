@@ -15,13 +15,13 @@ final class RujukanDatabase extends DatabaseTemplate
             [
                 'id_rujukan'            => T::ID(5_000_000),
                 'id_kasus'              => T::FK_AUTO(),
-                'nomor_surat'           => T::TEXT(),
+                'nomor_rujukan'         => T::RECORD(20),
                 'tanggal_rujukan'       => T::DATE(),
                 'id_fasyankes'          => T::FK_AUTO(),
                 'id_petugas_perujuk'    => T::FK_AUTO(),
             ],
             'id_rujukan',
-            ['nomor_surat'],
+            ['nomor_rujukan'],
             [
                 [
                     'id_kasus', 

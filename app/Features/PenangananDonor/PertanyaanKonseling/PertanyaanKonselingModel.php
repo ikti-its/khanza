@@ -9,14 +9,16 @@ final class PertanyaanKonselingModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PertanyaanKonselingDatabase(),
             'REFS',
             'penanganan_donor',
             'pertanyaan_konseling',
             'id_pertanyaan',
             [
-                'id_pertanyaan' => V::TODO(),
-                'teks_pertanyaan' => V::TODO()
+                'id_pertanyaan'     => V::DEFAULT(),
+                'teks_pertanyaan'   => V::DEFAULT()
             ],
+            [],
         );
     }
 }

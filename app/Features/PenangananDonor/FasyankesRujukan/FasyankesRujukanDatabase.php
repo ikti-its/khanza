@@ -14,9 +14,9 @@ final class FasyankesRujukanDatabase extends DatabaseTemplate
             'fasyankes_rujukan',
             [
                 'id_fasyankes'   => T::ID(5_000),
-                'nama_fasyankes' => T::TEXT(),
+                'nama_fasyankes' => T::NAME(100),
                 'id_alamat'      => T::FK_AUTO(),
-                'kode_pos'       => T::TEXT(),
+                'kode_pos'       => T::CODE(5),
             ],
             'id_fasyankes',
             [],

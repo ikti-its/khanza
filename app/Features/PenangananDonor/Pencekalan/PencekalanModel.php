@@ -9,20 +9,22 @@ final class PencekalanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PencekalanDatabase(),
             'BASE',
             'penanganan_donor',
             'pencekalan',
             'id_pencekalan',
             [
-                'id_pencekalan' => V::TODO(),
-                'id_kunjungan' => V::TODO(),
-                'id_jenis_pencekalan' => V::TODO(),
-                'tanggal_mulai' => V::TODO(),
-                'tanggal_selesai' => V::TODO(),
-                'id_shift' => V::TODO(),
-                'id_petugas' => V::TODO(),
-                'keterangan' => V::TODO(),
-                'id_status_pencekalan' => V::TODO()
+                'id_pencekalan'     => V::DEFAULT(),
+                'tanggal_mulai'     => V::DEFAULT(),
+                'tanggal_selesai'   => V::DEFAULT(),
+                'keterangan'        => V::DEFAULT()
+            ],
+            [
+                'id_kunjungan'          => ['nomor_kunjungan'],
+                'id_jenis_pencekalan'   => ['nama_jenis_pencekalan'],
+                'id_shift'              => ['nama_shift'],
+                'id_petugas'            => ['']
             ],
         );
     }

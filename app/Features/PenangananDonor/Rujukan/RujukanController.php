@@ -25,7 +25,7 @@ final class RujukanController extends ControllerTemplate
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rujukan', 'ID Rujukan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
-                [SHOW, REQUIRED, I::TEXT, 'nomor_surat', 'Nomor Surat'],
+                [SHOW, REQUIRED, I::TEXT, 'nomor_rujukan', 'Nomor Rujukan'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_rujukan', 'Tanggal Rujukan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_fasyankes', 'ID Fasyankes Tujuan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_petugas_perujuk', 'ID Petugas Perujuk'],

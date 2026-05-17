@@ -13,8 +13,8 @@ final class JenisPencekalanDatabase extends DatabaseTemplate
             'penanganan_donor',
             'jenis_pencekalan',
             [
-                'id_jenis_pencekalan'   => T::ID(2),
-                'nama_jenis_pencekalan' => T::TEXT(),
+                'id_jenis_pencekalan'   => T::ID(3),
+                'nama_jenis_pencekalan' => T::NAME(20),
             ],
             'id_jenis_pencekalan',
             ['nama_jenis_pencekalan'],

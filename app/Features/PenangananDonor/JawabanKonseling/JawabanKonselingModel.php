@@ -9,15 +9,18 @@ final class JawabanKonselingModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new JawabanKonselingDatabase(),
             'BASE',
             'penanganan_donor',
             'jawaban_konseling',
             'id_jawaban',
             [
-                'id_jawaban' => V::TODO(),
-                'id_konseling' => V::TODO(),
-                'id_pertanyaan' => V::TODO(),
-                'id_pilihan' => V::TODO()
+                'id_jawaban'    => V::DEFAULT()
+            ],
+            [
+                'id_konseling'  => ['tanggal_konseling'],
+                'id_pertanyaan' => ['teks_pertanyaan'],
+                'id_pilihan'    => ['nama_pilihan']
             ],
         );
     }

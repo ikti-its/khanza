@@ -9,17 +9,20 @@ final class RujukanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new RujukanDatabase(),
             'BASE',
             'penanganan_donor',
             'rujukan',
             'id_rujukan',
             [
-                'id_rujukan' => V::TODO(),
-                'id_kasus' => V::TODO(),
-                'nomor_surat' => V::TODO(),
-                'tanggal_rujukan' => V::TODO(),
-                'id_fasyankes' => V::TODO(),
-                'id_petugas_perujuk' => V::TODO()
+                'id_rujukan'        => V::DEFAULT(),
+                'nomor_rujukan'     => V::DEFAULT(),
+                'tanggal_rujukan'   => V::DEFAULT()
+            ],
+            [
+                'id_kasus'              => [''],
+                'id_fasyankes'          => ['nama_fasyankes', 'kode_pos'],
+                'id_petugas_perujuk'    => ['']
             ],
         );
     }

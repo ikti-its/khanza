@@ -9,16 +9,18 @@ final class KasusReaktifModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new KasusReaktifDatabase(),
             'BASE',
             'penanganan_donor',
             'kasus_reaktif',
             'id_kasus',
             [
-                'id_kasus' => V::TODO(),
-                'id_kunjungan' => V::TODO(),
-                'id_uji_saring' => V::TODO(),
-                'tanggal_ditetapkan' => V::TODO(),
-                'id_status_kasus' => V::TODO()
+                'id_kasus'              => V::DEFAULT(),
+                'tanggal_ditetapkan'    => V::DEFAULT()
+            ],
+            [
+                'id_uji_saring'     => [''],
+                'id_status_kasus'   => ['nama_status_kasus']
             ],
         );
     }

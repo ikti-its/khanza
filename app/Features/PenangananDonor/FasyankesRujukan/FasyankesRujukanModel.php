@@ -9,15 +9,18 @@ final class FasyankesRujukanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new FasyankesRujukanDatabase(),
             'BASE',
             'penanganan_donor',
             'fasyankes_rujukan',
             'id_fasyankes',
             [
-                'id_fasyankes' => V::TODO(),
-                'nama_fasyankes' => V::TODO(),
-                'id_alamat' => V::TODO(),
-                'kode_pos' => V::TODO()
+                'id_fasyankes'      => V::DEFAULT(),
+                'nama_fasyankes'    => V::DEFAULT(),
+                'kode_pos'          => V::DEFAULT()
+            ],
+            [
+                'id_alamat' => ['alamat_lengkap']
             ],
         );
     }

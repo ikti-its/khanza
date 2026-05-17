@@ -20,8 +20,7 @@ final class PencekalanDatabase extends DatabaseTemplate
                 'tanggal_selesai'      => T::DATE()->nullable(),
                 'id_shift'             => T::FK_AUTO(),
                 'id_petugas'           => T::FK_AUTO(),
-                'keterangan'           => T::TEXT(),
-                'id_status_pencekalan' => T::FK_AUTO(),
+                'keterangan'           => T::NOTE(),
             ],
             'id_pencekalan',
             ['id_kunjungan'],
@@ -45,11 +44,6 @@ final class PencekalanDatabase extends DatabaseTemplate
                     'id_petugas', 
                     \App\Features\Role\Petugas\PetugasDatabase::class, 
                     'id_petugas'
-                ],
-                [
-                    'id_status_pencekalan', 
-                    \App\Features\PenangananDonor\StatusPencekalan\StatusPencekalanDatabase::class, 
-                    'id_status_pencekalan'
                 ],
             ],
             false,

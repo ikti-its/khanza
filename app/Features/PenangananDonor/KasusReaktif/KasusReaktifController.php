@@ -24,7 +24,6 @@ final class KasusReaktifController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_kasus', 'ID Kasus'],
-                [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_uji_saring', 'ID Uji Saring'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal_ditetapkan', 'Tanggal Ditetapkan'],
                 [SHOW, REQUIRED, I::SELECT, 'id_status_kasus', 'ID Status Kasus'],
