@@ -15,7 +15,7 @@ final class RefAldretteTekananDarahDatabase extends DatabaseTemplate
         [
             'id_td'      => T::ID(10),
             'nama_skala'   => T::TEXT(),
-            'nilai'        => T::VITAL(0, 10),
+            'nilai'        => T::SCORE(),
         ],
         'id_td',
         ['nilai'],

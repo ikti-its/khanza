@@ -15,7 +15,7 @@ final class RefStewardKesadaranDatabase extends DatabaseTemplate
         [
             'id_kesadaran' => T::ID(5),
             'nama_skala'   => T::TEXT(),
-            'nilai'        => T::VITAL(0, 10),
+            'nilai'        => T::SCORE(),
         ],
         'id_kesadaran',
         [],

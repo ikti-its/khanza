@@ -15,7 +15,7 @@ final class RefAldretteKesadaranDatabase extends DatabaseTemplate
         [
             'id_kesadaran' => T::ID(10),
             'nama_skala'   => T::TEXT(),
-            'nilai'        => T::VITAL(0, 10),
+            'nilai'        => T::SCORE(),
         ],
         'id_kesadaran',
         ['nilai'],

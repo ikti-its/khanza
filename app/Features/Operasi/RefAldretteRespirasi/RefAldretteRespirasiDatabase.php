@@ -15,7 +15,7 @@ final class RefAldretteRespirasiDatabase extends DatabaseTemplate
         [
             'id_respirasi' => T::ID(10),
             'nama_skala'   => T::TEXT(),
-            'nilai'        => T::VITAL(0, 10),
+            'nilai'        => T::SCORE(),
         ],
         'id_respirasi',
         ['nilai'],

@@ -15,7 +15,7 @@ final class RefStewardMotorikDatabase extends DatabaseTemplate
         [
             'id_motorik'  => T::ID(5),
             'nama_skala'  => T::TEXT(),
-            'nilai'       => T::VITAL(0, 10),
+            'nilai'        => T::SCORE(),,
         ],
         'id_motorik',
         [],
