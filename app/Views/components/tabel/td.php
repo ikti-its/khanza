@@ -21,7 +21,12 @@
         if($modul_path === '/resepobat' && $kolom[$i] !== 'validasi'){
             echo view('components/tabel/td/indeks_resep_obat', $data);
             continue;
-        } 
+        }
+        if($modul_path === '/uji-darah/hasil-uji-saring' && in_array($kolom[$i], ['hbsag', 'hcv', 'hiv', 'sifilis', 'malaria'])) {
+            $data['is_lab'] = true;
+            echo view('components/tabel/td/bool', $data);
+            continue;
+        }
 
         echo view('components/tabel/td/' . $jenis[$i], $data);
     }
