@@ -12,7 +12,7 @@ final class GelarDatabase extends DatabaseTemplate
             'pendidikan',
             'gelar',
             [
-                'id_gelar'   => T::ID8(100),
+                'id_gelar'   => T::ID(100),
                 'nama_gelar' => T::TEXT(),
             ],
             'id_gelar',

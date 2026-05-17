@@ -12,7 +12,7 @@ final class SekolahDatabase extends DatabaseTemplate
             'pendidikan',
             'sekolah',
             [
-                'id_sekolah'   => T::ID32(80_000),
+                'id_sekolah'   => T::ID(80_000),
                 'nama_sekolah' => T::TEXT(),
                 'jenis_id'     => T::FK_AUTO(),
                 'alamat_id'    => T::FK_AUTO(),
