@@ -161,7 +161,7 @@ class DatabaseTemplate extends Migration
             if(is_string($fields))     $fields     = [$fields];
             foreach($fields as $field){
                 $field_def = $this->fields[$field];
-                Assert::True($field_def === ST::FK_AUTO()->definition(),
+                Assert::True($field_def['type'] === ST::FK_AUTO()->definition()['type'],
                     'Foreign key field must be of type T::FK_AUTO'.
                     "Schema : $this->schema, table : $this->table");
             }
