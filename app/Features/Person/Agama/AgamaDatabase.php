@@ -12,8 +12,8 @@ final class AgamaDatabase extends DatabaseTemplate
             'person',
             'agama',
             [
-                'id_agama'   => T::ID8(7),
-                'nama_agama' => T::NAME(),
+                'id_agama'   => T::ID(7),
+                'nama_agama' => T::NAME(10),
             ],
             'id_agama',
             ['nama_agama'],
