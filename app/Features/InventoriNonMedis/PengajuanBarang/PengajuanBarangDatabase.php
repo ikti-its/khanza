@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PengajuanBarang;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PengajuanBarangDatabase extends DatabaseTemplate

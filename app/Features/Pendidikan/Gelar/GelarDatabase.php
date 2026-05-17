@@ -2,7 +2,7 @@
 
 namespace App\Features\Pendidikan\Gelar;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 final class GelarDatabase extends DatabaseTemplate

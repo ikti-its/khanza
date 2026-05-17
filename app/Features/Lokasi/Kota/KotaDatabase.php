@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Lokasi\Kota;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 /*  Dalam 1 provinsi terdapat 5 atau lebih kota/kabupaten

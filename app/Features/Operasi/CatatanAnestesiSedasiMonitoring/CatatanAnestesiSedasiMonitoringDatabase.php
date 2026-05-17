@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Operasi\CatatanAnestesiSedasiMonitoring;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     
 final class CatatanAnestesiSedasiMonitoringDatabase extends DatabaseTemplate

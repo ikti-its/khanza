@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Lokasi\Provinsi;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 /*

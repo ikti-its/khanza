@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Lokasi\Kecamatan;
 
-use App\Core\Database\DatabaseTemplate;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 /*  Dalam 1 kota/kabupaten terdapat 1 atau lebih kecamatan
