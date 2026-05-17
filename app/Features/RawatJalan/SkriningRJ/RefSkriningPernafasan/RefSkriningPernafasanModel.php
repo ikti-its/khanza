@@ -10,14 +10,16 @@ final class RefSkriningPernafasanModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new RefSkriningPernafasanDatabase(),
             'REFS',
             'skrining_rj',
             'ref_skrining_pernafasan',
             'id_pernafasan',
             [
-                'id_pernafasan' => V::TODO(),
-                'pernafasan' => V::TODO(),
+                'id_pernafasan' => V::DEFAULT(),
+                'pernafasan'    => V::DEFAULT(),
             ],
+            []
         );
     }
 }

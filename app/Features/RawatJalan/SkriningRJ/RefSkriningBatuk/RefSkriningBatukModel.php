@@ -10,14 +10,16 @@ final class RefSkriningBatukModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new RefSkriningBatukDatabase(),
             'REFS',
             'skrining_rj',
             'ref_skrining_batuk',
             'id_batuk',
             [
-                'id_batuk' => V::TODO(),
-                'kategori_batuk' => V::TODO(),
+                'id_batuk'       => V::DEFAULT(),
+                'kategori_batuk' => V::DEFAULT(),
             ],
+            []
         );
     }
 }

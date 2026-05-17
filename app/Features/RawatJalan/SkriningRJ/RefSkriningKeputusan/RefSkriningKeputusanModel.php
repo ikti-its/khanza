@@ -10,14 +10,16 @@ final class RefSkriningKeputusanModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new RefSkriningKeputusanDatabase(),
             'REFS',
             'skrining_rj',
             'ref_skrining_keputusan',
             'id_keputusan',
             [
-                'id_keputusan' => V::TODO(),
-                'skrining_keputusan' => V::TODO(),
+                'id_keputusan'       => V::DEFAULT(),
+                'skrining_keputusan' => V::DEFAULT(),
             ],
+            []
         );
     }
 }

@@ -10,14 +10,16 @@ final class RefSkriningSkalaNyeriModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new RefSkriningSkalaNyeriDatabase(),
             'REFS',
             'skrining_rj',
             'ref_skrining_skala_nyeri',
             'id_skala_nyeri',
             [
-                'id_skala_nyeri' => V::TODO(),
-                'skala_nyeri' => V::TODO(),
+                'id_skala_nyeri' => V::DEFAULT(),
+                'skala_nyeri'    => V::DEFAULT(),
             ],
+            []
         );
     }
 }
