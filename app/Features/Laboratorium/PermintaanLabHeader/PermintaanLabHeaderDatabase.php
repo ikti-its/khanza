@@ -20,7 +20,7 @@ final class PermintaanLabHeaderDatabase extends DatabaseTemplate
                 'kode_dokter_perujuk'  => T::FK_AUTO(),
                 'tgl_permintaan'       => T::DTIME(),
                 'indikasi_klinis'      => T::TEXT(),
-                'informasi_tambahan'   => T::TEXT(),
+                'informasi_tambahan'   => T::NOTE(),
                 'id_status_permintaan' => T::FK_AUTO(),
             ],
             'id_permintaan',

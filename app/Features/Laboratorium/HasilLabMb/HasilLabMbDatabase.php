@@ -24,7 +24,7 @@ final class HasilLabMbDatabase extends DatabaseTemplate
                 'id_item_pemeriksaan'      => T::FK_AUTO(),
                 'id_parameter_pemeriksaan' => T::FK_AUTO(),
                 'nilai_hasil'              => T::TEXT(),
-                'keterangan_hasil'         => T::TEXT(),
+                'keterangan_hasil'         => T::NOTE(),
             ],
             'id_hasil_mb',
             [],
