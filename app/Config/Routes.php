@@ -841,19 +841,17 @@ $features = [
     ]],
     ['Donor', 'donor/', [
         ['HasilAnamnesis', 'hasil-anamnesis'],
+        ['JenisBag', 'jenis-bag'],
         ['JenisDonor', 'jenis-donor'],
         ['Kunjungan', 'kunjungan'],
         ['LokasiPengambilanDarah', 'lokasi-pengambilan-darah'],
         ['PengambilanDarah', 'pengambilan-darah'],
         ['SkriningDonor', 'skrining-donor'],
-        ['StatusKunjungan', 'status-kunjungan'],
-        ['StatusPendonor', 'status-pendonor']
+        ['StatusPengambilan', 'status-pengambilan']
     ]],
     ['InventoriDarah', 'inventaris-darah/', [
-        ['JenisBag', 'jenis-bag'],
-        ['KantongDarah', 'kantong-darah'],
         ['PemisahanKomponen', 'pemisahan-komponen'],
-        ['StatusKantong', 'status-kantong'],
+        ['PemisahanKomponenDetail', 'pemisahan-komponen-detail'],
         ['StatusStok', 'status-stok'],
         ['StokDarah', 'stok-darah'],
         ['SumberDarah', 'sumber-darah'],
@@ -931,10 +929,8 @@ $features = [
         ['HasilDiagnostik', 'hasil-diagnostik'],
         ['HasilDiagnostikDetail', 'hasil-diagnostik-detail'],
         ['HasilUjiSaring', 'hasil-uji-saring'],
-        ['HasilUjiSaringDetail', 'hasil-uji-saring-detail'],
         ['MetodeUji', 'metode-uji'],
         ['NilaiDiagnostik', 'nilai-diagnostik'],
-        ['NilaiSaring', 'nilai-saring'],
         ['ParameterUji', 'parameter-uji']
     ]],
     ['DistribusiDarah', 'pelayanan-darah/', [
@@ -950,14 +946,12 @@ $features = [
         ['JawabanKonseling', 'jawaban-konseling'],
         ['JenisPencekalan', 'jenis-pencekalan'],
         ['KasusReaktif', 'kasus-reaktif'],
-        ['KasusReaktifDetail', 'kasus-reaktif-detail'],
         ['Konseling', 'konseling'],
         ['Pencekalan', 'pencekalan'],
         ['PertanyaanKonseling', 'pertanyaan-konseling'],
         ['PilihanJawaban', 'pilihan-jawaban'],
         ['Rujukan', 'rujukan'],
-        ['StatusKasus', 'status-kasus'],
-        ['StatusPencekalan', 'status-pencekalan'],
+        ['StatusKasus', 'status-kasus']
     ]],
     ['TriaseUGD', 'triase-ugd/', [
         ['AlasanKedatangan', 'alasan-kedatangan'],

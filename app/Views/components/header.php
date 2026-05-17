@@ -841,17 +841,16 @@
                         ['Skrining Donor', '/skrining-donor', ''],
                         ['Pengambilan Darah', '/pengambilan-darah', ''],
                         ['Hasil Anamnesis', '/hasil-anamnesis', ''],
+                        ['Jenis Bag', '/jenis-bag', ''],
                         ['Jenis Donor', '/jenis-donor', ''],
                         ['Lokasi Pengambilan Darah', '/lokasi-pengambilan-darah', ''],
-                        ['Status Pendonor', '/status-pendonor', ''],
-                        ['Status Kunjungan', '/status-kunjungan', '']
+                        ['Status Pengambilan', '/status-pengambilan', '']
                     ]],
                     ['Inventaris Darah', '', 'inventaris_darah', '/inventaris-darah', $petugasrole, [
-                        ['Kantong Darah', '/kantong-darah', ''],
                         ['Pemisahan Komponen', '/pemisahan-komponen', ''],
+                        ['Pemisahan Komponen Detail', '/pemisahan-komponen-detail', ''],
                         ['Stok Darah', '/stok-darah', ''],
                         ['Status Stok', '/status-stok', ''],
-                        ['Jenis Bag', '/jenis-bag', ''],
                         ['Sumber Darah', '/sumber-darah', ''],
                         ['Tarif Komponen', '/tarif-komponen', '']
                     ]],
@@ -862,12 +861,10 @@
                     ]],
                     ['Uji Darah', '', 'uji_darah', '/uji-darah', $petugasrole, [
                         ['Hasil Uji Saring', '/hasil-uji-saring', ''],
-                        ['Hasil Uji Saring Detail', '/hasil-uji-saring-detail', ''],
                         ['Hasil Diagnostik', '/hasil-diagnostik', ''],
                         ['Hasil Diagnostik Detail', '/hasil-diagnostik-detail', ''],
                         ['Metode Uji', '/metode-uji', ''],
                         ['Parameter Uji', '/parameter-uji', ''],
-                        ['Nilai Saring', '/nilai-saring', ''],
                         ['Nilai Diagnostik', '/nilai-diagnostik', '']
                     ]],
                     ['Pelayanan Darah', '', 'pelayanan_darah', '/pelayanan-darah', $petugasrole, [
@@ -891,18 +888,16 @@
                         ['Pengambilan BHP Non Medis', '/pengambilan-non-medis', '']
                     ]],
                     ['Penanganan Donor', '', 'penanganan_donor', '/penanganan-donor', $petugasrole, [
+                        ['Pencekalan', '/pencekalan', ''],
                         ['Kasus Reaktif', '/kasus-reaktif', ''],
-                        ['Kasus Reaktif Detail', '/kasus-reaktif-detail', ''],
                         ['Konseling', '/konseling', ''],
                         ['Jawaban Konseling', '/jawaban-konseling', ''],
                         ['Rujukan', '/rujukan', ''],
-                        ['Pencekalan', '/pencekalan', ''],
+                        ['Jenis Pencekalan', '/jenis-pencekalan', ''],
                         ['Status Kasus', '/status-kasus', ''],
                         ['Pertanyaan Konseling', '/pertanyaan-konseling', ''],
                         ['Pilihan Jawaban', '/pilihan-jawaban', ''],
-                        ['Fasyankes Rujukan', '/fasyankes-rujukan', ''],
-                        ['Jenis Pencekalan', '/jenis-pencekalan', ''],
-                        ['Status Pencekalan', '/status-pencekalan', '']
+                        ['Fasyankes Rujukan', '/fasyankes-rujukan', '']
                     ]],
                     ['Laboratorium', '', 'laboratorium', '/laboratorium', $petugasrole, [
                         // Permintaan Lab
