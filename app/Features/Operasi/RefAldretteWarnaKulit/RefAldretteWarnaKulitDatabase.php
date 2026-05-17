@@ -15,7 +15,7 @@ final class RefAldretteWarnaKulitDatabase extends DatabaseTemplate
         [
             'id_warna'   => T::ID(10),
             'nama_skala' => T::TEXT(),
-            'nilai'      => T::INT8(),
+            'nilai'      => T::SCORE(),
         ],
         'id_warna',
         [],

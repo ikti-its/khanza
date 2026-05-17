@@ -16,7 +16,7 @@ final class RefBromageDatabase extends DatabaseTemplate
             'id_bromage'   => T::ID(10),
             'nama_skala'   => T::TEXT(),
             'tingkat_blok' => T::TEXT(),
-            'nilai'        => T::INT8(),
+            'nilai'        => T::SCORE(),
             'gambar'       => T::TEXT()->nullable(),
         ],
         'id_bromage',

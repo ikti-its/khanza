@@ -15,7 +15,7 @@ final class RefAldretteAktivitasDatabase extends DatabaseTemplate
         [
             'id_aktivitas' => T::ID(10),
             'nama_skala'   => T::TEXT(),
-            'nilai'        => T::INT8(),
+            'nilai'        => T::SCORE(),
         ],
         'id_aktivitas',
         [],
