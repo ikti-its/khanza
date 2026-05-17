@@ -13,7 +13,7 @@ final class RefIndikasiPindahDatabase extends DatabaseTemplate
         'operasi',
         'ref_indikasi_pindah',
         [
-            'id_indikasi'   => T::ID8(10),
+            'id_indikasi'   => T::ID(10),
             'nama_indikasi' => T::TEXT(),
         ],
         'id_indikasi',

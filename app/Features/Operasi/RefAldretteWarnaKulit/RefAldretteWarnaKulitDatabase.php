@@ -13,7 +13,7 @@ final class RefAldretteWarnaKulitDatabase extends DatabaseTemplate
         'operasi',
         'ref_aldrette_warna_kulit',
         [
-            'id_warna'   => T::ID8(10),
+            'id_warna'   => T::ID(10),
             'nama_skala' => T::TEXT(),
             'nilai'      => T::INT8(),
         ],

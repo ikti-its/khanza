@@ -13,7 +13,7 @@ final class JawabanKonselingDatabase extends DatabaseTemplate
             'penanganan_donor',
             'jawaban_konseling',
             [
-                'id_jawaban'    => T::ID32(30_000_000),
+                'id_jawaban'    => T::ID(30_000_000),
                 'id_konseling'  => T::FK_AUTO(),
                 'id_pertanyaan' => T::FK_AUTO(),
                 'id_pilihan'    => T::FK_AUTO(),

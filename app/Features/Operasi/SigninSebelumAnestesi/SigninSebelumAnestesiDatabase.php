@@ -13,9 +13,9 @@ final class SigninSebelumAnestesiDatabase extends DatabaseTemplate
         'operasi',
         'signin_sebelum_anestesi',
         [
-            'id_signin'                 => T::ID32(300_000_000),
+            'id_signin'                 => T::ID(300_000_000),
             'nomor_reg'                 => T::FK_AUTO(),
-            'waktu_signin'              => T::DATETIME(),
+            'waktu_signin'              => T::DTIME(),
             'sn_cn'                     => T::TEXT(),
             'kode_dokter_bedah'         => T::FK_AUTO(),
             'kode_dokter_anestesi'      => T::FK_AUTO(),

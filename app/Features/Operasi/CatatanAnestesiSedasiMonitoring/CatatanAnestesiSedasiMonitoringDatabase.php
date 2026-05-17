@@ -13,7 +13,7 @@ final class CatatanAnestesiSedasiMonitoringDatabase extends DatabaseTemplate
         'operasi',
         'catatan_anestesi_sedasi_monitoring',
         [
-            'id_monitoring_catatan'     => T::ID32(300_000_000),
+            'id_monitoring_catatan'     => T::ID(300_000_000),
             'id_catatan_anestesi'       => T::FK_AUTO(),
             'id_monitoring'             => T::FK_AUTO(),
             'is_digunakan'              => T::BOOL(),

@@ -13,7 +13,7 @@ final class KonselingDatabase extends DatabaseTemplate
             'penanganan_donor',
             'konseling',
             [
-                'id_konseling'      => T::ID32(5_000_000),
+                'id_konseling'      => T::ID(5_000_000),
                 'id_kasus'          => T::FK_AUTO(),
                 'tanggal_konseling' => T::DATE(),
                 'id_petugas'        => T::FK_AUTO(),

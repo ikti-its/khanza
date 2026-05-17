@@ -13,7 +13,7 @@ final class RefTemplateRadDatabase extends DatabaseTemplate
         'radiologi',
         'ref_template_rad',
         [
-            'id_template'        => T::ID8(100),
+            'id_template'        => T::ID(100),
             'nama_template'      => T::TEXT(),
             'isi_teks_ekspertise'=> T::TEXT(),
         ],

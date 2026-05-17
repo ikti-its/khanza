@@ -13,7 +13,7 @@ final class RefSkriningKesadaranDatabase extends DatabaseTemplate
         'skrining_rj',
         'ref_skrining_kesadaran',
         [
-            'id_kesadaran' => T::ID8(10),
+            'id_kesadaran' => T::ID(10),
             'kesadaran'    => T::TEXT(),
         ],
         'id_kesadaran',

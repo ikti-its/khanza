@@ -13,7 +13,7 @@ final class KasusReaktifDatabase extends DatabaseTemplate
             'penanganan_donor',
             'kasus_reaktif',
             [
-                'id_kasus'           => T::ID32(5_000_000),
+                'id_kasus'           => T::ID(5_000_000),
                 'id_kunjungan'       => T::FK_AUTO(),
                 'id_uji_saring'      => T::FK_AUTO(),
                 'tanggal_ditetapkan' => T::DATE(),

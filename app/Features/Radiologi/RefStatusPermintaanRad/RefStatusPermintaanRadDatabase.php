@@ -13,7 +13,7 @@ final class RefStatusPermintaanRadDatabase extends DatabaseTemplate
         'radiologi',
         'ref_status_permintaan_rad',
         [
-            'id_status'   => T::ID8(10),
+            'id_status'   => T::ID(10),
             'nama_status' => T::TEXT(),
         ],
         'id_status',

@@ -13,9 +13,9 @@ final class TimeOutSebelumInsisiDatabase extends DatabaseTemplate
         'operasi',
         'time_out_sebelum_insisi',
         [
-            'id_timeout'              => T::ID32(300_000_000),
+            'id_timeout'              => T::ID(300_000_000),
             'nomor_reg'               => T::FK_AUTO(),
-            'waktu_timeout'           => T::DATETIME(),
+            'waktu_timeout'           => T::DTIME(),
             'sn_cn'                   => T::TEXT(),
             'kode_dokter_bedah'       => T::FK_AUTO(),
             'kode_dokter_anestesi'    => T::FK_AUTO(),

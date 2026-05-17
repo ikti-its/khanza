@@ -13,7 +13,7 @@ final class RefPosisiPasienDatabase extends DatabaseTemplate
         'operasi',
         'ref_posisi_pasien',
         [
-            'id_posisi'   => T::ID8(10),
+            'id_posisi'   => T::ID(10),
             'nama_posisi' => T::TEXT(),
         ],
         'id_posisi',

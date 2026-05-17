@@ -13,7 +13,7 @@ final class PengkajianPreInduksiDatabase extends DatabaseTemplate
         'operasi',
         'pengkajian_pre_induksi',
         [
-            'id_pengkajian'              => T::ID32(300_000_000),
+            'id_pengkajian'              => T::ID(300_000_000),
             'nomor_reg'                  => T::FK_AUTO(),
             'kode_dokter'                => T::FK_AUTO(),
             'waktu_pengkajian'           => T::DATETIME(),

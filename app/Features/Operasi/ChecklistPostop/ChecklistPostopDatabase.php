@@ -13,9 +13,9 @@ final class ChecklistPostopDatabase extends DatabaseTemplate
         'operasi',
         'checklist_postop',
         [
-            'id_checklist_post'    => T::ID32(300_000_000),
+            'id_checklist_post'    => T::ID(300_000_000),
             'nomor_reg'            => T::FK_AUTO(),
-            'waktu_checklist'      => T::DATETIME(),
+            'waktu_checklist'      => T::DTIME(),
             'sn_cn'                => T::TEXT(),
             'kode_dokter_bedah'    => T::FK_AUTO(),
             'kode_dokter_anestesi' => T::FK_AUTO(),

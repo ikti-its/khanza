@@ -13,7 +13,7 @@ final class RefObatBebasDatabase extends DatabaseTemplate
         'operasi',
         'ref_obat_bebas',
         [
-            'id_obat_bebas'  => T::ID8(5),
+            'id_obat_bebas'  => T::ID(5),
             'nama_kategori'  => T::TEXT(),
         ],
         'id_obat_bebas',

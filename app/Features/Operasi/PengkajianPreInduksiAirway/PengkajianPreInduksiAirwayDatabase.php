@@ -13,7 +13,7 @@ final class PengkajianPreInduksiAirwayDatabase extends DatabaseTemplate
         'operasi',
         'pengkajian_pre_induksi_airway',
         [
-            'id_airway'         => T::ID32(300_000_000),
+            'id_airway'         => T::ID(300_000_000),
             'id_pengkajian'     => T::FK_AUTO(),
             'id_jenis_airway'   => T::FK_AUTO(),
             'nomor'             => T::TEXT()->nullable(),

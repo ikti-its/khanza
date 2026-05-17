@@ -13,7 +13,7 @@ final class RefKetersediaanStatusDatabase extends DatabaseTemplate
         'operasi',
         'ref_ketersediaan_status',
         [
-            'id_ketersediaan_status' => T::ID8(5),
+            'id_ketersediaan_status' => T::ID(5),
             'nama_ketersediaan'      => T::TEXT(),
         ],
         'id_ketersediaan_status',

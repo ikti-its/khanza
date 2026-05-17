@@ -13,10 +13,10 @@ final class PermintaanOperasiDatabase extends DatabaseTemplate
         'operasi',
         'permintaan_operasi',
         [
-            'id_permintaan' => T::ID32(300_000_000),
+            'id_permintaan' => T::ID(300_000_000),
             'nomor_reg'     => T::FK_AUTO(),
             'kode_dokter'   => T::FK_AUTO(),
-            'tanggal_minta' => T::DATETIME(),
+            'tanggal_minta' => T::DTIME(),
             'is_cito'       => T::BOOL(),
         ],
         'id_permintaan',

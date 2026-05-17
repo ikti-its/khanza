@@ -13,7 +13,7 @@ final class RefKeadaanUmumTransferDatabase extends DatabaseTemplate
         'operasi',
         'ref_keadaan_umum_transfer',
         [
-            'id_keadaan_umum' => T::ID8(5),
+            'id_keadaan_umum' => T::ID(5),
             'nama_keadaan'    => T::TEXT(),
         ],
         'id_keadaan_umum',

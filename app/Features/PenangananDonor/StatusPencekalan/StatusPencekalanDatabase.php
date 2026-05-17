@@ -13,7 +13,7 @@ final class StatusPencekalanDatabase extends DatabaseTemplate
             'penanganan_donor',
             'status_pencekalan',
             [
-                'id_status_pencekalan'   => T::ID8(10),
+                'id_status_pencekalan'   => T::ID(10),
                 'nama_status_pencekalan' => T::TEXT(),
             ],
             'id_status_pencekalan',

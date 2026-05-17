@@ -13,7 +13,7 @@ final class RefSkriningPernafasanDatabase extends DatabaseTemplate
         'skrining_rj',
         'ref_skrining_pernafasan',
         [
-            'id_pernafasan' => T::ID8(10),
+            'id_pernafasan' => T::ID(10),
             'pernafasan'    => T::TEXT(),
         ],
         'id_pernafasan',

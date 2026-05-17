@@ -13,9 +13,9 @@ final class SignoutSebelumTutupLukaDatabase extends DatabaseTemplate
         'operasi',
         'signout_sebelum_tutupluka',
         [
-            'id_signout'              => T::ID32(300_000_000),
+            'id_signout'              => T::ID(300_000_000),
             'nomor_reg'               => T::FK_AUTO(),
-            'waktu_signout'           => T::DATETIME(),
+            'waktu_signout'           => T::DTIME(),
             'sn_cn'                   => T::TEXT(),
             'kode_dokter_bedah'       => T::FK_AUTO(),
             'kode_dokter_anestesi'    => T::FK_AUTO(),

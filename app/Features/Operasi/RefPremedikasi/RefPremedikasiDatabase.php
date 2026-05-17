@@ -13,7 +13,7 @@ final class RefPremedikasiDatabase extends DatabaseTemplate
         'operasi',
         'ref_premedikasi',
         [
-            'id_premedikasi'   => T::ID8(5),
+            'id_premedikasi'   => T::ID(5),
             'nama_premedikasi' => T::TEXT(),
         ],
         'id_premedikasi',

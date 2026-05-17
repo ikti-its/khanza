@@ -13,9 +13,9 @@ final class RegistrasiDatabase extends DatabaseTemplate
             'rekam_medis',
             'registrasi',
             [
-                'nomor_reg'   => T::ID32(100_000_000),
+                'nomor_reg'   => T::ID(100_000_000),
                 'nomor_rawat' => T::TEXT(),
-                'datetime'    => T::DATETIME(),
+                'datetime'    => T::DTIME(),
                 'id_dokter'   => T::FK_AUTO(),
                 'id_pasien'   => T::FK_AUTO(),
                 'id_pj_pasien'=> T::FK_AUTO(),

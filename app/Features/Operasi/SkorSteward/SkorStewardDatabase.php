@@ -13,9 +13,9 @@ final class SkorStewardDatabase extends DatabaseTemplate
         'operasi',
         'skor_steward',
         [
-            'id_skor_steward'    => T::ID32(300_000_000),
+            'id_skor_steward'    => T::ID(300_000_000),
             'nomor_reg'          => T::FK_AUTO(),
-            'waktu_penilaian'    => T::DATETIME(),
+            'waktu_penilaian'    => T::DTIME(),
             'id_petugas'         => T::FK_AUTO(),
             'id_dokter_anestesi' => T::FK_AUTO(),
             'skor_kesadaran'     => T::FK_AUTO(),

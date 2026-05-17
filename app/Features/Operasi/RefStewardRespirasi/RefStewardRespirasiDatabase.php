@@ -13,7 +13,7 @@ final class RefStewardRespirasiDatabase extends DatabaseTemplate
         'operasi',
         'ref_steward_respirasi',
         [
-            'id_respirasi' => T::ID8(5),
+            'id_respirasi' => T::ID(5),
             'nama_skala'   => T::TEXT(),
             'nilai'        => T::INT8(),
         ],

@@ -13,10 +13,10 @@ final class RefItemRadDatabase extends DatabaseTemplate
         'radiologi',
         'ref_item_rad',
         [
-            'id_item'          => T::ID32(100_000),
+            'id_item'          => T::ID(100_000),
             'kode_periksa'     => T::TEXT(),
             'nama_pemeriksaan' => T::TEXT(),
-            'tarif_dasar'      => T::F32(),
+            'tarif_dasar'      => T::MONEY(),
         ],
         'id_item',
         ['kode_periksa'],

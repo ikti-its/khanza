@@ -13,10 +13,10 @@ final class CatatanPaskaOperasiDatabase extends DatabaseTemplate
         'operasi',
         'catatan_paska_operasi',
         [
-            'id_catatan_paska'       => T::ID32(300_000_000),
+            'id_catatan_paska'       => T::ID(300_000_000),
             'nomor_reg'              => T::FK_AUTO(),
             'kode_dokter_bedah'      => T::FK_AUTO(),
-            'waktu_penilaian'        => T::DATETIME(),
+            'waktu_penilaian'        => T::DTIME(),
             'instruksi_rawat'        => T::TEXT(),
             'instruksi_cairan'       => T::TEXT(),
             'instruksi_antibiotik'   => T::TEXT(),

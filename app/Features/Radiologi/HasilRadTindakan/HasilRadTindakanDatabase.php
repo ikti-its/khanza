@@ -13,7 +13,7 @@ final class HasilRadTindakanDatabase extends DatabaseTemplate
         'radiologi',
         'hasil_rad_tindakan',
         [
-            'id_hasil_tindakan'       => T::ID32(100_000_000),
+            'id_hasil_tindakan'       => T::ID(100_000_000),
             'id_hasil_rad'            => T::FK_AUTO(),
             'id_item_rad'             => T::FK_AUTO(),
             'tarif_tindakan'          => T::F32(),

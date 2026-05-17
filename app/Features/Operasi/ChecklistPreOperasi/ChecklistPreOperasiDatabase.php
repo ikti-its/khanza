@@ -13,9 +13,9 @@ final class ChecklistPreOperasiDatabase extends DatabaseTemplate
         'operasi',
         'checklist_pre_operasi',
         [
-            'id_checklist'           => T::ID32(300_000_000),
+            'id_checklist'           => T::ID(300_000_000),
             'nomor_reg'              => T::FK_AUTO(),
-            'waktu_checklist'        => T::DATETIME(),
+            'waktu_checklist'        => T::DTIME(),
             'sn_cn'                  => T::TEXT(),
             'kode_dokter_bedah'      => T::FK_AUTO(),
             'kode_dokter_anestesi'   => T::FK_AUTO(),

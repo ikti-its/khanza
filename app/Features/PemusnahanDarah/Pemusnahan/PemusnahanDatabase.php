@@ -13,7 +13,7 @@ final class PemusnahanDatabase extends DatabaseTemplate
             'pemusnahan_darah',
             'pemusnahan',
             [
-                'id_pemusnahan'      => T::ID32(5_000_000),
+                'id_pemusnahan'      => T::ID(5_000_000),
                 'tanggal_pemusnahan' => T::DATE(),
                 'id_petugas'         => T::FK_AUTO(),
                 'keterangan'         => T::TEXT()->nullable(),

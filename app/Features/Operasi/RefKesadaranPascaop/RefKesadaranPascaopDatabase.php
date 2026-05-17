@@ -13,7 +13,7 @@ final class RefKesadaranPascaopDatabase extends DatabaseTemplate
         'operasi',
         'ref_kesadaran_pascaop',
         [
-            'id_kesadaran'   => T::ID8(5),
+            'id_kesadaran'   => T::ID(5),
             'nama_kesadaran' => T::TEXT(),
         ],
         'id_kesadaran',

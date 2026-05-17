@@ -13,10 +13,10 @@ final class PenyerahanPasienDatabase extends DatabaseTemplate
         'operasi',
         'penyerahan_pasien',
         [
-            'id_penyerahan'          => T::ID32(300_000_000),
+            'id_penyerahan'          => T::ID(300_000_000),
             'nomor_reg'              => T::FK_AUTO(),
-            'waktu_masuk_asal'       => T::DATETIME(),
-            'waktu_pindah'           => T::DATETIME(),
+            'waktu_masuk_asal'       => T::DTIME(),
+            'waktu_pindah'           => T::DTIME(),
             'id_indikasi'            => T::FK_AUTO(),
             'ket_indikasi'           => T::TEXT(),
             'id_ruang_asal'          => T::FK_AUTO(),

@@ -13,10 +13,10 @@ final class PengkajianPreAnestesiDatabase extends DatabaseTemplate
         'operasi',
         'pengkajian_pre_anestesi',
         [
-            'id_pre_anestesi'     => T::ID32(300_000_000),
+            'id_pre_anestesi'     => T::ID(300_000_000),
             'nomor_reg'           => T::FK_AUTO(),
             'kode_dokter'         => T::FK_AUTO(),
-            'waktu_pengkajian'    => T::DATETIME(),
+            'waktu_pengkajian'    => T::DTIME(),
             'diagnosa'            => T::TEXT(),
             'rencana_tindakan'    => T::TEXT(),
             'tanggal_operasi'     => T::DATE(),

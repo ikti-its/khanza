@@ -13,7 +13,7 @@ final class RefSkriningSkalaNyeriDatabase extends DatabaseTemplate
         'skrining_rj',
         'ref_skrining_skala_nyeri',
         [
-            'id_skala_nyeri' => T::ID8(10),
+            'id_skala_nyeri' => T::ID(10),
             'skala_nyeri'    => T::TEXT(),
         ],
         'id_skala_nyeri',

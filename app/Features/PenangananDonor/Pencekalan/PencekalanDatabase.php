@@ -13,7 +13,7 @@ final class PencekalanDatabase extends DatabaseTemplate
             'penanganan_donor',
             'pencekalan',
             [
-                'id_pencekalan'        => T::ID32(5_000_000),
+                'id_pencekalan'        => T::ID(5_000_000),
                 'id_kunjungan'         => T::FK_AUTO(),
                 'id_jenis_pencekalan'  => T::FK_AUTO(),
                 'tanggal_mulai'        => T::DATE(),

@@ -13,7 +13,7 @@ final class RefMonitoringAnestesiDatabase extends DatabaseTemplate
         'operasi',
         'ref_monitoring_anestesi',
         [
-            'id_monitoring' => T::ID8(10),
+            'id_monitoring' => T::ID(10),
             'nama_monitoring' => T::TEXT(),
         ],
         'id_monitoring',

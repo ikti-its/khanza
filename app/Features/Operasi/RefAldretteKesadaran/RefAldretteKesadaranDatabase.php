@@ -13,7 +13,7 @@ final class RefAldretteKesadaranDatabase extends DatabaseTemplate
         'operasi',
         'ref_aldrette_kesadaran',
         [
-            'id_kesadaran' => T::ID8(10),
+            'id_kesadaran' => T::ID(10),
             'nama_skala'   => T::TEXT(),
             'nilai'        => T::INT8(),
         ],

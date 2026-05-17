@@ -13,7 +13,7 @@ final class RefPeralatanTransferDatabase extends DatabaseTemplate
         'operasi',
         'ref_peralatan_transfer',
         [
-            'id_peralatan'   => T::ID8(10),
+            'id_peralatan'   => T::ID(10),
             'nama_peralatan' => T::TEXT(),
         ],
         'id_peralatan',

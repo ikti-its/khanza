@@ -13,7 +13,7 @@ final class RefBromageDatabase extends DatabaseTemplate
         'operasi',
         'ref_bromage',
         [
-            'id_bromage'   => T::ID8(10),
+            'id_bromage'   => T::ID(10),
             'nama_skala'   => T::TEXT(),
             'tingkat_blok' => T::TEXT(),
             'nilai'        => T::INT8(),

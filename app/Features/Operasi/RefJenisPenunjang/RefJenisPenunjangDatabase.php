@@ -13,7 +13,7 @@ final class RefJenisPenunjangDatabase extends DatabaseTemplate
         'operasi',
         'ref_jenis_penunjang',
         [
-            'id_jenis_penunjang' => T::ID8(10),
+            'id_jenis_penunjang' => T::ID(10),
             'nama_jenis'         => T::TEXT(),
         ],
         'id_jenis_penunjang',

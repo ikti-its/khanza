@@ -13,7 +13,7 @@ final class ChecklistPostopPenunjangDatabase extends DatabaseTemplate
         'operasi',
         'checklist_postop_penunjang',
         [
-            'id_penunjang'          => T::ID32(300_000_000),
+            'id_penunjang'          => T::ID(300_000_000),
             'id_checklist_post'     => T::FK_AUTO(),
             'id_jenis_penunjang'    => T::FK_AUTO(),
             'id_ketersediaan'       => T::FK_AUTO(),
