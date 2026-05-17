@@ -14,9 +14,7 @@ final class CatatanAnestesiSedasiDatabase extends DatabaseTemplate
             'catatan_anestesi_sedasi',
             [
                 'id_catatan_anestesi'  => T::ID(300_000_000),
-                'id_catatan_anestesi'  => T::ID(300_000_000),
                 'nomor_reg'            => T::FK_AUTO(),
-                'waktu_catatan'        => T::DTIME(),
                 'waktu_catatan'        => T::DTIME(),
                 'diagnosa_pra_bedah'   => T::TEXT(),
                 'tindakan'             => T::TEXT(),
