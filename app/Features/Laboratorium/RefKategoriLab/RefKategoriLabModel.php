@@ -16,9 +16,9 @@ final class RefKategoriLabModel extends ModelTemplate
             'ref_kategori_lab',
             'id_kategori',
             [
-                'id_kategori'   => V::TODO(),
-                'kode_kategori' => V::TODO(),
-                'nama_kategori' => V::TODO(),
+                'id_kategori'   => V::DEFAULT(),
+                'kode_kategori' => V::DEFAULT(),
+                'nama_kategori' => V::DEFAULT(),
             ],
             []
         );

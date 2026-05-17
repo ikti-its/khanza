@@ -16,11 +16,11 @@ final class RefItemPemeriksaanLabModel extends ModelTemplate
             'ref_item_pemeriksaan_lab',
             'id_item_lab',
             [
-                'id_item_lab'   => V::TODO(),
-                'id_kategori'   => V::TODO(),
-                'kode_periksa'  => V::TODO(),
-                'nama_item'     => V::TODO(),
-                'tarif'         => V::TODO(),
+                'id_item_lab'   => V::DEFAULT(),
+                'id_kategori'   => V::DEFAULT(),
+                'kode_periksa'  => V::DEFAULT(),
+                'nama_item'     => V::DEFAULT(),
+                'tarif'         => V::DEFAULT(),
             ],
             [
                 'id_kategori'  => ['nama_kategori'],
