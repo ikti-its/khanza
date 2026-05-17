@@ -23,6 +23,7 @@ final readonly class SemanticType
     public static function VITAL(int $min, int $max): FT { return PT::INT($min, $max);}
     public static function BODY(): FT { return PT::NUMERIC(5, 1);}
     public static function LAB(): FT { return PT::NUMERIC(5, 1);}
+    public static function RAD(): FT { return PT::NUMERIC(8, 2); }
     public static function PERCENT(): FT { return PT::NUMERIC(5, 2);}
 
     public static function DATE(): FT { return PT::DATE();}
