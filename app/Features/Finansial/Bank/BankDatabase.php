@@ -15,7 +15,7 @@ final class BankDatabase extends DatabaseTemplate
             [
                 'id_bank'        => T::ID(100),
                 'kode_bank'      => T::CODE(3)->nullable(),
-                'nama_bank'      => T::NAME(30)->nullable(),
+                'nama_bank'      => T::NAME(50)->nullable(),
                 'sebutan'        => T::NAME(10)->nullable(),
                 'pemilik_id'     => T::FK_AUTO(),
                 'prinsip_id'     => T::FK_AUTO(),

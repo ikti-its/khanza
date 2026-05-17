@@ -35,7 +35,7 @@ final class KotaDatabase extends DatabaseTemplate
                 'id_kota'       => T::ID(514),
                 'id_provinsi'   => T::FK_AUTO(),
                 'id_kota_lokal' => T::INT(11, 99),
-                'nama_kota'     => T::NAME(30),
+                'nama_kota'     => T::NAME(50),
             ],
             'id_kota',
             [
