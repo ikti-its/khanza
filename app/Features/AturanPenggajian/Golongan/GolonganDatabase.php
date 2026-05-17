@@ -25,9 +25,11 @@ final class GolonganDatabase extends DatabaseTemplate
                 'kode_golongan'
             ],
             [
-                'pendidikan',
-                \App\Features\Pendidikan\JenjangPendidikan\JenjangPendidikanDatabase::class,
-                'nama_jenjang_pendidikan',
+                [
+                    'pendidikan',
+                    \App\Features\Pendidikan\JenjangPendidikan\JenjangPendidikanDatabase::class,
+                    'nama_jenjang_pendidikan',
+                ]
             ],
         );
     }
