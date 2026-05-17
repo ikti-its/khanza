@@ -13,7 +13,7 @@ final class PrinsipBankDatabase extends DatabaseTemplate
             'finansial',
             'prinsip_bank',
             [
-                'id'      => T::ID8(4),
+                'id'      => T::ID(4),
                 'prinsip' => T::TEXT(),
             ],
             'id',

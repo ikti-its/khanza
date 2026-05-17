@@ -13,9 +13,9 @@ final class MetodePembayaranDatabase extends DatabaseTemplate
             'finansial',
             'metode',
             [
-                'id_metode'   => T::ID8(5),
-                'nama_metode' => T::TEXT(),       
-                'biaya'       => T::INT16(),
+                'id_metode'   => T::ID(5),
+                'nama_metode' => T::NAME(20),       
+                'biaya'       => T::MONEY(),
             ],
             'id_metode',
             ['nama_metode'],

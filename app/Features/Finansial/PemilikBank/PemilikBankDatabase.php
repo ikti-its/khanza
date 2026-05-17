@@ -13,8 +13,8 @@ final class PemilikBankDatabase extends DatabaseTemplate
             'finansial',
             'pemilik_bank',
             [
-                'id'      => T::ID8(5),
-                'pemilik' => T::TEXT(),
+                'id'      => T::ID(5),
+                'pemilik' => T::NAME(40),
             ],
             'id',
             ['pemilik'],
