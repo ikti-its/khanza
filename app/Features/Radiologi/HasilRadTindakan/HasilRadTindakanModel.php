@@ -10,25 +10,31 @@ final class HasilRadTindakanModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new HasilRadTindakanDatabase(),
             'BASE',
             'radiologi',
             'hasil_rad_tindakan',
             'id_hasil_tindakan',
             [
-                'id_hasil_tindakan' => V::TODO(),
-                'id_hasil_rad' => V::TODO(),
-                'id_item_rad' => V::TODO(),
-                'tarif_tindakan' => V::TODO(),
-                'kilovoltage_kv' => V::TODO(),
-                'milliampere_second_mas' => V::TODO(),
-                'focus_film_distance_ffd' => V::TODO(),
-                'back_scatter_factor_bsf' => V::TODO(),
-                'inaktivasi' => V::TODO(),
-                'jumlah_penyinaran' => V::TODO(),
-                'dosis_radiasi' => V::TODO(),
-                'hasil_ekspertise' => V::TODO(),
-                'id_template_rad' => V::TODO(),
+                'id_hasil_tindakan'       => V::DEFAULT(),
+                'id_hasil_rad'            => V::DEFAULT(),
+                'id_item_rad'             => V::DEFAULT(),
+                'proyeksi'                => V::DEFAULT(),
+                'kilovoltage_kv'          => V::DEFAULT(),
+                'milliampere_second_mas'  => V::DEFAULT(),
+                'focus_film_distance_ffd' => V::DEFAULT(),
+                'back_scatter_factor_bsf' => V::DEFAULT(),
+                'inaktivasi'              => V::DEFAULT(),
+                'jumlah_penyinaran'       => V::DEFAULT(),
+                'dosis_radiasi'           => V::DEFAULT(),
+                'hasil_ekspertise'        => V::DEFAULT(),
+                'id_template_rad'         => V::DEFAULT(),
             ],
+            [
+                'id_hasil_rad'            => [],
+                'id_item_rad'             => ['kode_periksa', 'nama_pemeriksaan', 'tarif_dasar'],
+                'id_template_rad'         => ['nama_template'],
+            ]
         );
     }
 }

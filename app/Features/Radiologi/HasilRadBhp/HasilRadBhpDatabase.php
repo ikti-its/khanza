@@ -15,10 +15,8 @@ final class HasilRadBhpDatabase extends DatabaseTemplate
         [
             'id_rad_bhp'     => T::ID(100_000_000),
             'id_hasil_rad'   => T::FK_AUTO(),
-            // 'id_barang_medis'=> T::FK_AUTO(),
-            // 'jumlah_pakai'   => T::QTY(),
-            'satuan'         => T::TEXT(),
-            'harga_satuan'   => T::MONEY(),
+            'id_barang_medis'=> T::FK_AUTO(),
+            'jumlah_pakai'   => T::QTY(0, 1_000_000),
         ],
         'id_rad_bhp',
         [],
@@ -28,7 +26,11 @@ final class HasilRadBhpDatabase extends DatabaseTemplate
                 \App\Features\Radiologi\HasilRad\HasilRadDatabase::class,
                 ['id_hasil_rad']
             ],
-            // ['id_barang_medis', 'sik.barang_medis_structure', 'id'],
+            [
+                'id_barang_medis',
+                \App\Features\InventoriMedis\DataBarang\DataBarangDatabase::class,
+                'id'
+            ]
         ],
     );
 }

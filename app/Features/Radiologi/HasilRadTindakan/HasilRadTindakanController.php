@@ -27,7 +27,7 @@ final class HasilRadTindakanController extends ControllerTemplate
                 [HIDE, OPTIONAL, I::INDEX, 'id_hasil_tindakan', 'ID Hasil Tindakan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_hasil_rad', 'ID Hasil Rad'],
                 [SHOW, REQUIRED, I::INDEX, 'id_item_rad', 'Item Radiologi'],
-                [SHOW, REQUIRED, I::MONEY, 'tarif_tindakan', 'Tarif Tindakan'],
+                [SHOW, REQUIRED, I::TEXT, 'proyeksi', 'Proyeksi'],
                 [SHOW, REQUIRED, I::NUMBER, 'kilovoltage_kv', 'Kilovoltage (kV)'],
                 [SHOW, REQUIRED, I::NUMBER, 'milliampere_second_mas', 'Milliampere Second (mAs)'],
                 [SHOW, REQUIRED, I::NUMBER, 'focus_film_distance_ffd', 'Focus Film Distance (FFD)'],

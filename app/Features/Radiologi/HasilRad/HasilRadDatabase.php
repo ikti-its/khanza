@@ -21,7 +21,7 @@ final class HasilRadDatabase extends DatabaseTemplate
                 'id_petugas_rad'      => T::FK_AUTO(),
                 'kode_dokter_perujuk' => T::FK_AUTO(),
                 'tgl_jam_hasil'       => T::DTIME(),
-                'catatan'             => T::TEXT(),
+                'catatan'             => T::NOTE(),
             ],
             'id_hasil_rad',
             [],

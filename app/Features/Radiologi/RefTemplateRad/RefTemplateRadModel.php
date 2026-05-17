@@ -10,15 +10,17 @@ final class RefTemplateRadModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new RefTemplateRadDatabase(),
             'REFS',
             'radiologi',
             'ref_template_rad',
             'id_template',
             [
-                'id_template' => V::TODO(),
-                'nama_template' => V::TODO(),
-                'isi_teks_ekspertise' => V::TODO(),
+                'id_template'         => V::DEFAULT(),
+                'nama_template'       => V::DEFAULT(),
+                'isi_teks_ekspertise' => V::DEFAULT(),
             ],
+            []
         );
     }
 }

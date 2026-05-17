@@ -10,18 +10,21 @@ final class HasilRadBhpModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new HasilRadBhpDatabase(),
             'BASE',
             'radiologi',
             'hasil_rad_bhp',
             'id_rad_bhp',
             [
-                'id_rad_bhp' => V::TODO(),
-                'id_hasil_rad' => V::TODO(),
-                'id_barang_medis' => V::TODO(),
-                'jumlah_pakai' => V::TODO(),
-                'satuan' => V::TODO(),
-                'harga_satuan' => V::TODO(),
+                'id_rad_bhp'      => V::DEFAULT(),
+                'id_hasil_rad'    => V::DEFAULT(),
+                'id_barang_medis' => V::DEFAULT(),
+                'jumlah_pakai'    => V::DEFAULT(),
             ],
+            [
+                'id_hasil_rad'   => [],
+                'id_barang_medis'=> ['kode_barang', 'nama', 'kode_sat'],
+            ]
         );
     }
 }

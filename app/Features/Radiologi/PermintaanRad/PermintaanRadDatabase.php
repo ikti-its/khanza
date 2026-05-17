@@ -14,11 +14,11 @@ final class PermintaanRadDatabase extends DatabaseTemplate
         'permintaan_rad',
         [
             'id_permintaan'        => T::ID(100_000_000),
-            'no_permintaan'        => T::TEXT(),
+            'no_permintaan'        => T::RECORD(14),
             'nomor_reg'            => T::FK_AUTO(),
             'kode_dokter_perujuk'  => T::FK_AUTO(),
             'tgl_jam_permintaan'   => T::DTIME(),
-            'informasi_tambahan'   => T::TEXT(),
+            'informasi_tambahan'   => T::NOTE(),
             'indikasi_klinis'      => T::TEXT(),
             'id_status_permintaan' => T::FK_AUTO(),
             'id_item_rad'          => T::FK_AUTO(),

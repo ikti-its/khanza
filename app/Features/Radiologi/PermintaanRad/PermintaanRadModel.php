@@ -10,21 +10,28 @@ final class PermintaanRadModel extends ModelTemplate
     public function __construct()
     {
         parent::__construct(
+            new PermintaanRadDatabase(),
             'BASE',
             'radiologi',
             'permintaan_rad',
             'id_permintaan',
             [
-                'id_permintaan' => V::TODO(),
-                'no_permintaan' => V::TODO(),
-                'nomor_reg' => V::TODO(),
-                'kode_dokter_perujuk' => V::TODO(),
-                'tgl_jam_permintaan' => V::TODO(),
-                'informasi_tambahan' => V::TODO(),
-                'indikasi_klinis' => V::TODO(),
-                'id_status_permintaan' => V::TODO(),
-                'id_item_rad' => V::TODO(),
+                'id_permintaan'         => V::DEFAULT(),
+                'no_permintaan'         => V::DEFAULT(),
+                'nomor_reg'             => V::DEFAULT(),
+                'kode_dokter_perujuk'   => V::DEFAULT(),
+                'tgl_jam_permintaan'    => V::DEFAULT(),
+                'informasi_tambahan'    => V::DEFAULT(),
+                'indikasi_klinis'       => V::DEFAULT(),
+                'id_status_permintaan'  => V::DEFAULT(),
+                'id_item_rad'           => V::DEFAULT(),
             ],
+            [
+                'nomor_reg'            => ['nomor_rawat'],
+                'kode_dokter_perujuk'  => [],
+                'id_status_permintaan' => ['nama_status'],
+                'id_item_rad'          => ['kode_periksa', 'nama_pemeriksaan', 'tarif_dasar'],
+            ]
         );
     }
 }
