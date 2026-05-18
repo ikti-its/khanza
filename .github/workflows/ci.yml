@@ -1,0 +1,36 @@
+name: CodeIgniter 4 CI Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Alasan menjalankan CI (Opsional)'
+        required: false
+        default: 'Pengecekan rutin kode CI4'
+
+jobs:
+  ci4-code-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup PHP Environment
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.5'
+        extensions: intl, mbstring, xml, ctype, iconv, json, gd, dom, pdo_pgsql
+        coverage: none
+
+    - name: Validate Composer File
+      run: composer validate --strict
+
+    - name: Install All Dependencies
+      run: composer install --prefer-dist --no-progress
+    
+    - name: Log Trigger Reason
+      run: echo "Pipeline dijalankan secara manual dengan alasan -> ${{ github.event.inputs.reason }}"
+
+    - name: Run Mago Linter
+      run: vendor/bin/mago analyze
