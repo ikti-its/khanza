@@ -146,7 +146,7 @@ class ControllerTemplate extends Controller
             'form_action' => '/submittambah/',
         ]);
     }
-    public function update_page($id)
+    public function update_page(mixed $id)
     {
         $breadcrumbs = [
             ['title' => 'Ubah', 'icon', 'Ubah']
@@ -170,14 +170,14 @@ class ControllerTemplate extends Controller
         return $this->index();
     }
 
-    final public function update($id)
+    final public function update(mixed $id)
     {
         $postData = $this->get_post_data();
         $this->model->update($id, $postData);
         return $this->index();
     }
 
-    final public function delete($id)
+    final public function delete(mixed $id)
     {   
         $this->model->delete($id);
         return $this->index();        
