@@ -6,8 +6,8 @@ stack-size = 8388608
 
 [source]
 workspace = "."
-paths = ["app", "tests"]
-includes = ["vendor"]
+paths = ["app/Core"]
+includes = ["vendor", "app/Config"]
 excludes = []
 extensions = ["php"]
 
@@ -37,7 +37,7 @@ literal-named-argument = { enabled = false }
 halstead = { effort-threshold = 7000 }
 
 [analyzer]
-plugins = []
+plugins = ["security", "performance", "type-safety"]
 find-unused-definitions = true
 find-unused-expressions = true
 analyze-dead-code = true
