@@ -22,6 +22,13 @@ jobs:
         php-version: '8.5'
         extensions: intl, mbstring, xml, ctype, iconv, json, gd, dom, pdo_pgsql
         coverage: none
+    
+    - name: Download and Setup FrankenPHP Binary
+      run: |
+        curl -L https://github.com/dunglas/frankenphp/releases/latest/download/frankenphp-linux-x86_64 -o frankenphp
+        chmod +x frankenphp
+        sudo mv frankenphp /usr/local/bin/
+        frankenphp version
 
     - name: Validate Composer File
       run: composer validate --strict
