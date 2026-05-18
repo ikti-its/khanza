@@ -15,7 +15,7 @@ final class TeleponDatabase extends DatabaseTemplate
                 'id_telepon'    => T::ID(300_000_000),
                 'id_orang'      => T::FK_AUTO(),
                 'nomor_telepon' => T::TEXT(),
-                'jenis_telepon' => T::FK_AUTO(),
+                'id_jenis'      => T::FK_AUTO(),
                 'id_provider'   => T::FK_AUTO(),
             ],
             'id_telepon',
@@ -27,9 +27,9 @@ final class TeleponDatabase extends DatabaseTemplate
                     'id_orang',
                 ],
                 [
-                    'jenis_telepon',
+                    'id_jenis',
                     \App\Features\Kontak\JenisTelepon\JenisTeleponDatabase::class, 
-                    'id_jenis_telepon',
+                    'id_jenis',
                 ],
                 [
                     'id_provider',

@@ -15,8 +15,8 @@ final class ProviderModel extends ModelTemplate
             'provider',
             'id_provider',
             [
-                'id_provider' => V::TODO(),
-                'nama_provider' => V::TODO()
+                'id_provider'   => V::DEFAULT(),
+                'nama_provider' => V::DEFAULT(),
             ],
             [],
         );

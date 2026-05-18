@@ -15,9 +15,9 @@ final class EmailModel extends ModelTemplate
             'email',
             'id_email',
             [
-                'id_email' => V::TODO(),
-                'id_orang' => V::TODO(),
-                'alamat_email' => V::TODO()
+                'id_email'     => V::DEFAULT(),
+                'id_orang'     => V::DEFAULT(),
+                'alamat_email' => V::DEFAULT(),
             ],
             [],
         );

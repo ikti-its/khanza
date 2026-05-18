@@ -13,11 +13,11 @@ final class JenisTeleponModel extends ModelTemplate
             new TeleponDatabase(),
             'REFS',
             'kontak',
-            'jenis_telepon',
-            'id_jenis_telepon',
+            'jenis',
+            'id_jenis',
             [
-                'id_jenis_telepon' => V::TODO(),
-                'nama_jenis_telepon' => V::TODO()
+                'id_jenis'   => V::DEFAULT(),
+                'nama_jenis' => V::DEFAULT(),
             ],
             [],
         );

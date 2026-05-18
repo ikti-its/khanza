@@ -10,13 +10,13 @@ final class JenisTeleponDatabase extends DatabaseTemplate
     public function __construct(){
         parent::__construct(
             'kontak',
-            'jenis_telepon',
+            'jenis',
             [
-                'id_jenis_telepon'   => T::ID(5),
-                'nama_jenis_telepon' => T::TEXT(),
+                'id_jenis'   => T::ID(5),
+                'nama_jenis' => T::TEXT(),
             ],
-            'id_jenis_telepon',
-            ['nama_jenis_telepon'],
+            'id_jenis',
+            ['nama_jenis'],
             [],
         );
     }

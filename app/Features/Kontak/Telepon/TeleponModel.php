@@ -19,9 +19,9 @@ final class TeleponModel extends ModelTemplate
                 'nomor_telepon' => V::DEFAULT(),
             ],
             [
-                'id_orang'      => ['nik', 'nama'],
-                'jenis_telepon' => ['nama_jenis_telepon'],
-                'id_provider'   => ['nama_provider']
+                'id_orang'    => ['nik', 'nama'],
+                'id_jenis'    => ['nama_jenis'],
+                'id_provider' => ['nama_provider']
             ],
         );
     }
