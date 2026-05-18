@@ -875,6 +875,7 @@ $features = [
         ['JadwalOperasi',                   'jadwal-operasi'],
         ['PermintaanOperasi',               'permintaan-operasi'],
         // Pengkajian
+        ['PengkajianPreop',                 'pengkajian-preop'],
         ['PengkajianPreAnestesi',           'pengkajian-pre-anestesi'],
         ['PengkajianPreInduksi',            'pengkajian-pre-induksi'],
         ['PengkajianPreInduksiAirway',      'pengkajian-pre-induksi-airway'],
@@ -892,6 +893,7 @@ $features = [
         ['TimeOutSebelumInsisi',            'time-out-sebelum-insisi'],
         ['TimeOutSebelumInsisiPenunjang',   'time-out-sebelum-insisi-penunjang'],
         // Referensi
+        ['RefAlatAnestesi',         'ref-alat-anestesi'],
         ['RefAldretteAktivitas',    'ref-aldrette-aktivitas'],
         ['RefAldretteKesadaran',    'ref-aldrette-kesadaran'],
         ['RefAldretteRespirasi',    'ref-aldrette-respirasi'],
@@ -913,6 +915,7 @@ $features = [
         ['RefKesadaranPascaop',     'ref-kesadaran-pascaop'],
         ['RefKesiapanAnestesi',     'ref-kesiapan-anestesi'],
         ['RefKetersediaanStatus',   'ref-ketersediaan-status'],
+        ['RefMonitoringAnestesi',   'ref-monitoring-anestesi'],
         ['RefMetodeTransfer',       'ref-metode-transfer'],
         ['RefObatBebas',            'ref-obat-bebas'],
         ['RefPeralatanTransfer',    'ref-peralatan-transfer'],

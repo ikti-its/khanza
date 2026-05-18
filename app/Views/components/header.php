@@ -956,6 +956,7 @@
                         ['Jadwal Operasi',                      '/jadwal-operasi',                    ''],
                         ['Permintaan Operasi',                  '/permintaan-operasi',                ''],
                         // Pengkajian
+                        ['Pengkajian Pre Operasi',              '/pengkajian-preop',                  ''],
                         ['Pengkajian Pre Anestesi',             '/pengkajian-pre-anestesi',           ''],
                         ['Pengkajian Pre Induksi',              '/pengkajian-pre-induksi',            ''],
                         ['Pengkajian Pre Induksi Airway',       '/pengkajian-pre-induksi-airway',     ''],
@@ -982,6 +983,7 @@
                         ['Ref Steward Motorik',                 '/ref-steward-motorik',               ''],
                         ['Ref Steward Respirasi',               '/ref-steward-respirasi',             ''],
                         // Referensi Umum
+                        ['Ref Alat Anestesi',                   '/ref-alat-anestesi',                 ''],
                         ['Ref Angka ASA',                       '/ref-angka-asa',                     ''],
                         ['Ref Bromage',                         '/ref-bromage',                       ''],
                         ['Ref Hubungan Keluarga',               '/ref-hubungan-keluarga',             ''],
@@ -996,6 +998,7 @@
                         ['Ref Kesiapan Anestesi',               '/ref-kesiapan-anestesi',             ''],
                         ['Ref Ketersediaan Status',             '/ref-ketersediaan-status',           ''],
                         ['Ref Metode Transfer',                 '/ref-metode-transfer',               ''],
+                        ['Ref Monitoring Anestesi',             '/ref-monitoring-anestesi',           ''],
                         ['Ref Obat Bebas',                      '/ref-obat-bebas',                    ''],
                         ['Ref Peralatan Transfer',              '/ref-peralatan-transfer',            ''],
                         ['Ref Posisi Pasien',                   '/ref-posisi-pasien',                 ''],
