@@ -13,6 +13,7 @@ final readonly class SemanticType
     public static function BOOL(): FT { return PT::BOOL();}
     
     public static function INT(int $min, int $max): FT { return PT::INT($min, $max);}
+    public static function DURATION(): FT { return PT::NUMERIC(4, 1); }
     public static function QTY(int $min, int $max): FT { return PT::INT($min, $max);}
     public static function MULT(): FT { return PT::NUMERIC(4,2);}
     public static function TEMP(): FT { return PT::NUMERIC(4,1);}
