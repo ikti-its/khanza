@@ -15,15 +15,12 @@ final class PemusnahanDetailModel extends ModelTemplate
             'pemusnahan_detail',
             'id_pemusnahan_detail',
             [
-                'id_pemusnahan_detail' => V::DEFAULT(),
-                'id_pemusnahan' => V::DEFAULT(),
-                'id_stok_darah' => V::DEFAULT(),
-                'id_alasan' => V::DEFAULT()
+                'id_pemusnahan_detail'  => V::DEFAULT()
             ],
             [
-                'id_pemusnahan'        => [],
-                'id_stok_darah'        => [],
-                'id_alasan'            => [],
+                'id_pemusnahan' => ['tanggal_pemusnahan'],
+                'id_stok_darah' => ['no_kantong', 'tanggal_pengambilan', 'tanggal_kadaluarsa'],
+                'id_alasan'     => ['nama_alasan']
             ]
         );
     }

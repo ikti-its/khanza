@@ -15,13 +15,12 @@ final class PemusnahanModel extends ModelTemplate
             'pemusnahan',
             'id_pemusnahan',
             [
-                'id_pemusnahan'      => V::DEFAULT(),
-                'tanggal_pemusnahan' => V::DEFAULT(),
-                'id_petugas'         => V::DEFAULT(),
-                'keterangan'         => V::DEFAULT()
+                'id_pemusnahan'         => V::DEFAULT(),
+                'tanggal_pemusnahan'    => V::DEFAULT(),
+                'keterangan'            => V::DEFAULT()
             ],
             [
-                'id_petugas' => [], 
+                'id_petugas' => ['']
             ]
         );
     }

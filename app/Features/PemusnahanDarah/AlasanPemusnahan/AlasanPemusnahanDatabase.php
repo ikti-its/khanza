@@ -12,8 +12,8 @@ final class AlasanPemusnahanDatabase extends DatabaseTemplate
             'pemusnahan_darah',
             'alasan_pemusnahan',
             [
-                'id_alasan'   => T::ID(10),
-                'nama_alasan' => T::TEXT(),
+                'id_alasan'     => T::ID(5),
+                'nama_alasan'   => T::NAME(20),
             ],
             'id_alasan',
             ['nama_alasan'],
