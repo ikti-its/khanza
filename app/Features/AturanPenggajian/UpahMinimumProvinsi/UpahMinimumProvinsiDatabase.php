@@ -11,7 +11,7 @@ final class UpahMinimumProvinsiDatabase extends DatabaseTemplate
     public function __construct(){
         parent::__construct(
             'penggajian',
-            'upah_minimum_provinsi',
+            'ump',
             [
                 'no_ump'       => T::ID(3000),
                 'tahun'        => T::YEAR('tahun'),
