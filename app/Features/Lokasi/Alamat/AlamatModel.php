@@ -9,6 +9,7 @@ final class AlamatModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new AlamatDatabase(),
             'BASE',
             'lokasi',
             'alamat',

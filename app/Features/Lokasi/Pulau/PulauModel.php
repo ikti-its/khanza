@@ -9,13 +9,14 @@ final class PulauModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PulauDatabase(),
             'REFS',
             'lokasi',
             'pulau',
             'id_pulau',
             [
-                'id_pulau' => V::TODO(),
-                'nama_pulau' => V::TODO()
+                'id_pulau'   => V::DEFAULT(),
+                'nama_pulau' => V::DEFAULT(),
             ],
             [],
         );
