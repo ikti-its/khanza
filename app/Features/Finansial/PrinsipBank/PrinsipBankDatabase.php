@@ -10,13 +10,13 @@ final class PrinsipBankDatabase extends DatabaseTemplate
     public function __construct(){
         parent::__construct(
             'finansial',
-            'prinsip_bank',
+            'prinsip',
             [
-                'id'      => T::ID(4),
-                'prinsip' => T::TEXT(),
+                'id_prinsip'   => T::ID(4),
+                'nama_prinsip' => T::TEXT(),
             ],
-            'id',
-            ['prinsip'],
+            'id_prinsip',
+            ['nama_prinsip'],
             [],
             true,
             'prinsip_bank.csv'

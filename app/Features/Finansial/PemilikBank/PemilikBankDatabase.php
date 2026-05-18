@@ -10,13 +10,13 @@ final class PemilikBankDatabase extends DatabaseTemplate
     public function __construct(){
         parent::__construct(
             'finansial',
-            'pemilik_bank',
+            'pemilik',
             [
-                'id'      => T::ID(5),
-                'pemilik' => T::NAME(40),
+                'id_pemilik'   => T::ID(5),
+                'nama_pemilik' => T::NAME(40),
             ],
-            'id',
-            ['pemilik'],
+            'id_pemilik',
+            ['nama_pemilik'],
             [],
             true,
             'pemilik_bank.csv'

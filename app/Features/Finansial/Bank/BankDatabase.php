@@ -16,12 +16,11 @@ final class BankDatabase extends DatabaseTemplate
                 'kode_bank'      => T::CODE(3)->nullable(),
                 'nama_bank'      => T::NAME(50)->nullable(),
                 'sebutan'        => T::NAME(10)->nullable(),
-                'pemilik_id'     => T::FK_AUTO(),
-                'prinsip_id'     => T::FK_AUTO(),
+                'id_pemilik'     => T::FK_AUTO(),
+                'id_prinsip'     => T::FK_AUTO(),
                 'is_bank_devisa' => T::BOOL()->nullable(),
                 'mobile_app'     => T::TEXT(),
                 'link_playstore' => T::TEXT(),
-
             ],
             'id_bank',
             [
@@ -30,14 +29,14 @@ final class BankDatabase extends DatabaseTemplate
             ],
             [
                 [
-                    'pemilik_id', 
+                    'id_pemilik', 
                     \App\Features\Finansial\PemilikBank\PemilikBankDatabase::class, 
-                    'id',
+                    'id_pemilik',
                 ],
                 [
-                    'prinsip_id', 
+                    'id_prinsip', 
                     \App\Features\Finansial\PrinsipBank\PrinsipBankDatabase::class, 
-                    'id',
+                    'id_prinsip',
                 ],
             ],
             true,
