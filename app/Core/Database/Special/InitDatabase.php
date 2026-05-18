@@ -7,6 +7,7 @@ use App\Core\Controller\Assert;
 
 final class InitDatabase extends Migration
 {
+    #[\Override()]
     public function up()
     { 
         $_db = \Config\Database::connect();
@@ -29,6 +30,7 @@ final class InitDatabase extends Migration
         }
     }
     
+    #[\Override()]
     public function down()
     {
         $forge = \Config\Database::forge();

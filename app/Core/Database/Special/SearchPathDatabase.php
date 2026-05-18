@@ -6,6 +6,7 @@ use CodeIgniter\Database\Migration;
 
 final class SearchPathDatabase extends Migration
 {
+    #[\Override()]
     public function up()
     {
         $config = new \Config\Database()->default;
@@ -36,6 +37,7 @@ final class SearchPathDatabase extends Migration
 
     }
     
+    #[\Override()]
     public function down()
     {
         $config = new \Config\Database()->default;

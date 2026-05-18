@@ -7,6 +7,8 @@ use CodeIgniter\Database\Migration;
 final class AuditDatabase extends Migration
 {
     const string PATH = APPPATH . 'Core/Database/Audit/';
+    
+    #[\Override()]
     public function up()
     {
         // $config = new \Config\Database()->default;
@@ -19,6 +21,7 @@ final class AuditDatabase extends Migration
         // $this->db->query(file_get_contents(self::PATH . 'create_audit_view.sql'));
     }
     
+    #[\Override()]
     public function down()
     {
         // $config = new \Config\Database()->default;
