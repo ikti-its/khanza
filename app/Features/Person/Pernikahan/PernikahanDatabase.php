@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Features\Person\Pernikahan;
-
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Features\Pendidikan\JenisPendidikan;
-
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 

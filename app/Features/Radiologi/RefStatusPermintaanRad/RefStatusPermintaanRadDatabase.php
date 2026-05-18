@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 namespace App\Features\Radiologi\RefStatusPermintaanRad;
-
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
     

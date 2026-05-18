@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 namespace App\Features\UjiDarah\NilaiDiagnostik;
-
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
