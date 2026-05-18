@@ -20,7 +20,9 @@ final class UpahMinimumKotakabModel extends ModelTemplate
                 'kotakab'      => V::DEFAULT(),
                 'upah_minimum' => V::DEFAULT(),
             ],       
-            [],
+            [
+                'kotakab' => ['nama_kota'],
+            ],
         );
     }
 }

@@ -20,7 +20,9 @@ final class UpahMinimumProvinsiModel extends ModelTemplate
                 'provinsi'     => V::DEFAULT(),
                 'upah_minimum' => V::DEFAULT(),
             ],
-            [],
+            [
+                'provinsi' => ['kode_provinsi', 'nama_provinsi'],
+            ],
         );
     }
 }

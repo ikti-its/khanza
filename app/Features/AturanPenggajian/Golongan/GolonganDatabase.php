@@ -28,7 +28,7 @@ final class GolonganDatabase extends DatabaseTemplate
                 [
                     'pendidikan',
                     \App\Features\Pendidikan\JenjangPendidikan\JenjangPendidikanDatabase::class,
-                    'nama_jenjang_pendidikan',
+                    'id_jenjang_pendidikan',
                 ]
             ],
         );
