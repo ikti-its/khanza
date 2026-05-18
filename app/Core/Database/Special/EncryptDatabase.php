@@ -7,6 +7,8 @@ use CodeIgniter\Database\Migration;
 final class EncryptDatabase extends Migration
 {
     const string PATH = APPPATH . 'Core/Database/Encrypt/';
+    
+    #[\Override()]
     public function up()
     {
         // $config = new \Config\Database()->default;
@@ -20,6 +22,7 @@ final class EncryptDatabase extends Migration
         // $this->db->query(file_get_contents(self::PATH . 'create_encrypted_view.sql'));
     }
     
+    #[\Override()]
     public function down()
     {
         // $config = new \Config\Database()->default;
