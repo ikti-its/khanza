@@ -9,14 +9,16 @@ final class AlasanPemusnahanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new AlasanPemusnahanDatabase(),
             'REFS',
             'pemusnahan_darah',
             'alasan_pemusnahan',
             'id_alasan',
             [
-                'id_alasan' => V::TODO(),
-                'nama_alasan' => V::TODO()
+                'id_alasan'   => V::DEFAULT(),
+                'nama_alasan' => V::DEFAULT()
             ],
+            []
         );
     }
 }

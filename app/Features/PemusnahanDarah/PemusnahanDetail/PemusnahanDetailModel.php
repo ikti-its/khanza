@@ -9,16 +9,22 @@ final class PemusnahanDetailModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
+            new PemusnahanDetailDatabase(),
             'BASE',
             'pemusnahan_darah',
             'pemusnahan_detail',
             'id_pemusnahan_detail',
             [
-                'id_pemusnahan_detail' => V::TODO(),
-                'id_pemusnahan' => V::TODO(),
-                'id_stok_darah' => V::TODO(),
-                'id_alasan' => V::TODO()
+                'id_pemusnahan_detail' => V::DEFAULT(),
+                'id_pemusnahan' => V::DEFAULT(),
+                'id_stok_darah' => V::DEFAULT(),
+                'id_alasan' => V::DEFAULT()
             ],
+            [
+                'id_pemusnahan'        => [],
+                'id_stok_darah'        => [],
+                'id_alasan'            => [],
+            ]
         );
     }
 }
