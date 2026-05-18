@@ -13,21 +13,21 @@ final class SekolahDatabase extends DatabaseTemplate
             [
                 'id_sekolah'   => T::ID(80_000),
                 'nama_sekolah' => T::TEXT(),
-                'jenis_id'     => T::FK_AUTO(),
-                'alamat_id'    => T::FK_AUTO(),
+                'id_jenis'     => T::FK_AUTO(),
+                'id_alamat'    => T::FK_AUTO(),
             ],
             'id_sekolah',
             [],
             [
                 [
-                    'alamat_id',
+                    'id_alamat',
                     \App\Features\Lokasi\Alamat\AlamatDatabase::class,
                     'id_alamat',
                 ],
                 [
-                    'jenis_id',
+                    'id_jenis',
                     \App\Features\Pendidikan\JenisPendidikan\JenisPendidikanDatabase::class,
-                    'id_jenis_pendidikan',
+                    'id_jenis',
                 ],
             ],
         );

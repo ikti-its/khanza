@@ -9,13 +9,13 @@ final class JenjangPendidikanDatabase extends DatabaseTemplate
     public function __construct(){
         parent::__construct(
             'pendidikan',
-            'jenjang_pendidikan',
+            'jenjang',
             [
-                'id_jenjang_pendidikan'   => T::ID(9),
-                'nama_jenjang_pendidikan' => T::TEXT(),
+                'id_jenjang'   => T::ID(9),
+                'nama_jenjang' => T::TEXT(),
             ],
-            'id_jenjang_pendidikan',
-            ['nama_jenjang_pendidikan'],
+            'id_jenjang',
+            ['nama_jenjang'],
             [],
         );
     }
