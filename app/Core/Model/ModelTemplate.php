@@ -10,7 +10,7 @@ class ModelTemplate extends Model
     /**
      * @param 'BASE'| 'JOIN'| 'REFS' $type
      */
-    public function __construct(
+    protected function __construct(
         protected DatabaseTemplate $database,
         protected string $type,
         protected string $schema,

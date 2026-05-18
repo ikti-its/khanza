@@ -5,12 +5,11 @@ namespace App\Core\Database\Template;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
 use App\Core\Database\Template\SemanticType as ST;
-use App\Core\Database\Template\ForgeType;
 
 class DatabaseTemplate extends Migration
 {
     private static array $ref_class_cache = [];
-    public function __construct(
+    protected function __construct(
         protected string $schema,
         protected string $table,
         /**

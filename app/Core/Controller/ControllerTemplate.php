@@ -7,7 +7,7 @@ use CodeIgniter\Controller;
 
 class ControllerTemplate extends Controller
 {
-    public function __construct(
+    protected function __construct(
         protected ModelTemplate|null $model,
         protected array $breadcrumbs,
         protected string $title,
