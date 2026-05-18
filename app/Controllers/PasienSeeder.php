@@ -7,6 +7,7 @@ use Faker\Factory;
 
 class PasienSeeder extends Seeder
 {
+    #[\Override()]
     public function run()
     {
         $faker = Factory::create('id_ID');
