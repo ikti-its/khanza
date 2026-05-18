@@ -33,7 +33,7 @@ final class AuditDatabase extends Migration
         // $this->db->query(file_get_contents(self::PATH . 'drop_audit_view.sql'));
     }
 
-    public function dependencies(){
+    public function dependencies(): array {
         return [];
     }
 }

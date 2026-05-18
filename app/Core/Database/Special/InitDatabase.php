@@ -33,11 +33,11 @@ final class InitDatabase extends Migration
     #[\Override()]
     public function down()
     {
-        $forge = \Config\Database::forge();
-        $forge->dropDatabase('khanza_db');
+        // $forge = \Config\Database::forge();
+        // $forge->dropDatabase('khanza_db');
     }
 
-    public function dependencies(){
+    public function dependencies(): array {
         return [];
     }
 }

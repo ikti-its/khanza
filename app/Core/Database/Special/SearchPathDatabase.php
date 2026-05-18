@@ -52,7 +52,7 @@ final class SearchPathDatabase extends Migration
         ");
     }
 
-    public function dependencies(){
+    public function dependencies(): array {
         return [];
     }
 }
