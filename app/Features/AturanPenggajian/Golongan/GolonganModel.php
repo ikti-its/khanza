@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Features\AturanPenggajian\Golongan;
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
-use App\Features\AturanPenggajian\Golongan\GolonganDatabase;
 
 final class GolonganModel extends ModelTemplate
 {
