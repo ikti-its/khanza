@@ -14,7 +14,7 @@ class ControllerTemplate extends Controller
      *    icon: string,
      * }> */
     protected array $breadcrumbs;
-   
+    
     /** @var array<int, array{
      *  0: 0|1,
      *  1: string,
@@ -77,7 +77,7 @@ class ControllerTemplate extends Controller
     {
         $postData = [];
         foreach ($this->fields as $f) {
-            [$_required, $_show, $type, $column, $name] = $f;
+            [$_required, $name, $column, $type, $_show] = $f;
             
             $raw_data = $this->request->getPost($column);
             if (in_array($type, ['jumlah', 'uang', 'suhu'])) {
@@ -88,18 +88,18 @@ class ControllerTemplate extends Controller
         return $postData;
     }
 
-    private function process_fields(): void{
+    private function process_fields(): void {
         for($i = 0; $i < count($this->fields); $i++){
-            $input_type = $this->fields[$i][2];
+            $input_type = $this->fields[$i][3];
             if($input_type instanceof InputType)
-                $this->fields[$i][2] = $input_type->value;
+                $this->fields[$i][3] = $input_type->value;
         }
     }
 
-    private function reorder_fields(): void{
+    private function reorder_fields(): void {
         for($i = 0; $i < count($this->field); $i++){
-            $c = $this->field[$i];
-            $this->fields[$i] = [$c[0], $c[4], $c[3], $c[2], $c[1]];
+            [$show, $required, $type, $column, $name] = $this->field[$i];
+            $this->fields[$i] = [$show, $name, $column, $type, $required];
         }
     }
 
@@ -208,7 +208,7 @@ class ControllerTemplate extends Controller
         /** @var array<string, scalar|null> $postData */
         $postData = $this->get_post_data();
         try {
-        $this->model->insert($postData);
+            $this->model->insert($postData);
         } catch(\Exception $e){
             die($e->getMessage());
         }
@@ -221,7 +221,7 @@ class ControllerTemplate extends Controller
         /** @var array<string, scalar|null> $postData */
         $postData = $this->get_post_data();
         try {
-        $this->model->update($id, $postData);
+            $this->model->update($id, $postData);
         } catch(\Exception $e){
             die($e->getMessage());
         }
@@ -232,7 +232,7 @@ class ControllerTemplate extends Controller
     final public function delete(mixed $id)
     {   
         try {
-        $this->model->delete($id);
+            $this->model->delete($id);
         } catch(\Exception $e){
             die($e->getMessage());
         }
