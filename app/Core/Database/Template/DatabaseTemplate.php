@@ -88,7 +88,7 @@ class DatabaseTemplate extends Migration
             if(is_string($keys)){
                 $keys = [$keys];
             } 
-            
+
             foreach ($keys as $key){
                 Assert::True(array_key_exists($key, $this->fields),
                     "Unique key '$key' is not defined in fields "
@@ -123,7 +123,7 @@ class DatabaseTemplate extends Migration
             foreach($fields as $field){
                 Assert::True(in_array($field, array_keys($this->fields)), 
                     "Foreign key field $field not found in fields.");
-         }
+            }
             
             $ref_table = new $ref_table_class();
             $ref_table_name = $ref_table->schema . '.' . $ref_table->table;
@@ -142,7 +142,7 @@ class DatabaseTemplate extends Migration
 
             // Add more comprehensive checks
             try {
-            $this->forge->addForeignKey($fields, $ref_table_name, $ref_fields);
+                $this->forge->addForeignKey($fields, $ref_table_name, $ref_fields);
             } catch (Exception $e){
                 die($e->getMessage());
             }  
@@ -195,7 +195,7 @@ class DatabaseTemplate extends Migration
             default   => Assert::Unreachable("Unsupported platform"),
         };
         try {
-        $reflection = new \ReflectionClass($this);
+            $reflection = new \ReflectionClass($this);
         } catch (Exception $e){
             die($e->getMessage());
         }
@@ -221,6 +221,7 @@ class DatabaseTemplate extends Migration
         unlink($tmp_file);
     }
 
+    #[\Override()]
     final public function up(): void
     {
         $this->setup();
@@ -242,11 +243,12 @@ class DatabaseTemplate extends Migration
         }
     }
 
+    #[\Override()]
     final public function down(): void
     {
         $this->db->query("SET search_path TO public," . $this->schema);
         try {
-        $this->forge->dropTable($this->table);
+            $this->forge->dropTable($this->table);
         } catch (DatabaseException $e) {
             die($e->getMessage());
         }
