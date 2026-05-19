@@ -18,7 +18,7 @@ class DatabaseTemplate extends Migration
     /** @var array<string, array{
      *     type: string,
      *     null: bool,
-     *     constraint?: int,
+     *     constraint?: string|int,
      *     default?: RawSql,
      * }>*/
     private array $fields = [];

@@ -9,7 +9,7 @@ final readonly class ForgeType
 {
     public function __construct(
         private string $type,
-        private ?string $constraint = null,
+        private string|int|null $constraint = null,
         private ?string $check   = null,
         private bool    $null    = false,
         private ?RawSql $default = null,
@@ -19,7 +19,7 @@ final readonly class ForgeType
      * @return array{
      *     type: string,
      *     null: bool,
-     *     constraint?: int,
+     *     constraint?: string|int,
      *     default?: RawSql,
      * }
      */
