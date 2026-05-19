@@ -28,7 +28,7 @@ final class HasilRadBhpDatabase extends DatabaseTemplate
             [
                 'id_barang_medis',
                 \App\Features\InventoriMedis\DataBarang\DataBarangDatabase::class,
-                'id'
+                'id_barang'
             ]
         ],
     );

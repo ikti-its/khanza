@@ -21,7 +21,7 @@ final class GolonganModel extends ModelTemplate
                 'gaji_pokok'    => V::DEFAULT(),
             ],
             [
-                'pendidikan' => ['nama_jenjang_pendidikan'],
+                'pendidikan' => ['nama_jenjang'],
             ],
         );
     }
