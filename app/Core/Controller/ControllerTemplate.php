@@ -64,33 +64,30 @@ class ControllerTemplate extends Controller
      */
     private function get_post_data(): array
     {
-        $column = 2;
-        $type = 3;
         $postData = [];
-        foreach ($this->fields as $k) {
-            $kolom = $k[$column];
-            $jenis = $k[$type];
-            $raw_data = $this->request->getPost($kolom);
-            if (in_array($jenis, ['jumlah', 'uang', 'suhu'])) {
+        foreach ($this->fields as $f) {
+            [$_required, $_show, $type, $column, $name] = $f;
+            
+            $raw_data = $this->request->getPost($column);
+            if (in_array($type, ['jumlah', 'uang', 'suhu'])) {
                 $raw_data = floatval($raw_data);
             }
-            $postData[$kolom] = $raw_data;
+            $postData[$column] = $raw_data;
         }
         return $postData;
     }
 
-    private function process_fields(){
-        $type = 3;
+    private function process_fields(): void{
         for($i = 0; $i < count($this->fields); $i++){
-            $input_type = $this->fields[$i][$type];
+            $input_type = $this->fields[$i][2];
             if($input_type instanceof InputType)
-                $this->fields[$i][$type] = $this->fields[$i][$type]->value;
+                $this->fields[$i][2] = $input_type->value;
         }
     }
 
-    private function reorder_fields(){
-        for($i = 0; $i < count($this->fields); $i++){
-            $c = $this->fields[$i];
+    private function reorder_fields(): void{
+        for($i = 0; $i < count($this->field); $i++){
+            $c = $this->field[$i];
             $this->fields[$i] = [$c[0], $c[4], $c[3], $c[2], $c[1]];
         }
     }
@@ -109,12 +106,12 @@ class ControllerTemplate extends Controller
         $this->action = $action;
     }
 
-    private function process_breadcrumbs(){
-        for($i = 0; $i < count($this->breadcrumbs); $i++){
-            $curr = $this->breadcrumbs[$i];
+    private function process_breadcrumbs(): void{
+        for($i = 0; $i < count($this->breadcrumb); $i++){
+            $curr = $this->breadcrumb[$i];
             $title = $curr[0];
             $icon  = $curr[1];
-            $this->breadcrumbs[$i] = [
+            $this->breadcrumb[$i] = [
                 'title' => $title,
                 'icon'  => $icon,
             ];
