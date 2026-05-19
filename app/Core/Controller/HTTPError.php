@@ -5,7 +5,7 @@ namespace App\Core\Controller;
 
 final readonly class HTTPError
 {
-    public static function renderErrorView($status_code, $custom_message = null)
+    public static function renderErrorView(int $status_code, ?string $custom_message = null): string
     {
         $data = [
             'kode'       => $status_code,
