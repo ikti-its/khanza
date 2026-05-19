@@ -8,7 +8,7 @@ use CodeIgniter\Controller;
 class ControllerTemplate extends Controller
 {
     private array $meta_data;
-    private string $primary_keys;
+    private string $primary_key;
     /** @var list<array{
      *    title: string,
      *    icon: string,
@@ -56,7 +56,7 @@ class ControllerTemplate extends Controller
         $this->process_fields();
         $this->process_action();
         $this->process_breadcrumbs();
-        $this->primary_keys = $this->model->get_primary_key();
+        $this->primary_key = $this->model->get_primary_key();
         $this->meta_data = ['page' => 1, 'size' => 10, 'total' => 1];
     }
 
@@ -118,7 +118,7 @@ class ControllerTemplate extends Controller
             if ($a instanceof ActionType)
                 $action[$a->value] = true;
         }
-        $this->action = $action;
+        $this->actions = $action;
     }
 
     private function process_breadcrumbs(): void{
@@ -126,7 +126,7 @@ class ControllerTemplate extends Controller
             $curr = $this->breadcrumb[$i];
             $title = $curr[0];
             $icon  = $curr[1];
-            $this->breadcrumb[$i] = [
+            $this->breadcrumbs[$i] = [
                 'title' => $title,
                 'icon'  => $icon,
             ];
@@ -140,9 +140,9 @@ class ControllerTemplate extends Controller
             'breadcrumbs' => $this->breadcrumbs,
             'meta_data'   => $this->meta_data,
             'modul_path'  => $this->get_uri_path(),
-            'kolom_id'    => $this->primary_keys,
+            'kolom_id'    => $this->primary_key,
             'konfig'      => $this->fields,
-            'aksi'        => $this->action,
+            'aksi'        => $this->actions,
             'tabel'       => $this->model->findAll(),
         ]);
     }
@@ -181,7 +181,7 @@ class ControllerTemplate extends Controller
             'judul'       => 'Tambah ' . $this->title,
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->get_uri_path(),
-            'kolom_id'    => $this->primary_keys,
+            'kolom_id'    => $this->primary_key,
             'konfig'      => $this->fields,
             'form_action' => '/submittambah/',
         ]);
@@ -196,10 +196,10 @@ class ControllerTemplate extends Controller
             'judul'       => 'Ubah ' . $this->title,
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->get_uri_path(),
-            'kolom_id'    => $this->primary_keys,
+            'kolom_id'    => $this->primary_key,
             'konfig'      => $this->fields,
             'baris'       => $data,
-            'form_action' => '/submitedit/' . $data[$this->primary_keys],
+            'form_action' => '/submitedit/' . $id,
         ]);
     }
 
@@ -240,9 +240,15 @@ class ControllerTemplate extends Controller
         return $this->index();        
     }
 
+<<<<<<< HEAD
     public function print(mixed $id){
         if(in_array(ActionType::PRINT, $this->action)){
             echo view('components/cetak/template');
+=======
+    final public function print(): string {
+        if(in_array(ActionType::PRINT, $this->actions)){
+            return view('components/cetak/template');
+>>>>>>> ad3dc7ec (Change to private member variables)
         } else {
             return $this->index();
         }
