@@ -7,14 +7,39 @@ use CodeIgniter\Controller;
 
 class ControllerTemplate extends Controller
 {
+    private array $meta_data;
+    private string $primary_keys;
+    /** @var list<array{
+     *    title: string,
+     *    icon: string,
+     * }> */
+    protected array $breadcrumbs;
+   
+    /** @var  array<int, array{
+     *  0: 0|1,
+     *  1: string,
+     *  2: string|InputType,
+     *  3: string,
+     *  4: 0|1,
+     * }> */
+    private array $fields;
     protected function __construct(
-        protected ModelTemplate|null $model,
-        protected array $breadcrumbs,
+        protected ModelTemplate $model,
+        /** @var list<list<string>> */
+        protected array $breadcrumb,
+        /** @var non-empty-string */
         protected string $title,
+        /** @var  list<ActionType> */
         protected array $action,
-        protected array $fields,
-        private array $meta_data = [],
-        private array|string $primary_keys = ''
+        /** @var  array<int, array{
+         *  0: 0|1,
+         *  1: 0|1,
+         *  2: InputType,
+         *  3: string,
+         *  4: string,
+         * }> */
+        protected array $field,
+        
     ) {
         $this->reorder_fields();
         $this->process_fields();
@@ -34,7 +59,10 @@ class ControllerTemplate extends Controller
         return $parentPath;
     }
 
-    private function get_post_data()
+    /**
+     * @return array<string, mixed>
+     */
+    private function get_post_data(): array
     {
         $column = 2;
         $type = 3;
