@@ -7,15 +7,18 @@ use App\Core\Database\Template\DatabaseTemplate;
 
 class ModelTemplate extends Model
 {
-    /**
-     * @param 'BASE'| 'JOIN'| 'REFS' $type
-     */
     protected function __construct(
         protected DatabaseTemplate $database,
+        /** @var 'BASE'| 'JOIN'| 'REFS' */
         protected string $type,
+        /** @var non-empty-string */
         protected string $schema,
+        /** @var non-empty-string */
         protected string $table_name,
+        /** @var non-empty-string */
         protected string $primary_key,
+
+        /** @var array<non-empty-string, ValidationType> */
         protected array $fields,
         protected array $join,
     ) {
@@ -70,8 +73,8 @@ class ModelTemplate extends Model
         // $this->beforeDelete = [];
         // $this->afterDelete  = [];
     }
-
-    final public function get_primary_key(){
+    /** @return non-empty-string */
+    final public function get_primary_key(): string{
         return $this->primary_key;
     }
 
