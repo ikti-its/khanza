@@ -2,8 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Core\Model;
+use CodeIgniter\Database\BaseResult;
 use CodeIgniter\Model;
 use App\Core\Database\Template\DatabaseTemplate;
+use App\Core\Controller\Assert;
 
 class ModelTemplate extends Model
 {
@@ -22,14 +24,13 @@ class ModelTemplate extends Model
         protected array $fields,
         protected array $join,
     ) {
-        parent::__construct();
         $this->table = $this->schema . '.' . $this->table_name;
         $this->allowedFields = array_keys($fields);
         $this->primaryKey = $this->primary_key;
 
         $config = new \Config\Database()->default;
         $config['database'] = env('database.default.khanza_db');
-        $this->db = \Config\Database::connect($config);
+        parent::__construct(\Config\Database::connect($config));
         
         // $this->setValidationRules($fields);
         
@@ -78,18 +79,18 @@ class ModelTemplate extends Model
         return $this->primary_key;
     }
 
-    final public function audit(){
-        $query = $this->db->query(
-            "SELECT * FROM sik.{$this->table_name}_audit_view
+    final public function audit(): array {       
+        $sql = "SELECT * FROM sik.{$this->table_name}_audit_view
             LEFT OUTER JOIN 
             (SELECT id, nama FROM sik.pegawai) c
             ON sik.{$this->table_name}_audit_view.changed_by = c.id
-            ORDER BY changed_by DESC");
-        $results = $query->getResult();
-
-        for($i = 0; $i < count($results); $i++){
-            $results[$i] = json_decode(json_encode($results[$i]), true);
-        }
+            ORDER BY changed_by DESC";
+        
+        $query = $this->db->query($sql);
+        if(!($query instanceof BaseResult))  
+            Assert::Unreachable('There is a problem in audit query');  
+        
+        $results = $query->getResultArray();
         return $results;
     }
 }
