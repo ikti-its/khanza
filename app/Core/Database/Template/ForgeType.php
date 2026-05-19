@@ -15,6 +15,14 @@ final readonly class ForgeType
         private ?RawSql $default = null,
     ) {}
 
+    /**
+     * @return array{
+     *     type: string,
+     *     null: bool,
+     *     constraint?: int,
+     *     default?: RawSql,
+     * }
+     */
     public function definition(): array { 
         $arr = [
             'type' => $this->type,
