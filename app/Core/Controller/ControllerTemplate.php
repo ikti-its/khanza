@@ -191,20 +191,35 @@ class ControllerTemplate extends Controller
     final public function create()
     {
         $postData = $this->get_post_data();
+        try {
         $this->model->insert($postData);
+        } catch(\Exception $e){
+            die($e->getMessage());
+        }
+        
         return $this->index();
     }
 
     final public function update(mixed $id)
     {
         $postData = $this->get_post_data();
+        try {
         $this->model->update($id, $postData);
+        } catch(\Exception $e){
+            die($e->getMessage());
+        }
+    
         return $this->index();
     }
 
     final public function delete(mixed $id)
     {   
+        try {
         $this->model->delete($id);
+        } catch(\Exception $e){
+            die($e->getMessage());
+        }
+        
         return $this->index();        
     }
 
