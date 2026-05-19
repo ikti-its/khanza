@@ -8,38 +8,44 @@ use App\Core\Database\Template\SemanticType as ST;
 
 class DatabaseTemplate extends Migration
 {
+    /** @var array<array<string>> */
+    private array $index = [];
+    
+    /** @var array<string, array{
+     *     type: string,
+     *     null: bool,
+     *     constraint?: int,
+     *     default?: RawSql,
+     * }>*/
+    private array $fields = [];
+
+    /** @var array<class-string<DatabaseTemplate>, DatabaseTemplate> $ref_class_cache*/
     private static array $ref_class_cache = [];
+
     protected function __construct(
-        protected string $schema,
-        protected string $table,
-        /**
-         * @var array<string, ForgeType>
-         */
-        protected array $fields,
-        protected string $primary_key,
-        /**
-         * @var array<string|array<string>>
-         */
+        protected string $schema = '',
+        protected string $table  = '',
+        
+        /** @var array<non-empty-string, ForgeType>*/
+        protected array $field = [],
+        /** @var non-empty-string $primary_key */
+        protected string $primary_key = '',
+        
+        /** @var array<non-empty-string|array<non-empty-string>> */
         protected array $unique_key = [],
         /**
          * @var array<int, array{
-         *   0: string|array<string>,
-         *   1: string,
-         *   2: string|array<string>,
+         *   0: non-empty-string|list<non-empty-string>,
+         *   1: class-string<DatabaseTemplate>,
+         *   2: non-empty-string|list<non-empty-string>,
          * }>
          */
         protected array $foreign_key = [],
         protected bool $data_is_real = false,
         protected string $source = '', 
-        
-        /**
-         * @var array<array<string>>
-         */
-        private array $index = [],
     ) {
         parent::__construct();
-
-        foreach ($this->fields as $name => $type) {
+        foreach ($this->field as $name => $type) {
             $this->fields[$name] = $type->definition();
         }
         $this->set_fk_auto();
