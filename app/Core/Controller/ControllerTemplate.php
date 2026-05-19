@@ -15,14 +15,25 @@ class ControllerTemplate extends Controller
      * }> */
     protected array $breadcrumbs;
    
-    /** @var  array<int, array{
+    /** @var array<int, array{
      *  0: 0|1,
      *  1: string,
-     *  2: string|InputType,
-     *  3: string,
+     *  2: string,
+     *  3: string|InputType,
      *  4: 0|1,
      * }> */
     private array $fields;
+
+    /**
+     * @var array{
+     *   tambah:bool,
+     *   audit:bool,
+     *   ubah:bool,
+     *   hapus:bool,
+     *   cetak?:true,
+     * }
+     */
+    private array $actions;
     protected function __construct(
         protected ModelTemplate $model,
         /** @var list<list<string>> */
@@ -31,7 +42,7 @@ class ControllerTemplate extends Controller
         protected string $title,
         /** @var  list<ActionType> */
         protected array $action,
-        /** @var  array<int, array{
+        /** @var array<int, array{
          *  0: 0|1,
          *  1: 0|1,
          *  2: InputType,
@@ -92,7 +103,11 @@ class ControllerTemplate extends Controller
         }
     }
 
+<<<<<<< HEAD
     private function process_action(){
+=======
+    private function process_action(): void {
+>>>>>>> 7e77a3bf (Add type annotation in ControllerTemplate)
         $action = [
             'tambah' => false,
             'audit'  => false,
@@ -190,6 +205,7 @@ class ControllerTemplate extends Controller
 
     final public function create()
     {
+        /** @var array<string, scalar|null> $postData */
         $postData = $this->get_post_data();
         try {
         $this->model->insert($postData);
@@ -202,6 +218,7 @@ class ControllerTemplate extends Controller
 
     final public function update(mixed $id)
     {
+        /** @var array<string, scalar|null> $postData */
         $postData = $this->get_post_data();
         try {
         $this->model->update($id, $postData);
