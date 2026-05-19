@@ -12,12 +12,12 @@ final readonly class Assert
     }
 
     public static function True(bool $condition, string $message){
-        if($condition === false)
+        if(!$condition)
             die($message);
     }
 
     public static function False(bool $condition, string $message){
-        if($condition === true)
+        if($condition)
             die($message);
-    }
+    }    
 }
