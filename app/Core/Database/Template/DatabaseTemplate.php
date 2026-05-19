@@ -5,6 +5,10 @@ namespace App\Core\Database\Template;
 use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
 use App\Core\Database\Template\SemanticType as ST;
+use CodeIgniter\Database\Exceptions\DatabaseException;
+use Exception;
+use CodeIgniter\Database\RawSql;
+
 
 class DatabaseTemplate extends Migration
 {
@@ -151,8 +155,11 @@ class DatabaseTemplate extends Migration
                 . implode(',', $ref_fields));
 
             // Add more comprehensive checks
-    
+            try {
             $this->forge->addForeignKey($fields, $ref_table_name, $ref_fields);
+            } catch (Exception $e){
+                die($e->getMessage());
+            }  
         }
     }
 
@@ -201,8 +208,15 @@ class DatabaseTemplate extends Migration
             'linux'   => '',
             default   => Assert::Unreachable("Unsupported platform"),
         };
+        try {
         $reflection = new \ReflectionClass($this);
-        $dir = dirname($reflection->getFileName());
+        } catch (Exception $e){
+            die($e->getMessage());
+        }
+        $filename = $reflection->getFileName();
+        if($filename === false)
+            Assert::Unreachable('File name for database not found');
+        $dir = dirname($filename);
 
         $csv_file = $dir . '/' . $this->source;
         $tmp_file = $root . '/tmp/' . $this->source;
@@ -234,18 +248,23 @@ class DatabaseTemplate extends Migration
         $this->add_foreign_key();
         $this->add_index();
 
-        $this->forge->createTable($this->table);
         try {
+            $this->forge->createTable($this->table);
             $this->seed();
-        } catch (\Exception $e) {
-            echo $e->getMessage();
+        } catch (DatabaseException $e) {
+            die($e->getMessage());
         }
     }
 
     final public function down(): void
     {
         $this->db->query("SET search_path TO public," . $this->schema);
+        try {
         $this->forge->dropTable($this->table);
+        } catch (DatabaseException $e) {
+            die($e->getMessage());
+        }
+        
     }
 
     final public function dependencies(): array {
