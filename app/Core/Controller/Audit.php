@@ -3,25 +3,26 @@ declare(strict_types=1);
 
 namespace App\Core\Controller;
 
+use CodeIgniter\Database\BaseResult;
+
 /** 
  * @deprecated "Migrate to ModelTemplate::audit"
  */final readonly class Audit
 {
-    public static function GetAuditData($tabel){
-        $tabel = str_replace('/', '', $tabel);
+    public static function GetAuditData(string $table): array {
+        $table = str_replace('/', '', $table);
 
         $db = \Config\Database::connect();
-        $query = $db->query(
-            "SELECT * FROM sik." . $tabel . "_audit_view
+        $sql =  "SELECT * FROM sik." . $table . "_audit_view
             LEFT OUTER JOIN 
             (SELECT id, nama FROM sik.pegawai) c
-            ON sik." . $tabel . "_audit_view.changed_by = c.id
-            ORDER BY changed_by DESC");
-        $results = $query->getResult();
-
-        for($i = 0; $i < count($results); $i++){
-            $results[$i] = json_decode(json_encode($results[$i]), true);
-        }
+            ON sik." . $table . "_audit_view.changed_by = c.id
+            ORDER BY changed_by DESC";
+        $query = $db->query($sql);
+        assert($query instanceof BaseResult,
+        'There is a problem in Audit query');
+        
+        $results = $query->getResultArray();
         return $results;
     }
 }
