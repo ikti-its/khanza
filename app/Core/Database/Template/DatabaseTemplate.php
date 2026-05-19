@@ -65,14 +65,12 @@ class DatabaseTemplate extends Migration
 
     private function add_primary_key(): void {
         $pk = $this->primary_key;
-        Assert::True(is_string($pk), 'Primary key must be a string');
-        Assert::False($pk === '', 'Primary key must be defined');
 
         Assert::True(array_key_exists($pk, $this->fields), 
             "Primary key '$pk' is not defined in fields: " 
             . implode(", ", array_keys($this->fields)));
 
-        Assert::False($this->fields[$pk]['null'] === true,
+        Assert::False($this->fields[$pk]['null'],
             "Primary key field '$pk' cannot be nullable.
             Schema : $this->schema, Table : $this->table");
 
@@ -85,19 +83,13 @@ class DatabaseTemplate extends Migration
         $pk = $this->primary_key;
         $uk = $this->unique_key;
         
-        Assert::True(is_array($uk), "Unique key must be an array");
         if($uk === []) return;
         foreach($uk as $keys){
             if(is_string($keys)){
                 $keys = [$keys];
             } 
-            Assert::True(is_array($keys), 
-                'Keys in a list of unique keys must either be a string '. 
-                'or an array of strings');
             
             foreach ($keys as $key){
-                Assert::True(is_string($key), 
-                    'Unique key must be an array of strings');
                 Assert::True(array_key_exists($key, $this->fields),
                     "Unique key '$key' is not defined in fields "
                     . implode(", ", array_keys($this->fields)));
@@ -118,12 +110,9 @@ class DatabaseTemplate extends Migration
     private function add_foreign_key(): void {
         $fks = $this->foreign_key;
 
-        Assert::True(is_array($fks), "Foreign key must be of type array, not " 
-            . gettype($this->foreign_key));
         if($fks === []) return;
         
         foreach($fks as $fk){
-            Assert::True(is_array($fk), "Every foreign key must be an array");
             Assert::True(count($fk) === 3, "Every foreign key must have
                 a field, a reference table class, and a reference field");
 
@@ -137,9 +126,6 @@ class DatabaseTemplate extends Migration
          }
             
             $ref_table = new $ref_table_class();
-            Assert::True($ref_table instanceof self, 
-                "Reference table $ref_table_class must extend DatabaseTemplate");
-    
             $ref_table_name = $ref_table->schema . '.' . $ref_table->table;
 
             if(is_string($ref_fields))
@@ -170,7 +156,7 @@ class DatabaseTemplate extends Migration
             [$fields, $ref_table_class, $ref_fields] = $fk;
             $ref_table = self::$ref_class_cache[$ref_table_class] ??= new $ref_table_class();
 
-            if(is_string($fields))     $fields     = [$fields];
+            if(is_string($fields)) $fields = [$fields];
             foreach($fields as $field){
                 $field_def = $this->fields[$field];
                 Assert::True($field_def['type'] === ST::FK_AUTO()->definition()['type'],
@@ -183,8 +169,8 @@ class DatabaseTemplate extends Migration
                 $this->fields[$fields[$i]] = $ref_table->fields[$ref_fields[$i]];
             }
         }
-
     }
+
     private function add_index(): void {
         foreach ($this->index as $keys) {
             foreach ($keys as $field) {
@@ -272,9 +258,6 @@ class DatabaseTemplate extends Migration
         $dependencies = [];
         foreach($fks as $fk){
             [$_fields, $ref_table_class, $_ref_fields] = $fk;
-            Assert::True(class_exists($ref_table_class), 
-                "Referenced nonexistent table: $ref_table_class");
-        
             Assert::False($ref_table_class === static::class,
                 "Foreign key refer to itself : $ref_table_class");
     
