@@ -5,10 +5,19 @@ namespace App\Core\Model;
 
 final class ValidationType
 {
-    public function __construct(
+    private function __construct(
         private string $rules,
         private string $error,
     ) {}
+
+
+    public function definition(): array {
+        return [
+            'rules' => $this->rules,
+            'error' => $this->error,
+        ];
+    }
+
 
     public static function TODO(): self {
         return new self('TODO','TODO : This field need a proper validation');
