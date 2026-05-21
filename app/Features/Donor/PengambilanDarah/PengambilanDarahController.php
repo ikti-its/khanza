@@ -21,6 +21,7 @@ final class PengambilanDarahController extends ControllerTemplate
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
+                A::SEPARATE,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],

@@ -6,7 +6,7 @@
             'modul_path' => $modul_path,
             'baris'      => $baris
         ];
-        $aksi_list = ['notif', 'tambah', 'audit', 'cetak', 'tindakan', 'detail', 'detail2', 'ubah', 'hapus', 'validasi', 'ambulans', 'pilih'];
+        $aksi_list = ['notif', 'tambah', 'audit', 'cetak', 'tindakan', 'detail', 'detail2', 'ubah', 'hapus', 'validasi', 'ambulans', 'pilih', 'pemisahan'];
         if (ENVIRONMENT === 'development') {
             foreach ($aksi as $key => $value) {
                 if (!in_array($key, $aksi_list)) {
@@ -54,6 +54,9 @@
                     echo 'Aksi Panggil Ambulans belum dibuat pada modul ' . $modul_path;
                     break;
             }
+        }
+        if (isset($aksi['pemisahan']) && $aksi['pemisahan'] === true) {
+            echo view('components/aksi/pemisahan_komponen', $data);
         }
         if (isset($aksi['cetak'])  && $aksi['cetak']  === true) {
             echo view('components/aksi/cetak',  $data);
