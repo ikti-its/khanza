@@ -36,7 +36,11 @@ final class JadwalOperasiDatabase extends DatabaseTemplate
                 \App\Features\Ruangan\RuanganDatabase::class,
                 ['id_ruangan'],
             ],
-            // ['id_tindakan', 'sik.jenis_tindakan_structure', 'kode'],
+            [
+                ['id_tindakan'],
+                \App\Features\Operasi\RefTindakanOperasi\RefTindakanOperasiDatabase::class,
+                ['id_tindakan'],
+            ],
             [
                 ['kode_dokter_bedah'],
                 \App\Features\Role\Dokter\DokterDatabase::class,
