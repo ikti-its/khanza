@@ -12,7 +12,8 @@ final class RegistrasiDatabase extends DatabaseTemplate
             'rekam_medis',
             'registrasi',
             [
-                'nomor_reg'   => T::ID(100_000_000),
+                'id_registrasi' => T::ID(100_000_000),
+                'nomor_reg'   => T::RECORD(20),
                 'nomor_rawat' => T::TEXT(),
                 'datetime'    => T::DTIME(),
                 'id_dokter'   => T::FK_AUTO(),
@@ -41,8 +42,6 @@ final class RegistrasiDatabase extends DatabaseTemplate
                     'id_orang'
                 ]
             ],
-            false,
-            'registrasi.csv'
         );
     }
 }
