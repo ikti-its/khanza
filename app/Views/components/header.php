@@ -831,6 +831,12 @@
                         ['Observasi Rawat Inap Kebidanan', '/catatanobservasikebidanan', ''],
                         ['Observasi Rawat Inap Post Partum', '/catatanobservasipostpartum', ''],
                     ]],
+                    ['Role', '', 'role', '/role', $petugasrole, [
+                        ['Pasien', '/pasien', ''],
+                        ['Pendonor', '/pendonor', ''],
+                        ['Dokter', '/dokter', ''],
+                        ['Petugas', '/petugas', '']
+                    ]],
                     ['Darah', '', 'darah', '/darah', $petugasrole, [
                         ['Golongan Darah', '/golongan-darah', ''],
                         ['Komponen Darah', '/komponen-darah', ''],
