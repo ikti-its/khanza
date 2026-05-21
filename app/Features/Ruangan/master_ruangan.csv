@@ -1,0 +1,46 @@
+id_ruangan,kode_ruangan,nama_ruangan,jenis_instalasi
+1,GD-01,Ruang Triase,Gawat Darurat (IGD)
+2,GD-02,Ruang Resusitasi,Gawat Darurat (IGD)
+3,GD-03,Ruang Tindakan Bedah,Gawat Darurat (IGD)
+4,GD-04,Ruang Tindakan Non-Bedah,Gawat Darurat (IGD)
+5,GD-05,Ruang Dekontaminasi,Gawat Darurat (IGD)
+6,GD-06,Ruang Observasi,Gawat Darurat (IGD)
+7,GD-07,Pos Perawat (Nurse Station IGD),Gawat Darurat (IGD)
+8,RJ-01,Ruang Tunggu Pasien,Rawat Jalan (Poliklinik)
+9,RJ-02,Ruang Periksa / Konsultasi Umum,Rawat Jalan (Poliklinik)
+10,RJ-03,Ruang Tindakan Rawat Jalan,Rawat Jalan (Poliklinik)
+11,RJ-04,Ruang Laktasi / Menyusui,Rawat Jalan (Poliklinik)
+12,RJ-05,Poli Gigi dan Mulut,Rawat Jalan (Poliklinik)
+13,RI-01,Kamar Perawatan Kelas 1,Rawat Inap
+14,RI-02,Kamar Perawatan Kelas 2,Rawat Inap
+15,RI-03,Kamar Perawatan Kelas 3,Rawat Inap
+16,RI-04,Kamar Perawatan VIP,Rawat Inap
+17,RI-05,Kamar Perawatan VVIP,Rawat Inap
+18,RI-06,Kamar Perawatan Isolasi,Rawat Inap
+19,RI-07,Pos Perawat (Nurse Station Ranap),Rawat Inap
+20,RI-08,Ruang Linen Bersih,Rawat Inap
+21,RI-09,Ruang Kotor (Spoolhoek / Dirty Utility),Rawat Inap
+22,IT-01,Ruang HCU (High Care Unit),Perawatan Intensif
+23,IT-02,Ruang ICU (Intensive Care Unit),Perawatan Intensif
+24,IT-03,Ruang NICU (Neonatal Intensive Care Unit),Perawatan Intensif
+25,IT-04,Ruang PICU (Pediatric Intensive Care Unit),Perawatan Intensif
+26,OK-1,Ruang Operasi 1,Bedah Sentral
+27,OK-2,Ruang Operasi 2,Bedah Sentral
+28,BS-03,Ruang Pemulihan (PACU / Recovery Room),Bedah Sentral
+29,BS-04,Ruang Scrub Station (Cuci Tangan Bedah),Bedah Sentral
+30,FR-01,Gudang Farmasi Induk,Farmasi (Apotek)
+31,FR-02,Ruang Racikan Obat,Farmasi (Apotek)
+32,FR-03,Depo Farmasi Rawat Jalan,Farmasi (Apotek)
+33,FR-04,Depo Farmasi Rawat Inap,Farmasi (Apotek)
+34,LB-01,Ruang Pengambilan Sampel (Darah/Urine),Laboratorium
+35,LB-02,Ruang Laboratorium Utama (Analisis),Laboratorium
+36,LB-03,Bank Darah Rumah Sakit (BDRS),Laboratorium
+37,RD-01,Ruang Radiografi (X-Ray rontgen),Radiologi
+38,RD-02,Ruang Pemeriksaan USG,Radiologi
+39,RD-03,Ruang Pemeriksaan CT-Scan / MRI,Radiologi
+40,LG-01,Gudang Logistik Medis,Logistik & Umum
+41,LG-02,Gudang Logistik Non-Medis,Logistik & Umum
+42,LG-03,Ruang Manajemen / Administrasi Kantor,Logistik & Umum
+43,LG-04,Ruang Rekam Medis (Arsip),Logistik & Umum
+44,JZ-01,Ruang Pemulasaran Jenazah,Kamar Jenazah
+45,JZ-02,Laboratorium Otopsi / Dekontaminasi Jenazah,Kamar Jenazah
