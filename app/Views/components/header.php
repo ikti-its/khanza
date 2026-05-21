@@ -1013,6 +1013,7 @@
                         ['Ref Status Operasi',                  '/ref-status-operasi',                ''],
                         ['Ref Status Penayangan',               '/ref-status-penayangan',             ''],
                         ['Ref Status Spesimen',                 '/ref-status-spesimen',               ''],
+                        ['Referensi Tindakan Operasi',          '/ref-tindakan-operasi',              ''],
                         ['Ref Warna Urine',                     '/ref-warna-urine',                   ''],
                     ]],
                 ];

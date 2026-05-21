@@ -1,0 +1,41 @@
+id_tindakan,kode_tindakan,nama_tindakan,tarif_kelas_3,tarif_kelas_2,tarif_kelas_1,tarif_vip,tarif_vvip
+1,OP-001,Apendektomi Terbuka (Operasi Usus Buntu),4800000,6200000,8000000,11500000,14500000
+2,OP-002,Laparascopy Apendektomi (Usus Buntu Minimal Invasif),9500000,12000000,15500000,21000000,26500000
+3,OP-003,Seksio Sesarea (Operasi Caesar / SC) Tanpa Penyulit,6500000,8800000,11800000,16500000,21000000
+4,OP-004,Seksio Sesarea Metode ERACS,8500000,11500000,14800000,20000000,25000000
+5,OP-005,Kolekistektomi Terbuka (Pengangkatan Kantung Empedu),8500000,11000000,14500000,20000000,25500000
+6,OP-006,Laparascopy Kolekistektomi (Kantung Empedu Kamera),14000000,18000000,23000000,31000000,38500000
+7,OP-007,Herniotomi / Herniorafi Unilateral (Operasi Hernia),4200000,5600000,7500000,10500000,13500000
+8,OP-008,Mastektomi Radikal Modifikasi (Kanker Payudara),10500000,14000000,18500000,25000000,32000000
+9,OP-009,Eksisi Tumor Jinak Kulit / Lipoma Besar (>5 cm),2200000,3000000,4100000,5600000,7200000
+10,OP-010,Sirkumsisi Medis Tingkat Penyulit (Kamar Operasi),2500000,3400000,4500000,6200000,8000000
+11,OP-011,Histerektomi Total (Pengangkatan Rahim Angkat Tumor),9500000,13000000,17500000,24000000,30500000
+12,OP-012,Kuretase Uterus Diagnostic / Evakuasi Blighted Ovum,2400000,3200000,4300000,6000000,7800000
+13,OP-013,Miopemektomi (Pengangkatan Kista / Miom Uterus),8000000,10800000,14200000,19500000,25000000
+14,OP-014,Salpingorektomi (Penanganan Kehamilan Ektopik/KET),7500000,10000000,13500000,18500000,23500000
+15,OP-015,Fakoemulsifikasi + Pemasangan IOL Foldable (Katarak),6500000,8500000,11000000,15000000,19000000
+16,OP-016,Ekstraksi Katarak Ekstrakapsuler (ECCE),4500000,5800000,7800000,10500000,13500000
+17,OP-017,Operasi Pterigium dengan Graft (Selaput Mata),3200000,4200000,5600000,7800000,10000000
+18,OP-018,Tonsilektomi Bilateral (Operasi Amandel Anak/Dewasa),4000000,5400000,7200000,10000000,13000000
+19,OP-019,FESS (Functional Endoscopic Sinus Surgery) Unilateral,11000000,14500000,19000000,26000000,33000000
+20,OP-020,Miringotomi + Pemasangan Grommet Tube (Telinga),5000000,6800000,9000000,12500000,16000000
+21,OP-021,Debridement Luka Bakar Luas (>20%) Stadium Tinggi,5500000,7500000,10000000,14000000,18000000
+22,OP-022,ORIF Fraktur Femur (Pasang Pen Tulang Paha),11500000,15000000,20000000,27500000,35000000
+23,OP-023,ORIF Fraktur Kruris (Pasang Pen Tulang Kering/Betis),9000000,12000000,16000000,22000000,28000000
+24,OP-024,ORIF Antrebrahii / Radius / Ulna (Pasang Pen Lengan),8000000,10500000,14000000,19500000,25000000
+25,OP-025,Aff ORIF Femur (Operasi Lepas Pen Tulang Paha),6500000,8800000,11500000,16000000,20500000
+26,OP-026,Total Knee Arthroplasty (TKA - Ganti Sendi Lutut),25000000,33000000,44000000,59000000,75000000
+27,OP-027,Amputasi Mayor Diatas/Dibawah Lutut,7000000,9500000,12800000,17500000,22500000
+28,OP-028,Laparotomi Eksplorasi (Trauma Abdomen/Kebocoran Gaster),12000000,16000000,21500000,29500000,38000000
+29,OP-029,Kraniotomi Evakuasi EDH / SDH (Perdarahan Kepala),18000000,24000000,32000000,44000000,56000000
+30,OP-030,Ventriculoperitoneal Shunt (VP Shunt - Hidrosefalus),11000000,14800000,19500000,27000000,34500000
+31,OP-031,Tiroidektomi Subtotal/Total (Operasi Kelenjar Gondok),8500000,11500000,15000000,21000000,27000000
+32,OP-032,TURP (Transurethral Resection of the Prostate - Prostat),10500000,14000000,18500000,25000000,32000000
+33,OP-033,Ureterolithgeneric (URS) + Pasang DJ Stent (Batu Ureter),11000000,14500000,19000000,26000000,33000000
+34,OP-034,Fistulektomi / Fiselektomi (Operasi Fistula Ani),5000000,6800000,9000000,12500000,16000000
+35,OP-035,Hemoroidektomi Konvensional (Operasi Wasir),4800000,6500000,8800000,12000000,15500000
+36,OP-036,Hemoroidektomi Metode Stapler (Wasir Modern),9000000,12000000,15800000,21500000,27500000
+37,OP-037,Labioplasti Unilateral (Operasi Bibir Sumbing),6000000,8000000,10800000,15000000,19000000
+38,OP-038,Tiroidektomi Lobektomi (Tumor Tiroid Sebelah),7500000,10200000,13800000,19000000,24000000
+39,OP-039,Secured Airway Tracheostomi (Sumbatan Jalan Nafas),4500000,6000000,8000000,11000000,14000000
+40,OP-040,Eksisi Ganglion / Kista Poplitea Kompleks,3000000,4000000,5400000,7500000,9600000

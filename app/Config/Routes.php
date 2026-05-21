@@ -931,6 +931,7 @@ $features = [
         ['RefStatusOperasi',        'ref-status-operasi'],
         ['RefStatusPenayangan',     'ref-status-penayangan'],
         ['RefStatusSpesimen',       'ref-status-spesimen'],
+        ['RefTindakanOperasi',      'ref-tindakan-operasi'],
         ['RefWarnaUrine',           'ref-warna-urine'],
     ]],
     ['UjiDarah', 'uji-darah/', [
