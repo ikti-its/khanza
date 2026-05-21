@@ -61,10 +61,14 @@ final class PenyerahanPasienDatabase extends DatabaseTemplate
             ],
             [
                 ['id_ruang_asal'],
-                \App\Features\Operasi\RefRuanganOperasi\RefRuanganOperasiDatabase::class,
+                \App\Features\Ruangan\RuanganDatabase::class,
                 ['id_ruangan'],
             ],
-            // ['id_ruang_selanjutnya', 'sik.ruangan_structure', 'id'],
+            [
+                ['id_ruang_selanjutnya'],
+                \App\Features\Ruangan\RuanganDatabase::class,
+                ['id_ruangan'],
+            ],
             [
                 ['id_metode'],
                 \App\Features\Operasi\RefMetodeTransfer\RefMetodeTransferDatabase::class,

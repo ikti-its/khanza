@@ -1010,10 +1010,10 @@
                         ['Ref Posisi Pasien',                   '/ref-posisi-pasien',                 ''],
                         ['Ref Premedikasi',                     '/ref-premedikasi',                   ''],
                         ['Ref Rencana Anestesi',                '/ref-rencana-anestesi',              ''],
-                        ['Ref Ruangan Operasi',                 '/ref-ruangan-operasi',               ''],
                         ['Ref Status Operasi',                  '/ref-status-operasi',                ''],
                         ['Ref Status Penayangan',               '/ref-status-penayangan',             ''],
                         ['Ref Status Spesimen',                 '/ref-status-spesimen',               ''],
+                        ['Referensi Tindakan Operasi',          '/ref-tindakan-operasi',              ''],
                         ['Ref Warna Urine',                     '/ref-warna-urine',                   ''],
                     ]],
                 ];
