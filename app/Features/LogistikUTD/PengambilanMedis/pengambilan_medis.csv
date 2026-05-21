@@ -1,4 +1,4 @@
 ﻿id_pengambilan_medis,id_barang,jumlah,harga_beli,nama_bangsal,tanggal_pengambilan,keterangan,nomor_batch,nomor_faktur
-1,3,100,38500,Gudang,2026-05-15 09:15:57,Penyediaan stok transfusion set menyambut pekan donor darah,BTS-2605,FAK-2026-099
-2,1,500,400,Laboratorium,2026-05-18 10:30:03,Restock alkohol swab mingguan,,
-3,2,250,1500,Apotek,2026-05-18 10:49:12,Alokasi masker medis rutin petugas UTD,MSK-2602,FAK-2026-101
+1,74,100,38500,Gudang,2026-05-15 09:15:57,Penyediaan stok transfusion set menyambut pekan donor darah,BTS-2605,FAK-2026-099
+2,1756,500,400,Laboratorium,2026-05-18 10:30:03,Restock alkohol swab mingguan,,
+3,98,250,1500,Apotek,2026-05-18 10:49:12,Alokasi masker medis rutin petugas UTD,MSK-2602,FAK-2026-101
