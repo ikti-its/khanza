@@ -776,6 +776,12 @@ $features = [
         ['Pesangon', 'pesangon'],
         ['UPMK', 'upmk']
     ]],
+    ['Role', 'role/', [
+        ['Dokter', 'dokter'],
+        ['Pasien', 'pasien'],
+        ['Pendonor', 'pendonor'],
+        ['Petugas', 'petugas']
+    ]],
     ['Darah', 'darah/', [
         ['GolonganDarah', 'golongan-darah'],
         ['KomponenDarah', 'komponen-darah'],
