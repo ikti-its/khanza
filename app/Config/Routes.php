@@ -17,7 +17,7 @@ $routes->post('/submiteditprofil/(:segment)', 'userPegawai::submitEditProfil/$1'
 $routes->get('/datauserpegawai', 'userPegawai::lihatPegawai', ['filter' => 'auth']);
 $routes->get('/detailberkaspegawai/(:segment)', 'userPegawai::detailBerkasPegawai/$1', ['filter' => 'auth']);
 
-$routes->post('/kirimnotifikasi', 'userAdminController::submitKirimNotifikasi', ['filter' => 'noauth']);
+$routes->post('/kirimnotifikasi', 'userAdminController::submitKirimNotifikasi');
 $routes->get('/kirimnotifikasi', 'auth::dashboard', ['filter' => 'auth']);
 
 $routes->get('/izincuti', 'userPegawaiController::tambahCuti', ['filter' => 'auth']);
@@ -47,7 +47,7 @@ $routes->get('/absenpulang/(:segment)', 'userPegawaiController::LihatAbsenPulang
 $routes->post('/submittambahabsenpulang', 'userPegawaiController::submitTambahAbsenPulang', ['filter' => 'auth']);
 
 $routes->get('/admin', 'auth::dashboard', ['filter' => 'auth']);
-$routes->post('/admin', 'auth::login', ['filter' => 'noauth']);
+$routes->post('/admin', 'auth::login');
 
 //kalo mau akses halaman pake auth, pertama kali pake no auth(contoh di login)
 $routes->get('/dataakun', 'akun::dataAkun', ['filter' => 'auth']);
@@ -69,7 +69,7 @@ $routes->get('/admin', 'auth::dashboard');
 
 $routes->get('/logout', 'auth::logout');
 
-$routes->get('/datapegawai', 'admin::dataPegawai', ['filter' => 'noauth']);
+$routes->get('/datapegawai', 'admin::dataPegawai');
 
 $routes->get('/signup', 'admin::daftarPegawai');
 $routes->get('/editpegawai', 'admin::editPegawai');
@@ -84,7 +84,7 @@ $routes->get('/tampilkutitugas/(:segment)', 'userPegawai::tampilCuti/$1', ['filt
 $routes->get('/tampiljadwal/(:segment)', 'userPegawai::tampilJadwal/$1', ['filter' => 'auth']);
 $routes->get('/tampiljadwalpenuh', 'userPegawai::tampilJadwalPenuh', ['filter' => 'auth']);
 
-$routes->post('/kirimnotifikasi', 'userAdmin::submitKirimNotifikasi', ['filter' => 'noauth']);
+$routes->post('/kirimnotifikasi', 'userAdmin::submitKirimNotifikasi');
 $routes->get('/kirimnotifikasi', 'auth::dashboard', ['filter' => 'auth']);
 
 $routes->get('/izincuti', 'userPegawai::tambahCuti', ['filter' => 'auth']);
@@ -114,7 +114,7 @@ $routes->get('/absenpulang/(:segment)', 'userPegawai::LihatAbsenPulang/$1', ['fi
 $routes->post('/submittambahabsenpulang', 'userPegawai::submitTambahAbsenPulang', ['filter' => 'auth']);
 
 $routes->get('/admin', 'auth::dashboard', ['filter' => 'auth']);
-$routes->post('/admin', 'auth::login', ['filter' => 'noauth']);
+$routes->post('/admin', 'auth::login');
 
 $routes->post('/setFaceRecognized', 'FaceRecognition::setFaceRecognized');
 
