@@ -86,8 +86,7 @@ class ModelTemplate extends Model
             ORDER BY changed_by DESC";
         
         $query = $this->db->query($sql);
-        if(!($query instanceof BaseResult))  
-            die('There is a problem in audit query');  
+        assert($query instanceof BaseResult, 'There is a problem in audit query');  
         
         $results = $query->getResultArray();
         return $results;

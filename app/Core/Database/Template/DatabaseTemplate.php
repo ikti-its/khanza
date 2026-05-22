@@ -187,10 +187,11 @@ class DatabaseTemplate extends Migration
         if($this->source === '')
             return;
         
-        $root = match (getenv('platform')){
+        $env = getenv('platform');
+        $root = match ($env){
             'windows' => 'C:',
             'linux'   => '',
-            default   => die("Unsupported platform"),
+            default   => die("Platform $env is not supported"),
         };
         try {
             $reflection = new \ReflectionClass($this);
@@ -198,8 +199,7 @@ class DatabaseTemplate extends Migration
             die($e->getMessage());
         }
         $filename = $reflection->getFileName();
-        if($filename === false)
-            die('File name for database not found');
+        assert($filename !== false, 'File name for database not found');
         $dir = dirname($filename);
 
         $csv_file = $dir . '/' . $this->source;

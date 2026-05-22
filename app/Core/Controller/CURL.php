@@ -27,11 +27,11 @@ final readonly class CURL
         $url = getenv('api_URL');
         $full_url = $url . $path;
         $ch = curl_init($full_url);
-        if($ch === false) die("Curl initialization failed for $full_url");
+        assert($ch !== false, "Curl initialization failed for $full_url");
 
         if ($method === 'POST' || $method === 'PUT') {
             $postData = json_encode($data);
-            if($postData === false) die("JSON data format is incorrect for $full_url");
+            assert($postData !== false, "JSON data format is incorrect for $full_url");
             curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
             $headers[] = 'Content-Type: application/json';
             $headers[] = 'Content-Length: ' . strlen($postData);
@@ -48,8 +48,7 @@ final readonly class CURL
         }
 
         $response = curl_exec($ch);
-        if($response === true || $response === false) 
-            die("Error executing curl for  $full_url");
+        assert($response !== true && $response !== false, "Error executing curl for  $full_url");
 
         $http_status_code = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
 

@@ -11,8 +11,8 @@ final class SearchPathDatabase extends DatabaseTemplate
     public function up(): void
     {
         $db_name = env('database.default.khanza_db');
-        if(!is_string($db_name) || $db_name === '')
-            die('Env variable database.default.khanza_db is incorrect');
+        assert(is_string($db_name), 'Env variable database.default.khanza_db must be a string');
+        assert($db_name !== '', 'Env variable database.default.khanza_db must be filled');
         
         $config = new \Config\Database()->default;
         $config['database'] = $db_name;
@@ -26,10 +26,8 @@ final class SearchPathDatabase extends DatabaseTemplate
             AND schema_name <> 'information_schema'
             ORDER BY schema_name;"
         );
-        if(is_bool($query))  
-            die('There is a problem setting search_path');
-        if(!($query instanceof BaseResult))
-            die('Query in search_path is not of BaseResult type');
+        assert(is_bool($query), 'There is a problem setting search_path');
+        assert($query instanceof BaseResult, 'Query in search_path is not of BaseResult type');
         
         $schemas = $query->getResultArray();
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Core\Controller;
 use App\Core\Model\ModelTemplate;
 use CodeIgniter\Controller;
+use CodeIgniter\Database\Exceptions\DatabaseException;
 
 class ControllerTemplate extends Controller
 {
@@ -199,7 +200,7 @@ class ControllerTemplate extends Controller
         $postData = $this->get_post_data();
         try {
             $this->model->insert($postData);
-        } catch(\Exception $e){
+        } catch(\ReflectionException $e){
             die($e->getMessage());
         }
         
@@ -212,7 +213,7 @@ class ControllerTemplate extends Controller
         $postData = $this->get_post_data();
         try {
             $this->model->update($id, $postData);
-        } catch(\Exception $e){
+        } catch(\ReflectionException $e){
             die($e->getMessage());
         }
     
@@ -223,7 +224,7 @@ class ControllerTemplate extends Controller
     {   
         try {
             $this->model->delete($id);
-        } catch(\Exception $e){
+        } catch(DatabaseException $e){
             die($e->getMessage());
         }
         

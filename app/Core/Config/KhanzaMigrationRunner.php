@@ -83,8 +83,7 @@ final class KhanzaMigrationRunner extends MigrationRunner
     ): void {
         if (isset($visited[$node])) return;
 
-        if (isset($visiting[$node]))
-            die( "Circular dependency detected at $node");
+        assert(! isset($visiting[$node]),  "Circular dependency detected at $node");
 
         $visiting[$node] = true;
 

@@ -26,7 +26,7 @@ final class InitDatabase extends DatabaseTemplate
         
         foreach(['migration', 'seeder', 'function'] as $type) {
             $file = $path . $type . '.sql';
-            if(!file_exists($file)) die("SQL file for '$type' not found at '$file'");
+            assert(file_exists($file), "SQL file for '$type' not found at '$file'");
             $sql = (string) file_get_contents($file);
             $db->query($sql);
         }
