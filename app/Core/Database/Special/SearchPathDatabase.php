@@ -9,7 +9,7 @@ use App\Core\Controller\Assert;
 final class SearchPathDatabase extends Migration
 {
     #[\Override()]
-    public function up()
+    public function up(): void
     {
         $db_name = env('database.default.khanza_db');
         if(!is_string($db_name) || $db_name === '')
@@ -50,7 +50,7 @@ final class SearchPathDatabase extends Migration
     }
     
     #[\Override()]
-    public function down()
+    public function down(): void
     {
         // $config = new \Config\Database()->default;
         // $db_name = env('database.default.khanza_db');
@@ -64,6 +64,7 @@ final class SearchPathDatabase extends Migration
         // ");
     }
 
+    #[\Override()]
     public function dependencies(): array {
         return [];
     }

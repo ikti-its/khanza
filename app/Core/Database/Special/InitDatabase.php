@@ -9,7 +9,7 @@ use CodeIgniter\Database\Exceptions\DatabaseException;
 final class InitDatabase extends Migration
 {
     #[\Override()]
-    public function up()
+    public function up(): void
     { 
         $_db = \Config\Database::connect();
         $_forge = \Config\Database::forge($_db);
@@ -36,12 +36,13 @@ final class InitDatabase extends Migration
     }
     
     #[\Override()]
-    public function down()
+    public function down(): void
     {
         // $forge = \Config\Database::forge();
         // $forge->dropDatabase('khanza_db');
     }
 
+    #[\Override()]
     public function dependencies(): array {
         return [];
     }

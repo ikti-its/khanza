@@ -9,7 +9,7 @@ final class AuditDatabase extends Migration
     const string PATH = APPPATH . 'Core/Database/Audit/';
     
     #[\Override()]
-    public function up()
+    public function up(): void
     {
         // $config = new \Config\Database()->default;
         // $config['database'] = env('database.default.khanza_db');
@@ -22,7 +22,7 @@ final class AuditDatabase extends Migration
     }
     
     #[\Override()]
-    public function down()
+    public function down(): void
     {
         // $config = new \Config\Database()->default;
         // $config['database'] = env('database.default.khanza_db');
@@ -33,6 +33,7 @@ final class AuditDatabase extends Migration
         // $this->db->query(file_get_contents(self::PATH . 'drop_audit_view.sql'));
     }
 
+    #[\Override()]
     public function dependencies(): array {
         return [];
     }

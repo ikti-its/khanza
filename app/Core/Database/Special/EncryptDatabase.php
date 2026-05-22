@@ -9,7 +9,7 @@ final class EncryptDatabase extends Migration
     const string PATH = APPPATH . 'Core/Database/Encrypt/';
     
     #[\Override()]
-    public function up()
+    public function up(): void
     {
         // $config = new \Config\Database()->default;
         // $config['database'] = env('database.default.khanza_db');
@@ -23,7 +23,7 @@ final class EncryptDatabase extends Migration
     }
     
     #[\Override()]
-    public function down()
+    public function down(): void
     {
         // $config = new \Config\Database()->default;
         // $config['database'] = env('database.default.khanza_db');
@@ -35,6 +35,7 @@ final class EncryptDatabase extends Migration
         // $this->db->query(file_get_contents(self::PATH . 'drop_encrypted_table.sql'));
     }
 
+    #[\Override()]
     public function dependencies(): array {
         return [];
     }
