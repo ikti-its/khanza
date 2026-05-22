@@ -2,22 +2,22 @@
 declare(strict_types=1);
 
 namespace App\Core\Config;
+use App\Core\Database\Template\DatabaseTemplate;
+use App\Core\Database\Template\Migration;
 use CodeIgniter\Database\MigrationRunner;
-use Config\Migrations as MigrationsConfig;
 use App\Core\Controller\Assert;
 
 final class KhanzaMigrationRunner extends MigrationRunner
 {
-    private static array $ref_class_cache = [];
-    public function __construct(
-        MigrationsConfig $config, 
-        $db = null, 
-        protected $regex = '/\A(\w+Database)\z/',
-        private array $versions = [])
-    {
-        parent::__construct($config, $db);
-    }
+    /** @var string */
+    protected $regex = '/\A(\w+Database)\z/';
     
+    /** @var array<class-string<DatabaseTemplate>, DatabaseTemplate> */
+    private static array $ref_class_cache = [];
+
+    /** @param array<class-string<DatabaseTemplate>, Migration> $ref_table_classes 
+     * @return array<class-string<DatabaseTemplate>, list<class-string<DatabaseTemplate>>> 
+    */
     private static function buildGraph(array $ref_table_classes): array
     {
         $graph = [];
