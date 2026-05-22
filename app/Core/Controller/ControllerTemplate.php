@@ -34,7 +34,7 @@ class ControllerTemplate extends Controller
      * }
      */
     private array $actions;
-    protected function __construct(
+    public function __construct(
         protected ModelTemplate $model,
         /** @var list<list<string>> */
         protected array $breadcrumb,
@@ -129,7 +129,7 @@ class ControllerTemplate extends Controller
         }
     }
 
-    public function index()
+    public function index(): string
     {
         return view('/layouts/data', [
             'judul'       => $this->title,
@@ -143,7 +143,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    public function audit()
+    public function audit(): string
     {
         $audit_konfig = [
             // [1, 'Nomor Perubahan'  , 'change_id' , 'indeks'],
@@ -168,7 +168,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    public function create_page()
+    public function create_page(): string
     {
         $breadcrumbs = [
             ['title' => 'Tambah', 'icon', 'tambah']
@@ -182,7 +182,7 @@ class ControllerTemplate extends Controller
             'form_action' => '/submittambah/',
         ]);
     }
-    public function update_page(mixed $id)
+    public function update_page(int|string $id): string
     {
         $breadcrumbs = [
             ['title' => 'Ubah', 'icon', 'Ubah']
@@ -199,7 +199,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    final public function create()
+    final public function create(): string
     {
         /** @var array<string, scalar|null> $postData */
         $postData = $this->get_post_data();
@@ -212,7 +212,7 @@ class ControllerTemplate extends Controller
         return $this->index();
     }
 
-    final public function update(mixed $id)
+    final public function update(int|string $id): string
     {
         /** @var array<string, scalar|null> $postData */
         $postData = $this->get_post_data();
@@ -225,7 +225,7 @@ class ControllerTemplate extends Controller
         return $this->index();
     }
 
-    final public function delete(mixed $id)
+    final public function delete(int|string $id): string
     {   
         try {
             $this->model->delete($id);
