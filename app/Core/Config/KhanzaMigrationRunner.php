@@ -5,7 +5,6 @@ namespace App\Core\Config;
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\Migration;
 use CodeIgniter\Database\MigrationRunner;
-use App\Core\Controller\Assert;
 
 final class KhanzaMigrationRunner extends MigrationRunner
 {
@@ -27,10 +26,11 @@ final class KhanzaMigrationRunner extends MigrationRunner
             $all[$class] = true;
 
         foreach ($classes as $class) {
+            /** @mago-expect analysis:unsafe-instantiation */
             $ref_table = self::$ref_class_cache[$class] ??= new $class();
             $deps = $ref_table->dependencies();
             foreach ($deps as $dep) {
-                Assert::True(isset($all[$dep]),
+                assert(isset($all[$dep]),
                     "Migration dependency not found: $dep -> $class");
             }
             $graph[$class] = $deps;
@@ -199,6 +199,7 @@ final class KhanzaMigrationRunner extends MigrationRunner
             
             /** @var class-string<DatabaseTemplate> */
             $class = $migration->class;
+            /** @mago-expect analysis:unsafe-instantiation */
             $instance = new $class();
 
             if($direction === 'up')

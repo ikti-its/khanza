@@ -7,6 +7,7 @@ use App\Core\Database\Template\SemanticType as ST;
 use CodeIgniter\Database\Exceptions\DatabaseException;
 use CodeIgniter\Database\RawSql;
 
+/** @mago-expect analysis:unsafe-instantiation */
 class DatabaseTemplate extends Migration
 {
     /** @var array<array<string>> */
