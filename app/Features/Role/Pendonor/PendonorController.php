@@ -5,6 +5,7 @@ namespace App\Features\Role\Pendonor;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
 use App\Core\Controller\ActionType as A;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 final class PendonorController extends ControllerTemplate
 {
@@ -33,11 +34,15 @@ final class PendonorController extends ControllerTemplate
         );
     }   
 
-    public function print($id)
+    /**
+     * @throws PageNotFoundException
+     */
+    #[\Override()]
+    public function print(int|string $id): string
     {
         $dataPendonor = $this->model->find($id); 
         if (!$dataPendonor) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Data pendonor tidak ditemukan.");
+            throw PageNotFoundException::forPageNotFound("Data pendonor tidak ditemukan.");
         }
         return view('components/cetak/cetak_kartu', [
             'pendonor' => $dataPendonor
