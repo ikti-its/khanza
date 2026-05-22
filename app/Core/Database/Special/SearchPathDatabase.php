@@ -26,7 +26,7 @@ final class SearchPathDatabase extends DatabaseTemplate
             AND schema_name <> 'information_schema'
             ORDER BY schema_name;"
         );
-        assert(is_bool($query), 'There is a problem setting search_path');
+        assert(!is_bool($query), 'There is a problem setting search_path');
         assert($query instanceof BaseResult, 'Query in search_path is not of BaseResult type');
         
         $schemas = $query->getResultArray();
