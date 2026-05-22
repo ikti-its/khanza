@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Core\Database\Special;
 use CodeIgniter\Database\BaseResult;
 use App\Core\Database\Template\DatabaseTemplate;
-use App\Core\Controller\Assert;
 
 final class SearchPathDatabase extends DatabaseTemplate
 {
@@ -13,7 +12,7 @@ final class SearchPathDatabase extends DatabaseTemplate
     {
         $db_name = env('database.default.khanza_db');
         if(!is_string($db_name) || $db_name === '')
-            Assert::Unreachable('Env variable database.default.khanza_db is incorrect');
+            die('Env variable database.default.khanza_db is incorrect');
         
         $config = new \Config\Database()->default;
         $config['database'] = $db_name;
@@ -27,10 +26,10 @@ final class SearchPathDatabase extends DatabaseTemplate
             AND schema_name <> 'information_schema'
             ORDER BY schema_name;"
         );
-        if(is_bool($query))
-            Assert::Unreachable('There is a problem setting search_path');
+        if(is_bool($query))  
+            die('There is a problem setting search_path');
         if(!($query instanceof BaseResult))
-            Assert::Unreachable('Query in search_path is not of BaseResult type');
+            die('Query in search_path is not of BaseResult type');
         
         $schemas = $query->getResultArray();
 

@@ -5,7 +5,6 @@ namespace App\Core\Model;
 use CodeIgniter\Database\BaseResult;
 use CodeIgniter\Model;
 use App\Core\Database\Template\DatabaseTemplate;
-use App\Core\Controller\Assert;
 
 class ModelTemplate extends Model
 {
@@ -88,7 +87,7 @@ class ModelTemplate extends Model
         
         $query = $this->db->query($sql);
         if(!($query instanceof BaseResult))  
-            Assert::Unreachable('There is a problem in audit query');  
+            die('There is a problem in audit query');  
         
         $results = $query->getResultArray();
         return $results;

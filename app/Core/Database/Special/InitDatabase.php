@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Core\Database\Special;
 use App\Core\Database\Template\DatabaseTemplate;
-use App\Core\Controller\Assert;
 use CodeIgniter\Database\Exceptions\DatabaseException;
 
 final class InitDatabase extends DatabaseTemplate
@@ -16,7 +15,7 @@ final class InitDatabase extends DatabaseTemplate
         try {
             $_forge->createDatabase('khanza_db', true);
         } catch (DatabaseException $e){
-            Assert::Unreachable('There is a problem during db initilization in InitDatabase');
+            die('There is a problem during db initilization in InitDatabase');
         }
            
         $config = new \Config\Database()->default;
@@ -27,9 +26,7 @@ final class InitDatabase extends DatabaseTemplate
         
         foreach(['migration', 'seeder', 'function'] as $type) {
             $file = $path . $type . '.sql';
-            if(!file_exists($file)) {
-                Assert::Unreachable("SQL file for '$type' not found at '$file'");
-            }
+            if(!file_exists($file)) die("SQL file for '$type' not found at '$file'");
             $sql = (string) file_get_contents($file);
             $db->query($sql);
         }

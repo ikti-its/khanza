@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 namespace App\Core\Database\Template;
-use App\Core\Controller\Assert;
 use App\Core\Database\Template\ForgeType;
 use CodeIgniter\Database\RawSql;
 
@@ -30,7 +29,7 @@ final readonly class PostgresType
         if($min >= -(1<<15)    && $max <= (1<<15) - 1) { return self::INT16();}
         if($min >= -(1<<31)    && $max <= (1<<31) - 1) { return self::INT32();}
         if($min >= PHP_INT_MIN && $max <= PHP_INT_MAX) { return self::INT64();}
-        Assert::Unreachable("Integer range $min-$max is not supported");
+        die("Integer range $min-$max is not supported");
     }
 
     public static function F32(): ForgeType { return new ForgeType('FLOAT4');}
