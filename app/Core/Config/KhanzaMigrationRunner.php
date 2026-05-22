@@ -125,18 +125,39 @@ final class KhanzaMigrationRunner extends MigrationRunner
     #[\Override]
     public function findMigrations(): array
     {
-        $migrations = parent::findMigrations();
+        /** @var array<class-string<DatabaseTemplate>, object{
+         *     version:string,
+         *     name:string,
+         *     path:string,
+         *     class:string,
+         *     namespace:string,
+         *     uid:string
+         * }> $ci_migrations */
+        $ci_migrations = parent::findMigrations();
 
-        $map = [];
-        foreach ($migrations as $m) {
-            $map[$m->class] = $m;
+        $migrations = [];
+        foreach ($ci_migrations as $key => $m){
+            $migration = new Migration(
+                $m->version,
+                $m->name,
+                $m->path,
+                $m->class,
+                $m->namespace,
+                $m->uid,
+            );
+            $migrations[$key] = $migration;
         }
+    
         unset($migrations[\App\Core\Database\Special\InitDatabase::class]);
         unset($migrations[\App\Core\Database\Special\SearchPathDatabase::class]);
         unset($migrations[\App\Core\Database\Special\EncryptDatabase::class]);
         unset($migrations[\App\Core\Database\Special\AuditDatabase::class]);
         $graph    = self::buildGraph($migrations);
         $ordered  = self::topoSort($graph);
+
+        /**
+         * @var list<class-string<DatabaseTemplate>> $ordered
+         */
         $ordered = [
             \App\Core\Database\Special\InitDatabase::class,
             ...$ordered,
@@ -145,12 +166,11 @@ final class KhanzaMigrationRunner extends MigrationRunner
             \App\Core\Database\Special\AuditDatabase::class,
         ];
         $versions = self::assignVersions($ordered);
-        $this->versions = $versions;
 
         $result = [];
 
         foreach ($ordered as $class) {
-            $migration = $map[$class];
+            $migration = $ci_migrations[$class];
             $migration->version = $versions[$class];
             $result[$versions[$class]] = $migration;
         }
@@ -161,6 +181,7 @@ final class KhanzaMigrationRunner extends MigrationRunner
     #[\Override()]
     protected function getMigrationName(string $migration): string
     {
+        $matches = [];
         preg_match($this->regex, $migration, $matches);
         return $matches !== [] ? $matches[1] : '';
     }
