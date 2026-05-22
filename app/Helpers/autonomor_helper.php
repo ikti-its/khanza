@@ -5,12 +5,11 @@ if (!function_exists('generateNextNoRM')) {
     /**
      * Generate nomor rekam medis berikutnya berdasarkan input terakhir.
      * Contoh: RM000137 → RM000138
-     *
-     * @param string|null $lastNo
-     * @return string
      */
     function generateNextNoRM(?string $lastNo): string
     {
+        /** @var list<bool> */
+        $match = [];
         if (!$lastNo || !preg_match('/^RM(\d{6})$/', $lastNo, $match)) {
             return 'RM000001';
         }
@@ -24,18 +23,16 @@ if (!function_exists('generateNextNoRM')) {
 
 //AutoNomor unuk No.SKL Kelahiran Bayi
 if (!function_exists('generateNextSKL')) {
-    /**
-     * Generate No. SKL dengan format: 0001/RM-SKL/07/2025
-     *
-     * @param string|null $lastSKL Contoh: '0007/RM-SKL/07/2025'
-     * @param string $tgl_lahir Format YYYY-MM-DD
-     * @return string SKL berikutnya
-     */
+    /** Generate No. SKL dengan format: 0001/RM-SKL/07/2025 */
     function generateNextSKL(?string $lastSKL, string $tgl_lahir): string
     {
-        $bulan = date('m', strtotime($tgl_lahir));
-        $tahun = date('Y', strtotime($tgl_lahir));
+        $tanggal = strtotime($tgl_lahir);
+        assert(is_int($tanggal));
+        $bulan = date('m', $tanggal);
+        $tahun = date('Y', $tanggal);
 
+        /** @var list<bool> */
+        $match = [];
         if (!$lastSKL || !preg_match('/^(\d{4})\/RM-SKL\/\d{2}\/\d{4}$/', $lastSKL, $match)) {
             $nomor = 1;
         } else {
