@@ -8,39 +8,29 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class CheckPermission implements FilterInterface
 {
+    #[\Override()]
     public function before(RequestInterface $request, $arguments = null)
     {
-        // log_message('debug', '🛑 ENTERED CheckPermission filter');
+        $session = session()->has('user');
+        if(!$session)
+            return redirect()->to(base_url('/login'));
 
-        $user = session('user');
-        $role = $user['role'] ?? null;
+        /** @var array{'role':string} */
+        $user = session()->get('user');
+        $role = $user['role'];
 
-        // log_message('debug', '👤 Role from session: ' . var_export($role, true));
-        // log_message('debug', '🔐 Raw $arguments: ' . var_export($arguments, true));
+        if (!is_array($arguments))
+            $arguments = explode(',', '');
 
-        if ($role === null) {
-            // log_message('error', '🚪 No role in session, redirecting to login');
-            return redirect()->to('/login')->with('error', 'Session habis, silakan login lagi');
-        }
-
-        // Normalize the role list
-        if (!is_array($arguments)) {
-            $arguments = explode(',', $arguments ?? '');
-        }
-
-        // log_message('debug', '🔓 Allowed roles: ' . implode(', ', $arguments));
-
-        // Compare as strings to avoid int vs string mismatch
-        if (!in_array((string) $role, array_map('strval', $arguments), true)) {
-            // log_message('error', "🚫 Access denied for role: $role");
+        if (!in_array($role, array_map('strval', $arguments), true))
             return redirect()->to('/error_403');
-        }
 
-        // log_message('debug', "✅ Access granted for role: $role");
+        return null;
     }
 
+    #[\Override()]
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Do nothing after
+        return null;
     }
 }

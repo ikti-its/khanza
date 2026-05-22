@@ -8,23 +8,21 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class CheckFotoData implements FilterInterface
 {
+    #[\Override()]
     public function before(RequestInterface $request, $arguments = null)
     {
-
-        if(!session() -> get('jwt_token'))
-        {
+        if(!session()->has('jwt_token'))
             return redirect()->to(base_url("/login"));
-        }
-        // Check if 'foto_data' exists in session
-        if (!session()->has('foto_data')) {
-            // Redirect to dashboard or any other route you prefer
+
+        if (!session()->has('foto_data'))
             return redirect()->to('/dashboard');
-        }
+
         return $request;
     }
 
+    #[\Override()]
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Do something here after processing the request
+        return null;
     }
 }

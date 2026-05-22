@@ -5,22 +5,28 @@ namespace App\Filters;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
-use App\Controllers\ControllerTemplate;
 
-class Ijin extends ControllerTemplate implements FilterInterface
+class Ijin implements FilterInterface
 {
+    #[\Override()]
     public function before(RequestInterface $request, $arguments = null)
     {
+        $session = session()->has('user_details');
+        if(!$session)
+            return redirect()->to(base_url('/login'));
 
-        $role = session()->get('user_details')['role'];
-        if ($role == 2){
+        /** @var array{'role':string} */
+        $user_details = session()->get('user_details');
+        $role = $user_details['role'];
+        if ($role == 2)
             return redirect()->to('/test-403');
-        }
-
+        
+        return null;
     }
 
+    #[\Override()]
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Do something here
+        return null;
     }
 }
