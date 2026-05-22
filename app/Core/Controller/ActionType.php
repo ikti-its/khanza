@@ -10,5 +10,6 @@ enum ActionType: string
     case DELETE = 'hapus';
     case AUDIT  = 'audit';
     case PRINT  = 'cetak';
-    case SEPARATE = 'pemisahan';
+    case SEPARATE = 'pisah';
+    case TEST = 'uji';
 }

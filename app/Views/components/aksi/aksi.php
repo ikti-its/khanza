@@ -6,7 +6,7 @@
             'modul_path' => $modul_path,
             'baris'      => $baris
         ];
-        $aksi_list = ['notif', 'tambah', 'audit', 'cetak', 'tindakan', 'detail', 'detail2', 'ubah', 'hapus', 'validasi', 'ambulans', 'pilih', 'pemisahan'];
+        $aksi_list = ['notif', 'tambah', 'audit', 'cetak', 'tindakan', 'detail', 'detail2', 'ubah', 'hapus', 'validasi', 'ambulans', 'pilih', 'pisah', 'uji'];
         if (ENVIRONMENT === 'development') {
             foreach ($aksi as $key => $value) {
                 if (!in_array($key, $aksi_list)) {
@@ -55,8 +55,11 @@
                     break;
             }
         }
-        if (isset($aksi['pemisahan']) && $aksi['pemisahan'] === true) {
+        if (isset($aksi['pisah']) && $aksi['pisah'] === true) {
             echo view('components/aksi/pemisahan_komponen', $data);
+        }
+        if (isset($aksi['uji']) && $aksi['uji'] === true) {
+            echo view('components/aksi/uji_imltd', $data);
         }
         if (isset($aksi['cetak'])  && $aksi['cetak']  === true) {
             echo view('components/aksi/cetak',  $data);
