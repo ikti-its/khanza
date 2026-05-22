@@ -183,7 +183,7 @@ class ControllerTemplate extends Controller
         return $this->index();        
     }
 
-    final public function print(){
+    public function print(mixed $id){
         if(in_array(ActionType::PRINT, $this->action)){
             echo view('components/cetak/template');
         } else {
