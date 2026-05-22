@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Core\Auth;
 
 use App\Core\Model\ModelTemplate;
+use App\Core\Model\ValidationType as V;
 
 final class AuthModel extends ModelTemplate
 {
@@ -15,26 +16,10 @@ final class AuthModel extends ModelTemplate
             'akun',
             'id',
             [
-                'id' => [
-                    'allowed' => false,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'email' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ], 
-                'password' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
-                'role' => [
-                    'allowed' => true,
-                    'rules'   => '',
-                    'errors'  => [],
-                ],
+                'id'       => V::DEFAULT(),
+                'email'    => V::DEFAULT(),
+                'password' => V::DEFAULT(),
+                'role'     => V::DEFAULT(),
             ],
             [],
         );
