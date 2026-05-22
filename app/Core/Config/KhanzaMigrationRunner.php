@@ -21,10 +21,7 @@ final class KhanzaMigrationRunner extends MigrationRunner
     private static function buildGraph(array $ref_table_classes): array
     {
         $graph = [];
-        $classes = [];
-        foreach ($ref_table_classes as $ref_table_class)
-            $classes[] = $ref_table_class->class;
-
+        $classes = array_keys($ref_table_classes);
         $all = [];
         foreach ($classes as $class)
             $all[$class] = true;
@@ -183,6 +180,36 @@ final class KhanzaMigrationRunner extends MigrationRunner
     {
         $matches = [];
         preg_match($this->regex, $migration, $matches);
-        return $matches !== [] ? $matches[1] : '';
+        return $matches[1] ?? '';
+    }
+
+    /**
+     * @param string $direction # 'up'|'down'
+     * @param object $migration # Migration
+     * @throws \RuntimeException
+     * @return bool
+     */
+    #[\Override]
+    protected function migrate( $direction, $migration): bool
+    {
+        if($migration instanceof Migration){
+            /** @var string $path */
+            include_once $migration->path;
+            $this->setName($migration->name);
+            
+            /** @var class-string<DatabaseTemplate> */
+            $class = $migration->class;
+            $instance = new $class();
+
+            if($direction === 'up')
+                $instance->up();
+            else if($direction === 'down')
+                $instance->down();
+        }
+
+        
+        
+
+        return true;
     }
 }
