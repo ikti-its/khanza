@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Cetak Kartu Pendonor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .card-container {
+      width: 550px;
+      background-color: #ffffff;
+      border: 1px solid #999999;
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+      padding: 40px;
+      margin: 30px auto;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+      color: #000000;
+      line-height: 1.6;
+    }
+
+    .info-table td {
+      padding: 3px 0;
+      vertical-align: top;
+    }
+
+    .info-table td.label {
+      width: 140px;
+    }
+
+    .info-table td.colon {
+      width: 15px;
+      text-align: center;
+    }
+
+    .footer-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 25px;
+      padding-top: 10px;
+    }
+
+    .blood-type {
+      font-size: 36px;
+      font-weight: bold;
+      color: #000000;
+      font-family: Arial, sans-serif;
+    }
+
+    .barcode-container {
+      text-align: right;
+    }
+
+    .barcode-container img {
+      height: 45px;
+      max-width: 220px;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+        margin: 0;
+      }
+
+      .card-container {
+        border: 1px solid #000000;
+        box-shadow: none;
+        margin: 0 auto;
+        page-break-after: always;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <table class="info-table">
+      <tr>
+        <td class="label">No. Pendonor</td>
+        <td class="colon">:</td>
+        <td><?= esc($pendonor['nomor_pendonor']) ?></td>
+      </tr>
+      <tr>
+        <td class="label">Nama</td>
+        <td class="colon">:</td>
+        <td><?= esc($pendonor['nama_lengkap'] ?? '-') ?></td>
+      </tr>
+      <tr>
+        <td class="label">Jenis Kelamin</td>
+        <td class="colon">:</td>
+        <td><?= esc($pendonor['jenis_kelamin'] ?? '-') ?></td>
+      </tr>
+      <tr>
+        <td class="label">NIK</td>
+        <td class="colon">:</td>
+        <td><?= esc($pendonor['nomor_ktp'] ?? '-') ?></td>
+      </tr>
+      <tr>
+        <td class="label">Tempat, Tgl Lahir</td>
+        <td class="colon">:</td>
+        <td>
+            <?= esc($pendonor['tempat_lahir'] ?? '-') ?>, 
+            <?= isset($pendonor['tanggal_lahir']) ? date('d/m/Y', strtotime($pendonor['tanggal_lahir'])) : '-' ?>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">Alamat</td>
+        <td class="colon">:</td>
+        <td><?= esc($pendonor['alamat'] ?? '-') ?></td>
+      </tr>
+      <tr>
+        <td class="label">No. Telepon</td>
+        <td class="colon">:</td>
+        <td><?= esc($pendonor['nomor_telepon'] ?? '-') ?></td>
+      </tr>
+    </table>
+
+    <div class="footer-section">
+      <div class="blood-type">
+        <?= esc($pendonor['golongan_darah'] ?? 'A') ?>(<?= esc($pendonor['rhesus'] ?? '+') ?>)
+      </div>
+      
+      <div class="barcode-container">
+        <img 
+          src="https://bwipjs-api.metafloor.com/?bcid=code128&text=<?= urlencode($pendonor['nomor_pendonor']) ?>&scale=2&height=10"
+          alt="Barcode ID Pendonor"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="no-print" style="text-align: center; margin-top: 20px;">
+    <button onclick="window.print()" 
+      style="background-color: #1e4b4d; color: white; padding: 10px 20px; font-size: 14px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+      🖨 Cetak Kartu
+    </button>
+  </div>
+
+</body>
+</html>

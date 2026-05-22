@@ -21,6 +21,7 @@ final class PendonorController extends ControllerTemplate
                 A::AUDIT,
                 A::UPDATE, 
                 A::DELETE,
+                A::PRINT,
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pendonor', 'ID Pendonor'],
@@ -31,4 +32,15 @@ final class PendonorController extends ControllerTemplate
             ],
         );
     }   
+
+    public function print($id)
+    {
+        $dataPendonor = $this->model->find($id); 
+        if (!$dataPendonor) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Data pendonor tidak ditemukan.");
+        }
+        return view('components/cetak/cetak_kartu', [
+            'pendonor' => $dataPendonor
+        ]);
+    }
 }
