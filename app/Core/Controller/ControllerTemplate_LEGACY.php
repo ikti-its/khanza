@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Core\Controller;
 use App\Core\Model\ModelTemplate;
 use CodeIgniter\Controller;
+use CodeIgniter\HTTP\RedirectResponse;
 
 /** 
  * @deprecated "Migrate to ControllerTemplate"
@@ -20,16 +21,22 @@ class ControllerTemplate_LEGACY extends Controller
         protected string $api_path = '',
         protected string $nama_tabel = '',
         protected string $kolom_id = '',
+        /** @var array<string, bool> */
         protected array $aksi = [],
+        /** @var list<array{
+         * 0:0|1,
+         * 1:string,
+         * 2:string,
+         * 3:string}> $konfig*/
         protected array $konfig = [],
         protected array $meta_data = ['page' => 1, 'size' => 10, 'total' => 1],
     ) {
-        $this->api_url = getenv('api_URL');
+        $this->api_url = getenv('api_URL') ?: 'api_URL env is incorrect';
         // Check notifications and set session variable
         // $this->checkNotifications();
     }
 
-    final protected function addBreadcrumb($title, $icon = '')
+    final protected function addBreadcrumb(string $title, string $icon = ''): void
     {
         $this->breadcrumbs[] = [
             'title' => $title,
@@ -37,7 +44,7 @@ class ControllerTemplate_LEGACY extends Controller
         ];
     }
 
-    private function getPostData()
+    private function getPostData(): array
     {
         $KOLOM = 2;
         $JENIS = 3;
@@ -54,9 +61,11 @@ class ControllerTemplate_LEGACY extends Controller
         return $postData;
     }
 
-    final public function tampilData()
+    final public function tampilData(): string
     {
-        $tabel = CURL::call('GET', $this->api_path)['data']['data'];
+        /** @var array{'data':array{'data':array}} */
+        $hasil = CURL::call('GET', $this->api_path);
+        $tabel = $hasil['data']['data'];
         return view('/layouts/data', [
             'judul'       => $this->judul,
             'breadcrumbs' => $this->breadcrumbs,
@@ -68,7 +77,7 @@ class ControllerTemplate_LEGACY extends Controller
             'tabel'       => $tabel,
         ]);
     }
-    final public function tampilAudit()
+    final public function tampilAudit(): string
     {
         $audit_konfig = [
             // [1, 'Nomor Perubahan'  , 'change_id' , 'indeks'],
@@ -92,7 +101,7 @@ class ControllerTemplate_LEGACY extends Controller
             'tabel'       => Audit::GetAuditData($this->nama_tabel)
         ]);
     }
-    public function tampilTambah()
+    public function tampilTambah(): string
     {
         $breadcrumbs = [
             ['title' => 'Tambah', 'icon', 'tambah']
@@ -106,12 +115,14 @@ class ControllerTemplate_LEGACY extends Controller
             'form_action' => '/submittambah/',
         ]);
     }
-    public function tampilUbah($id)
+    public function tampilUbah(int|string $id): string
     {
         $breadcrumbs = [
             ['title' => 'Ubah', 'icon', 'Ubah']
         ];
-        $baris = CURL::call('GET', $this->api_path . '/' . $id)['data']['data'];
+        /** @var array{'data':array{'data':array{'kolom_id':string}}} */
+        $hasil = CURL::call('GET', $this->api_path . '/' . $id);
+        $baris = $hasil['data']['data'];
         return view('/layouts/tambah_ubah', [
             'judul'       => 'Ubah ' . $this->judul,
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
@@ -122,13 +133,13 @@ class ControllerTemplate_LEGACY extends Controller
             'form_action' => '/submitedit/' . $baris[$this->kolom_id],
         ]);
     }
-    public function simpanTambah()
+    public function simpanTambah(): RedirectResponse
     {
         $postData = $this->getPostData();
         $_response = CURL::call('POST', $this->api_path, $postData);
         return redirect()->to(base_url($this->modul_path))->with('success', 'Berhasil');    
     }
-    public function simpanUbah($id)
+    public function simpanUbah(int|string $id): RedirectResponse
     {
         $postData = $this->getPostData();
         $_response = CURL::call('PUT', $this->api_path . '/' . $id, $postData);
@@ -136,7 +147,7 @@ class ControllerTemplate_LEGACY extends Controller
         
     }
 
-    final public function hapusData($id)
+    final public function hapusData(int|string $id): RedirectResponse
     {
         $_response = CURL::call('DELETE', $this->api_path . '/' . $id);
         return redirect()->to(base_url($this->modul_path))->with('success', $this->judul . ' berhasil dihapus.');   
