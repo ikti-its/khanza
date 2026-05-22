@@ -42,37 +42,75 @@ final class KhanzaMigrationRunner extends MigrationRunner
         return $graph;
     }
 
+    /**
+     * @param array<class-string<DatabaseTemplate>, list<class-string<DatabaseTemplate>>> $graph
+     * @return list<class-string<DatabaseTemplate>>
+     */
     private static function topoSort(array $graph): array
     {
-        $visited  = [];
+        /** @var array<class-string<DatabaseTemplate>, bool> $visited */
+        $visited = [];
+
+        /** @var array<class-string<DatabaseTemplate>, bool> $visiting */
         $visiting = [];
-        $result   = [];
 
-        $visit = function ($node) use (&$visit, &$visited, &$visiting, &$result, $graph) {
-            // Already processed
-            if (isset($visited[$node])) return;
-
-            // Cycle detected
-            if (isset($visiting[$node])) {throw new \RuntimeException("Circular dependency detected at $node");}
-
-            $visiting[$node] = true;
-
-            // Visit dependencies first
-            foreach ($graph[$node] as $dep) {
-                $visit($dep);
-            }
-
-            unset($visiting[$node]);
-            $visited[$node] = true;
-            $result[] = $node;
-        };
+        /** @var list<class-string<DatabaseTemplate>> $result */
+        $result = [];
 
         foreach (array_keys($graph) as $node) {
-            $visit($node);
+            self::visitNode(
+                $node,
+                $graph,
+                $visited,
+                $visiting,
+                $result
+            );
         }
+
         return $result;
     }
 
+    /**
+     * @param class-string<DatabaseTemplate> $node
+     * @param array<class-string<DatabaseTemplate>, list<class-string<DatabaseTemplate>>> $graph
+     * @param array<class-string<DatabaseTemplate>, bool> $visited
+     * @param array<class-string<DatabaseTemplate>, bool> $visiting
+     * @param  list<class-string<DatabaseTemplate>> $result
+     */
+    private static function visitNode(
+        string $node,
+        array $graph,
+        array &$visited,
+        array &$visiting,
+        array &$result
+    ): void {
+        if (isset($visited[$node])) return;
+
+        if (isset($visiting[$node]))
+            die( "Circular dependency detected at $node");
+
+        $visiting[$node] = true;
+
+        // Recurse through dependencies
+        foreach ($graph[$node] as $dep) {
+            self::visitNode(
+                $dep,
+                $graph,
+                $visited,
+                $visiting,
+                $result
+            );
+        }
+
+        unset($visiting[$node]);
+        $visited[$node] = true;
+        $result[] = $node;
+    }
+
+    /**
+     * @param list<class-string<DatabaseTemplate>> $ordered
+     * @return array<class-string<DatabaseTemplate>, string>
+     */
     private static function assignVersions(array $ordered): array
     {
         $versions = [];
