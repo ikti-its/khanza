@@ -25,13 +25,7 @@ class ControllerTemplate extends Controller
     private array $fields;
 
     /**
-     * @var array{
-     *   tambah:bool,
-     *   audit:bool,
-     *   ubah:bool,
-     *   hapus:bool,
-     *   cetak?:true,
-     * }
+     * @var array<string, bool>
      */
     private array $actions;
     public function __construct(
@@ -60,7 +54,7 @@ class ControllerTemplate extends Controller
         $this->meta_data = ['page' => 1, 'size' => 10, 'total' => 1];
     }
 
-    private function get_uri_path(){
+    private function get_uri_path(): string {
         $segments = $this->request->getUri()->getSegments();
         while (count($segments) > 2) {
             array_pop($segments);
@@ -129,7 +123,7 @@ class ControllerTemplate extends Controller
         }
     }
 
-    public function index(): string
+    final public function index(): string
     {
         return view('/layouts/data', [
             'judul'       => $this->title,
@@ -143,7 +137,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    public function audit(): string
+    final public function audit(): string
     {
         $audit_konfig = [
             // [1, 'Nomor Perubahan'  , 'change_id' , 'indeks'],
@@ -168,7 +162,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    public function create_page(): string
+    final public function create_page(): string
     {
         $breadcrumbs = [
             ['title' => 'Tambah', 'icon', 'tambah']
@@ -182,7 +176,7 @@ class ControllerTemplate extends Controller
             'form_action' => '/submittambah/',
         ]);
     }
-    public function update_page(int|string $id): string
+    final public function update_page(int|string $id): string
     {
         $breadcrumbs = [
             ['title' => 'Ubah', 'icon', 'Ubah']
