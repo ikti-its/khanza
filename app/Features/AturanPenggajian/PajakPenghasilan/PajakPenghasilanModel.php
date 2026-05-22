@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\AturanPenggajian\PajakPenghasilan21;
+namespace App\Features\AturanPenggajian\PajakPenghasilan;
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
-final class PajakPenghasilan21Model extends ModelTemplate
+final class PajakPenghasilanModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
-            new PajakPenghasilan21Database(),
+            new PajakPenghasilanDatabase(),
             'BASE',
             'penggajian',
             'pph21',
