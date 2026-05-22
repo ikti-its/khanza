@@ -103,11 +103,7 @@ class ControllerTemplate extends Controller
         }
     }
 
-<<<<<<< HEAD
-    private function process_action(){
-=======
     private function process_action(): void {
->>>>>>> 7e77a3bf (Add type annotation in ControllerTemplate)
         $action = [
             'tambah' => false,
             'audit'  => false,
@@ -240,15 +236,9 @@ class ControllerTemplate extends Controller
         return $this->index();        
     }
 
-<<<<<<< HEAD
-    public function print(mixed $id){
-        if(in_array(ActionType::PRINT, $this->action)){
-            echo view('components/cetak/template');
-=======
     final public function print(): string {
         if(in_array(ActionType::PRINT, $this->actions)){
             return view('components/cetak/template');
->>>>>>> ad3dc7ec (Change to private member variables)
         } else {
             return $this->index();
         }
