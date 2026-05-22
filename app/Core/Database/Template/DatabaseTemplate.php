@@ -24,7 +24,7 @@ class DatabaseTemplate extends Migration
     /** @var array<class-string<DatabaseTemplate>, DatabaseTemplate> $ref_class_cache*/
     private static array $ref_class_cache = [];
 
-    protected function __construct(
+    public function __construct(
         protected string $schema = '',
         protected string $table  = '',
         
@@ -220,7 +220,7 @@ class DatabaseTemplate extends Migration
     }
 
     #[\Override()]
-    final public function up(): void
+    public function up(): void
     {
         $this->setup();
         $this->db->query("CREATE SCHEMA IF NOT EXISTS " . $this->schema);
@@ -242,7 +242,7 @@ class DatabaseTemplate extends Migration
     }
 
     #[\Override()]
-    final public function down(): void
+    public function down(): void
     {
         $this->db->query("SET search_path TO public," . $this->schema);
         try {
@@ -253,7 +253,8 @@ class DatabaseTemplate extends Migration
         
     }
 
-    final public function dependencies(): array {
+    /** @return list<class-string<DatabaseTemplate>> */
+    public function dependencies(): array {
         $fks = $this->foreign_key;
         $dependencies = [];
         foreach($fks as $fk){
