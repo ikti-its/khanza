@@ -9,28 +9,29 @@ final readonly class CURL
         string $method, 
         string $path, 
         array|null $data = null
-    ){
+    ): array {
         
         $allowed_methods = ['GET', 'POST', 'PUT', 'DELETE'];
-        if (!in_array($method, $allowed_methods)) {
-            echo HTTPError::renderErrorView(405);
-        }
+        if (!in_array($method, $allowed_methods)) echo HTTPError::renderErrorView(405);
 
-        if (!session()->has('jwt_token')) {
-            echo HTTPError::renderErrorView(401);
-        }
+        if (!session()->has('jwt_token'))  echo HTTPError::renderErrorView(401);
 
+        /** @var string */
         $token = session()->get('jwt_token');
-        $full_url =getenv('api_URL') . $path;
-        $ch = curl_init($full_url);
-
         $headers = [
             'Authorization: Bearer ' . $token,
             'Accept: application/json',
         ];
 
+        /** @var string */
+        $url = getenv('api_URL');
+        $full_url = $url . $path;
+        $ch = curl_init($full_url);
+        if($ch === false) die("Curl initialization failed for $full_url");
+
         if ($method === 'POST' || $method === 'PUT') {
             $postData = json_encode($data);
+            if($postData === false) die("JSON data format is incorrect for $full_url");
             curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
             $headers[] = 'Content-Type: application/json';
             $headers[] = 'Content-Length: ' . strlen($postData);
@@ -47,10 +48,14 @@ final readonly class CURL
         }
 
         $response = curl_exec($ch);
-        $http_status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if($response === true || $response === false) 
+            die("Error executing curl for  $full_url");
 
+        $http_status_code = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        /** @var array<string, mixed>|null $return_data */
         $return_data = json_decode($response, true);
-
+        
         $http_success_codes = [200, 201, 204];
         if (!in_array($http_status_code, $http_success_codes)) {
             // log_message('error', $path . ' API error. Status: ' . $http_status_code . ', response: ' . $response);
