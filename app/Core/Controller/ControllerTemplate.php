@@ -230,9 +230,9 @@ class ControllerTemplate extends Controller
         return $this->index();        
     }
 
-    final public function print(): string {
+    public function print(int|string $id): string {
         if(in_array(ActionType::PRINT, $this->actions)){
-            return view('components/cetak/template');
+            return view('components/cetak/template', ['id'=>$id]);
         } else {
             return $this->index();
         }
