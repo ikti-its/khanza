@@ -6,9 +6,7 @@ use CodeIgniter\Database\Migration;
 use App\Core\Controller\Assert;
 use App\Core\Database\Template\SemanticType as ST;
 use CodeIgniter\Database\Exceptions\DatabaseException;
-use Exception;
 use CodeIgniter\Database\RawSql;
-
 
 class DatabaseTemplate extends Migration
 {
@@ -143,7 +141,7 @@ class DatabaseTemplate extends Migration
             // Add more comprehensive checks
             try {
                 $this->forge->addForeignKey($fields, $ref_table_name, $ref_fields);
-            } catch (Exception $e){
+            } catch (DatabaseException $e){
                 die($e->getMessage());
             }  
         }
@@ -196,7 +194,7 @@ class DatabaseTemplate extends Migration
         };
         try {
             $reflection = new \ReflectionClass($this);
-        } catch (Exception $e){
+        } catch (\ReflectionException $e){
             die($e->getMessage());
         }
         $filename = $reflection->getFileName();
