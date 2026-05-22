@@ -2,11 +2,11 @@
 declare(strict_types=1);
 
 namespace App\Core\Database\Special;
-use CodeIgniter\Database\Migration;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Controller\Assert;
 use CodeIgniter\Database\Exceptions\DatabaseException;
 
-final class InitDatabase extends Migration
+final class InitDatabase extends DatabaseTemplate
 {
     #[\Override()]
     public function up(): void

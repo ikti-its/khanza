@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace App\Core\Database\Special;
 use CodeIgniter\Database\BaseResult;
-use CodeIgniter\Database\Migration;
+use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Controller\Assert;
 
-final class SearchPathDatabase extends Migration
+final class SearchPathDatabase extends DatabaseTemplate
 {
     #[\Override()]
     public function up(): void

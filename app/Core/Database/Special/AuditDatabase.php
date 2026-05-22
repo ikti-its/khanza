@@ -2,12 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Core\Database\Special;
-use CodeIgniter\Database\Migration;
+use App\Core\Database\Template\DatabaseTemplate;
 
-final class AuditDatabase extends Migration
-{
-    const string PATH = APPPATH . 'Core/Database/Audit/';
-    
+final class AuditDatabase extends DatabaseTemplate
+{    
     #[\Override()]
     public function up(): void
     {
