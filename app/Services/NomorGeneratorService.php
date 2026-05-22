@@ -1,37 +1,54 @@
 <?php
 
 namespace App\Services;
+use App\Core\Controller\CURL;
 
 class NomorGeneratorService
 {
-    protected $api_url;
-    protected $token;
+    protected string $api_url;
+    protected string $token;
 
     public function __construct()
     {
-        $this->api_url = getenv('api_URL'); // ← sesuai .env kamu
-        $this->token = session()->get('jwt_token');
+        $this->api_url = getenv('api_URL') ?: 'api_URL env is incorrect';
+        $session = session()->has('jwt_token');
+        $token = '';
+        if($session)
+            /** @var string */
+            $token = session()->get('jwt_token');
+        $this->token = $token;
     }
 
     public function getLastNoRM(): ?string
     {
         $url = $this->api_url . "/masterpasien?limit=1&sort=desc";
-        $response = $this->curlGet($url);
+        /** @var array{'data':list<array{'no_rkm_medis':string}>} */
+        $response = CURL::call('GET', $url);
         return $response['data'][0]['no_rkm_medis'] ?? null;
     }
 
     public function getLastSKL(string $bulan, string $tahun): ?string
     {
         $url = $this->api_url . "/kelahiranbayi?bulan=$bulan&tahun=$tahun";
-        $response = $this->curlGet($url);
+        /** @var array{'data':list} */
+        $response = CURL::call('GET', $url);
 
-        if (!$response || empty($response['data'])) return null;
+        if (empty($response['data'])) return null;
 
         // Urutkan manual berdasarkan nomor urut SKL
+        /** @var list<array{no_skl: string}> $data */
         $data = $response['data'];
 
-        usort($data, function ($a, $b) {
+        
+        /** @param array{'no_skl': string} $a 
+         * @param array{'no_skl': string} $b
+        */
+        usort($data, function (array $a, array $b) {
             // Ambil bagian nomor urut SKL (misal 0003 dari 0003/RM-SKL/07/2025)
+            /** @var list<bool> */
+            $matchA = [];
+            /** @var list<bool> */
+            $matchB = [];
             preg_match('/^(\d{4})/', $a['no_skl'], $matchA);
             preg_match('/^(\d{4})/', $b['no_skl'], $matchB);
 
@@ -39,19 +56,5 @@ class NomorGeneratorService
         });
 
         return $data[0]['no_skl'] ?? null;
-    }
-
-
-    private function curlGet(string $url): ?array
-    {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Authorization: Bearer ' . $this->token,
-            'Accept: application/json'
-        ]);
-        $response = curl_exec($ch);
-
-        return $response ? json_decode($response, true) : null;
     }
 }
