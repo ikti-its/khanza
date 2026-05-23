@@ -19,7 +19,7 @@ final class StokOpnameController extends ControllerTemplate
             'Stok Opname',
             [
                 A::CREATE,
-                // A::AUDIT,
+                A::AUDIT,
                 A::UPDATE,
                 A::DELETE,
             ],

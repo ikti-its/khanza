@@ -19,7 +19,7 @@ final class PengadaanBarangController extends ControllerTemplate
             'Pengadaan Barang',
             [
                 A::CREATE,
-                // A::AUDIT,
+                A::AUDIT,
                 A::UPDATE,
                 // A::DELETE,
             ],

@@ -19,7 +19,7 @@ final class BarangController extends ControllerTemplate
             'Barang',
             [
                 A::CREATE,
-                // A::AUDIT,
+                A::AUDIT,
                 A::UPDATE,
                 A::DELETE,
             ],

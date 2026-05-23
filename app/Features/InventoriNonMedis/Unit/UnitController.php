@@ -19,7 +19,7 @@ final class UnitController extends ControllerTemplate
             'Unit',
             [
                 A::CREATE,
-                // A::AUDIT,
+                A::AUDIT,
                 A::UPDATE,
                 // A::DELETE,
             ],

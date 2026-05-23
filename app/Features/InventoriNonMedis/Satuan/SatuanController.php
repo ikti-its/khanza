@@ -19,7 +19,7 @@ final class SatuanController extends ControllerTemplate
             'Satuan',
             [
                 A::CREATE,
-                // A::AUDIT,
+                A::AUDIT,
                 A::UPDATE,
                 // A::DELETE,
             ],

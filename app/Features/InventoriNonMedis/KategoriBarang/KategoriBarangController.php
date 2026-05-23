@@ -19,7 +19,7 @@ final class KategoriBarangController extends ControllerTemplate
             'Kategori Barang',
             [
                 A::CREATE,
-                // A::AUDIT,
+                A::AUDIT,
                 A::UPDATE,
                 // A::DELETE,
             ],

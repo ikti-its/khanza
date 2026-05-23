@@ -19,7 +19,7 @@ final class LokasiPenyimpananController extends ControllerTemplate
             'Lokasi Penyimpanan',
             [
                 A::CREATE,
-                // A::AUDIT,
+                A::AUDIT,
                 A::UPDATE,
                 // A::DELETE,
             ],

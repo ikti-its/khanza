@@ -19,7 +19,7 @@ final class SuplierController extends ControllerTemplate
             'Suplier',
             [
                 A::CREATE,
-                // A::AUDIT,
+                A::AUDIT,
                 A::UPDATE,
                 // A::DELETE,
             ],
