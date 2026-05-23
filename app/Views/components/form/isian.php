@@ -1,36 +1,42 @@
 <?php
-    // $VISIBLE = 0;
-    $DISPLAY = 1;
-    $KOLOM   = 2;
-    $JENIS   = 3;
-    $REQUIRED = 4;
-    $OPSI    = 5;
+    /**
+     * @var list<array{
+     *      0:0|1,
+     *      1:string,
+     *      2:string,
+     *      3:string,
+     *      4:0|1,
+     *      5?:list<string>}> $konfig
+     * @var array<string, string|int|float> $row
+     */
 
-    $list_jenis = ['indeks', 'tanggal', 'jam', 'uang', 'status', 'nama', 'teks', 'jumlah', 'suhu', 'kosong', 'desimal', 'tanggal_jam'];
+    $allowed_type = ['indeks', 'tanggal', 'jam', 'uang', 'status', 'nama', 'teks', 'jumlah', 'suhu', 'kosong', 'desimal', 'tanggal_jam'];
     $len = sizeof($konfig);
     if ($len % 2 !== 0) {
-        array_push($konfig, [0, '', '', 'kosong', 0]);
+        array_push($konfig, [0, '', '', 'kosong', 0, []]);
         $len++;
     }
     for ($i = 0; $i < $len; $i++) {
         $elem = $konfig[$i];
+        [$_visible, $display, $column, $type, $required] = $elem;
+        $option = [];
+        if(isset($elem[5])) $option = $elem[5];
 
         if (sizeof($elem) < 5) {
             echo "Data pada konfig kurang lengkap";
             return;
         }
-        $display = $elem[$DISPLAY];
-        $kolom = $elem[$KOLOM];
-        if ($baris !== '' && $kolom !== '' && !isset($baris[$kolom])) {
-            echo "Tidak ditemukan kolom: " . $kolom . " pada baris";
+        
+        if ($row !== [] && $column !== '' && !isset($row[$column])) {
+            echo "Tidak ditemukan kolom: " . $column . " pada baris";
             return;
         }
-        $jenis    = $elem[$JENIS];
-        if (!in_array($jenis, $list_jenis)) {
-            echo "Jenis: " . $jenis . " tidak ditemukan pada daftar";
+
+        if (!in_array($type, $allowed_type)) {
+            echo "Jenis: " . $type . " tidak ditemukan pada daftar";
             break;
         }
-        $required = $elem[$REQUIRED];
+
         if (!in_array($required, [0, 1])) {
             echo "Konfig required tidak dikenali: " . $display;
             return;
@@ -46,18 +52,13 @@
             'display'  => $display,
             'required' => $required,
         ]);
-        if (!isset($elem[$OPSI])) {
-            $elem[$OPSI] = null;
-        }
 
-        $opsi = $elem[$OPSI];
-        // print_r($baris);
-        echo view('components/form/isian/' . $jenis, [
+        echo view('components/form/isian/' . $type, [
             'id'    => '',
-            'kolom' => $kolom,
-            'value' => $baris[$kolom] ?? '',
+            'kolom' => $column,
+            'value' => $row[$column] ?? '',
             'req'   => $required,
-            'opsi'  => $opsi,
+            'opsi'  => $option,
         ]);
 
         if ($i % 2 !== 0) {

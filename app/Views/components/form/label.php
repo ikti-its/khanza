@@ -1,4 +1,9 @@
 <?php 
+    /**
+     * @var bool $is_left
+     * @var 0|1 $required
+     * @var string $display 
+     */
     if($is_left){
         echo '<label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">' . $display;
     } else {
