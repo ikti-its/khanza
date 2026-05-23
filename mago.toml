@@ -1,52 +1,54 @@
 # Welcome to Mago!
 # For full documentation, see https://mago.carthage.software/tools/overview
 php-version = "8.5.0"
-threads = 8
-stack-size = 8388608
+threads     = 8
+stack-size  = 8388608
 
 [source]
-workspace = "."
-paths = ["app/Core", "app/Features"]
-includes = ["vendor", "app/Config"]
-excludes = []
-extensions = ["php"]
+workspace   = "."
+paths       = ["app/Core", "app/Features"]
+includes    = ["vendor", "app/Config"]
+excludes    = []
+extensions  = ["php"]
 
+################################## FORMATTER ###################################
 [formatter]
-preset = "default"
-print-width = 120
-tab-width = 8
-use-tabs = true
-single-quote = true
-trailing-comma = true
-inline-empty-control-braces = true
-inline-empty-closure-braces = true
-inline-empty-function-braces = true
-inline-empty-method-braces = true
-empty-line-after-opening-tag = false
+preset                                   = "default"
+print-width                              = 120
+tab-width                                = 8
+use-tabs                                 = true
+single-quote                             = true
+trailing-comma                           = true
+inline-empty-control-braces              = true
+inline-empty-closure-braces              = true
+inline-empty-function-braces             = true
+inline-empty-method-braces               = true
+empty-line-after-opening-tag             = false
+align-assignment-like                    = true
+null-type-hint                           = "null_pipe"
+parentheses-around-new-in-member-access  = true
 
-align-assignment-like = true
-null-type-hint = "null_pipe"
-parentheses-around-new-in-member-access = true
-
+#################################### LINTER ####################################
 [linter]
 integrations = ["phpunit"]
 
 [linter.rules]
-ambiguous-function-call = { enabled = false }
-literal-named-argument = { enabled = false }
-halstead = { effort-threshold = 7000 }
+ambiguous-function-call  = { enabled = false }
+literal-named-argument   = { enabled = false }
+halstead                 = { effort-threshold = 7000 }
 
+################################### ANALYZER ###################################
 [analyzer]
-plugins = ["security", "performance", "type-safety"]
-find-unused-definitions = true
-find-unused-expressions = true
-analyze-dead-code = true
-memoize-properties = true
+plugins                             = ["security", "performance", "type-safety"]
+find-unused-definitions             = true
+find-unused-expressions             = true
+analyze-dead-code                   = true
+memoize-properties                  = true
 allow-possibly-undefined-array-keys = false
-check-throws = true
-check-missing-override = true
-find-unused-parameters = true
-strict-list-index-checks = true
-no-boolean-literal-comparison = true
-check-missing-type-hints = true
-register-super-globals = true
+check-throws                        = true
+check-missing-override              = true
+find-unused-parameters              = true
+strict-list-index-checks            = true
+no-boolean-literal-comparison       = true
+check-missing-type-hints            = true
+register-super-globals              = true
