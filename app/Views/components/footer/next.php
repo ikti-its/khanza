@@ -1,8 +1,12 @@
 <div class="inline-flex gap-x-2">
     <?php 
-        $total_pages  = $meta_data['total'] ?? 1;
-        $current_page = $meta_data['page'] ?? 1;
-        $page_size    = $meta_data['size'] ?? 10;
+        /**
+         * @var array{'page':int, 'size':int, 'total':int} $meta_data
+         * @var string $modul_path
+         */
+        $total_pages  = $meta_data['total'];
+        $current_page = $meta_data['page'];
+        $page_size    = $meta_data['size'];
 
         $is_disabled = $current_page >= $total_pages;
         $next_page_url = $modul_path . '?page=' . ($current_page + 1) . '&size=' . $page_size;
