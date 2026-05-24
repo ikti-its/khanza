@@ -40,8 +40,8 @@ extensions  = ["php"]
 [formatter]
 preset                                   = "default"
 print-width                              = 120
-tab-width                                = 8
-use-tabs                                 = true
+tab-width                                = 4
+use-tabs                                 = false
 single-quote                             = true
 trailing-comma                           = true
 inline-empty-control-braces              = true
