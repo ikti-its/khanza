@@ -22,7 +22,7 @@ class CheckPermission implements FilterInterface
         if (!is_array($arguments))
             $arguments = explode(',', '');
 
-        if (!in_array($role, array_map('strval', $arguments), true))
+        if (!in_array((string) $role, array_map('strval', $arguments), true))
             return redirect()->to('/error_403');
 
         return null;

@@ -143,7 +143,9 @@ final class KhanzaMigrationRunner extends MigrationRunner
             );
             $migrations[$key] = $migration;
         }
-    
+
+        $all_migrations = $migrations;
+        
         unset($migrations[\App\Core\Database\Special\InitDatabase::class]);
         unset($migrations[\App\Core\Database\Special\SearchPathDatabase::class]);
         unset($migrations[\App\Core\Database\Special\EncryptDatabase::class]);
@@ -166,7 +168,7 @@ final class KhanzaMigrationRunner extends MigrationRunner
         $result = [];
 
         foreach ($ordered as $class) {
-            $migration = $ci_migrations[$class];
+            $migration = $all_migrations[$class];
             $migration->version = $versions[$class];
             $result[$versions[$class]] = $migration;
         }

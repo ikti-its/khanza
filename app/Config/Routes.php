@@ -180,7 +180,7 @@ $routes->group('', ['namespace' => 'App\s'], function ($routes) {
     $routes->get('error/500', 'ErrorHandler::show500');
 });
 
-$routes->get('/error_403', 'Error::noAccess403', ['filter' => 'auth']);
+$routes->get('/error_403', 'ErrorHandler::show403');
 
 
 

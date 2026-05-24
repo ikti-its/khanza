@@ -190,7 +190,7 @@ class DatabaseTemplate extends Migration
         $env = getenv('platform');
         $root = match ($env){
             'windows' => 'C:',
-            'linux'   => '',
+            'linux', 'darwin' => '',
             default   => die("Platform $env is not supported"),
         };
         try {
