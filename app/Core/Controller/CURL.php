@@ -45,12 +45,11 @@ final readonly class CURL
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         // Set method
-        if ($method === 'POST') {
-            curl_setopt($ch, CURLOPT_POST, true);
-        } elseif ($method === 'PUT' || $method === 'DELETE') {
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
-        }
-
+        match ($method) {
+            'POST' => curl_setopt($ch, CURLOPT_POST, true),
+            'PUT', 'DELETE' => curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method),
+        };
+    
         $response = curl_exec($ch);
         assert($response !== true && $response !== false, "Error executing curl for  {$full_url}");
 

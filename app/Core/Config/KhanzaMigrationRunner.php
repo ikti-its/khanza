@@ -209,11 +209,10 @@ final class KhanzaMigrationRunner extends MigrationRunner
             /** @mago-expect analysis:unsafe-instantiation */
             $instance = new $class();
 
-            if($direction === 'up'){
-                $instance->up();
-            } else if($direction === 'down'){
-                $instance->down();
-            } 
+            match ($direction) {
+                'up'   => $instance->up(),
+                'down' => $instance->down(),
+            };
         }
 
         return true;
