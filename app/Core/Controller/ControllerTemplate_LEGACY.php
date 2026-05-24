@@ -6,8 +6,9 @@ use App\Core\Model\ModelTemplate;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RedirectResponse;
 
-/** 
+/**
  * @deprecated "Migrate to ControllerTemplate"
+ * @mago-expect lint:excessive-parameter-list
  */
 class ControllerTemplate_LEGACY extends Controller
 {

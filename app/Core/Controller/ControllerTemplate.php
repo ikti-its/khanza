@@ -6,6 +6,7 @@ use App\Core\Model\ModelTemplate;
 use CodeIgniter\Controller;
 use CodeIgniter\Database\Exceptions\DatabaseException;
 
+/** @mago-expect lint:too-many-methods */
 class ControllerTemplate extends Controller
 {
     private array $meta_data;
@@ -104,9 +105,11 @@ class ControllerTemplate extends Controller
             'ubah'   => false,
             'hapus'  => false,
         ];
-        foreach($this->action as $a){
-            if ($a instanceof ActionType)
-                $action[$a->value] = true;
+        foreach ($this->action as $a) {
+            if (!$a instanceof ActionType) {
+                continue;
+            }
+            $action[$a->value] = true;
         }
         $this->actions = $action;
     }

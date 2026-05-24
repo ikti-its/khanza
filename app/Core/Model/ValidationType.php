@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Model;
 
+/** @mago-expect lint:too-many-methods */
 final class ValidationType
 {
     private function __construct(

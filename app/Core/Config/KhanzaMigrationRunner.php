@@ -6,6 +6,7 @@ use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\Migration;
 use CodeIgniter\Database\MigrationRunner;
 
+/** @mago-expect lint:kan-defect */
 final class KhanzaMigrationRunner extends MigrationRunner
 {
     /** @var string */

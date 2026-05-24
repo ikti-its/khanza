@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Core\Database\Template;
 use CodeIgniter\Database\RawSql;
 
+/** @mago-expect lint:too-many-methods */
 final readonly class PostgresType
 {
     public static function UUID(): ForgeType { 

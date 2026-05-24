@@ -6,6 +6,7 @@ use CodeIgniter\Database\BaseResult;
 use CodeIgniter\Model;
 use App\Core\Database\Template\DatabaseTemplate;
 
+/** @mago-expect lint:excessive-parameter-list */
 class ModelTemplate extends Model
 {
     protected function __construct(

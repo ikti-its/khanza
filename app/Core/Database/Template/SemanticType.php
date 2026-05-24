@@ -2,9 +2,13 @@
 declare(strict_types=1);
 
 namespace App\Core\Database\Template;
-use App\Core\Database\Template\PostgresType as PT;
-use App\Core\Database\Template\ForgeType as FT;
 
+/** @mago-expect lint:no-redundant-use */
+use App\Core\Database\Template\ForgeType as FT;
+/** @mago-expect lint:no-redundant-use */
+use App\Core\Database\Template\PostgresType as PT;
+
+/** @mago-expect lint:too-many-methods */
 final readonly class SemanticType
 {
     public static function FK_AUTO(): FT { return new FT('FK_AUTO');}

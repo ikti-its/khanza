@@ -5,6 +5,7 @@ namespace App\Core\Database\Template;
 
 final class Migration
 {
+    /** @mago-expect lint:excessive-parameter-list */
     public function __construct(
         public string $version,
         public readonly string $name,
