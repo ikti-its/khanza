@@ -60,9 +60,7 @@ class ControllerTemplate extends Controller
         while (count($segments) > 2) {
             array_pop($segments);
         }
-
-        $parentPath = '/' . implode('/', $segments);
-        return $parentPath;
+        return '/' . implode('/', $segments);
     }
 
     /**
@@ -86,8 +84,9 @@ class ControllerTemplate extends Controller
     private function process_fields(): void {
         for($i = 0; $i < count($this->fields); $i++){
             $input_type = $this->fields[$i][3];
-            if($input_type instanceof InputType)
+            if($input_type instanceof InputType){
                 $this->fields[$i][3] = $input_type->value;
+            }
         }
     }
 
