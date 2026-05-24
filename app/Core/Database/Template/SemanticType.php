@@ -35,7 +35,7 @@ final readonly class SemanticType
     public static function TIME(): FT { return PT::TIME();}
     public static function DTIME(): FT { return PT::DTIME();}
     public static function YEAR(string $column): FT {
-        return new FT('SMALLINT',check: "$column >= 1900 AND $column <= 2100");}
+        return new FT('SMALLINT',check: "{$column} >= 1900 AND {$column} <= 2100");}
     public static function INTERVAL(): FT { return PT::INTERVAL();}
     public static function EXPIRY(): FT { return PT::DATE();}
 

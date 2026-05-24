@@ -9,7 +9,7 @@ final class StatusKasusModel extends ModelTemplate
 {
     public function __construct(){
         parent::__construct(
-            NEW StatusKasusDatabase(),
+            new StatusKasusDatabase(),
             'REFS',
             'penanganan_donor',
             'status_kasus',

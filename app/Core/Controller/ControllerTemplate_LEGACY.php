@@ -55,7 +55,7 @@ class ControllerTemplate_LEGACY extends Controller
             $kolom = $k[$KOLOM];
             $jenis = $k[$JENIS];
             $raw_data = $this->request->getPost($kolom);
-            if (in_array($jenis, ['jumlah', 'uang', 'suhu'])) {
+            if (in_array($jenis, ['jumlah', 'uang', 'suhu'], true)) {
                 $raw_data = floatval($raw_data);
             }
             $postData[$kolom] = $raw_data;
