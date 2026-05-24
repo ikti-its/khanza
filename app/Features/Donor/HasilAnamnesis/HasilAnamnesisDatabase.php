@@ -13,7 +13,7 @@ final class HasilAnamnesisDatabase extends DatabaseTemplate
             'hasil_anamnesis',
             [
                 'id_hasil'      => T::ID(3),
-                'nama_hasil'    => T::NAME(20),
+                'nama_hasil'    => T::NAME(30),
             ],
             'id_hasil',
             ['nama_hasil'],
