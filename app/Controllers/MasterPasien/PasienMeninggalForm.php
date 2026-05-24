@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\MasterPasien;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class PasienMeninggalForm extends ControllerTemplate_LEGACY
+class PasienMeninggalForm extends ControllerTemplateLegacy
 {
 
     protected $api_url = 'http://localhost:8080';

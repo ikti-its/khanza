@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 use App\Core\Controller\HTTPError;
 
-class pegawai extends ControllerTemplate_LEGACY
+class pegawai extends ControllerTemplateLegacy
 {
     public function dataPegawai()
     {

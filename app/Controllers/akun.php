@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class Akun extends ControllerTemplate_LEGACY
+class Akun extends ControllerTemplateLegacy
 {
     public function dataAkun()
     {

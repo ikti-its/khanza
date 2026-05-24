@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 use App\Core\Controller\HTTPError;
 
-class Registrasi extends ControllerTemplate_LEGACY
+class Registrasi extends ControllerTemplateLegacy
 {
     protected array $breadcrumbs = [];
     protected string $judul = 'Registrasi';

@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 use App\Core\Controller\HTTPError;
 
-class ResepObat extends ControllerTemplate_LEGACY
+class ResepObat extends ControllerTemplateLegacy
 {
 
 protected array $breadcrumbs = [];

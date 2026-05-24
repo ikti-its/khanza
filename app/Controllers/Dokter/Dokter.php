@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\Dokter;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class Dokter extends ControllerTemplate_LEGACY
+class Dokter extends ControllerTemplateLegacy
 {
     protected string $judul = 'Daftar Dokter';
     protected array $breadcrumbs = [

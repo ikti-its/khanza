@@ -10,7 +10,7 @@ use CodeIgniter\HTTP\RedirectResponse;
  * @deprecated "Migrate to ControllerTemplate"
  * @mago-expect lint:excessive-parameter-list
  */
-class ControllerTemplate_LEGACY extends Controller
+class ControllerTemplateLegacy extends Controller
 {
     protected string $api_url;
 

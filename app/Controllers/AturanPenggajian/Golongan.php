@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class Golongan extends ControllerTemplate_LEGACY
+class Golongan extends ControllerTemplateLegacy
 {
     protected string $judul = 'Aturan Golongan Pegawai';
     protected array $breadcrumbs = [

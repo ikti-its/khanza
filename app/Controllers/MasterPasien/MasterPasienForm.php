@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\MasterPasien;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class MasterPasienForm extends ControllerTemplate_LEGACY
+class MasterPasienForm extends ControllerTemplateLegacy
 {
     public function tampilTambah()
     {

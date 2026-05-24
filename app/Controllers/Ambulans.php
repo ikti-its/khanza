@@ -2,11 +2,11 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 use App\Core\Controller\HTTPError;
 use App\Core\Controller\CURL;
 
-class Ambulans extends ControllerTemplate_LEGACY
+class Ambulans extends ControllerTemplateLegacy
 {
     protected string $judul = 'Data Ambulans';
     protected string $modul_path = '/ambulans';

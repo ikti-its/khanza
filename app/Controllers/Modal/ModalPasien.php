@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\Modal;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class ModalPasien extends ControllerTemplate_LEGACY
+class ModalPasien extends ControllerTemplateLegacy
 {
     public function listPasien()
     {

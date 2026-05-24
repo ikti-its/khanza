@@ -2,11 +2,11 @@
 declare(strict_types=1);
 
 namespace App\Controllers\RekamMedis;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 use App\Core\Controller\HTTPError;
 use App\Core\Controller\CURL;
 
-class RekamMedis extends ControllerTemplate_LEGACY
+class RekamMedis extends ControllerTemplateLegacy
 {
     protected string $registrasi_api_url = 'http://localhost:8080/v1';
     protected string $judul = 'Rekam Medis Pasien';

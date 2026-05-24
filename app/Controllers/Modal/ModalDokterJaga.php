@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\Modal;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class ModalDokterJaga extends ControllerTemplate_LEGACY
+class ModalDokterJaga extends ControllerTemplateLegacy
 {
     public function listDokterJaga()
     {

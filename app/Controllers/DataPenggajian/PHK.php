@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\DataPenggajian;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class PHK extends ControllerTemplate_LEGACY
+class PHK extends ControllerTemplateLegacy
 {
     protected string $judul = 'Data PHK';
     protected array $breadcrumbs = [

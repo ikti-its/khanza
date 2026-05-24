@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class BPJS extends ControllerTemplate_LEGACY
+class BPJS extends ControllerTemplateLegacy
 {
     protected string $judul = 'Aturan BPJS';
     protected array $breadcrumbs = [

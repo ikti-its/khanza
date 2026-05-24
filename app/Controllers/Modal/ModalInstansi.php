@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\Modal;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class ModalInstansi extends ControllerTemplate_LEGACY
+class ModalInstansi extends ControllerTemplateLegacy
 {
     public function listInstansi()
     {

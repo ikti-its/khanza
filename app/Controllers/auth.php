@@ -2,11 +2,11 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 use App\Core\Controller\HTTPError;
 use App\Core\Controller\CURL;
 
-class auth extends ControllerTemplate_LEGACY
+class auth extends ControllerTemplateLegacy
 {
     public function __construct(
     ){

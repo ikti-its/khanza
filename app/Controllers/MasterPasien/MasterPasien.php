@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\MasterPasien;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class MasterPasien extends ControllerTemplate_LEGACY
+class MasterPasien extends ControllerTemplateLegacy
 {
     protected string $judul = 'Data Pasien';
     protected array $breadcrumbs = [

@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 use App\Core\Controller\HTTPError;
 
-class presensi extends ControllerTemplate_LEGACY
+class presensi extends ControllerTemplateLegacy
 {
     public function halamanPresensi()
     {

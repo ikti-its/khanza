@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
-use App\Core\Controller\ControllerTemplate_LEGACY;
+use App\Core\Controller\ControllerTemplateLegacy;
 
-class PPH21 extends ControllerTemplate_LEGACY
+class PPH21 extends ControllerTemplateLegacy
 {   
     protected string $judul = 'Aturan Pajak Penghasilan (PPH 21)';
     protected array $breadcrumbs = [
