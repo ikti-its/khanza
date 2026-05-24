@@ -77,3 +77,32 @@ strict-list-index-checks            = true
 no-boolean-literal-comparison       = true
 check-missing-type-hints            = true
 register-super-globals              = true
+
+################################### GUARD ######################################
+
+[[guard.structural.rules]]
+on = "app\\Features\\**\\**\\*Controller"
+target = "class"
+must-be-named = "*Controller"
+must-be-final = true
+# must-be-readonly = true
+must-extend = "app\\Core\\Controller\\ControllerTemplate"
+reason = "Controllers must be final and extend ControllerTemplate."
+
+[[guard.structural.rules]]
+on = "app\\Features\\**\\**\\*Model"
+target = "class"
+must-be-named = "*Model"
+must-be-final = true
+# must-be-readonly = true
+must-extend = "app\\Core\\Model\\ModelTemplate"
+reason = "Models must be final and extend ModelTemplate."
+
+[[guard.structural.rules]]
+on = "app\\Features\\**\\**\\*Database"
+target = "class"
+must-be-named = "*Database"
+must-be-final = true
+# must-be-readonly = true
+must-extend = "app\\Core\\Database\\Template\\DatabaseTemplate"
+reason = "Database must be final and extend DatabaseTemplate."
