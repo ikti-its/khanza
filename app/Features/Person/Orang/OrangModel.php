@@ -16,9 +16,9 @@ final class OrangModel extends ModelTemplate
             'id_orang',
             [
                 'id_orang'              => V::DEFAULT(),
-                'nik'                   => V::TODO(),
+                'nik'                   => V::DEFAULT(),
                 'nama'                  => V::DEFAULT(),
-                'tanggal_lahir'         => V::TODO()
+                'tanggal_lahir'         => V::DEFAULT()
             ],
             [
                 'id_jenis_kelamin'      => ['nama_jenis_kelamin'],

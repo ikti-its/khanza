@@ -18,11 +18,6 @@ final class ValidationType
         ];
     }
 
-
-    public static function TODO(): self {
-        return new self('TODO','TODO : This field need a proper validation');
-    }
-
     public static function DEFAULT(): self {
         return new self('DEFAULT', 'DEFAULT');
     }
