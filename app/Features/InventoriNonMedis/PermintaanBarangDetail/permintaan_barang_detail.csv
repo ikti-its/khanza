@@ -1,4 +1,5 @@
 id_detail,id_permintaan,id_barang,nama_barang_baru,qty,qty_disetujui,catatan
+0,0,0,-,0,,
 1,1,1,,100,100,
 2,1,2,,50,50,
 3,2,3,,10,10,

@@ -1,4 +1,5 @@
 id_pengajuan,id_permintaan,tanggal,status,catatan,catatan_atasan
+0,0,2026-01-01 00:00:00,-,,
 1,1,2026-04-02 10:00:00,disetujui,Stok pulpen dan kertas habis,Disetujui untuk pengadaan segera
 2,2,2026-04-02 11:00:00,disetujui,Stok cairan pembersih habis,Disetujui
 3,3,2026-04-03 12:00:00,disetujui,Stok sarung tangan kosong,Disetujui sesuai kebutuhan

@@ -1,5 +1,5 @@
 id_permintaan,id_unit,tipe,tanggal,status,catatan
-0,1,barang_lama,2026-01-01 00:00:00,selesai,
+0,0,-,2026-01-01 00:00:00,-,
 1,1,barang_lama,2026-04-02 08:00:00,disetujui,
 2,2,barang_lama,2026-04-02 09:30:00,disetujui,
 3,7,barang_lama,2026-04-03 10:15:00,disetujui,

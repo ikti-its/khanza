@@ -1,4 +1,5 @@
 id_transaksi,id_barang,tipe_transaksi,qty,tanggal,id_pengadaan,id_permintaan,id_opname,catatan
+0,0,-,0,2026-01-01 00:00:00,0,0,0,
 1,1,MASUK,100,2026-04-01 08:00:00,1,0,0,Penerimaan dari PT Sinar ATK Nusantara
 2,2,MASUK,50,2026-04-01 08:00:00,1,0,0,Penerimaan dari PT Sinar ATK Nusantara
 3,3,MASUK,30,2026-04-01 09:00:00,2,0,0,Penerimaan dari CV Bersih Jaya
