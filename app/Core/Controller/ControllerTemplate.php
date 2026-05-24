@@ -75,7 +75,7 @@ class ControllerTemplate extends Controller
             [$_required, $name, $column, $type, $_show] = $f;
             
             $raw_data = $this->request->getPost($column);
-            if (in_array($type, ['jumlah', 'uang', 'suhu'])) {
+            if (in_array($type, ['jumlah', 'uang', 'suhu'], true)) {
                 $raw_data = floatval($raw_data);
             }
             $postData[$column] = $raw_data;
@@ -231,11 +231,11 @@ class ControllerTemplate extends Controller
         return $this->index();        
     }
 
-    public function print(int|string $id): string {
-        if(in_array(ActionType::PRINT, $this->actions)){
-            return view('components/cetak/template', ['id'=>$id]);
-        } else {
-            return $this->index();
+    public function print(int|string $id): string
+    {
+        if (in_array(ActionType::PRINT, $this->actions, true)) {
+            return view('components/cetak/template', ['id' => $id]);
         }
+        return $this->index();
     }
 }

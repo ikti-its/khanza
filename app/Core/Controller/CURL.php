@@ -12,7 +12,7 @@ final readonly class CURL
     ): array {
         
         $allowed_methods = ['GET', 'POST', 'PUT', 'DELETE'];
-        if (!in_array($method, $allowed_methods)) {
+        if (!in_array($method, $allowed_methods, true)) {
             echo HTTPError::renderErrorView(405);
         }
 
@@ -59,7 +59,7 @@ final readonly class CURL
         $return_data = json_decode($response, true);
         
         $http_success_codes = [200, 201, 204];
-        if (!in_array($http_status_code, $http_success_codes)) {
+        if (!in_array($http_status_code, $http_success_codes, true)) {
             // log_message('error', $path . ' API error. Status: ' . $http_status_code . ', response: ' . $response);
             echo HTTPError::renderErrorView($http_status_code);
         }
