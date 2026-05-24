@@ -2,12 +2,19 @@
 declare(strict_types=1);
 
 namespace App\Core\Database\Template;
-use CodeIgniter\Database\Migration;
+
+/** @mago-expect lint:no-redundant-use */
 use App\Core\Database\Template\SemanticType as ST;
 use CodeIgniter\Database\Exceptions\DatabaseException;
+use CodeIgniter\Database\Migration;
 use CodeIgniter\Database\RawSql;
 
-/** @mago-expect analysis:unsafe-instantiation */
+/** @mago-expect analysis:unsafe-instantiation
+ * @mago-expect lint:excessive-parameter-list
+ * @mago-expect lint:too-many-methods
+ * @mago-expect lint:kan-defect
+ * @mago-expect lint:cyclomatic-complexity
+ */
 class DatabaseTemplate extends Migration
 {
     /** @var array<array<string>> */
@@ -64,13 +71,13 @@ class DatabaseTemplate extends Migration
     private function add_primary_key(): void {
         $pk = $this->primary_key;
 
-        assert(array_key_exists($pk, $this->fields), 
-            "Primary key '$pk' is not defined in fields: " 
-            . implode(", ", array_keys($this->fields)));
+        assert(
+            array_key_exists($pk, $this->fields),
+            "Primary key '{$pk}' is not defined in fields: " . implode(', ', array_keys($this->fields)),
+        );
 
-        assert(! $this->fields[$pk]['null'],
-            "Primary key field '$pk' cannot be nullable.
-            Schema : $this->schema, Table : $this->table");
+        assert(!$this->fields[$pk]['null'], "Primary key field '{$pk}' cannot be nullable.
+            Schema : {$this->schema}, Table : {$this->table}");
 
         // Add more comprehensive checks
 
@@ -80,22 +87,26 @@ class DatabaseTemplate extends Migration
     private function add_unique_key(): void {
         $pk = $this->primary_key;
         $uk = $this->unique_key;
-        
-        if($uk === []) return;
-        foreach($uk as $keys){
-            if(is_string($keys)){
+
+        if ($uk === []) {
+            return;
+        }
+        foreach ($uk as $keys) {
+            if (is_string($keys)) {
                 $keys = [$keys];
             } 
 
-            foreach ($keys as $key){
-                assert(array_key_exists($key, $this->fields),
-                    "Unique key '$key' is not defined in fields "
-                    . implode(", ", array_keys($this->fields)));
-                assert($key !== $pk, 
-                    "Unique key '$key' is the same as the primary key");
-                assert(array_count_values($keys)[$key] = 1,
-                   "Unique key field '$key' is duplicated in unique key pair " 
-                   . implode(", ", $keys));
+            foreach ($keys as $key) {
+                assert(
+                    array_key_exists($key, $this->fields),
+                    "Unique key '{$key}' is not defined in fields " . implode(', ', array_keys($this->fields)),
+                );
+                assert($key !== $pk, "Unique key '{$key}' is the same as the primary key");
+                assert(
+                    array_count_values($keys)[$key] = 1,
+                    "Unique key field '{$key}' is duplicated in unique key pair " . implode(', ', $keys),
+                );
+
                 // Add more exhaustive checks
             }
         }
@@ -108,35 +119,45 @@ class DatabaseTemplate extends Migration
     private function add_foreign_key(): void {
         $fks = $this->foreign_key;
 
-        if($fks === []) return;
-        
-        foreach($fks as $fk){
-            assert(count($fk) === 3, "Every foreign key must have
-                a field, a reference table class, and a reference field");
+        if ($fks === []) {
+            return;
+        }
+
+        foreach ($fks as $fk) {
+            assert(count($fk) === 3, 'Every foreign key must have
+                a field, a reference table class, and a reference field');
 
             [$fields, $ref_table_class, $ref_fields] = $fk;
-            
-            if(is_string($fields))
+
+            if (is_string($fields)) {
                 $fields = [$fields];
-            foreach($fields as $field){
-                assert(in_array($field, array_keys($this->fields)), 
-                    "Foreign key field $field not found in fields.");
             }
-            
-            $ref_table = new $ref_table_class();
+            foreach ($fields as $field) {
+                assert(
+                    in_array($field, array_keys($this->fields), true),
+                    "Foreign key field {$field} not found in fields.",
+                );
+            }
+
+            $ref_table      = new $ref_table_class();
             $ref_table_name = $ref_table->schema . '.' . $ref_table->table;
 
-            if(is_string($ref_fields))
+            if(is_string($ref_fields)){
                 $ref_fields = [$ref_fields];
-            foreach($ref_fields as $ref_field){
-                assert(in_array($ref_field, array_keys($ref_table->fields)), 
-                    "Foreign key field $ref_field not found in reference table");
             }
 
-            assert(count($fields) === count($ref_fields),
-                "The fields " . implode(',', $fields) 
-                . "has more columns than the referenced fields" 
-                . implode(',', $ref_fields));
+            foreach ($ref_fields as $ref_field) {
+                assert(
+                    in_array($ref_field, array_keys($ref_table->fields), true),
+                    "Foreign key field {$ref_field} not found in reference table",
+                );
+            }
+
+            assert(
+                count($fields) === count($ref_fields),
+                'The fields ' . implode(',', $fields) . 'has more columns than the referenced fields'
+                    . implode(',', $ref_fields),
+            );
 
             // Add more comprehensive checks
             try {
@@ -152,16 +173,24 @@ class DatabaseTemplate extends Migration
 
         foreach($fks as $fk){
             [$fields, $ref_table_class, $ref_fields] = $fk;
-            $ref_table = self::$ref_class_cache[$ref_table_class] ??= new $ref_table_class();
-
-            if(is_string($fields)) $fields = [$fields];
-            foreach($fields as $field){
-                $field_def = $this->fields[$field];
-                assert($field_def['type'] === ST::FK_AUTO()->definition()['type'],
-                    'Foreign key field must be of type T::FK_AUTO'.
-                    "Schema : $this->schema, table : $this->table");
+            if (!isset(self::$ref_class_cache[$ref_table_class])) {
+                self::$ref_class_cache[$ref_table_class] = new $ref_table_class();
             }
-            if(is_string($ref_fields)) $ref_fields = [$ref_fields];
+            $ref_table = self::$ref_class_cache[$ref_table_class];
+
+            if (is_string($fields)) {
+                $fields = [$fields];
+            }
+            foreach ($fields as $field) {
+                $field_def = $this->fields[$field];
+                assert(
+                    $field_def['type'] === ST::FK_AUTO()->definition()['type'],
+                    'Foreign key field must be of type T::FK_AUTO' . "Schema : {$this->schema}, table : {$this->table}",
+                );
+            }
+            if (is_string($ref_fields)) {
+                $ref_fields = [$ref_fields];
+            }
 
             for($i = 0; $i < count($fields); $i++){    
                 $this->fields[$fields[$i]] = $ref_table->fields[$ref_fields[$i]];
@@ -172,10 +201,9 @@ class DatabaseTemplate extends Migration
     private function add_index(): void {
         foreach ($this->index as $keys) {
             foreach ($keys as $field) {
-                assert(array_key_exists($field, $this->fields),
-                    "Index field '$field' is not defined in fields");
-                assert($field !== $this->primary_key,
-                    "Index field '$field' is already a primary key");
+                assert(array_key_exists($field, $this->fields), "Index field '{$field}' is not defined in fields");
+                assert($field !== $this->primary_key, "Index field '{$field}' is already a primary key");
+
                 // Add more comprehensive checks
             }
             $this->forge->addKey($keys);
@@ -184,14 +212,16 @@ class DatabaseTemplate extends Migration
 
     private function seed(): void
     {
-        if($this->source === '')
+        if ($this->source === '') {
             return;
-        
-        $env = getenv('platform');
-        $root = match ($env){
+        }
+
+        $env  = getenv('platform');
+        $root = match ($env) {
             'windows' => 'C:',
-            'linux', 'darwin' => '',
-            default   => die("Platform $env is not supported"),
+            'linux' => '',
+            'darwin' => '',
+            default => die("Platform {$env} is not supported"),
         };
         try {
             $reflection = new \ReflectionClass($this);
@@ -205,8 +235,7 @@ class DatabaseTemplate extends Migration
         $csv_file = $dir . '/' . $this->source;
         $tmp_file = $root . '/tmp/' . $this->source;
 
-        assert(file_exists($csv_file),
-            "Data file '$csv_file' does not exist");
+        assert(file_exists($csv_file), "Data file '{$csv_file}' does not exist");
 
         copy($csv_file, $tmp_file);
 
@@ -223,8 +252,8 @@ class DatabaseTemplate extends Migration
     public function up(): void
     {
         $this->setup();
-        $this->db->query("CREATE SCHEMA IF NOT EXISTS " . $this->schema);
-        $this->db->query("SET search_path TO " . $this->schema . ", public");
+        $this->db->query('CREATE SCHEMA IF NOT EXISTS ' . $this->schema);
+        $this->db->query("SET search_path TO {$this->schema}, public");
 
         $this->forge->addField($this->fields);
 
@@ -244,7 +273,7 @@ class DatabaseTemplate extends Migration
     #[\Override()]
     public function down(): void
     {
-        $this->db->query("SET search_path TO public," . $this->schema);
+        $this->db->query("SET search_path TO public, {$this->schema}");
         try {
             $this->forge->dropTable($this->table);
         } catch (DatabaseException $e) {
@@ -259,9 +288,8 @@ class DatabaseTemplate extends Migration
         $dependencies = [];
         foreach($fks as $fk){
             [$_fields, $ref_table_class, $_ref_fields] = $fk;
-            assert($ref_table_class !== static::class,
-                "Foreign key refer to itself : $ref_table_class");
-    
+            assert($ref_table_class !== static::class, "Foreign key refer to itself : {$ref_table_class}");
+
             $dependencies[] = $ref_table_class;
         }
 
