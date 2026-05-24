@@ -17,6 +17,7 @@ final class PengambilanDarahController extends ControllerTemplate
             ],
             'Pengambilan Darah',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

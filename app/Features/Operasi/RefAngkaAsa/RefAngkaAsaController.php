@@ -18,6 +18,7 @@ final class RefAngkaAsaController extends ControllerTemplate
             ],
             'Referensi Angka ASA',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

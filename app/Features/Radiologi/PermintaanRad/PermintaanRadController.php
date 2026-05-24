@@ -18,6 +18,7 @@ final class PermintaanRadController extends ControllerTemplate
             ],
             'Permintaan Radiologi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

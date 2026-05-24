@@ -17,6 +17,7 @@ final class RujukanController extends ControllerTemplate
             ],
             'Rujukan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

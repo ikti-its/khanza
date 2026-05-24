@@ -18,6 +18,7 @@ final class ChecklistPostopPenunjangController extends ControllerTemplate
             ],
             'Checklist Post Operasi Penunjang',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

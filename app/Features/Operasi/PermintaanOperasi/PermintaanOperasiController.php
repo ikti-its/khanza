@@ -18,6 +18,7 @@ final class PermintaanOperasiController extends ControllerTemplate
             ],
             'Permintaan Operasi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

@@ -17,6 +17,7 @@ final class HasilUjiSaringController extends ControllerTemplate
             ],
             'Hasil Uji Saring',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

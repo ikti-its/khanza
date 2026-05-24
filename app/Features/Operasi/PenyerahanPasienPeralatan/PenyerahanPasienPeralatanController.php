@@ -18,6 +18,7 @@ final class PenyerahanPasienPeralatanController extends ControllerTemplate
             ],
             'Penyerahan Pasien Peralatan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

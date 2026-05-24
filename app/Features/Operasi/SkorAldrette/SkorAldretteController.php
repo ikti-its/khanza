@@ -18,6 +18,7 @@ final class SkorAldretteController extends ControllerTemplate
             ],
             'Skor Aldrette',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

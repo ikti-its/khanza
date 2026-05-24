@@ -18,6 +18,7 @@ final class RefInduksiController extends ControllerTemplate
             ],
             'Referensi Induksi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

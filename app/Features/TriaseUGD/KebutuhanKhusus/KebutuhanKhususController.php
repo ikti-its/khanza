@@ -17,6 +17,7 @@ final class KebutuhanKhususController extends ControllerTemplate
             ],
             'Kebutuhan Khusus',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

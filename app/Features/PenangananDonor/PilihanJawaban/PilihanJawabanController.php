@@ -17,6 +17,7 @@ final class PilihanJawabanController extends ControllerTemplate
             ],
             'Pilihan Jawaban',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

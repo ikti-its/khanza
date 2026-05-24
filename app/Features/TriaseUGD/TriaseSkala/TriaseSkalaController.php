@@ -17,6 +17,7 @@ final class TriaseSkalaController extends ControllerTemplate
             ],
             'Triase Skala',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

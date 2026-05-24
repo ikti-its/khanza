@@ -18,6 +18,7 @@ final class TransaksiStokController extends ControllerTemplate
             ],
             'Transaksi Stok',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE,

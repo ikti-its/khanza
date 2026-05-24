@@ -18,6 +18,7 @@ final class RefItemPemeriksaanLabController extends ControllerTemplate
             ],
             'Referensi Item Pemeriksaan Lab',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -17,6 +17,7 @@ final class PernikahanController extends ControllerTemplate
             ],
             'Pernikahan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

@@ -18,6 +18,7 @@ final class RefKetersediaanStatusController extends ControllerTemplate
             ],
             'Referensi Ketersediaan Status',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

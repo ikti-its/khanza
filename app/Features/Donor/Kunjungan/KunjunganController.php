@@ -17,6 +17,7 @@ final class KunjunganController extends ControllerTemplate
             ],
             'Kunjungan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

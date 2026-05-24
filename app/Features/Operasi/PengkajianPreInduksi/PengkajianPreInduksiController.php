@@ -18,6 +18,7 @@ final class PengkajianPreInduksiController extends ControllerTemplate
             ],
             'Pengkajian Pre Induksi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

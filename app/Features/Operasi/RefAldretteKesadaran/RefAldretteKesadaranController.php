@@ -18,6 +18,7 @@ final class RefAldretteKesadaranController extends ControllerTemplate
             ],
             'Referensi Aldrette Kesadaran',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

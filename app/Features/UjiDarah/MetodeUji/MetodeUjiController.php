@@ -17,6 +17,7 @@ final class MetodeUjiController extends ControllerTemplate
             ],
             'Metode Uji',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

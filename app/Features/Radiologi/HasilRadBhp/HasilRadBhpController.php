@@ -18,6 +18,7 @@ final class HasilRadBhpController extends ControllerTemplate
             ],
             'Hasil Radiologi BHP',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

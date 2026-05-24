@@ -17,6 +17,7 @@ final class StatusKasusController extends ControllerTemplate
             ],
             'Status Kasus',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

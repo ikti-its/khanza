@@ -17,6 +17,7 @@ final class TriasePemeriksaanController extends ControllerTemplate
             ],
             'Triase Pemeriksaan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

@@ -17,6 +17,7 @@ final class RegistrasiController extends ControllerTemplate
             ],
             'Registrasi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

@@ -18,6 +18,7 @@ final class SkorBromageController extends ControllerTemplate
             ],
             'Skor Bromage',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

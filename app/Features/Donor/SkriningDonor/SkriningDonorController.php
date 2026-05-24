@@ -17,6 +17,7 @@ final class SkriningDonorController extends ControllerTemplate
             ],
             'Skrining Donor',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

@@ -17,6 +17,7 @@ final class TarifKomponenController extends ControllerTemplate
             ],
             'Tarif Komponen',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

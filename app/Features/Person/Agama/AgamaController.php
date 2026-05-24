@@ -17,6 +17,7 @@ final class AgamaController extends ControllerTemplate
             ],
             'Agama',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

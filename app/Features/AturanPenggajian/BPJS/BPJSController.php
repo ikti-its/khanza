@@ -17,6 +17,7 @@ final class BPJSController extends ControllerTemplate
             ],
             'BPJS',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

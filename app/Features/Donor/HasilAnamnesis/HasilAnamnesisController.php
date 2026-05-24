@@ -17,6 +17,7 @@ final class HasilAnamnesisController extends ControllerTemplate
             ],
             'Hasil Anamnesis',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

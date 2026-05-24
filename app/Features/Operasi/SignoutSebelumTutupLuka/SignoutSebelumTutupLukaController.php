@@ -18,6 +18,7 @@ final class SignoutSebelumTutupLukaController extends ControllerTemplate
             ],
             'Sign Out Sebelum Tutup Luka',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

@@ -18,6 +18,7 @@ final class CatatanAnestesiSedasiAlatController extends ControllerTemplate
             ],
             'Catatan Anestesi Sedasi Alat',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

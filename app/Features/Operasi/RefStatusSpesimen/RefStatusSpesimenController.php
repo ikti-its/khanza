@@ -18,6 +18,7 @@ final class RefStatusSpesimenController extends ControllerTemplate
             ],
             'Referensi Status Spesimen',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

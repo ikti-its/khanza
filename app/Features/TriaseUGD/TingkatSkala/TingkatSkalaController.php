@@ -17,6 +17,7 @@ final class TingkatSkalaController extends ControllerTemplate
             ],
             'Tingkat Skala',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

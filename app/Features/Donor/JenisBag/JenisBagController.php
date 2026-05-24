@@ -17,6 +17,7 @@ final class JenisBagController extends ControllerTemplate
             ],
             'Jenis Bag',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

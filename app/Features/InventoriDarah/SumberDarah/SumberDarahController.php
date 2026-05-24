@@ -17,6 +17,7 @@ final class SumberDarahController extends ControllerTemplate
             ],
             'Sumber Darah',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

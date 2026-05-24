@@ -18,6 +18,7 @@ final class RefKategoriLabController extends ControllerTemplate
             ],
             'Referensi Kategori Lab',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

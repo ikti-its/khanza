@@ -18,6 +18,7 @@ final class PermintaanBarangController extends ControllerTemplate
             ],
             'Permintaan Barang',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

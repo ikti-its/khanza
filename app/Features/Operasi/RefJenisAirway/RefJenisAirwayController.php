@@ -18,6 +18,7 @@ final class RefJenisAirwayController extends ControllerTemplate
             ],
             'Referensi Jenis Airway',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

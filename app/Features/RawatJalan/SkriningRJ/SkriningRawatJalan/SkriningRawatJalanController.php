@@ -18,6 +18,7 @@ final class SkriningRawatJalanController extends ControllerTemplate
             ],
             'Skrining Rawat Jalan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

@@ -18,6 +18,7 @@ final class RefObatBebasController extends ControllerTemplate
             ],
             'Referensi Obat Bebas',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

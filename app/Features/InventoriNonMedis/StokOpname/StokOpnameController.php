@@ -18,6 +18,7 @@ final class StokOpnameController extends ControllerTemplate
             ],
             'Stok Opname',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

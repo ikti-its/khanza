@@ -17,6 +17,7 @@ final class RegistrasiController extends ControllerTemplate
             ],
             'Rawat Inap',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

@@ -17,6 +17,7 @@ final class HasilDiagnostikController extends ControllerTemplate
             ],
             'Hasil Diagnostik',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

@@ -17,6 +17,7 @@ final class JenisPencekalanController extends ControllerTemplate
             ],
             'Jenis Pencekalan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

@@ -18,6 +18,7 @@ final class RefKeadaanUmumController extends ControllerTemplate
             ],
             'Referensi Keadaan Umum',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

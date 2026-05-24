@@ -17,6 +17,7 @@ final class DataTriaseDetailController extends ControllerTemplate
             ],
             'Data Triase Detail',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

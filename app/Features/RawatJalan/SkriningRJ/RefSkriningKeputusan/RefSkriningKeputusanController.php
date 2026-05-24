@@ -18,6 +18,7 @@ final class RefSkriningKeputusanController extends ControllerTemplate
             ],
             'Referensi Skrining Keputusan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

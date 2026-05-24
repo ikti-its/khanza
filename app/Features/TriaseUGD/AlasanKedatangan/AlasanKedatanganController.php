@@ -17,6 +17,7 @@ final class AlasanKedatanganController extends ControllerTemplate
             ],
             'Alasan Kedatangan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

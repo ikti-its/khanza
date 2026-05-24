@@ -17,6 +17,7 @@ final class ShiftController extends ControllerTemplate
             ],
             'Shift',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

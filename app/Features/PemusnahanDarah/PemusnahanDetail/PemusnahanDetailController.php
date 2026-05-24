@@ -17,6 +17,7 @@ final class PemusnahanDetailController extends ControllerTemplate
             ],
             'Pemusnahan Detail',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE,

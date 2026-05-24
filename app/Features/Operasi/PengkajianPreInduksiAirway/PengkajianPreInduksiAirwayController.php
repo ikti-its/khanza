@@ -18,6 +18,7 @@ final class PengkajianPreInduksiAirwayController extends ControllerTemplate
             ],
             'Pengkajian Pre Induksi Airway',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

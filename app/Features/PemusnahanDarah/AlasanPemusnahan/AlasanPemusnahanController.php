@@ -17,6 +17,7 @@ final class AlasanPemusnahanController extends ControllerTemplate
             ],
             'Alasan Pemusnahan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

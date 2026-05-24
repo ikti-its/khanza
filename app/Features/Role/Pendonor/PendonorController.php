@@ -18,6 +18,7 @@ final class PendonorController extends ControllerTemplate
             ],
             'Pendonor',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

@@ -18,6 +18,7 @@ final class PermintaanLabPkController extends ControllerTemplate
             ],
             'Permintaan Lab PK',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

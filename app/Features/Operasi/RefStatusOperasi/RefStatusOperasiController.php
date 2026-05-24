@@ -18,6 +18,7 @@ final class RefStatusOperasiController extends ControllerTemplate
             ],
             'Referensi Status Operasi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

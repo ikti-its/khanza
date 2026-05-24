@@ -18,6 +18,7 @@ final class RefMetodeTransferController extends ControllerTemplate
             ],
             'Referensi Metode Transfer',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

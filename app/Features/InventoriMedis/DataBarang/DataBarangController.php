@@ -18,6 +18,7 @@ final class DataBarangController extends ControllerTemplate
             ],
             'Data Barang',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

@@ -18,6 +18,7 @@ final class RefHubunganKeluargaController extends ControllerTemplate
             ],
             'Referensi Hubungan Keluarga',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -18,6 +18,7 @@ final class RefAldretteWarnaKulitController extends ControllerTemplate
             ],
             'Referensi Aldrette Warna Kulit',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

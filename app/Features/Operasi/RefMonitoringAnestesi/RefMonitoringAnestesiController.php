@@ -18,6 +18,7 @@ final class RefMonitoringAnestesiController extends ControllerTemplate
             ],
             'Referensi Monitoring Anestesi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -17,6 +17,7 @@ final class PenunjangRusakController extends ControllerTemplate
             ],
             'BHP Non Medis Rusak',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE,

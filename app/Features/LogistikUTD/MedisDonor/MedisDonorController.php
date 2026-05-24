@@ -17,6 +17,7 @@ final class MedisDonorController extends ControllerTemplate
             ],
             'Penggunaan BHP Medis Donor',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

@@ -18,6 +18,7 @@ final class UnitController extends ControllerTemplate
             ],
             'Unit',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

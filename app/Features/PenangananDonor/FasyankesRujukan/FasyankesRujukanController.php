@@ -17,6 +17,7 @@ final class FasyankesRujukanController extends ControllerTemplate
             ],
             'Fasyankes Rujukan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

@@ -17,6 +17,7 @@ final class PemisahanKomponenDetailController extends ControllerTemplate
             ],
             'Pemisahan Komponen Detail',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE, 

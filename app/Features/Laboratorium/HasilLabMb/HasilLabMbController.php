@@ -18,6 +18,7 @@ final class HasilLabMbController extends ControllerTemplate
             ],
             'Hasil Lab MB',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

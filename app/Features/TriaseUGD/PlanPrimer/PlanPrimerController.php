@@ -17,6 +17,7 @@ final class PlanPrimerController extends ControllerTemplate
             ],
             'Plan Primer',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

@@ -18,6 +18,7 @@ final class RefStatusPermintaanController extends ControllerTemplate
             ],
             'Referensi Status Permintaan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

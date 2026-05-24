@@ -17,6 +17,7 @@ final class KonselingController extends ControllerTemplate
             ],
             'Konseling',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

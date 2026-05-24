@@ -17,6 +17,7 @@ final class JenisDonorController extends ControllerTemplate
             ],
             'Jenis Donor',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

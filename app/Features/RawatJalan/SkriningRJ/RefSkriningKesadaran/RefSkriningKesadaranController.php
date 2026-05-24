@@ -18,6 +18,7 @@ final class RefSkriningKesadaranController extends ControllerTemplate
             ],
             'Referensi Skrining Kesadaran',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

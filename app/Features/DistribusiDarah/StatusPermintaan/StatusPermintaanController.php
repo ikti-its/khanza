@@ -17,6 +17,7 @@ final class StatusPermintaanController extends ControllerTemplate
             ],
             'Status Permintaan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

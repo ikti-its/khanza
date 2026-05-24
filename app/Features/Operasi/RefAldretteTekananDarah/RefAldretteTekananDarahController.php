@@ -18,6 +18,7 @@ final class RefAldretteTekananDarahController extends ControllerTemplate
             ],
             'Referensi Aldrette Tekanan Darah',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

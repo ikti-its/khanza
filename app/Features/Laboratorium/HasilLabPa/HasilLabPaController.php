@@ -18,6 +18,7 @@ final class HasilLabPaController extends ControllerTemplate
             ],
             'Hasil Lab PA',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

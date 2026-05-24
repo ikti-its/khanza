@@ -18,6 +18,7 @@ final class RefRencanaAnestesiController extends ControllerTemplate
             ],
             'Referensi Rencana Anestesi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -18,6 +18,7 @@ final class RefAldretteRespirasiController extends ControllerTemplate
             ],
             'Referensi Aldrette Respirasi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

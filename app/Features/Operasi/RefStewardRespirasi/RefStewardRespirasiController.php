@@ -18,6 +18,7 @@ final class RefStewardRespirasiController extends ControllerTemplate
             ],
             'Referensi Steward Respirasi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

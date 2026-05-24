@@ -18,6 +18,7 @@ final class RefSkriningPernafasanController extends ControllerTemplate
             ],
             'Referensi Skrining Pernafasan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

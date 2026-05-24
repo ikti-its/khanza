@@ -18,6 +18,7 @@ final class RefPeralatanTransferController extends ControllerTemplate
             ],
             'Referensi Peralatan Transfer',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

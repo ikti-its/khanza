@@ -17,6 +17,7 @@ final class StokDarahController extends ControllerTemplate
             ],
             'Stok Darah',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

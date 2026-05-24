@@ -18,6 +18,7 @@ final class RefKesiapanAnestesiController extends ControllerTemplate
             ],
             'Referensi Kesiapan Anestesi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

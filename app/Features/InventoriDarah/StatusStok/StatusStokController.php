@@ -17,6 +17,7 @@ final class StatusStokController extends ControllerTemplate
             ],
             'Status Stok',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

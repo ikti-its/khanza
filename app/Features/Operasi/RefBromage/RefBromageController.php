@@ -18,6 +18,7 @@ final class RefBromageController extends ControllerTemplate
             ],
             'Referensi Bromage',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -18,6 +18,7 @@ final class ChecklistPreOperasiPenunjangController extends ControllerTemplate
             ],
             'Checklist Pre Operasi Penunjang',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

@@ -17,6 +17,7 @@ final class PertanyaanKonselingController extends ControllerTemplate
             ],
             'Pertanyaan Konseling',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

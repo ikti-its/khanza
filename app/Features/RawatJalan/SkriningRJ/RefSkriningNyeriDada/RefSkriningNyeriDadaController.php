@@ -18,6 +18,7 @@ final class RefSkriningNyeriDadaController extends ControllerTemplate
             ],
             'Referensi Skrining Nyeri Dada',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

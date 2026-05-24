@@ -18,6 +18,7 @@ final class RefStatusPenayanganController extends ControllerTemplate
             ],
             'Referensi Status Penayangan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

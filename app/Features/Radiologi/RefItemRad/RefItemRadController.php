@@ -18,6 +18,7 @@ final class RefItemRadController extends ControllerTemplate
             ],
             'Referensi Item Radiologi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

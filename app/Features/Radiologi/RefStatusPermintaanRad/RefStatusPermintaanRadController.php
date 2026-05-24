@@ -18,6 +18,7 @@ final class RefStatusPermintaanRadController extends ControllerTemplate
             ],
             'Referensi Status Permintaan Radiologi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

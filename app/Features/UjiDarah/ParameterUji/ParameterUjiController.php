@@ -17,6 +17,7 @@ final class ParameterUjiController extends ControllerTemplate
             ],
             'Parameter Uji',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -18,6 +18,7 @@ final class JadwalOperasiController extends ControllerTemplate
             ],
             'Jadwal Operasi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

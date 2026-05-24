@@ -18,6 +18,7 @@ final class RefKesadaranController extends ControllerTemplate
             ],
             'Referensi Kesadaran',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

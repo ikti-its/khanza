@@ -18,6 +18,7 @@ final class SkorStewardController extends ControllerTemplate
             ],
             'Skor Steward',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

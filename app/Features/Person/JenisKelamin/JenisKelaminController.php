@@ -17,6 +17,7 @@ final class JenisKelaminController extends ControllerTemplate
             ],
             'Jenis Kelamin',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

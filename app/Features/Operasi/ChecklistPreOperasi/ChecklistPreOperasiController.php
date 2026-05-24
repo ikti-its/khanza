@@ -18,6 +18,7 @@ final class ChecklistPreOperasiController extends ControllerTemplate
             ],
             'Checklist Pre Operasi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

@@ -17,6 +17,7 @@ final class TriaseMacamKasusController extends ControllerTemplate
             ],
             'Triase Macam Kasus',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

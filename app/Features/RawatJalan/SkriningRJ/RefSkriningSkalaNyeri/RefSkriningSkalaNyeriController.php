@@ -18,6 +18,7 @@ final class RefSkriningSkalaNyeriController extends ControllerTemplate
             ],
             'Referensi Skrining Skala Nyeri',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

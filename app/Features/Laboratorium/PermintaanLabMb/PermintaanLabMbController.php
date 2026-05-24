@@ -18,6 +18,7 @@ final class PermintaanLabMbController extends ControllerTemplate
             ],
             'Permintaan Lab MB',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

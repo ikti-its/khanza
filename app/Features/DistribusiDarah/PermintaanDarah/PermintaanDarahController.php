@@ -17,6 +17,7 @@ final class PermintaanDarahController extends ControllerTemplate
             ],
             'Permintaan Darah',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

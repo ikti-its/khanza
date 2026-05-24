@@ -18,6 +18,7 @@ final class RefStewardMotorikController extends ControllerTemplate
             ],
             'Referensi Steward Motorik',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

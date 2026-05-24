@@ -18,6 +18,7 @@ final class RefPremedikasiController extends ControllerTemplate
             ],
             'Referensi Premedikasi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -17,6 +17,7 @@ final class PenyerahanDarahDetailController extends ControllerTemplate
             ],
             'Penyerahan Darah Detail',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE,

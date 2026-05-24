@@ -17,6 +17,7 @@ final class MedisPenyerahanController extends ControllerTemplate
             ],
             'Penggunaan BHP Medis Penyerahan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

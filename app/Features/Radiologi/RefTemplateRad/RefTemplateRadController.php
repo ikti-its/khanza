@@ -18,6 +18,7 @@ final class RefTemplateRadController extends ControllerTemplate
             ],
             'Referensi Template Radiologi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

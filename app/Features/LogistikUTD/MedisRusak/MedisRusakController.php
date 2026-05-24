@@ -17,6 +17,7 @@ final class MedisRusakController extends ControllerTemplate
             ],
             'BHP Medis Rusak',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE,

@@ -17,6 +17,7 @@ final class KasusReaktifController extends ControllerTemplate
             ],
             'Kasus Reaktif',
             [
+                A::READ,
                 // A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

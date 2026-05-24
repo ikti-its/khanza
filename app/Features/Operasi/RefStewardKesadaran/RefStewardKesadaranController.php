@@ -18,6 +18,7 @@ final class RefStewardKesadaranController extends ControllerTemplate
             ],
             'Referensi Steward Kesadaran',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -18,6 +18,7 @@ final class RefPosisiPasienController extends ControllerTemplate
             ],
             'Referensi Posisi Pasien',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

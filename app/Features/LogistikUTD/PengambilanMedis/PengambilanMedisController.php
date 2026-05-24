@@ -17,6 +17,7 @@ final class PengambilanMedisController extends ControllerTemplate
             ],
             'Pengambilan BHP Medis',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

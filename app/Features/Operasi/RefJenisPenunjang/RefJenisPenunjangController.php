@@ -18,6 +18,7 @@ final class RefJenisPenunjangController extends ControllerTemplate
             ],
             'Referensi Jenis Penunjang',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

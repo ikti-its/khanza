@@ -18,6 +18,7 @@ final class RefAlatAnestesiController extends ControllerTemplate
             ],
             'Referensi Alat Anestesi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -18,6 +18,7 @@ final class RefIndikasiPindahController extends ControllerTemplate
             ],
             'Referensi Indikasi Pindah',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

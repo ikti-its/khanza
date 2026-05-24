@@ -18,6 +18,7 @@ final class RefJenisSedasiController extends ControllerTemplate
             ],
             'Referensi Jenis Sedasi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

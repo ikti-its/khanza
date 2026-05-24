@@ -18,6 +18,7 @@ final class RefKesadaranPascaopController extends ControllerTemplate
             ],
             'Referensi Kesadaran Pasca Operasi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

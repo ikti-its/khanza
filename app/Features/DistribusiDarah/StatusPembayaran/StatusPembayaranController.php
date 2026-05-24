@@ -17,6 +17,7 @@ final class StatusPembayaranController extends ControllerTemplate
             ],
             'Status Pembayaran',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

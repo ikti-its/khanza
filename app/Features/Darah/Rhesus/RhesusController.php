@@ -17,6 +17,7 @@ final class RhesusController extends ControllerTemplate
             ],
             'Rhesus',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

@@ -18,6 +18,7 @@ final class ChecklistPostopDrainController extends ControllerTemplate
             ],
             'Checklist Post Operasi Drain',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

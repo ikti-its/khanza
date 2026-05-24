@@ -18,6 +18,7 @@ final class RefSkriningBatukController extends ControllerTemplate
             ],
             'Referensi Skrining Batuk',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

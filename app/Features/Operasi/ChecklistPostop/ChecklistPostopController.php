@@ -18,6 +18,7 @@ final class ChecklistPostopController extends ControllerTemplate
             ],
             'Checklist Post Operasi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

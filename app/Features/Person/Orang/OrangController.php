@@ -17,6 +17,7 @@ final class OrangController extends ControllerTemplate
             ],
             'Orang',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

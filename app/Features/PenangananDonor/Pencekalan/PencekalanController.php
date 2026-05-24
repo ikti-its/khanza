@@ -17,6 +17,7 @@ final class PencekalanController extends ControllerTemplate
             ],
             'Pencekalan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

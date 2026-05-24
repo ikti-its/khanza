@@ -18,6 +18,7 @@ final class RefWarnaUrineController extends ControllerTemplate
             ],
             'Referensi Warna Urine',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

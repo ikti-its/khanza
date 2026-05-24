@@ -17,6 +17,7 @@ final class KomponenDarahController extends ControllerTemplate
             ],
             'Komponen Darah',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

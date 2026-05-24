@@ -18,6 +18,7 @@ final class RefAldretteAktivitasController extends ControllerTemplate
             ],
             'Referensi Aldrette Aktivitas',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

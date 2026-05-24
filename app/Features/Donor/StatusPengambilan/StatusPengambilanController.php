@@ -17,6 +17,7 @@ final class StatusPengambilanController extends ControllerTemplate
             ],
             'Status Pengambilan',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

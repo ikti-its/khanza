@@ -18,6 +18,7 @@ final class SigninSebelumAnestesiController extends ControllerTemplate
             ],
             'Sign In Sebelum Anestesi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

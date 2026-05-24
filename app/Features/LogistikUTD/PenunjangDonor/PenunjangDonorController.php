@@ -17,6 +17,7 @@ final class PenunjangDonorController extends ControllerTemplate
             ],
             'Penggunaan BHP Non Medis Donor',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

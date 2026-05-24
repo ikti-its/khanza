@@ -17,6 +17,7 @@ final class PenunjangPenyerahanController extends ControllerTemplate
             ],
             'Penggunaan BHP Non Medis Penyerahan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

@@ -17,6 +17,7 @@ final class PlanSekunderController extends ControllerTemplate
             ],
             'Plan Sekunder',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

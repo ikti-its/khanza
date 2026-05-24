@@ -18,6 +18,7 @@ final class TimeOutSebelumInsisiPenunjangController extends ControllerTemplate
             ],
             'Time Out Sebelum Insisi Penunjang',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

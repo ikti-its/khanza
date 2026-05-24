@@ -18,6 +18,7 @@ final class PengkajianPreAnestesiController extends ControllerTemplate
             ],
             'Pengkajian Pre Anestesi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

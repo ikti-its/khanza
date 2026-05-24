@@ -17,6 +17,7 @@ final class DataTriasePrimerController extends ControllerTemplate
             ],
             'Data Triase Primer',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE, 

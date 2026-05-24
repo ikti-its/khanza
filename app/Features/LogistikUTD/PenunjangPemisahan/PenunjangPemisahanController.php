@@ -17,6 +17,7 @@ final class PenunjangPemisahanController extends ControllerTemplate
             ],
             'Penggunaan BHP Non Medis Pemisahan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 // A::UPDATE, 

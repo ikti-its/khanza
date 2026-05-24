@@ -17,6 +17,7 @@ final class CaraMasukController extends ControllerTemplate
             ],
             'Cara Masuk',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

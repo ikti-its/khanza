@@ -17,6 +17,7 @@ final class AlatTransportasiController extends ControllerTemplate
             ],
             'Alat Transportasi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

@@ -17,6 +17,7 @@ final class NilaiDiagnostikController extends ControllerTemplate
             ],
             'Nilai Diagnostik',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -18,6 +18,7 @@ final class RefParameterPemeriksaanLabController extends ControllerTemplate
             ],
             'Referensi Parameter Pemeriksaan Lab',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

@@ -17,6 +17,7 @@ final class GolonganDarahController extends ControllerTemplate
             ],
             'Golongan Darah',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE, 

@@ -18,6 +18,7 @@ final class RefTindakanOperasiController extends ControllerTemplate
             ],
             'Referensi Tindakan Operasi',
             [
+                A::READ,
                 // A::CREATE,
                 // A::AUDIT,
                 // A::UPDATE,

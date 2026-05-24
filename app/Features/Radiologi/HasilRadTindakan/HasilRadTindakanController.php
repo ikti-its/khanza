@@ -18,6 +18,7 @@ final class HasilRadTindakanController extends ControllerTemplate
             ],
             'Hasil Radiologi Tindakan',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,

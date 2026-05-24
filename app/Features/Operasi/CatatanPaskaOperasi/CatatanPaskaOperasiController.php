@@ -18,6 +18,7 @@ final class CatatanPaskaOperasiController extends ControllerTemplate
             ],
             'Catatan Paska Operasi',
             [
+                A::READ,
                 A::CREATE,
                 A::AUDIT,
                 A::UPDATE,
