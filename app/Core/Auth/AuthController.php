@@ -28,9 +28,8 @@ final class AuthController extends Controller
             'password' => $this->request->getPost('password')
         ];
 
-        if (!isset($login_data['email'])|| !isset($login_data['password'])){
-            return redirect()->back()->withInput()
-                ->with('error', 'Masukkan email dan password');
+        if (!isset($login_data['email'], $login_data['password'])) {
+            return redirect()->back()->withInput()->with('error', 'Masukkan email dan password');
         }
             
 
@@ -50,8 +49,8 @@ final class AuthController extends Controller
             return redirect()->back()->withInput()
             ->with('error', 'Password salah, mohon dicoba kembali');
         }
-            
-        if(isset($user['id']) && isset($user['email']) && isset($user['role'])){
+
+        if (isset($user['id'], $user['email'], $user['role'])) {
             $user = [
                 'id'    => $user['id'],
                 'email' => $user['email'],
