@@ -6,33 +6,8 @@ stack-size  = 8388608
 
 [source]
 workspace   = "."
-paths       = [
-    # "app/Config",
-    # "app/Controllers",
-    "app/Core",
-    "app/Features",
-    "app/Filters",
-    "app/Helpers",
-    "app/Models",
-    "app/Services",
-    # "app/Views/components/aksi",
-    # "app/Views/components/cetak",
-    "app/Views/components/footer",
-    "app/Views/components/form",
-    # "app/Views/components/header",
-    # "app/Views/components/menu",
-    # "app/Views/components/modal",
-    # "app/Views/components/notif",
-    # "app/Views/components/popup",
-    # "app/Views/components/tabel",
-    # "app/Views/components/alerts.php",
-    # "app/Views/components/breadcrumbs.php",
-    # "app/Views/components/header.php",
-    # "app/Views/components/sidebar.php",
-
-    # "*"
-]
-includes    = ["vendor", "app/Config"]
+paths       = ["app/Features"]
+includes    = ["vendor", "app/Config", "app/Core",]
 excludes    = ["app/Views/admin", "app/Views/user"]
 extensions  = ["php"]
 
