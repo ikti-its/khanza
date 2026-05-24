@@ -39,5 +39,16 @@ jobs:
     - name: Log Trigger Reason
       run: echo "Pipeline dijalankan secara manual dengan alasan -> ${{ github.event.inputs.reason }}"
 
+    - name: Run Mago Guard
+      run: vendor/bin/mago --config .config/mago.toml guard
+      
+    - name: Run Mago Static Analyzer
+      run: vendor/bin/mago --config .config/mago.toml analyze
+
     - name: Run Mago Linter
-      run: vendor/bin/mago analyze
+      run: vendor/bin/mago --config .config/mago.toml lint
+    
+    - name: Run Mago Formatter
+      run: vendor/bin/mago --config .config/mago.toml fmt
+
+   
