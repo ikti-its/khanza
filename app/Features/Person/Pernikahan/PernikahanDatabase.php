@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Features\Person\Pernikahan;
 use App\Core\Database\Template\DatabaseTemplate;
