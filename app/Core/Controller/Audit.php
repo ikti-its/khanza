@@ -21,7 +21,6 @@ final readonly class Audit
         assert($query instanceof BaseResult,
         'There is a problem in Audit query');
         
-        $results = $query->getResultArray();
-        return $results;
+        return $query->getResultArray();
     }
 }

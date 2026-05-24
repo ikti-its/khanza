@@ -88,7 +88,6 @@ class ModelTemplate extends Model
         $query = $this->db->query($sql);
         assert($query instanceof BaseResult, 'There is a problem in audit query');  
         
-        $results = $query->getResultArray();
-        return $results;
+        return $query->getResultArray();
     }
 }
