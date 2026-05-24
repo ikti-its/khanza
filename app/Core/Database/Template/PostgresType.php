@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 namespace App\Core\Database\Template;
-use App\Core\Database\Template\ForgeType;
 use CodeIgniter\Database\RawSql;
 
 final readonly class PostgresType
@@ -29,13 +28,13 @@ final readonly class PostgresType
         if($min >= -(1<<15)    && $max <= (1<<15) - 1) { return self::INT16();}
         if($min >= -(1<<31)    && $max <= (1<<31) - 1) { return self::INT32();}
         if($min >= PHP_INT_MIN && $max <= PHP_INT_MAX) { return self::INT64();}
-        die("Integer range $min-$max is not supported");
+        die("Integer range {$min}-{$max} is not supported");
     }
 
     public static function F32(): ForgeType { return new ForgeType('FLOAT4');}
     public static function F64(): ForgeType { return new ForgeType('FLOAT8');}
     public static function NUMERIC(int $len, int $decimal): ForgeType { 
-        return new ForgeType('NUMERIC', constraint:"$len,$decimal"); }
+        return new ForgeType('NUMERIC', constraint:"{$len},{$decimal}"); }
 
     public static function CHAR(int $len): ForgeType { 
         return new ForgeType('CHAR', constraint: (string) $len);}
@@ -50,13 +49,13 @@ final readonly class PostgresType
     public static function INTERVAL(): ForgeType { return new ForgeType('INTERVAL');}
 
     public static function IPV4(string $column): ForgeType { 
-        return new ForgeType('INET', "family($column) = 4");}
+        return new ForgeType('INET', "family({$column}) = 4");}
     public static function IPV6(string $column): ForgeType { 
-        return new ForgeType('INET', "family($column) = 6");}
+        return new ForgeType('INET', "family({$column}) = 6");}
     public static function NETV4(string $column): ForgeType { 
-        return new ForgeType('CIDR', "family($column) = 4");}
+        return new ForgeType('CIDR', "family({$column}) = 4");}
     public static function NETV6(string $column): ForgeType { 
-        return new ForgeType('CIDR', "family($column) = 6");}
+        return new ForgeType('CIDR', "family({$column}) = 6");}
     public static function MAC48(): ForgeType { 
         return new ForgeType('MACADDR');}
     public static function MAC64(): ForgeType { 

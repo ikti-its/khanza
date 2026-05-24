@@ -12,9 +12,13 @@ final readonly class CURL
     ): array {
         
         $allowed_methods = ['GET', 'POST', 'PUT', 'DELETE'];
-        if (!in_array($method, $allowed_methods)) echo HTTPError::renderErrorView(405);
+        if (!in_array($method, $allowed_methods)) {
+            echo HTTPError::renderErrorView(405);
+        }
 
-        if (!session()->has('jwt_token'))  echo HTTPError::renderErrorView(401);
+        if (!session()->has('jwt_token')) {
+            echo HTTPError::renderErrorView(401);
+        }
 
         /** @var string */
         $token = session()->get('jwt_token');
@@ -27,11 +31,11 @@ final readonly class CURL
         $url = getenv('api_URL');
         $full_url = $url . $path;
         $ch = curl_init($full_url);
-        assert($ch !== false, "Curl initialization failed for $full_url");
+        assert($ch !== false, "Curl initialization failed for {$full_url}");
 
         if ($method === 'POST' || $method === 'PUT') {
             $postData = json_encode($data);
-            assert($postData !== false, "JSON data format is incorrect for $full_url");
+            assert($postData !== false, "JSON data format is incorrect for {$full_url}");
             curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
             $headers[] = 'Content-Type: application/json';
             $headers[] = 'Content-Length: ' . strlen($postData);
@@ -48,7 +52,7 @@ final readonly class CURL
         }
 
         $response = curl_exec($ch);
-        assert($response !== true && $response !== false, "Error executing curl for  $full_url");
+        assert($response !== true && $response !== false, "Error executing curl for  {$full_url}");
 
         $http_status_code = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
 

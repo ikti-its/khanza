@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Core\Auth;
 
@@ -27,15 +28,19 @@ final class AuthController extends Controller
             'password' => $this->request->getPost('password')
         ];
 
-        if (!isset($login_data['email'])|| !isset($login_data['password']))
+        if (!isset($login_data['email'])|| !isset($login_data['password'])){
             return redirect()->back()->withInput()
                 ->with('error', 'Masukkan email dan password');
+        }
+            
 
         $user = $this->model->where('email',$login_data['email'])->first();
         
-        if(!$user)
+        if(!$user){
             return redirect()->back()->withInput()
                 ->with('error', 'Akun tidak ditemukan, mohon hubungi admin');
+        }
+            
 
         if (isset($user['password']) 
             && is_string($user['password'])
@@ -46,12 +51,14 @@ final class AuthController extends Controller
             ->with('error', 'Password salah, mohon dicoba kembali');
         }
             
-        if(isset($user['id']) && isset($user['email']) && isset($user['role']))
+        if(isset($user['id']) && isset($user['email']) && isset($user['role'])){
             $user = [
                 'id'    => $user['id'],
                 'email' => $user['email'],
                 'role'  => (int) $user['role'],
             ];
+        }
+            
 
         session()->set('user', $user);
         session()->set('user_specific_data', 'Akun not found');

@@ -22,16 +22,20 @@ final class KhanzaMigrationRunner extends MigrationRunner
         $graph = [];
         $classes = array_keys($ref_table_classes);
         $all = [];
-        foreach ($classes as $class)
+        foreach ($classes as $class){
             $all[$class] = true;
-
+        }
+            
         foreach ($classes as $class) {
             /** @mago-expect analysis:unsafe-instantiation */
-            $ref_table = self::$ref_class_cache[$class] ??= new $class();
+            if(!isset(self::$ref_class_cache[$class])){
+                self::$ref_class_cache[$class] = new $class();
+            }
+            $ref_table = self::$ref_class_cache[$class];
             $deps = $ref_table->dependencies();
             foreach ($deps as $dep) {
                 assert(isset($all[$dep]),
-                    "Migration dependency not found: $dep -> $class");
+                    "Migration dependency not found: {$dep} -> {$class}");
             }
             $graph[$class] = $deps;
         }
@@ -81,9 +85,11 @@ final class KhanzaMigrationRunner extends MigrationRunner
         array &$visiting,
         array &$result
     ): void {
-        if (isset($visited[$node])) return;
+        if (isset($visited[$node])){
+            return;
+        } 
 
-        assert(! isset($visiting[$node]),  "Circular dependency detected at $node");
+        assert(! isset($visiting[$node]),  "Circular dependency detected at {$node}");
 
         $visiting[$node] = true;
 
@@ -203,14 +209,12 @@ final class KhanzaMigrationRunner extends MigrationRunner
             /** @mago-expect analysis:unsafe-instantiation */
             $instance = new $class();
 
-            if($direction === 'up')
+            if($direction === 'up'){
                 $instance->up();
-            else if($direction === 'down')
+            } else if($direction === 'down'){
                 $instance->down();
+            } 
         }
-
-        
-        
 
         return true;
     }
