@@ -216,13 +216,6 @@ class DatabaseTemplate extends Migration
             return;
         }
 
-        $env  = getenv('platform');
-        $root = match ($env) {
-            'windows' => 'C:',
-            'linux' => '',
-            'darwin' => '',
-            default => die("Platform {$env} is not supported"),
-        };
         try {
             $reflection = new \ReflectionClass($this);
         } catch (\ReflectionException $e){
@@ -230,22 +223,22 @@ class DatabaseTemplate extends Migration
         }
         $filename = $reflection->getFileName();
         assert($filename !== false, 'File name for database not found');
+        
         $dir = dirname($filename);
-
         $csv_file = $dir . '/' . $this->source;
-        $tmp_file = $root . '/tmp/' . $this->source;
-
         assert(file_exists($csv_file), "Data file '{$csv_file}' does not exist");
 
-        copy($csv_file, $tmp_file);
-
+        $tmp_file = tmpfile();
+        $tmp_path = stream_get_meta_data($tmp_file)['uri'];
+        copy($csv_file, $tmp_path);
+        chmod($tmp_path, 0o644);
         $this->db->query("
             COPY {$this->schema}.{$this->table}
-            FROM '{$tmp_file}'
+            FROM '{$tmp_path}'
             WITH (FORMAT csv, HEADER true)
         ");
 
-        unlink($tmp_file);
+        fclose($tmp_file);
     }
 
     #[\Override()]
