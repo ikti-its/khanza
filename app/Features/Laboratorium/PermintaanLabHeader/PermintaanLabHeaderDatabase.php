@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Features\Laboratorium\PermintaanLabHeader;
 use App\Core\Database\Template\DatabaseTemplate;
