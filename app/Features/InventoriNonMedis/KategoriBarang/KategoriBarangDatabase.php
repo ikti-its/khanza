@@ -14,7 +14,7 @@ final class KategoriBarangDatabase extends DatabaseTemplate
             'kategori_barang',
             [
                 'id_kategori'   => T::ID(50),
-                'kode_kategori_barang' => T::CODE(3),
+                'kode_kategori_barang' => T::CODE(10),
                 'nama_kategori_barang' => T::NAME(50),
             ],
             'id_kategori',

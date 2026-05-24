@@ -15,14 +15,16 @@ final class PermintaanBarangModel extends ModelTemplate
             'permintaan_barang',
             'id_permintaan',
             [
-                'id_permintaan' => V::DEFAULT(),
-                'tipe'          => V::DEFAULT(),
-                'tanggal'       => V::DEFAULT(),
-                'status'        => V::DEFAULT(),
-                'catatan'       => V::DEFAULT(),
+                'id_permintaan'               => V::DEFAULT(),
+                'id_tipe_permintaan_barang'   => V::DEFAULT(),
+                'tanggal'                     => V::DEFAULT(),
+                'id_status_permintaan_barang' => V::DEFAULT(),
+                'catatan'                     => V::DEFAULT(),
             ],
             [
-                'id_unit' => ['nama_unit'],
+                'id_unit'                     => ['nama_unit'],
+                'id_tipe_permintaan_barang'   => ['nama_tipe_permintaan_barang'],
+                'id_status_permintaan_barang' => ['nama_status_permintaan_barang'],
             ],
         );
     }

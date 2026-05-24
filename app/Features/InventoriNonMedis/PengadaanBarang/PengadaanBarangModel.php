@@ -15,14 +15,15 @@ final class PengadaanBarangModel extends ModelTemplate
             'pengadaan_barang',
             'id_pengadaan',
             [
-                'id_pengadaan' => V::DEFAULT(),
-                'tanggal'      => V::DEFAULT(),
-                'status'       => V::DEFAULT(),
-                'catatan'      => V::DEFAULT(),
+                'id_pengadaan'               => V::DEFAULT(),
+                'tanggal'                    => V::DEFAULT(),
+                'id_status_pengadaan_barang' => V::DEFAULT(),
+                'catatan'                    => V::DEFAULT(),
             ],
             [
-                'id_pengajuan' => ['tanggal', 'status'],
-                'id_suplier'   => ['nama_suplier'],
+                'id_pengajuan'               => ['tanggal', 'id_status_pengajuan_barang'],
+                'id_suplier'                 => ['nama_suplier'],
+                'id_status_pengadaan_barang' => ['nama_status_pengadaan_barang'],
             ],
         );
     }

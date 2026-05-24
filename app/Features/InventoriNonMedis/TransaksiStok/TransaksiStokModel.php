@@ -15,17 +15,18 @@ final class TransaksiStokModel extends ModelTemplate
             'transaksi_stok',
             'id_transaksi',
             [
-                'id_transaksi'   => V::DEFAULT(),
-                'tipe_transaksi' => V::DEFAULT(),
-                'qty'            => V::DEFAULT(),
-                'tanggal'        => V::DEFAULT(),
-                'catatan'        => V::DEFAULT(),
+                'id_transaksi'           => V::DEFAULT(),
+                'id_tipe_transaksi_stok' => V::DEFAULT(),
+                'qty'                    => V::DEFAULT(),
+                'tanggal'                => V::DEFAULT(),
+                'catatan'                => V::DEFAULT(),
             ],
             [
-                'id_barang'     => ['kode_barang', 'nama_barang'],
-                'id_pengadaan'  => ['tanggal', 'status'],
-                'id_permintaan' => ['tipe', 'tanggal'],
-                'id_opname'     => ['tanggal', 'status'],
+                'id_barang'              => ['kode_barang', 'nama_barang'],
+                'id_tipe_transaksi_stok' => ['nama_tipe_transaksi_stok'],
+                'id_pengadaan'           => ['tanggal', 'status'],
+                'id_permintaan'          => ['id_tipe_permintaan_barang', 'tanggal'],
+                'id_opname'              => ['tanggal', 'id_status_stok_opname'],
             ],
         );
     }

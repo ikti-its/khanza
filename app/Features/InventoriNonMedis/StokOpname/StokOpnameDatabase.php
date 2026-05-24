@@ -13,15 +13,21 @@ final class StokOpnameDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'stok_opname',
             [
-                'id_opname'      => T::ID(10_000_000),
-                'tanggal'        => T::DTIME(),
-                'status'         => T::RECORD(12),
-                'catatan'        => T::NOTE()->nullable(),
-                'catatan_atasan' => T::NOTE()->nullable(),
+                'id_opname'            => T::ID(10_000_000),
+                'tanggal'              => T::DTIME(),
+                'id_status_stok_opname' => T::FK_AUTO(),
+                'catatan'              => T::NOTE()->nullable(),
+                'catatan_atasan'       => T::NOTE()->nullable(),
             ],
             'id_opname',
             [],
-            [],
+            [
+                [
+                    'id_status_stok_opname',
+                    \App\Features\InventoriNonMedis\StatusStokOpname\StatusStokOpnameDatabase::class,
+                    'id_status_stok_opname',
+                ],
+            ],
             true,
             'stok_opname.csv'
         );

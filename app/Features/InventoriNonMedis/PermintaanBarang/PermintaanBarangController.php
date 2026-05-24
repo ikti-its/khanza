@@ -27,9 +27,9 @@ final class PermintaanBarangController extends ControllerTemplate
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID'],
                 [SHOW, REQUIRED, I::SELECT, 'id_unit', 'Unit Pemohon'],
-                [SHOW, REQUIRED, I::SELECT, 'tipe', 'Tipe'],
+                [SHOW, REQUIRED, I::SELECT, 'id_tipe_permintaan_barang', 'Tipe'],
                 [SHOW, REQUIRED, I::DATE, 'tanggal', 'Tanggal'],
-                [SHOW, OPTIONAL, I::SELECT,'status', 'Status'],
+                [SHOW, OPTIONAL, I::SELECT,'id_status_permintaan_barang', 'Status'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
             ],
         );

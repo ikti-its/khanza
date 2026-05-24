@@ -27,7 +27,7 @@ final class StokOpnameController extends ControllerTemplate
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_opname', 'ID Opname'],
                 [SHOW, REQUIRED, I::DATE,  'tanggal', 'Tanggal'],
-                [SHOW, OPTIONAL, I::SELECT,'status',  'Status'],
+                [SHOW, OPTIONAL, I::SELECT,'id_status_stok_opname', 'Status'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan_atasan', 'Catatan Atasan'],
             ],

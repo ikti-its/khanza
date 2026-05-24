@@ -29,7 +29,7 @@ final class PengadaanBarangController extends ControllerTemplate
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengajuan', 'ID Pengajuan'],
                 [SHOW, REQUIRED, I::SELECT, 'id_suplier', 'Suplier'],
                 [SHOW, REQUIRED, I::DATE,  'tanggal', 'Tanggal'],
-                [SHOW, OPTIONAL, I::SELECT,'status', 'Status'],
+                [SHOW, OPTIONAL, I::SELECT,'id_status_pengadaan_barang', 'Status'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
             ],
         );

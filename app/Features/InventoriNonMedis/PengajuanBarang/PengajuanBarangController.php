@@ -28,7 +28,7 @@ final class PengajuanBarangController extends ControllerTemplate
                 [HIDE, OPTIONAL, I::INDEX, 'id_pengajuan', 'ID Pengajuan'],
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
                 [SHOW, REQUIRED, I::DATE,  'tanggal','Tanggal'],
-                [SHOW, OPTIONAL, I::SELECT,'status', 'Status'],
+                [SHOW, OPTIONAL, I::SELECT,'id_status_pengajuan_barang', 'Status'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan', 'Catatan'],
                 [SHOW, OPTIONAL, I::TEXT, 'catatan_atasan', 'Catatan Atasan'],
             ],
