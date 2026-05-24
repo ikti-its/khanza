@@ -8,17 +8,17 @@ use App\Core\Database\Template\SemanticType as T;
 /*
  *  Dalam 1 kecamatan terdapat 1 atau lebih desa
  *  Di Indonesia, terdapat sekitar 83.000 desa
- * 
- *  Kode desa menggunakan 4 digit berdasarkan peraturan Kemendagri 
+ *
+ *  Kode desa menggunakan 4 digit berdasarkan peraturan Kemendagri
  *  https://peraturan.bpk.go.id/Details/196233/permendagri-no-58-tahun-2021
  *  Menurut pasal 8 ayat 2, digit pertama menunjukkan jenis Desa
  *      1 = Kelurahan
  *      2 = Desa
  *      3 = Desa Adat
- * 
+ *
  *  Digit 2,3,4 menunjukkan nomor urut pembentukan desa dari 001 hingga 999
  *  Desa/kelurahan/desa adat = 3000 < 32768 = ID16()
- * 
+ *
  *  Contoh Kelurahan Keputih, Kecamatan Sukolilo, Kota Surabaya, Jawa Timur
  *  memiliki kode 35.78.09.1001
  *  35              = Provinsi Jawa Timur

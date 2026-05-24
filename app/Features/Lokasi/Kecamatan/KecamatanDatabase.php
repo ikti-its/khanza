@@ -7,16 +7,16 @@ use App\Core\Database\Template\SemanticType as T;
 
 /*  Dalam 1 kota/kabupaten terdapat 1 atau lebih kecamatan
  *  Di Indonesia, terdapat sekitar 7.000 kecamatan
- * 
- *  Kode kota/kabupaten menggunakan 6 digit berdasarkan peraturan Kemendagri 
+ *
+ *  Kode kota/kabupaten menggunakan 6 digit berdasarkan peraturan Kemendagri
  *  https://peraturan.bpk.go.id/Details/196233/permendagri-no-58-tahun-2021
  *  Menurut pasal 4 ayat 3c, 2 digit pertama menunjukkan pulau asal provinsi,
  *  2 digit kedua menunjukkan nomor kota/kabupaten di provinsi tersebut, dan
  *  2 digit ketiga menunjukkan nomor kecamatan di kota/kabupaten tersebut
- * 
+ *
  *  Kode kecamatan menggunakan angka 01 sampai 99
  *  Kecamatan = 99 < 128 = ID8()
- *     
+ *
  *  Contoh Kecamatan Sukolilo, Kota Surabaya, Provinsi Jawa Timur
  *  3        = Pulau Jawa
  *  35       = Provinsi Jawa Timur

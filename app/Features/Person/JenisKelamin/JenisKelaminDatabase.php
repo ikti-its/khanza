@@ -8,7 +8,7 @@ use App\Core\Database\Template\SemanticType as T;
 /*
  *  Tabel jenis_kelamin merupakan tabel referensi (master data)
  *  yang digunakan untuk menyimpan kategori jenis kelamin.
- *  
+ *
  *  Tabel ini direlasikan ke tabel orang untuk menghindari
  *  penyimpanan teks berulang seperti "Laki-laki" atau "Perempuan".
  */

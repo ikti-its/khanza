@@ -7,9 +7,9 @@ use App\Core\Database\Template\SemanticType as T;
 
 /*
  *  Di Indonesia, 9 Kepulauan besar yang terdiri dari ribuan pulau kecil yaitu
- *  Sumatera, Jawa, Bali & Nusa Tenggara, Kalimantan, Sulawesi, Maluku, Papua 
- *  
- *  Kode pulau merupakan digit pertama kode provinsi berdasarkan Permendagri 
+ *  Sumatera, Jawa, Bali & Nusa Tenggara, Kalimantan, Sulawesi, Maluku, Papua
+ *
+ *  Kode pulau merupakan digit pertama kode provinsi berdasarkan Permendagri
  *  https://peraturan.bpk.go.id/Details/196233/permendagri-no-58-tahun-2021
  *  Menurut pasal 5 ayat 1, digit pertama kode wilayah menunjukkan asal pulau
  *      1 = Sumatera
@@ -22,7 +22,7 @@ use App\Core\Database\Template\SemanticType as T;
  *      8 = Maluku
  *      9 = Papua
  *  Pulau = 9 < 128 = ID8()
- * 
+ *
  *  Contoh provinsi Jawa Timur yang berada di pulau Jawa
  *  3  = Pulau Jawa
  *  35 = Provinsi Jawa Timur
