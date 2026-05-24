@@ -213,6 +213,7 @@ final class KhanzaMigrationRunner extends MigrationRunner
             match ($direction) {
                 'up'   => $instance->up(),
                 'down' => $instance->down(),
+                default=> die("Wrong migrate direction {$direction}")
             };
         }
 

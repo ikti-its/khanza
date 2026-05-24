@@ -48,6 +48,7 @@ final readonly class CURL
         match ($method) {
             'POST' => curl_setopt($ch, CURLOPT_POST, true),
             'PUT', 'DELETE' => curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method),
+            default => "Unknown HTTP Method '{$method}'"
         };
     
         $response = curl_exec($ch);

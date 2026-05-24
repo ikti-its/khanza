@@ -32,8 +32,7 @@ class ControllerTemplate_LEGACY extends Controller
         protected array $konfig = [],
         protected array $meta_data = ['page' => 1, 'size' => 10, 'total' => 1],
     ) {
-        $this->api_url = getenv('api_URL') ?? 'api_URL env is incorrect';
-
+        $this->api_url = (string) getenv('api_URL');
         // Check notifications and set session variable
         // $this->checkNotifications();
     }
