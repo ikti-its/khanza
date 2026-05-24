@@ -5,9 +5,8 @@ namespace App\Core\Controller;
 
 use CodeIgniter\Database\BaseResult;
 
-/** 
- * @deprecated "Migrate to ModelTemplate::audit"
- */final readonly class Audit
+/** @deprecated "Migrate to ModelTemplate::audit" */
+final readonly class Audit
 {
     public static function GetAuditData(string $table): array {
         $table = str_replace('/', '', $table);

@@ -41,7 +41,7 @@ final class PendonorController extends ControllerTemplate
     public function print(int|string $id): string
     {
         $dataPendonor = $this->model->find($id); 
-        if (!$dataPendonor) {
+        if ($dataPendonor !== null) {
             throw PageNotFoundException::forPageNotFound("Data pendonor tidak ditemukan.");
         }
         return view('components/cetak/cetak_kartu', [
