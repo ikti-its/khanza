@@ -54,7 +54,7 @@ final readonly class HTTPError
             default:
                 $data['title'] = 'Error';
                 $data['errorTitle'] = 'Unexpected Error';
-                $data['message'] ??= "Error fetching data. HTTP Status Code: $status_code";
+                $data['message']    ??= "Error fetching data. HTTP Status Code: {$status_code}";
                 break;
         }
 

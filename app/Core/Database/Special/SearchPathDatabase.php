@@ -39,8 +39,8 @@ final class SearchPathDatabase extends DatabaseTemplate
 
         $schema_string = ''.implode(', ',  $schema_list);
         $this->db->query("
-            ALTER DATABASE $db_name
-            SET search_path TO $schema_string
+            ALTER DATABASE {$db_name}
+            SET search_path TO {$schema_string}
         ");
 
 

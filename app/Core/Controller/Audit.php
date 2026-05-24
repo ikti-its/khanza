@@ -12,10 +12,10 @@ final readonly class Audit
         $table = str_replace('/', '', $table);
 
         $db = \Config\Database::connect();
-        $sql =  "SELECT * FROM sik." . $table . "_audit_view
+        $sql = "SELECT * FROM sik.{$table}_audit_view
             LEFT OUTER JOIN 
             (SELECT id, nama FROM sik.pegawai) c
-            ON sik." . $table . "_audit_view.changed_by = c.id
+            ON sik.{$table}_audit_view.changed_by = c.id
             ORDER BY changed_by DESC";
         $query = $db->query($sql);
         assert($query instanceof BaseResult,

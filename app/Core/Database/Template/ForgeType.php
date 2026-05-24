@@ -28,9 +28,15 @@ final readonly class ForgeType
             'type' => $this->type,
             'null' => $this->null,
         ];
-        if($this->check      !== null) $arr['type'] .= " CHECK ( $this->check )";
-        if($this->default    !== null) $arr['default']    = $this->default;
-        if($this->constraint !== null) $arr['constraint'] = $this->constraint;
+        if ($this->check !== null) {
+            $arr['type'] .= " CHECK ( {$this->check} )";
+        }
+        if ($this->default !== null) {
+            $arr['default'] = $this->default;
+        }
+        if ($this->constraint !== null) {
+            $arr['constraint'] = $this->constraint;
+        }
         return $arr;
     }
 
