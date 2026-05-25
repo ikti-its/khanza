@@ -233,17 +233,30 @@ class DatabaseTemplate extends Migration
         $csv_file = $dir . '/' . $this->source;
         assert(file_exists($csv_file), "Data file '{$csv_file}' does not exist");
 
-        $tmp_file = tmpfile();
-        $tmp_path = stream_get_meta_data($tmp_file)['uri'];
-        copy($csv_file, $tmp_path);
-        chmod($tmp_path, 0o644);
-        $this->db->query("
-            COPY {$this->schema}.{$this->table}
-            FROM '{$tmp_path}'
-            WITH (FORMAT csv, HEADER true)
-        ");
+        $tmp_path = '';
+        $tmp_file = null;
 
-        fclose($tmp_file);
+        $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
+        if ($isWindows) {
+            $tmp_path = str_replace('\\', '/', $csv_file);
+        } else {
+            $tmp_file = tmpfile();
+            $tmp_path = stream_get_meta_data($tmp_file)['uri'];
+            copy($csv_file, $tmp_path);
+            chmod($tmp_path, 0o644);
+        }
+
+        try {
+            $this->db->query("
+                COPY {$this->schema}.{$this->table}
+                FROM '{$tmp_path}'
+                WITH (FORMAT csv, HEADER true)
+            ");
+        } finally {
+            if ($tmp_file !== null) {
+                fclose($tmp_file);
+            }
+        }
 
         if ($this->primary_key !== '') {
             $seq_result = $this->db->query("
