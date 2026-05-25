@@ -31,19 +31,19 @@ class ModelTemplate extends Model
         $config = new \Config\Database()->default;
         $config['database'] = env('database.default.khanza_db');
         parent::__construct(\Config\Database::connect($config));
-        
+
         // $this->setValidationRules($fields);
-        
+
         /*
          * All of the settings below are commented
          * because these are already the default.
          * But it is still included to indicate
          * which properties exist on the Model class
          * DO NOT DELETE NOR UNCOMMENT THE CODE BELOW
-         */ 
+         */
 
         // $this->useAutoIncrement = true;
-        
+
         //// CRUD settings
         // $this->returnType        = 'array';
         // $this->useSoftDeletes    = false;
@@ -62,7 +62,7 @@ class ModelTemplate extends Model
         // $this->createdField = 'created_at';
         // $this->updatedField = 'updated_at';
         // $this->deletedField = 'deleted_at';
-        
+
         //// Callbacks
         // $this->allowCallbacks = false;
         // $this->beforeInsert = [];
@@ -74,9 +74,75 @@ class ModelTemplate extends Model
         // $this->beforeDelete = [];
         // $this->afterDelete  = [];
     }
+
     /** @return non-empty-string */
     final public function get_primary_key(): string{
         return $this->primary_key;
+    }
+
+    /** @return array<string, array{0: class-string<DatabaseTemplate>, 1: string}> */
+    private function build_fk_lookup(DatabaseTemplate $db): array
+    {
+        $lookup = [];
+        foreach ($db->get_foreign_keys() as $fk) {
+            [$fields, $ref_class, $ref_fields] = $fk;
+            $locals = is_string($fields)     ? [$fields]     : $fields;
+            $refs   = is_string($ref_fields) ? [$ref_fields] : $ref_fields;
+            for ($i = 0; $i < count($locals); $i++) {
+                $lookup[$locals[$i]] = [$ref_class, $refs[$i]];
+            }
+        }
+        return $lookup;
+    }
+
+    /** @param array<int|string, mixed> $spec */
+    private function apply_join_spec(
+        \CodeIgniter\Database\BaseBuilder $builder,
+        string $fk_col,
+        array $spec,
+        string $parent_alias,
+        DatabaseTemplate $parent_db,
+        int &$idx,
+    ): void {
+        $fk_lookup = $this->build_fk_lookup($parent_db);
+        if (!isset($fk_lookup[$fk_col])) return;
+
+        /** @var class-string<DatabaseTemplate> $ref_class */
+        [$ref_class, $ref_on] = $fk_lookup[$fk_col];
+
+        $ref_db    = new $ref_class();
+        $ref_table = $ref_db->get_schema() . '.' . $ref_db->get_table_name();
+        $ref_alias = "j{$idx}";
+        $idx++;
+
+        $builder->join(
+            "{$ref_table} {$ref_alias}",
+            "{$parent_alias}.{$fk_col} = {$ref_alias}.{$ref_on}",
+            'left'
+        );
+
+        $is_nested = false;
+        foreach ($spec as $k => $_) {
+            if (is_string($k)) { $is_nested = true; break; }
+        }
+
+        if (!$is_nested) {
+            foreach ($spec as $i => $disp) {
+                $as = ($i === 0) ? $fk_col : $disp;
+                $builder->select("{$ref_alias}.{$disp} AS {$as}");
+            }
+        } else {
+            $first_int = true;
+            foreach ($spec as $k => $v) {
+                if (is_int($k)) {
+                    $as = $first_int ? $fk_col : $v;
+                    $first_int = false;
+                    $builder->select("{$ref_alias}.{$v} AS {$as}");
+                } else {
+                    $this->apply_join_spec($builder, $k, $v, $ref_alias, $ref_db, $idx);
+                }
+            }
+        }
     }
 
     /**
@@ -90,43 +156,13 @@ class ModelTemplate extends Model
             return parent::findAll($limit, $offset);
         }
 
-        $fk_lookup = [];
-        foreach ($this->database->get_foreign_keys() as $fk) {
-            [$fields, $ref_class, $ref_fields] = $fk;
-            if(is_string($fields)) $fields = [$fields];
-            if(is_string($ref_fields)) $ref_fields = [$ref_fields];
-
-            for ($i = 0; $i < count($fields); $i++) {
-                $fk_lookup[$fields[$i]] = [$ref_class, $ref_fields[$i]];
-            }
-        }
-
         $main    = 'm';
         $builder = $this->db->table("{$this->table} {$main}");
         $builder->select("{$main}.*");
 
         $idx = 0;
-        foreach ($this->join as $fk_col => $display_cols) {
-            if (!isset($fk_lookup[$fk_col])) continue;
-
-            /** @var class-string<\App\Core\Database\Template\DatabaseTemplate> $ref_class */
-            [$ref_class, $ref_on] = $fk_lookup[$fk_col];
-
-            $ref_db    = new $ref_class();
-            $ref_table = $ref_db->get_schema() . '.' . $ref_db->get_table_name();
-            $ref_alias = "j{$idx}";
-
-            foreach ($display_cols as $i => $disp) {
-                $as = ($i === 0) ? $fk_col : $disp;
-                $builder->select("{$ref_alias}.{$disp} AS {$as}");
-            }
-
-            $builder->join(
-                "{$ref_table} {$ref_alias}",
-                "{$main}.{$fk_col} = {$ref_alias}.{$ref_on}",
-                'left'
-            );
-            $idx++;
+        foreach ($this->join as $fk_col => $spec) {
+            $this->apply_join_spec($builder, $fk_col, $spec, $main, $this->database, $idx);
         }
 
         if ($limit !== null && $limit > 0) {
@@ -160,8 +196,12 @@ class ModelTemplate extends Model
         foreach ($this->join as $fk_col => $display_cols) {
             if (!isset($fk_lookup[$fk_col])) continue;
 
+            $display_col = isset($display_cols[0]) && is_string($display_cols[0])
+                ? $display_cols[0]
+                : null;
+            if ($display_col === null) continue;
+
             [$ref_class, $ref_id_col] = $fk_lookup[$fk_col];
-            $display_col = $display_cols[0];
 
             $ref_db    = new $ref_class();
             $ref_table = $ref_db->get_schema() . '.' . $ref_db->get_table_name();
