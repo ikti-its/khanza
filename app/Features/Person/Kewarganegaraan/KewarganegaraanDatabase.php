@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Person\Kewarganegaraan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class KewarganegaraanDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'person',
             'kewarganegaraan',
@@ -21,7 +23,7 @@ final class KewarganegaraanDatabase extends DatabaseTemplate
                 [
                     'id_negara',
                     \App\Features\Lokasi\Negara\NegaraDatabase::class,
-                    'id_negara'
+                    'id_negara',
                 ],
             ],
         );

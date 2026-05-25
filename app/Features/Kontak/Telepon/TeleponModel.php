@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Kontak\Telepon;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class TeleponModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new TeleponDatabase(),
             'BASE',
@@ -21,7 +23,7 @@ final class TeleponModel extends ModelTemplate
             [
                 'id_orang'    => ['nik', 'nama'],
                 'id_jenis'    => ['nama_jenis'],
-                'id_provider' => ['nama_provider']
+                'id_provider' => ['nama_provider'],
             ],
         );
     }

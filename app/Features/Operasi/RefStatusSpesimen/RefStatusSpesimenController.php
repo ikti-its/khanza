@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefStatusSpesimen;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefStatusSpesimenController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefStatusSpesimenController extends ControllerTemplate
         parent::__construct(
             new RefStatusSpesimenModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                   'operasi'],
                 ['Referensi Status Spesimen', 'ref_status_spesimen'],
             ],
             'Referensi Status Spesimen',
@@ -26,7 +27,7 @@ final class RefStatusSpesimenController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_status_spesimen', 'ID Status Spesimen'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_status', 'Nama Status'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_status',        'Nama Status'],
             ],
         );
     }

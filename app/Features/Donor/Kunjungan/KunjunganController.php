@@ -2,17 +2,19 @@
 declare(strict_types=1);
 
 namespace App\Features\Donor\Kunjungan;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class KunjunganController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new KunjunganModel(),
             [
-                ['Donor', 'donor'],
+                ['Donor',     'donor'],
                 ['Kunjungan', 'kunjungan'],
             ],
             'Kunjungan',
@@ -24,12 +26,12 @@ final class KunjunganController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
-                [SHOW, REQUIRED, I::TEXT, 'nomor_antrian', 'Nomor Antrian'],
-                [SHOW, REQUIRED, I::TEXT, 'nomor_kunjungan', 'Nomor Kunjungan'],
-                [SHOW, REQUIRED, I::DATE, 'tanggal_kunjungan', 'Tanggal Kunjungan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_pendonor', 'ID Pendonor'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_kunjungan',      'ID Kunjungan'],
+                [SHOW, REQUIRED, I::TEXT,  'nomor_antrian',     'Nomor Antrian'],
+                [SHOW, REQUIRED, I::TEXT,  'nomor_kunjungan',   'Nomor Kunjungan'],
+                [SHOW, REQUIRED, I::DATE,  'tanggal_kunjungan', 'Tanggal Kunjungan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_pendonor',       'ID Pendonor'],
             ],
         );
-    }   
+    }
 }

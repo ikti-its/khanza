@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Lokasi\Kota;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -26,7 +27,8 @@ use App\Core\Database\Template\SemanticType as T;
 
 final class KotaDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'lokasi',
             'kota',
@@ -38,15 +40,15 @@ final class KotaDatabase extends DatabaseTemplate
             ],
             'id_kota',
             [
-                ['id_provinsi','id_kota_lokal'],
+                ['id_provinsi',   'id_kota_lokal'],
                 ['id_kota_lokal', 'nama_kota'],
             ],
             [
                 [
-                    'id_provinsi', 
-                    \App\Features\Lokasi\Provinsi\ProvinsiDatabase::class, 
-                    'id_provinsi'
-                ]
+                    'id_provinsi',
+                    \App\Features\Lokasi\Provinsi\ProvinsiDatabase::class,
+                    'id_provinsi',
+                ],
             ],
             true,
             'kota.csv',

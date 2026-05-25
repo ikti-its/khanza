@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefBromage;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefBromageController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefBromageController extends ControllerTemplate
         parent::__construct(
             new RefBromageModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',           'operasi'],
                 ['Referensi Bromage', 'ref_bromage'],
             ],
             'Referensi Bromage',
@@ -25,11 +26,11 @@ final class RefBromageController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_bromage', 'ID Bromage'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
-                [SHOW, REQUIRED, I::TEXT, 'tingkat_blok', 'Tingkat Blok'],
-                [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],
-                [SHOW, OPTIONAL, I::TEXT, 'gambar', 'Gambar'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_bromage',   'ID Bromage'],
+                [SHOW, REQUIRED, I::TEXT,   'nama_skala',   'Nama Skala'],
+                [SHOW, REQUIRED, I::TEXT,   'tingkat_blok', 'Tingkat Blok'],
+                [SHOW, REQUIRED, I::NUMBER, 'nilai',        'Nilai'],
+                [SHOW, OPTIONAL, I::TEXT,   'gambar',       'Gambar'],
             ],
         );
     }

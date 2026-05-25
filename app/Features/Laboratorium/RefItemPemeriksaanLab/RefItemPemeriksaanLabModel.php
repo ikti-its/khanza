@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\RefItemPemeriksaanLab;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -16,15 +17,15 @@ final class RefItemPemeriksaanLabModel extends ModelTemplate
             'ref_item_pemeriksaan_lab',
             'id_item_lab',
             [
-                'id_item_lab'   => V::DEFAULT(),
-                'id_kategori'   => V::DEFAULT(),
-                'kode_periksa'  => V::DEFAULT(),
-                'nama_item'     => V::DEFAULT(),
-                'tarif'         => V::DEFAULT(),
+                'id_item_lab'  => V::DEFAULT(),
+                'id_kategori'  => V::DEFAULT(),
+                'kode_periksa' => V::DEFAULT(),
+                'nama_item'    => V::DEFAULT(),
+                'tarif'        => V::DEFAULT(),
             ],
             [
-                'id_kategori'  => ['nama_kategori'],
-            ]
+                'id_kategori' => ['nama_kategori'],
+            ],
         );
     }
 }

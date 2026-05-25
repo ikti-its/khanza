@@ -2,17 +2,19 @@
 declare(strict_types=1);
 
 namespace App\Features\Darah\GolonganDarah;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class GolonganDarahController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new GolonganDarahModel(),
             [
-                ['Darah', 'darah'],
+                ['Darah',          'darah'],
                 ['Golongan Darah', 'golongan_darah'],
             ],
             'Golongan Darah',
@@ -24,9 +26,9 @@ final class GolonganDarahController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_golongan_darah', 'ID Golongan Darah'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_golongan_darah', 'Nama Golongan Darah'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_golongan_darah',   'ID Golongan Darah'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_golongan_darah', 'Nama Golongan Darah'],
             ],
         );
-    }   
+    }
 }

@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefAldretteAktivitas;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class RefAldretteAktivitasModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new RefAldretteAktivitasDatabase(),
             'REFS',
@@ -15,11 +17,11 @@ final class RefAldretteAktivitasModel extends ModelTemplate
             'ref_aldrette_aktivitas',
             'id_aktivitas',
             [
-                'id_aktivitas'  => V::DEFAULT(),
-                'nama_skala'    => V::DEFAULT(),
-                'nilai'         => V::DEFAULT(),
+                'id_aktivitas' => V::DEFAULT(),
+                'nama_skala'   => V::DEFAULT(),
+                'nilai'        => V::DEFAULT(),
             ],
-            []
+            [],
         );
     }
 }

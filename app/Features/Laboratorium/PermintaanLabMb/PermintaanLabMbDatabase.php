@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\PermintaanLabMb;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -38,7 +39,7 @@ final class PermintaanLabMbDatabase extends DatabaseTemplate
                 ],
             ],
             false,
-            'permintaan_lab_mb.csv'
+            'permintaan_lab_mb.csv',
         );
     }
 }

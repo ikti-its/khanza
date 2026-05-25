@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\PermintaanLabHeader;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -16,23 +17,22 @@ final class PermintaanLabHeaderModel extends ModelTemplate
             'permintaan_lab_header',
             'id_permintaan',
             [
-                'id_permintaan'         => V::DEFAULT(),
-                'no_permintaan'         => V::DEFAULT(),
-                'nomor_reg'             => V::DEFAULT(),
-                'id_kategori_lab'       => V::DEFAULT(),
-                'kode_dokter_perujuk'   => V::DEFAULT(),
-                'tgl_permintaan'        => V::DEFAULT(),
-                'indikasi_klinis'       => V::DEFAULT(),
-                'informasi_tambahan'    => V::DEFAULT(),
-                'id_status_permintaan'  => V::DEFAULT(),
+                'id_permintaan'        => V::DEFAULT(),
+                'no_permintaan'        => V::DEFAULT(),
+                'nomor_reg'            => V::DEFAULT(),
+                'id_kategori_lab'      => V::DEFAULT(),
+                'kode_dokter_perujuk'  => V::DEFAULT(),
+                'tgl_permintaan'       => V::DEFAULT(),
+                'indikasi_klinis'      => V::DEFAULT(),
+                'informasi_tambahan'   => V::DEFAULT(),
+                'id_status_permintaan' => V::DEFAULT(),
             ],
             [
                 'nomor_reg'            => ['nomor_rawat'],
                 'id_kategori_lab'      => ['nama_kategori'],
                 'kode_dokter_perujuk'  => [],
                 'id_status_permintaan' => ['nama_status'],
-            ]
+            ],
         );
     }
 }
-                

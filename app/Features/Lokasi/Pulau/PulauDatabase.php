@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Lokasi\Pulau;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -29,8 +30,9 @@ use App\Core\Database\Template\SemanticType as T;
  */
 
 final class PulauDatabase extends DatabaseTemplate
-{   
-    public function __construct(){
+{
+    public function __construct()
+    {
         parent::__construct(
             'lokasi',
             'pulau',

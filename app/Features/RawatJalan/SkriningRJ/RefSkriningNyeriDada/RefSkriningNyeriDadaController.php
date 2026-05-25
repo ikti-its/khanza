@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningNyeriDada;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefSkriningNyeriDadaController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefSkriningNyeriDadaController extends ControllerTemplate
         parent::__construct(
             new RefSkriningNyeriDadaModel(),
             [
-                ['Rawat Jalan', 'rawat_jalan'],
+                ['Rawat Jalan',                   'rawat_jalan'],
                 ['Referensi Skrining Nyeri Dada', 'ref_skrining_nyeri_dada'],
             ],
             'Referensi Skrining Nyeri Dada',
@@ -26,7 +27,7 @@ final class RefSkriningNyeriDadaController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_nyeri_dada', 'ID Nyeri Dada'],
-                [SHOW, REQUIRED, I::TEXT, 'nyeri_dada', 'Nyeri Dada'],
+                [SHOW, REQUIRED, I::TEXT,  'nyeri_dada',    'Nyeri Dada'],
             ],
         );
     }

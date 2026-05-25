@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\DistribusiDarah\PermintaanDarah;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class PermintaanDarahModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new PermintaanDarahDatabase(),
             'BASE',
@@ -15,14 +17,14 @@ final class PermintaanDarahModel extends ModelTemplate
             'permintaan_darah',
             'id_permintaan',
             [
-                'id_permintaan'         => V::DEFAULT(),
-                'no_permintaan'         => V::DEFAULT(),
-                'tanggal_permintaan'    => V::DEFAULT()
+                'id_permintaan'      => V::DEFAULT(),
+                'no_permintaan'      => V::DEFAULT(),
+                'tanggal_permintaan' => V::DEFAULT(),
             ],
             [
-                'id_rawat_inap'         => ['nomor_rawat', 'nomor_rm', 'nama_pasien'],
-                'id_dokter_pengirim'    => [''],
-                'id_status_permintaan'  => ['nama_status_permintaan']
+                'id_rawat_inap'        => ['nomor_rawat', 'nomor_rm', 'nama_pasien'],
+                'id_dokter_pengirim'   => [''],
+                'id_status_permintaan' => ['nama_status_permintaan'],
             ],
         );
     }

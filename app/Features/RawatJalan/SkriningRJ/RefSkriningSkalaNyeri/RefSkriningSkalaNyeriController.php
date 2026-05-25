@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningSkalaNyeri;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefSkriningSkalaNyeriController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefSkriningSkalaNyeriController extends ControllerTemplate
         parent::__construct(
             new RefSkriningSkalaNyeriModel(),
             [
-                ['Rawat Jalan', 'rawat_jalan'],
+                ['Rawat Jalan',                    'rawat_jalan'],
                 ['Referensi Skrining Skala Nyeri', 'ref_skrining_skala_nyeri'],
             ],
             'Referensi Skrining Skala Nyeri',
@@ -26,7 +27,7 @@ final class RefSkriningSkalaNyeriController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_skala_nyeri', 'ID Skala Nyeri'],
-                [SHOW, REQUIRED, I::TEXT, 'skala_nyeri', 'Skala Nyeri'],
+                [SHOW, REQUIRED, I::TEXT,  'skala_nyeri',    'Skala Nyeri'],
             ],
         );
     }

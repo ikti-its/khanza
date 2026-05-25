@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\KategoriBarang;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -13,7 +14,7 @@ final class KategoriBarangDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'kategori_barang',
             [
-                'id_kategori'   => T::ID(50),
+                'id_kategori'          => T::ID(50),
                 'kode_kategori_barang' => T::CODE(10),
                 'nama_kategori_barang' => T::NAME(50),
             ],
@@ -21,7 +22,7 @@ final class KategoriBarangDatabase extends DatabaseTemplate
             ['kode_kategori_barang'],
             [],
             true,
-            'kategori_barang.csv'
+            'kategori_barang.csv',
         );
     }
 }

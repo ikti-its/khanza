@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefKesadaranPascaop;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefKesadaranPascaopController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefKesadaranPascaopController extends ControllerTemplate
         parent::__construct(
             new RefKesadaranPascaopModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                           'operasi'],
                 ['Referensi Kesadaran Pasca Operasi', 'ref_kesadaran_pascaop'],
             ],
             'Referensi Kesadaran Pasca Operasi',
@@ -25,8 +26,8 @@ final class RefKesadaranPascaopController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_kesadaran', 'Nama Kesadaran'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran',   'ID Kesadaran'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_kesadaran', 'Nama Kesadaran'],
             ],
         );
     }

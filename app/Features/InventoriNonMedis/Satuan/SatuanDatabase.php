@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\Satuan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -21,7 +22,7 @@ final class SatuanDatabase extends DatabaseTemplate
             ['kode_satuan', 'nama_satuan'],
             [],
             true,
-            'satuan.csv'
+            'satuan.csv',
         );
     }
 }

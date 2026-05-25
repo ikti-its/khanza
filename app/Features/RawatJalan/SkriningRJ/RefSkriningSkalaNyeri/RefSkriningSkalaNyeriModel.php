@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningSkalaNyeri;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -19,7 +20,7 @@ final class RefSkriningSkalaNyeriModel extends ModelTemplate
                 'id_skala_nyeri' => V::DEFAULT(),
                 'skala_nyeri'    => V::DEFAULT(),
             ],
-            []
+            [],
         );
     }
 }

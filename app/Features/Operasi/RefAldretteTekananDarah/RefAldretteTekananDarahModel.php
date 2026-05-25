@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefAldretteTekananDarah;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class RefAldretteTekananDarahModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new RefAldretteTekananDarahDatabase(),
             'REFS',
@@ -19,7 +21,7 @@ final class RefAldretteTekananDarahModel extends ModelTemplate
                 'nama_skala' => V::DEFAULT(),
                 'nilai'      => V::DEFAULT(),
             ],
-            []
+            [],
         );
     }
 }

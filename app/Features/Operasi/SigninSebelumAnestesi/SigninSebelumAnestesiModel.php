@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\SigninSebelumAnestesi;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -36,13 +37,13 @@ final class SigninSebelumAnestesiModel extends ModelTemplate
                 'id_perawat_ok'             => V::DEFAULT(),
             ],
             [
-                'nomor_reg'           => ['nomor_rawat'],
-                'kode_dokter_bedah'   => [],
-                'kode_dokter_anestesi'=> [],
-                'id_penandaan_area'   => ['nama_ketersediaan'],
-                'id_kesiapan_anestesi'=> ['nama_kesiapan'],
-                'id_perawat_ok'       => [],
-            ]
+                'nomor_reg'            => ['nomor_rawat'],
+                'kode_dokter_bedah'    => [],
+                'kode_dokter_anestesi' => [],
+                'id_penandaan_area'    => ['nama_ketersediaan'],
+                'id_kesiapan_anestesi' => ['nama_kesiapan'],
+                'id_perawat_ok'        => [],
+            ],
         );
     }
 }

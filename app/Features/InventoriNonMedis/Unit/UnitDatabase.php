@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\Unit;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -20,7 +21,7 @@ final class UnitDatabase extends DatabaseTemplate
             ['nama_unit'],
             [],
             true,
-            'unit.csv'
+            'unit.csv',
         );
     }
 }

@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\CaraMasuk;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class CaraMasukDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'triase_ugd',
             'cara_masuk',
@@ -19,7 +21,7 @@ final class CaraMasukDatabase extends DatabaseTemplate
             ['nama_cara'],
             [],
             true,
-            'cara_masuk.csv'
+            'cara_masuk.csv',
         );
     }
 }

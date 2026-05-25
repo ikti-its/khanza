@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefBromage;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class RefBromageModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new RefBromageDatabase(),
             'REFS',
@@ -21,7 +23,7 @@ final class RefBromageModel extends ModelTemplate
                 'nilai'        => V::DEFAULT(),
                 'gambar'       => V::DEFAULT(),
             ],
-            []
+            [],
         );
     }
 }

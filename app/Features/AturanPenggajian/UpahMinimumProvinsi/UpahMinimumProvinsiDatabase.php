@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\AturanPenggajian\UpahMinimumProvinsi;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class UpahMinimumProvinsiDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'penggajian',
             'ump',
@@ -19,14 +21,14 @@ final class UpahMinimumProvinsiDatabase extends DatabaseTemplate
             ],
             'no_ump',
             [
-                ['tahun', 'provinsi']
+                ['tahun', 'provinsi'],
             ],
             [
                 [
-                    'provinsi', 
+                    'provinsi',
                     \App\Features\Lokasi\Provinsi\ProvinsiDatabase::class,
-                    'id_provinsi'
-                ]
+                    'id_provinsi',
+                ],
             ],
         );
     }

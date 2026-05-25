@@ -2,18 +2,20 @@
 declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\Pencekalan;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class PencekalanController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new PencekalanModel(),
             [
                 ['Penanganan Donor', 'penanganan_donor'],
-                ['Pencekalan', 'pencekalan'],
+                ['Pencekalan',       'pencekalan'],
             ],
             'Pencekalan',
             [
@@ -24,15 +26,15 @@ final class PencekalanController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_pencekalan', 'ID Pencekalan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_kunjungan', 'ID Kunjungan'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_pencekalan',       'ID Pencekalan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_kunjungan',        'ID Kunjungan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_jenis_pencekalan', 'ID Jenis Pencekalan'],
-                [SHOW, REQUIRED, I::DATE, 'tanggal_mulai', 'Tanggal Mulai'],
-                [SHOW, OPTIONAL, I::DATE, 'tanggal_selesai', 'Tanggal Selesai'],
-                [HIDE, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
-                [HIDE, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
-                [SHOW, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
+                [SHOW, REQUIRED, I::DATE,  'tanggal_mulai',       'Tanggal Mulai'],
+                [SHOW, OPTIONAL, I::DATE,  'tanggal_selesai',     'Tanggal Selesai'],
+                [HIDE, REQUIRED, I::INDEX, 'id_shift',            'ID Shift'],
+                [HIDE, REQUIRED, I::INDEX, 'id_petugas',          'ID Petugas'],
+                [SHOW, REQUIRED, I::TEXT,  'keterangan',          'Keterangan'],
             ],
         );
-    }   
+    }
 }

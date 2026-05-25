@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\DistribusiDarah\StatusPembayaran;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class StatusPembayaranModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new StatusPembayaranDatabase(),
             'REFS',
@@ -15,8 +17,8 @@ final class StatusPembayaranModel extends ModelTemplate
             'status_pembayaran',
             'id_status_pembayaran',
             [
-                'id_status_pembayaran'      => V::DEFAULT(),
-                'nama_status_pembayaran'    => V::DEFAULT()
+                'id_status_pembayaran'   => V::DEFAULT(),
+                'nama_status_pembayaran' => V::DEFAULT(),
             ],
             [],
         );

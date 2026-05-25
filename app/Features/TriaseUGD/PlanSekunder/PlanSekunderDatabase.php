@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\PlanSekunder;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PlanSekunderDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'triase_ugd',
             'plan_sekunder',
@@ -19,7 +21,7 @@ final class PlanSekunderDatabase extends DatabaseTemplate
             ['nama_plan_sekunder'],
             [],
             true,
-            'plan_sekunder.csv'
+            'plan_sekunder.csv',
         );
     }
 }

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\HasilLabPa;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -16,19 +17,19 @@ final class HasilLabPaModel extends ModelTemplate
             'hasil_lab_pa',
             'id_hasil_pa',
             [
-                'id_hasil_pa'           => V::DEFAULT(),
-                'id_permintaan_lab'     => V::DEFAULT(),
-                'nomor_reg'             => V::DEFAULT(),
-                'kode_dokter_pj'        => V::DEFAULT(),
-                'id_petugas_lab'        => V::DEFAULT(),
-                'kode_dokter_perujuk'   => V::DEFAULT(),
-                'tgl_jam_hasil'         => V::DEFAULT(),
-                'id_item_pemeriksaan'   => V::DEFAULT(),
-                'diagnosa_klinis'       => V::DEFAULT(),
-                'makroskopik'           => V::DEFAULT(),
-                'mikroskopik'           => V::DEFAULT(),
-                'kesimpulan'            => V::DEFAULT(),
-                'kesan'                 => V::DEFAULT(),
+                'id_hasil_pa'         => V::DEFAULT(),
+                'id_permintaan_lab'   => V::DEFAULT(),
+                'nomor_reg'           => V::DEFAULT(),
+                'kode_dokter_pj'      => V::DEFAULT(),
+                'id_petugas_lab'      => V::DEFAULT(),
+                'kode_dokter_perujuk' => V::DEFAULT(),
+                'tgl_jam_hasil'       => V::DEFAULT(),
+                'id_item_pemeriksaan' => V::DEFAULT(),
+                'diagnosa_klinis'     => V::DEFAULT(),
+                'makroskopik'         => V::DEFAULT(),
+                'mikroskopik'         => V::DEFAULT(),
+                'kesimpulan'          => V::DEFAULT(),
+                'kesan'               => V::DEFAULT(),
             ],
             [
                 'id_permintaan_lab'   => [],
@@ -37,8 +38,7 @@ final class HasilLabPaModel extends ModelTemplate
                 'id_petugas_lab'      => [],
                 'kode_dokter_perujuk' => [],
                 'id_item_pemeriksaan' => ['kode_periksa', 'nama_item', 'tarif'],
-            ]
+            ],
         );
     }
 }
-

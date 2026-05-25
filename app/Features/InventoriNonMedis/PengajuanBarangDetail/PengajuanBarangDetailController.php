@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PengajuanBarangDetail;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class PengajuanBarangDetailController extends ControllerTemplate
 {
@@ -26,12 +27,12 @@ final class PengajuanBarangDetailController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_detail', 'ID Detail'],
-                [HIDE, OPTIONAL, I::INDEX, 'id_pengajuan', 'ID Pengajuan'],
-                [SHOW, OPTIONAL, I::SELECT, 'id_barang', 'Barang'],
-                [SHOW, OPTIONAL, I::TEXT, 'nama_barang_baru', 'Nama Barang Baru'],
-                [SHOW, REQUIRED, I::NUMBER, 'qty', 'Qty'],
-                [SHOW, OPTIONAL, I::MONEY, 'harga_estimasi', 'Harga Estimasi'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_detail',        'ID Detail'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_pengajuan',     'ID Pengajuan'],
+                [SHOW, OPTIONAL, I::SELECT, 'id_barang',        'Barang'],
+                [SHOW, OPTIONAL, I::TEXT,   'nama_barang_baru', 'Nama Barang Baru'],
+                [SHOW, REQUIRED, I::NUMBER, 'qty',              'Qty'],
+                [SHOW, OPTIONAL, I::MONEY,  'harga_estimasi',   'Harga Estimasi'],
             ],
         );
     }

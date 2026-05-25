@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\PermintaanLabMb;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -16,18 +17,16 @@ final class PermintaanLabMbModel extends ModelTemplate
             'permintaan_lab_mb',
             'id_permintaan_mb',
             [
-                'id_permintaan_mb'          => V::DEFAULT(),
-                'id_permintaan_lab'         => V::DEFAULT(),
-                'id_item_pemeriksaan'       => V::DEFAULT(),
-                'id_parameter_pemeriksaan'  => V::DEFAULT(),
+                'id_permintaan_mb'         => V::DEFAULT(),
+                'id_permintaan_lab'        => V::DEFAULT(),
+                'id_item_pemeriksaan'      => V::DEFAULT(),
+                'id_parameter_pemeriksaan' => V::DEFAULT(),
             ],
             [
                 'id_permintaan_lab'        => [],
                 'id_item_pemeriksaan'      => ['kode_periksa', 'nama_item', 'tarif'],
                 'id_parameter_pemeriksaan' => ['nama_parameter', 'satuan', 'nilai_rujukan', 'keterangan', 'biaya_item'],
-            ]
+            ],
         );
     }
 }
-
-                

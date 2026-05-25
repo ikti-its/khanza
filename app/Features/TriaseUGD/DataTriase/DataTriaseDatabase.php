@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\DataTriase;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class DataTriaseDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'triase_ugd',
             'data_triase',
@@ -23,42 +25,42 @@ final class DataTriaseDatabase extends DatabaseTemplate
                 'sistolik'              => T::VITAL(70, 250),
                 'diastolik'             => T::VITAL(40, 150),
                 'nadi'                  => T::VITAL(30, 200),
-                'pernapasan'            => T::VITAL(10,60),
+                'pernapasan'            => T::VITAL(10, 60),
                 'suhu'                  => T::TEMP(),
-                'saturasi_o2'           => T::VITAL(50,100),
-                'nyeri'                 => T::VITAL(0,10),
+                'saturasi_o2'           => T::VITAL(50, 100),
+                'nyeri'                 => T::VITAL(0, 10),
             ],
             'id_triase',
             [],
             [
                 [
-                    'nomor_reg', 
-                    \App\Features\UGD\Registrasi\RegistrasiDatabase::class, 
+                    'nomor_reg',
+                    \App\Features\UGD\Registrasi\RegistrasiDatabase::class,
                     'nomor_reg',
                 ],
                 [
-                    'id_cara_masuk', 
-                    \App\Features\TriaseUGD\CaraMasuk\CaraMasukDatabase::class, 
-                    'id_cara'
+                    'id_cara_masuk',
+                    \App\Features\TriaseUGD\CaraMasuk\CaraMasukDatabase::class,
+                    'id_cara',
                 ],
                 [
-                    'id_alat_transportasi', 
-                    \App\Features\TriaseUGD\AlatTransportasi\AlatTransportasiDatabase::class, 
-                    'id_transportasi'
+                    'id_alat_transportasi',
+                    \App\Features\TriaseUGD\AlatTransportasi\AlatTransportasiDatabase::class,
+                    'id_transportasi',
                 ],
                 [
                     'id_alasan_kedatangan',
-                    \App\Features\TriaseUGD\AlasanKedatangan\AlasanKedatanganDatabase::class,  
-                    'id_alasan'
+                    \App\Features\TriaseUGD\AlasanKedatangan\AlasanKedatanganDatabase::class,
+                    'id_alasan',
                 ],
                 [
-                    'id_macam_kasus', 
-                    \App\Features\TriaseUGD\TriaseMacamKasus\TriaseMacamKasusDatabase::class, 
-                    'id_macam_kasus'
+                    'id_macam_kasus',
+                    \App\Features\TriaseUGD\TriaseMacamKasus\TriaseMacamKasusDatabase::class,
+                    'id_macam_kasus',
                 ],
             ],
             false,
-            'data_triase.csv'
+            'data_triase.csv',
         );
     }
 }

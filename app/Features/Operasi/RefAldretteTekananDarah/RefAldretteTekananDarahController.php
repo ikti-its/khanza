@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefAldretteTekananDarah;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefAldretteTekananDarahController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefAldretteTekananDarahController extends ControllerTemplate
         parent::__construct(
             new RefAldretteTekananDarahModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                          'operasi'],
                 ['Referensi Aldrette Tekanan Darah', 'ref_aldrette_tekanan_darah'],
             ],
             'Referensi Aldrette Tekanan Darah',
@@ -25,9 +26,9 @@ final class RefAldretteTekananDarahController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_td', 'ID Tekanan Darah'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
-                [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_td',      'ID Tekanan Darah'],
+                [SHOW, REQUIRED, I::TEXT,   'nama_skala', 'Nama Skala'],
+                [SHOW, REQUIRED, I::NUMBER, 'nilai',      'Nilai'],
             ],
         );
     }

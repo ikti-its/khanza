@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefPremedikasi;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefPremedikasiController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefPremedikasiController extends ControllerTemplate
         parent::__construct(
             new RefPremedikasiModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',               'operasi'],
                 ['Referensi Premedikasi', 'ref_premedikasi'],
             ],
             'Referensi Premedikasi',
@@ -25,8 +26,8 @@ final class RefPremedikasiController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_premedikasi', 'ID Premedikasi'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_premedikasi', 'Nama Premedikasi'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_premedikasi',   'ID Premedikasi'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_premedikasi', 'Nama Premedikasi'],
             ],
         );
     }

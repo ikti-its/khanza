@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\StokOpname;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -13,11 +14,11 @@ final class StokOpnameDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'stok_opname',
             [
-                'id_opname'            => T::ID(10_000_000),
-                'tanggal'              => T::DTIME(),
+                'id_opname'             => T::ID(10_000_000),
+                'tanggal'               => T::DTIME(),
                 'id_status_stok_opname' => T::FK_AUTO(),
-                'catatan'              => T::NOTE()->nullable(),
-                'catatan_atasan'       => T::NOTE()->nullable(),
+                'catatan'               => T::NOTE()->nullable(),
+                'catatan_atasan'        => T::NOTE()->nullable(),
             ],
             'id_opname',
             [],
@@ -29,7 +30,7 @@ final class StokOpnameDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            'stok_opname.csv'
+            'stok_opname.csv',
         );
     }
 }

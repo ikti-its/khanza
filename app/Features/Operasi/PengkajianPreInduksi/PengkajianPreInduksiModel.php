@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\PengkajianPreInduksi;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -53,12 +54,12 @@ final class PengkajianPreInduksiModel extends ModelTemplate
                 'hasil'                     => V::DEFAULT(),
             ],
             [
-                'nomor_reg'     => [],
-                'kode_dokter'   => [],
-                'id_posisi'     => ['nama_posisi'],
-                'id_premedikasi'=> ['nama_premedikasi'],
-                'id_induksi'    => ['nama_induksi'],
-            ]
+                'nomor_reg'      => [],
+                'kode_dokter'    => [],
+                'id_posisi'      => ['nama_posisi'],
+                'id_premedikasi' => ['nama_premedikasi'],
+                'id_induksi'     => ['nama_induksi'],
+            ],
         );
     }
 }

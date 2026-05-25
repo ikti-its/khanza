@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\UjiDarah\MetodeUji;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class MetodeUjiDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'uji_darah',
             'metode_uji',
@@ -19,7 +21,7 @@ final class MetodeUjiDatabase extends DatabaseTemplate
             ['nama_metode'],
             [],
             true,
-            'metode_uji.csv'
+            'metode_uji.csv',
         );
     }
 }

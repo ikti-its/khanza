@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\TipePermintaanBarang;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -20,7 +21,7 @@ final class TipePermintaanBarangDatabase extends DatabaseTemplate
             ['nama_tipe_permintaan_barang'],
             [],
             true,
-            'tipe_permintaan_barang.csv'
+            'tipe_permintaan_barang.csv',
         );
     }
 }

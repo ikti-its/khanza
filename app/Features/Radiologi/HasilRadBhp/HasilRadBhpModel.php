@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Radiologi\HasilRadBhp;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -22,9 +23,9 @@ final class HasilRadBhpModel extends ModelTemplate
                 'jumlah_pakai'    => V::DEFAULT(),
             ],
             [
-                'id_hasil_rad'   => [],
-                'id_barang_medis'=> ['kode_barang', 'nama', 'kode_sat'],
-            ]
+                'id_hasil_rad'    => [],
+                'id_barang_medis' => ['kode_barang', 'nama', 'kode_sat'],
+            ],
         );
     }
 }

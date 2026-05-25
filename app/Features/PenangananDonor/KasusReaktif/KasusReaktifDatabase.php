@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\KasusReaktif;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class KasusReaktifDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'penanganan_donor',
             'kasus_reaktif',
@@ -21,18 +23,18 @@ final class KasusReaktifDatabase extends DatabaseTemplate
             ['id_uji_saring'],
             [
                 [
-                    'id_uji_saring', 
-                    \App\Features\UjiDarah\HasilUjiSaring\HasilUjiSaringDatabase::class, 
-                    'id_uji_saring'
+                    'id_uji_saring',
+                    \App\Features\UjiDarah\HasilUjiSaring\HasilUjiSaringDatabase::class,
+                    'id_uji_saring',
                 ],
                 [
-                    'id_status_kasus', 
-                    \App\Features\PenangananDonor\StatusKasus\StatusKasusDatabase::class, 
-                    'id_status_kasus'
+                    'id_status_kasus',
+                    \App\Features\PenangananDonor\StatusKasus\StatusKasusDatabase::class,
+                    'id_status_kasus',
                 ],
             ],
             false,
-            'kasus_reaktif.csv'
+            'kasus_reaktif.csv',
         );
     }
 }

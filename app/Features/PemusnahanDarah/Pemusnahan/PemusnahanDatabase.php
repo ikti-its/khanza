@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\PemusnahanDarah\Pemusnahan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PemusnahanDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'pemusnahan_darah',
             'pemusnahan',
@@ -21,13 +23,13 @@ final class PemusnahanDatabase extends DatabaseTemplate
             [],
             [
                 [
-                    'id_petugas', 
-                    \App\Features\Role\Petugas\PetugasDatabase::class, 
-                    'id_petugas'
+                    'id_petugas',
+                    \App\Features\Role\Petugas\PetugasDatabase::class,
+                    'id_petugas',
                 ],
             ],
             false,
-            'pemusnahan.csv'
+            'pemusnahan.csv',
         );
     }
 }

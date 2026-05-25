@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\UjiDarah\NilaiDiagnostik;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class NilaiDiagnostikDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'uji_darah',
             'nilai_diagnostik',
@@ -19,7 +21,7 @@ final class NilaiDiagnostikDatabase extends DatabaseTemplate
             ['nama_nilai_diagnostik'],
             [],
             true,
-            'nilai_diagnostik.csv'
+            'nilai_diagnostik.csv',
         );
     }
 }

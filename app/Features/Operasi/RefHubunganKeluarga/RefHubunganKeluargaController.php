@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefHubunganKeluarga;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefHubunganKeluargaController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefHubunganKeluargaController extends ControllerTemplate
         parent::__construct(
             new RefHubunganKeluargaModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                     'operasi'],
                 ['Referensi Hubungan Keluarga', 'ref_hubungan_keluarga'],
             ],
             'Referensi Hubungan Keluarga',
@@ -26,7 +27,7 @@ final class RefHubunganKeluargaController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_hubungan_keluarga', 'ID Hubungan Keluarga'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_hubungan', 'Nama Hubungan'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_hubungan',        'Nama Hubungan'],
             ],
         );
     }

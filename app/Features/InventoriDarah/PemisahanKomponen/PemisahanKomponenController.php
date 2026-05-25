@@ -2,17 +2,19 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriDarah\PemisahanKomponen;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class PemisahanKomponenController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new PemisahanKomponenModel(),
             [
-                ['Inventaris Darah', 'inventaris_darah'],
+                ['Inventaris Darah',   'inventaris_darah'],
                 ['Pemisahan Komponen', 'pemisahan_komponen'],
             ],
             'Pemisahan Komponen',
@@ -24,12 +26,12 @@ final class PemisahanKomponenController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan', 'ID Pemisahan'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_pemisahan',         'ID Pemisahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_pengambilan_darah', 'ID Pengambilan Darah'],
-                [SHOW, REQUIRED, I::DATE, 'tanggal_pemisahan', 'Tanggal Pemisahan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_shift', 'ID Shift'],
-                [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
+                [SHOW, REQUIRED, I::DATE,  'tanggal_pemisahan',    'Tanggal Pemisahan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_shift',             'ID Shift'],
+                [SHOW, REQUIRED, I::INDEX, 'id_petugas',           'ID Petugas'],
             ],
         );
-    }   
+    }
 }

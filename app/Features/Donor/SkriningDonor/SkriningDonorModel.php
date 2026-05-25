@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Donor\SkriningDonor;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class SkriningDonorModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new SkriningDonorDatabase(),
             'BASE',
@@ -15,16 +17,16 @@ final class SkriningDonorModel extends ModelTemplate
             'skrining_donor',
             'id_skrining',
             [
-                'id_skrining'           => V::DEFAULT(),
-                'sistolik'              => V::DEFAULT(),
-                'diastolik'             => V::DEFAULT(),
-                'berat_badan'           => V::DEFAULT(),
-                'kadar_hemoglobin'      => V::DEFAULT(),
-                'suhu_tubuh'            => V::DEFAULT()
+                'id_skrining'      => V::DEFAULT(),
+                'sistolik'         => V::DEFAULT(),
+                'diastolik'        => V::DEFAULT(),
+                'berat_badan'      => V::DEFAULT(),
+                'kadar_hemoglobin' => V::DEFAULT(),
+                'suhu_tubuh'       => V::DEFAULT(),
             ],
             [
-                'id_kunjungan'          => ['nomor_kunjungan'],
-                'id_hasil_anamnesis'    => ['nama_hasil']
+                'id_kunjungan'       => ['nomor_kunjungan'],
+                'id_hasil_anamnesis' => ['nama_hasil'],
             ],
         );
     }

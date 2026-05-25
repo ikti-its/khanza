@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\TriaseSkala;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class TriaseSkalaDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'triase_ugd',
             'triase_skala',
@@ -20,23 +22,23 @@ final class TriaseSkalaDatabase extends DatabaseTemplate
             ],
             'id_skala',
             [
-                ['id_tingkat_skala', 'kode_skala'], 
-                ['id_tingkat_skala', 'id_pemeriksaan', 'pengkajian']
+                ['id_tingkat_skala', 'kode_skala'],
+                ['id_tingkat_skala', 'id_pemeriksaan', 'pengkajian'],
             ],
             [
                 [
-                    'id_tingkat_skala', 
-                    \App\Features\TriaseUGD\TingkatSkala\TingkatSkalaDatabase::class, 
-                    'id_tingkat'
+                    'id_tingkat_skala',
+                    \App\Features\TriaseUGD\TingkatSkala\TingkatSkalaDatabase::class,
+                    'id_tingkat',
                 ],
                 [
-                    'id_pemeriksaan', 
-                    \App\Features\TriaseUGD\TriasePemeriksaan\TriasePemeriksaanDatabase::class, 
-                    'id_pemeriksaan'
+                    'id_pemeriksaan',
+                    \App\Features\TriaseUGD\TriasePemeriksaan\TriasePemeriksaanDatabase::class,
+                    'id_pemeriksaan',
                 ],
             ],
             true,
-            'triase_skala.csv'
+            'triase_skala.csv',
         );
     }
 }

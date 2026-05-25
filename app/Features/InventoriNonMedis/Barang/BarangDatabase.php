@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\Barang;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -49,7 +50,7 @@ final class BarangDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            'barang.csv'
+            'barang.csv',
         );
     }
 }

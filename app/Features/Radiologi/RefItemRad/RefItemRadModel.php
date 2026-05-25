@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Radiologi\RefItemRad;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -16,12 +17,12 @@ final class RefItemRadModel extends ModelTemplate
             'ref_item_rad',
             'id_item',
             [
-                'id_item'           => V::DEFAULT(),
-                'kode_periksa'      => V::DEFAULT(),
-                'nama_pemeriksaan'  => V::DEFAULT(),
-                'tarif_dasar'       => V::DEFAULT(),
+                'id_item'          => V::DEFAULT(),
+                'kode_periksa'     => V::DEFAULT(),
+                'nama_pemeriksaan' => V::DEFAULT(),
+                'tarif_dasar'      => V::DEFAULT(),
             ],
-            []
+            [],
         );
     }
 }

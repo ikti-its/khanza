@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Finansial\PemilikBank;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PemilikBankDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'finansial',
             'pemilik',
@@ -19,7 +21,7 @@ final class PemilikBankDatabase extends DatabaseTemplate
             ['nama_pemilik'],
             [],
             true,
-            'pemilik_bank.csv'
+            'pemilik_bank.csv',
         );
     }
 }

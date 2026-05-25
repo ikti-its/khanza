@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\ChecklistPreOperasiPenunjang;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -23,10 +24,10 @@ final class ChecklistPreOperasiPenunjangModel extends ModelTemplate
                 'keterangan'         => V::DEFAULT(),
             ],
             [
-                'id_checklist'          => [],
-                'id_jenis_penunjang'    => ['nama_jenis'],
-                'id_ketersediaan'       => ['nama_ketersediaan'],
-            ]
+                'id_checklist'       => [],
+                'id_jenis_penunjang' => ['nama_jenis'],
+                'id_ketersediaan'    => ['nama_ketersediaan'],
+            ],
         );
     }
 }

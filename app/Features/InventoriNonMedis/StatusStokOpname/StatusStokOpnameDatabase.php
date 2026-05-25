@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\StatusStokOpname;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -20,7 +21,7 @@ final class StatusStokOpnameDatabase extends DatabaseTemplate
             ['nama_status_stok_opname'],
             [],
             true,
-            'status_stok_opname.csv'
+            'status_stok_opname.csv',
         );
     }
 }

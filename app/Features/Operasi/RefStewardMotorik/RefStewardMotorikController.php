@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefStewardMotorik;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefStewardMotorikController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefStewardMotorikController extends ControllerTemplate
         parent::__construct(
             new RefStewardMotorikModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                   'operasi'],
                 ['Referensi Steward Motorik', 'ref_steward_motorik'],
             ],
             'Referensi Steward Motorik',
@@ -25,9 +26,9 @@ final class RefStewardMotorikController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_motorik', 'ID Motorik'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
-                [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_motorik', 'ID Motorik'],
+                [SHOW, REQUIRED, I::TEXT,   'nama_skala', 'Nama Skala'],
+                [SHOW, REQUIRED, I::NUMBER, 'nilai',      'Nilai'],
             ],
         );
     }

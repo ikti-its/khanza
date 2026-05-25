@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Radiologi\RefTemplateRad;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -20,7 +21,7 @@ final class RefTemplateRadModel extends ModelTemplate
                 'nama_template'       => V::DEFAULT(),
                 'isi_teks_ekspertise' => V::DEFAULT(),
             ],
-            []
+            [],
         );
     }
 }

@@ -2,17 +2,19 @@
 declare(strict_types=1);
 
 namespace App\Features\DistribusiDarah\PenyerahanDarahDetail;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class PenyerahanDarahDetailController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new PenyerahanDarahDetailModel(),
             [
-                ['Pelayanan Darah', 'pelayanan_darah'],
+                ['Pelayanan Darah',         'pelayanan_darah'],
                 ['Penyerahan Darah Detail', 'penyerahan_darah_detail'],
             ],
             'Penyerahan Darah Detail',
@@ -25,13 +27,13 @@ final class PenyerahanDarahDetailController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_penyerahan_detail', 'ID Penyerahan Detail'],
-                [SHOW, REQUIRED, I::INDEX, 'id_penyerahan', 'ID Penyerahan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_stok_darah', 'ID Stok Darah'],
-                [SHOW, REQUIRED, I::MONEY, 'jasa_sarana', 'Jasa Sarana'],
-                [SHOW, REQUIRED, I::MONEY, 'paket_bhp', 'Paket BHP'],
-                [SHOW, REQUIRED, I::MONEY, 'kso', 'KSO'],
-                [SHOW, REQUIRED, I::MONEY, 'manajemen', 'Manajemen'],
+                [SHOW, REQUIRED, I::INDEX, 'id_penyerahan',        'ID Penyerahan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_stok_darah',        'ID Stok Darah'],
+                [SHOW, REQUIRED, I::MONEY, 'jasa_sarana',          'Jasa Sarana'],
+                [SHOW, REQUIRED, I::MONEY, 'paket_bhp',            'Paket BHP'],
+                [SHOW, REQUIRED, I::MONEY, 'kso',                  'KSO'],
+                [SHOW, REQUIRED, I::MONEY, 'manajemen',            'Manajemen'],
             ],
         );
-    }   
+    }
 }

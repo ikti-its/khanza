@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PenerimaanBarang;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -29,7 +30,7 @@ final class PenerimaanBarangDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            'penerimaan_barang.csv'
+            'penerimaan_barang.csv',
         );
     }
 }

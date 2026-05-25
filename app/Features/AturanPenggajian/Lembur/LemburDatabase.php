@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\AturanPenggajian\Lembur;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class LemburDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'penggajian',
             'lembur',
@@ -19,7 +21,7 @@ final class LemburDatabase extends DatabaseTemplate
             ],
             'no_lembur',
             [
-                ['jenis_lembur', 'jam_lembur']
+                ['jenis_lembur', 'jam_lembur'],
             ],
             [],
         );

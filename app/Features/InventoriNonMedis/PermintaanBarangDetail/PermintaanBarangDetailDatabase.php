@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PermintaanBarangDetail;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -13,13 +14,13 @@ final class PermintaanBarangDetailDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'permintaan_barang_detail',
             [
-                'id_detail'       => T::ID(500_000),
-                'id_permintaan'   => T::FK_AUTO(),
-                'id_barang'       => T::FK_AUTO(),
-                'nama_barang_baru'=> T::NAME(100)->nullable(),
-                'qty'             => T::QTY(0, 100_000),
-                'qty_disetujui'   => T::QTY(0, 100_000)->nullable(),
-                'catatan'         => T::NOTE()->nullable(),
+                'id_detail'        => T::ID(500_000),
+                'id_permintaan'    => T::FK_AUTO(),
+                'id_barang'        => T::FK_AUTO(),
+                'nama_barang_baru' => T::NAME(100)->nullable(),
+                'qty'              => T::QTY(0, 100_000),
+                'qty_disetujui'    => T::QTY(0, 100_000)->nullable(),
+                'catatan'          => T::NOTE()->nullable(),
             ],
             'id_detail',
             [],
@@ -36,7 +37,7 @@ final class PermintaanBarangDetailDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            'permintaan_barang_detail.csv'
+            'permintaan_barang_detail.csv',
         );
     }
 }

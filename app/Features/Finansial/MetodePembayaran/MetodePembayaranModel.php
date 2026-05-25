@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Finansial\MetodePembayaran;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class MetodePembayaranModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new MetodePembayaranDatabase(),
             'BASE',

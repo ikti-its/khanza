@@ -2,26 +2,28 @@
 declare(strict_types=1);
 
 namespace App\Features\Darah\KomponenDarah;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class KomponenDarahDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'darah',
             'komponen_darah',
             [
-                'id_komponen'           => T::ID(10),
-                'kode_komponen'         => T::CODE(3),
-                'nama_komponen'         => T::NAME(50),
-                'masa_berlaku_hari'     => T::QTY(5, 365),
+                'id_komponen'       => T::ID(10),
+                'kode_komponen'     => T::CODE(3),
+                'nama_komponen'     => T::NAME(50),
+                'masa_berlaku_hari' => T::QTY(5, 365),
             ],
             'id_komponen',
             ['kode_komponen'],
             [],
             true,
-            'komponen_darah.csv'
+            'komponen_darah.csv',
         );
     }
 }

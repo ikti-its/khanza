@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\PermintaanOperasi;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class PermintaanOperasiController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class PermintaanOperasiController extends ControllerTemplate
         parent::__construct(
             new PermintaanOperasiModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',            'operasi'],
                 ['Permintaan Operasi', 'permintaan_operasi'],
             ],
             'Permintaan Operasi',
@@ -25,11 +26,11 @@ final class PermintaanOperasiController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID Permintaan'],
-                [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_dokter', 'Kode Dokter'],
-                [SHOW, REQUIRED, I::DATE, 'tanggal_minta', 'Tanggal Minta'],
-                [SHOW, REQUIRED, I::SELECT, 'is_cito', 'CITO'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_permintaan', 'ID Permintaan'],
+                [SHOW, REQUIRED, I::TEXT,   'nomor_reg',     'Nomor Registrasi'],
+                [SHOW, REQUIRED, I::TEXT,   'kode_dokter',   'Kode Dokter'],
+                [SHOW, REQUIRED, I::DATE,   'tanggal_minta', 'Tanggal Minta'],
+                [SHOW, REQUIRED, I::SELECT, 'is_cito',       'CITO'],
             ],
         );
     }

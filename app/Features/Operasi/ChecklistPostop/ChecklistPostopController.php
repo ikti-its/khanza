@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\ChecklistPostop;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class ChecklistPostopController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class ChecklistPostopController extends ControllerTemplate
         parent::__construct(
             new ChecklistPostopModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                'operasi'],
                 ['Checklist Post Operasi', 'checklist_postop'],
             ],
             'Checklist Post Operasi',
@@ -25,23 +26,23 @@ final class ChecklistPostopController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_checklist_post', 'ID Checklist Post'],
-                [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
-                [SHOW, REQUIRED, I::DATE, 'waktu_checklist', 'Waktu Checklist'],
-                [SHOW, REQUIRED, I::TEXT, 'sn_cn', 'SN/CN'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_bedah', 'Kode Dokter Bedah'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_anestesi', 'Kode Dokter Anestesi'],
-                [SHOW, REQUIRED, I::TEXT, 'tindakan', 'Tindakan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_kesadaran_pascaop', 'Kesadaran Pasca Op'],
-                [SHOW, REQUIRED, I::TEXT, 'jenis_cairan_infus', 'Jenis Cairan Infus'],
-                [SHOW, REQUIRED, I::INDEX, 'id_jaringan_pa_vc', 'Jaringan PA/VC'],
-                [SHOW, REQUIRED, I::INDEX, 'id_kateter_urine', 'Kateter Urine'],
-                [SHOW, REQUIRED, I::TIME, 'waktu_pasang_kateter', 'Waktu Pasang Kateter'],
-                [SHOW, REQUIRED, I::INDEX, 'id_warna_urine', 'Warna Urine'],
-                [SHOW, REQUIRED, I::NUMBER, 'jumlah_urine_cc', 'Jumlah Urine (cc)'],
-                [SHOW, REQUIRED, I::TEXT, 'catatan_luka_operasi', 'Catatan Luka Operasi'],
-                [SHOW, REQUIRED, I::TEXT, 'id_petugas_anestesi', 'ID Petugas Anestesi'],
-                [SHOW, REQUIRED, I::TEXT, 'id_petugas_ok', 'ID Petugas OK'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_checklist_post',    'ID Checklist Post'],
+                [SHOW, REQUIRED, I::TEXT,   'nomor_reg',            'Nomor Registrasi'],
+                [SHOW, REQUIRED, I::DATE,   'waktu_checklist',      'Waktu Checklist'],
+                [SHOW, REQUIRED, I::TEXT,   'sn_cn',                'SN/CN'],
+                [SHOW, REQUIRED, I::TEXT,   'kode_dokter_bedah',    'Kode Dokter Bedah'],
+                [SHOW, REQUIRED, I::TEXT,   'kode_dokter_anestesi', 'Kode Dokter Anestesi'],
+                [SHOW, REQUIRED, I::TEXT,   'tindakan',             'Tindakan'],
+                [SHOW, REQUIRED, I::INDEX,  'id_kesadaran_pascaop', 'Kesadaran Pasca Op'],
+                [SHOW, REQUIRED, I::TEXT,   'jenis_cairan_infus',   'Jenis Cairan Infus'],
+                [SHOW, REQUIRED, I::INDEX,  'id_jaringan_pa_vc',    'Jaringan PA/VC'],
+                [SHOW, REQUIRED, I::INDEX,  'id_kateter_urine',     'Kateter Urine'],
+                [SHOW, REQUIRED, I::TIME,   'waktu_pasang_kateter', 'Waktu Pasang Kateter'],
+                [SHOW, REQUIRED, I::INDEX,  'id_warna_urine',       'Warna Urine'],
+                [SHOW, REQUIRED, I::NUMBER, 'jumlah_urine_cc',      'Jumlah Urine (cc)'],
+                [SHOW, REQUIRED, I::TEXT,   'catatan_luka_operasi', 'Catatan Luka Operasi'],
+                [SHOW, REQUIRED, I::TEXT,   'id_petugas_anestesi',  'ID Petugas Anestesi'],
+                [SHOW, REQUIRED, I::TEXT,   'id_petugas_ok',        'ID Petugas OK'],
             ],
         );
     }

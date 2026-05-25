@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\StokOpnameDetail;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -36,7 +37,7 @@ final class StokOpnameDetailDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            'stok_opname_detail.csv'
+            'stok_opname_detail.csv',
         );
     }
 }

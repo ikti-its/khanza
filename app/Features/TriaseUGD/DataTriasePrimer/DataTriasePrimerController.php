@@ -2,17 +2,19 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\DataTriasePrimer;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class DataTriasePrimerController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new DataTriasePrimerModel(),
             [
-                ['Triase UGD', 'triase_ugd'],
+                ['Triase UGD',         'triase_ugd'],
                 ['Data Triase Primer', 'data_triase_primer'],
             ],
             'Data Triase Primer',
@@ -24,15 +26,15 @@ final class DataTriasePrimerController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_triase_primer', 'ID Triase Primer'],
-                [SHOW, REQUIRED, I::INDEX, 'id_triase', 'ID Triase'],
-                [HIDE, REQUIRED, I::TEXT, 'keluhan_utama', 'Keluhan Utama'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_triase_primer',    'ID Triase Primer'],
+                [SHOW, REQUIRED, I::INDEX, 'id_triase',           'ID Triase'],
+                [HIDE, REQUIRED, I::TEXT,  'keluhan_utama',       'Keluhan Utama'],
                 [HIDE, REQUIRED, I::INDEX, 'id_kebutuhan_khusus', 'ID Kebutuhan Khusus'],
-                [HIDE, REQUIRED, I::TEXT, 'catatan', 'Catatan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_plan_primer', 'ID Plan Primer'],
-                [SHOW, REQUIRED, I::DTIME, 'tanggal_triase', 'Tanggal Triase'],
-                [SHOW, REQUIRED, I::INDEX, 'id_petugas', 'ID Petugas'],
+                [HIDE, REQUIRED, I::TEXT,  'catatan',             'Catatan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_plan_primer',      'ID Plan Primer'],
+                [SHOW, REQUIRED, I::DTIME, 'tanggal_triase',      'Tanggal Triase'],
+                [SHOW, REQUIRED, I::INDEX, 'id_petugas',          'ID Petugas'],
             ],
         );
-    }   
+    }
 }

@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\Konseling;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class KonselingDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'penanganan_donor',
             'konseling',
@@ -21,18 +23,18 @@ final class KonselingDatabase extends DatabaseTemplate
             ['id_kasus'],
             [
                 [
-                    'id_kasus', 
-                    \App\Features\PenangananDonor\KasusReaktif\KasusReaktifDatabase::class, 
-                    'id_kasus'
+                    'id_kasus',
+                    \App\Features\PenangananDonor\KasusReaktif\KasusReaktifDatabase::class,
+                    'id_kasus',
                 ],
                 [
-                    'id_petugas', 
-                    \App\Features\Role\Petugas\PetugasDatabase::class, 
-                    'id_petugas'
+                    'id_petugas',
+                    \App\Features\Role\Petugas\PetugasDatabase::class,
+                    'id_petugas',
                 ],
             ],
             false,
-            'konseling.csv'
+            'konseling.csv',
         );
     }
 }

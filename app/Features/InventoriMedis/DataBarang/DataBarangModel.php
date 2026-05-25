@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriMedis\DataBarang;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class DataBarangModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new DataBarangDatabase(),
             'BASE',
@@ -39,7 +41,7 @@ final class DataBarangModel extends ModelTemplate
                 'kadaluwarsa'   => V::DEFAULT(),
                 'kode_industri' => V::DEFAULT(),
                 'kode_kategori' => V::DEFAULT(),
-                'kode_golongan' => V::DEFAULT()
+                'kode_golongan' => V::DEFAULT(),
             ],
             [],
         );

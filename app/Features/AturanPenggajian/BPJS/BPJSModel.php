@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\AturanPenggajian\BPJS;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class BPJSModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new BPJSDatabase(),
             'BASE',
@@ -15,8 +17,8 @@ final class BPJSModel extends ModelTemplate
             'bpjs',
             'no_bpjs',
             [
-                'no_bpjs'       => V::DEFAULT(), 
-                'nama_program'  => V::DEFAULT(), 
+                'no_bpjs'       => V::DEFAULT(),
+                'nama_program'  => V::DEFAULT(),
                 'penyelenggara' => V::DEFAULT(),
                 'tarif'         => V::DEFAULT(),
                 'batas_atas'    => V::DEFAULT(),

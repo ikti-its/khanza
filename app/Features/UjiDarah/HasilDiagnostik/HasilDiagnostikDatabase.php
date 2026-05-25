@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\UjiDarah\HasilDiagnostik;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class HasilDiagnostikDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'uji_darah',
             'hasil_diagnostik',
@@ -21,9 +23,9 @@ final class HasilDiagnostikDatabase extends DatabaseTemplate
             ['id_rujukan'],
             [
                 [
-                    'id_rujukan', 
-                    \App\Features\PenangananDonor\Rujukan\RujukanDatabase::class, 
-                    'id_rujukan'
+                    'id_rujukan',
+                    \App\Features\PenangananDonor\Rujukan\RujukanDatabase::class,
+                    'id_rujukan',
                 ],
             ],
         );

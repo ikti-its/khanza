@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\Satuan;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class SatuanController extends ControllerTemplate
 {
@@ -25,9 +26,9 @@ final class SatuanController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_satuan', 'ID'],
-                [SHOW, REQUIRED, I::NAME, 'kode_satuan', 'Kode Satuan'],
-                [SHOW, REQUIRED, I::NAME, 'nama_satuan', 'Nama Satuan'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_satuan',   'ID'],
+                [SHOW, REQUIRED, I::NAME,  'kode_satuan', 'Kode Satuan'],
+                [SHOW, REQUIRED, I::NAME,  'nama_satuan', 'Nama Satuan'],
             ],
         );
     }

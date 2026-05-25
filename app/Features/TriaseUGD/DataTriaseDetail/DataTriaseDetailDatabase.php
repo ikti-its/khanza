@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\DataTriaseDetail;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class DataTriaseDetailDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'triase_ugd',
             'data_triase_detail',
@@ -20,18 +22,18 @@ final class DataTriaseDetailDatabase extends DatabaseTemplate
             [['id_triase', 'id_skala']],
             [
                 [
-                    'id_triase', 
-                    \App\Features\TriaseUGD\DataTriase\DataTriaseDatabase::class, 
-                    'id_triase'
+                    'id_triase',
+                    \App\Features\TriaseUGD\DataTriase\DataTriaseDatabase::class,
+                    'id_triase',
                 ],
                 [
-                    'id_skala', 
-                    \App\Features\TriaseUGD\TriaseSkala\TriaseSkalaDatabase::class, 
-                    'id_skala'
+                    'id_skala',
+                    \App\Features\TriaseUGD\TriaseSkala\TriaseSkalaDatabase::class,
+                    'id_skala',
                 ],
             ],
             false,
-            'data_triase_detail.csv'
+            'data_triase_detail.csv',
         );
     }
 }

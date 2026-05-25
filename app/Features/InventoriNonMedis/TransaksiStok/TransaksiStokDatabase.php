@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\TransaksiStok;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -13,15 +14,15 @@ final class TransaksiStokDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'transaksi_stok',
             [
-                'id_transaksi'          => T::ID(1_000_000),
-                'id_barang'             => T::FK_AUTO(),
+                'id_transaksi'           => T::ID(1_000_000),
+                'id_barang'              => T::FK_AUTO(),
                 'id_tipe_transaksi_stok' => T::FK_AUTO(),
-                'qty'                   => T::QTY(0, 100_000),
-                'tanggal'               => T::DTIME(),
-                'id_pengadaan'          => T::FK_AUTO(),
-                'id_permintaan'         => T::FK_AUTO(),
-                'id_opname'             => T::FK_AUTO(),
-                'catatan'               => T::NOTE()->nullable(),
+                'qty'                    => T::QTY(0, 100_000),
+                'tanggal'                => T::DTIME(),
+                'id_pengadaan'           => T::FK_AUTO(),
+                'id_permintaan'          => T::FK_AUTO(),
+                'id_opname'              => T::FK_AUTO(),
+                'catatan'                => T::NOTE()->nullable(),
             ],
             'id_transaksi',
             [],
@@ -53,7 +54,7 @@ final class TransaksiStokDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            'transaksi_stok.csv'
+            'transaksi_stok.csv',
         );
     }
 }

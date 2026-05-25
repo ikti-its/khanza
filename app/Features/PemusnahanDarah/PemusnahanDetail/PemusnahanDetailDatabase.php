@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\PemusnahanDarah\PemusnahanDetail;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PemusnahanDetailDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'pemusnahan_darah',
             'pemusnahan_detail',
@@ -21,23 +23,23 @@ final class PemusnahanDetailDatabase extends DatabaseTemplate
             ['id_stok_darah'],
             [
                 [
-                    'id_pemusnahan', 
-                    \App\Features\PemusnahanDarah\Pemusnahan\PemusnahanDatabase::class, 
-                    'id_pemusnahan'
+                    'id_pemusnahan',
+                    \App\Features\PemusnahanDarah\Pemusnahan\PemusnahanDatabase::class,
+                    'id_pemusnahan',
                 ],
                 [
-                    'id_stok_darah', 
-                    \App\Features\InventoriDarah\StokDarah\StokDarahDatabase::class, 
-                    'id_stok_darah'
+                    'id_stok_darah',
+                    \App\Features\InventoriDarah\StokDarah\StokDarahDatabase::class,
+                    'id_stok_darah',
                 ],
                 [
-                    'id_alasan', 
-                    \App\Features\PemusnahanDarah\AlasanPemusnahan\AlasanPemusnahanDatabase::class, 
-                    'id_alasan'
+                    'id_alasan',
+                    \App\Features\PemusnahanDarah\AlasanPemusnahan\AlasanPemusnahanDatabase::class,
+                    'id_alasan',
                 ],
             ],
             false,
-            'pemusnahan_detail.csv'
+            'pemusnahan_detail.csv',
         );
     }
 }

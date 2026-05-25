@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\Suplier;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class SuplierController extends ControllerTemplate
 {
@@ -25,10 +26,10 @@ final class SuplierController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_suplier', 'ID Suplier'],
-                [SHOW, REQUIRED, I::NAME, 'nama_suplier', 'Nama Suplier'],
-                [SHOW, OPTIONAL, I::TEXT, 'no_telp', 'No. Telepon'],
-                [HIDE, OPTIONAL, I::INDEX, 'id_alamat', 'ID Alamat'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_suplier',   'ID Suplier'],
+                [SHOW, REQUIRED, I::NAME,  'nama_suplier', 'Nama Suplier'],
+                [SHOW, OPTIONAL, I::TEXT,  'no_telp',      'No. Telepon'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_alamat',    'ID Alamat'],
             ],
         );
     }

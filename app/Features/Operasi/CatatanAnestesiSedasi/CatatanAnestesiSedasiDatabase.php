@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\CatatanAnestesiSedasi;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class CatatanAnestesiSedasiDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'operasi',
             'catatan_anestesi_sedasi',
@@ -112,6 +114,6 @@ final class CatatanAnestesiSedasiDatabase extends DatabaseTemplate
                     ['id_jenis_sedasi'],
                 ],
             ],
-    );
-}
+        );
+    }
 }

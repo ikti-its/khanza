@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\TimeOutSebelumInsisi;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -40,13 +41,13 @@ final class TimeOutSebelumInsisiModel extends ModelTemplate
                 'id_perawat_ok'           => V::DEFAULT(),
             ],
             [
-                'nomor_reg'               => ['nomor_rawat'],
-                'kode_dokter_bedah'       => [],
-                'kode_dokter_anestesi'    => [],
-                'id_penandaan_area'       => ['nama_ketersediaan'],
-                'id_hal_khusus'           => ['nama_ketersediaan'],
-                'id_perawat_ok'           => [],
-            ]
+                'nomor_reg'            => ['nomor_rawat'],
+                'kode_dokter_bedah'    => [],
+                'kode_dokter_anestesi' => [],
+                'id_penandaan_area'    => ['nama_ketersediaan'],
+                'id_hal_khusus'        => ['nama_ketersediaan'],
+                'id_perawat_ok'        => [],
+            ],
         );
     }
 }

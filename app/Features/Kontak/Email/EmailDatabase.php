@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Kontak\Email;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class EmailDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'kontak',
             'email',
@@ -23,7 +25,7 @@ final class EmailDatabase extends DatabaseTemplate
                     'id_orang',
                     \App\Features\Person\Orang\OrangDatabase::class,
                     'id_orang',
-                ]
+                ],
             ],
         );
     }

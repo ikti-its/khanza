@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Lokasi\Kecamatan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -26,7 +27,8 @@ use App\Core\Database\Template\SemanticType as T;
 
 final class KecamatanDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'lokasi',
             'kecamatan',
@@ -34,7 +36,7 @@ final class KecamatanDatabase extends DatabaseTemplate
                 'id_kecamatan'   => T::ID(8000),
                 'id_provinsi'    => T::FK_AUTO(),
                 'id_kota_lokal'  => T::FK_AUTO(),
-                'id_kec_lokal'   => T::INT(11,99),
+                'id_kec_lokal'   => T::INT(11, 99),
                 'nama_kecamatan' => T::NAME(30),
             ],
             'id_kecamatan',
@@ -43,9 +45,9 @@ final class KecamatanDatabase extends DatabaseTemplate
             ],
             [
                 [
-                    ['id_provinsi', 'id_kota_lokal'], 
-                    \App\Features\Lokasi\Kota\KotaDatabase::class, 
-                    ['id_provinsi', 'id_kota_lokal']
+                    ['id_provinsi', 'id_kota_lokal'],
+                    \App\Features\Lokasi\Kota\KotaDatabase::class,
+                    ['id_provinsi', 'id_kota_lokal'],
                 ],
             ],
             true,

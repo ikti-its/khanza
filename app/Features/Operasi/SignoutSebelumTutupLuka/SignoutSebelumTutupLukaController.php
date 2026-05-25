@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\SignoutSebelumTutupLuka;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class SignoutSebelumTutupLukaController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class SignoutSebelumTutupLukaController extends ControllerTemplate
         parent::__construct(
             new SignoutSebelumTutupLukaModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                     'operasi'],
                 ['Sign Out Sebelum Tutup Luka', 'signout_sebelum_tutupluka'],
             ],
             'Sign Out Sebelum Tutup Luka',
@@ -25,24 +26,24 @@ final class SignoutSebelumTutupLukaController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_signout', 'ID Sign Out'],
-                [SHOW, REQUIRED, I::TEXT, 'nomor_reg', 'Nomor Registrasi'],
-                [SHOW, REQUIRED, I::DATE, 'waktu_signout', 'Waktu Sign Out'],
-                [SHOW, REQUIRED, I::TEXT, 'sn_cn', 'SN/CN'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_bedah', 'Kode Dokter Bedah'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_anestesi', 'Kode Dokter Anestesi'],
-                [SHOW, REQUIRED, I::TEXT, 'tindakan', 'Tindakan'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_signout',              'ID Sign Out'],
+                [SHOW, REQUIRED, I::TEXT,   'nomor_reg',               'Nomor Registrasi'],
+                [SHOW, REQUIRED, I::DATE,   'waktu_signout',           'Waktu Sign Out'],
+                [SHOW, REQUIRED, I::TEXT,   'sn_cn',                   'SN/CN'],
+                [SHOW, REQUIRED, I::TEXT,   'kode_dokter_bedah',       'Kode Dokter Bedah'],
+                [SHOW, REQUIRED, I::TEXT,   'kode_dokter_anestesi',    'Kode Dokter Anestesi'],
+                [SHOW, REQUIRED, I::TEXT,   'tindakan',                'Tindakan'],
                 [SHOW, REQUIRED, I::SELECT, 'is_nama_tindakan_sesuai', 'Nama Tindakan Sesuai'],
-                [SHOW, REQUIRED, I::SELECT, 'is_kasa_lengkap', 'Kasa Lengkap'],
-                [SHOW, REQUIRED, I::SELECT, 'is_instrumen_lengkap', 'Instrumen Lengkap'],
-                [SHOW, REQUIRED, I::SELECT, 'is_alat_tajam_lengkap', 'Alat Tajam Lengkap'],
-                [SHOW, REQUIRED, I::INDEX, 'id_label_spesimen', 'Label Spesimen'],
-                [SHOW, REQUIRED, I::INDEX, 'id_formulir_spesimen', 'Formulir Spesimen'],
-                [SHOW, REQUIRED, I::SELECT, 'is_konfirmasi_bedah', 'Konfirmasi Bedah'],
-                [SHOW, REQUIRED, I::SELECT, 'is_konfirmasi_anestesi', 'Konfirmasi Anestesi'],
-                [SHOW, REQUIRED, I::SELECT, 'is_konfirmasi_perawat', 'Konfirmasi Perawat'],
-                [SHOW, REQUIRED, I::TEXT, 'catatan_pemulihan', 'Catatan Pemulihan'],
-                [SHOW, REQUIRED, I::TEXT, 'id_perawat_ok', 'ID Perawat OK'],
+                [SHOW, REQUIRED, I::SELECT, 'is_kasa_lengkap',         'Kasa Lengkap'],
+                [SHOW, REQUIRED, I::SELECT, 'is_instrumen_lengkap',    'Instrumen Lengkap'],
+                [SHOW, REQUIRED, I::SELECT, 'is_alat_tajam_lengkap',   'Alat Tajam Lengkap'],
+                [SHOW, REQUIRED, I::INDEX,  'id_label_spesimen',       'Label Spesimen'],
+                [SHOW, REQUIRED, I::INDEX,  'id_formulir_spesimen',    'Formulir Spesimen'],
+                [SHOW, REQUIRED, I::SELECT, 'is_konfirmasi_bedah',     'Konfirmasi Bedah'],
+                [SHOW, REQUIRED, I::SELECT, 'is_konfirmasi_anestesi',  'Konfirmasi Anestesi'],
+                [SHOW, REQUIRED, I::SELECT, 'is_konfirmasi_perawat',   'Konfirmasi Perawat'],
+                [SHOW, REQUIRED, I::TEXT,   'catatan_pemulihan',       'Catatan Pemulihan'],
+                [SHOW, REQUIRED, I::TEXT,   'id_perawat_ok',           'ID Perawat OK'],
             ],
         );
     }

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefAlatAnestesi;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -19,7 +20,7 @@ final class RefAlatAnestesiModel extends ModelTemplate
                 'id_alat'   => V::DEFAULT(),
                 'nama_alat' => V::DEFAULT(),
             ],
-            []
+            [],
         );
     }
 }

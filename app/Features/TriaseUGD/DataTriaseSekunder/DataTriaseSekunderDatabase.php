@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\DataTriaseSekunder;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class DataTriaseSekunderDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'triase_ugd',
             'data_triase_sekunder',
@@ -24,23 +26,23 @@ final class DataTriaseSekunderDatabase extends DatabaseTemplate
             ['id_triase'],
             [
                 [
-                    'id_triase', 
-                    \App\Features\TriaseUGD\DataTriase\DataTriaseDatabase::class, 
-                    'id_triase'
+                    'id_triase',
+                    \App\Features\TriaseUGD\DataTriase\DataTriaseDatabase::class,
+                    'id_triase',
                 ],
                 [
-                    'id_plan_sekunder', 
-                    \App\Features\TriaseUGD\PlanSekunder\PlanSekunderDatabase::class, 
-                    'id_plan_sekunder'
+                    'id_plan_sekunder',
+                    \App\Features\TriaseUGD\PlanSekunder\PlanSekunderDatabase::class,
+                    'id_plan_sekunder',
                 ],
                 [
-                    'id_petugas', 
-                    \App\Features\Role\Petugas\PetugasDatabase::class, 
-                    'id_petugas'
+                    'id_petugas',
+                    \App\Features\Role\Petugas\PetugasDatabase::class,
+                    'id_petugas',
                 ],
             ],
             false,
-            'data_triase_sekunder.csv'
+            'data_triase_sekunder.csv',
         );
     }
 }

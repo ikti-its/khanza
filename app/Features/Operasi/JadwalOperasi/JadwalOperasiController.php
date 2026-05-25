@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\JadwalOperasi;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class JadwalOperasiController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class JadwalOperasiController extends ControllerTemplate
         parent::__construct(
             new JadwalOperasiModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',        'operasi'],
                 ['Jadwal Operasi', 'jadwal_operasi'],
             ],
             'Jadwal Operasi',
@@ -25,16 +26,16 @@ final class JadwalOperasiController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_jadwal', 'ID Jadwal'],
-                [SHOW, REQUIRED, I::INDEX, 'id_permintaan', 'ID Permintaan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_ruangan', 'ID Ruangan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_tindakan', 'ID Tindakan'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_bedah', 'Kode Dokter Bedah'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_dokter_anestesi', 'Kode Dokter Anestesi'],
-                [SHOW, REQUIRED, I::DATE, 'tanggal', 'Tanggal'],
-                [SHOW, REQUIRED, I::TIME, 'waktu_mulai', 'Waktu Mulai'],
-                [SHOW, REQUIRED, I::TIME, 'waktu_selesai', 'Waktu Selesai'],
-                [SHOW, REQUIRED, I::INDEX, 'id_status', 'Status'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_jadwal',            'ID Jadwal'],
+                [SHOW, REQUIRED, I::INDEX, 'id_permintaan',        'ID Permintaan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_ruangan',           'ID Ruangan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_tindakan',          'ID Tindakan'],
+                [SHOW, REQUIRED, I::TEXT,  'kode_dokter_bedah',    'Kode Dokter Bedah'],
+                [SHOW, REQUIRED, I::TEXT,  'kode_dokter_anestesi', 'Kode Dokter Anestesi'],
+                [SHOW, REQUIRED, I::DATE,  'tanggal',              'Tanggal'],
+                [SHOW, REQUIRED, I::TIME,  'waktu_mulai',          'Waktu Mulai'],
+                [SHOW, REQUIRED, I::TIME,  'waktu_selesai',        'Waktu Selesai'],
+                [SHOW, REQUIRED, I::INDEX, 'id_status',            'Status'],
             ],
         );
     }

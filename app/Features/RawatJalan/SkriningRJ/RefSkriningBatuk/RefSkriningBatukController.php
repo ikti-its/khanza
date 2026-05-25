@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningBatuk;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefSkriningBatukController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefSkriningBatukController extends ControllerTemplate
         parent::__construct(
             new RefSkriningBatukModel(),
             [
-                ['Rawat Jalan', 'rawat_jalan'],
+                ['Rawat Jalan',              'rawat_jalan'],
                 ['Referensi Skrining Batuk', 'ref_skrining_batuk'],
             ],
             'Referensi Skrining Batuk',
@@ -25,8 +26,8 @@ final class RefSkriningBatukController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_batuk', 'ID Batuk'],
-                [SHOW, REQUIRED, I::TEXT, 'kategori_batuk', 'Kategori Batuk'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_batuk',       'ID Batuk'],
+                [SHOW, REQUIRED, I::TEXT,  'kategori_batuk', 'Kategori Batuk'],
             ],
         );
     }

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriMedis\DataBarang;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -43,7 +44,7 @@ final class DataBarangDatabase extends DatabaseTemplate
             ['kode_barang'],
             [],
             true,
-            'data_barang.csv'
+            'data_barang.csv',
         );
     }
 }

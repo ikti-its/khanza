@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\CatatanAnestesiSedasi;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -63,17 +64,17 @@ final class CatatanAnestesiSedasiModel extends ModelTemplate
                 'alasan_batal'         => V::DEFAULT(),
             ],
             [
-                'nomor_reg'          => ['nomor_rawat'],
-                'kode_dpjp_anestesi' => [],
-                'kode_dpjp_bedah'    => [],
-                'id_perawat_anestesi'=> [],
-                'id_perawat_bedah'   => [],
-                'id_kesadaran'       => ['nama_kesadaran'],
-                'id_golongan_darah'  => ['nama_golongan_darah'],
-                'id_rhesus'          => ['kode_rhesus'],
-                'id_asa'             => ['nama_asa'],
-                'id_jenis_sedasi'    => ['nama_sedasi'],
-            ]
+                'nomor_reg'           => ['nomor_rawat'],
+                'kode_dpjp_anestesi'  => [],
+                'kode_dpjp_bedah'     => [],
+                'id_perawat_anestesi' => [],
+                'id_perawat_bedah'    => [],
+                'id_kesadaran'        => ['nama_kesadaran'],
+                'id_golongan_darah'   => ['nama_golongan_darah'],
+                'id_rhesus'           => ['kode_rhesus'],
+                'id_asa'              => ['nama_asa'],
+                'id_jenis_sedasi'     => ['nama_sedasi'],
+            ],
         );
     }
 }

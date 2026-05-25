@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\UjiDarah\HasilDiagnostikDetail;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class HasilDiagnostikDetailDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'uji_darah',
             'hasil_diagnostik_detail',
@@ -21,19 +23,19 @@ final class HasilDiagnostikDetailDatabase extends DatabaseTemplate
             [['id_diagnostik', 'id_parameter_uji']],
             [
                 [
-                    'id_diagnostik', 
-                    \App\Features\UjiDarah\HasilDiagnostik\HasilDiagnostikDatabase::class, 
-                    'id_diagnostik'
+                    'id_diagnostik',
+                    \App\Features\UjiDarah\HasilDiagnostik\HasilDiagnostikDatabase::class,
+                    'id_diagnostik',
                 ],
                 [
-                    'id_parameter_uji', 
-                    \App\Features\UjiDarah\ParameterUji\ParameterUjiDatabase::class, 
-                    'id_parameter_uji'
+                    'id_parameter_uji',
+                    \App\Features\UjiDarah\ParameterUji\ParameterUjiDatabase::class,
+                    'id_parameter_uji',
                 ],
                 [
-                    'id_nilai_diagnostik', 
-                    \App\Features\UjiDarah\NilaiDiagnostik\NilaiDiagnostikDatabase::class, 
-                    'id_nilai_diagnostik'
+                    'id_nilai_diagnostik',
+                    \App\Features\UjiDarah\NilaiDiagnostik\NilaiDiagnostikDatabase::class,
+                    'id_nilai_diagnostik',
                 ],
             ],
         );

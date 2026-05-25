@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefAldretteRespirasi;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class RefAldretteRespirasiModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new RefAldretteRespirasiDatabase(),
             'REFS',
@@ -19,7 +21,7 @@ final class RefAldretteRespirasiModel extends ModelTemplate
                 'nama_skala'   => V::DEFAULT(),
                 'nilai'        => V::DEFAULT(),
             ],
-            []
+            [],
         );
     }
 }

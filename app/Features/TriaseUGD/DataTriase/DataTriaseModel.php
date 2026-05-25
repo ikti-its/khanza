@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\DataTriase;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class DataTriaseModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new DataTriaseDatabase(),
             'BASE',
@@ -24,14 +26,14 @@ final class DataTriaseModel extends ModelTemplate
                 'pernapasan'            => V::DEFAULT(),
                 'suhu'                  => V::DEFAULT(),
                 'saturasi_o2'           => V::DEFAULT(),
-                'nyeri'                 => V::DEFAULT()
+                'nyeri'                 => V::DEFAULT(),
             ],
             [
-                'nomor_reg'             => ['nomor_rawat', 'nomor_rm', 'nama_pasien'],
-                'id_cara_masuk'         => ['nama_cara'],
-                'id_alat_transportasi'  => ['nama_transportasi'],
-                'id_alasan_kedatangan'  => ['nama_alasan'],
-                'id_macam_kasus'        => ['nama_macam_kasus']
+                'nomor_reg'            => ['nomor_rawat', 'nomor_rm', 'nama_pasien'],
+                'id_cara_masuk'        => ['nama_cara'],
+                'id_alat_transportasi' => ['nama_transportasi'],
+                'id_alasan_kedatangan' => ['nama_alasan'],
+                'id_macam_kasus'       => ['nama_macam_kasus'],
             ],
         );
     }

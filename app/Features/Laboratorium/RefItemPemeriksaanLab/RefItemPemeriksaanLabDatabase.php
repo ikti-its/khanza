@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\RefItemPemeriksaanLab;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -29,7 +30,7 @@ final class RefItemPemeriksaanLabDatabase extends DatabaseTemplate
                 ],
             ],
             false,
-            'item_pemeriksaan_lab.csv'
+            'item_pemeriksaan_lab.csv',
         );
     }
 }

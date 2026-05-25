@@ -2,13 +2,15 @@
 declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\JenisPencekalan;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 use App\Features\PenangananDonor\Pencekalan\PencekalanDatabase;
 
 final class JenisPencekalanModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new PencekalanDatabase(),
             'REFS',
@@ -17,7 +19,7 @@ final class JenisPencekalanModel extends ModelTemplate
             'id_jenis_pencekalan',
             [
                 'id_jenis_pencekalan'   => V::DEFAULT(),
-                'nama_jenis_pencekalan' => V::DEFAULT()
+                'nama_jenis_pencekalan' => V::DEFAULT(),
             ],
             [],
         );

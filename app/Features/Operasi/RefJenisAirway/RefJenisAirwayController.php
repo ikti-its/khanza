@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefJenisAirway;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefJenisAirwayController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefJenisAirwayController extends ControllerTemplate
         parent::__construct(
             new RefJenisAirwayModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                'operasi'],
                 ['Referensi Jenis Airway', 'ref_jenis_airway'],
             ],
             'Referensi Jenis Airway',

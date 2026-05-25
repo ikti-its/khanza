@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefIndikasiPindah;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefIndikasiPindahController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefIndikasiPindahController extends ControllerTemplate
         parent::__construct(
             new RefIndikasiPindahModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                   'operasi'],
                 ['Referensi Indikasi Pindah', 'ref_indikasi_pindah'],
             ],
             'Referensi Indikasi Pindah',
@@ -25,8 +26,8 @@ final class RefIndikasiPindahController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_indikasi', 'ID Indikasi'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_indikasi', 'Nama Indikasi'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_indikasi',   'ID Indikasi'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_indikasi', 'Nama Indikasi'],
             ],
         );
     }

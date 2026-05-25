@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\HasilLabPa;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -36,23 +37,23 @@ final class HasilLabPaDatabase extends DatabaseTemplate
                     ['id_permintaan'],
                 ],
                 [
-                    'nomor_reg', 
-                    \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class, 
+                    'nomor_reg',
+                    \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class,
                     'nomor_reg',
                 ],
                 [
-                    'kode_dokter_pj', 
-                    \App\Features\Role\Dokter\DokterDatabase::class, 
+                    'kode_dokter_pj',
+                    \App\Features\Role\Dokter\DokterDatabase::class,
                     'id_dokter',
                 ],
                 [
-                    'id_petugas_lab', 
-                    \App\Features\Role\Petugas\PetugasDatabase::class, 
+                    'id_petugas_lab',
+                    \App\Features\Role\Petugas\PetugasDatabase::class,
                     'id_petugas',
                 ],
                 [
-                    'kode_dokter_perujuk', 
-                    \App\Features\Role\Dokter\DokterDatabase::class, 
+                    'kode_dokter_perujuk',
+                    \App\Features\Role\Dokter\DokterDatabase::class,
                     'id_dokter',
                 ],
                 [
@@ -62,7 +63,7 @@ final class HasilLabPaDatabase extends DatabaseTemplate
                 ],
             ],
             false,
-            'hasil_lab_pa.csv'
+            'hasil_lab_pa.csv',
         );
     }
 }

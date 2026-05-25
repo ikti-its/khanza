@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Pendidikan\JenisPendidikan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class JenisPendidikanDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'pendidikan',
             'jenis',
@@ -20,8 +22,8 @@ final class JenisPendidikanDatabase extends DatabaseTemplate
             ['nama_jenis'],
             [
                 [
-                    'id_jenjang', 
-                    \App\Features\Pendidikan\JenjangPendidikan\JenjangPendidikanDatabase::class, 
+                    'id_jenjang',
+                    \App\Features\Pendidikan\JenjangPendidikan\JenjangPendidikanDatabase::class,
                     'id_jenjang',
                 ],
             ],

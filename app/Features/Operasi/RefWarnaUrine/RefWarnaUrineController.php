@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefWarnaUrine;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefWarnaUrineController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefWarnaUrineController extends ControllerTemplate
         parent::__construct(
             new RefWarnaUrineModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',               'operasi'],
                 ['Referensi Warna Urine', 'ref_warna_urine'],
             ],
             'Referensi Warna Urine',
@@ -26,7 +27,7 @@ final class RefWarnaUrineController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_warna_urine', 'ID Warna Urine'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_warna', 'Nama Warna'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_warna',     'Nama Warna'],
             ],
         );
     }

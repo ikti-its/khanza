@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\AlasanKedatangan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class AlasanKedatanganDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'triase_ugd',
             'alasan_kedatangan',
@@ -19,7 +21,7 @@ final class AlasanKedatanganDatabase extends DatabaseTemplate
             ['nama_alasan'],
             [],
             true,
-            'alasan_kedatangan.csv'
+            'alasan_kedatangan.csv',
         );
     }
 }

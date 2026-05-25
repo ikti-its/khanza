@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\ChecklistPreOperasiPenunjang;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class ChecklistPreOperasiPenunjangController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class ChecklistPreOperasiPenunjangController extends ControllerTemplate
         parent::__construct(
             new ChecklistPreOperasiPenunjangModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                         'operasi'],
                 ['Checklist Pre Operasi Penunjang', 'checklist_pre_operasi_penunjang'],
             ],
             'Checklist Pre Operasi Penunjang',
@@ -25,11 +26,11 @@ final class ChecklistPreOperasiPenunjangController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_penunjang', 'ID Penunjang'],
-                [HIDE, OPTIONAL, I::INDEX, 'id_checklist', 'ID Checklist'],
-                [SHOW, REQUIRED, I::TEXT, 'jenis_penunjang', 'Jenis Penunjang'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_penunjang',    'ID Penunjang'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_checklist',    'ID Checklist'],
+                [SHOW, REQUIRED, I::TEXT,  'jenis_penunjang', 'Jenis Penunjang'],
                 [SHOW, REQUIRED, I::INDEX, 'id_ketersediaan', 'Ketersediaan'],
-                [SHOW, REQUIRED, I::TEXT, 'keterangan', 'Keterangan'],
+                [SHOW, REQUIRED, I::TEXT,  'keterangan',      'Keterangan'],
             ],
         );
     }

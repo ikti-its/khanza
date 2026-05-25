@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\SkorBromage;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -30,8 +31,8 @@ final class SkorBromageModel extends ModelTemplate
                 'nomor_reg'          => ['nomor_rawat'],
                 'id_petugas'         => [],
                 'id_dokter_anestesi' => [],
-                'skor_bromage'       => ['nama_skala','tingkat_blok', 'nilai', 'gambar'],
-            ]
+                'skor_bromage'       => ['nama_skala', 'tingkat_blok', 'nilai', 'gambar'],
+            ],
         );
     }
 }

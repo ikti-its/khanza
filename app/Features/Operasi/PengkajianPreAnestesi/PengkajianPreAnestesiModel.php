@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\PengkajianPreAnestesi;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -65,7 +66,7 @@ final class PengkajianPreAnestesiModel extends ModelTemplate
                 'id_obat_bebas'       => ['nama_kategori'],
                 'id_rencana_anestesi' => ['nama_rencana'],
                 'id_asa'              => ['nama_asa'],
-            ]
+            ],
         );
     }
 }

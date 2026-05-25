@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\PermintaanLabHeader;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -27,8 +28,8 @@ final class PermintaanLabHeaderDatabase extends DatabaseTemplate
             [],
             [
                 [
-                    'nomor_reg', 
-                    \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class, 
+                    'nomor_reg',
+                    \App\Features\RekamMedis\Registrasi\RegistrasiDatabase::class,
                     'nomor_reg',
                 ],
                 [
@@ -37,8 +38,8 @@ final class PermintaanLabHeaderDatabase extends DatabaseTemplate
                     ['id_kategori'],
                 ],
                 [
-                    'kode_dokter_perujuk', 
-                    \App\Features\Role\Dokter\DokterDatabase::class, 
+                    'kode_dokter_perujuk',
+                    \App\Features\Role\Dokter\DokterDatabase::class,
                     'id_dokter',
                 ],
                 [
@@ -48,7 +49,7 @@ final class PermintaanLabHeaderDatabase extends DatabaseTemplate
                 ],
             ],
             false,
-            'permintaan_lab_header.csv'
+            'permintaan_lab_header.csv',
         );
     }
 }

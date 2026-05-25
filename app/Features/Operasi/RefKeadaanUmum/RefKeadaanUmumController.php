@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefKeadaanUmum;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefKeadaanUmumController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefKeadaanUmumController extends ControllerTemplate
         parent::__construct(
             new RefKeadaanUmumModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                'operasi'],
                 ['Referensi Keadaan Umum', 'ref_keadaan_umum'],
             ],
             'Referensi Keadaan Umum',
@@ -26,7 +27,7 @@ final class RefKeadaanUmumController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_keadaan_umum', 'ID Keadaan Umum'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_keadaan', 'Nama Keadaan'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_keadaan',    'Nama Keadaan'],
             ],
         );
     }

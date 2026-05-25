@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefJenisPenunjang;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefJenisPenunjangController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefJenisPenunjangController extends ControllerTemplate
         parent::__construct(
             new RefJenisPenunjangModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                   'operasi'],
                 ['Referensi Jenis Penunjang', 'ref_jenis_penunjang'],
             ],
             'Referensi Jenis Penunjang',
@@ -26,7 +27,7 @@ final class RefJenisPenunjangController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_jenis_penunjang', 'ID Jenis Penunjang'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_jenis', 'Nama Jenis'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_jenis',         'Nama Jenis'],
             ],
         );
     }

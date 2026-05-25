@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\RefKategoriUsiaLab;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -20,7 +21,7 @@ final class RefKategoriUsiaLabDatabase extends DatabaseTemplate
             [],
             [],
             true,
-            'kategori_usia_lab.csv'
+            'kategori_usia_lab.csv',
         );
     }
 }

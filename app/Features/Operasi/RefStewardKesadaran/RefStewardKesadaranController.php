@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefStewardKesadaran;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefStewardKesadaranController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefStewardKesadaranController extends ControllerTemplate
         parent::__construct(
             new RefStewardKesadaranModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                     'operasi'],
                 ['Referensi Steward Kesadaran', 'ref_steward_kesadaran'],
             ],
             'Referensi Steward Kesadaran',
@@ -25,9 +26,9 @@ final class RefStewardKesadaranController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_kesadaran', 'ID Kesadaran'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_skala', 'Nama Skala'],
-                [SHOW, REQUIRED, I::NUMBER, 'nilai', 'Nilai'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_kesadaran', 'ID Kesadaran'],
+                [SHOW, REQUIRED, I::TEXT,   'nama_skala',   'Nama Skala'],
+                [SHOW, REQUIRED, I::NUMBER, 'nilai',        'Nilai'],
             ],
         );
     }

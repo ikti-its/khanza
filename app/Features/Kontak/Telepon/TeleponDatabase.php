@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Kontak\Telepon;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class TeleponDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'kontak',
             'telepon',
@@ -22,13 +24,13 @@ final class TeleponDatabase extends DatabaseTemplate
             ['nomor_telepon'],
             [
                 [
-                    'id_orang', 
-                    \App\Features\Person\Orang\OrangDatabase::class, 
+                    'id_orang',
+                    \App\Features\Person\Orang\OrangDatabase::class,
                     'id_orang',
                 ],
                 [
                     'id_jenis',
-                    \App\Features\Kontak\JenisTelepon\JenisTeleponDatabase::class, 
+                    \App\Features\Kontak\JenisTelepon\JenisTeleponDatabase::class,
                     'id_jenis',
                 ],
                 [

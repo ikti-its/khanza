@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Radiologi\HasilRadTindakan;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -31,10 +32,10 @@ final class HasilRadTindakanModel extends ModelTemplate
                 'id_template_rad'         => V::DEFAULT(),
             ],
             [
-                'id_hasil_rad'            => [],
-                'id_item_rad'             => ['kode_periksa', 'nama_pemeriksaan', 'tarif_dasar'],
-                'id_template_rad'         => ['nama_template'],
-            ]
+                'id_hasil_rad'    => [],
+                'id_item_rad'     => ['kode_periksa', 'nama_pemeriksaan', 'tarif_dasar'],
+                'id_template_rad' => ['nama_template'],
+            ],
         );
     }
 }

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\PenyerahanPasien;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -61,7 +62,7 @@ final class PenyerahanPasienModel extends ModelTemplate
                 'tiba_id_keadaan'        => ['nama_keadaan'],
                 'id_perawat_menyerahkan' => [],
                 'id_perawat_menerima'    => [],
-            ]
+            ],
         );
     }
 }

@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\RefRencanaAnestesi;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefRencanaAnestesiController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefRencanaAnestesiController extends ControllerTemplate
         parent::__construct(
             new RefRencanaAnestesiModel(),
             [
-                ['Operasi', 'operasi'],
+                ['Operasi',                    'operasi'],
                 ['Referensi Rencana Anestesi', 'ref_rencana_anestesi'],
             ],
             'Referensi Rencana Anestesi',
@@ -26,7 +27,7 @@ final class RefRencanaAnestesiController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_rencana_anestesi', 'ID Rencana Anestesi'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_rencana', 'Nama Rencana'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_rencana',        'Nama Rencana'],
             ],
         );
     }

@@ -2,17 +2,19 @@
 declare(strict_types=1);
 
 namespace App\Features\UjiDarah\MetodeUji;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class MetodeUjiController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new MetodeUjiModel(),
             [
-                ['Uji Darah', 'uji_darah'],
+                ['Uji Darah',  'uji_darah'],
                 ['Metode Uji', 'metode_uji'],
             ],
             'Metode Uji',
@@ -25,8 +27,8 @@ final class MetodeUjiController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_metode_uji', 'ID Metode Uji'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_metode', 'Nama Metode'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_metode',   'Nama Metode'],
             ],
         );
-    }   
+    }
 }

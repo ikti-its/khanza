@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\AturanPenggajian\Pesangon;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PesangonDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'penggajian',
             'pesangon',
@@ -18,7 +20,7 @@ final class PesangonDatabase extends DatabaseTemplate
             ],
             'no_pesangon',
             [
-                'masa_kerja'
+                'masa_kerja',
             ],
             [],
         );

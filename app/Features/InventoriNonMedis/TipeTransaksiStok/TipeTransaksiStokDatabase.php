@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\TipeTransaksiStok;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -20,7 +21,7 @@ final class TipeTransaksiStokDatabase extends DatabaseTemplate
             ['nama_tipe_transaksi_stok'],
             [],
             true,
-            'tipe_transaksi_stok.csv'
+            'tipe_transaksi_stok.csv',
         );
     }
 }

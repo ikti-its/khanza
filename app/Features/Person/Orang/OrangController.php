@@ -2,13 +2,15 @@
 declare(strict_types=1);
 
 namespace App\Features\Person\Orang;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class OrangController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new OrangModel(),
             [
@@ -24,17 +26,17 @@ final class OrangController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_orang', 'ID Orang'],
-                [SHOW, REQUIRED, I::TEXT, 'nik', 'NIK'],
-                [SHOW, REQUIRED, I::NAME, 'nama', 'Nama'],
-                [SHOW, REQUIRED, I::INDEX, 'id_jenis_kelamin', 'ID Jenis Kelamin'],
-                [HIDE, REQUIRED, I::INDEX, 'id_agama', 'ID Agama'],
-                [HIDE, REQUIRED, I::INDEX, 'id_pernikahan', 'ID Pernikahan'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_orang',          'ID Orang'],
+                [SHOW, REQUIRED, I::TEXT,  'nik',               'NIK'],
+                [SHOW, REQUIRED, I::NAME,  'nama',              'Nama'],
+                [SHOW, REQUIRED, I::INDEX, 'id_jenis_kelamin',  'ID Jenis Kelamin'],
+                [HIDE, REQUIRED, I::INDEX, 'id_agama',          'ID Agama'],
+                [HIDE, REQUIRED, I::INDEX, 'id_pernikahan',     'ID Pernikahan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_golongan_darah', 'ID Golongan Darah'],
-                [HIDE, REQUIRED, I::INDEX, 'id_alamat', 'ID Alamat'],
+                [HIDE, REQUIRED, I::INDEX, 'id_alamat',         'ID Alamat'],
                 [SHOW, REQUIRED, I::INDEX, 'tempat_lahir_kota', 'Tempat Lahir'],
-                [SHOW, REQUIRED, I::DATE, 'tanggal_lahir', 'Tanggal Lahir'],
+                [SHOW, REQUIRED, I::DATE,  'tanggal_lahir',     'Tanggal Lahir'],
             ],
         );
-    }   
+    }
 }

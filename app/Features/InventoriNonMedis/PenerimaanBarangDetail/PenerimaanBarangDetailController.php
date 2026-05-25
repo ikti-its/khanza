@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PenerimaanBarangDetail;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class PenerimaanBarangDetailController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class PenerimaanBarangDetailController extends ControllerTemplate
         parent::__construct(
             new PenerimaanBarangDetailModel(),
             [
-                ['Inventori Non Medis',  'inventori_non_medis'],
+                ['Inventori Non Medis',      'inventori_non_medis'],
                 ['Penerimaan Barang Detail', 'penerimaan_barang_detail'],
             ],
             'Penerimaan Barang Detail',

@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\LogistikUTD\PenunjangRusak;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class PenunjangRusakModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new PenunjangRusakDatabase(),
             'BASE',
@@ -15,15 +17,15 @@ final class PenunjangRusakModel extends ModelTemplate
             'penunjang_rusak',
             'id_penunjang_rusak',
             [
-                'id_penunjang_rusak'    => V::DEFAULT(),
-                'jumlah'                => V::DEFAULT(),
-                'harga_beli'            => V::DEFAULT(),
-                'tanggal_rusak'         => V::DEFAULT(),
-                'keterangan'            => V::DEFAULT()
+                'id_penunjang_rusak' => V::DEFAULT(),
+                'jumlah'             => V::DEFAULT(),
+                'harga_beli'         => V::DEFAULT(),
+                'tanggal_rusak'      => V::DEFAULT(),
+                'keterangan'         => V::DEFAULT(),
             ],
             [
-                'id_barang'     => ['kode_barang', 'nama_barang'],
-                'id_petugas'    => ['']
+                'id_barang'  => ['kode_barang', 'nama_barang'],
+                'id_petugas' => [''],
             ],
         );
     }

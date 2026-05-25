@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\LogistikUTD\PenunjangPenyerahan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PenunjangPenyerahanDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'logistik_utd',
             'penunjang_penyerahan',
@@ -22,14 +24,14 @@ final class PenunjangPenyerahanDatabase extends DatabaseTemplate
             [],
             [
                 [
-                    'id_penyerahan', 
-                    \App\Features\DistribusiDarah\PenyerahanDarah\PenyerahanDarahDatabase::class, 
-                    'id_penyerahan'
+                    'id_penyerahan',
+                    \App\Features\DistribusiDarah\PenyerahanDarah\PenyerahanDarahDatabase::class,
+                    'id_penyerahan',
                 ],
                 [
-                    'id_barang', 
-                    \App\Features\InventoriNonMedis\Barang\BarangDatabase::class, 
-                    'id_barang'
+                    'id_barang',
+                    \App\Features\InventoriNonMedis\Barang\BarangDatabase::class,
+                    'id_barang',
                 ],
             ],
         );

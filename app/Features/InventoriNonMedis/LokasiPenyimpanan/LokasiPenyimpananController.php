@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\LokasiPenyimpanan;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class LokasiPenyimpananController extends ControllerTemplate
 {
@@ -25,8 +26,8 @@ final class LokasiPenyimpananController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_lokasi_penyimpanan', 'ID'],
-                [SHOW, REQUIRED, I::NAME, 'nama_lokasi_penyimpanan', 'Nama Lokasi Penyimpanan'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_lokasi_penyimpanan',   'ID'],
+                [SHOW, REQUIRED, I::NAME,  'nama_lokasi_penyimpanan', 'Nama Lokasi Penyimpanan'],
             ],
         );
     }

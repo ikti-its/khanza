@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Lokasi\Desa;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
-    
+
 /*
  *  Dalam 1 kecamatan terdapat 1 atau lebih desa
  *  Di Indonesia, terdapat sekitar 83.000 desa
@@ -29,12 +30,13 @@ use App\Core\Database\Template\SemanticType as T;
 
 final class DesaDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'lokasi',
             'desa',
             [
-                'id_desa'       => T::ID(90000),        
+                'id_desa'       => T::ID(90000),
                 'id_provinsi'   => T::FK_AUTO(),
                 'id_kota_lokal' => T::FK_AUTO(),
                 'id_kec_lokal'  => T::FK_AUTO(),
@@ -43,13 +45,13 @@ final class DesaDatabase extends DatabaseTemplate
             ],
             'id_desa',
             [
-                ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal', 'id_desa_lokal']
+                ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal', 'id_desa_lokal'],
             ],
             [
                 [
-                    ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal'], 
-                    \App\Features\Lokasi\Kecamatan\KecamatanDatabase::class, 
-                    ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal']
+                    ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal'],
+                    \App\Features\Lokasi\Kecamatan\KecamatanDatabase::class,
+                    ['id_provinsi', 'id_kota_lokal', 'id_kec_lokal'],
                 ],
             ],
             true,

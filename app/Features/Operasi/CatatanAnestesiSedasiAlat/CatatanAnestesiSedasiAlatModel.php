@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\CatatanAnestesiSedasiAlat;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -25,7 +26,7 @@ final class CatatanAnestesiSedasiAlatModel extends ModelTemplate
             [
                 'id_catatan_anestesi' => [],
                 'id_alat'             => ['nama_alat'],
-            ]
+            ],
         );
     }
 }

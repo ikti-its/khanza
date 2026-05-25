@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\RawatJalan\SkriningRJ\RefSkriningPernafasan;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefSkriningPernafasanController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefSkriningPernafasanController extends ControllerTemplate
         parent::__construct(
             new RefSkriningPernafasanModel(),
             [
-                ['Rawat Jalan', 'rawat_jalan'],
+                ['Rawat Jalan',                   'rawat_jalan'],
                 ['Referensi Skrining Pernafasan', 'ref_skrining_pernafasan'],
             ],
             'Referensi Skrining Pernafasan',
@@ -26,7 +27,7 @@ final class RefSkriningPernafasanController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pernafasan', 'ID Pernafasan'],
-                [SHOW, REQUIRED, I::TEXT, 'pernafasan', 'Pernafasan'],
+                [SHOW, REQUIRED, I::TEXT,  'pernafasan',    'Pernafasan'],
             ],
         );
     }

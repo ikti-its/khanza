@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Finansial\Transaksi;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class TransaksiDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'finansial',
             'transaksi',
@@ -32,13 +34,13 @@ final class TransaksiDatabase extends DatabaseTemplate
                 [
                     'rekening_tujuan',
                     \App\Features\Finansial\Rekening\RekeningDatabase::class,
-                    'id_rekening'
+                    'id_rekening',
                 ],
                 [
                     'metode_pembayaran',
                     \App\Features\Finansial\MetodePembayaran\MetodePembayaranDatabase::class,
-                    'id_metode'
-                ]
+                    'id_metode',
+                ],
             ],
         );
     }

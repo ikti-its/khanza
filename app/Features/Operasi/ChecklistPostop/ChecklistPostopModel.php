@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\ChecklistPostop;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -44,7 +45,7 @@ final class ChecklistPostopModel extends ModelTemplate
                 'id_warna_urine'       => ['nama_warna'],
                 'id_petugas_anestesi'  => [],
                 'id_petugas_ok'        => [],
-            ]
+            ],
         );
     }
 }

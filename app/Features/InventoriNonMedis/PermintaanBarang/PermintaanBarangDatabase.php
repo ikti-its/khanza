@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PermintaanBarang;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -13,12 +14,12 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
             'inventori_non_medis',
             'permintaan_barang',
             [
-                'id_permintaan'              => T::ID(100_000),
-                'id_unit'                    => T::FK_AUTO(),
-                'id_tipe_permintaan_barang'  => T::FK_AUTO(),
-                'tanggal'                    => T::DTIME(),
+                'id_permintaan'               => T::ID(100_000),
+                'id_unit'                     => T::FK_AUTO(),
+                'id_tipe_permintaan_barang'   => T::FK_AUTO(),
+                'tanggal'                     => T::DTIME(),
                 'id_status_permintaan_barang' => T::FK_AUTO(),
-                'catatan'                    => T::NOTE()->nullable(),
+                'catatan'                     => T::NOTE()->nullable(),
             ],
             'id_permintaan',
             [],
@@ -40,7 +41,7 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            'permintaan_barang.csv'
+            'permintaan_barang.csv',
         );
     }
 }

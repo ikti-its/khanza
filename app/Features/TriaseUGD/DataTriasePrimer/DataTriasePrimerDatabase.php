@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\DataTriasePrimer;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class DataTriasePrimerDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'triase_ugd',
             'data_triase_primer',
@@ -25,24 +27,24 @@ final class DataTriasePrimerDatabase extends DatabaseTemplate
             ['id_triase'],
             [
                 [
-                    'id_triase', 
-                    \App\Features\TriaseUGD\DataTriase\DataTriaseDatabase::class, 
-                    'id_triase'
+                    'id_triase',
+                    \App\Features\TriaseUGD\DataTriase\DataTriaseDatabase::class,
+                    'id_triase',
                 ],
                 [
-                    'id_kebutuhan_khusus', 
-                    \App\Features\TriaseUGD\KebutuhanKhusus\KebutuhanKhususDatabase::class, 
-                    'id_kebutuhan'
+                    'id_kebutuhan_khusus',
+                    \App\Features\TriaseUGD\KebutuhanKhusus\KebutuhanKhususDatabase::class,
+                    'id_kebutuhan',
                 ],
                 [
-                    'id_plan_primer', 
-                    \App\Features\TriaseUGD\PlanPrimer\PlanPrimerDatabase::class, 
-                    'id_plan_primer'
+                    'id_plan_primer',
+                    \App\Features\TriaseUGD\PlanPrimer\PlanPrimerDatabase::class,
+                    'id_plan_primer',
                 ],
                 [
-                    'id_petugas', 
-                    \App\Features\Role\Petugas\PetugasDatabase::class, 
-                    'id_petugas'
+                    'id_petugas',
+                    \App\Features\Role\Petugas\PetugasDatabase::class,
+                    'id_petugas',
                 ],
             ],
         );

@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Finansial\Bank;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class BankModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new BankDatabase(),
             'BASE',

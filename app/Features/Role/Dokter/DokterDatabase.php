@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Role\Dokter;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class DokterDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'role',
             'dokter',
@@ -18,17 +20,17 @@ final class DokterDatabase extends DatabaseTemplate
             ],
             'id_dokter',
             [
-                ['id_orang', 'spesialis']
+                ['id_orang', 'spesialis'],
             ],
             [
                 [
-                    'id_orang', 
-                    \App\Features\Person\Orang\OrangDatabase::class, 
-                    'id_orang'
+                    'id_orang',
+                    \App\Features\Person\Orang\OrangDatabase::class,
+                    'id_orang',
                 ],
             ],
             false,
-            'dokter.csv'
+            'dokter.csv',
         );
     }
 }

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\SignoutSebelumTutupLuka;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -42,7 +43,7 @@ final class SignoutSebelumTutupLukaModel extends ModelTemplate
                 'id_label_spesimen'    => ['nama_status'],
                 'id_formulir_spesimen' => ['nama_status'],
                 'id_perawat_ok'        => [],
-            ]
+            ],
         );
     }
 }

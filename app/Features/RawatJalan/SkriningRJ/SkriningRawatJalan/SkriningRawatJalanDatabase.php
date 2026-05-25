@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\RawatJalan\SkriningRJ\SkriningRawatJalan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -13,7 +14,7 @@ final class SkriningRawatJalanDatabase extends DatabaseTemplate
             'skrining_rj',
             'skrining_rawat_jalan',
             [
-                'id_skrining'      => T::ID(100_000_000),
+                'id_skrining' => T::ID(100_000_000),
                 // 'no_rm'            => T::FK_AUTO(),
                 'tgl_jam_skrining' => T::DTIME(),
                 'id_kesadaran'     => T::FK_AUTO(),
@@ -61,9 +62,9 @@ final class SkriningRawatJalanDatabase extends DatabaseTemplate
                     ['id_keputusan'],
                 ],
                 [
-                    'id_petugas', 
-                    \App\Features\Role\Petugas\PetugasDatabase::class, 
-                    'id_petugas'
+                    'id_petugas',
+                    \App\Features\Role\Petugas\PetugasDatabase::class,
+                    'id_petugas',
                 ],
             ],
         );

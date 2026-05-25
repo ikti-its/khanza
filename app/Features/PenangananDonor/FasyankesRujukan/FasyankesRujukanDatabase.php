@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\FasyankesRujukan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class FasyankesRujukanDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'penanganan_donor',
             'fasyankes_rujukan',
@@ -21,13 +23,13 @@ final class FasyankesRujukanDatabase extends DatabaseTemplate
             [],
             [
                 [
-                    'id_alamat', 
-                    \App\Features\Lokasi\Alamat\AlamatDatabase::class, 
-                    'id_alamat'
+                    'id_alamat',
+                    \App\Features\Lokasi\Alamat\AlamatDatabase::class,
+                    'id_alamat',
                 ],
             ],
             false,
-            'fasyankes_rujukan.csv'
+            'fasyankes_rujukan.csv',
         );
     }
 }

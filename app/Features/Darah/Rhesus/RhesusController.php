@@ -2,13 +2,15 @@
 declare(strict_types=1);
 
 namespace App\Features\Darah\Rhesus;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RhesusController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new RhesusModel(),
             [
@@ -24,9 +26,9 @@ final class RhesusController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_rhesus', 'ID Rhesus'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_rhesus', 'Kode Rhesus'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_rhesus',   'ID Rhesus'],
+                [SHOW, REQUIRED, I::TEXT,  'kode_rhesus', 'Kode Rhesus'],
             ],
         );
-    }   
+    }
 }

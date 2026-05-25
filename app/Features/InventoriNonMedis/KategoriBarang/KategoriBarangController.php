@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\KategoriBarang;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class KategoriBarangController extends ControllerTemplate
 {
@@ -25,9 +26,9 @@ final class KategoriBarangController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_kategori', 'ID'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_kategori_barang', 'Kode Kategori'],
-                [SHOW, REQUIRED, I::NAME, 'nama_kategori_barang', 'Nama Kategori Barang'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_kategori',          'ID'],
+                [SHOW, REQUIRED, I::TEXT,  'kode_kategori_barang', 'Kode Kategori'],
+                [SHOW, REQUIRED, I::NAME,  'nama_kategori_barang', 'Nama Kategori Barang'],
             ],
         );
     }

@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Person\JenisKelamin;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
-    
+
 /*
  *  Tabel jenis_kelamin merupakan tabel referensi (master data)
  *  yang digunakan untuk menyimpan kategori jenis kelamin.
@@ -15,7 +16,8 @@ use App\Core\Database\Template\SemanticType as T;
 
 final class JenisKelaminDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'person',
             'jenis_kelamin',
@@ -27,7 +29,7 @@ final class JenisKelaminDatabase extends DatabaseTemplate
             ['nama_jenis_kelamin'],
             [],
             true,
-            'jenis_kelamin.csv'
+            'jenis_kelamin.csv',
         );
     }
 }

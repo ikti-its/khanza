@@ -2,17 +2,19 @@
 declare(strict_types=1);
 
 namespace App\Features\Donor\JenisBag;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class JenisBagController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new JenisBagModel(),
             [
-                ['Donor', 'donor'],
+                ['Donor',     'donor'],
                 ['Jenis Bag', 'jenis_bag'],
             ],
             'Jenis Bag',
@@ -24,10 +26,10 @@ final class JenisBagController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_jenis_bag', 'ID Jenis Bag'],
-                [SHOW, REQUIRED, I::TEXT, 'kode_jenis_bag', 'Kode'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_jenis_bag', 'Nama Jenis Bag'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_jenis_bag',   'ID Jenis Bag'],
+                [SHOW, REQUIRED, I::TEXT,  'kode_jenis_bag', 'Kode'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_jenis_bag', 'Nama Jenis Bag'],
             ],
         );
-    }   
+    }
 }

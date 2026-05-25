@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriDarah\SumberDarah;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class SumberDarahDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'inventori_darah',
             'sumber_darah',
@@ -19,7 +21,7 @@ final class SumberDarahDatabase extends DatabaseTemplate
             ['nama_sumber_darah'],
             [],
             true,
-            'sumber_darah.csv'
+            'sumber_darah.csv',
         );
     }
 }

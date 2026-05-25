@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\LogistikUTD\MedisDonor;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class MedisDonorDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'logistik_utd',
             'medis_donor',
@@ -22,14 +24,14 @@ final class MedisDonorDatabase extends DatabaseTemplate
             [],
             [
                 [
-                    'id_pengambilan_darah', 
-                    \App\Features\Donor\PengambilanDarah\PengambilanDarahDatabase::class, 
-                    'id_pengambilan_darah'
+                    'id_pengambilan_darah',
+                    \App\Features\Donor\PengambilanDarah\PengambilanDarahDatabase::class,
+                    'id_pengambilan_darah',
                 ],
                 [
-                    'id_barang', 
-                    \App\Features\InventoriMedis\DataBarang\DataBarangDatabase::class, 
-                    'id_barang'
+                    'id_barang',
+                    \App\Features\InventoriMedis\DataBarang\DataBarangDatabase::class,
+                    'id_barang',
                 ],
             ],
         );

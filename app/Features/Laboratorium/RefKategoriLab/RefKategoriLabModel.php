@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\RefKategoriLab;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -20,7 +21,7 @@ final class RefKategoriLabModel extends ModelTemplate
                 'kode_kategori' => V::DEFAULT(),
                 'nama_kategori' => V::DEFAULT(),
             ],
-            []
+            [],
         );
     }
 }

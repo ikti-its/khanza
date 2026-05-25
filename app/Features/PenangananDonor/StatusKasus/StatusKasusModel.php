@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\StatusKasus;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class StatusKasusModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new StatusKasusDatabase(),
             'REFS',
@@ -16,7 +18,7 @@ final class StatusKasusModel extends ModelTemplate
             'id_status_kasus',
             [
                 'id_status_kasus'   => V::DEFAULT(),
-                'nama_status_kasus' => V::DEFAULT()
+                'nama_status_kasus' => V::DEFAULT(),
             ],
             [],
         );

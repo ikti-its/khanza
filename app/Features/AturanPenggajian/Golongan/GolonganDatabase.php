@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\AturanPenggajian\Golongan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class GolonganDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'penggajian',
             'golongan',
@@ -20,15 +22,15 @@ final class GolonganDatabase extends DatabaseTemplate
             ],
             'no_golongan',
             [
-                'nama_golongan', 
-                'kode_golongan'
+                'nama_golongan',
+                'kode_golongan',
             ],
             [
                 [
                     'pendidikan',
                     \App\Features\Pendidikan\JenjangPendidikan\JenjangPendidikanDatabase::class,
                     'id_jenjang',
-                ]
+                ],
             ],
         );
     }

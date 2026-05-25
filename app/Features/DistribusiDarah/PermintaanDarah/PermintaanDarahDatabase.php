@@ -2,44 +2,46 @@
 declare(strict_types=1);
 
 namespace App\Features\DistribusiDarah\PermintaanDarah;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class PermintaanDarahDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'distribusi_darah',
             'permintaan_darah',
             [
-                'id_permintaan'           => T::ID(30_000_000),
-                'no_permintaan'           => T::RECORD(20),
-                'id_rawat_inap'           => T::FK_AUTO(),
-                'id_dokter_pengirim'      => T::FK_AUTO(),
-                'tanggal_permintaan'      => T::DTIME(),
-                'id_status_permintaan'    => T::FK_AUTO(),
+                'id_permintaan'        => T::ID(30_000_000),
+                'no_permintaan'        => T::RECORD(20),
+                'id_rawat_inap'        => T::FK_AUTO(),
+                'id_dokter_pengirim'   => T::FK_AUTO(),
+                'tanggal_permintaan'   => T::DTIME(),
+                'id_status_permintaan' => T::FK_AUTO(),
             ],
             'id_permintaan',
             ['no_permintaan'],
             [
                 [
-                    'id_rawat_inap', 
-                    \App\Features\RawatInap\Registrasi\RegistrasiDatabase::class, 
-                    'id_rawat_inap'
+                    'id_rawat_inap',
+                    \App\Features\RawatInap\Registrasi\RegistrasiDatabase::class,
+                    'id_rawat_inap',
                 ],
                 [
-                    'id_dokter_pengirim', 
-                    \App\Features\Role\Dokter\DokterDatabase::class, 
-                    'id_dokter'
+                    'id_dokter_pengirim',
+                    \App\Features\Role\Dokter\DokterDatabase::class,
+                    'id_dokter',
                 ],
                 [
-                    'id_status_permintaan', 
-                    \App\Features\DistribusiDarah\StatusPermintaan\StatusPermintaanDatabase::class, 
-                    'id_status_permintaan'
+                    'id_status_permintaan',
+                    \App\Features\DistribusiDarah\StatusPermintaan\StatusPermintaanDatabase::class,
+                    'id_status_permintaan',
                 ],
             ],
             false,
-            'permintaan_darah.csv'
+            'permintaan_darah.csv',
         );
     }
 }

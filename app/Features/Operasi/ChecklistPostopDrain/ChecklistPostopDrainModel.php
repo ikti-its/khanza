@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\ChecklistPostopDrain;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -24,9 +25,9 @@ final class ChecklistPostopDrainModel extends ModelTemplate
                 'warna'             => V::DEFAULT(),
             ],
             [
-                'id_checklist_post'  => [],
-                'id_ketersediaan'    => ['nama_ketersediaan'],
-            ]
+                'id_checklist_post' => [],
+                'id_ketersediaan'   => ['nama_ketersediaan'],
+            ],
         );
     }
 }

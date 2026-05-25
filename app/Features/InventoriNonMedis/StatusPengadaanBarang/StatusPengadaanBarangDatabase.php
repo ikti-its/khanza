@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\StatusPengadaanBarang;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -20,7 +21,7 @@ final class StatusPengadaanBarangDatabase extends DatabaseTemplate
             ['nama_status_pengadaan_barang'],
             [],
             true,
-            'status_pengadaan_barang.csv'
+            'status_pengadaan_barang.csv',
         );
     }
 }

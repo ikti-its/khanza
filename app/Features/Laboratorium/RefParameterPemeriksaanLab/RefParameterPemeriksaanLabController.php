@@ -2,9 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Features\Laboratorium\RefParameterPemeriksaanLab;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RefParameterPemeriksaanLabController extends ControllerTemplate
 {
@@ -13,7 +14,7 @@ final class RefParameterPemeriksaanLabController extends ControllerTemplate
         parent::__construct(
             new RefParameterPemeriksaanLabModel(),
             [
-                ['Laboratorium', 'laboratorium'],
+                ['Laboratorium',                    'laboratorium'],
                 ['Referensi Parameter Pemeriksaan', 'ref_parameter_pemeriksaan_lab'],
             ],
             'Referensi Parameter Pemeriksaan Lab',
@@ -25,12 +26,12 @@ final class RefParameterPemeriksaanLabController extends ControllerTemplate
                 // A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_parameter', 'ID Parameter'],
-                [SHOW, REQUIRED, I::INDEX, 'id_item_lab', 'Item Lab'],
-                [SHOW, REQUIRED, I::TEXT, 'nama_parameter', 'Nama Parameter'],
-                [SHOW, OPTIONAL, I::TEXT, 'satuan', 'Satuan'],
-                [SHOW, OPTIONAL, I::TEXT, 'nilai_rujukan', 'Nilai Rujukan'],
-                [SHOW, REQUIRED, I::MONEY, 'biaya_item', 'Biaya Item'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_parameter',   'ID Parameter'],
+                [SHOW, REQUIRED, I::INDEX, 'id_item_lab',    'Item Lab'],
+                [SHOW, REQUIRED, I::TEXT,  'nama_parameter', 'Nama Parameter'],
+                [SHOW, OPTIONAL, I::TEXT,  'satuan',         'Satuan'],
+                [SHOW, OPTIONAL, I::TEXT,  'nilai_rujukan',  'Nilai Rujukan'],
+                [SHOW, REQUIRED, I::MONEY, 'biaya_item',     'Biaya Item'],
             ],
         );
     }

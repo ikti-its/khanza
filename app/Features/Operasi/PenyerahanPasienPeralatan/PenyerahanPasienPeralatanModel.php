@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasi\PenyerahanPasienPeralatan;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
@@ -22,9 +23,9 @@ final class PenyerahanPasienPeralatanModel extends ModelTemplate
                 'keterangan'    => V::DEFAULT(),
             ],
             [
-                'id_penyerahan'  => [],
-                'id_peralatan'   => ['nama_peralatan'],
-            ]
+                'id_penyerahan' => [],
+                'id_peralatan'  => ['nama_peralatan'],
+            ],
         );
     }
 }

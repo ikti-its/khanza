@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\Operasional\Shift;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class ShiftDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'operasional',
             'shift',
@@ -19,7 +21,7 @@ final class ShiftDatabase extends DatabaseTemplate
             ['nama_shift'],
             [],
             true,
-            'shift.csv'
+            'shift.csv',
         );
     }
 }

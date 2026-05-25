@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\Satuan;
+
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 
 final class SatuanModel extends ModelTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new SatuanDatabase(),
             'REFS',

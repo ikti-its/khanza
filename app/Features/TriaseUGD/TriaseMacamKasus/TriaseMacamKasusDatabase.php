@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\TriaseUGD\TriaseMacamKasus;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class TriaseMacamKasusDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'triase_ugd',
             'triase_macam_kasus',
@@ -20,7 +22,7 @@ final class TriaseMacamKasusDatabase extends DatabaseTemplate
             ['kode_macam_kasus', 'nama_macam_kasus'],
             [],
             true,
-            'triase_macam_kasus.csv'
+            'triase_macam_kasus.csv',
         );
     }
 }

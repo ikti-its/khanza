@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\LokasiPenyimpanan;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
@@ -20,7 +21,7 @@ final class LokasiPenyimpananDatabase extends DatabaseTemplate
             [],
             [],
             true,
-            'lokasi_penyimpanan.csv'
+            'lokasi_penyimpanan.csv',
         );
     }
 }

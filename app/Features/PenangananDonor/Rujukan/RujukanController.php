@@ -2,18 +2,20 @@
 declare(strict_types=1);
 
 namespace App\Features\PenangananDonor\Rujukan;
+
+use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
-use App\Core\Controller\ActionType as A;
 
 final class RujukanController extends ControllerTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             new RujukanModel(),
             [
                 ['Penanganan Donor', 'penanganan_donor'],
-                ['Rujukan', 'rujukan'],
+                ['Rujukan',          'rujukan'],
             ],
             'Rujukan',
             [
@@ -24,13 +26,13 @@ final class RujukanController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_rujukan', 'ID Rujukan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_kasus', 'ID Kasus'],
-                [SHOW, REQUIRED, I::TEXT, 'nomor_rujukan', 'Nomor Rujukan'],
-                [SHOW, REQUIRED, I::DATE, 'tanggal_rujukan', 'Tanggal Rujukan'],
-                [SHOW, REQUIRED, I::INDEX, 'id_fasyankes', 'ID Fasyankes Tujuan'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_rujukan',         'ID Rujukan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_kasus',           'ID Kasus'],
+                [SHOW, REQUIRED, I::TEXT,  'nomor_rujukan',      'Nomor Rujukan'],
+                [SHOW, REQUIRED, I::DATE,  'tanggal_rujukan',    'Tanggal Rujukan'],
+                [SHOW, REQUIRED, I::INDEX, 'id_fasyankes',       'ID Fasyankes Tujuan'],
                 [SHOW, REQUIRED, I::INDEX, 'id_petugas_perujuk', 'ID Petugas Perujuk'],
             ],
         );
-    }   
+    }
 }

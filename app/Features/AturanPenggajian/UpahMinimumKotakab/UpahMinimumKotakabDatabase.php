@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 namespace App\Features\AturanPenggajian\UpahMinimumKotakab;
+
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;
 
 final class UpahMinimumKotakabDatabase extends DatabaseTemplate
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct(
             'penggajian',
             'umk',
@@ -24,11 +26,10 @@ final class UpahMinimumKotakabDatabase extends DatabaseTemplate
             [
                 [
                     'kotakab',
-                    \App\Features\Lokasi\Kota\KotaDatabase::class, 
-                    'id_kota'
-                ]
-                
-            ],            
+                    \App\Features\Lokasi\Kota\KotaDatabase::class,
+                    'id_kota',
+                ],
+            ],
         );
     }
 }
