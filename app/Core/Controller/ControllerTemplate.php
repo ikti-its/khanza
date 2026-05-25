@@ -72,7 +72,7 @@ class ControllerTemplate extends Controller
     {
         $postData = [];
         foreach ($this->fields as $f) {
-            [$_required, $name, $column, $type, $_show] = $f;
+            [$_required, $_name, $column, $type, $_show] = $f;
 
             if ($column === $this->primary_key) continue;
 
@@ -98,8 +98,6 @@ class ControllerTemplate extends Controller
         for($i = 0; $i < count($this->field); $i++){
             [$show, $required, $type, $column, $name] = $this->field[$i];
             $this->fields[$i] = [$show, $name, $column, $type, $required];
-            // Elemen ke-6 (index 5) opsional: opsi statis untuk dropdown enum
-            // Format: [['Label', 'value'], ['Label2', 'value2'], ...]
             if (isset($this->field[$i][5])) {
                 $this->fields[$i][5] = $this->field[$i][5];
             }
@@ -117,7 +115,6 @@ class ControllerTemplate extends Controller
             if (!$a instanceof ActionType) {
                 continue;
             }
-            // READ hanya penanda permission, bukan tombol aksi — tidak perlu dikirim ke view
             if ($a === ActionType::READ) {
                 continue;
             }
@@ -140,15 +137,29 @@ class ControllerTemplate extends Controller
 
     final public function index(): string
     {
+        $page = max(1, (int) ($this->request->getGet('page') ?? 1));
+        $size = max(1, (int) ($this->request->getGet('size') ?? $this->meta_data['size']));
+
+        $total_rows  = $this->model->countAll();
+        $total_pages = ($total_rows > 0) ? (int) ceil($total_rows / $size) : 1;
+        $page = min($page, $total_pages);
+
+        $offset    = ($page - 1) * $size;
+        $meta_data = [
+            'page'  => $page,
+            'size'  => $size,
+            'total' => $total_pages,
+        ];
+
         return view('/layouts/data', [
             'judul'       => $this->title,
             'breadcrumbs' => $this->breadcrumbs,
-            'meta_data'   => $this->meta_data,
+            'meta_data'   => $meta_data,
             'modul_path'  => $this->get_uri_path(),
             'kolom_id'    => $this->primary_key,
             'konfig'      => $this->fields,
             'aksi'        => $this->actions,
-            'tabel'       => $this->model->findAll(),
+            'tabel'       => $this->model->findAll($size, $offset),
         ]);
     }
 
@@ -189,12 +200,8 @@ class ControllerTemplate extends Controller
                 continue;
             }
 
-            if ($type === 'status') {
-                if (isset($all_options[$column])) {
-                    // Opsi dari FK (tabel referensi) — prioritas utama
-                    $field[5] = $all_options[$column];
-                }
-                // Jika tidak ada FK, opsi statis sudah ada di $field[5] dari reorder_fields()
+            if ($type === 'status' && isset($all_options[$column])) {
+                $field[5] = $all_options[$column];
             }
 
             $result[] = $field;
