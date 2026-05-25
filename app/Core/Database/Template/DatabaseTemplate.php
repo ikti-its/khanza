@@ -192,8 +192,13 @@ class DatabaseTemplate extends Migration
                 $ref_fields = [$ref_fields];
             }
 
-            for($i = 0; $i < count($fields); $i++){    
-                $this->fields[$fields[$i]] = $ref_table->fields[$ref_fields[$i]];
+            for($i = 0; $i < count($fields); $i++){
+                $original_null = $this->fields[$fields[$i]]['null'];
+                $ref_def = $ref_table->fields[$ref_fields[$i]];
+                $ref_def['type'] = (string) preg_replace('/\s+GENERATED\s+\w.*$/i', '', $ref_def['type']);
+                unset($ref_def['default']);
+                $ref_def['null'] = $original_null;
+                $this->fields[$fields[$i]] = $ref_def;
             }
         }
     }
