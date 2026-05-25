@@ -17,7 +17,7 @@
                 ? 'bg-gray-200 text-gray-800 dark:bg-neutral-600 dark:focus:bg-neutral-500'
                 : 'text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10';
             $aria = $isActive ? 'aria-current="page"' : '';
-            $href = "{$modul_path}?page={$i}&size={$page_size}";
+            $href = "{$modul_path}/data?page={$i}&size={$page_size}";
 
             echo "<button type=\"button\" class=\"{$classes}\" {$aria} onclick=\"window.location.href='{$href}'\">{$i}</button>";
         }

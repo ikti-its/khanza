@@ -9,7 +9,7 @@
         $page_size    = $meta_data['size'];
 
         $is_disabled = $current_page >= $total_pages;
-        $next_page_url = $modul_path . '?page=' . ($current_page + 1) . '&size=' . $page_size;
+        $next_page_url = $modul_path . '/data?page=' . ($current_page + 1) . '&size=' . $page_size;
     ?>
     <button type="button"
         class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
