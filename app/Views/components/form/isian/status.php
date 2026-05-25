@@ -9,10 +9,10 @@
 
 if($opsi === null){
     echo view('components/form/isian/teks', [
-        'id'    => $id,
-        'kolom' => $column,
-        'value' => $value,
-        'req'   => $req,
+        'id'     => $id,
+        'column' => $column,
+        'value'  => $value,
+        'req'    => $req,
     ]);
     return;
 }
@@ -27,7 +27,7 @@ if($opsi === null){
         array_unshift($opsi, ["-- Pilih --", '']);
         foreach($opsi as $o){
             $selected = '';
-            if($value === $o[0]){
+            if((string)$value === (string)$o[1]){
                 $selected = "selected";
             }
             echo '<option value="' . $o[1] . '" ' . $selected . '>'. $o[0]  . '</option>';

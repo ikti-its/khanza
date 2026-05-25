@@ -5,6 +5,7 @@ namespace App\Core\Controller;
 use App\Core\Model\ModelTemplate;
 use CodeIgniter\Controller;
 use CodeIgniter\Database\Exceptions\DatabaseException;
+use CodeIgniter\HTTP\RedirectResponse;
 
 /** @mago-expect lint:too-many-methods */
 class ControllerTemplate extends Controller
@@ -72,9 +73,11 @@ class ControllerTemplate extends Controller
         $postData = [];
         foreach ($this->fields as $f) {
             [$_required, $name, $column, $type, $_show] = $f;
-            
+
+            if ($column === $this->primary_key) continue;
+
             $raw_data = $this->request->getPost($column);
-            if (in_array($type, ['jumlah', 'uang', 'suhu'], true)) {
+            if (in_array($type, ['jumlah', 'uang', 'suhu'])) {
                 $raw_data = floatval($raw_data);
             }
             $postData[$column] = $raw_data;
@@ -95,6 +98,11 @@ class ControllerTemplate extends Controller
         for($i = 0; $i < count($this->field); $i++){
             [$show, $required, $type, $column, $name] = $this->field[$i];
             $this->fields[$i] = [$show, $name, $column, $type, $required];
+            // Elemen ke-6 (index 5) opsional: opsi statis untuk dropdown enum
+            // Format: [['Label', 'value'], ['Label2', 'value2'], ...]
+            if (isset($this->field[$i][5])) {
+                $this->fields[$i][5] = $this->field[$i][5];
+            }
         }
     }
 
@@ -107,6 +115,10 @@ class ControllerTemplate extends Controller
         ];
         foreach ($this->action as $a) {
             if (!$a instanceof ActionType) {
+                continue;
+            }
+            // READ hanya penanda permission, bukan tombol aksi — tidak perlu dikirim ke view
+            if ($a === ActionType::READ) {
                 continue;
             }
             $action[$a->value] = true;
@@ -165,6 +177,32 @@ class ControllerTemplate extends Controller
         ]);
     }
 
+    private function get_fields_with_options(bool $include_pk = false): array
+    {
+        $all_options = $this->model->get_all_options();
+        $result = [];
+
+        foreach ($this->fields as $field) {
+            [$visible, , $column, $type] = $field;
+
+            if ($visible === 0 && !($include_pk && $column === $this->primary_key)) {
+                continue;
+            }
+
+            if ($type === 'status') {
+                if (isset($all_options[$column])) {
+                    // Opsi dari FK (tabel referensi) — prioritas utama
+                    $field[5] = $all_options[$column];
+                }
+                // Jika tidak ada FK, opsi statis sudah ada di $field[5] dari reorder_fields()
+            }
+
+            $result[] = $field;
+        }
+
+        return $result;
+    }
+
     final public function create_page(): string
     {
         $breadcrumbs = [
@@ -175,12 +213,15 @@ class ControllerTemplate extends Controller
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->get_uri_path(),
             'kolom_id'    => $this->primary_key,
-            'konfig'      => $this->fields,
+            'konfig'      => $this->get_fields_with_options(false),
             'form_action' => '/submittambah/',
         ]);
     }
+
     final public function update_page(int|string $id): string
     {
+        if ($id == 0) return $this->index();
+
         $breadcrumbs = [
             ['title' => 'Ubah', 'icon', 'Ubah']
         ];
@@ -190,47 +231,99 @@ class ControllerTemplate extends Controller
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->get_uri_path(),
             'kolom_id'    => $this->primary_key,
-            'konfig'      => $this->fields,
+            'konfig'      => $this->get_fields_with_options(true),
             'baris'       => $data,
             'form_action' => '/submitedit/' . $id,
         ]);
     }
 
-    final public function create(): string
+    /** Extract a user-friendly message from a DatabaseException */
+    private function friendly_db_error(DatabaseException $e): string
+    {
+        $msg = $e->getMessage();
+        if (str_contains($msg, 'violates foreign key constraint')) {
+            return 'Data tidak dapat dihapus atau diubah karena masih digunakan oleh data lain.';
+        }
+        if (str_contains($msg, 'duplicate key') || str_contains($msg, 'unique constraint')) {
+            return 'Data sudah ada. Gunakan nilai yang berbeda.';
+        }
+        if (str_contains($msg, 'not-null constraint') || str_contains($msg, 'violates not-null')) {
+            return 'Ada kolom wajib yang belum diisi.';
+        }
+        return $msg;
+    }
+
+    final public function create(): string|RedirectResponse
     {
         /** @var array<string, scalar|null> $postData */
         $postData = $this->get_post_data();
         try {
             $this->model->insert($postData);
         } catch(\ReflectionException $e){
-            die($e->getMessage());
+            session()->setFlashdata('error', $e->getMessage());
+            return redirect()->to($this->get_uri_path() . '/data');
+        } catch(DatabaseException $e){
+            $errMsg = $this->friendly_db_error($e);
+            session()->setFlashdata('error', $errMsg);
+            $breadcrumbs = [
+                ['title' => 'Tambah', 'icon', 'tambah']
+            ];
+            return view('/layouts/tambah_ubah', [
+                'judul'       => 'Tambah ' . $this->title,
+                'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
+                'modul_path'  => $this->get_uri_path(),
+                'kolom_id'    => $this->primary_key,
+                'konfig'      => $this->get_fields_with_options(false),
+                'form_action' => '/submittambah/',
+            ]);
         }
-        
-        return $this->index();
+
+        return redirect()->to($this->get_uri_path() . '/data');
     }
 
-    final public function update(int|string $id): string
+    final public function update(int|string $id): string|RedirectResponse
     {
+        if ($id == 0) return redirect()->to($this->get_uri_path() . '/data');
+
         /** @var array<string, scalar|null> $postData */
         $postData = $this->get_post_data();
         try {
             $this->model->update($id, $postData);
         } catch(\ReflectionException $e){
-            die($e->getMessage());
+            session()->setFlashdata('error', $e->getMessage());
+            return redirect()->to($this->get_uri_path() . '/data');
+        } catch(DatabaseException $e){
+            $errMsg = $this->friendly_db_error($e);
+            session()->setFlashdata('error', $errMsg);
+            $breadcrumbs = [
+                ['title' => 'Ubah', 'icon', 'Ubah']
+            ];
+            $data = $this->model->find($id);
+            return view('/layouts/tambah_ubah', [
+                'judul'       => 'Ubah ' . $this->title,
+                'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
+                'modul_path'  => $this->get_uri_path(),
+                'kolom_id'    => $this->primary_key,
+                'konfig'      => $this->get_fields_with_options(true),
+                'baris'       => $data,
+                'form_action' => '/submitedit/' . $id,
+            ]);
         }
-    
-        return $this->index();
+
+        return redirect()->to($this->get_uri_path() . '/data');
     }
 
-    final public function delete(int|string $id): string
-    {   
+    final public function delete(int|string $id): string|RedirectResponse
+    {
+        if ($id == 0) return redirect()->to($this->get_uri_path() . '/data');
+
         try {
             $this->model->delete($id);
         } catch(DatabaseException $e){
-            die($e->getMessage());
+            session()->setFlashdata('error', $this->friendly_db_error($e));
         }
-        
-        return $this->index();        
+
+        return redirect()->to($this->get_uri_path() . '/data');
     }
 
     public function print(int|string $id): string

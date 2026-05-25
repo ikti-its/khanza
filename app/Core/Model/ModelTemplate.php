@@ -79,16 +79,124 @@ class ModelTemplate extends Model
         return $this->primary_key;
     }
 
-    final public function audit(): array {       
-        $sql = "SELECT * FROM sik.{$this->table_name}_audit_view
-            LEFT OUTER JOIN 
+    /**
+     * @return list<array<string, mixed>>
+     */
+    #[\Override]
+    public function findAll(?int $limit = null, int $offset = 0): array
+    {
+        if (empty($this->join)) {
+            /** @var list<array<string, mixed>> */
+            return parent::findAll($limit, $offset);
+        }
+
+        $fk_lookup = [];
+        foreach ($this->database->get_foreign_keys() as $fk) {
+            [$fields, $ref_class, $ref_fields] = $fk;
+            if(is_string($fields)) $fields = [$fields];
+            if(is_string($ref_fields)) $ref_fields = [$ref_fields];
+
+            for ($i = 0; $i < count($fields); $i++) {
+                $fk_lookup[$fields[$i]] = [$ref_class, $ref_fields[$i]];
+            }
+        }
+
+        $main    = 'm';
+        $builder = $this->db->table("{$this->table} {$main}");
+        $builder->select("{$main}.*");
+
+        $idx = 0;
+        foreach ($this->join as $fk_col => $display_cols) {
+            if (!isset($fk_lookup[$fk_col])) continue;
+
+            /** @var class-string<\App\Core\Database\Template\DatabaseTemplate> $ref_class */
+            [$ref_class, $ref_on] = $fk_lookup[$fk_col];
+
+            $ref_db    = new $ref_class();
+            $ref_table = $ref_db->get_schema() . '.' . $ref_db->get_table_name();
+            $ref_alias = "j{$idx}";
+
+            foreach ($display_cols as $i => $disp) {
+                $as = ($i === 0) ? $fk_col : $disp;
+                $builder->select("{$ref_alias}.{$disp} AS {$as}");
+            }
+
+            $builder->join(
+                "{$ref_table} {$ref_alias}",
+                "{$main}.{$fk_col} = {$ref_alias}.{$ref_on}",
+                'left'
+            );
+            $idx++;
+        }
+
+        if ($limit !== null && $limit > 0) {
+            $builder->limit($limit, $offset);
+        }
+
+        $result = $builder->get();
+        assert($result instanceof \CodeIgniter\Database\BaseResult,
+            "findAll JOIN query failed on table: {$this->table}");
+
+        /** @var list<array<string, mixed>> */
+        return $result->getResultArray();
+    }
+
+    /** @return array<string, list<list<string>>> */
+    public function get_all_options(): array
+    {
+        if (empty($this->join)) return [];
+
+        $fk_lookup = [];
+        foreach ($this->database->get_foreign_keys() as $fk) {
+            [$fields, $ref_class, $ref_fields] = $fk;
+            $locals = is_string($fields)   ? [$fields]   : $fields;
+            $refs   = is_string($ref_fields) ? [$ref_fields] : $ref_fields;
+            for ($i = 0; $i < count($locals); $i++) {
+                $fk_lookup[$locals[$i]] = [$ref_class, $refs[$i]];
+            }
+        }
+
+        $options = [];
+        foreach ($this->join as $fk_col => $display_cols) {
+            if (!isset($fk_lookup[$fk_col])) continue;
+
+            [$ref_class, $ref_id_col] = $fk_lookup[$fk_col];
+            $display_col = $display_cols[0];
+
+            $ref_db    = new $ref_class();
+            $ref_table = $ref_db->get_schema() . '.' . $ref_db->get_table_name();
+
+            $query = $this->db->query(
+                "SELECT {$ref_id_col}, {$display_col} FROM {$ref_table} ORDER BY {$display_col}"
+            );
+            assert($query instanceof \CodeIgniter\Database\BaseResult,
+                "get_all_options query failed for: {$fk_col}");
+
+            $rows = $query->getResultArray();
+            $options[$fk_col] = array_map(
+                fn(array $row): array => [$row[$display_col], (string)$row[$ref_id_col]],
+                $rows
+            );
+        }
+
+        return $options;
+    }
+
+    final public function audit(): array {
+        $view = "{$this->schema}.{$this->table_name}_audit_view";
+        $sql  = "SELECT * FROM {$view}
+            LEFT OUTER JOIN
             (SELECT id, nama FROM sik.pegawai) c
-            ON sik.{$this->table_name}_audit_view.changed_by = c.id
+            ON {$view}.changed_by = c.id
             ORDER BY changed_by DESC";
-        
-        $query = $this->db->query($sql);
-        assert($query instanceof BaseResult, 'There is a problem in audit query');  
-        
+
+        try {
+            $query = $this->db->query($sql);
+        } catch (\CodeIgniter\Database\Exceptions\DatabaseException) {
+            return [];
+        }
+
+        if (! $query instanceof BaseResult) return [];
         return $query->getResultArray();
     }
 }

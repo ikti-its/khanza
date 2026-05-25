@@ -10,6 +10,8 @@
      * @var array<string, string|int|float> $row
      */
 
+    $row = (isset($baris) && is_array($baris)) ? $baris : [];
+
     $allowed_type = ['indeks', 'tanggal', 'jam', 'uang', 'status', 'nama', 'teks', 'jumlah', 'suhu', 'kosong', 'desimal', 'tanggal_jam'];
     $len = sizeof($konfig);
     if ($len % 2 !== 0) {
@@ -54,11 +56,11 @@
         ]);
 
         echo view('components/form/isian/' . $type, [
-            'id'    => '',
-            'kolom' => $column,
-            'value' => $row[$column] ?? '',
-            'req'   => $required,
-            'opsi'  => $option,
+            'id'     => '',
+            'column' => $column,
+            'value'  => $row[$column] ?? '',
+            'req'    => $required,
+            'opsi'   => $option,
         ]);
 
         if ($i % 2 !== 0) {

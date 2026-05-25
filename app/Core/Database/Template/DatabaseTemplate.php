@@ -239,6 +239,32 @@ class DatabaseTemplate extends Migration
         ");
 
         fclose($tmp_file);
+
+        if ($this->primary_key !== '') {
+            $seq_result = $this->db->query("
+                SELECT pg_get_serial_sequence(
+                    '{$this->schema}.{$this->table}',
+                    '{$this->primary_key}'
+                ) AS seq_name
+            ");
+            assert($seq_result instanceof \CodeIgniter\Database\BaseResult,
+                'Failed to query pg_get_serial_sequence');
+            $seq_row = $seq_result->getRowArray();
+
+            if (!empty($seq_row['seq_name'])) {
+                $seq_name = $seq_row['seq_name'];
+                $this->db->query("
+                    SELECT setval(
+                        '{$seq_name}',
+                        COALESCE(
+                            (SELECT MAX({$this->primary_key}::bigint)
+                             FROM {$this->schema}.{$this->table}),
+                            1
+                        )
+                    )
+                ");
+            }
+        }
     }
 
     #[\Override()]
@@ -273,6 +299,26 @@ class DatabaseTemplate extends Migration
             die($e->getMessage());
         }
         
+    }
+
+    /** @return array<int, array{
+     *   0: non-empty-string|list<non-empty-string>,
+     *   1: class-string<DatabaseTemplate>,
+     *   2: non-empty-string|list<non-empty-string>,
+     * }> */
+    public function get_foreign_keys(): array
+    {
+        return $this->foreign_key;
+    }
+
+    public function get_schema(): string
+    {
+        return $this->schema;
+    }
+
+    public function get_table_name(): string
+    {
+        return $this->table;
     }
 
     /** @return list<class-string<DatabaseTemplate>> */
