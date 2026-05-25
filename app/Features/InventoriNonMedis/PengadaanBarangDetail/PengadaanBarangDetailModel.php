@@ -18,12 +18,18 @@ final class PengadaanBarangDetailModel extends ModelTemplate
             'id_detail',
             [
                 'id_detail'    => V::DEFAULT(),
+                'id_pengadaan' => V::DEFAULT(),
+                'id_barang'    => V::DEFAULT(),
                 'qty'          => V::DEFAULT(),
                 'harga_satuan' => V::DEFAULT(),
             ],
             [
-                'id_pengadaan' => ['tanggal', 'status'],
-                'id_barang'    => ['kode_barang', 'nama_barang'],
+                'id_pengadaan' => ['tanggal'],
+                'id_barang' => [
+                    'nama_barang',
+                    'kode_barang',
+                    'id_satuan' => ['nama_satuan'],
+                ],
             ],
         );
     }

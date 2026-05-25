@@ -18,13 +18,22 @@ final class PengajuanBarangDetailModel extends ModelTemplate
             'id_detail',
             [
                 'id_detail'        => V::DEFAULT(),
+                'id_pengajuan'     => V::DEFAULT(),
+                'id_barang'        => V::DEFAULT(),
                 'nama_barang_baru' => V::DEFAULT(),
                 'qty'              => V::DEFAULT(),
                 'harga_estimasi'   => V::DEFAULT(),
             ],
             [
-                'id_pengajuan' => ['tanggal', 'status'],
-                'id_barang'    => ['kode_barang', 'nama_barang'],
+                'id_pengajuan' => [
+                    'tanggal',
+                    'id_status_pengajuan_barang' => ['nama_status_pengajuan_barang'],
+                ],
+                'id_barang' => [
+                    'nama_barang',
+                    'kode_barang',
+                    'id_satuan' => ['nama_satuan'],
+                ],
             ],
         );
     }

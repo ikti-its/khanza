@@ -17,13 +17,19 @@ final class PenerimaanBarangDetailModel extends ModelTemplate
             'penerimaan_barang_detail',
             'id_detail',
             [
-                'id_detail'    => V::DEFAULT(),
-                'qty_diterima' => V::DEFAULT(),
-                'harga_satuan' => V::DEFAULT(),
+                'id_detail'     => V::DEFAULT(),
+                'id_penerimaan' => V::DEFAULT(),
+                'id_barang'     => V::DEFAULT(),
+                'qty_diterima'  => V::DEFAULT(),
+                'harga_satuan'  => V::DEFAULT(),
             ],
             [
                 'id_penerimaan' => ['tanggal', 'status'],
-                'id_barang'     => ['kode_barang', 'nama_barang'],
+                'id_barang' => [
+                    'nama_barang',
+                    'kode_barang',
+                    'id_satuan' => ['nama_satuan'],
+                ],
             ],
         );
     }

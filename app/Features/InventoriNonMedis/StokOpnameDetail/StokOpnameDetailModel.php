@@ -18,14 +18,23 @@ final class StokOpnameDetailModel extends ModelTemplate
             'id_detail',
             [
                 'id_detail'   => V::DEFAULT(),
+                'id_opname'   => V::DEFAULT(),
+                'id_barang'   => V::DEFAULT(),
                 'stok_sistem' => V::DEFAULT(),
                 'stok_fisik'  => V::DEFAULT(),
                 'selisih'     => V::DEFAULT(),
                 'keterangan'  => V::DEFAULT(),
             ],
             [
-                'id_opname' => ['tanggal', 'status'],
-                'id_barang' => ['kode_barang', 'nama_barang'],
+                'id_opname' => [
+                    'tanggal',
+                    'id_status_stok_opname' => ['nama_status_stok_opname'],
+                ],
+                'id_barang' => [
+                    'nama_barang',
+                    'kode_barang',
+                    'id_satuan' => ['nama_satuan'],
+                ],
             ],
         );
     }

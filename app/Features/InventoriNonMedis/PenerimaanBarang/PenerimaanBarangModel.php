@@ -18,12 +18,16 @@ final class PenerimaanBarangModel extends ModelTemplate
             'id_penerimaan',
             [
                 'id_penerimaan' => V::DEFAULT(),
+                'id_pengadaan'  => V::DEFAULT(),
                 'tanggal'       => V::DEFAULT(),
                 'status'        => V::DEFAULT(),
                 'catatan'       => V::DEFAULT(),
             ],
             [
-                'id_pengadaan' => ['tanggal', 'status'],
+                'id_pengadaan' => [
+                    'tanggal',
+                    'id_status_pengadaan_barang' => ['nama_status_pengadaan_barang'],
+                ],
             ],
         );
     }
