@@ -28,6 +28,15 @@ class DatabaseTemplate extends Migration
      * }>*/
     private array $fields = [];
 
+    /**
+     * @var array<int, array{
+     *   0: list<non-empty-string>,
+     *   1: class-string<DatabaseTemplate>,
+     *   2: list<non-empty-string>,
+     * }>
+     */
+    public private(set) array $foreign_keys;
+
     /** @var array<class-string<DatabaseTemplate>, DatabaseTemplate> $ref_class_cache*/
     private static array $ref_class_cache = [];
 
@@ -56,6 +65,18 @@ class DatabaseTemplate extends Migration
         parent::__construct();
         foreach ($this->field as $name => $type) {
             $this->fields[$name] = $type->definition();
+        }
+
+        foreach($this->foreign_key as $f){
+            [$fields, $ref_table, $ref_fields] = $f;
+        
+            if (is_string($fields)){
+                $fields = [$fields];
+            }
+            if (is_string($ref_fields)){
+                $ref_fields = [$ref_fields];
+            }
+            $this->foreign_keys[] = [$fields, $ref_table, $ref_fields];
         }
         $this->set_fk_auto();
     }
@@ -117,21 +138,11 @@ class DatabaseTemplate extends Migration
     }
 
     private function add_foreign_key(): void {
-        $fks = $this->foreign_key;
-
-        if ($fks === []) {
-            return;
-        }
+        $fks = $this->foreign_keys;
 
         foreach ($fks as $fk) {
-            assert(count($fk) === 3, 'Every foreign key must have
-                a field, a reference table class, and a reference field');
-
             [$fields, $ref_table_class, $ref_fields] = $fk;
-
-            if (is_string($fields)) {
-                $fields = [$fields];
-            }
+        
             foreach ($fields as $field) {
                 assert(
                     in_array($field, array_keys($this->fields), true),
@@ -141,10 +152,6 @@ class DatabaseTemplate extends Migration
 
             $ref_table      = new $ref_table_class();
             $ref_table_name = $ref_table->schema . '.' . $ref_table->table;
-
-            if(is_string($ref_fields)){
-                $ref_fields = [$ref_fields];
-            }
 
             foreach ($ref_fields as $ref_field) {
                 assert(
@@ -169,7 +176,7 @@ class DatabaseTemplate extends Migration
     }
 
     private function set_fk_auto(): void {
-        $fks = $this->foreign_key;
+        $fks = $this->foreign_keys;
 
         foreach($fks as $fk){
             [$fields, $ref_table_class, $ref_fields] = $fk;
@@ -178,18 +185,12 @@ class DatabaseTemplate extends Migration
             }
             $ref_table = self::$ref_class_cache[$ref_table_class];
 
-            if (is_string($fields)) {
-                $fields = [$fields];
-            }
             foreach ($fields as $field) {
                 $field_def = $this->fields[$field];
                 assert(
                     $field_def['type'] === ST::FK_AUTO()->definition()['type'],
                     'Foreign key field must be of type T::FK_AUTO' . "Schema : {$this->schema}, table : {$this->table}",
                 );
-            }
-            if (is_string($ref_fields)) {
-                $ref_fields = [$ref_fields];
             }
 
             for($i = 0; $i < count($fields); $i++){
@@ -317,16 +318,6 @@ class DatabaseTemplate extends Migration
             die($e->getMessage());
         }
         
-    }
-
-    /** @return array<int, array{
-     *   0: non-empty-string|list<non-empty-string>,
-     *   1: class-string<DatabaseTemplate>,
-     *   2: non-empty-string|list<non-empty-string>,
-     * }> */
-    public function get_foreign_keys(): array
-    {
-        return $this->foreign_key;
     }
 
     public function get_schema(): string

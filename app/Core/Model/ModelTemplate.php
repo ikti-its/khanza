@@ -81,15 +81,13 @@ class ModelTemplate extends Model
     }
 
     /** @return array<string, array{0: class-string<DatabaseTemplate>, 1: string}> */
-    private function build_fk_lookup(DatabaseTemplate $db): array
+    private function build_fk_lookup(): array
     {
         $lookup = [];
-        foreach ($db->get_foreign_keys() as $fk) {
+        foreach ($this->database->foreign_keys as $fk) {
             [$fields, $ref_class, $ref_fields] = $fk;
-            $locals = is_string($fields)     ? [$fields]     : $fields;
-            $refs   = is_string($ref_fields) ? [$ref_fields] : $ref_fields;
-            for ($i = 0; $i < count($locals); $i++) {
-                $lookup[$locals[$i]] = [$ref_class, $refs[$i]];
+            for ($i = 0; $i < count($fields); $i++) {
+                $lookup[$fields[$i]] = [$ref_class, $ref_fields[$i]];
             }
         }
         return $lookup;
@@ -183,12 +181,10 @@ class ModelTemplate extends Model
         if (empty($this->join)) return [];
 
         $fk_lookup = [];
-        foreach ($this->database->get_foreign_keys() as $fk) {
+        foreach ($this->database->foreign_keys as $fk) {
             [$fields, $ref_class, $ref_fields] = $fk;
-            $locals = is_string($fields)   ? [$fields]   : $fields;
-            $refs   = is_string($ref_fields) ? [$ref_fields] : $ref_fields;
-            for ($i = 0; $i < count($locals); $i++) {
-                $fk_lookup[$locals[$i]] = [$ref_class, $refs[$i]];
+            for ($i = 0; $i < count($fields); $i++) {
+                $fk_lookup[$fields[$i]] = [$ref_class, $ref_fields[$i]];
             }
         }
 
