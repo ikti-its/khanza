@@ -24,9 +24,9 @@ class ModelTemplate extends Model
         protected array $fields,
         protected array $join,
     ) {
-        $this->table = $this->schema . '.' . $this->table_name;
+        $this->table = "{$this->database->schema}.{$this->database->table}";
         $this->allowedFields = array_keys($fields);
-        $this->primaryKey = $this->primary_key;
+        $this->primaryKey = $this->database->primary_key;
 
         $config = new \Config\Database()->default;
         $config['database'] = env('database.default.khanza_db');
@@ -102,14 +102,14 @@ class ModelTemplate extends Model
         DatabaseTemplate $parent_db,
         int &$idx,
     ): void {
-        $fk_lookup = $this->build_fk_lookup($parent_db);
+        $fk_lookup = $this->build_fk_lookup();
         if (!isset($fk_lookup[$fk_col])) return;
 
         /** @var class-string<DatabaseTemplate> $ref_class */
         [$ref_class, $ref_on] = $fk_lookup[$fk_col];
 
         $ref_db    = new $ref_class();
-        $ref_table = $ref_db->get_schema() . '.' . $ref_db->get_table_name();
+        $ref_table = $ref_db->schema . '.' . $ref_db->table;
         $ref_alias = "j{$idx}";
         $idx++;
 
@@ -200,7 +200,7 @@ class ModelTemplate extends Model
             [$ref_class, $ref_id_col] = $fk_lookup[$fk_col];
 
             $ref_db    = new $ref_class();
-            $ref_table = $ref_db->get_schema() . '.' . $ref_db->get_table_name();
+            $ref_table = $ref_db->schema . '.' . $ref_db->table;
 
             $query = $this->db->query(
                 "SELECT {$ref_id_col}, {$display_col} FROM {$ref_table} ORDER BY {$display_col}"
