@@ -9,25 +9,35 @@ use App\Core\Database\Template\DatabaseTemplate;
 /** @mago-expect lint:excessive-parameter-list */
 class ModelTemplate extends Model
 {
+    public private(set) DatabaseTemplate $database;
+    /** @var 'BASE'| 'JOIN'| 'REFS' */
+    public private(set) string $type;
+    
+    /** @var array<non-empty-string, ValidationType> */
+    public private(set) array $fields = [];
+    public private(set) array $join = [];
     protected function __construct(
-        protected DatabaseTemplate $database,
+        DatabaseTemplate $database,
         /** @var 'BASE'| 'JOIN'| 'REFS' */
-        protected string $type,
+        string $type,
         /** @var non-empty-string */
-        protected string $schema,
+        string $schema,
         /** @var non-empty-string */
-        protected string $table_name,
+        string $table_name,
         /** @var non-empty-string */
-        protected string $primary_key,
+        string $primary_key,
 
         /** @var array<non-empty-string, ValidationType> */
-        protected array $fields,
-        protected array $join,
+        array $fields,
+        array $join,
     ) {
+        $this->database = $database;
         $this->table = "{$this->database->schema}.{$this->database->table}";
-        $this->allowedFields = array_keys($fields);
         $this->primaryKey = $this->database->primary_key;
-
+        $this->type = $type;
+        $this->allowedFields = array_keys($fields);
+        $this->join = $join;
+        
         $config = new \Config\Database()->default;
         $config['database'] = env('database.default.khanza_db');
         parent::__construct(\Config\Database::connect($config));
