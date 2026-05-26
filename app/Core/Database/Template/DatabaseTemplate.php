@@ -8,6 +8,7 @@ use App\Core\Database\Template\SemanticType as ST;
 use CodeIgniter\Database\Exceptions\DatabaseException;
 use CodeIgniter\Database\Migration;
 use CodeIgniter\Database\RawSql;
+use Codeigniter\Database\BaseResult;
 
 /** @mago-expect analysis:unsafe-instantiation
  * @mago-expect lint:excessive-parameter-list
@@ -32,7 +33,7 @@ class DatabaseTemplate extends Migration
     /** @var non-empty-string $primary_key */
     public private(set) string $primary_key = '';
     
-    /** @var array<non-empty-string|array<non-empty-string>> */
+    /** @var list<list<non-empty-string>> */
     public private(set) array $unique_key = [];
 
     /**
@@ -162,11 +163,8 @@ class DatabaseTemplate extends Migration
     }
 
     private function add_foreign_key(): void {
-        $fks = $this->foreign_keys;
-
-        foreach ($fks as $fk) {
-            [$fields, $ref_table_class, $ref_fields] = $fk;
-        
+        foreach ($this->foreign_keys as $fk) {
+            [$fields, $ref_table_name, $ref_fields] = $fk;
             foreach ($fields as $field) {
                 assert( array_key_exists($field, $this->fields),
                     "Foreign key field {$field} not found in fields:" 
@@ -174,8 +172,10 @@ class DatabaseTemplate extends Migration
                 );
             }
 
-            $ref_table      = new $ref_table_class();
-            $ref_table_name = $ref_table->schema . '.' . $ref_table->table;
+            if (!isset(self::$ref_class_cache[$ref_table_name])) {
+                self::$ref_class_cache[$ref_table_name] = new $ref_table_name();
+            }
+            $ref_table_class = self::$ref_class_cache[$ref_table_name];
 
             foreach ($ref_fields as $ref_field) {
                 assert(
@@ -192,6 +192,7 @@ class DatabaseTemplate extends Migration
 
             // Add more comprehensive checks
             try {
+                $ref_table_name = "{$ref_table_class->schema}.{$ref_table_class->table}";
                 $this->forge->addForeignKey($fields, $ref_table_name, $ref_fields);
             } catch (DatabaseException $e){
                 die($e->getMessage());
@@ -203,11 +204,7 @@ class DatabaseTemplate extends Migration
         $fks = $this->foreign_keys;
 
         foreach($fks as $fk){
-            [$fields, $ref_table_class, $ref_fields] = $fk;
-            if (!isset(self::$ref_class_cache[$ref_table_class])) {
-                self::$ref_class_cache[$ref_table_class] = new $ref_table_class();
-            }
-            $ref_table = self::$ref_class_cache[$ref_table_class];
+            [$fields, $ref_table_name, $ref_fields] = $fk;
 
             foreach ($fields as $field) {
                 $field_def = $this->fields[$field];
@@ -217,9 +214,14 @@ class DatabaseTemplate extends Migration
                 );
             }
 
+            if (!isset(self::$ref_class_cache[$ref_table_name])) {
+                self::$ref_class_cache[$ref_table_name] = new $ref_table_name();
+            }
+            $ref_table_class = self::$ref_class_cache[$ref_table_name];
+
             for($i = 0; $i < count($fields); $i++){
                 $original_null = $this->fields[$fields[$i]]['null'];
-                $ref_def = $ref_table->fields[$ref_fields[$i]];
+                $ref_def = $ref_table_class->fields[$ref_fields[$i]];
                 $ref_def['type'] = (string) preg_replace('/\s+GENERATED\s+\w.*$/i', '', $ref_def['type']);
                 unset($ref_def['default']);
                 $ref_def['null'] = $original_null;
@@ -356,13 +358,13 @@ class DatabaseTemplate extends Migration
 
     /** @return list<class-string<DatabaseTemplate>> */
     public function dependencies(): array {
-        $fks = $this->foreign_key;
         $dependencies = [];
-        foreach($fks as $fk){
-            [$_fields, $ref_table_class, $_ref_fields] = $fk;
-            assert($ref_table_class !== static::class, "Foreign key refer to itself : {$ref_table_class}");
+        foreach($this->foreign_keys as $fk){
+            [$_fields, $ref_table_name, $_ref_fields] = $fk;
+            assert($ref_table_name !== static::class, 
+                "Foreign key refer to itself : {$ref_table_name}");
 
-            $dependencies[] = $ref_table_class;
+            $dependencies[] = $ref_table_name;
         }
 
         return array_values(array_unique($dependencies));
