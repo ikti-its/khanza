@@ -220,7 +220,9 @@ class ControllerTemplate extends Controller
         $parse_join_fields_recursive = function(
             array $specs, 
             string $current_fk, 
-            ?string $current_db_class
+            ?string $current_db_class,
+            string $fallback_label,
+            bool $is_single_column_join
         ) use (&$parse_join_fields_recursive, &$result): void {
 
             $ref_controller_class = null;
@@ -253,6 +255,15 @@ class ControllerTemplate extends Controller
                     $next_specs = is_array($v) ? $v : [$v];
                     $next_db_class = null;
 
+                    $next_fallback_label = ucwords(str_replace('_', ' ', $next_fk));
+
+                    foreach ($source_fields as $f) {
+                        if (isset($f[3]) && $f[3] === $next_fk && isset($f[4])) {
+                            $next_fallback_label = $f[4];
+                            break;
+                        }
+                    }
+
                     if ($current_db_class !== null && class_exists($current_db_class)) {
                         try {
                             $db_instance = new $current_db_class();
@@ -269,7 +280,8 @@ class ControllerTemplate extends Controller
                         } catch (\Exception $ex) {}
                     }
 
-                    $parse_join_fields_recursive($next_specs, $next_fk, $next_db_class);
+                    $next_is_single = (count($next_specs) === 1);
+                    $parse_join_fields_recursive($next_specs, $next_fk, $next_db_class, $next_fallback_label, $next_is_single);
 
                 } else {
                     $col_name = $v;
@@ -287,7 +299,11 @@ class ControllerTemplate extends Controller
                             $input_type = isset($f[2]) ? (is_object($f[2]) ? $f[2]->value : $f[2]) : 'teks';
                             $required_status = $f[1] ?? 1;
 
-                            $display_name = (isset($f[4]) && is_string($f[4])) ? $f[4] : ucwords(str_replace('_', ' ', $col_name));
+                            if ($is_single_column_join) {
+                                $display_name = $fallback_label;
+                            } else {
+                                $display_name = (isset($f[4]) && is_string($f[4])) ? $f[4] : ucwords(str_replace('_', ' ', $col_name));
+                            }
 
                             $result[] = [
                                 (int)$f[0],
@@ -302,6 +318,7 @@ class ControllerTemplate extends Controller
                     }
 
                     if (!$found) {
+                        $display_name = $is_single_column_join ? $fallback_label : ucwords(str_replace('_', ' ', $col_name));
                         $default_type = 'teks';
                         if (str_contains($col_name, 'tanggal') || str_contains($col_name, 'tgl')) {
                             $default_type = 'tanggal';
@@ -309,7 +326,7 @@ class ControllerTemplate extends Controller
 
                         $result[] = [
                             1,
-                            ucwords(str_replace('_', ' ', $col_name)),
+                            $display_name,
                             $col_name,
                             $default_type,
                             1
@@ -320,14 +337,17 @@ class ControllerTemplate extends Controller
         };
 
         foreach ($this->fields as $field) {
-            [$visible, , $column, $type] = $field;
+            [$visible, $display, $column, $type] = $field;
 
             if (isset($this->model->join) && array_key_exists($column, $this->model->join)) {
                 $display_cols = $this->model->join[$column];
                 $specs = is_array($display_cols) ? $display_cols : [$display_cols];
                 
+                $is_single_column_join = (count($specs) === 1 && !is_string(array_key_first($specs)));
+                $fallback_label = !empty($display) ? $display : ucwords(str_replace('_', ' ', $column));
+                
                 $initial_db = $fk_lookup[$column] ?? null;
-                $parse_join_fields_recursive($specs, $column, $initial_db);
+                $parse_join_fields_recursive($specs, $column, $initial_db, $fallback_label, $is_single_column_join);
                 
                 continue;
             }
