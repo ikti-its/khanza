@@ -86,10 +86,10 @@ class ModelTemplate extends Model
     }
 
     /** @return array<string, array{0: class-string<DatabaseTemplate>, 1: string}> */
-    private function build_fk_lookup(): array
+    private function build_fk_lookup(DatabaseTemplate $db): array
     {
         $lookup = [];
-        foreach ($this->database->foreign_keys as $fk) {
+        foreach ($db->foreign_keys as $fk) {
             [$fields, $ref_class, $ref_fields] = $fk;
             for ($i = 0; $i < count($fields); $i++) {
                 $lookup[$fields[$i]] = [$ref_class, $ref_fields[$i]];
@@ -107,7 +107,7 @@ class ModelTemplate extends Model
         DatabaseTemplate $parent_db,
         int &$idx,
     ): void {
-        $fk_lookup = $this->build_fk_lookup();
+        $fk_lookup = $this->build_fk_lookup($parent_db);
         if (!isset($fk_lookup[$fk_col])) return;
 
         /** @var class-string<DatabaseTemplate> $ref_class */
@@ -124,26 +124,11 @@ class ModelTemplate extends Model
             'left'
         );
 
-        $is_nested = false;
-        foreach ($spec as $k => $_) {
-            if (is_string($k)) { $is_nested = true; break; }
-        }
-
-        if (!$is_nested) {
-            foreach ($spec as $i => $disp) {
-                $as = ($i === 0) ? $fk_col : $disp;
-                $builder->select("{$ref_alias}.{$disp} AS {$as}");
-            }
-        } else {
-            $first_int = true;
-            foreach ($spec as $k => $v) {
-                if (is_int($k)) {
-                    $as = $first_int ? $fk_col : $v;
-                    $first_int = false;
-                    $builder->select("{$ref_alias}.{$v} AS {$as}");
-                } else {
-                    $this->apply_join_spec($builder, $k, $v, $ref_alias, $ref_db, $idx);
-                }
+        foreach ($spec as $k => $v) {
+            if (is_string($k)) {
+                $this->apply_join_spec($builder, $k, $v, $ref_alias, $ref_db, $idx);
+            } else {
+                $builder->select("{$ref_alias}.{$v} AS {$v}");
             }
         }
     }
@@ -163,9 +148,11 @@ class ModelTemplate extends Model
         $builder = $this->db->table("{$this->table} {$main}");
         $builder->select("{$main}.*");
 
-        $idx = 0;
-        foreach ($this->join as $fk_col => $spec) {
-            $this->apply_join_spec($builder, $fk_col, $spec, $main, $this->database, $idx);
+        if (!empty($this->join)) {
+            $idx = 0;
+            foreach ($this->join as $fk_col => $spec) {
+                $this->apply_join_spec($builder, $fk_col, $spec, $main, $this->database, $idx);
+            }
         }
 
         if ($limit > 0) {

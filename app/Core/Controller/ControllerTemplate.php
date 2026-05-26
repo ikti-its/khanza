@@ -151,15 +151,27 @@ class ControllerTemplate extends Controller
             'total' => $total_pages,
         ];
 
+        $konfig_kolom = $this->get_fields_with_options(true);
+        $data_tabel = $this->model->findAll($size, $offset);
+
+        foreach ($data_tabel as $index_baris => $baris) {
+            foreach ($konfig_kolom as $kolom) {
+                $nama_field_data = $kolom[2];
+                if (!array_key_exists($nama_field_data, $baris)) {
+                    $data_tabel[$index_baris][$nama_field_data] = "";
+                }
+            }
+        }
+
         return view('/layouts/data', [
             'judul'       => $this->title,
             'breadcrumbs' => $this->breadcrumbs,
             'meta_data'   => $meta_data,
             'modul_path'  => $this->get_uri_path(),
             'kolom_id'    => $this->primary_key,
-            'konfig'      => $this->fields,
+            'konfig'      => $konfig_kolom,
             'aksi'        => $this->actions,
-            'tabel'       => $this->model->findAll($size, $offset),
+            'tabel'       => $data_tabel,  
         ]);
     }
 
@@ -193,12 +205,141 @@ class ControllerTemplate extends Controller
         $all_options = $this->model->get_all_options();
         $result = [];
 
+        $fk_lookup = [];
+        if (isset($this->model->database) && isset($this->model->database->foreign_keys)) {
+            foreach ($this->model->database->foreign_keys as $fk) {
+                $fields = $fk[0];
+                $ref_class = $fk[1];
+                $locals = is_string($fields) ? [$fields] : $fields;
+                foreach ($locals as $local) {
+                    $fk_lookup[$local] = $ref_class;
+                }
+            }
+        }
+
+        $parse_join_fields_recursive = function(
+            array $specs, 
+            string $current_fk, 
+            ?string $current_db_class
+        ) use (&$parse_join_fields_recursive, &$result): void {
+
+            $ref_controller_class = null;
+            if ($current_db_class !== null) {
+                $ref_controller_class = str_replace(['Model', 'Database'], 'Controller', $current_db_class);
+                if (!str_contains($ref_controller_class, 'Controller')) {
+                    $ref_controller_class .= 'Controller';
+                }
+            }
+
+            $source_fields = [];
+            if ($ref_controller_class !== null && class_exists($ref_controller_class)) {
+                try {
+                    $controller_instance = \CodeIgniter\Config\Factories::controllers($ref_controller_class);
+                    if ($controller_instance !== null) {
+                        if (property_exists($controller_instance, 'field')) {
+                            $source_fields = $controller_instance->field;
+                        } elseif (property_exists($controller_instance, 'fields')) {
+                            $source_fields = $controller_instance->fields;
+                        }
+                    }
+                } catch (\Exception $e) {
+                    $source_fields = [];
+                }
+            }
+
+            foreach ($specs as $k => $v) {
+                if (is_string($k)) {
+                    $next_fk = $k;
+                    $next_specs = is_array($v) ? $v : [$v];
+                    $next_db_class = null;
+
+                    if ($current_db_class !== null && class_exists($current_db_class)) {
+                        try {
+                            $db_instance = new $current_db_class();
+                            if (isset($db_instance->foreign_keys) && is_array($db_instance->foreign_keys)) {
+                                foreach ($db_instance->foreign_keys as $sub_fk) {
+                                    $sub_fields = $sub_fk[0];
+                                    $sub_locals = is_string($sub_fields) ? [$sub_fields] : $sub_fields;
+                                    if (in_array($next_fk, $sub_locals)) {
+                                        $next_db_class = $sub_fk[1]; 
+                                        break;
+                                    }
+                                }
+                            }
+                        } catch (\Exception $ex) {}
+                    }
+
+                    $parse_join_fields_recursive($next_specs, $next_fk, $next_db_class);
+
+                } else {
+                    $col_name = $v;
+                    $found = false;
+
+                    foreach ($source_fields as $f) {
+                        $target_col = $f[3] ?? null;
+
+                        if ($target_col === $col_name) {
+                            if ((int)$f[0] === 0) {
+                                $found = true;
+                                break;
+                            }
+
+                            $input_type = isset($f[2]) ? (is_object($f[2]) ? $f[2]->value : $f[2]) : 'teks';
+                            $required_status = $f[1] ?? 1;
+
+                            $display_name = (isset($f[4]) && is_string($f[4])) ? $f[4] : ucwords(str_replace('_', ' ', $col_name));
+
+                            $result[] = [
+                                (int)$f[0],
+                                $display_name,
+                                $col_name,
+                                $input_type,
+                                $required_status
+                            ];
+                            $found = true;
+                            break;
+                        }
+                    }
+
+                    if (!$found) {
+                        $default_type = 'teks';
+                        if (str_contains($col_name, 'tanggal') || str_contains($col_name, 'tgl')) {
+                            $default_type = 'tanggal';
+                        }
+
+                        $result[] = [
+                            1,
+                            ucwords(str_replace('_', ' ', $col_name)),
+                            $col_name,
+                            $default_type,
+                            1
+                        ];
+                    }
+                }
+            }
+        };
+
         foreach ($this->fields as $field) {
             [$visible, , $column, $type] = $field;
 
-            if ($visible === 0 && !($include_pk && $column === $this->primary_key)) {
+            if (isset($this->model->join) && array_key_exists($column, $this->model->join)) {
+                $display_cols = $this->model->join[$column];
+                $specs = is_array($display_cols) ? $display_cols : [$display_cols];
+                
+                $initial_db = $fk_lookup[$column] ?? null;
+                $parse_join_fields_recursive($specs, $column, $initial_db);
+                
                 continue;
             }
+
+            if ((int)$visible === 0 && !($include_pk && $column === $this->primary_key)) {
+                continue;
+            }
+
+            if (is_object($type) && isset($type->value)) {
+                $type = $type->value;
+            }
+            $field[3] = $type;
 
             if ($type === 'status' && isset($all_options[$column])) {
                 $field[5] = $all_options[$column];
