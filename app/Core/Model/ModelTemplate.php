@@ -85,11 +85,6 @@ class ModelTemplate extends Model
         // $this->afterDelete  = [];
     }
 
-    /** @return non-empty-string */
-    final public function get_primary_key(): string{
-        return $this->primary_key;
-    }
-
     /** @return array<string, array{0: class-string<DatabaseTemplate>, 1: string}> */
     private function build_fk_lookup(): array
     {
