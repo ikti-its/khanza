@@ -346,16 +346,6 @@ class DatabaseTemplate extends Migration
         
     }
 
-    public function get_schema(): string
-    {
-        return $this->schema;
-    }
-
-    public function get_table_name(): string
-    {
-        return $this->table;
-    }
-
     /** @return list<class-string<DatabaseTemplate>> */
     public function dependencies(): array {
         $dependencies = [];
