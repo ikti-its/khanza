@@ -53,7 +53,7 @@ class ControllerTemplate extends Controller
         $this->process_fields();
         $this->process_action();
         $this->process_breadcrumbs();
-        $this->primary_key = $this->model->get_primary_key();
+        $this->primary_key = $this->model->primaryKey;
         $this->meta_data = ['page' => 1, 'size' => 10, 'total' => 1];
     }
 
