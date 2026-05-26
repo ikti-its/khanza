@@ -87,7 +87,16 @@ class DatabaseTemplate extends Migration
             $this->fields[$name] = $type->definition();
         }
         $this->primary_key = $primary_key;
-        $this->unique_key  = $unique_key;
+        
+        if (is_string($unique_key)){
+            $unique_key = [$unique_key];
+        }
+        foreach ($unique_key as $keys) {
+            if (is_string($keys)) {
+                $keys = [$keys];
+            } 
+            $this->unique_key[]  = $keys;
+        }
 
         foreach($foreign_keys as $f){
             [$fields, $ref_table, $ref_fields] = $f;
@@ -133,14 +142,7 @@ class DatabaseTemplate extends Migration
         $pk = $this->primary_key;
         $uk = $this->unique_key;
 
-        if ($uk === []) {
-            return;
-        }
         foreach ($uk as $keys) {
-            if (is_string($keys)) {
-                $keys = [$keys];
-            } 
-
             foreach ($keys as $key) {
                 assert(
                     array_key_exists($key, $this->fields),
@@ -154,9 +156,6 @@ class DatabaseTemplate extends Migration
 
                 // Add more exhaustive checks
             }
-        }
-
-        foreach ($this->unique_key as $keys) {
             $this->forge->addUniqueKey($keys);
         }
     }
