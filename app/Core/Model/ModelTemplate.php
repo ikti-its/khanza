@@ -168,7 +168,7 @@ class ModelTemplate extends Model
         }
 
         $result = $builder->get();
-        assert($result instanceof \CodeIgniter\Database\BaseResult,
+        assert($result instanceof BaseResult,
             "findAll JOIN query failed on table: {$this->table}");
 
         /** @var list<array<string, mixed>> */
@@ -205,7 +205,7 @@ class ModelTemplate extends Model
             $query = $this->db->query(
                 "SELECT {$ref_id_col}, {$display_col} FROM {$ref_table} ORDER BY {$display_col}"
             );
-            assert($query instanceof \CodeIgniter\Database\BaseResult,
+            assert($query instanceof BaseResult,
                 "get_all_options query failed for: {$fk_col}");
 
             $rows = $query->getResultArray();
