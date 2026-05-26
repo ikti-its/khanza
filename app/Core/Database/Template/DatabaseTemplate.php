@@ -17,9 +17,11 @@ use CodeIgniter\Database\RawSql;
  */
 class DatabaseTemplate extends Migration
 {
-    /** @var array<array<string>> */
-    private array $index = [];
-    
+    /** @var non-empty-string $schema */
+    public private(set) string $schema;
+    /** @var non-empty-string $table */
+    public private(set) string $table;
+
     /** @var array<string, array{
      *     type: string,
      *     null: bool,
@@ -27,6 +29,11 @@ class DatabaseTemplate extends Migration
      *     default?: RawSql,
      * }>*/
     private array $fields = [];
+    /** @var non-empty-string $primary_key */
+    public private(set) string $primary_key = '';
+    
+    /** @var array<non-empty-string|array<non-empty-string>> */
+    public private(set) array $unique_key = [];
 
     /**
      * @var array<int, array{
@@ -35,22 +42,32 @@ class DatabaseTemplate extends Migration
      *   2: list<non-empty-string>,
      * }>
      */
-    public private(set) array $foreign_keys;
+    public private(set) array $foreign_keys = [];
 
+    public private(set) bool $data_is_real = false;
+    /** @var non-empty-string $source */
+    public private(set) string $source = '';
+
+    /** @var array<array<string>> */
+    private array $index = [];
+    
     /** @var array<class-string<DatabaseTemplate>, DatabaseTemplate> $ref_class_cache*/
     private static array $ref_class_cache = [];
 
+    
     public function __construct(
-        protected string $schema = '',
-        protected string $table  = '',
+        /** @var non-empty-string $primary_key */
+        string $schema = '',
+        /** @var non-empty-string $primary_key */
+        string $table = '',
         
         /** @var array<non-empty-string, ForgeType>*/
-        protected array $field = [],
+        array $fields = [],
         /** @var non-empty-string $primary_key */
-        protected string $primary_key = '',
+        string $primary_key = '',
         
         /** @var array<non-empty-string|array<non-empty-string>> */
-        protected array $unique_key = [],
+        array $unique_key = [],
         /**
          * @var array<int, array{
          *   0: non-empty-string|list<non-empty-string>,
@@ -58,16 +75,21 @@ class DatabaseTemplate extends Migration
          *   2: non-empty-string|list<non-empty-string>,
          * }>
          */
-        protected array $foreign_key = [],
-        protected bool $data_is_real = false,
-        protected string $source = '', 
+        array $foreign_keys = [],
+        bool $data_is_real = false,
+        /** @var non-empty-string $source */
+        string $source = '', 
     ) {
         parent::__construct();
-        foreach ($this->field as $name => $type) {
+        $this->schema = $schema;
+        $this->table = $table;
+        foreach ($fields as $name => $type) {
             $this->fields[$name] = $type->definition();
         }
+        $this->primary_key = $primary_key;
+        $this->unique_key  = $unique_key;
 
-        foreach($this->foreign_key as $f){
+        foreach($foreign_keys as $f){
             [$fields, $ref_table, $ref_fields] = $f;
         
             if (is_string($fields)){
@@ -78,6 +100,8 @@ class DatabaseTemplate extends Migration
             }
             $this->foreign_keys[] = [$fields, $ref_table, $ref_fields];
         }
+        $this->data_is_real = $data_is_real;
+        $this->source = $source;
         $this->set_fk_auto();
     }
     
