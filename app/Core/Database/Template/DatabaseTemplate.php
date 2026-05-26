@@ -124,14 +124,15 @@ class DatabaseTemplate extends Migration
 
     private function add_primary_key(): void {
         $pk = $this->primary_key;
+        $field_names = implode(', ', array_keys($this->fields));
 
-        assert(
-            array_key_exists($pk, $this->fields),
-            "Primary key '{$pk}' is not defined in fields: " . implode(', ', array_keys($this->fields)),
+        assert( array_key_exists($pk, $this->fields),
+            "Primary key '{$pk}' is not defined in fields: {$field_names}"
         );
 
-        assert(!$this->fields[$pk]['null'], "Primary key field '{$pk}' cannot be nullable.
-            Schema : {$this->schema}, Table : {$this->table}");
+        assert( ! $this->fields[$pk]['null'], 
+            "Primary key field '{$pk}' cannot be nullable. " .
+            "Schema : {$this->schema}, Table : {$this->table}");
 
         // Add more comprehensive checks
 
@@ -144,16 +145,16 @@ class DatabaseTemplate extends Migration
 
         foreach ($uk as $keys) {
             foreach ($keys as $key) {
-                assert(
-                    array_key_exists($key, $this->fields),
-                    "Unique key '{$key}' is not defined in fields " . implode(', ', array_keys($this->fields)),
+                assert( array_key_exists($key, $this->fields),
+                    "Unique key '{$key}' is not defined in fields " 
+                    . implode(', ', array_keys($this->fields)),
                 );
-                assert($key !== $pk, "Unique key '{$key}' is the same as the primary key");
-                assert(
-                    array_count_values($keys)[$key] = 1,
-                    "Unique key field '{$key}' is duplicated in unique key pair " . implode(', ', $keys),
+                assert( $key !== $pk, 
+                    "Unique key '{$key}' is the same as the primary key");
+                assert( array_count_values($keys)[$key] = 1,
+                    "Unique key field '{$key}' is duplicated in unique key pair " 
+                    . implode(', ', $keys),
                 );
-
                 // Add more exhaustive checks
             }
             $this->forge->addUniqueKey($keys);
@@ -167,9 +168,9 @@ class DatabaseTemplate extends Migration
             [$fields, $ref_table_class, $ref_fields] = $fk;
         
             foreach ($fields as $field) {
-                assert(
-                    in_array($field, array_keys($this->fields), true),
-                    "Foreign key field {$field} not found in fields.",
+                assert( array_key_exists($field, $this->fields),
+                    "Foreign key field {$field} not found in fields:" 
+                    . implode(', ', array_keys($this->fields)),
                 );
             }
 
@@ -178,15 +179,15 @@ class DatabaseTemplate extends Migration
 
             foreach ($ref_fields as $ref_field) {
                 assert(
-                    in_array($ref_field, array_keys($ref_table->fields), true),
-                    "Foreign key field {$ref_field} not found in reference table",
+                    array_key_exists($ref_field, $ref_table_class->fields),
+                    "Foreign key field {$ref_field} not found in reference table"
+                    . implode(', ', array_keys($ref_table_class->fields))
                 );
             }
 
-            assert(
-                count($fields) === count($ref_fields),
-                'The fields ' . implode(',', $fields) . 'has more columns than the referenced fields'
-                    . implode(',', $ref_fields),
+            assert(count($fields) === count($ref_fields),
+                'The fields ' . implode(',', $fields) . 
+                'has more columns than the referenced fields' . implode(',', $ref_fields),
             );
 
             // Add more comprehensive checks
@@ -210,9 +211,9 @@ class DatabaseTemplate extends Migration
 
             foreach ($fields as $field) {
                 $field_def = $this->fields[$field];
-                assert(
-                    $field_def['type'] === ST::FK_AUTO()->definition()['type'],
-                    'Foreign key field must be of type T::FK_AUTO' . "Schema : {$this->schema}, table : {$this->table}",
+                assert($field_def['type'] === ST::FK_AUTO()->definition()['type'],
+                    'Foreign key field must be of type T::FK_AUTO' . 
+                    "Schema : {$this->schema}, table : {$this->table}",
                 );
             }
 
@@ -251,7 +252,7 @@ class DatabaseTemplate extends Migration
             die($e->getMessage());
         }
         $filename = $reflection->getFileName();
-        assert($filename !== false, 'File name for database not found');
+        assert($filename !== false, 'File name for seeder not found');
         
         $dir = dirname($filename);
         $csv_file = $dir . '/' . $this->source;
@@ -289,7 +290,7 @@ class DatabaseTemplate extends Migration
                     '{$this->primary_key}'
                 ) AS seq_name
             ");
-            assert($seq_result instanceof \CodeIgniter\Database\BaseResult,
+            assert($seq_result instanceof BaseResult,
                 'Failed to query pg_get_serial_sequence');
             $seq_row = $seq_result->getRowArray();
 
