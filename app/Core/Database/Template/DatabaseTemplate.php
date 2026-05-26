@@ -48,7 +48,7 @@ class DatabaseTemplate extends Migration
     /** @var non-empty-string $source */
     public private(set) string $source = '';
 
-    /** @var array<array<string>> */
+    /** @var list<list<string>> */
     private array $index = [];
     
     /** @var array<class-string<DatabaseTemplate>, DatabaseTemplate> $ref_class_cache*/
@@ -56,17 +56,17 @@ class DatabaseTemplate extends Migration
 
     
     public function __construct(
-        /** @var non-empty-string $primary_key */
+        /** @var non-empty-string $schema */
         string $schema = '',
-        /** @var non-empty-string $primary_key */
+        /** @var non-empty-string $table */
         string $table = '',
         
-        /** @var array<non-empty-string, ForgeType>*/
+        /** @var array<non-empty-string, ForgeType> $fields*/
         array $fields = [],
         /** @var non-empty-string $primary_key */
         string $primary_key = '',
         
-        /** @var array<non-empty-string|array<non-empty-string>> */
+        /** @var non-empty-string|list<non-empty-string|list<non-empty-string>> */
         array $unique_key = [],
         /**
          * @var array<int, array{
