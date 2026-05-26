@@ -22,7 +22,15 @@ final class PendonorModel extends ModelTemplate
                 'tanggal_donor_terakhir' => V::DEFAULT(),
             ],
             [
-                'id_orang'  => ['nik', 'nama', 'tanggal_lahir'],
+                'id_orang'  => [
+                    'nama',
+                    'nik', 
+                    'id_jenis_kelamin'  => ['nama_jenis_kelamin'],
+                    'tempat_lahir_kota' => ['nama_kota'],
+                    'tanggal_lahir',
+                    'id_alamat'         => ['alamat_lengkap'],
+                    'id_golongan_darah' => ['nama_golongan_darah'],
+                ],
                 'id_rhesus' => ['kode_rhesus'],
             ],
         );
