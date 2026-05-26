@@ -152,9 +152,9 @@ class ModelTemplate extends Model
      * @return list<array<string, mixed>>
      */
     #[\Override]
-    public function findAll(?int $limit = null, int $offset = 0): array
+    public function findAll(int|null $limit = 10, int $offset = 0): array
     {
-        if (empty($this->join)) {
+        if ($this->join === []) {
             /** @var list<array<string, mixed>> */
             return parent::findAll($limit, $offset);
         }
@@ -168,7 +168,7 @@ class ModelTemplate extends Model
             $this->apply_join_spec($builder, $fk_col, $spec, $main, $this->database, $idx);
         }
 
-        if ($limit !== null && $limit > 0) {
+        if ($limit > 0) {
             $builder->limit($limit, $offset);
         }
 
