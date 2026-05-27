@@ -798,6 +798,17 @@
                         ['Dokter Jaga', '/dokterjaga', ''],
                     ]],
                     ['Rawat Inap', '/rawatinap', 'rawat_inap', '', $petugasdokterrole, []],
+                    ['Rawat Jalan', '', 'rawat_jalan', '/rawat-jalan', $petugasrole, [
+                        // Skrining Rawat Jalan
+                        ['Skrining Rawat Jalan',          '/skrining-rawat-jalan',      ''],
+                        // Referensi Skrining
+                        ['Referensi Batuk',               '/ref-skrining-batuk',        ''],
+                        ['Referensi Keputusan',           '/ref-skrining-keputusan',    ''],
+                        ['Referensi Kesadaran',           '/ref-skrining-kesadaran',    ''],
+                        ['Referensi Nyeri Dada',          '/ref-skrining-nyeri-dada',   ''],
+                        ['Referensi Pernafasan',          '/ref-skrining-pernafasan',   ''],
+                        ['Referensi Skala Nyeri',         '/ref-skrining-skala-nyeri',  ''],
+                    ]],
                     ['Ruangan', '/kamar', 'kamar', '', $petugasrole, []],
                     ['Unit Gawat Darurat', '/ugd', 'ugd', '', $petugasdokterrole, []],
                     ['Triase UGD', '', 'triase_ugd', '/triase-ugd', $petugasrole, [
@@ -818,6 +829,78 @@
                     ]],
                     ['Ambulans', '/ambulans', 'ambulans', '', $petugasrole, []],
                     ['Tindakan', '/tindakan', 'tindakan', '', $petugasrole, []],
+                    ['Operasi', '', 'operasi', '/operasi', $petugasrole, [
+                        // Catatan Anestesi Sedasi
+                        ['Catatan Anestesi Sedasi',             '/catatan-anestesi-sedasi',           ''],
+                        ['Catatan Anestesi Sedasi Alat',        '/catatan-anestesi-sedasi-alat',      ''],
+                        ['Catatan Anestesi Sedasi Monitoring',  '/catatan-anestesi-sedasi-monitoring', ''],
+                        // Catatan Paska Operasi
+                        ['Catatan Paska Operasi',               '/catatan-paska-operasi',             ''],
+                        // Checklist Post Operasi
+                        ['Checklist Post Operasi',              '/checklist-postop',                  ''],
+                        ['Checklist Post Operasi Drain',        '/checklist-postop-drain',            ''],
+                        ['Checklist Post Operasi Penunjang',    '/checklist-postop-penunjang',        ''],
+                        // Checklist Pre Operasi
+                        ['Checklist Pre Operasi',               '/checklist-pre-operasi',             ''],
+                        ['Checklist Pre Operasi Penunjang',     '/checklist-pre-operasi-penunjang',   ''],
+                        // Jadwal & Permintaan
+                        ['Jadwal Operasi',                      '/jadwal-operasi',                    ''],
+                        ['Permintaan Operasi',                  '/permintaan-operasi',                ''],
+                        // Pengkajian
+                        ['Pengkajian Pre Operasi',              '/pengkajian-preop',                  ''],
+                        ['Pengkajian Pre Anestesi',             '/pengkajian-pre-anestesi',           ''],
+                        ['Pengkajian Pre Induksi',              '/pengkajian-pre-induksi',            ''],
+                        ['Pengkajian Pre Induksi Airway',       '/pengkajian-pre-induksi-airway',     ''],
+                        // Penyerahan Pasien
+                        ['Penyerahan Pasien',                   '/penyerahan-pasien',                 ''],
+                        ['Penyerahan Pasien Peralatan',         '/penyerahan-pasien-peralatan',       ''],
+                        // Sign In & Sign Out
+                        ['Sign In Sebelum Anestesi',            '/signin-sebelum-anestesi',           ''],
+                        ['Sign Out Sebelum Tutup Luka',         '/signout-sebelum-tutupluka',         ''],
+                        // Skor
+                        ['Skor Aldrette',                       '/skor-aldrette',                     ''],
+                        ['Skor Bromage',                        '/skor-bromage',                      ''],
+                        ['Skor Steward',                        '/skor-steward',                      ''],
+                        // Time Out
+                        ['Time Out Sebelum Insisi',             '/time-out-sebelum-insisi',           ''],
+                        ['Time Out Sebelum Insisi Penunjang',   '/time-out-sebelum-insisi-penunjang', ''],
+                        // Referensi Skor
+                        ['Ref Aldrette Aktivitas',              '/ref-aldrette-aktivitas',            ''],
+                        ['Ref Aldrette Kesadaran',              '/ref-aldrette-kesadaran',            ''],
+                        ['Ref Aldrette Respirasi',              '/ref-aldrette-respirasi',            ''],
+                        ['Ref Aldrette Tekanan Darah',          '/ref-aldrette-tekanan-darah',        ''],
+                        ['Ref Aldrette Warna Kulit',            '/ref-aldrette-warna-kulit',          ''],
+                        ['Ref Steward Kesadaran',               '/ref-steward-kesadaran',             ''],
+                        ['Ref Steward Motorik',                 '/ref-steward-motorik',               ''],
+                        ['Ref Steward Respirasi',               '/ref-steward-respirasi',             ''],
+                        // Referensi Umum
+                        ['Ref Alat Anestesi',                   '/ref-alat-anestesi',                 ''],
+                        ['Ref Angka ASA',                       '/ref-angka-asa',                     ''],
+                        ['Ref Bromage',                         '/ref-bromage',                       ''],
+                        ['Ref Hubungan Keluarga',               '/ref-hubungan-keluarga',             ''],
+                        ['Ref Indikasi Pindah',                 '/ref-indikasi-pindah',               ''],
+                        ['Ref Induksi',                         '/ref-induksi',                       ''],
+                        ['Ref Jenis Penunjang',                 '/ref-jenis-penunjang',               ''],
+                        ['Ref Jenis Sedasi',                    '/ref-jenis-sedasi',                  ''],
+                        ['Ref Keadaan Umum',                    '/ref-keadaan-umum',                  ''],
+                        ['Ref Keadaan Umum Transfer',           '/ref-keadaan-umum-transfer',         ''],
+                        ['Ref Kesadaran',                       '/ref-kesadaran',                     ''],
+                        ['Ref Kesadaran Pasca Op',              '/ref-kesadaran-pascaop',             ''],
+                        ['Ref Kesiapan Anestesi',               '/ref-kesiapan-anestesi',             ''],
+                        ['Ref Ketersediaan Status',             '/ref-ketersediaan-status',           ''],
+                        ['Ref Metode Transfer',                 '/ref-metode-transfer',               ''],
+                        ['Ref Monitoring Anestesi',             '/ref-monitoring-anestesi',           ''],
+                        ['Ref Obat Bebas',                      '/ref-obat-bebas',                    ''],
+                        ['Ref Peralatan Transfer',              '/ref-peralatan-transfer',            ''],
+                        ['Ref Posisi Pasien',                   '/ref-posisi-pasien',                 ''],
+                        ['Ref Premedikasi',                     '/ref-premedikasi',                   ''],
+                        ['Ref Rencana Anestesi',                '/ref-rencana-anestesi',              ''],
+                        ['Ref Status Operasi',                  '/ref-status-operasi',                ''],
+                        ['Ref Status Penayangan',               '/ref-status-penayangan',             ''],
+                        ['Ref Status Spesimen',                 '/ref-status-spesimen',               ''],
+                        ['Referensi Tindakan Operasi',          '/ref-tindakan-operasi',              ''],
+                        ['Ref Warna Urine',                     '/ref-warna-urine',                   ''],
+                    ]],
                     ['Pemeriksaan', '/pemeriksaanranap', 'pemeriksaan', '', $petugasrole, []],
                     ['Resep Obat', '/resepobat', 'resep_obat', '', $petugasdokterrole, []],
                     ['Pemberian Obat', '/pemberianobat', 'pemberian_obat', '', $petugasrole, []],
@@ -932,89 +1015,6 @@
                         ['Referensi Item Radiologi',      '/ref-item-rad',            ''],
                         ['Referensi Status Permintaan',   '/ref-status-permintaan-rad', ''],
                         ['Referensi Template Radiologi',  '/ref-template-rad',        ''],
-                    ]],
-                    ['Rawat Jalan', '', 'rawat_jalan', '/rawat-jalan', $petugasrole, [
-                        // Skrining Rawat Jalan
-                        ['Skrining Rawat Jalan',          '/skrining-rawat-jalan',      ''],
-                        // Referensi Skrining
-                        ['Referensi Batuk',               '/ref-skrining-batuk',        ''],
-                        ['Referensi Keputusan',           '/ref-skrining-keputusan',    ''],
-                        ['Referensi Kesadaran',           '/ref-skrining-kesadaran',    ''],
-                        ['Referensi Nyeri Dada',          '/ref-skrining-nyeri-dada',   ''],
-                        ['Referensi Pernafasan',          '/ref-skrining-pernafasan',   ''],
-                        ['Referensi Skala Nyeri',         '/ref-skrining-skala-nyeri',  ''],
-                    ]],
-                    ['Operasi', '', 'operasi', '/operasi', $petugasrole, [
-                        // Catatan Anestesi Sedasi
-                        ['Catatan Anestesi Sedasi',             '/catatan-anestesi-sedasi',           ''],
-                        ['Catatan Anestesi Sedasi Alat',        '/catatan-anestesi-sedasi-alat',      ''],
-                        ['Catatan Anestesi Sedasi Monitoring',  '/catatan-anestesi-sedasi-monitoring', ''],
-                        // Catatan Paska Operasi
-                        ['Catatan Paska Operasi',               '/catatan-paska-operasi',             ''],
-                        // Checklist Post Operasi
-                        ['Checklist Post Operasi',              '/checklist-postop',                  ''],
-                        ['Checklist Post Operasi Drain',        '/checklist-postop-drain',            ''],
-                        ['Checklist Post Operasi Penunjang',    '/checklist-postop-penunjang',        ''],
-                        // Checklist Pre Operasi
-                        ['Checklist Pre Operasi',               '/checklist-pre-operasi',             ''],
-                        ['Checklist Pre Operasi Penunjang',     '/checklist-pre-operasi-penunjang',   ''],
-                        // Jadwal & Permintaan
-                        ['Jadwal Operasi',                      '/jadwal-operasi',                    ''],
-                        ['Permintaan Operasi',                  '/permintaan-operasi',                ''],
-                        // Pengkajian
-                        ['Pengkajian Pre Operasi',              '/pengkajian-preop',                  ''],
-                        ['Pengkajian Pre Anestesi',             '/pengkajian-pre-anestesi',           ''],
-                        ['Pengkajian Pre Induksi',              '/pengkajian-pre-induksi',            ''],
-                        ['Pengkajian Pre Induksi Airway',       '/pengkajian-pre-induksi-airway',     ''],
-                        // Penyerahan Pasien
-                        ['Penyerahan Pasien',                   '/penyerahan-pasien',                 ''],
-                        ['Penyerahan Pasien Peralatan',         '/penyerahan-pasien-peralatan',       ''],
-                        // Sign In & Sign Out
-                        ['Sign In Sebelum Anestesi',            '/signin-sebelum-anestesi',           ''],
-                        ['Sign Out Sebelum Tutup Luka',         '/signout-sebelum-tutupluka',         ''],
-                        // Skor
-                        ['Skor Aldrette',                       '/skor-aldrette',                     ''],
-                        ['Skor Bromage',                        '/skor-bromage',                      ''],
-                        ['Skor Steward',                        '/skor-steward',                      ''],
-                        // Time Out
-                        ['Time Out Sebelum Insisi',             '/time-out-sebelum-insisi',           ''],
-                        ['Time Out Sebelum Insisi Penunjang',   '/time-out-sebelum-insisi-penunjang', ''],
-                        // Referensi Skor
-                        ['Ref Aldrette Aktivitas',              '/ref-aldrette-aktivitas',            ''],
-                        ['Ref Aldrette Kesadaran',              '/ref-aldrette-kesadaran',            ''],
-                        ['Ref Aldrette Respirasi',              '/ref-aldrette-respirasi',            ''],
-                        ['Ref Aldrette Tekanan Darah',          '/ref-aldrette-tekanan-darah',        ''],
-                        ['Ref Aldrette Warna Kulit',            '/ref-aldrette-warna-kulit',          ''],
-                        ['Ref Steward Kesadaran',               '/ref-steward-kesadaran',             ''],
-                        ['Ref Steward Motorik',                 '/ref-steward-motorik',               ''],
-                        ['Ref Steward Respirasi',               '/ref-steward-respirasi',             ''],
-                        // Referensi Umum
-                        ['Ref Alat Anestesi',                   '/ref-alat-anestesi',                 ''],
-                        ['Ref Angka ASA',                       '/ref-angka-asa',                     ''],
-                        ['Ref Bromage',                         '/ref-bromage',                       ''],
-                        ['Ref Hubungan Keluarga',               '/ref-hubungan-keluarga',             ''],
-                        ['Ref Indikasi Pindah',                 '/ref-indikasi-pindah',               ''],
-                        ['Ref Induksi',                         '/ref-induksi',                       ''],
-                        ['Ref Jenis Penunjang',                 '/ref-jenis-penunjang',               ''],
-                        ['Ref Jenis Sedasi',                    '/ref-jenis-sedasi',                  ''],
-                        ['Ref Keadaan Umum',                    '/ref-keadaan-umum',                  ''],
-                        ['Ref Keadaan Umum Transfer',           '/ref-keadaan-umum-transfer',         ''],
-                        ['Ref Kesadaran',                       '/ref-kesadaran',                     ''],
-                        ['Ref Kesadaran Pasca Op',              '/ref-kesadaran-pascaop',             ''],
-                        ['Ref Kesiapan Anestesi',               '/ref-kesiapan-anestesi',             ''],
-                        ['Ref Ketersediaan Status',             '/ref-ketersediaan-status',           ''],
-                        ['Ref Metode Transfer',                 '/ref-metode-transfer',               ''],
-                        ['Ref Monitoring Anestesi',             '/ref-monitoring-anestesi',           ''],
-                        ['Ref Obat Bebas',                      '/ref-obat-bebas',                    ''],
-                        ['Ref Peralatan Transfer',              '/ref-peralatan-transfer',            ''],
-                        ['Ref Posisi Pasien',                   '/ref-posisi-pasien',                 ''],
-                        ['Ref Premedikasi',                     '/ref-premedikasi',                   ''],
-                        ['Ref Rencana Anestesi',                '/ref-rencana-anestesi',              ''],
-                        ['Ref Status Operasi',                  '/ref-status-operasi',                ''],
-                        ['Ref Status Penayangan',               '/ref-status-penayangan',             ''],
-                        ['Ref Status Spesimen',                 '/ref-status-spesimen',               ''],
-                        ['Referensi Tindakan Operasi',          '/ref-tindakan-operasi',              ''],
-                        ['Ref Warna Urine',                     '/ref-warna-urine',                   ''],
                     ]],
                 ];
                 echo view('components/menu/menu', ['menu_list' => $menu_list]);
