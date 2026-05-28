@@ -7,7 +7,7 @@ use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
 use CodeIgniter\Exceptions\PageNotFoundException;
-
+use CodeIgniter\HTTP\RedirectResponse;
 final class PendonorController extends ControllerTemplate
 {
     public function __construct()
@@ -30,8 +30,8 @@ final class PendonorController extends ControllerTemplate
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pendonor',            'ID Pendonor'],
                 [SHOW, REQUIRED, I::TEXT,  'nomor_pendonor',         'Nomor Pendonor'],
-                [SHOW, REQUIRED, I::INDEX, 'id_orang',               'ID Orang'],
-                [SHOW, REQUIRED, I::INDEX, 'id_rhesus',              'Rhesus'],
+                [HIDE, OPTIONAL, I::INDEX, 'id_orang',               'ID Orang'],
+                [SHOW, REQUIRED, I::SELECT, 'id_rhesus',              'Rhesus'],
                 [SHOW, OPTIONAL, I::DATE,  'tanggal_donor_terakhir', 'Tanggal Donor Terakhir'],
             ],
         );
@@ -50,5 +50,180 @@ final class PendonorController extends ControllerTemplate
         return view('components/cetak/cetak_kartu', [
             'pendonor' => $dataPendonor,
         ]);
+    }
+    
+    /**
+     * OVERRIDE: Menampilkan Form Gabungan
+     */
+    #[\Override]
+    final public function create_page(): string
+    {
+        $breadcrumbs = [
+            ['title' => 'Tambah', 'icon', 'tambah']
+        ];
+
+        $controllerOrang = new \App\Features\Person\Orang\OrangController();
+        $fieldsOrang = $controllerOrang->get_fields();
+        $fieldsPendonor = $this->get_fields();
+
+        $modelOrang = new \App\Features\Person\Orang\OrangModel();
+        $opsiOrang = $modelOrang->get_all_options();
+        $opsiPendonor = $this->model->get_all_options();
+
+        $terakhir = $this->model->orderBy($this->model->primaryKey, 'DESC')->first();
+        $nextNumber = 1;
+        if ($terakhir !== null && isset($terakhir['nomor_pendonor'])) {
+            $cleanNumber = str_replace('UTD', '', $terakhir['nomor_pendonor']);
+            $nextNumber = ((int) $cleanNumber) + 1;
+        }
+        $nomorPendonorOtomatis = 'UTD' . str_pad((string)$nextNumber, 6, '0', STR_PAD_LEFT);
+
+        $mockBaris = [];
+        $konfigGabungan = [];
+
+        foreach ($fieldsPendonor as $fieldPendonor) {
+            $columnPendonor = $fieldPendonor[2];
+
+            if ($columnPendonor !== 'id_pendonor') {
+                $mockBaris[$columnPendonor] = ($columnPendonor === 'nomor_pendonor') ? $nomorPendonorOtomatis : '';
+            }
+
+            if ($columnPendonor === 'id_orang') {
+                foreach ($fieldsOrang as $fieldOrang) {
+                    $columnOrang = $fieldOrang[2];
+
+                    if ($columnOrang === 'id_orang') {
+                        continue;
+                    }
+
+                    $mockBaris[$columnOrang] = '';
+
+                    if (isset($opsiOrang[$columnOrang])) {
+                        $fieldOrang[5] = $opsiOrang[$columnOrang];
+                    }
+                    $konfigGabungan[] = $fieldOrang;
+                }
+                continue;
+            }
+
+            if ($columnPendonor === 'id_pendonor') {
+                continue;
+            }
+
+            if (isset($opsiPendonor[$columnPendonor])) {
+                $fieldPendonor[5] = $opsiPendonor[$columnPendonor];
+            }
+
+            $konfigGabungan[] = $fieldPendonor;
+        }
+
+        return view('/layouts/tambah_ubah', [
+            'judul'       => 'Tambah ' . $this->title,
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
+            'modul_path'  => $this->get_uri_path(),
+            'kolom_id'    => $this->model->primaryKey,
+            'konfig'      => $konfigGabungan,
+            'baris'       => $mockBaris,
+            'form_action' => '/submittambah/',
+        ]);
+    }
+
+    /**
+     * OVERRIDE: Memproses Simpan Data Form Gabungan
+     */
+    #[\Override]
+    final public function create(): string|RedirectResponse
+    {
+        $modelOrang = new \App\Features\Person\Orang\OrangModel();
+
+        $dataPendonor = $this->get_post_data_custom();
+        $rawPost = $this->request->getPost();
+
+        $dataOrang = [];
+
+        foreach ($modelOrang->allowedFields as $field) {
+            $value = $rawPost[$field] ?? '';
+
+            if ($value === '') {
+                $value = null;
+            } 
+            else if (is_numeric($value) && (str_contains($field, 'id_') || $field === 'tempat_lahir_kota')) {
+                $value = (int) $value;
+            }
+
+            $dataOrang[$field] = $value;
+        }
+
+        $this->model->db->transBegin();
+
+        try {
+            if (!$modelOrang->insert($dataOrang)) {
+                throw new \RuntimeException('Sistem gagal menyimpan identitas Orang.');
+            }
+
+            $idOrang = $modelOrang->insertID();
+            $dataPendonor['id_orang'] = $idOrang;
+
+            if (!$this->model->insert($dataPendonor)) {
+                throw new \RuntimeException('Sistem gagal menyimpan entitas Pendonor.');
+            }
+
+            if ($this->model->db->transStatus() === false) {
+                $this->model->db->transRollback();
+                session()->setFlashdata('error', 'Transaksi database gagal. Seluruh perubahan dibatalkan.');
+                return redirect()->back()->withInput();
+            }
+
+            $this->model->db->transCommit();
+
+        } catch (\ReflectionException $e) {
+            $this->model->db->transRollback();
+            session()->setFlashdata('error', 'Kesalahan Refleksi: ' . $e->getMessage());
+            return redirect()->back()->withInput();
+        } catch (\Exception $e) {
+            $this->model->db->transRollback();
+            
+            $errMsg = ($e instanceof \CodeIgniter\Database\Exceptions\DatabaseException)
+                ? $this->friendly_db_error($e)
+                : $e->getMessage();
+                
+            session()->setFlashdata('error', $errMsg);
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->to($this->get_uri_path() . '/data');
+    }
+
+    /**
+     * CUSTOM HELPER: Menyaring dan mengambil data POST murni untuk kebutuhan tabel Pendonor saja
+     */
+    private function get_post_data_custom(): array
+    {
+        $postData = [];
+        $rawPost = $this->request->getPost();
+
+        $fieldsPendonor = $this->get_fields();
+
+        foreach ($fieldsPendonor as $field) {
+            $column = $field[2];
+            $type   = $field[3];
+
+            if (in_array($column, [$this->model->primaryKey, 'id_orang'])) {
+                continue;
+            }
+
+            $value = $rawPost[$column] ?? '';
+
+            if ($value === '') {
+                $value = null;
+            }
+            else if (str_contains($column, 'id_') || $type === 'indeks') {
+                $value = (int) $value;
+            }
+
+            $postData[$column] = $value;
+        }
+        
+        return $postData;
     }
 }

@@ -57,7 +57,11 @@ class ControllerTemplate extends Controller
         $this->meta_data = ['page' => 1, 'size' => 10, 'total' => 1];
     }
 
-    private function get_uri_path(): string {
+    protected function get_fields(): array { 
+        return $this->fields;
+    }
+
+    protected function get_uri_path(): string {
         $segments = $this->request->getUri()->getSegments();
         while (count($segments) > 2) {
             array_pop($segments);
@@ -387,7 +391,7 @@ class ControllerTemplate extends Controller
         return $result;
     }
 
-    final public function create_page(): string
+    public function create_page(): string
     {
         $breadcrumbs = [
             ['title' => 'Tambah', 'icon', 'tambah']
@@ -422,7 +426,7 @@ class ControllerTemplate extends Controller
     }
 
     /** Extract a user-friendly message from a DatabaseException */
-    private function friendly_db_error(DatabaseException $e): string
+    protected function friendly_db_error(DatabaseException $e): string
     {
         $msg = $e->getMessage();
         if (str_contains($msg, 'violates foreign key constraint')) {
@@ -437,7 +441,7 @@ class ControllerTemplate extends Controller
         return $msg;
     }
 
-    final public function create(): string|RedirectResponse
+    public function create(): string|RedirectResponse
     {
         /** @var array<string, scalar|null> $postData */
         $postData = $this->get_post_data();
