@@ -35,19 +35,41 @@ class ModelTemplate extends Model
         $this->table = "{$this->database->schema}.{$this->database->table}";
         $this->primaryKey = $this->database->primary_key;
         $this->type = $type;
-        $this->allowedFields = array_keys($fields);
+        $this->allowedFields = array_values(
+            array_filter(
+                array_keys($fields),
+                fn($col) => $col !== $primary_key
+            )
+        );
         foreach (array_keys($join) as $fk_col) {
             if (!in_array($fk_col, $this->allowedFields, true)) {
                 $this->allowedFields[] = $fk_col;
             }
         }
         $this->join = $join;
-        
+
         $config = new \Config\Database()->default;
         $config['database'] = env('database.default.khanza_db');
         parent::__construct(\Config\Database::connect($config));
 
-        // $this->setValidationRules($fields);
+        $validation = [];
+        foreach ($this->database->get_field_constraints() as $col => $def) {
+            $rules = [];
+
+            // Ambil base type saja (type bisa berisi sufiks "CHECK (...)")
+            $base_type = strtoupper(explode(' ', $def['type'] ?? '')[0]);
+
+            if (isset($def['constraint']) && in_array($base_type, ['CHAR', 'VARCHAR'], true)) {
+                $rules[] = "max_length[{$def['constraint']}]";
+            }
+
+            if (!empty($rules)) {
+                $validation[$col]['rules'] = implode('|', $rules);
+            }
+        }
+        if (!empty($validation)) {
+            $this->setValidationRules($validation);
+        }
 
         /*
          * All of the settings below are commented

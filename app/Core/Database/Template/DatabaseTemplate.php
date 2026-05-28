@@ -346,6 +346,14 @@ class DatabaseTemplate extends Migration
         
     }
 
+    /**
+     * @return array<string, array{type: string, null: bool, constraint?: string|int}>
+     */
+    public function get_field_constraints(): array
+    {
+        return $this->fields;
+    }
+
     /** @return list<class-string<DatabaseTemplate>> */
     public function dependencies(): array {
         $dependencies = [];
