@@ -27,7 +27,7 @@ final class OrangModel extends ModelTemplate
                 'id_agama'          => ['nama_agama'],
                 'id_pernikahan'     => ['status_pernikahan'],
                 'id_golongan_darah' => ['nama_golongan_darah'],
-                'id_alamat'         => ['rw', 'rt', 'alamat_lengkap'],
+                'id_alamat'         => ['alamat_lengkap'],
                 'tempat_lahir_kota' => ['nama_kota'],
             ],
         );
