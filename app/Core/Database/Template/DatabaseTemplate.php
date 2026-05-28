@@ -222,7 +222,7 @@ class DatabaseTemplate extends Migration
             for($i = 0; $i < count($fields); $i++){
                 $original_null = $this->fields[$fields[$i]]['null'];
                 $ref_def = $ref_table_class->fields[$ref_fields[$i]];
-                $ref_def['type'] = (string) preg_replace('/\s+GENERATED\s+\w.*$/i', '', $ref_def['type']);
+                $ref_def['type'] = (string) preg_replace('/GENERATED\s+(ALWAYS|BY\s+DEFAULT)\s+AS\s+IDENTITY/i', '', $ref_def['type']);
                 unset($ref_def['default']);
                 $ref_def['null'] = $original_null;
                 $this->fields[$fields[$i]] = $ref_def;
