@@ -36,6 +36,11 @@ class ModelTemplate extends Model
         $this->primaryKey = $this->database->primary_key;
         $this->type = $type;
         $this->allowedFields = array_keys($fields);
+        foreach (array_keys($join) as $fk_col) {
+            if (!in_array($fk_col, $this->allowedFields, true)) {
+                $this->allowedFields[] = $fk_col;
+            }
+        }
         $this->join = $join;
         
         $config = new \Config\Database()->default;

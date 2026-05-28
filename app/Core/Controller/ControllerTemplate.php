@@ -200,7 +200,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    private function get_fields_with_options(bool $include_pk = false): array
+    private function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
     {
         $all_options = $this->model->get_all_options();
         $result = [];
@@ -342,13 +342,29 @@ class ControllerTemplate extends Controller
             if (isset($this->model->join) && array_key_exists($column, $this->model->join)) {
                 $display_cols = $this->model->join[$column];
                 $specs = is_array($display_cols) ? $display_cols : [$display_cols];
-                
+
                 $is_single_column_join = (count($specs) === 1 && !is_string(array_key_first($specs)));
                 $fallback_label = !empty($display) ? $display : ucwords(str_replace('_', ' ', $column));
-                
+
                 $initial_db = $fk_lookup[$column] ?? null;
-                $parse_join_fields_recursive($specs, $column, $initial_db, $fallback_label, $is_single_column_join);
-                
+
+                if ($is_form) {
+                    $options = $all_options[$column] ?? [];
+                    $result[] = [
+                        (int)$visible,
+                        $display,
+                        $column,
+                        'status',
+                        $field[4] ?? 1,
+                        $options
+                    ];
+                } else {
+                    $parse_join_fields_recursive(
+                        $specs, $column, $initial_db,
+                        $fallback_label, $is_single_column_join
+                    );
+                }
+
                 continue;
             }
 
@@ -381,7 +397,7 @@ class ControllerTemplate extends Controller
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->get_uri_path(),
             'kolom_id'    => $this->primary_key,
-            'konfig'      => $this->get_fields_with_options(false),
+            'konfig'      => $this->get_fields_with_options(false, true),
             'form_action' => '/submittambah/',
         ]);
     }
@@ -399,7 +415,7 @@ class ControllerTemplate extends Controller
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->get_uri_path(),
             'kolom_id'    => $this->primary_key,
-            'konfig'      => $this->get_fields_with_options(true),
+            'konfig'      => $this->get_fields_with_options(true, true),
             'baris'       => $data,
             'form_action' => '/submitedit/' . $id,
         ]);
@@ -441,7 +457,7 @@ class ControllerTemplate extends Controller
                 'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
                 'modul_path'  => $this->get_uri_path(),
                 'kolom_id'    => $this->primary_key,
-                'konfig'      => $this->get_fields_with_options(false),
+                'konfig'      => $this->get_fields_with_options(false, true),
                 'form_action' => '/submittambah/',
             ]);
         }
@@ -472,7 +488,7 @@ class ControllerTemplate extends Controller
                 'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
                 'modul_path'  => $this->get_uri_path(),
                 'kolom_id'    => $this->primary_key,
-                'konfig'      => $this->get_fields_with_options(true),
+                'konfig'      => $this->get_fields_with_options(true, true),
                 'baris'       => $data,
                 'form_action' => '/submitedit/' . $id,
             ]);
