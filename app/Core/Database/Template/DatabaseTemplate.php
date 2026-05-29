@@ -233,8 +233,10 @@ class DatabaseTemplate extends Migration
     private function add_index(): void {
         foreach ($this->index as $keys) {
             foreach ($keys as $field) {
-                assert(array_key_exists($field, $this->fields), "Index field '{$field}' is not defined in fields");
-                assert($field !== $this->primary_key, "Index field '{$field}' is already a primary key");
+                assert(array_key_exists($field, $this->fields), 
+                    "Index field '{$field}' is not defined in fields");
+                assert($field !== $this->primary_key, 
+                    "Index field '{$field}' is already a primary key");
 
                 // Add more comprehensive checks
             }
@@ -284,8 +286,6 @@ class DatabaseTemplate extends Migration
         pg_put_copy_end($this->db->connID);
         pg_get_result($this->db->connID);
         fclose($file);
-
-        $this->adjust_db_key_sequence();
     }
 
     private function adjust_db_key_sequence(): void
@@ -302,14 +302,11 @@ class DatabaseTemplate extends Migration
         
         assert(isset($seq_row['seq_name']));
         $this->db->query("
-            SELECT setval(
-                '{$seq_row['seq_name']}',
+            SELECT setval('{$seq_row['seq_name']}',
                 COALESCE(
                     (SELECT MAX({$this->primary_key}::bigint)
-                        FROM {$this->schema}.{$this->table}),
-                    1
+                        FROM {$this->schema}.{$this->table}), 1)
                 )
-            )
         ");
     }
 
@@ -330,6 +327,7 @@ class DatabaseTemplate extends Migration
         try {
             $this->forge->createTable($this->table);
             $this->seed();
+            $this->adjust_db_key_sequence();
         } catch (DatabaseException $e) {
             die($e->getMessage());
         }
