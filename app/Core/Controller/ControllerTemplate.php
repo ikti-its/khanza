@@ -204,7 +204,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    private function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
+    protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
     {
         $all_options = $this->model->get_all_options();
         $result = [];
@@ -406,7 +406,7 @@ class ControllerTemplate extends Controller
         ]);
     }
 
-    final public function update_page(int|string $id): string
+    public function update_page(int|string $id): string
     {
         if ($id == 0) return $this->index();
 
@@ -469,7 +469,7 @@ class ControllerTemplate extends Controller
         return redirect()->to($this->get_uri_path() . '/data');
     }
 
-    final public function update(int|string $id): string|RedirectResponse
+    public function update(int|string $id): string|RedirectResponse
     {
         if ($id == 0) return redirect()->to($this->get_uri_path() . '/data');
 
