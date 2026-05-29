@@ -34,18 +34,13 @@ class ModelTemplate extends Model
         $this->database = $database;
         $this->table = "{$this->database->schema}.{$this->database->table}";
         $this->primaryKey = $this->database->primary_key;
-        $this->type = $type;
-        $this->allowedFields = array_values(
-            array_filter(
-                array_keys($fields),
-                fn($col) => $col !== $primary_key
-            )
-        );
-        foreach (array_keys($join) as $fk_col) {
-            if (!in_array($fk_col, $this->allowedFields, true)) {
-                $this->allowedFields[] = $fk_col;
-            }
-        }
+        
+        $this->allowedFields = array_keys($fields);
+        unset($this->allowedFields[$this->primaryKey]);
+        
+        assert(array_intersect_key($fields, $join) === [], 
+            "Fields intersects with join in {$this->table}");
+        $this->allowedFields = array_keys($join);
         $this->join = $join;
 
         $config = new \Config\Database()->default;
