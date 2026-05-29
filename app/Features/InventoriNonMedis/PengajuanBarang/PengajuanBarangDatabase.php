@@ -31,7 +31,7 @@ final class PengajuanBarangDatabase extends DatabaseTemplate
                 ],
                 [
                     'id_status_pengajuan_barang',
-                    \App\Features\InventoriNonMedis\StatusPengajuanBarang\StatusPengajuanBarangDatabase::class,
+                    \App\Features\InventoriNonMedis\Lookup\StatusPengajuanBarang\StatusPengajuanBarangDatabase::class,
                     'id_status_pengajuan_barang',
                 ],
             ],

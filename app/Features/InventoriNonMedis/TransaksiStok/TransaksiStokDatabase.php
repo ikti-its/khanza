@@ -34,7 +34,7 @@ final class TransaksiStokDatabase extends DatabaseTemplate
                 ],
                 [
                     'id_tipe_transaksi_stok',
-                    \App\Features\InventoriNonMedis\TipeTransaksiStok\TipeTransaksiStokDatabase::class,
+                    \App\Features\InventoriNonMedis\Lookup\TipeTransaksiStok\TipeTransaksiStokDatabase::class,
                     'id_tipe_transaksi_stok',
                 ],
                 [

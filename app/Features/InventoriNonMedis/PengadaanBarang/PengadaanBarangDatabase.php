@@ -36,7 +36,7 @@ final class PengadaanBarangDatabase extends DatabaseTemplate
                 ],
                 [
                     'id_status_pengadaan_barang',
-                    \App\Features\InventoriNonMedis\StatusPengadaanBarang\StatusPengadaanBarangDatabase::class,
+                    \App\Features\InventoriNonMedis\Lookup\StatusPengadaanBarang\StatusPengadaanBarangDatabase::class,
                     'id_status_pengadaan_barang',
                 ],
             ],

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\TipeTransaksiStok;
+namespace App\Features\InventoriNonMedis\Lookup\TipeTransaksiStok;
 
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;

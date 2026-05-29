@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Features\InventoriNonMedis\StatusPengadaanBarang;
+namespace App\Features\InventoriNonMedis\Lookup\StatusPengadaanBarang;
 
 use App\Core\Database\Template\DatabaseTemplate;
 use App\Core\Database\Template\SemanticType as T;

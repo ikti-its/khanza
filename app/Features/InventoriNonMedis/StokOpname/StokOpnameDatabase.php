@@ -25,7 +25,7 @@ final class StokOpnameDatabase extends DatabaseTemplate
             [
                 [
                     'id_status_stok_opname',
-                    \App\Features\InventoriNonMedis\StatusStokOpname\StatusStokOpnameDatabase::class,
+                    \App\Features\InventoriNonMedis\Lookup\StatusStokOpname\StatusStokOpnameDatabase::class,
                     'id_status_stok_opname',
                 ],
             ],

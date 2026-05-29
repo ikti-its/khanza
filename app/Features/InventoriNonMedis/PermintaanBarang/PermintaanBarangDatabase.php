@@ -31,12 +31,12 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
                 ],
                 [
                     'id_tipe_permintaan_barang',
-                    \App\Features\InventoriNonMedis\TipePermintaanBarang\TipePermintaanBarangDatabase::class,
+                    \App\Features\InventoriNonMedis\Lookup\TipePermintaanBarang\TipePermintaanBarangDatabase::class,
                     'id_tipe_permintaan_barang',
                 ],
                 [
                     'id_status_permintaan_barang',
-                    \App\Features\InventoriNonMedis\StatusPermintaanBarang\StatusPermintaanBarangDatabase::class,
+                    \App\Features\InventoriNonMedis\Lookup\StatusPermintaanBarang\StatusPermintaanBarangDatabase::class,
                     'id_status_permintaan_barang',
                 ],
             ],
