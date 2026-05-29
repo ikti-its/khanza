@@ -44,11 +44,45 @@ final class PendonorController extends ControllerTemplate
     public function print(int|string $id): string
     {
         $dataPendonor = $this->model->find($id);
-        if ($dataPendonor === null) {
-            throw PageNotFoundException::forPageNotFound('Data pendonor tidak ditemukan.');
+        if (!$dataPendonor) {
+            throw PageNotFoundException::forPageNotFound('Data Pendonor tidak ditemukan.');
         }
+
+        $modelOrang = new \App\Features\Person\Orang\OrangModel();
+        $idOrang = $dataPendonor['id_orang'] ?? null;
+        $dataOrang = $idOrang ? $modelOrang->find($idOrang) : [];
+
+        $baris = array_merge($dataOrang, $dataPendonor);
+
+        $controllerOrang = new \App\Features\Person\Orang\OrangController();
+        $konfigOrang     = $controllerOrang->get_fields_with_options(false, true);
+        $konfigPendonor  = $this->get_fields_with_options(false, true);
+        $konfigGabungan  = array_merge($konfigOrang, $konfigPendonor);
+
+        foreach ($konfigGabungan as $field) {
+            $namaKolom = $field[2];
+            $tipeField = $field[3];
+            $options   = $field[5] ?? [];
+
+            if ($tipeField === 'status' && !empty($options) && isset($baris[$namaKolom])) {
+                $idMentah = $baris[$namaKolom];
+
+                foreach ($options as $opt) {
+                    if ($opt[1] == $idMentah) {
+                        $baris[$namaKolom] = $opt[0];
+                        break;
+                    }
+                }
+            }
+
+            if (($baris[$namaKolom] ?? null) === null) {
+                $baris[$namaKolom] = '';
+            }
+        }
+
         return view('components/cetak/cetak_kartu', [
-            'pendonor' => $dataPendonor,
+            'judul' => 'Cetak Kartu Pendonor',
+            'baris' => $baris,
         ]);
     }
     

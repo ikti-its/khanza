@@ -40,7 +40,7 @@
     }
 
     .info-table td.colon {
-      width: 15px;
+      width: 25px;
       text-align: center;
     }
 
@@ -95,51 +95,51 @@
       <tr>
         <td class="label">No. Pendonor</td>
         <td class="colon">:</td>
-        <td><?= esc($pendonor['nomor_pendonor']) ?></td>
+        <td><?= esc($baris['nomor_pendonor']) ?></td>
       </tr>
       <tr>
         <td class="label">Nama</td>
         <td class="colon">:</td>
-        <td><?= esc($pendonor['nama_lengkap'] ?? '-') ?></td>
+        <td><?= esc($baris['nama']) ?></td>
       </tr>
       <tr>
         <td class="label">Jenis Kelamin</td>
         <td class="colon">:</td>
-        <td><?= esc($pendonor['jenis_kelamin'] ?? '-') ?></td>
+        <td><?= esc($baris['id_jenis_kelamin']) ?></td>
       </tr>
       <tr>
         <td class="label">NIK</td>
         <td class="colon">:</td>
-        <td><?= esc($pendonor['nomor_ktp'] ?? '-') ?></td>
+        <td><?= esc($baris['nik']) ?></td>
       </tr>
       <tr>
         <td class="label">Tempat, Tgl Lahir</td>
         <td class="colon">:</td>
         <td>
-            <?= esc($pendonor['tempat_lahir'] ?? '-') ?>, 
-            <?= isset($pendonor['tanggal_lahir']) ? date('d/m/Y', strtotime($pendonor['tanggal_lahir'])) : '-' ?>
+            <?= esc($baris['tempat_lahir_kota']) ?>,
+            <?= date('d/m/Y', strtotime($baris['tanggal_lahir'])) ?>
         </td>
       </tr>
       <tr>
         <td class="label">Alamat</td>
         <td class="colon">:</td>
-        <td><?= esc($pendonor['alamat'] ?? '-') ?></td>
+        <td><?= esc($baris['id_alamat']) ?></td>
       </tr>
       <tr>
         <td class="label">No. Telepon</td>
         <td class="colon">:</td>
-        <td><?= esc($pendonor['nomor_telepon'] ?? '-') ?></td>
+        <td><?= esc($baris['nomor_telepon'] ?? '-') ?></td>
       </tr>
     </table>
 
     <div class="footer-section">
       <div class="blood-type">
-        <?= esc($pendonor['golongan_darah'] ?? 'A') ?>(<?= esc($pendonor['rhesus'] ?? '+') ?>)
+        <?= esc($baris['id_golongan_darah']) ?>(<?= esc($baris['id_rhesus']) ?>)
       </div>
       
       <div class="barcode-container">
         <img 
-          src="https://bwipjs-api.metafloor.com/?bcid=code128&text=<?= urlencode($pendonor['nomor_pendonor']) ?>&scale=2&height=10"
+          src="https://bwipjs-api.metafloor.com/?bcid=code128&text=<?= urlencode($baris['nomor_pendonor']) ?>&scale=2&height=10"
           alt="Barcode ID Pendonor"
         />
       </div>
