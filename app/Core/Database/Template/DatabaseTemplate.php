@@ -242,10 +242,10 @@ class DatabaseTemplate extends Migration
         }
     }
 
-    private function seed(): void
+    private function get_seeder_file(): string
     {
         if ($this->source === '') {
-            return;
+            return '';
         }
 
         try {
@@ -260,56 +260,57 @@ class DatabaseTemplate extends Migration
         $csv_file = $dir . '/' . $this->source;
         assert(file_exists($csv_file), "Data file '{$csv_file}' does not exist");
 
-        $tmp_path = '';
-        $tmp_file = null;
+        $csv_file = str_replace('\\', '/', $csv_file); 
 
-        $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
-        if ($isWindows) {
-            $tmp_path = str_replace('\\', '/', $csv_file);
-        } else {
-            $tmp_file = tmpfile();
-            $tmp_path = stream_get_meta_data($tmp_file)['uri'];
-            copy($csv_file, $tmp_path);
-            chmod($tmp_path, 0o644);
+        return $csv_file;
+    }
+    private function seed(): void
+    {
+        $csv_file = $this->get_seeder_file();
+        if($csv_file === '') return;
+
+        $tbl = "{$this->schema}.{$this->table}";
+        $sql = "COPY {$tbl} FROM STDIN WITH (FORMAT csv,HEADER true)";
+
+        $result = $this->db->query($sql);
+        assert($result !== false, "Failed copy query {$sql}");
+
+        $file = fopen($csv_file, 'r');
+        assert($file !== false, "Error opening file {$csv_file}");
+
+        while (($line = fgets($file)) !== false) {
+            pg_put_copy_data($this->db->connID, $line);
         }
+        pg_put_copy_end($this->db->connID);
+        pg_get_result($this->db->connID);
+        fclose($file);
 
-        try {
-            $this->db->query("
-                COPY {$this->schema}.{$this->table}
-                FROM '{$tmp_path}'
-                WITH (FORMAT csv, HEADER true)
-            ");
-        } finally {
-            if ($tmp_file !== null) {
-                fclose($tmp_file);
-            }
-        }
+        $this->adjust_db_key_sequence();
+    }
 
-        if ($this->primary_key !== '') {
-            $seq_result = $this->db->query("
-                SELECT pg_get_serial_sequence(
-                    '{$this->schema}.{$this->table}',
-                    '{$this->primary_key}'
-                ) AS seq_name
-            ");
-            assert($seq_result instanceof BaseResult,
-                'Failed to query pg_get_serial_sequence');
-            $seq_row = $seq_result->getRowArray();
-
-            if (!empty($seq_row['seq_name'])) {
-                $seq_name = $seq_row['seq_name'];
-                $this->db->query("
-                    SELECT setval(
-                        '{$seq_name}',
-                        COALESCE(
-                            (SELECT MAX({$this->primary_key}::bigint)
-                             FROM {$this->schema}.{$this->table}),
-                            1
-                        )
-                    )
-                ");
-            }
-        }
+    private function adjust_db_key_sequence(): void
+    {
+        $seq_result = $this->db->query("
+            SELECT pg_get_serial_sequence(
+                '{$this->schema}.{$this->table}',
+                '{$this->primary_key}'
+            ) AS seq_name
+        ");
+        assert($seq_result instanceof BaseResult,
+            'Failed to query pg_get_serial_sequence');
+        $seq_row = $seq_result->getRowArray();
+        
+        assert(isset($seq_row['seq_name']));
+        $this->db->query("
+            SELECT setval(
+                '{$seq_row['seq_name']}',
+                COALESCE(
+                    (SELECT MAX({$this->primary_key}::bigint)
+                        FROM {$this->schema}.{$this->table}),
+                    1
+                )
+            )
+        ");
     }
 
     #[\Override()]
