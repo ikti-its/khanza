@@ -226,4 +226,128 @@ final class PendonorController extends ControllerTemplate
         
         return $postData;
     }
+
+    /**
+     * OVERRIDE: Menampilkan Halaman Ubah Data Form Gabungan
+     */
+    #[\Override]
+    final public function update_page(int|string $id): string
+    {
+        if ($id == 0) return $this->index();
+
+        $dataPendonor = $this->model->find($id);
+        if (!$dataPendonor) {
+            $dataPendonor = [];
+        }
+
+        $modelOrang = new \App\Features\Person\Orang\OrangModel();
+        $idOrang = $dataPendonor['id_orang'] ?? null;
+        $dataOrang = $idOrang ? $modelOrang->find($idOrang) : [];
+
+        $baris = array_merge($dataOrang, $dataPendonor);
+
+        $controllerOrang = new \App\Features\Person\Orang\OrangController();
+        $konfigOrang = $controllerOrang->get_fields_with_options(false, true);
+        $konfigPendonor = $this->get_fields_with_options(false, true);
+
+        $konfigGabungan = [];
+
+        foreach ($konfigPendonor as $field) {
+            $namaKolom = $field[2];
+
+            if ($namaKolom === 'id_orang') {
+                $konfigGabungan = array_merge($konfigGabungan, $konfigOrang);
+            } else {
+                if ($namaKolom === 'nomor_pendonor') {
+                    $field[3] = 'indeks';
+                }
+                $konfigGabungan[] = $field;
+            }
+        }
+
+        foreach ($konfigGabungan as $field) {
+            $namaKolom = $field[2];
+
+            if (($baris[$namaKolom] ?? null) === null) {
+                $baris[$namaKolom] = '';
+            }
+        }
+
+        $breadcrumbs = [
+            ['title' => 'Ubah', 'icon', 'Ubah']
+        ];
+
+        return view('/layouts/tambah_ubah', [
+            'judul'       => 'Ubah ' . $this->title,
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
+            'modul_path'  => $this->get_uri_path(),
+            'kolom_id'    => $this->model->primaryKey,
+            'konfig'      => $konfigGabungan,
+            'baris'       => $baris,
+            'form_action' => '/submitedit/' . $id,
+        ]);
+    }
+
+    /**
+     * OVERRIDE: Mengeksekusi Simpan Perubahan Data Form Gabungan
+     */
+    #[\Override]
+    final public function update(int|string $id): string|RedirectResponse
+    {
+        $dataPendonorLama = $this->model->find($id);
+        if (!$dataPendonorLama) {
+            session()->setFlashdata('error', 'Data gagal diubah. Pendonor tidak ditemukan.');
+            return redirect()->to($this->get_uri_path() . '/data');
+        }
+
+        $idOrang = $dataPendonorLama['id_orang'];
+        $nomorPendonor = $dataPendonorLama['nomor_pendonor'];
+
+        $rawPost = $this->request->getPost();
+
+        $modelOrang = new \App\Features\Person\Orang\OrangModel();
+
+        $this->model->db->transBegin();
+
+        try {
+            $dataOrang = [];
+            foreach ($modelOrang->allowedFields as $field) {
+                if ($field === $modelOrang->primaryKey) {
+                    continue;
+                }
+
+                $value = $rawPost[$field] ?? '';
+
+                if ($value === '') {
+                    $value = null;
+                } else if (is_numeric($value) && (str_contains($field, 'id_') || $field === 'tempat_lahir_kota')) {
+                    $value = (int) $value;
+                }
+
+                $dataOrang[$field] = $value;
+            }
+
+            if (!$modelOrang->update($idOrang, $dataOrang)) {
+                throw new \Exception('Gagal memperbarui data personal Orang.');
+            }
+
+            $dataPendonor = $this->get_post_data_custom();
+
+            $dataPendonor['nomor_pendonor'] = $nomorPendonor;
+            $dataPendonor['id_orang'] = $idOrang;
+
+            if (!$this->model->update($id, $dataPendonor)) {
+                throw new \Exception('Gagal memperbarui data spesifik Pendonor.');
+            }
+
+            $this->model->db->transCommit();
+            session()->setFlashdata('success', 'Data ' . $this->title . ' berhasil diperbarui.');
+
+        } catch (\Throwable $e) {
+            $this->model->db->transRollback();
+            session()->setFlashdata('error', 'Gagal memperbarui data: ' . $e->getMessage());
+        }
+
+        return redirect()->to($this->get_uri_path() . '/data');
+    }
 }
