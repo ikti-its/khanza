@@ -12,10 +12,6 @@ final class HasilUjiSaringModel extends ModelTemplate
     {
         parent::__construct(
             new HasilUjiSaringDatabase(),
-            'BASE',
-            'uji_darah',
-            'hasil_uji_saring',
-            'id_uji_saring',
             [
                 'id_uji_saring' => V::DEFAULT(),
                 'tanggal_uji'   => V::DEFAULT(),

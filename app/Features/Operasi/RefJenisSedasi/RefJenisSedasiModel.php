@@ -12,10 +12,6 @@ final class RefJenisSedasiModel extends ModelTemplate
     {
         parent::__construct(
             new RefJenisSedasiDatabase(),
-            'REFS',
-            'operasi',
-            'ref_jenis_sedasi',
-            'id_jenis_sedasi',
             [
                 'id_jenis_sedasi' => V::DEFAULT(),
                 'nama_sedasi'     => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class PasienModel extends ModelTemplate
     {
         parent::__construct(
             new PasienDatabase(),
-            'BASE',
-            'role',
-            'pasien',
-            'id_pasien',
             [
                 'id_pasien' => V::DEFAULT(),
                 'nomor_rm'  => V::DEFAULT(),

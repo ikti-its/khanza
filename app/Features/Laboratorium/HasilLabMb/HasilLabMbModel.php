@@ -12,10 +12,6 @@ final class HasilLabMbModel extends ModelTemplate
     {
         parent::__construct(
             new HasilLabMbDatabase(),
-            'BASE',
-            'laboratorium',
-            'hasil_lab_mb',
-            'id_hasil_mb',
             [
                 'id_hasil_mb'              => V::DEFAULT(),
                 'id_permintaan_lab'        => V::DEFAULT(),

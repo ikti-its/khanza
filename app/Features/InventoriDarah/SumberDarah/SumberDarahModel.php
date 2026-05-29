@@ -12,10 +12,6 @@ final class SumberDarahModel extends ModelTemplate
     {
         parent::__construct(
             new SumberDarahDatabase(),
-            'REFS',
-            'inventori_darah',
-            'sumber_darah',
-            'id_sumber_darah',
             [
                 'id_sumber_darah'   => V::DEFAULT(),
                 'nama_sumber_darah' => V::DEFAULT(),

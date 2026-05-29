@@ -12,10 +12,6 @@ final class MedisDonorModel extends ModelTemplate
     {
         parent::__construct(
             new MedisDonorDatabase(),
-            'BASE',
-            'logistik_utd',
-            'medis_donor',
-            'id_medis_donor',
             [
                 'id_medis_donor' => V::DEFAULT(),
                 'jumlah'         => V::DEFAULT(),

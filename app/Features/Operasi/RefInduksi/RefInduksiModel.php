@@ -12,10 +12,6 @@ final class RefInduksiModel extends ModelTemplate
     {
         parent::__construct(
             new RefInduksiDatabase(),
-            'REFS',
-            'operasi',
-            'ref_induksi',
-            'id_induksi',
             [
                 'id_induksi'   => V::DEFAULT(),
                 'nama_induksi' => V::DEFAULT(),

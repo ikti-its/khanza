@@ -12,10 +12,6 @@ final class BPJSModel extends ModelTemplate
     {
         parent::__construct(
             new BPJSDatabase(),
-            'BASE',
-            'penggajian',
-            'bpjs',
-            'no_bpjs',
             [
                 'no_bpjs'       => V::DEFAULT(),
                 'nama_program'  => V::DEFAULT(),

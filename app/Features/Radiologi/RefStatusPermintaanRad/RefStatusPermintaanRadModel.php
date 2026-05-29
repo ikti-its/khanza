@@ -12,10 +12,6 @@ final class RefStatusPermintaanRadModel extends ModelTemplate
     {
         parent::__construct(
             new RefStatusPermintaanRadDatabase(),
-            'REFS',
-            'radiologi',
-            'ref_status_permintaan_rad',
-            'id_status',
             [
                 'id_status'   => V::DEFAULT(),
                 'nama_status' => V::DEFAULT(),

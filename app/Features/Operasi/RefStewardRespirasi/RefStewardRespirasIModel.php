@@ -12,10 +12,6 @@ final class RefStewardRespirasiModel extends ModelTemplate
     {
         parent::__construct(
             new RefStewardRespirasiDatabase(),
-            'REFS',
-            'operasi',
-            'ref_steward_respirasi',
-            'id_respirasi',
             [
                 'id_respirasi' => V::DEFAULT(),
                 'nama_skala'   => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class PengambilanPenunjangModel extends ModelTemplate
     {
         parent::__construct(
             new PengambilanPenunjangDatabase(),
-            'REFS',
-            'logistik_utd',
-            'pengambilan_penunjang',
-            'id_pengambilan_penunjang',
             [
                 'id_pengambilan_penunjang' => V::DEFAULT(),
                 'jumlah'                   => V::DEFAULT(),

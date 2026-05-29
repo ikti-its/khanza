@@ -12,10 +12,6 @@ final class ChecklistPostopModel extends ModelTemplate
     {
         parent::__construct(
             new ChecklistPostopDatabase(),
-            'BASE',
-            'operasi',
-            'checklist_postop',
-            'id_checklist_post',
             [
                 'id_checklist_post'    => V::DEFAULT(),
                 'nomor_reg'            => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class RefJenisPenunjangModel extends ModelTemplate
     {
         parent::__construct(
             new RefJenisPenunjangDatabase(),
-            'REFS',
-            'operasi',
-            'ref_jenis_penunjang',
-            'id_jenis_penunjang',
             [
                 'id_jenis_penunjang' => V::DEFAULT(),
                 'nama_jenis'         => V::DEFAULT(),

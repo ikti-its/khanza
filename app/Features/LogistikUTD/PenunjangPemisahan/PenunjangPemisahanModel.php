@@ -12,10 +12,6 @@ final class PenunjangPemisahanModel extends ModelTemplate
     {
         parent::__construct(
             new PenunjangPemisahanDatabase(),
-            'BASE',
-            'logistik_utd',
-            'penunjang_pemisahan',
-            'id_penunjang_pemisahan',
             [
                 'id_penunjang_pemisahan' => V::DEFAULT(),
                 'jumlah'                 => V::DEFAULT(),

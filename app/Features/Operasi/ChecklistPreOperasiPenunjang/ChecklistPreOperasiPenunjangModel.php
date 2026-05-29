@@ -12,10 +12,6 @@ final class ChecklistPreOperasiPenunjangModel extends ModelTemplate
     {
         parent::__construct(
             new ChecklistPreOperasiPenunjangDatabase(),
-            'BASE',
-            'operasi',
-            'checklist_pre_operasi_penunjang',
-            'id_penunjang',
             [
                 'id_penunjang'       => V::DEFAULT(),
                 'id_checklist'       => V::DEFAULT(),

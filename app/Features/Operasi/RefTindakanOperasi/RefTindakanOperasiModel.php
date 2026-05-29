@@ -12,10 +12,6 @@ final class RefTindakanOperasiModel extends ModelTemplate
     {
         parent::__construct(
             new RefTindakanOperasiDatabase(),
-            'REFS',
-            'operasi',
-            'ref_tindakan_operasi',
-            'id_tindakan',
             [
                 'id_tindakan'   => V::DEFAULT(),
                 'kode_tindakan' => V::DEFAULT(),

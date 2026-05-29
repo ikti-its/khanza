@@ -12,10 +12,6 @@ final class PajakPenghasilanModel extends ModelTemplate
     {
         parent::__construct(
             new PajakPenghasilanDatabase(),
-            'BASE',
-            'penggajian',
-            'pph21',
-            'no_pph21',
             [
                 'no_pph21'    => V::DEFAULT(),
                 'pkp_bawah'   => V::DEFAULT(),

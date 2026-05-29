@@ -12,10 +12,6 @@ final class PengambilanMedisModel extends ModelTemplate
     {
         parent::__construct(
             new PengambilanMedisDatabase(),
-            'REFS',
-            'logistik_utd',
-            'pengambilan_medis',
-            'id_pengambilan_medis',
             [
                 'id_pengambilan_medis' => V::DEFAULT(),
                 'jumlah'               => V::DEFAULT(),

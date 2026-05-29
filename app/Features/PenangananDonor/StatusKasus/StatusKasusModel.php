@@ -12,10 +12,6 @@ final class StatusKasusModel extends ModelTemplate
     {
         parent::__construct(
             new StatusKasusDatabase(),
-            'REFS',
-            'penanganan_donor',
-            'status_kasus',
-            'id_status_kasus',
             [
                 'id_status_kasus'   => V::DEFAULT(),
                 'nama_status_kasus' => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class PermintaanLabHeaderModel extends ModelTemplate
     {
         parent::__construct(
             new PermintaanLabHeaderDatabase(),
-            'BASE',
-            'laboratorium',
-            'permintaan_lab_header',
-            'id_permintaan',
             [
                 'id_permintaan'        => V::DEFAULT(),
                 'no_permintaan'        => V::DEFAULT(),

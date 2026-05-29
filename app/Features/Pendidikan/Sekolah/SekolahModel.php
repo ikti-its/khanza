@@ -12,10 +12,6 @@ final class SekolahModel extends ModelTemplate
     {
         parent::__construct(
             new SekolahDatabase(),
-            'REFS',
-            'pendidikan',
-            'sekolah',
-            'id_sekolah',
             [
                 'id_sekolah'   => V::DEFAULT(),
                 'nama_sekolah' => V::DEFAULT(),

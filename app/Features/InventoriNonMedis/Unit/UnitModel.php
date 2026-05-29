@@ -12,10 +12,6 @@ final class UnitModel extends ModelTemplate
     {
         parent::__construct(
             new UnitDatabase(),
-            'REFS',
-            'inventori_non_medis',
-            'unit',
-            'id_unit',
             [
                 'id_unit'   => V::DEFAULT(),
                 'nama_unit' => V::DEFAULT(),

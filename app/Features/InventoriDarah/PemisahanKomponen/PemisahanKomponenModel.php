@@ -12,10 +12,6 @@ final class PemisahanKomponenModel extends ModelTemplate
     {
         parent::__construct(
             new PemisahanKomponenDatabase(),
-            'BASE',
-            'inventori_darah',
-            'pemisahan_komponen',
-            'id_pemisahan',
             [
                 'id_pemisahan'      => V::DEFAULT(),
                 'tanggal_pemisahan' => V::DEFAULT(),

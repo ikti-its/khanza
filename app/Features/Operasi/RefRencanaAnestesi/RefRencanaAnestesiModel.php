@@ -12,10 +12,6 @@ final class RefRencanaAnestesiModel extends ModelTemplate
     {
         parent::__construct(
             new RefRencanaAnestesiDatabase(),
-            'REFS',
-            'operasi',
-            'ref_rencana_anestesi',
-            'id_rencana_anestesi',
             [
                 'id_rencana_anestesi' => V::DEFAULT(),
                 'nama_rencana'        => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class PencekalanModel extends ModelTemplate
     {
         parent::__construct(
             new PencekalanDatabase(),
-            'BASE',
-            'penanganan_donor',
-            'pencekalan',
-            'id_pencekalan',
             [
                 'id_pencekalan'   => V::DEFAULT(),
                 'tanggal_mulai'   => V::DEFAULT(),

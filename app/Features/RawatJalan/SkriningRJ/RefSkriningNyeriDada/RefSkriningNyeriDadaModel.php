@@ -12,10 +12,6 @@ final class RefSkriningNyeriDadaModel extends ModelTemplate
     {
         parent::__construct(
             new RefSkriningNyeriDadaDatabase(),
-            'REFS',
-            'skrining_rj',
-            'ref_skrining_nyeri_dada',
-            'id_nyeri_dada',
             [
                 'id_nyeri_dada' => V::DEFAULT(),
                 'nyeri_dada'    => V::DEFAULT(),

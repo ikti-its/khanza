@@ -12,10 +12,6 @@ final class JenisKelaminModel extends ModelTemplate
     {
         parent::__construct(
             new JenisKelaminDatabase(),
-            'REFS',
-            'person',
-            'jenis_kelamin',
-            'id_jenis_kelamin',
             [
                 'id_jenis_kelamin'   => V::DEFAULT(),
                 'nama_jenis_kelamin' => V::DEFAULT(),

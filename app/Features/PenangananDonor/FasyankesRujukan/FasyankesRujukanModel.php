@@ -12,10 +12,6 @@ final class FasyankesRujukanModel extends ModelTemplate
     {
         parent::__construct(
             new FasyankesRujukanDatabase(),
-            'BASE',
-            'penanganan_donor',
-            'fasyankes_rujukan',
-            'id_fasyankes',
             [
                 'id_fasyankes'   => V::DEFAULT(),
                 'nama_fasyankes' => V::DEFAULT(),

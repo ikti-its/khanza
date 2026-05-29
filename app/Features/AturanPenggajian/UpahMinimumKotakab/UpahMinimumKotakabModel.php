@@ -12,10 +12,6 @@ final class UpahMinimumKotakabModel extends ModelTemplate
     {
         parent::__construct(
             new UpahMinimumKotakabDatabase(),
-            'BASE',
-            'penggajian',
-            'umk',
-            'no_umk',
             [
                 'no_umk'       => V::DEFAULT(),
                 'tahun'        => V::DEFAULT(),

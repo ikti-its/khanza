@@ -12,10 +12,6 @@ final class PemilikBankModel extends ModelTemplate
     {
         parent::__construct(
             new PemilikBankDatabase(),
-            'BASE',
-            'finansial',
-            'pemilik',
-            'id_pemilik',
             [
                 'id_pemilik'   => V::DEFAULT(),
                 'nama_pemilik' => V::DEFAULT(),

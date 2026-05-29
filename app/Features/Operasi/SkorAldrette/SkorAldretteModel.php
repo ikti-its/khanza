@@ -12,10 +12,6 @@ final class SkorAldretteModel extends ModelTemplate
     {
         parent::__construct(
             new SkorAldretteDatabase(),
-            'BASE',
-            'operasi',
-            'skor_aldrette',
-            'id_skor_aldrette',
             [
                 'id_skor_aldrette'   => V::DEFAULT(),
                 'nomor_reg'          => V::DEFAULT(),

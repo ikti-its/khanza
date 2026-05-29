@@ -12,10 +12,6 @@ final class PenunjangDonorModel extends ModelTemplate
     {
         parent::__construct(
             new PenunjangDonorDatabase(),
-            'BASE',
-            'logistik_utd',
-            'penunjang_donor',
-            'id_penunjang_donor',
             [
                 'id_penunjang_donor' => V::DEFAULT(),
                 'jumlah'             => V::DEFAULT(),

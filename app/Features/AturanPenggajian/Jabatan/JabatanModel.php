@@ -12,10 +12,6 @@ final class JabatanModel extends ModelTemplate
     {
         parent::__construct(
             new JabatanDatabase(),
-            'BASE',
-            'penggajian',
-            'jabatan',
-            'no_jabatan',
             [
                 'no_jabatan'    => V::DEFAULT(),
                 'jenis_jabatan' => V::DEFAULT(),

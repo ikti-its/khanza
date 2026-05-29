@@ -12,10 +12,6 @@ final class CatatanAnestesiSedasiMonitoringModel extends ModelTemplate
     {
         parent::__construct(
             new CatatanAnestesiSedasiMonitoringDatabase(),
-            'BASE',
-            'operasi',
-            'catatan_anestesi_sedasi_monitoring',
-            'id_monitoring',
             [
                 'id_monitoring_catatan' => V::DEFAULT(),
                 'id_catatan_anestesi'   => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class SkriningDonorModel extends ModelTemplate
     {
         parent::__construct(
             new SkriningDonorDatabase(),
-            'BASE',
-            'donor',
-            'skrining_donor',
-            'id_skrining',
             [
                 'id_skrining'      => V::DEFAULT(),
                 'sistolik'         => V::DEFAULT(),

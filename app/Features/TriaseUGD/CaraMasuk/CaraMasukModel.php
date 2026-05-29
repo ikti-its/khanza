@@ -12,10 +12,6 @@ final class CaraMasukModel extends ModelTemplate
     {
         parent::__construct(
             new CaraMasukDatabase(),
-            'REFS',
-            'triase_ugd',
-            'cara_masuk',
-            'id_cara',
             [
                 'id_cara'   => V::DEFAULT(),
                 'nama_cara' => V::DEFAULT(),

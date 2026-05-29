@@ -12,10 +12,6 @@ final class StatusPermintaanModel extends ModelTemplate
     {
         parent::__construct(
             new StatusPermintaanDatabase(),
-            'REFS',
-            'distribusi_darah',
-            'status_permintaan',
-            'id_status_permintaan',
             [
                 'id_status_permintaan'   => V::DEFAULT(),
                 'nama_status_permintaan' => V::DEFAULT(),

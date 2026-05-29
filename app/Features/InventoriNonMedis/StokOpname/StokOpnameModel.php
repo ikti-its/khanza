@@ -12,10 +12,6 @@ final class StokOpnameModel extends ModelTemplate
     {
         parent::__construct(
             new StokOpnameDatabase(),
-            'BASE',
-            'inventori_non_medis',
-            'stok_opname',
-            'id_opname',
             [
                 'id_opname'             => V::DEFAULT(),
                 'tanggal'               => V::DEFAULT(),

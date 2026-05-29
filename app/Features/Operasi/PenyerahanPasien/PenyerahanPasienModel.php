@@ -12,10 +12,6 @@ final class PenyerahanPasienModel extends ModelTemplate
     {
         parent::__construct(
             new PenyerahanPasienDatabase(),
-            'BASE',
-            'operasi',
-            'penyerahan_pasien',
-            'id_penyerahan',
             [
                 'id_penyerahan'            => V::DEFAULT(),
                 'nomor_reg'                => V::DEFAULT(),

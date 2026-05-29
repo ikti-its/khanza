@@ -12,10 +12,6 @@ final class PengambilanDarahModel extends ModelTemplate
     {
         parent::__construct(
             new PengambilanDarahDatabase(),
-            'BASE',
-            'donor',
-            'pengambilan_darah',
-            'id_pengambilan_darah',
             [
                 'id_pengambilan_darah' => V::DEFAULT(),
                 'nomor_pengambilan'    => V::DEFAULT(),

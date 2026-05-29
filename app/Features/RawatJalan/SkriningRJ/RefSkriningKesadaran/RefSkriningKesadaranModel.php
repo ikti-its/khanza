@@ -12,10 +12,6 @@ final class RefSkriningKesadaranModel extends ModelTemplate
     {
         parent::__construct(
             new RefSkriningKesadaranDatabase(),
-            'REFS',
-            'skrining_rj',
-            'ref_skrining_kesadaran',
-            'id_kesadaran',
             [
                 'id_kesadaran' => V::DEFAULT(),
                 'kesadaran'    => V::DEFAULT(),

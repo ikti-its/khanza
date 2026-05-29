@@ -12,10 +12,6 @@ final class RefPosisiPasienModel extends ModelTemplate
     {
         parent::__construct(
             new RefPosisiPasienDatabase(),
-            'REFS',
-            'operasi',
-            'ref_posisi_pasien',
-            'id_posisi',
             [
                 'id_posisi'   => V::DEFAULT(),
                 'nama_posisi' => V::DEFAULT(),

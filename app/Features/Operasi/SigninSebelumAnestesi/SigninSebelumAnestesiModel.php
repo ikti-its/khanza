@@ -12,10 +12,6 @@ final class SigninSebelumAnestesiModel extends ModelTemplate
     {
         parent::__construct(
             new SigninSebelumAnestesiDatabase(),
-            'BASE',
-            'operasi',
-            'signin_sebelum_anestesi',
-            'id_signin',
             [
                 'id_signin'                 => V::DEFAULT(),
                 'nomor_reg'                 => V::DEFAULT(),

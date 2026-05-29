@@ -12,10 +12,6 @@ final class MedisRusakModel extends ModelTemplate
     {
         parent::__construct(
             new MedisRusakDatabase(),
-            'BASE',
-            'logistik_utd',
-            'medis_rusak',
-            'id_medis_rusak',
             [
                 'id_medis_rusak' => V::DEFAULT(),
                 'jumlah'         => V::DEFAULT(),

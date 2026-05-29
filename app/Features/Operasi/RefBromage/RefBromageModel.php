@@ -12,10 +12,6 @@ final class RefBromageModel extends ModelTemplate
     {
         parent::__construct(
             new RefBromageDatabase(),
-            'REFS',
-            'operasi',
-            'ref_bromage',
-            'id_bromage',
             [
                 'id_bromage'   => V::DEFAULT(),
                 'nama_skala'   => V::DEFAULT(),

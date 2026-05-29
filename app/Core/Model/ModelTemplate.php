@@ -18,15 +18,6 @@ class ModelTemplate extends Model
     public private(set) array $join = [];
     protected function __construct(
         DatabaseTemplate $database,
-        /** @var 'BASE'| 'JOIN'| 'REFS' */
-        string $type,
-        /** @var non-empty-string */
-        string $schema,
-        /** @var non-empty-string */
-        string $table_name,
-        /** @var non-empty-string */
-        string $primary_key,
-
         /** @var array<non-empty-string, ValidationType> */
         array $fields,
         array $join,

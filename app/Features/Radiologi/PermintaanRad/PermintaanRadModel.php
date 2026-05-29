@@ -12,10 +12,6 @@ final class PermintaanRadModel extends ModelTemplate
     {
         parent::__construct(
             new PermintaanRadDatabase(),
-            'BASE',
-            'radiologi',
-            'permintaan_rad',
-            'id_permintaan',
             [
                 'id_permintaan'        => V::DEFAULT(),
                 'no_permintaan'        => V::DEFAULT(),

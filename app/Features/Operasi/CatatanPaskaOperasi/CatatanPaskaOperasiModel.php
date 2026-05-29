@@ -12,10 +12,6 @@ final class CatatanPaskaOperasiModel extends ModelTemplate
     {
         parent::__construct(
             new CatatanPaskaOperasiDatabase(),
-            'BASE',
-            'operasi',
-            'catatan_paska_operasi',
-            'id_catatan_paska',
             [
                 'id_catatan_paska'        => V::DEFAULT(),
                 'nomor_reg'               => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class StatusStokModel extends ModelTemplate
     {
         parent::__construct(
             new StatusStokDatabase(),
-            'REFS',
-            'inventori_darah',
-            'status_stok',
-            'id_status_stok',
             [
                 'id_status_stok'   => V::DEFAULT(),
                 'nama_status_stok' => V::DEFAULT(),

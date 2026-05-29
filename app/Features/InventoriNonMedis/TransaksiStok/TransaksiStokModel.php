@@ -12,10 +12,6 @@ final class TransaksiStokModel extends ModelTemplate
     {
         parent::__construct(
             new TransaksiStokDatabase(),
-            'BASE',
-            'inventori_non_medis',
-            'transaksi_stok',
-            'id_transaksi',
             [
                 'id_transaksi'           => V::DEFAULT(),
                 'id_barang'              => V::DEFAULT(),

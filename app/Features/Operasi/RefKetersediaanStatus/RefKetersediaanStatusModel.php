@@ -12,10 +12,6 @@ final class RefKetersediaanStatusModel extends ModelTemplate
     {
         parent::__construct(
             new RefKetersediaanStatusDatabase(),
-            'REFS',
-            'operasi',
-            'ref_ketersediaan_status',
-            'id_ketersediaan_status',
             [
                 'id_ketersediaan_status' => V::DEFAULT(),
                 'nama_ketersediaan'      => V::DEFAULT(),

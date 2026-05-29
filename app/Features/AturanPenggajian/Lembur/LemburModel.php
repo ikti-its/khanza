@@ -12,10 +12,6 @@ final class LemburModel extends ModelTemplate
     {
         parent::__construct(
             new LemburDatabase(),
-            'BASE',
-            'penggajian',
-            'lembur',
-            'no_lembur',
             [
                 'no_lembur'    => V::DEFAULT(),
                 'jenis_lembur' => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class RefKategoriUsiaLabModel extends ModelTemplate
     {
         parent::__construct(
             new RefKategoriUsiaLabDatabase(),
-            'REFS',
-            'laboratorium',
-            'ref_kategori_usia_lab',
-            'id_kategori_usia',
             [
                 'id_kategori_usia'   => V::DEFAULT(),
                 'nama_kategori_usia' => V::DEFAULT(),

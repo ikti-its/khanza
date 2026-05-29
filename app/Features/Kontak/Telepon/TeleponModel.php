@@ -12,10 +12,6 @@ final class TeleponModel extends ModelTemplate
     {
         parent::__construct(
             new TeleponDatabase(),
-            'BASE',
-            'kontak',
-            'telepon',
-            'id_telepon',
             [
                 'id_telepon'    => V::DEFAULT(),
                 'nomor_telepon' => V::DEFAULT(),

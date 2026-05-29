@@ -12,10 +12,6 @@ final class KotaModel extends ModelTemplate
     {
         parent::__construct(
             new KotaDatabase(),
-            'REFS',
-            'lokasi',
-            'kota',
-            'id_kota',
             [
                 'id_kota'       => V::DEFAULT(),
                 'id_provinsi'   => V::DEFAULT(),

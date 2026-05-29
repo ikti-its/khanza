@@ -12,10 +12,6 @@ final class ProvinsiModel extends ModelTemplate
     {
         parent::__construct(
             new ProvinsiDatabase(),
-            'REFS',
-            'lokasi',
-            'provinsi',
-            'id_provinsi',
             [
                 'id_pulau'      => V::DEFAULT(),
                 'id_provinsi'   => V::DEFAULT(),

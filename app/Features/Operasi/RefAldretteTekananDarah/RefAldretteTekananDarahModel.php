@@ -12,10 +12,6 @@ final class RefAldretteTekananDarahModel extends ModelTemplate
     {
         parent::__construct(
             new RefAldretteTekananDarahDatabase(),
-            'REFS',
-            'operasi',
-            'ref_aldrette_tekanan_darah',
-            'id_td',
             [
                 'id_td'      => V::DEFAULT(),
                 'nama_skala' => V::DEFAULT(),

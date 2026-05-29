@@ -12,10 +12,6 @@ final class KunjunganModel extends ModelTemplate
     {
         parent::__construct(
             new KunjunganDatabase(),
-            'BASE',
-            'donor',
-            'kunjungan',
-            'id_kunjungan',
             [
                 'id_kunjungan'      => V::DEFAULT(),
                 'nomor_antrian'     => V::DEFAULT(),

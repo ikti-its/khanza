@@ -12,10 +12,6 @@ final class PulauModel extends ModelTemplate
     {
         parent::__construct(
             new PulauDatabase(),
-            'REFS',
-            'lokasi',
-            'pulau',
-            'id_pulau',
             [
                 'id_pulau'   => V::DEFAULT(),
                 'nama_pulau' => V::DEFAULT(),

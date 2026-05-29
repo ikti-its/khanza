@@ -12,10 +12,6 @@ final class RefStatusPenayanganModel extends ModelTemplate
     {
         parent::__construct(
             new RefStatusPenayanganDatabase(),
-            'REFS',
-            'operasi',
-            'ref_status_penayangan',
-            'id_status_penayangan',
             [
                 'id_status_penayangan' => V::DEFAULT(),
                 'nama_status'          => V::DEFAULT(),

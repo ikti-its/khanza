@@ -11,10 +11,6 @@ final class AuthModel extends ModelTemplate
     public function __construct(){
         parent::__construct(
             new AuthDatabase(),
-            'BASE',
-            'auth',
-            'akun',
-            'id',
             [
                 'id'       => V::DEFAULT(),
                 'email'    => V::DEFAULT(),

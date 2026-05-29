@@ -12,10 +12,6 @@ final class MetodePembayaranModel extends ModelTemplate
     {
         parent::__construct(
             new MetodePembayaranDatabase(),
-            'BASE',
-            'finansial',
-            'metode',
-            'id_metode',
             [
                 'id_metode'   => V::DEFAULT(),
                 'nama_metode' => V::DEFAULT(),

@@ -13,10 +13,6 @@ final class JenisPencekalanModel extends ModelTemplate
     {
         parent::__construct(
             new PencekalanDatabase(),
-            'REFS',
-            'penanganan_donor',
-            'jenis_pencekalan',
-            'id_jenis_pencekalan',
             [
                 'id_jenis_pencekalan'   => V::DEFAULT(),
                 'nama_jenis_pencekalan' => V::DEFAULT(),

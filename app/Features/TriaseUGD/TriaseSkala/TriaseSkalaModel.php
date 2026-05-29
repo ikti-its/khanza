@@ -12,10 +12,6 @@ final class TriaseSkalaModel extends ModelTemplate
     {
         parent::__construct(
             new TriaseSkalaDatabase(),
-            'BASE',
-            'triase_ugd',
-            'triase_skala',
-            'id_skala',
             [
                 'id_skala'   => V::DEFAULT(),
                 'kode_skala' => V::DEFAULT(),

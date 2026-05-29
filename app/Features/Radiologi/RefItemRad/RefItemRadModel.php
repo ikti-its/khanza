@@ -12,10 +12,6 @@ final class RefItemRadModel extends ModelTemplate
     {
         parent::__construct(
             new RefItemRadDatabase(),
-            'REFS',
-            'radiologi',
-            'ref_item_rad',
-            'id_item',
             [
                 'id_item'          => V::DEFAULT(),
                 'kode_periksa'     => V::DEFAULT(),

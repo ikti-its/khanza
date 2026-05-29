@@ -12,10 +12,6 @@ final class PenunjangRusakModel extends ModelTemplate
     {
         parent::__construct(
             new PenunjangRusakDatabase(),
-            'BASE',
-            'logistik_utd',
-            'penunjang_rusak',
-            'id_penunjang_rusak',
             [
                 'id_penunjang_rusak' => V::DEFAULT(),
                 'jumlah'             => V::DEFAULT(),

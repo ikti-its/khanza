@@ -12,10 +12,6 @@ final class LokasiPengambilanDarahModel extends ModelTemplate
     {
         parent::__construct(
             new LokasiPengambilanDarahDatabase(),
-            'REFS',
-            'donor',
-            'lokasi_pengambilan_darah',
-            'id_lokasi_pengambilan',
             [
                 'id_lokasi_pengambilan' => V::DEFAULT(),
                 'nama_lokasi'           => V::DEFAULT(),

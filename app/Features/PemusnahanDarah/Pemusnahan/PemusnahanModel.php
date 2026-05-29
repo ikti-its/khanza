@@ -12,10 +12,6 @@ final class PemusnahanModel extends ModelTemplate
     {
         parent::__construct(
             new PemusnahanDatabase(),
-            'BASE',
-            'pemusnahan_darah',
-            'pemusnahan',
-            'id_pemusnahan',
             [
                 'id_pemusnahan'      => V::DEFAULT(),
                 'tanggal_pemusnahan' => V::DEFAULT(),

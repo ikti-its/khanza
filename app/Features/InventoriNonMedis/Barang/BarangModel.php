@@ -12,10 +12,6 @@ final class BarangModel extends ModelTemplate
     {
         parent::__construct(
             new BarangDatabase(),
-            'BASE',
-            'inventori_non_medis',
-            'barang',
-            'id_barang',
             [
                 'id_barang'    => V::DEFAULT(),
                 'kode_barang'  => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class RefJenisAirwayModel extends ModelTemplate
     {
         parent::__construct(
             new RefJenisAirwayDatabase(),
-            'REFS',
-            'operasi',
-            'ref_jenis_airway',
-            'id_jenis',
             [
                 'id_jenis'   => V::DEFAULT(),
                 'nama_jenis' => V::DEFAULT(),

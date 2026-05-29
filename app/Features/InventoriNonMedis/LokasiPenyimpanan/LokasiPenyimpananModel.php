@@ -12,10 +12,6 @@ final class LokasiPenyimpananModel extends ModelTemplate
     {
         parent::__construct(
             new LokasiPenyimpananDatabase(),
-            'REFS',
-            'inventori_non_medis',
-            'lokasi_penyimpanan',
-            'id_lokasi_penyimpanan',
             [
                 'id_lokasi_penyimpanan'   => V::DEFAULT(),
                 'nama_lokasi_penyimpanan' => V::DEFAULT(),

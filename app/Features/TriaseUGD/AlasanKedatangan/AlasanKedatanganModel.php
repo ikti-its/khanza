@@ -12,10 +12,6 @@ final class AlasanKedatanganModel extends ModelTemplate
     {
         parent::__construct(
             new AlasanKedatanganDatabase(),
-            'REFS',
-            'triase_ugd',
-            'alasan_kedatangan',
-            'id_alasan',
             [
                 'id_alasan'   => V::DEFAULT(),
                 'nama_alasan' => V::DEFAULT(),

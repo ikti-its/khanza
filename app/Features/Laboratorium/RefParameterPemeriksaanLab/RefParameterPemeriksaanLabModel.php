@@ -12,10 +12,6 @@ final class RefParameterPemeriksaanLabModel extends ModelTemplate
     {
         parent::__construct(
             new RefParameterPemeriksaanLabDatabase(),
-            'REFS',
-            'laboratorium',
-            'ref_parameter_pemeriksaan_lab',
-            'id_parameter',
             [
                 'id_parameter'   => V::DEFAULT(),
                 'id_item_lab'    => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class GelarModel extends ModelTemplate
     {
         parent::__construct(
             new GelarDatabase(),
-            'REFS',
-            'pendidikan',
-            'gelar',
-            'id_gelar',
             [
                 'id_gelar'   => V::DEFAULT(),
                 'nama_gelar' => V::DEFAULT(),

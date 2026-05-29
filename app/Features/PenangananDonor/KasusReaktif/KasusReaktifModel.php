@@ -12,10 +12,6 @@ final class KasusReaktifModel extends ModelTemplate
     {
         parent::__construct(
             new KasusReaktifDatabase(),
-            'BASE',
-            'penanganan_donor',
-            'kasus_reaktif',
-            'id_kasus',
             [
                 'id_kasus'           => V::DEFAULT(),
                 'tanggal_ditetapkan' => V::DEFAULT(),

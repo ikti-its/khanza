@@ -12,10 +12,6 @@ final class RefAlatAnestesiModel extends ModelTemplate
     {
         parent::__construct(
             new RefAlatAnestesiDatabase(),
-            'REFS',
-            'operasi',
-            'ref_alat_anestesi',
-            'id_alat',
             [
                 'id_alat'   => V::DEFAULT(),
                 'nama_alat' => V::DEFAULT(),

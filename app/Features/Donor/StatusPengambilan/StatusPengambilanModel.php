@@ -12,10 +12,6 @@ final class StatusPengambilanModel extends ModelTemplate
     {
         parent::__construct(
             new StatusPengambilanDatabase(),
-            'REFS',
-            'donor',
-            'status_pengambilan',
-            'id_status_pengambilan',
             [
                 'id_status_pengambilan'   => V::DEFAULT(),
                 'nama_status_pengambilan' => V::DEFAULT(),

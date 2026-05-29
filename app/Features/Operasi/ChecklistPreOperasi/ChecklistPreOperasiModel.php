@@ -12,10 +12,6 @@ final class ChecklistPreOperasiModel extends ModelTemplate
     {
         parent::__construct(
             new ChecklistPreOperasiDatabase(),
-            'BASE',
-            'operasi',
-            'checklist_pre_operasi',
-            'id_checklist',
             [
                 'id_checklist'           => V::DEFAULT(),
                 'nomor_reg'              => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class DesaModel extends ModelTemplate
     {
         parent::__construct(
             new DesaDatabase(),
-            'REFS',
-            'lokasi',
-            'desa',
-            'id_kecamatan',
             [
                 'id_desa'       => V::DEFAULT(),
                 'id_provinsi'   => V::DEFAULT(),

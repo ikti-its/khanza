@@ -12,10 +12,6 @@ final class SkorBromageModel extends ModelTemplate
     {
         parent::__construct(
             new SkorBromageDatabase(),
-            'BASE',
-            'operasi',
-            'skor_bromage',
-            'id_skor_bromage',
             [
                 'id_skor_bromage'    => V::DEFAULT(),
                 'nomor_reg'          => V::DEFAULT(),

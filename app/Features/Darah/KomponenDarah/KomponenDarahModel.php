@@ -12,10 +12,6 @@ final class KomponenDarahModel extends ModelTemplate
     {
         parent::__construct(
             new KomponenDarahDatabase(),
-            'BASE',
-            'darah',
-            'komponen_darah',
-            'id_komponen',
             [
                 'id_komponen'       => V::DEFAULT(),
                 'kode_komponen'     => V::DEFAULT(),

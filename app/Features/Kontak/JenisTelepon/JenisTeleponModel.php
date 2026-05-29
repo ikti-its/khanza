@@ -13,10 +13,6 @@ final class JenisTeleponModel extends ModelTemplate
     {
         parent::__construct(
             new TeleponDatabase(),
-            'REFS',
-            'kontak',
-            'jenis',
-            'id_jenis',
             [
                 'id_jenis'   => V::DEFAULT(),
                 'nama_jenis' => V::DEFAULT(),

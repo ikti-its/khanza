@@ -12,10 +12,6 @@ final class KategoriBarangModel extends ModelTemplate
     {
         parent::__construct(
             new KategoriBarangDatabase(),
-            'REFS',
-            'inventori_non_medis',
-            'kategori_barang',
-            'id_kategori',
             [
                 'id_kategori'          => V::DEFAULT(),
                 'kode_kategori_barang' => V::DEFAULT(),

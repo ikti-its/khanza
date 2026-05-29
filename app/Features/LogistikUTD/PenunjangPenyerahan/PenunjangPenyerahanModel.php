@@ -12,10 +12,6 @@ final class PenunjangPenyerahanModel extends ModelTemplate
     {
         parent::__construct(
             new PenunjangPenyerahanDatabase(),
-            'BASE',
-            'logistik_utd',
-            'penunjang_penyerahan',
-            'id_penunjang_penyerahan',
             [
                 'id_penunjang_penyerahan' => V::DEFAULT(),
                 'jumlah'                  => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class RefPeralatanTransferModel extends ModelTemplate
     {
         parent::__construct(
             new RefPeralatanTransferDatabase(),
-            'REFS',
-            'operasi',
-            'ref_peralatan_transfer',
-            'id_peralatan',
             [
                 'id_peralatan'   => V::DEFAULT(),
                 'nama_peralatan' => V::DEFAULT(),

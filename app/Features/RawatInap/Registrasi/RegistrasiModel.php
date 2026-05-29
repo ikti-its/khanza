@@ -12,10 +12,6 @@ final class RegistrasiModel extends ModelTemplate
     {
         parent::__construct(
             new RegistrasiDatabase(),
-            'BASE',
-            'rawat_inap',
-            'registrasi',
-            'id_rawat_inap',
             [
                 'id_rawat_inap'    => V::DEFAULT(),
                 'nomor_rawat'      => V::DEFAULT(),

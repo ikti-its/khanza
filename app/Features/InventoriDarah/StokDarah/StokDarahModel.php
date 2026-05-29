@@ -12,10 +12,6 @@ final class StokDarahModel extends ModelTemplate
     {
         parent::__construct(
             new StokDarahDatabase(),
-            'BASE',
-            'inventori_darah',
-            'stok_darah',
-            'id_stok_darah',
             [
                 'id_stok_darah'       => V::DEFAULT(),
                 'no_kantong'          => V::DEFAULT(),

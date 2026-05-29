@@ -12,10 +12,6 @@ final class SkorStewardModel extends ModelTemplate
     {
         parent::__construct(
             new SkorStewardDatabase(),
-            'BASE',
-            'operasi',
-            'skor_steward',
-            'id_skor_steward',
             [
                 'id_skor_steward'    => V::DEFAULT(),
                 'nomor_reg'          => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class HasilRadBhpModel extends ModelTemplate
     {
         parent::__construct(
             new HasilRadBhpDatabase(),
-            'BASE',
-            'radiologi',
-            'hasil_rad_bhp',
-            'id_rad_bhp',
             [
                 'id_rad_bhp'      => V::DEFAULT(),
                 'id_hasil_rad'    => V::DEFAULT(),

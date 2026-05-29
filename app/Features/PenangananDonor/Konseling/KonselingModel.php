@@ -12,10 +12,6 @@ final class KonselingModel extends ModelTemplate
     {
         parent::__construct(
             new KonselingDatabase(),
-            'BASE',
-            'penanganan_donor',
-            'konseling',
-            'id_konseling',
             [
                 'id_konseling'      => V::DEFAULT(),
                 'tanggal_konseling' => V::DEFAULT(),

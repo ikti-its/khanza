@@ -12,10 +12,6 @@ final class UpahMinimumProvinsiModel extends ModelTemplate
     {
         parent::__construct(
             new UpahMinimumProvinsiDatabase(),
-            'BASE',
-            'penggajian',
-            'ump',
-            'no_ump',
             [
                 'no_ump'       => V::DEFAULT(),
                 'tahun'        => V::DEFAULT(),

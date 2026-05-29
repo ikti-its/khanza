@@ -12,10 +12,6 @@ final class JenisPendidikanModel extends ModelTemplate
     {
         parent::__construct(
             new JenisPendidikanDatabase(),
-            'REFS',
-            'pendidikan',
-            'jenis',
-            'id_jenis',
             [
                 'id_jenis'   => V::DEFAULT(),
                 'nama_jenis' => V::DEFAULT(),

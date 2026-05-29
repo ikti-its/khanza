@@ -12,10 +12,6 @@ final class GolonganDarahModel extends ModelTemplate
     {
         parent::__construct(
             new GolonganDarahDatabase(),
-            'REFS',
-            'darah',
-            'golongan_darah',
-            'id_golongan_darah',
             [
                 'id_golongan_darah'   => V::DEFAULT(),
                 'nama_golongan_darah' => V::DEFAULT(),

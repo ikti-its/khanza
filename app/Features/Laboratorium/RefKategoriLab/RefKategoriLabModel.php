@@ -12,10 +12,6 @@ final class RefKategoriLabModel extends ModelTemplate
     {
         parent::__construct(
             new RefKategoriLabDatabase(),
-            'REFS',
-            'laboratorium',
-            'ref_kategori_lab',
-            'id_kategori',
             [
                 'id_kategori'   => V::DEFAULT(),
                 'kode_kategori' => V::DEFAULT(),

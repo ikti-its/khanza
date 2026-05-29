@@ -12,10 +12,6 @@ final class PengkajianPreInduksiAirwayModel extends ModelTemplate
     {
         parent::__construct(
             new PengkajianPreInduksiAirwayDatabase(),
-            'BASE',
-            'operasi',
-            'pengkajian_pre_induksi_airway',
-            'id_airway',
             [
                 'id_airway'       => V::DEFAULT(),
                 'id_pengkajian'   => V::DEFAULT(),

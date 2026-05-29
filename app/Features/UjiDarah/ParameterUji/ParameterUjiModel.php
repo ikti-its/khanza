@@ -12,10 +12,6 @@ final class ParameterUjiModel extends ModelTemplate
     {
         parent::__construct(
             new ParameterUjiDatabase(),
-            'REFS',
-            'uji_darah',
-            'parameter_uji',
-            'id_parameter_uji',
             [
                 'id_parameter_uji' => V::DEFAULT(),
                 'nama_parameter'   => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class BankModel extends ModelTemplate
     {
         parent::__construct(
             new BankDatabase(),
-            'BASE',
-            'finansial',
-            'bank',
-            'id_bank',
             [
                 'id_bank'        => V::DEFAULT(),
                 'kode_bank'      => V::DEFAULT(),

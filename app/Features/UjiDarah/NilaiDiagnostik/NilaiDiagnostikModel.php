@@ -12,10 +12,6 @@ final class NilaiDiagnostikModel extends ModelTemplate
     {
         parent::__construct(
             new NilaiDiagnostikDatabase(),
-            'REFS',
-            'uji_darah',
-            'nilai_diagnostik',
-            'id_nilai_diagnostik',
             [
                 'id_nilai_diagnostik'   => V::DEFAULT(),
                 'nama_nilai_diagnostik' => V::DEFAULT(),

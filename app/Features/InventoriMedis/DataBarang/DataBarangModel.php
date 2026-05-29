@@ -12,10 +12,6 @@ final class DataBarangModel extends ModelTemplate
     {
         parent::__construct(
             new DataBarangDatabase(),
-            'BASE',
-            'inventori_medis',
-            'data_barang',
-            'id_barang',
             [
                 'id_barang'     => V::DEFAULT(),
                 'kode_barang'   => V::DEFAULT(),

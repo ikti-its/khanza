@@ -12,10 +12,6 @@ final class TriaseMacamKasusModel extends ModelTemplate
     {
         parent::__construct(
             new TriaseMacamKasusDatabase(),
-            'BASE',
-            'triase_ugd',
-            'triase_macam_kasus',
-            'id_macam_kasus',
             [
                 'id_macam_kasus'   => V::DEFAULT(),
                 'kode_macam_kasus' => V::DEFAULT(),

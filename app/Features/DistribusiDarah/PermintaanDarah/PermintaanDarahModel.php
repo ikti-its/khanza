@@ -12,10 +12,6 @@ final class PermintaanDarahModel extends ModelTemplate
     {
         parent::__construct(
             new PermintaanDarahDatabase(),
-            'BASE',
-            'distribusi_darah',
-            'permintaan_darah',
-            'id_permintaan',
             [
                 'id_permintaan'      => V::DEFAULT(),
                 'no_permintaan'      => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class ShiftModel extends ModelTemplate
     {
         parent::__construct(
             new ShiftDatabase(),
-            'REFS',
-            'operasional',
-            'shift',
-            'id_shift',
             [
                 'id_shift'   => V::DEFAULT(),
                 'nama_shift' => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class RefStewardKesadaranModel extends ModelTemplate
     {
         parent::__construct(
             new RefStewardKesadaranDatabase(),
-            'REFS',
-            'operasi',
-            'ref_steward_kesadaran',
-            'id_kesadaran',
             [
                 'id_kesadaran' => V::DEFAULT(),
                 'nama_skala'   => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class AlamatModel extends ModelTemplate
     {
         parent::__construct(
             new AlamatDatabase(),
-            'BASE',
-            'lokasi',
-            'alamat',
-            'id_alamat',
             [
                 'id_alamat'          => V::DEFAULT(),
                 'id_provinsi'        => V::DEFAULT(),

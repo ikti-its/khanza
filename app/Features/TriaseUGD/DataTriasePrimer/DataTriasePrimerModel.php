@@ -12,10 +12,6 @@ final class DataTriasePrimerModel extends ModelTemplate
     {
         parent::__construct(
             new DataTriasePrimerDatabase(),
-            'BASE',
-            'triase_ugd',
-            'data_triase_primer',
-            'id_triase_primer',
             [
                 'id_triase_primer' => V::DEFAULT(),
                 'keluhan_utama'    => V::DEFAULT(),

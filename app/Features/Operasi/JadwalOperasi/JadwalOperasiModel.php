@@ -12,10 +12,6 @@ final class JadwalOperasiModel extends ModelTemplate
     {
         parent::__construct(
             new JadwalOperasiDatabase(),
-            'BASE',
-            'operasi',
-            'jadwal_operasi',
-            'id_jadwal',
             [
                 'id_jadwal'            => V::DEFAULT(),
                 'id_permintaan'        => V::DEFAULT(),

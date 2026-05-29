@@ -12,10 +12,6 @@ final class MedisPemisahanModel extends ModelTemplate
     {
         parent::__construct(
             new MedisPemisahanDatabase(),
-            'BASE',
-            'logistik_utd',
-            'medis_pemisahan',
-            'id_medis_pemisahan',
             [
                 'id_medis_pemisahan' => V::DEFAULT(),
                 'jumlah'             => V::DEFAULT(),

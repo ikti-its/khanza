@@ -12,10 +12,6 @@ final class TunjanganHariRayaModel extends ModelTemplate
     {
         parent::__construct(
             new TunjanganHariRayaDatabase(),
-            'BASE',
-            'penggajian',
-            'thr',
-            'no_thr',
             [
                 'no_thr'       => V::DEFAULT(),
                 'masa_kerja'   => V::DEFAULT(),

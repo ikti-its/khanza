@@ -12,10 +12,6 @@ final class RefStewardMotorikModel extends ModelTemplate
     {
         parent::__construct(
             new RefStewardMotorikDatabase(),
-            'REFS',
-            'operasi',
-            'ref_steward_motorik',
-            'id_motorik',
             [
                 'id_motorik' => V::DEFAULT(),
                 'nama_skala' => V::DEFAULT(),

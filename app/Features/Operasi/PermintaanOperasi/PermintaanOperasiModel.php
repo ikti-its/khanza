@@ -12,10 +12,6 @@ final class PermintaanOperasiModel extends ModelTemplate
     {
         parent::__construct(
             new PermintaanOperasiDatabase(),
-            'BASE',
-            'operasi',
-            'permintaan_operasi',
-            'id_permintaan',
             [
                 'id_permintaan' => V::DEFAULT(),
                 'nomor_reg'     => V::DEFAULT(),

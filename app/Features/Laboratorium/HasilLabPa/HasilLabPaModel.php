@@ -12,10 +12,6 @@ final class HasilLabPaModel extends ModelTemplate
     {
         parent::__construct(
             new HasilLabPaDatabase(),
-            'BASE',
-            'laboratorium',
-            'hasil_lab_pa',
-            'id_hasil_pa',
             [
                 'id_hasil_pa'         => V::DEFAULT(),
                 'id_permintaan_lab'   => V::DEFAULT(),

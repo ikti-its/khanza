@@ -12,10 +12,6 @@ final class JenjangPendidikanModel extends ModelTemplate
     {
         parent::__construct(
             new JenjangPendidikanDatabase(),
-            'REFS',
-            'pendidikan',
-            'jenjang',
-            'id_jenjang',
             [
                 'id_jenjang'   => V::DEFAULT(),
                 'nama_jenjang' => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class KecamatanModel extends ModelTemplate
     {
         parent::__construct(
             new KecamatanDatabase(),
-            'REFS',
-            'lokasi',
-            'kecamatan',
-            'id_kecamatan',
             [
                 'id_kecamatan'   => V::DEFAULT(),
                 'id_provinsi'    => V::DEFAULT(),

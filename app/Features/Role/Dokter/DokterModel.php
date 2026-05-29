@@ -12,10 +12,6 @@ final class DokterModel extends ModelTemplate
     {
         parent::__construct(
             new DokterDatabase(),
-            'BASE',
-            'role',
-            'dokter',
-            'id_dokter',
             [
                 'id_dokter' => V::DEFAULT(),
                 'spesialis' => V::DEFAULT(),

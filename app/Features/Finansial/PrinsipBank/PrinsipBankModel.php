@@ -12,10 +12,6 @@ final class PrinsipBankModel extends ModelTemplate
     {
         parent::__construct(
             new PrinsipBankDatabase(),
-            'BASE',
-            'finansial',
-            'prinsip',
-            'id_prinsip',
             [
                 'id_prinsip'   => V::DEFAULT(),
                 'nama_prinsip' => V::DEFAULT(),

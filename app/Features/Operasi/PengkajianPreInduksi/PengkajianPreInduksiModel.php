@@ -12,10 +12,6 @@ final class PengkajianPreInduksiModel extends ModelTemplate
     {
         parent::__construct(
             new PengkajianPreInduksiDatabase(),
-            'BASE',
-            'operasi',
-            'pengkajian_pre_induksi',
-            'id_pengkajian',
             [
                 'id_pengkajian'             => V::DEFAULT(),
                 'nomor_reg'                 => V::DEFAULT(),

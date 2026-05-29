@@ -12,10 +12,6 @@ final class SignoutSebelumTutupLukaModel extends ModelTemplate
     {
         parent::__construct(
             new SignoutSebelumTutupLukaDatabase(),
-            'BASE',
-            'operasi',
-            'signout_sebelum_tutup_luka',
-            'id_signout',
             [
                 'id_signout'              => V::DEFAULT(),
                 'nomor_reg'               => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class MedisPenyerahanModel extends ModelTemplate
     {
         parent::__construct(
             new MedisPenyerahanDatabase(),
-            'BASE',
-            'logistik_utd',
-            'medis_penyerahan',
-            'id_medis_penyerahan',
             [
                 'id_medis_penyerahan' => V::DEFAULT(),
                 'jumlah'              => V::DEFAULT(),

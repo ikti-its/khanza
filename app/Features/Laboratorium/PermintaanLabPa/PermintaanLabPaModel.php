@@ -12,10 +12,6 @@ final class PermintaanLabPaModel extends ModelTemplate
     {
         parent::__construct(
             new PermintaanLabPaDatabase(),
-            'BASE',
-            'laboratorium',
-            'permintaan_lab_pa',
-            'id_permintaan_pa',
             [
                 'id_permintaan_pa'            => V::DEFAULT(),
                 'id_permintaan_lab'           => V::DEFAULT(),

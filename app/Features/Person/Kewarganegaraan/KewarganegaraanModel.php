@@ -12,10 +12,6 @@ final class KewarganegaraanModel extends ModelTemplate
     {
         parent::__construct(
             new KewarganegaraanDatabase(),
-            'REFS',
-            'person',
-            'agama',
-            'id_agama',
             [
                 'id_kewarganegaraan' => V::DEFAULT(),
             ],

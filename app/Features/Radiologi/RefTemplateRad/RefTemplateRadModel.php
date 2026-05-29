@@ -12,10 +12,6 @@ final class RefTemplateRadModel extends ModelTemplate
     {
         parent::__construct(
             new RefTemplateRadDatabase(),
-            'REFS',
-            'radiologi',
-            'ref_template_rad',
-            'id_template',
             [
                 'id_template'         => V::DEFAULT(),
                 'nama_template'       => V::DEFAULT(),

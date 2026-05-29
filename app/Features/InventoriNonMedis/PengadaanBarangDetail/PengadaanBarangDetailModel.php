@@ -12,10 +12,6 @@ final class PengadaanBarangDetailModel extends ModelTemplate
     {
         parent::__construct(
             new PengadaanBarangDetailDatabase(),
-            'BASE',
-            'inventori_non_medis',
-            'pengadaan_barang_detail',
-            'id_detail',
             [
                 'id_detail'    => V::DEFAULT(),
                 'id_pengadaan' => V::DEFAULT(),

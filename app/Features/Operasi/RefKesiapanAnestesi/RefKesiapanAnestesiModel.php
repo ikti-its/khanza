@@ -12,10 +12,6 @@ final class RefKesiapanAnestesiModel extends ModelTemplate
     {
         parent::__construct(
             new RefKesiapanAnestesiDatabase(),
-            'REFS',
-            'operasi',
-            'ref_kesiapan_anestesi',
-            'id_kesiapan',
             [
                 'id_kesiapan'   => V::DEFAULT(),
                 'nama_kesiapan' => V::DEFAULT(),

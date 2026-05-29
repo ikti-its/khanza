@@ -12,10 +12,6 @@ final class EmailModel extends ModelTemplate
     {
         parent::__construct(
             new EmailDatabase(),
-            'BASE',
-            'kontak',
-            'email',
-            'id_email',
             [
                 'id_email'     => V::DEFAULT(),
                 'id_orang'     => V::DEFAULT(),

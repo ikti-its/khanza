@@ -12,10 +12,6 @@ final class PesangonModel extends ModelTemplate
     {
         parent::__construct(
             new PesangonDatabase(),
-            'BASE',
-            'penggajian',
-            'pesangon',
-            'no_pesangon',
             [
                 'no_pesangon'  => V::DEFAULT(),
                 'masa_kerja'   => V::DEFAULT(),

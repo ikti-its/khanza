@@ -12,10 +12,6 @@ final class UpahPenghargaanMasaKerjaModel extends ModelTemplate
     {
         parent::__construct(
             new UpahPenghargaanMasaKerjaDatabase(),
-            'BASE',
-            'penggajian',
-            'upmk',
-            'no_upmk',
             [
                 'no_upmk'      => V::DEFAULT(),
                 'masa_kerja'   => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class SkriningRawatJalanModel extends ModelTemplate
     {
         parent::__construct(
             new SkriningRawatJalanDatabase(),
-            'BASE',
-            'skrining_rj',
-            'skrining_rawat_jalan',
-            'id_skrining',
             [
                 'id_skrining'      => V::DEFAULT(),
                 'no_rm'            => V::DEFAULT(),

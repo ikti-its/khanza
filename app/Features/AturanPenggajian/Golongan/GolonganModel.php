@@ -12,10 +12,6 @@ final class GolonganModel extends ModelTemplate
     {
         parent::__construct(
             new GolonganDatabase(),
-            'BASE',
-            'penggajian',
-            'golongan',
-            'no_golongan',
             [
                 'no_golongan'   => V::DEFAULT(),
                 'kode_golongan' => V::DEFAULT(),

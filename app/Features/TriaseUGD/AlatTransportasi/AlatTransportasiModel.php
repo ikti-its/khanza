@@ -12,10 +12,6 @@ final class AlatTransportasiModel extends ModelTemplate
     {
         parent::__construct(
             new AlatTransportasiDatabase(),
-            'REFS',
-            'triase_ugd',
-            'alat_transportasi',
-            'id_transportasi',
             [
                 'id_transportasi'   => V::DEFAULT(),
                 'nama_transportasi' => V::DEFAULT(),

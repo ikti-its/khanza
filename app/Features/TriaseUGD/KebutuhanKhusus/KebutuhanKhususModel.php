@@ -12,10 +12,6 @@ final class KebutuhanKhususModel extends ModelTemplate
     {
         parent::__construct(
             new KebutuhanKhususDatabase(),
-            'REFS',
-            'triase_ugd',
-            'kebutuhan_khusus',
-            'id_kebutuhan',
             [
                 'id_kebutuhan'   => V::DEFAULT(),
                 'nama_kebutuhan' => V::DEFAULT(),

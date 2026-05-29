@@ -12,10 +12,6 @@ final class RefAldretteAktivitasModel extends ModelTemplate
     {
         parent::__construct(
             new RefAldretteAktivitasDatabase(),
-            'REFS',
-            'operasi',
-            'ref_aldrette_aktivitas',
-            'id_aktivitas',
             [
                 'id_aktivitas' => V::DEFAULT(),
                 'nama_skala'   => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class OrangModel extends ModelTemplate
     {
         parent::__construct(
             new OrangDatabase(),
-            'BASE',
-            'person',
-            'orang',
-            'id_orang',
             [
                 'id_orang'      => V::DEFAULT(),
                 'nik'           => V::DEFAULT(),

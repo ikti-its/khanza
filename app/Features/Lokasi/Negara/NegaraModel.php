@@ -12,10 +12,6 @@ final class NegaraModel extends ModelTemplate
     {
         parent::__construct(
             new NegaraDatabase(),
-            'REFS',
-            'lokasi',
-            'negara',
-            'id_negara',
             [
                 'id_negara'    => V::DEFAULT(),
                 'nama_negara'  => V::DEFAULT(),

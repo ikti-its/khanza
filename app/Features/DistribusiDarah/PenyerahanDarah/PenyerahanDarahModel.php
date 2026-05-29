@@ -12,10 +12,6 @@ final class PenyerahanDarahModel extends ModelTemplate
     {
         parent::__construct(
             new PenyerahanDarahDatabase(),
-            'BASE',
-            'distribusi_darah',
-            'penyerahan_darah',
-            'id_penyerahan',
             [
                 'id_penyerahan'      => V::DEFAULT(),
                 'no_penyerahan'      => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class PenghasilanTidakKenaPajakModel extends ModelTemplate
     {
         parent::__construct(
             new PenghasilanTidakKenaPajakDatabase(),
-            'BASE',
-            'penggajian',
-            'ptkp',
-            'no_ptkp',
             [
                 'no_ptkp'    => V::DEFAULT(),
                 'kode_ptkp'  => V::DEFAULT(),

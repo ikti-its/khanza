@@ -12,10 +12,6 @@ final class PilihanJawabanModel extends ModelTemplate
     {
         parent::__construct(
             new PilihanJawabanDatabase(),
-            'REFS',
-            'penanganan_donor',
-            'pilihan_jawaban',
-            'id_pilihan',
             [
                 'id_pilihan'   => V::DEFAULT(),
                 'nama_pilihan' => V::DEFAULT(),

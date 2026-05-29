@@ -12,10 +12,6 @@ final class PendonorModel extends ModelTemplate
     {
         parent::__construct(
             new PendonorDatabase(),
-            'BASE',
-            'role',
-            'pendonor',
-            'id_pendonor',
             [
                 'id_pendonor'            => V::DEFAULT(),
                 'nomor_pendonor'         => V::DEFAULT(),

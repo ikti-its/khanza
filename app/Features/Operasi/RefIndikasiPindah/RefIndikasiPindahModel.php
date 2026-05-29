@@ -12,10 +12,6 @@ final class RefIndikasiPindahModel extends ModelTemplate
     {
         parent::__construct(
             new RefIndikasiPindahDatabase(),
-            'REFS',
-            'operasi',
-            'ref_indikasi_pindah',
-            'id_indikasi',
             [
                 'id_indikasi'   => V::DEFAULT(),
                 'nama_indikasi' => V::DEFAULT(),

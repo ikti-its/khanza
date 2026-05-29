@@ -12,10 +12,6 @@ final class HasilDiagnostikModel extends ModelTemplate
     {
         parent::__construct(
             new HasilDiagnostikDatabase(),
-            'BASE',
-            'uji_darah',
-            'hasil_diagnostik',
-            'id_diagnostik',
             [
                 'id_diagnostik'    => V::DEFAULT(),
                 'tanggal_hasil'    => V::DEFAULT(),

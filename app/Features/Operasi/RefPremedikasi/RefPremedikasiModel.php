@@ -12,10 +12,6 @@ final class RefPremedikasiModel extends ModelTemplate
     {
         parent::__construct(
             new RefPremedikasiDatabase(),
-            'REFS',
-            'operasi',
-            'ref_premedikasi',
-            'id_premedikasi',
             [
                 'id_premedikasi'   => V::DEFAULT(),
                 'nama_premedikasi' => V::DEFAULT(),

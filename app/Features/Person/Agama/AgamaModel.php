@@ -12,10 +12,6 @@ final class AgamaModel extends ModelTemplate
     {
         parent::__construct(
             new AgamaDatabase(),
-            'REFS',
-            'person',
-            'agama',
-            'id_agama',
             [
                 'id_agama'   => V::DEFAULT(),
                 'nama_agama' => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class JenisBagModel extends ModelTemplate
     {
         parent::__construct(
             new JenisBagDatabase(),
-            'REFS',
-            'donor',
-            'jenis_bag',
-            'id_jenis_bag',
             [
                 'id_jenis_bag'   => V::DEFAULT(),
                 'kode_jenis_bag' => V::DEFAULT(),

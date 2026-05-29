@@ -12,10 +12,6 @@ final class TarifKomponenModel extends ModelTemplate
     {
         parent::__construct(
             new TarifKomponenDatabase(),
-            'BASE',
-            'inventori_darah',
-            'tarif_komponen',
-            'id_tarif',
             [
                 'id_tarif'        => V::DEFAULT(),
                 'jasa_sarana'     => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class TimeOutSebelumInsisiModel extends ModelTemplate
     {
         parent::__construct(
             new TimeOutSebelumInsisiDatabase(),
-            'BASE',
-            'operasi',
-            'timeout_sebelum_insisi',
-            'id_timeout',
             [
                 'id_timeout'              => V::DEFAULT(),
                 'nomor_reg'               => V::DEFAULT(),

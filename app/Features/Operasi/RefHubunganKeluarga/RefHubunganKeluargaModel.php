@@ -12,10 +12,6 @@ final class RefHubunganKeluargaModel extends ModelTemplate
     {
         parent::__construct(
             new RefHubunganKeluargaDatabase(),
-            'REFS',
-            'operasi',
-            'ref_hubungan_keluarga',
-            'id_hubungan_keluarga',
             [
                 'id_hubungan_keluarga' => V::DEFAULT(),
                 'nama_hubungan'        => V::DEFAULT(),

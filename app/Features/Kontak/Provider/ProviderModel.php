@@ -12,10 +12,6 @@ final class ProviderModel extends ModelTemplate
     {
         parent::__construct(
             new ProviderDatabase(),
-            'REFS',
-            'kontak',
-            'provider',
-            'id_provider',
             [
                 'id_provider'   => V::DEFAULT(),
                 'nama_provider' => V::DEFAULT(),

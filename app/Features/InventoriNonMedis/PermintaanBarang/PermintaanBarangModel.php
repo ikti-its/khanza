@@ -12,10 +12,6 @@ final class PermintaanBarangModel extends ModelTemplate
     {
         parent::__construct(
             new PermintaanBarangDatabase(),
-            'BASE',
-            'inventori_non_medis',
-            'permintaan_barang',
-            'id_permintaan',
             [
                 'id_permintaan'               => V::DEFAULT(),
                 'id_tipe_permintaan_barang'   => V::DEFAULT(),

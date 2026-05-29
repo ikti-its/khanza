@@ -12,10 +12,6 @@ final class RefKesadaranPascaopModel extends ModelTemplate
     {
         parent::__construct(
             new RefKesadaranPascaopDatabase(),
-            'REFS',
-            'operasi',
-            'ref_kesadaran_pascaop',
-            'id_kesadaran',
             [
                 'id_kesadaran'   => V::DEFAULT(),
                 'nama_kesadaran' => V::DEFAULT(),

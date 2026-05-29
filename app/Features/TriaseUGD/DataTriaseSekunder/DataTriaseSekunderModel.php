@@ -12,10 +12,6 @@ final class DataTriaseSekunderModel extends ModelTemplate
     {
         parent::__construct(
             new DataTriaseSekunderDatabase(),
-            'BASE',
-            'triase_ugd',
-            'data_triase_sekunder',
-            'id_triase_sekunder',
             [
                 'id_triase_sekunder' => V::DEFAULT(),
                 'anamnesa_singkat'   => V::DEFAULT(),

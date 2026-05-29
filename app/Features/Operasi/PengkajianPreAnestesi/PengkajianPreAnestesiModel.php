@@ -12,10 +12,6 @@ final class PengkajianPreAnestesiModel extends ModelTemplate
     {
         parent::__construct(
             new PengkajianPreAnestesiDatabase(),
-            'BASE',
-            'operasi',
-            'pengkajian_pre_anestesi',
-            'id_pre_anestesi',
             [
                 'id_pre_anestesi'      => V::DEFAULT(),
                 'nomor_reg'            => V::DEFAULT(),

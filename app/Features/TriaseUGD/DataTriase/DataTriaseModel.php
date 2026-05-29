@@ -12,10 +12,6 @@ final class DataTriaseModel extends ModelTemplate
     {
         parent::__construct(
             new DataTriaseDatabase(),
-            'BASE',
-            'triase_ugd',
-            'data_triase',
-            'id_triase',
             [
                 'id_triase'             => V::DEFAULT(),
                 'tanggal_kunjungan'     => V::DEFAULT(),

@@ -12,10 +12,6 @@ final class PetugasModel extends ModelTemplate
     {
         parent::__construct(
             new PetugasDatabase(),
-            'BASE',
-            'role',
-            'pasien',
-            'id_petugas',
             [
                 'id_petugas' => V::DEFAULT(),
                 'deskripsi'  => V::DEFAULT(),

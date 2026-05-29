@@ -12,10 +12,6 @@ final class SuplierModel extends ModelTemplate
     {
         parent::__construct(
             new SuplierDatabase(),
-            'BASE',
-            'inventori_non_medis',
-            'suplier',
-            'id_suplier',
             [
                 'id_suplier'   => V::DEFAULT(),
                 'nama_suplier' => V::DEFAULT(),

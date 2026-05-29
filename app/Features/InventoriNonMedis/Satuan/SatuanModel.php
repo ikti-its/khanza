@@ -12,10 +12,6 @@ final class SatuanModel extends ModelTemplate
     {
         parent::__construct(
             new SatuanDatabase(),
-            'REFS',
-            'inventori_non_medis',
-            'satuan',
-            'id_satuan',
             [
                 'id_satuan'   => V::DEFAULT(),
                 'kode_satuan' => V::DEFAULT(),

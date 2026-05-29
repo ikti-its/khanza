@@ -12,10 +12,6 @@ final class RujukanModel extends ModelTemplate
     {
         parent::__construct(
             new RujukanDatabase(),
-            'BASE',
-            'penanganan_donor',
-            'rujukan',
-            'id_rujukan',
             [
                 'id_rujukan'      => V::DEFAULT(),
                 'nomor_rujukan'   => V::DEFAULT(),

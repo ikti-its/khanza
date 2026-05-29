@@ -12,10 +12,6 @@ final class RefItemPemeriksaanLabModel extends ModelTemplate
     {
         parent::__construct(
             new RefItemPemeriksaanLabDatabase(),
-            'REFS',
-            'laboratorium',
-            'ref_item_pemeriksaan_lab',
-            'id_item_lab',
             [
                 'id_item_lab'  => V::DEFAULT(),
                 'id_kategori'  => V::DEFAULT(),
