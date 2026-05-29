@@ -29,7 +29,7 @@ class DatabaseTemplate extends Migration
      *     constraint?: string|int,
      *     default?: RawSql,
      * }>*/
-    private array $fields = [];
+    public private(set) array $fields = [];
     /** @var non-empty-string $primary_key */
     public private(set) string $primary_key = '';
     
@@ -345,14 +345,6 @@ class DatabaseTemplate extends Migration
             die($e->getMessage());
         }
         
-    }
-
-    /**
-     * @return array<string, array{type: string, null: bool, constraint?: string|int}>
-     */
-    public function get_field_constraints(): array
-    {
-        return $this->fields;
     }
 
     /** @return list<class-string<DatabaseTemplate>> */

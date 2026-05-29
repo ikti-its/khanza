@@ -39,7 +39,7 @@ class ModelTemplate extends Model
         parent::__construct(\Config\Database::connect($config));
 
         $validation = [];
-        foreach ($this->database->get_field_constraints() as $col => $def) {
+        foreach ($this->database->fields as $col => $def) {
             $rules = [];
 
             // Ambil base type saja (type bisa berisi sufiks "CHECK (...)")
