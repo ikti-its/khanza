@@ -30,8 +30,8 @@ final class PendonorController extends ControllerTemplate
             [
                 [HIDE, OPTIONAL, I::INDEX, 'id_pendonor',            'ID Pendonor'],
                 [SHOW, REQUIRED, I::TEXT,  'nomor_pendonor',         'Nomor Pendonor'],
-                [HIDE, OPTIONAL, I::INDEX, 'id_orang',               'ID Orang'],
-                [SHOW, REQUIRED, I::SELECT, 'id_rhesus',              'Rhesus'],
+                [HIDE, REQUIRED, I::INDEX, 'id_orang',               'ID Orang'],
+                [SHOW, REQUIRED, I::SELECT, 'id_rhesus',             'Rhesus'],
                 [SHOW, OPTIONAL, I::DATE,  'tanggal_donor_terakhir', 'Tanggal Donor Terakhir'],
             ],
         );
@@ -383,5 +383,36 @@ final class PendonorController extends ControllerTemplate
         }
 
         return redirect()->to($this->get_uri_path() . '/data');
+    }
+
+    /**
+     * Menampilkan data modal pendonor
+     */
+    public function list()
+    {
+        $data = $this->model->builder()
+            ->select('
+                role.pendonor.id_pendonor,
+                role.pendonor.nomor_pendonor,
+                role.pendonor.id_rhesus,
+                person.orang.nama,
+                person.orang.nik,
+                person.orang.id_jenis_kelamin,
+                person.orang.id_golongan_darah,
+                person.orang.tanggal_lahir,
+                person.jenis_kelamin.nama_jenis_kelamin,
+                darah.golongan_darah.nama_golongan_darah,
+                darah.rhesus.kode_rhesus
+            ')
+            ->join('person.orang', 'person.orang.id_orang = role.pendonor.id_orang', 'inner')
+            ->join('person.jenis_kelamin', 'person.jenis_kelamin.id_jenis_kelamin = person.orang.id_jenis_kelamin', 'left')
+            ->join('darah.golongan_darah', 'darah.golongan_darah.id_golongan_darah = person.orang.id_golongan_darah', 'left')
+            ->join('darah.rhesus', 'darah.rhesus.id_rhesus = role.pendonor.id_rhesus', 'left')
+            ->get()
+            ->getResultArray();
+
+        return $this->response->setJSON([
+            'data' => $data
+        ]);
     }
 }
