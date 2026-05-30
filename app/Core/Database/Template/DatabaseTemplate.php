@@ -300,9 +300,9 @@ class DatabaseTemplate extends Migration
             'Failed to query pg_get_serial_sequence');
         $seq_row = $seq_result->getRowArray();
         
-        assert(isset($seq_row['seq_name']));
+        if(!isset($seq_row['seq_name'])) return;
         $this->db->query("
-            SELECT setval('{$seq_row['seq_name']}',
+            SELECT setval('{$seq_row['seq_name'] }',
                 COALESCE(
                     (SELECT MAX({$this->primary_key}::bigint)
                         FROM {$this->schema}.{$this->table}), 1)
