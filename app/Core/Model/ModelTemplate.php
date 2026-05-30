@@ -31,7 +31,7 @@ class ModelTemplate extends Model
         
         assert(array_intersect_key($fields, $join) === [], 
             "Fields intersects with join in {$this->table}");
-        $this->allowedFields = array_keys($join);
+        $this->allowedFields = array_merge($this->allowedFields, array_keys($join));
         $this->join = $join;
 
         $config = new \Config\Database()->default;
