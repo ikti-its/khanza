@@ -27,7 +27,9 @@ class ModelTemplate extends Model
         $this->primaryKey = $this->database->primary_key;
         
         $this->allowedFields = array_keys($fields);
-        unset($this->allowedFields[$this->primaryKey]);
+        if (($key = array_search($this->primaryKey, $this->allowedFields)) !== false) {
+            unset($this->allowedFields[$key]);
+        }
         
         assert(array_intersect_key($fields, $join) === [], 
             "Fields intersects with join in {$this->table}");
