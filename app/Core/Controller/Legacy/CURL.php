@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Controller\Legacy;
 
+/** @deprecated "Migrate to ControllerTemplate inheritence" */
 final readonly class CURL
 {
     public static function call(

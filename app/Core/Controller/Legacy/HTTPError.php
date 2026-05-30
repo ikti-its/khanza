@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Controller\Legacy;
 
+/** @deprecated "Migrate to ControllerTemplate inheritence" */
 final readonly class HTTPError
 {
     public static function renderErrorView(int $status_code, ?string $custom_message = null): string
