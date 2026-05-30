@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Controller;
+namespace App\Core\Controller\Legacy;
 
 use CodeIgniter\Database\BaseResult;
 
