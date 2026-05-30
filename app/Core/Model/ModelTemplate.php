@@ -147,6 +147,77 @@ class ModelTemplate extends Model
     }
 
     /**
+     * @param array<int|string, mixed> $spec
+     * @return array{0: string, 1: string}|null
+     */
+    private function resolve_option_source(
+        \CodeIgniter\Database\BaseBuilder $builder,
+        array $spec,
+        string $parent_alias,
+        DatabaseTemplate $parent_db,
+        int &$idx,
+    ): array|null {
+        $fk_lookup = $this->build_fk_lookup($parent_db);
+
+        foreach ($spec as $k => $v) {
+            if (is_string($k)) {
+                if (!isset($fk_lookup[$k])) {
+                    continue;
+                }
+
+                /** @var class-string<DatabaseTemplate> $ref_class */
+                [$ref_class, $ref_on] = $fk_lookup[$k];
+
+                $ref_db    = new $ref_class();
+                $ref_table = $ref_db->schema . '.' . $ref_db->table;
+                $ref_alias = "j{$idx}";
+                $idx++;
+
+                $builder->join(
+                    "{$ref_table} {$ref_alias}",
+                    "{$parent_alias}.{$k} = {$ref_alias}.{$ref_on}",
+                    'left'
+                );
+
+                $next_spec = is_array($v) ? $v : [$v];
+                $resolved = $this->resolve_option_source(
+                    $builder,
+                    $next_spec,
+                    $ref_alias,
+                    $ref_db,
+                    $idx,
+                );
+
+                if ($resolved !== null) {
+                    return $resolved;
+                }
+
+                continue;
+            }
+
+            if (is_string($v) && $v !== '') {
+                return [$parent_alias, $v];
+            }
+
+            if (is_array($v)) {
+                $resolved = $this->resolve_option_source(
+                    $builder,
+                    $v,
+                    $parent_alias,
+                    $parent_db,
+                    $idx,
+                );
+
+                if ($resolved !== null) {
+                    return $resolved;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @return list<array<string, mixed>>
      */
     #[\Override]
@@ -185,37 +256,44 @@ class ModelTemplate extends Model
     {
         if (empty($this->join)) return [];
 
-        $fk_lookup = [];
-        foreach ($this->database->foreign_keys as $fk) {
-            [$fields, $ref_class, $ref_fields] = $fk;
-            for ($i = 0; $i < count($fields); $i++) {
-                $fk_lookup[$fields[$i]] = [$ref_class, $ref_fields[$i]];
-            }
-        }
-
         $options = [];
         foreach ($this->join as $fk_col => $display_cols) {
+            $fk_lookup = $this->build_fk_lookup($this->database);
             if (!isset($fk_lookup[$fk_col])) continue;
 
-            $display_col = isset($display_cols[0]) && is_string($display_cols[0])
-                ? $display_cols[0]
-                : null;
-            if ($display_col === null) continue;
-
+            /** @var class-string<DatabaseTemplate> $ref_class */
             [$ref_class, $ref_id_col] = $fk_lookup[$fk_col];
 
             $ref_db    = new $ref_class();
             $ref_table = $ref_db->schema . '.' . $ref_db->table;
+            $main      = 'm';
+            $builder   = $this->db->table("{$ref_table} {$main}");
+            $idx       = 0;
 
-            $query = $this->db->query(
-                "SELECT {$ref_id_col}, {$display_col} FROM {$ref_table} ORDER BY {$display_col}"
+            $specs = is_array($display_cols) ? $display_cols : [$display_cols];
+            $resolved = $this->resolve_option_source(
+                $builder,
+                $specs,
+                $main,
+                $ref_db,
+                $idx,
             );
+
+            if ($resolved === null) continue;
+
+            [$display_alias, $display_col] = $resolved;
+
+            $builder->select("{$main}.{$ref_id_col} AS option_value");
+            $builder->select("{$display_alias}.{$display_col} AS display_value");
+            $builder->orderBy("{$display_alias}.{$display_col}", 'ASC');
+
+            $query = $builder->get();
             assert($query instanceof BaseResult,
                 "get_all_options query failed for: {$fk_col}");
 
             $rows = $query->getResultArray();
             $options[$fk_col] = array_map(
-                fn(array $row): array => [$row[$display_col], (string)$row[$ref_id_col]],
+                fn(array $row): array => [$row['display_value'], (string)$row['option_value']],
                 $rows
             );
         }
