@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-use App\Core\Controller\ControllerTemplateLegacy;
-use App\Core\Controller\HTTPError;
+use App\Core\Controller\Legacy\ControllerTemplateLegacy;
+use App\Core\Controller\Legacy\HTTPError;
 
 require_once FCPATH . '../vendor/autoload.php';
 

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers\AturanPenggajian;
-use App\Core\Controller\ControllerTemplateLegacy;
+use App\Core\Controller\Legacy\ControllerTemplateLegacy;
 
 class UPMK extends ControllerTemplateLegacy
 {   

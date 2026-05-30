@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers\DataPenggajian;
-use App\Core\Controller\ControllerTemplateLegacy;
+use App\Core\Controller\Legacy\ControllerTemplateLegacy;
 
 class THR extends ControllerTemplateLegacy
 {

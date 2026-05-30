@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-use App\Core\Controller\CURL;
+use App\Core\Controller\Legacy\CURL;
 
 class NomorGeneratorService
 {

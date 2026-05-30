@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controllers\RekamMedis;
-use App\Core\Controller\ControllerTemplateLegacy;
-use App\Core\Controller\HTTPError;
-use App\Core\Controller\CURL;
+use App\Core\Controller\Legacy\ControllerTemplateLegacy;
+use App\Core\Controller\Legacy\HTTPError;
+use App\Core\Controller\Legacy\CURL;
 
 class RekamMedis extends ControllerTemplateLegacy
 {
