@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Auth;
+namespace App\Features\Akun\Auth;
 
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;

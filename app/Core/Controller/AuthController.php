@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Auth;
+namespace App\Core\Controller;
 
 use CodeIgniter\Controller;
 use App\Core\Model\ModelTemplate;
@@ -10,7 +10,7 @@ use CodeIgniter\HTTP\RedirectResponse;
 final class AuthController extends Controller
 {
     public function __construct(
-        private ModelTemplate $model = new AuthModel(),
+        private ModelTemplate $model = new \App\Features\Akun\Auth\AuthModel(),
     ){}
 
     public function index(): string|RedirectResponse
