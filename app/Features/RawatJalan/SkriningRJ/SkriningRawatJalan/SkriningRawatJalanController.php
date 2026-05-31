@@ -42,4 +42,44 @@ final class SkriningRawatJalanController extends ControllerTemplate
             ],
         );
     }
+    #[\Override]
+    final public function create_page(): string
+    {
+        $breadcrumbs = [
+            ['title' => 'Tambah', 'icon' => 'tambah']
+        ];
+
+        $tanggalHariIni = date('Y-m-d H:i:s');
+
+        $mockBaris = [
+            'id_skrining'      => '',
+            'no_rm'            => '',
+            'tgl_skrining'     => date('Y-m-d'),
+            'jam_skrining'     => date('H:i:s'),
+            'id_kesadaran'     => '',
+            'id_pernafasan'    => '',
+            'id_skala_nyeri'   => '',
+            'id_nyeri_dada'    => '',
+            'id_batuk'         => '',
+            'is_geriatri'      => '',
+            'is_risiko_jatuh'  => '',
+            'id_keputusan'     => '',
+            'id_petugas'       => '',
+        ];
+
+        $konfig = array_values(array_filter(
+            $this->get_fields_with_options(false, true),
+            fn($f) => $f[2] !== 'id_skrining' && $f[2] !== 'no_rm'
+        ));
+
+        return view('admin/rawat_jalan/skrining_rawat_jalan/tambah_skrining_rj', [
+            'judul'       => 'Tambah ' . $this->title,
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
+            'modul_path'  => $this->get_uri_path(),
+            'kolom_id'    => $this->model->primaryKey,
+            'konfig'      => $konfig,
+            'baris'       => $mockBaris,
+            'form_action' => '/submittambah',
+        ]);
+    }
 }
