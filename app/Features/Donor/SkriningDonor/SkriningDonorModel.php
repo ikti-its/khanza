@@ -21,7 +21,13 @@ final class SkriningDonorModel extends ModelTemplate
                 'suhu_tubuh'       => V::DEFAULT(),
             ],
             [
-                'id_kunjungan'       => ['nomor_kunjungan'],
+                'id_kunjungan'       => [
+                    'nomor_kunjungan',
+                    'id_pendonor' => [
+                        'nomor_pendonor',
+                        'id_orang' => ['nama']
+                    ],
+                ],
                 'id_hasil_anamnesis' => ['nama_hasil'],
             ],
         );
