@@ -32,7 +32,7 @@
                 <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
                     Tanggal Kunjungan<span class="text-red-600">*</span>
                 </label>
-                <input type="datetime-local" name="tanggal_kunjungan" value="<?= $baris['tanggal_kunjungan'] ?? date('Y-m-d') ?>" 
+                <input type="datetime-local" name="tanggal_kunjungan" value="<?= isset($baris['tanggal_kunjungan']) && $baris['tanggal_kunjungan'] !== '' ? date('Y-m-d\TH:i', strtotime($baris['tanggal_kunjungan'])) : date('Y-m-d\TH:i') ?>"
                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
 
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
@@ -97,6 +97,30 @@
 </div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const pendonorId = "<?= $baris['id_pendonor'] ?? '' ?>";
+
+        if (pendonorId !== '') {
+            const inputHidden = document.getElementById('id_pendonor');
+            if (inputHidden) {
+                inputHidden.value = pendonorId;
+            }
+
+            const savedItem = {
+                id_pendonor: pendonorId,
+                nomor_pendonor: "<?= $card['nomor_pendonor'] ?? '' ?>",
+                nama: "<?= $card['nama'] ?? '' ?>",
+                nik: "<?= $card['nik'] ?? '' ?>",
+                jenis_kelamin: "<?= $card['id_jenis_kelamin'] ?? '' ?>",
+                tanggal_lahir: "<?= $card['tanggal_lahir'] ?? '' ?>",
+                golongan_darah: "<?= $card['id_golongan_darah'] ?? '' ?>",
+                rhesus: "<?= $card['id_rhesus'] ?? '' ?>"
+            };
+            
+            autofillFields(savedItem);
+        }
+    });
+
     function autofillFields(item) {
         document.getElementById('id_pendonor').value = item.id_pendonor;
         document.getElementById('nomor_pendonor').value = item.nomor_pendonor;

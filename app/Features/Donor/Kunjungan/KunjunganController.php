@@ -109,4 +109,102 @@ final class KunjunganController extends ControllerTemplate
             'form_action' => '/submittambah',
         ]);
     }
+
+    /**
+     * OVERRIDE: Menampilkan Halaman Ubah Data Kunjungan
+     */
+    #[\Override]
+    final public function update_page(int|string $id): string
+    {
+        if ($id == 0) return $this->index();
+
+        $dataKunjungan = $this->model->find($id);
+        if (!$dataKunjungan) {
+            $dataKunjungan = [];
+        }
+
+        $dataOrang = [];
+        $dataPendonor = [];
+        if (!empty($dataKunjungan['id_pendonor'])) {
+            $pendonorModel = new \App\Features\Role\Pendonor\PendonorModel();
+            $dataPendonor = $pendonorModel->find($dataKunjungan['id_pendonor']) ?? [];
+
+            if (!empty($dataPendonor['id_orang'])) {
+                $modelOrang = new \App\Features\Person\Orang\OrangModel();
+                $dataOrang = $modelOrang->find($dataPendonor['id_orang']) ?? [];
+            }
+        }
+
+        $baris = array_merge($dataOrang, $dataPendonor, $dataKunjungan);
+
+        if (!empty($baris['tanggal_kunjungan'])) {
+            $baris['tanggal_kunjungan'] = date('Y-m-d H:i:s', strtotime($baris['tanggal_kunjungan']));
+        }
+
+        $controllerOrang = new \App\Features\Person\Orang\OrangController();
+        $controllerPendonor = new \App\Features\Role\Pendonor\PendonorController();
+
+        $konfigOrang = $controllerOrang->get_fields_with_options(false, true);
+        $konfigPendonor = $controllerPendonor->get_fields_with_options(false, true);
+        $konfigKunjungan = $this->get_fields_with_options(false, true);
+
+        $konfigGabungan = [];
+
+        foreach ($konfigKunjungan as $fieldKunjungan) {
+            $kolomKunjungan = $fieldKunjungan[2];
+
+            if ($kolomKunjungan === 'id_pendonor') {
+                foreach ($konfigPendonor as $fieldPendonor) {
+                    $kolomPendonor = $fieldPendonor[2];
+
+                    if ($kolomPendonor === 'id_orang') {
+                        $konfigGabungan = array_merge($konfigGabungan, $konfigOrang);
+                    } else {
+                        $konfigGabungan[] = $fieldPendonor;
+                    }
+                }
+            } else {
+                $konfigGabungan[] = $fieldKunjungan;
+            }
+        }
+
+        $card = $baris;
+        foreach ($konfigGabungan as $field) {
+            $namaKolom = $field[2];
+            $tipeField = $field[3];
+            $options   = $field[5] ?? [];
+
+            if ($tipeField === 'status' && !empty($options) && isset($card[$namaKolom])) {
+                $idMentah = $card[$namaKolom];
+                foreach ($options as $opt) {
+                    if ((string)$opt[1] === (string)$idMentah) {
+                        $card[$namaKolom] = $opt[0];
+                        break;
+                    }
+                }
+            }
+        }
+
+        foreach ($konfigGabungan as $field) {
+            $namaKolom = $field[2];
+            if (($baris[$namaKolom] ?? null) === null) {
+                $baris[$namaKolom] = '';
+            }
+        }
+
+        $breadcrumbs = [
+            ['title' => 'Ubah', 'icon', 'Ubah']
+        ];
+
+        return view('/admin/donor/tambah_kunjungan', [
+            'judul'       => 'Ubah ' . $this->title,
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
+            'modul_path'  => $this->get_uri_path(),
+            'kolom_id'    => $this->model->primaryKey,
+            'konfig'      => $konfigKunjungan,
+            'baris'       => $baris,
+            'card'        => $card,
+            'form_action' => '/submitedit/' . $id,
+        ]);
+    }
 }
