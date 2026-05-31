@@ -419,7 +419,7 @@ class ControllerTemplate extends Controller
             'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
             'modul_path'  => $this->get_uri_path(),
             'kolom_id'    => $this->primary_key,
-            'konfig'      => $this->get_fields_with_options(true, true),
+            'konfig'      => $this->get_fields_with_options(false, true),
             'baris'       => $data,
             'form_action' => '/submitedit/' . $id,
         ]);
