@@ -207,4 +207,29 @@ final class KunjunganController extends ControllerTemplate
             'form_action' => '/submitedit/' . $id,
         ]);
     }
+
+    /**
+     * Menampilkan data modal kunjungan
+     */
+    public function list()
+    {
+        $tabel = $this->model->table;
+
+        $data = $this->model->builder()
+            ->select("
+                {$tabel}.id_kunjungan,
+                {$tabel}.nomor_kunjungan,
+                role.pendonor.id_pendonor,
+                role.pendonor.nomor_pendonor,
+                person.orang.nama
+            ")
+            ->join('role.pendonor', "role.pendonor.id_pendonor = {$tabel}.id_pendonor", 'inner')
+            ->join('person.orang', 'person.orang.id_orang = role.pendonor.id_orang', 'inner')
+            ->get()
+            ->getResultArray();
+
+        return $this->response->setJSON([
+            'data' => $data
+        ]);
+    }
 }
