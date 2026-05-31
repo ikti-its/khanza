@@ -64,6 +64,7 @@ class ControllerTemplate extends Controller
             $this->breadcrumbs[$i] = ['title' => $title, 'icon'  => $icon];
         }
         foreach ($actions as $a){
+            if ($a === ActionType::READ) continue;
             $this->actions[$a->value] = true;
         }
         for($i = 0; $i < count($fields); $i++){
