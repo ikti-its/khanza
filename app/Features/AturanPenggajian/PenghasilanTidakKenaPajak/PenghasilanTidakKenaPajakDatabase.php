@@ -26,6 +26,8 @@ final class PenghasilanTidakKenaPajakDatabase extends DatabaseTemplate
                 ['perkawinan', 'tanggungan'],
             ],
             [],
+            true,
+            'ptkp.csv',
         );
     }
 }
