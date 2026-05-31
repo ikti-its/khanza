@@ -23,6 +23,8 @@ final class TunjanganHariRayaDatabase extends DatabaseTemplate
                 'masa_kerja',
             ],
             [],
+            true,
+            'thr.csv',
         );
     }
 }
