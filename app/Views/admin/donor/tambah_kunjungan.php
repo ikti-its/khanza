@@ -89,9 +89,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-end gap-x-2 mt-8 border-t border-gray-100 pt-4 dark:border-gray-700">
-                <?= view('components/form/submit_button') ?>
-            </div>
+            <?= view('components/form/submit_button') ?>
         </form>
     </div>
 </div>
