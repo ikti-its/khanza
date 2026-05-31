@@ -23,6 +23,8 @@ final class PesangonDatabase extends DatabaseTemplate
                 'masa_kerja',
             ],
             [],
+            true,
+            'pesangon.csv',
         );
     }
 }
