@@ -27,7 +27,9 @@ final class SkriningRawatJalanModel extends ModelTemplate
                 'id_nyeri_dada'  => ['nyeri_dada'],
                 'id_batuk'       => ['kategori_batuk'],
                 'id_keputusan'   => ['skrining_keputusan'],
-                'id_petugas'     => [],
+                'id_petugas'     => [
+                    'id_orang'   => ['nama'],
+                ],
             ],
         );
     }
