@@ -29,7 +29,7 @@ final class KunjunganController extends ControllerTemplate
                 [HIDE, OPTIONAL, I::INDEX, 'id_kunjungan',      'ID Kunjungan'],
                 [SHOW, REQUIRED, I::TEXT,  'nomor_antrian',     'Nomor Antrian'],
                 [SHOW, REQUIRED, I::TEXT,  'nomor_kunjungan',   'Nomor Kunjungan'],
-                [SHOW, REQUIRED, I::DATE,  'tanggal_kunjungan', 'Tanggal Kunjungan'],
+                [SHOW, REQUIRED, I::DTIME,  'tanggal_kunjungan', 'Tanggal Kunjungan'],
                 [HIDE, REQUIRED, I::INDEX, 'id_pendonor',       'ID Pendonor'],
             ],
         );
@@ -53,10 +53,10 @@ final class KunjunganController extends ControllerTemplate
         $mockBaris = [];
         $konfigGabungan = [];
 
-        $tanggalHariIni = date('Y-m-d');
+        $tanggalHariIni = date('Y-m-d H:i:s');
         
         $jumlahKunjunganHariIni = $this->model->db->table('donor.kunjungan')
-            ->where('tanggal_kunjungan', $tanggalHariIni)
+            ->where('DATE(tanggal_kunjungan)', $tanggalHariIni)
             ->countAllResults();
 
         $nextAntrian = $jumlahKunjunganHariIni + 1;
