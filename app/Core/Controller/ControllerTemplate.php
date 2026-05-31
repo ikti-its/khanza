@@ -10,13 +10,20 @@ use CodeIgniter\HTTP\RedirectResponse;
 /** @mago-expect lint:too-many-methods */
 class ControllerTemplate extends Controller
 {
-    private array $meta_data;
-    private string $primary_key;
+    public private(set) ModelTemplate $model;
+    
     /** @var list<array{
      *    title: string,
      *    icon: string,
      * }> */
-    protected array $breadcrumbs;
+    public private(set) array $breadcrumbs;
+
+    /** @var non-empty-string */
+    public private(set) string $title;
+
+    /** @var array<string, bool> */
+    public private(set) array $actions = [];
+    
     
     /** @var array<int, array{
      *  0: 0|1,
@@ -25,20 +32,19 @@ class ControllerTemplate extends Controller
      *  3: string|InputType,
      *  4: 0|1,
      * }> */
-    private array $fields;
+    public private(set) array $fields;
 
-    /**
-     * @var array<string, bool>
-     */
-    private array $actions;
+    public private(set) array $meta_data;
+    public private(set) string $primary_key;
+
     public function __construct(
-        protected ModelTemplate $model,
+        ModelTemplate $model,
         /** @var list<list<string>> */
-        protected array $breadcrumb,
+        array $breadcrumbs,
         /** @var non-empty-string */
-        protected string $title,
+        string $title,
         /** @var  list<ActionType> */
-        protected array $action,
+        array $actions,
         /** @var array<int, array{
          *  0: 0|1,
          *  1: 0|1,
@@ -46,19 +52,24 @@ class ControllerTemplate extends Controller
          *  3: string,
          *  4: string,
          * }> */
-        protected array $field,
+        array $fields,
         
     ) {
-        $this->reorder_fields();
-        $this->process_fields();
-        $this->process_action();
-        $this->process_breadcrumbs();
+        $this->model = $model;
+        $this->title = $title;
         $this->primary_key = $this->model->primaryKey;
         $this->meta_data = ['page' => 1, 'size' => 10, 'total' => 1];
-    }
-
-    protected function get_fields(): array { 
-        return $this->fields;
+        for($i = 0; $i < count($breadcrumbs); $i++){
+            [$title, $icon] = $breadcrumbs[$i];    
+            $this->breadcrumbs[$i] = ['title' => $title, 'icon'  => $icon];
+        }
+        foreach ($actions as $a){
+            $this->actions[$a->value] = true;
+        }
+        for($i = 0; $i < count($fields); $i++){
+            [$show, $required, $type, $column, $name] = $fields[$i];
+            $this->fields[$i] = [$show, $name, $column, $type->value, $required];
+        }
     }
 
     protected function get_uri_path(): string {
@@ -87,56 +98,6 @@ class ControllerTemplate extends Controller
             $postData[$column] = $raw_data;
         }
         return $postData;
-    }
-
-    private function process_fields(): void {
-        for($i = 0; $i < count($this->fields); $i++){
-            $input_type = $this->fields[$i][3];
-            if($input_type instanceof InputType){
-                $this->fields[$i][3] = $input_type->value;
-            }
-        }
-    }
-
-    private function reorder_fields(): void {
-        for($i = 0; $i < count($this->field); $i++){
-            [$show, $required, $type, $column, $name] = $this->field[$i];
-            $this->fields[$i] = [$show, $name, $column, $type, $required];
-            if (isset($this->field[$i][5])) {
-                $this->fields[$i][5] = $this->field[$i][5];
-            }
-        }
-    }
-
-    private function process_action(): void {
-        $action = [
-            'tambah' => false,
-            'audit'  => false,
-            'ubah'   => false,
-            'hapus'  => false,
-        ];
-        foreach ($this->action as $a) {
-            if (!$a instanceof ActionType) {
-                continue;
-            }
-            if ($a === ActionType::READ) {
-                continue;
-            }
-            $action[$a->value] = true;
-        }
-        $this->actions = $action;
-    }
-
-    private function process_breadcrumbs(): void{
-        for($i = 0; $i < count($this->breadcrumb); $i++){
-            $curr = $this->breadcrumb[$i];
-            $title = $curr[0];
-            $icon  = $curr[1];
-            $this->breadcrumbs[$i] = [
-                'title' => $title,
-                'icon'  => $icon,
-            ];
-        }
     }
 
     final public function index(): string
