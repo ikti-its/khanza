@@ -32,6 +32,8 @@ final class GolonganDatabase extends DatabaseTemplate
                     'id_jenjang',
                 ],
             ],
+            true,
+            'golongan.csv',
         );
     }
 }
