@@ -118,8 +118,11 @@ final class PendonorController extends ControllerTemplate
         foreach ($fieldsPendonor as $fieldPendonor) {
             $columnPendonor = $fieldPendonor[2];
 
-            if ($columnPendonor !== 'id_pendonor') {
-                $mockBaris[$columnPendonor] = ($columnPendonor === 'nomor_pendonor') ? $nomorPendonorOtomatis : '';
+            if ($columnPendonor === 'nomor_pendonor') {
+                $mockBaris[$columnPendonor] = $nomorPendonorOtomatis;
+                $fieldPendonor[3] = 'indeks';
+            } elseif ($columnPendonor !== 'id_pendonor') {
+                $mockBaris[$columnPendonor] = '';
             }
 
             if ($columnPendonor === 'id_orang') {
