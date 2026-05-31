@@ -17,7 +17,7 @@ final class UpahMinimumKotakabController extends ControllerTemplate
                 ['User', 'user'],
                 ['UMK', 'umk'],
             ],
-            'umk',
+            'Upah Minimum Kota/Kabupaten',
             [
                 A::READ,
                 A::CREATE,

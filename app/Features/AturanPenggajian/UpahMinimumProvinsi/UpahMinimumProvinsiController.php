@@ -17,7 +17,7 @@ final class UpahMinimumProvinsiController extends ControllerTemplate
                 ['User', 'user'],
                 ['UMP', 'ump'],
             ],
-            'ump',
+            'Upah Minimum Provinsi',
             [
                 A::READ,
                 A::CREATE,
