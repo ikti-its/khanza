@@ -25,6 +25,8 @@ final class PajakPenghasilanDatabase extends DatabaseTemplate
                 'pkp_atas',
             ],
             [],
+            true,
+            'pph.csv',
         );
     }
 }
