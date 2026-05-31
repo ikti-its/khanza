@@ -30,6 +30,8 @@ final class UpahMinimumKotakabDatabase extends DatabaseTemplate
                     'id_kota',
                 ],
             ],
+            true,
+            'upmk.csv',
         );
     }
 }

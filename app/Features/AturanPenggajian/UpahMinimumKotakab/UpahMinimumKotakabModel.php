@@ -15,7 +15,6 @@ final class UpahMinimumKotakabModel extends ModelTemplate
             [
                 'no_umk'       => V::DEFAULT(),
                 'tahun'        => V::DEFAULT(),
-                'kotakab'      => V::DEFAULT(),
                 'upah_minimum' => V::DEFAULT(),
             ],
             [
