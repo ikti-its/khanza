@@ -23,6 +23,8 @@ final class JabatanDatabase extends DatabaseTemplate
             'no_jabatan',
             ['nama_jabatan'],
             [],
+            true,
+            'jabatan.csv',
         );
     }
 }
