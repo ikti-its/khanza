@@ -765,16 +765,17 @@ foreach ($fiturs as $fitur) {
 // Features Routes
 $features = [
     ['AturanPenggajian', 'aturan-penggajian/', [
-        ['BPJS', 'bpjs'],
         ['Golongan', 'golongan'],
         ['Jabatan', 'jabatan'],
-        ['PTKP', 'ptkp'],
-        ['PPH21', 'pph21'],
+        ['UpahMinimumProvinsi', 'ump'],
+        ['UpahMinimumKotakab', 'umk'],
         ['Lembur', 'lembur'],
-        // ['UMR', 'umr'],
-        ['THR', 'thr'],
+        ['BPJS', 'bpjs'],
+        ['PenghasilanTidakKenaPajak', 'ptkp'],
+        ['PajakPenghasilan', 'pph21'],
+        ['TunjanganHariRaya', 'thr'],
         ['Pesangon', 'pesangon'],
-        ['UPMK', 'upmk']
+        ['UangPenghargaanMasaKerja', 'upmk']
     ]],
     ['Role', 'role/', [
         ['Dokter', 'dokter'],
