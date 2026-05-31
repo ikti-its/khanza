@@ -25,7 +25,7 @@
                     <input type="text" id="nomor_kunjungan" name="nomor_kunjungan" readonly required
                            placeholder="Klik cari..."
                            <?= $isEdit ? 'disabled' : 'onclick="open_modalKunjungan()"' ?>
-                           class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white <?= $isEdit ? 'cursor-not-allowed bg-gray-100' : 'cursor-pointer bg-slate-50' ?>">
+                           class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white <?= $isEdit ? 'cursor-not-allowed bg-gray-200' : 'cursor-pointer bg-slate-50' ?>">
                     
                     <?php if (!$isEdit) : ?>
                         <button type="button" onclick="open_modalKunjungan()"
@@ -41,7 +41,7 @@
                     Nomor Pendonor
                 </label>
                 <input type="text" id="nomor_pendonor" name="nomor_pendonor" readonly placeholder="Terisi otomatis..."
-                       class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
+                       class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-200 cursor-not-allowed">
             </div>
 
             <div class="mb-5 sm:block md:flex items-center">
@@ -49,7 +49,7 @@
                     Nama Lengkap
                 </label>
                 <input type="text" id="nama" name="nama" readonly placeholder="Terisi otomatis..."
-                       class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
+                       class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-200 cursor-not-allowed">
                 
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
                     Tekanan Darah (mmHg)<span class="text-red-600">*</span>
