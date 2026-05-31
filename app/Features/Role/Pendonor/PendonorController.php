@@ -97,8 +97,8 @@ final class PendonorController extends ControllerTemplate
         ];
 
         $controllerOrang = new \App\Features\Person\Orang\OrangController();
-        $fieldsOrang = $controllerOrang->get_fields();
-        $fieldsPendonor = $this->get_fields();
+        $fieldsOrang = $controllerOrang->fields;
+        $fieldsPendonor = $this->fields;
 
         $modelOrang = new \App\Features\Person\Orang\OrangModel();
         $opsiOrang = $modelOrang->get_all_options();
@@ -236,7 +236,7 @@ final class PendonorController extends ControllerTemplate
         $postData = [];
         $rawPost = $this->request->getPost();
 
-        $fieldsPendonor = $this->get_fields();
+        $fieldsPendonor = $this->fields;
 
         foreach ($fieldsPendonor as $field) {
             $column = $field[2];
