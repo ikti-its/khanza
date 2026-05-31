@@ -31,7 +31,7 @@ final class UpahMinimumKotakabDatabase extends DatabaseTemplate
                 ],
             ],
             true,
-            'upmk.csv',
+            'umk.csv',
         );
     }
 }
