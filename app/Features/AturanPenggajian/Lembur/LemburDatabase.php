@@ -24,6 +24,8 @@ final class LemburDatabase extends DatabaseTemplate
                 ['jenis_lembur', 'jam_lembur'],
             ],
             [],
+            true,
+            'lembur.csv',
         );
     }
 }
