@@ -23,6 +23,8 @@ final class UpahPenghargaanMasaKerjaDatabase extends DatabaseTemplate
                 'masa_kerja',
             ],
             [],
+            true,
+            'upmk.csv',
         );
     }
 }
