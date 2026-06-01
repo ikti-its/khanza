@@ -221,12 +221,16 @@ class ControllerTemplate extends Controller
                     $next_specs = is_array($v) ? $v : [$v];
                     $next_db_class = null;
 
-                    $next_fallback_label = ucwords(str_replace('_', ' ', $next_fk));
+                    if (count($specs) === 1) {
+                        $next_fallback_label = $fallback_label;
+                    } else {
+                        $next_fallback_label = ucwords(str_replace('_', ' ', $next_fk));
 
-                    foreach ($source_fields as $f) {
-                        if (isset($f[3]) && $f[3] === $next_fk && isset($f[4])) {
-                            $next_fallback_label = $f[4];
-                            break;
+                        foreach ($source_fields as $f) {
+                            if (isset($f[2]) && $f[2] === $next_fk && isset($f[1])) {
+                                $next_fallback_label = $f[1];
+                                break;
+                            }
                         }
                     }
 
