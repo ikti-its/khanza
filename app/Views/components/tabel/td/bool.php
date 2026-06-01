@@ -9,7 +9,7 @@
                 if (isset($is_lab) && $is_lab === true) {
                     echo $isTrue ? '<span class="text-red-600 dark:text-red-400">Reaktif</span>' : '<span class="text-green-600 dark:text-green-400">Non Reaktif</span>';
                 } else {
-                    echo $isTrue ? "Sudah" : "Belum";
+                    echo $isTrue ? "Ya" : "Tidak";
                 }
             ?>
         </span>
