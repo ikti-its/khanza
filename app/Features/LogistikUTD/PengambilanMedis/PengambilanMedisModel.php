@@ -29,7 +29,7 @@ final class PengambilanMedisModel extends ModelTemplate
     }
 
     /**
-     * Mengambil katalog barang medis dan menghitung stok ruangan
+     * Mengambil katalog barang medis beserta akumulasi total mutasi masuk, penggunaan, dan rusak
      */
     public function get_katalog_dan_stok_ruangan(): array
     {

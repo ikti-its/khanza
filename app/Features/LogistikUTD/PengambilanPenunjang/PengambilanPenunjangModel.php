@@ -27,7 +27,7 @@ final class PengambilanPenunjangModel extends ModelTemplate
     }
 
     /**
-     * Mengambil katalog barang non medis dan menghitung stok ruangan
+     * Mengambil katalog barang non medis beserta akumulasi total mutasi masuk, penggunaan, dan rusak
      */
     public function get_katalog_dan_stok_ruangan(): array
     {
