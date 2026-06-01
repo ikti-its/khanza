@@ -97,8 +97,8 @@ final class PendonorController extends ControllerTemplate
         ];
 
         $controllerOrang = new \App\Features\Person\Orang\OrangController();
-        $fieldsOrang = $controllerOrang->get_fields();
-        $fieldsPendonor = $this->get_fields();
+        $fieldsOrang = $controllerOrang->fields;
+        $fieldsPendonor = $this->fields;
 
         $modelOrang = new \App\Features\Person\Orang\OrangModel();
         $opsiOrang = $modelOrang->get_all_options();
@@ -118,8 +118,11 @@ final class PendonorController extends ControllerTemplate
         foreach ($fieldsPendonor as $fieldPendonor) {
             $columnPendonor = $fieldPendonor[2];
 
-            if ($columnPendonor !== 'id_pendonor') {
-                $mockBaris[$columnPendonor] = ($columnPendonor === 'nomor_pendonor') ? $nomorPendonorOtomatis : '';
+            if ($columnPendonor === 'nomor_pendonor') {
+                $mockBaris[$columnPendonor] = $nomorPendonorOtomatis;
+                $fieldPendonor[3] = 'indeks';
+            } elseif ($columnPendonor !== 'id_pendonor') {
+                $mockBaris[$columnPendonor] = '';
             }
 
             if ($columnPendonor === 'id_orang') {
@@ -236,7 +239,7 @@ final class PendonorController extends ControllerTemplate
         $postData = [];
         $rawPost = $this->request->getPost();
 
-        $fieldsPendonor = $this->get_fields();
+        $fieldsPendonor = $this->fields;
 
         foreach ($fieldsPendonor as $field) {
             $column = $field[2];

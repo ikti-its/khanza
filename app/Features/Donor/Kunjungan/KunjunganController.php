@@ -45,10 +45,10 @@ final class KunjunganController extends ControllerTemplate
             ['title' => 'Tambah', 'icon' => 'tambah']
         ];
 
-        $fieldsKunjunganMatang = $this->get_fields();
+        $fieldsKunjunganMatang = $this->fields;
         
         $controllerPendonor = new \App\Features\Role\Pendonor\PendonorController();
-        $fieldsPendonorMatang = $controllerPendonor->get_fields();
+        $fieldsPendonorMatang = $controllerPendonor->fields;
 
         $mockBaris = [];
         $konfigGabungan = [];

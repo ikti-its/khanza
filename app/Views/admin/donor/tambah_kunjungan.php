@@ -12,7 +12,7 @@
         <form action="<?= $modul_path . $form_action ?>" id="myForm" onsubmit="return validateForm()" method="post">
             <?= csrf_field() ?>
 
-            <input type="hidden" name="id_pendonor" id="id_pendonor" required>
+            <input type="hidden" name="id_pendonor" id="id_pendonor" value="<?= $baris['id_pendonor'] ?? '' ?>" required>
 
             <div class="mb-5 sm:block md:flex items-center">
                 <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
