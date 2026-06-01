@@ -15,7 +15,7 @@ final class SkriningRawatJalanDatabase extends DatabaseTemplate
             'skrining_rawat_jalan',
             [
                 'id_skrining'      => T::ID(100_000_000),
-                // 'no_rm'            => T::FK_AUTO(),
+                'no_rm'            => T::FK_AUTO(),
                 'tgl_skrining'     => T::DATE(),
                 'jam_skrining'     => T::TIME(),
                 'id_kesadaran'     => T::FK_AUTO(),
@@ -31,7 +31,11 @@ final class SkriningRawatJalanDatabase extends DatabaseTemplate
             'id_skrining',
             [],
             [
-                // ['no_rm', 'sik.pasien_structure', 'no_rkm_medis'],
+                [
+                    ['no_rm'], 
+                    \App\Features\Role\Pasien\PasienDatabase::class,
+                    ['nomor_rm'],
+                ],
                 [
                     ['id_kesadaran'],
                     \App\Features\RawatJalan\SkriningRJ\RefSkriningKesadaran\RefSkriningKesadaranDatabase::class,
@@ -63,9 +67,9 @@ final class SkriningRawatJalanDatabase extends DatabaseTemplate
                     ['id_keputusan'],
                 ],
                 [
-                    'id_petugas',
+                    ['id_petugas'],
                     \App\Features\Role\Petugas\PetugasDatabase::class,
-                    'id_petugas',
+                    ['id_petugas'],
                 ],
             ],
         );
