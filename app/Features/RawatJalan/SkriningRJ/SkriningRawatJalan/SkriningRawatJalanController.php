@@ -37,8 +37,8 @@ final class SkriningRawatJalanController extends ControllerTemplate
                 [SHOW, REQUIRED, I::SELECT,  'id_batuk',         'Batuk'],
                 [SHOW, REQUIRED, I::BOOL,    'is_geriatri',      'Geriatri'],
                 [SHOW, REQUIRED, I::BOOL,    'is_risiko_jatuh',  'Risiko Jatuh'],
+                [SHOW, REQUIRED, I::SELECT,  'id_petugas',       'Petugas'],
                 [SHOW, REQUIRED, I::SELECT,  'id_keputusan',     'Keputusan'],
-                [SHOW, REQUIRED, I::SELECT,  'id_petugas',       'ID Petugas'],
             ],
         );
     }
@@ -49,11 +49,9 @@ final class SkriningRawatJalanController extends ControllerTemplate
             ['title' => 'Tambah', 'icon' => 'tambah']
         ];
 
-        $tanggalHariIni = date('Y-m-d H:i:s');
-
         $mockBaris = [
             'id_skrining'      => '',
-            'no_rm'            => '',
+            'no_rm'            => $this->request->getGet('no_rm') ?? '',
             'tgl_skrining'     => date('Y-m-d'),
             'jam_skrining'     => date('H:i:s'),
             'id_kesadaran'     => '',
@@ -80,6 +78,42 @@ final class SkriningRawatJalanController extends ControllerTemplate
             'konfig'      => $konfig,
             'baris'       => $mockBaris,
             'form_action' => '/submittambah',
+        ]);
+    }
+    #[\Override]
+    final public function update_page(int|string $id): string
+    {
+        $breadcrumbs = [
+            ['title' => 'Ubah', 'icon' => 'ubah']
+        ];
+
+        $baris = $this->model->find($id);
+
+        $dataPasien = null;
+        if (!empty($baris['no_rm'])) {
+            $dataPasien = $this->model->db
+                ->table('role.pasien p')
+                ->select('p.nomor_rm, o.nama, o.nik, o.tanggal_lahir')
+                ->join('person.orang o', 'o.id_orang = p.id_orang')
+                ->where('p.nomor_rm', $baris['no_rm'])
+                ->get()
+                ->getRowArray();
+        }
+
+        $konfig = array_values(array_filter(
+            $this->get_fields_with_options(true, true),
+            fn($f) => $f[2] !== 'id_skrining' && $f[2] !== 'no_rm'
+        ));
+
+        return view('admin/rawat_jalan/skrining_rawat_jalan/tambah_skrining_rj', [
+            'judul'       => 'Ubah ' . $this->title,
+            'breadcrumbs' => array_merge($this->breadcrumbs, $breadcrumbs),
+            'modul_path'  => $this->get_uri_path(),
+            'kolom_id'    => $this->model->primaryKey,
+            'konfig'      => $konfig,
+            'baris'       => $baris,
+            'form_action' => '/submitedit/' . $id,
+            'data_pasien' => $dataPasien,
         ]);
     }
 }
