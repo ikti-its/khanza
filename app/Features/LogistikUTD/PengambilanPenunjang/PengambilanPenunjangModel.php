@@ -25,4 +25,37 @@ final class PengambilanPenunjangModel extends ModelTemplate
             ],
         );
     }
+
+    /**
+     * Mengambil katalog barang non medis dan menghitung stok ruangan
+     */
+    public function get_katalog_dan_stok_ruangan(): array
+    {
+        $tabelMasterBarang = 'inventori_non_medis.barang'; 
+
+        return $this->db->table($tabelMasterBarang)
+            ->select($tabelMasterBarang . '.id_barang, ' . $tabelMasterBarang . '.nama_barang')
+            
+            ->select('(SELECT COALESCE(SUM(pp.jumlah), 0) 
+                  FROM logistik_utd.pengambilan_penunjang pp 
+                  WHERE pp.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_masuk')
+            
+            ->select('(SELECT COALESCE(SUM(pd.jumlah), 0) 
+                  FROM logistik_utd.penunjang_donor pd 
+                  WHERE pd.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_terpakai_donor')
+            
+            ->select('(SELECT COALESCE(SUM(pp.jumlah), 0) 
+                  FROM logistik_utd.penunjang_pemisahan pp
+                  WHERE pp.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_terpakai_pemisahan')
+            
+            ->select('(SELECT COALESCE(SUM(py.jumlah), 0) 
+                  FROM logistik_utd.penunjang_penyerahan py
+                  WHERE py.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_terpakai_penyerahan')
+            
+            ->select('(SELECT COALESCE(SUM(pr.jumlah), 0) 
+                  FROM logistik_utd.penunjang_rusak pr
+                  WHERE pr.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_rusak')
+            ->get()
+            ->getResultArray();
+    }
 }

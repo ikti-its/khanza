@@ -27,4 +27,36 @@ final class PengambilanMedisModel extends ModelTemplate
             ],
         );
     }
+
+    /**
+     * Mengambil katalog barang medis dan menghitung stok ruangan
+     */
+    public function get_katalog_dan_stok_ruangan(): array
+    {
+        $tabelMasterBarang = 'inventori_medis.data_barang';
+        
+        return $this->db->table($tabelMasterBarang)
+            ->select($tabelMasterBarang . '.id_barang, ' . $tabelMasterBarang . '.nama as nama_barang')
+            ->select('(SELECT COALESCE(SUM(pm.jumlah), 0)
+                  FROM logistik_utd.pengambilan_medis pm
+                  WHERE pm.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_masuk')
+            
+            ->select('(SELECT COALESCE(SUM(md.jumlah), 0)
+                  FROM logistik_utd.medis_donor md 
+                  WHERE md.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_terpakai_donor')
+            
+            ->select('(SELECT COALESCE(SUM(mp.jumlah), 0)
+                  FROM logistik_utd.medis_pemisahan mp
+                  WHERE mp.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_terpakai_pemisahan')
+            
+            ->select('(SELECT COALESCE(SUM(my.jumlah), 0)
+                  FROM logistik_utd.medis_penyerahan my
+                  WHERE my.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_terpakai_penyerahan')
+            
+            ->select('(SELECT COALESCE(SUM(mr.jumlah), 0)
+                  FROM logistik_utd.medis_rusak mr
+                  WHERE mr.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_rusak')
+            ->get()
+            ->getResultArray();
+    }
 }
