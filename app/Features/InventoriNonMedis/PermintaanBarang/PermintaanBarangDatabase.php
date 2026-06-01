@@ -15,9 +15,8 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
             'permintaan_barang',
             [
                 'id_permintaan'               => T::ID(100_000),
-                'id_unit'                     => T::FK_AUTO(),
-                'id_tipe_permintaan_barang'   => T::FK_AUTO(),
                 'tanggal'                     => T::DTIME(),
+                'id_unit'                     => T::FK_AUTO(),
                 'id_status_permintaan_barang' => T::FK_AUTO(),
                 'catatan'                     => T::NOTE()->nullable(),
             ],
@@ -28,11 +27,6 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
                     'id_unit',
                     \App\Features\InventoriNonMedis\Unit\UnitDatabase::class,
                     'id_unit',
-                ],
-                [
-                    'id_tipe_permintaan_barang',
-                    \App\Features\InventoriNonMedis\Lookup\TipePermintaanBarang\TipePermintaanBarangDatabase::class,
-                    'id_tipe_permintaan_barang',
                 ],
                 [
                     'id_status_permintaan_barang',

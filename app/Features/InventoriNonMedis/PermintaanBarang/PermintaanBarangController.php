@@ -27,12 +27,23 @@ final class PermintaanBarangController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX,  'id_permintaan',               'ID'],
-                [SHOW, REQUIRED, I::SELECT, 'id_unit',                     'Unit Pemohon'],
-                [SHOW, REQUIRED, I::SELECT, 'id_tipe_permintaan_barang',   'Tipe'],
                 [SHOW, REQUIRED, I::DATE,   'tanggal',                     'Tanggal'],
-                [SHOW, OPTIONAL, I::SELECT, 'id_status_permintaan_barang', 'Status'],
+                [SHOW, REQUIRED, I::SELECT, 'id_unit',                     'Unit Pemohon'],
+                [HIDE, OPTIONAL, I::SELECT, 'id_status_permintaan_barang', 'Status'],
                 [SHOW, OPTIONAL, I::TEXT,   'catatan',                     'Catatan'],
             ],
         );
+    }
+
+    /** @param array<string, scalar|null> $postData */
+    protected function before_create(array &$postData): void
+    {
+        $postData['id_status_permintaan_barang'] = 1;
+    }
+
+    /** @param array<string, scalar|null> $postData */
+    protected function before_update(int|string $id, array &$postData): void
+    {
+        unset($postData['id_status_permintaan_barang']);
     }
 }

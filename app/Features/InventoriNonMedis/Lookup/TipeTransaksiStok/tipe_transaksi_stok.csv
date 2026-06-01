@@ -2,3 +2,4 @@ id_tipe_transaksi_stok,nama_tipe_transaksi_stok
 0,-
 1,Masuk
 2,Keluar
+3,Opname

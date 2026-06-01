@@ -19,6 +19,7 @@ final class PenerimaanBarangDatabase extends DatabaseTemplate
                 'tanggal'       => T::DTIME(),
                 'status'        => T::RECORD(12),
                 'catatan'       => T::NOTE()->nullable(),
+                'id_status_penerimaan_barang' => T::FK_AUTO(),
             ],
             'id_penerimaan',
             [],
@@ -28,6 +29,11 @@ final class PenerimaanBarangDatabase extends DatabaseTemplate
                     \App\Features\InventoriNonMedis\PengadaanBarang\PengadaanBarangDatabase::class,
                     'id_pengadaan',
                 ],
+                [
+                    'id_status_penerimaan_barang',
+                    \App\Features\InventoriNonMedis\Lookup\StatusPenerimaanBarang\StatusPenerimaanBarangDatabase::class,
+                    'id_status_penerimaan_barang',
+                ]
             ],
             true,
             'penerimaan_barang.csv',

@@ -14,14 +14,13 @@ final class PermintaanBarangModel extends ModelTemplate
             new PermintaanBarangDatabase(),
             [
                 'id_permintaan'               => V::DEFAULT(),
-                'id_tipe_permintaan_barang'   => V::DEFAULT(),
                 'tanggal'                     => V::DEFAULT(),
+                'id_unit'                     => V::DEFAULT(),
                 'id_status_permintaan_barang' => V::DEFAULT(),
                 'catatan'                     => V::DEFAULT(),
             ],
             [
                 'id_unit'                     => ['nama_unit'],
-                'id_tipe_permintaan_barang'   => ['nama_tipe_permintaan_barang'],
                 'id_status_permintaan_barang' => ['nama_status_permintaan_barang'],
             ],
         );
