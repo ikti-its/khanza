@@ -14,13 +14,13 @@ final class SkriningRawatJalanModel extends ModelTemplate
             new SkriningRawatJalanDatabase(),
             [
                 'id_skrining'      => V::DEFAULT(),
-                'no_rm'            => V::DEFAULT(),
                 'tgl_skrining'     => V::DEFAULT(),
                 'jam_skrining'     => V::DEFAULT(),
                 'is_geriatri'      => V::DEFAULT(),
                 'is_risiko_jatuh'  => V::DEFAULT(),
                 ],
             [
+                'no_rm'          => ['nomor_rm'],
                 'id_kesadaran'   => ['kesadaran'],
                 'id_pernafasan'  => ['pernafasan'],
                 'id_skala_nyeri' => ['skala_nyeri'],
