@@ -52,7 +52,7 @@ final class SkriningDonorController extends ControllerTemplate
         $controllerPendonor  = new \App\Features\Role\Pendonor\PendonorController();
         $controllerOrang     = new \App\Features\Person\Orang\OrangController();
 
-        $konfigSkrining  = $this->fields;
+        $konfigSkrining  = $this->get_fields_with_options(false, true);
         $konfigKunjungan = $controllerKunjungan->fields;
         $konfigPendonor = $controllerPendonor->fields;
         $konfigOrang = $controllerOrang->fields;
