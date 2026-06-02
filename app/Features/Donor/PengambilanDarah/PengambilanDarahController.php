@@ -6,6 +6,7 @@ namespace App\Features\Donor\PengambilanDarah;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use CodeIgniter\HTTP\RedirectResponse;
 
 final class PengambilanDarahController extends ControllerTemplate
 {
@@ -47,7 +48,7 @@ final class PengambilanDarahController extends ControllerTemplate
      * OVERRIDE: Menampilkan Form Pengambilan Darah & Penggunaan BHP
      */
     #[\Override]
-    public function create_page(): string
+    final public function create_page(): string
     {
         $breadcrumbs = [
             ['title' => 'Tambah', 'icon' => 'tambah']
@@ -77,6 +78,7 @@ final class PengambilanDarahController extends ControllerTemplate
                 $masterBhpMedis[] = [
                     'id_barang'   => $row['id_barang'],
                     'nama_barang' => $row['nama_barang'],
+                    'harga'       => $row['harga'],
                     'stok'        => $sisaStok
                 ];
             }
@@ -90,6 +92,7 @@ final class PengambilanDarahController extends ControllerTemplate
                 $masterBhpNonMedis[] = [
                     'id_barang'   => $row['id_barang'],
                     'nama_barang' => $row['nama_barang'],
+                    'harga'       => $row['harga'],
                     'stok'        => $sisaStokNon
                 ];
             }
@@ -148,5 +151,89 @@ final class PengambilanDarahController extends ControllerTemplate
             'bhp_non_options'   => $masterBhpNonMedis,
             'form_action'       => '/submittambah',
         ]);
+    }
+    
+    /**
+     * OVERRIDE: Memproses simpan data ke 3 tabel
+     */
+    #[\Override]
+    final public function create(): string|RedirectResponse
+    {
+        $rawPost = $this->request->getPost();
+
+        $bhpMedis      = $this->request->getPost('id_medis_donor');
+        $hargaMedis    = $this->request->getPost('harga_medis');
+        $bhpNonMedis   = $this->request->getPost('id_penunjang_donor');
+        $hargaNonMedis = $this->request->getPost('harga_penunjang');
+
+        $dataPengambilan = [];
+        
+        foreach ($this->fields as $field) {
+            $namaKolom = $field[2]; 
+
+            if (array_key_exists($namaKolom, $rawPost)) {
+                $dataPengambilan[$namaKolom] = $rawPost[$namaKolom];
+            }
+        }
+
+        if (empty($this->request->getPost('status_pengambilan'))) {
+            $dataPengambilan['id_status_pengambilan'] = null;
+        }
+
+        $this->model->db->transStart();
+
+        try {
+            $this->model->insert($dataPengambilan);
+            $idPengambilan = $this->model->getInsertID();
+
+            if (!empty($bhpMedis) && is_array($bhpMedis)) {
+                $modelMedisDonor = new \App\Features\LogistikUTD\MedisDonor\MedisDonorModel();
+
+                foreach ($bhpMedis as $idBarang => $jumlah) {
+                    if ((int)$jumlah <= 0) continue;
+
+                    $modelMedisDonor->insert([
+                        'id_pengambilan_darah' => $idPengambilan, 
+                        'id_barang'            => $idBarang,
+                        'jumlah'               => (int)$jumlah,
+                        'harga'                => (float)($hargaMedis[$idBarang] ?? 0),
+                    ]);
+                }
+            }
+
+            if (!empty($bhpNonMedis) && is_array($bhpNonMedis)) {
+                $modelPenunjangDonor = new \App\Features\LogistikUTD\PenunjangDonor\PenunjangDonorModel();
+
+                foreach ($bhpNonMedis as $idBarang => $jumlah) {
+                    if ((int)$jumlah <= 0) continue;
+
+                    $modelPenunjangDonor->insert([
+                        'id_pengambilan_darah' => $idPengambilan,
+                        'id_barang'            => $idBarang,
+                        'jumlah'               => (int)$jumlah,
+                        'harga'                => (float)($hargaNonMedis[$idBarang] ?? 0),
+                    ]);
+                }
+            }
+
+            $this->model->db->transComplete();
+
+            if ($this->model->db->transStatus() === false) {
+                throw new \RuntimeException("Gagal menyimpan data pengambilan darah dan BHP.");
+            }
+
+            session()->setFlashdata('success', 'Data pengambilan darah dan BHP berhasil disimpan.');
+            return redirect()->to($this->get_uri_path() . '/data');
+
+        } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            $this->model->db->transRollback();
+            session()->setFlashdata('error', $this->friendly_db_error($e));
+            return redirect()->to($this->get_uri_path() . '/data');
+
+        } catch (\Exception $e) {
+            $this->model->db->transRollback();
+            session()->setFlashdata('error', $e->getMessage());
+            return redirect()->to($this->get_uri_path() . '/data');
+        }
     }
 }

@@ -70,7 +70,7 @@
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
                     Shift<span class="text-red-600">*</span>
                 </label>
-                <select name="shift" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
+                <select name="id_shift" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
                     <option value="">-- Pilih --</option>
                     <?php 
                     $optionsShift = [];
@@ -92,13 +92,13 @@
                 <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
                     Nomor Bag<span class="text-red-600">*</span>
                 </label>
-                <input type="text" name="nomor_bag" value="<?= $baris['nomor_bag'] ?? '' ?>" placeholder="Masukkan nomor kantong..."
+                <input type="text" name="no_bag" value="<?= $baris['no_bag'] ?? '' ?>" placeholder="Masukkan nomor kantong..."
                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
 
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
                     Jenis Bag<span class="text-red-600">*</span>
                 </label>
-                <select name="jenis_bag" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
+                <select name="id_jenis_bag" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
                     <option value="">-- Pilih --</option>
                     <?php 
                     $optionsJenisBag = [];
@@ -120,7 +120,7 @@
                 <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
                     Jenis Donor<span class="text-red-600">*</span>
                 </label>
-                <select name="jenis_donor" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
+                <select name="id_jenis_donor" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
                     <option value="">-- Pilih --</option>
                     <?php 
                     $optionsJenisDonor = [];
@@ -140,7 +140,7 @@
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
                     Lokasi Pengambilan<span class="text-red-600">*</span>
                 </label>
-                <select name="lokasi_pengambilan" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
+                <select name="id_lokasi_pengambilan" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
                     <option value="">-- Pilih --</option>
                     <?php 
                     $optionsLokasi = [];
@@ -162,7 +162,7 @@
                 <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
                     Petugas<span class="text-red-600">*</span>
                 </label>
-                <select name="petugas" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
+                <select name="id_petugas" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white" required>
                     <option value="">-- Pilih --</option>
                     <?php 
                     $optionsPetugas = [];
@@ -182,7 +182,7 @@
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
                     Status Pengambilan
                 </label>
-                <select name="status_pengambilan" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white">
+                <select name="id_status_pengambilan" class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white">
                     <option value="">-- Pilih --</option>
                     <?php 
                     $optionsStatus = [];
@@ -313,12 +313,22 @@
             return;
         }
 
+        const idBarangTerpilih = select.value;
+
+        let hargaSnapshot = 0;
+        const daftarMaster = currentTab === 'medis' ? masterMedis : masterNonMedis;
+        
+        const selectedItem = daftarMaster.find(item => String(item.id_barang) === String(idBarangTerpilih));
+        if (selectedItem && selectedItem.harga) {
+            hargaSnapshot = selectedItem.harga;
+        }
+
         const emptyRow = document.getElementById('emptyBhpRow');
         if (emptyRow) emptyRow.remove();
 
         const tbody = document.getElementById('bhpTableBody');
         
-        const existingInput = document.querySelector(`input[data-id="${select.value}"][data-type="${currentTab}"]`);
+        const existingInput = document.querySelector(`input[data-id="${idBarangTerpilih}"][data-type="${currentTab}"]`);
         if (existingInput) {
             existingInput.value = parseInt(existingInput.value) + 1;
             return;
@@ -327,12 +337,16 @@
         const row = document.createElement('tr');
         row.className = "border-b text-sm dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-slate-800/30";
         
-        const inputName = currentTab === 'medis' ? 'bhp_medis' : 'bhp_nonmedis';
+        const inputName = currentTab === 'medis' ? 'id_medis_donor' : 'id_penunjang_donor';
+        const priceName = currentTab === 'medis' ? 'harga_medis' : 'harga_penunjang';
 
         row.innerHTML = `
-            <td class="p-3 font-medium text-gray-900 dark:text-white">${select.options[select.selectedIndex].text}</td>
+            <td class="p-3 font-medium text-gray-900 dark:text-white">
+                ${select.options[select.selectedIndex].text}
+                <input type="hidden" name="${priceName}[${idBarangTerpilih}]" value="${hargaSnapshot}">
+            </td>
             <td class="p-3 text-center">
-                <input type="number" name="${inputName}[${select.value}]" data-id="${select.value}" data-type="${currentTab}" value="1" min="1" class="w-16 text-center border border-gray-300 rounded p-1 dark:bg-slate-900 dark:text-white dark:border-gray-700">
+                <input type="number" name="${inputName}[${idBarangTerpilih}]" data-id="${idBarangTerpilih}" data-type="${currentTab}" value="1" min="1" class="w-16 text-center border border-gray-300 rounded p-1 dark:bg-slate-900 dark:text-white dark:border-gray-700">
             </td>
             <td class="p-3 text-center">
                 <button type="button" onclick="removeBhpItem(this)" class="text-red-600 font-semibold hover:underline dark:text-red-400">Hapus</button>
