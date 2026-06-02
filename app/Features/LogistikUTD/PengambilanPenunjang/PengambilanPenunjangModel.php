@@ -35,6 +35,10 @@ final class PengambilanPenunjangModel extends ModelTemplate
 
         return $this->db->table($tabelMasterBarang)
             ->select($tabelMasterBarang . '.id_barang, ' . $tabelMasterBarang . '.nama_barang')
+            ->select('(SELECT pp.harga_beli 
+                  FROM logistik_utd.pengambilan_penunjang pp 
+                  WHERE pp.id_barang = ' . $tabelMasterBarang . '.id_barang 
+                  ORDER BY pp.id_pengambilan_penunjang DESC LIMIT 1) AS harga')
             
             ->select('(SELECT COALESCE(SUM(pp.jumlah), 0) 
                   FROM logistik_utd.pengambilan_penunjang pp 

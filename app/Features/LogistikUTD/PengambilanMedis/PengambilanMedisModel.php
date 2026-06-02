@@ -37,6 +37,11 @@ final class PengambilanMedisModel extends ModelTemplate
         
         return $this->db->table($tabelMasterBarang)
             ->select($tabelMasterBarang . '.id_barang, ' . $tabelMasterBarang . '.nama as nama_barang')
+            ->select('(SELECT pm.harga_beli 
+                  FROM logistik_utd.pengambilan_medis pm 
+                  WHERE pm.id_barang = ' . $tabelMasterBarang . '.id_barang 
+                  ORDER BY pm.id_pengambilan_medis DESC LIMIT 1) AS harga')
+            
             ->select('(SELECT COALESCE(SUM(pm.jumlah), 0)
                   FROM logistik_utd.pengambilan_medis pm
                   WHERE pm.id_barang = ' . $tabelMasterBarang . '.id_barang) AS total_masuk')
