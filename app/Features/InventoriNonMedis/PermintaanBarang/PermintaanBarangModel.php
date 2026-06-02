@@ -15,8 +15,6 @@ final class PermintaanBarangModel extends ModelTemplate
             [
                 'id_permintaan'               => V::DEFAULT(),
                 'tanggal'                     => V::DEFAULT(),
-                'id_unit'                     => V::DEFAULT(),
-                'id_status_permintaan_barang' => V::DEFAULT(),
                 'catatan'                     => V::DEFAULT(),
             ],
             [

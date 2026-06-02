@@ -14,8 +14,6 @@ final class PermintaanBarangDetailModel extends ModelTemplate
             new PermintaanBarangDetailDatabase(),
             [
                 'id_detail'        => V::DEFAULT(),
-                'id_permintaan'    => V::DEFAULT(),
-                'id_barang'        => V::DEFAULT(),
                 'nama_barang_baru' => V::DEFAULT(),
                 'qty'              => V::DEFAULT(),
                 'qty_disetujui'    => V::DEFAULT(),

@@ -19,7 +19,7 @@ final class TransaksiStokDatabase extends DatabaseTemplate
                 'id_tipe_transaksi_stok' => T::FK_AUTO(),
                 'qty'                    => T::QTY(0, 100_000),
                 'tanggal'                => T::DTIME(),
-                'id_pengadaan'           => T::FK_AUTO()->nullable(),
+                'id_penerimaan'           => T::FK_AUTO()->nullable(),
                 'id_permintaan'          => T::FK_AUTO()->nullable(),
                 'id_opname'              => T::FK_AUTO()->nullable(),
                 'catatan'                => T::NOTE()->nullable(),
@@ -38,9 +38,9 @@ final class TransaksiStokDatabase extends DatabaseTemplate
                     'id_tipe_transaksi_stok',
                 ],
                 [
-                    'id_pengadaan',
-                    \App\Features\InventoriNonMedis\PengadaanBarang\PengadaanBarangDatabase::class,
-                    'id_pengadaan',
+                    'id_penerimaan',
+                    \App\Features\InventoriNonMedis\PenerimaanBarang\PenerimaanBarangDatabase::class,
+                    'id_penerimaan',
                 ],
                 [
                     'id_permintaan',

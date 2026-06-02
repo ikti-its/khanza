@@ -28,7 +28,7 @@ final class PermintaanBarangDetailController extends ControllerTemplate
             ],
             [
                 [HIDE, OPTIONAL, I::INDEX,  'id_detail',        'ID Detail'],
-                [HIDE, OPTIONAL, I::INDEX,  'id_permintaan',    'ID Permintaan'],
+                [HIDE, OPTIONAL, I::INDEX,  'id_permintaan',    'Tanggal Permintaan'],
                 [SHOW, OPTIONAL, I::SELECT, 'id_barang',        'Barang'],
                 [SHOW, OPTIONAL, I::TEXT,   'nama_barang_baru', 'Nama Barang Baru'],
                 [SHOW, REQUIRED, I::NUMBER, 'qty',              'Qty'],
