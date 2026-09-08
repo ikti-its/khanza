@@ -5,6 +5,7 @@ namespace App\Features\PelayananDarah\PermintaanDarah;
 
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
+use CodeIgniter\Database\Exceptions\DatabaseException;
 
 final class PermintaanDarahModel extends ModelTemplate
 {
@@ -36,7 +37,7 @@ final class PermintaanDarahModel extends ModelTemplate
     /**
      * Status permintaan darah yang detailnya masih boleh diubah
      */
-    public const STATUS_BELUM_DIPROSES = 1;
+    public const int STATUS_BELUM_DIPROSES = 1;
 
     /**
      * Memastikan detail permintaan darah hanya boleh diubah jika status masih Belum Diproses
@@ -56,6 +57,8 @@ final class PermintaanDarahModel extends ModelTemplate
      * @param int $offset
      * @param bool $hanyaBelumTerpenuhi
      * @return list<array<string, mixed>>
+     * 
+     * @throws DatabaseException
      */
     public function get_data_tabel(int $limit = 0, int $offset = 0, bool $hanyaBelumTerpenuhi = false): array
     {
@@ -87,6 +90,11 @@ final class PermintaanDarahModel extends ModelTemplate
             $builder->limit($limit, $offset);
         }
 
-        return $builder->get()->getResultArray();
+        $query = $builder->get();
+
+        /** @var list<array<string, mixed>> $result */
+        $result = $query !== false ? $query->getResultArray() : [];
+
+        return $result;
     }
 }

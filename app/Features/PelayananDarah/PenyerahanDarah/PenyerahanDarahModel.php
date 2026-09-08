@@ -5,6 +5,7 @@ namespace App\Features\PelayananDarah\PenyerahanDarah;
 
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
+use CodeIgniter\Database\Exceptions\DatabaseException;
 
 final class PenyerahanDarahModel extends ModelTemplate
 {
@@ -41,10 +42,12 @@ final class PenyerahanDarahModel extends ModelTemplate
      * @param int $limit
      * @param int $offset
      * @return list<array<string, mixed>>
+     * 
+     * @throws DatabaseException
      */
     public function get_data_tabel(int $limit, int $offset): array
     {
-        return $this->db
+        $query = $this->db
             ->table('pelayanan_darah.penyerahan_darah pd')
             ->select([
                 'pd.id_penyerahan',
@@ -59,8 +62,12 @@ final class PenyerahanDarahModel extends ModelTemplate
             ->join('pelayanan_darah.status_pembayaran sp', 'sp.id_status_pembayaran = pd.id_status_pembayaran', 'left')
             ->orderBy('pd.id_penyerahan', 'DESC')
             ->limit($limit, $offset)
-            ->get()
-            ->getResultArray();
+            ->get();
+        
+        /** @var list<array<string, mixed>> $data */
+        $data = $query !== false ? $query->getResultArray() : [];
+
+        return $data;
     }
 
     /**
@@ -72,13 +79,14 @@ final class PenyerahanDarahModel extends ModelTemplate
      */
     public function validasiDanHitungKuota(int $idPermintaan, null|array $stokDarahTerpilih): int
     {
-        $totalDiminta =
-            (int) $this->db
-                ->table('pelayanan_darah.permintaan_darah_detail')
-                ->where('id_permintaan', $idPermintaan)
-                ->selectSum('jumlah')
-                ->get()
-                ->getRowArray()['jumlah'] ?? 0;
+        $queryTotal = $this->db
+            ->table('pelayanan_darah.permintaan_darah_detail')
+            ->where('id_permintaan', $idPermintaan)
+            ->selectSum('jumlah')
+            ->get();
+
+        $rowTotal     = $queryTotal !== false ? $queryTotal->getRowArray() : null;
+        $totalDiminta = is_array($rowTotal) ? (int) ($rowTotal['jumlah'] ?? 0) : 0;
 
         if ($totalDiminta <= 0) {
             throw new \RuntimeException(
@@ -86,12 +94,14 @@ final class PenyerahanDarahModel extends ModelTemplate
             );
         }
 
-        $listIdPenyerahanLama = $this->db
+        $query = $this->db
             ->table('pelayanan_darah.penyerahan_darah')
             ->where('id_permintaan', $idPermintaan)
             ->select('id_penyerahan')
-            ->get()
-            ->getResultArray();
+            ->get();
+        
+        /** @var list<array<string, mixed>> $listIdPenyerahanLama */
+        $listIdPenyerahanLama = $query !== false ? $query->getResultArray() : [];
 
         $totalSudahDiserahkan = 0;
         if (!empty($listIdPenyerahanLama)) {
@@ -103,7 +113,7 @@ final class PenyerahanDarahModel extends ModelTemplate
                 ->countAllResults();
         }
 
-        $jumlahBaruDiinput  = !empty($stokDarahTerpilih) && is_array($stokDarahTerpilih)
+        $jumlahBaruDiinput  = !empty($stokDarahTerpilih)
             ? count($stokDarahTerpilih)
             : 0;
         $akumulasiMasaDepan = $totalSudahDiserahkan + $jumlahBaruDiinput;
@@ -127,23 +137,28 @@ final class PenyerahanDarahModel extends ModelTemplate
     /**
      * Sinkronisasi pembaruan status dokumen permintaan darah secara otomatis
      * @param int $idPermintaan
+     * 
+     * @throws DatabaseException
      */
     public function sinkronisasiStatusPermintaan(int $idPermintaan): void
     {
-        $totalDiminta =
-            (int) $this->db
-                ->table('pelayanan_darah.permintaan_darah_detail')
-                ->where('id_permintaan', $idPermintaan)
-                ->selectSum('jumlah')
-                ->get()
-                ->getRowArray()['jumlah'] ?? 0;
+        $queryTotal = $this->db
+            ->table('pelayanan_darah.permintaan_darah_detail')
+            ->where('id_permintaan', $idPermintaan)
+            ->selectSum('jumlah')
+            ->get();
+        
+        $rowTotal     = $queryTotal !== false ? $queryTotal->getRowArray() : null;
+        $totalDiminta = is_array($rowTotal) ? (int) ($rowTotal['jumlah'] ?? 0) : 0;
 
-        $listIdPenyerahan = $this->db
+        $query = $this->db
             ->table('pelayanan_darah.penyerahan_darah')
             ->where('id_permintaan', $idPermintaan)
             ->select('id_penyerahan')
-            ->get()
-            ->getResultArray();
+            ->get();
+        
+        /** @var list<array<string, mixed>> $listIdPenyerahan */
+        $listIdPenyerahan = $query !== false ? $query->getResultArray() : [];
 
         $totalDiserahkan = 0;
         if (!empty($listIdPenyerahan)) {
@@ -169,18 +184,36 @@ final class PenyerahanDarahModel extends ModelTemplate
 
     /**
      * Mengambil data penggunaan BHP medis penyerahan
+     * @return list<array<string, mixed>>
+     * 
+     * @throws DatabaseException
      */
     public function getBhpMedisDetail(int|string $idPenyerahan): array
     {
-        $bhpMedis = $this->db
+        $query = $this->db
             ->table('logistik_utd.medis_penyerahan')
             ->where('id_penyerahan', $idPenyerahan)
-            ->get()
-            ->getResultArray();
+            ->get();
+        
+        if ($query === false) {
+            return [];
+        }
+
+        /** @var list<array<string, mixed>> $bhpMedis */
+        $bhpMedis = $query->getResultArray();
 
         $modelMasterMedis = new \App\Features\InventoriMedis\DataBarang\DataBarangModel();
         foreach ($bhpMedis as $k => $v) {
-            $masterItem                  = $modelMasterMedis->find($v['id_barang']);
+            $idBarang = isset($v['id_barang']) ? (int) $v['id_barang'] : null;
+            if (!is_int($idBarang)) {
+                continue;
+            }
+
+            $masterItem = $modelMasterMedis->find($idBarang);
+            if (!is_array($masterItem)) {
+                continue;
+            }
+
             $bhpMedis[$k]['kode_barang'] = $masterItem['kode_barang'] ?? '-';
             $bhpMedis[$k]['nama_barang'] = $masterItem['nama'] ?? '-';
         }
@@ -190,18 +223,36 @@ final class PenyerahanDarahModel extends ModelTemplate
 
     /**
      * Mengambil data penggunaan BHP non medis penyerahan
+     * @return list<array<string, mixed>>
+     * 
+     * @throws DatabaseException
      */
     public function getBhpPenunjangDetail(int|string $idPenyerahan): array
     {
-        $bhpPenunjang = $this->db
+        $query = $this->db
             ->table('logistik_utd.penunjang_penyerahan')
             ->where('id_penyerahan', $idPenyerahan)
-            ->get()
-            ->getResultArray();
+            ->get();
+        
+        if ($query === false) {
+            return [];
+        }
+
+        /** @var list<array<string, mixed>> $bhpPenunjang */
+        $bhpPenunjang = $query->getResultArray();
 
         $modelMasterPenunjang = new \App\Features\InventoriNonMedis\Barang\BarangModel();
         foreach ($bhpPenunjang as $k => $v) {
-            $masterItem                      = $modelMasterPenunjang->find($v['id_barang']);
+            $idBarang = isset($v['id_barang']) ? (int) $v['id_barang'] : null;
+            if (!is_int($idBarang)) {
+                continue;
+            }
+
+            $masterItem = $modelMasterPenunjang->find($idBarang);
+            if (!is_array($masterItem)) {
+                continue;
+            }
+
             $bhpPenunjang[$k]['kode_barang'] = $masterItem['kode_barang'] ?? '-';
             $bhpPenunjang[$k]['nama_barang'] = $masterItem['nama_barang'] ?? '-';
         }
