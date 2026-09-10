@@ -36,7 +36,9 @@ final class PengajuanBarangController extends ControllerTemplate
                 [TABLE_ONLY, OPTIONAL, I::MONEY,    'total_harga',                'Total Harga'],
                 [SHOW,       OPTIONAL, I::SELECT,   'id_status_pengajuan_barang', 'Status'],
                 [FORM_ONLY,  OPTIONAL, I::READONLY, 'tanggal_diproses',           'Tanggal Diproses'],
-                [FORM_ONLY,  OPTIONAL, I::READONLY, 'atasan_logistik_nama',       'Atasan Logistik'],
+                // atasan_logistik_nama (alias join) disuntik di get_fields_with_options()
+                // — bukan di sini — agar tak ikut dirender halaman Audit sebagai kolom
+                // yang tidak ada di pengajuan_barang_audit_view.
             ],
             // child_path: '/inventori-non-medis/detail-pengajuan-barang',
             // child_fk: 'id_pengajuan',
@@ -47,6 +49,20 @@ final class PengajuanBarangController extends ControllerTemplate
     protected function before_read(): void
     {
         $this->model->set_order('id_pengajuan', 'DESC');
+    }
+
+    // Kolom alias join hanya untuk daftar & popup, bukan form maupun Audit.
+    // Halaman Audit merender $this->fields apa adanya, jadi atasan_logistik_nama
+    // (tidak ada di pengajuan_barang_audit_view) disisipkan di sini saja.
+    #[\Override]
+    protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
+    {
+        $fields = parent::get_fields_with_options($include_pk, $is_form);
+        if ($is_form)
+            return $fields;
+
+        $fields[] = [FORM_ONLY, 'Atasan Logistik', 'atasan_logistik_nama', 'teks', 0];
+        return $fields;
     }
 
     // narrows the query-result union (bool|Query|BaseResult) that mago infers
