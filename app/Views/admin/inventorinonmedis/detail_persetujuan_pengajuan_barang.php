@@ -45,6 +45,10 @@
                         } else {
                             $bg = '#FEF3C7'; $color = '#92400E';
                         }
+                        // Qty Disetujui hanya bermakna setelah pengajuan Disetujui (2).
+                        // Status 1/4 (belum diproses) atau 3 (ditolak, mungkin sebelum
+                        // sempat disetujui) → angka 0 menyesatkan, tampilkan tanda hubung.
+                        $show_qty_disetujui = $status_id === 2;
                     ?>
                     <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: <?= $bg ?>; color: <?= $color ?>;">
                         <?= esc($baris['nama_status_pengajuan_barang'] ?? '-') ?>
@@ -98,7 +102,7 @@
                         <td class="py-2 text-center"><?= isset($item['stok']) ? esc((string) $item['stok']) : '-' ?></td>
                         <td class="py-2 text-center font-semibold"><?= $item['qty'] ?? 0 ?></td>
                         <td class="py-2 text-right font-semibold"><?= number_format((float)($item['harga'] ?? 0), 0, ',', '.') ?></td>
-                        <td class="py-2 text-center font-semibold"><?= $item['qty_disetujui'] ?? 0 ?></td>
+                        <td class="py-2 text-center font-semibold"><?= $show_qty_disetujui ? ($item['qty_disetujui'] ?? 0) : '-' ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

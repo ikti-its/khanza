@@ -241,13 +241,92 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         }
 
         try {
+            $db->transBegin();
+
             $this->model->update($id, $postData);
+
+            // Pengajuan ditolak → tutup permintaan asal yang menjadi buntu.
+            // Dijalankan di dalam transaksi yang sama supaya atomik dengan
+            // perubahan status pengajuan.
+            if ($new_status === 3) {
+                $this->close_stuck_permintaan_on_reject((int) $id);
+            }
+
+            $db->transCommit();
             session()->setFlashdata('success', 'Data berhasil diperbarui.');
         } catch (\Throwable $e) {
+            $db->transRollback();
             session()->setFlashdata('error', 'Gagal memperbarui: ' . $e->getMessage());
             return redirect()->back();
         }
 
         return $this->home();
+    }
+
+    /**
+     * Saat sebuah pengajuan ditolak atasan, permintaan asal yang memicunya
+     * menjadi buntu: tetap berstatus 5 (Menunggu Pengadaan) tanpa jalur maju,
+     * karena tidak ada pengadaan yang akan lahir dari pengajuan yang gagal.
+     * Tutup permintaan tersebut menjadi 7 (Dibatalkan) — hanya bila semua
+     * pengaman lolos. Dipanggil di dalam transaksi update() agar atomik.
+     *
+     * Bentuknya sengaja dibuat konsisten dengan
+     * PengadaanBarangController::close_stuck_permintaan_on_cancel().
+     *
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     */
+    private function close_stuck_permintaan_on_reject(int $id_pengajuan_ditolak): void
+    {
+        if ($id_pengajuan_ditolak <= 0)
+            return;
+
+        $db = $this->get_db();
+
+        // Telusuri balik: pengajuan → permintaan asal.
+        $pengajuan = $this->guarded(
+            $db
+                ->table('inventori_non_medis.pengajuan_barang')
+                ->select('id_permintaan')
+                ->where('id_pengajuan', $id_pengajuan_ditolak)
+                ->get(),
+        )->getRowArray();
+        /** @var array<string, mixed>|null $pengajuan */
+
+        // Syarat (a): pengajuan lahir dari permintaan, bukan jalur stok minimum.
+        $id_permintaan = is_array($pengajuan) ? (int) ($pengajuan['id_permintaan'] ?? 0) : 0;
+        if ($id_permintaan <= 0)
+            return;
+
+        // Syarat (b): permintaan masih berstatus 5 (Menunggu Pengadaan).
+        $permintaan = $this->guarded(
+            $db
+                ->table('inventori_non_medis.permintaan_barang')
+                ->select('id_status_permintaan_barang')
+                ->where('id_permintaan', $id_permintaan)
+                ->get(),
+        )->getRowArray();
+        /** @var array<string, mixed>|null $permintaan */
+        $status_permintaan = is_array($permintaan) ? (int) ($permintaan['id_status_permintaan_barang'] ?? 0) : 0;
+        if ($status_permintaan !== 5)
+            return;
+
+        // Pengaman "tidak ada pengadaan sibling hidup" TIDAK diperlukan di sini:
+        // pengadaan hanya bisa dibuat dari pengajuan berstatus 2 (lihat
+        // PengadaanBarangModel::get_all_options), dan transisi 2 → 3 diblokir di
+        // update() — jadi pengajuan berstatus 3 dijamin tak pernah punya pengadaan.
+
+        $db
+            ->table('inventori_non_medis.permintaan_barang')
+            ->where('id_permintaan', $id_permintaan)
+            ->update([
+                'id_status_permintaan_barang' => 7,
+                'tanggal_diproses'            => date('Y-m-d H:i:s'),
+            ]);
+
+        log_message(
+            'info',
+            "[PengajuanDitolak] Permintaan {$id_permintaan} ditutup jadi Dibatalkan (7): "
+            . "pengajuan {$id_pengajuan_ditolak} ditolak atasan.",
+        );
     }
 }
