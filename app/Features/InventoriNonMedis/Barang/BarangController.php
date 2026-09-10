@@ -210,4 +210,27 @@ final class BarangController extends ControllerTemplate
             'baris'       => $baris,
         ]);
     }
+
+    // Guard hapus: FK dari tabel detail ke barang tidak aktif di jalur data nyata
+    // (lihat BarangModel::is_referenced), jadi penolakan ditegakkan di sini —
+    // teks pesan disamakan dengan friendly_db_error() untuk pelanggaran FK.
+    #[\Override]
+    public function delete(int|string $id): string|RedirectResponse
+    {
+        assert($this->model instanceof BarangModel, 'Model harus BarangModel.');
+
+        try {
+            $referenced = $this->model->is_referenced((int) $id);
+        } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            log_message('error', 'Barang::delete gagal cek referensi: ' . $e->getMessage());
+            $referenced = true; // fail-safe: blokir hapus daripada meninggalkan data yatim
+        }
+
+        if ($referenced) {
+            session()->setFlashdata('error', 'Data tidak dapat dihapus karena masih digunakan oleh data lain.');
+            return $this->home();
+        }
+
+        return parent::delete($id);
+    }
 }

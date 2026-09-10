@@ -192,6 +192,29 @@ final class SuplierController extends ControllerTemplate
         $this->model->set_order('nama_suplier', 'ASC');
     }
 
+    // Guard hapus: FK dari pengadaan_barang ke suplier tidak aktif di jalur data
+    // nyata (lihat SuplierModel::is_referenced), jadi penolakan ditegakkan di sini —
+    // teks pesan disamakan dengan friendly_db_error().
+    #[\Override]
+    public function delete(int|string $id): string|RedirectResponse
+    {
+        assert($this->model instanceof SuplierModel, 'Model harus SuplierModel.');
+
+        try {
+            $referenced = $this->model->is_referenced((int) $id);
+        } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            log_message('error', 'Suplier::delete gagal cek referensi: ' . $e->getMessage());
+            $referenced = true;
+        }
+
+        if ($referenced) {
+            session()->setFlashdata('error', 'Data tidak dapat dihapus karena masih digunakan oleh data lain.');
+            return $this->home();
+        }
+
+        return parent::delete($id);
+    }
+
     // pre-fill kode_suplier dengan kode otomatis, custom view dengan modal kota
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
