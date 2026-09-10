@@ -122,6 +122,17 @@ if (!function_exists('get_permintaan_tracking')) {
             $steps[] = _step_pengadaan($pengadaan, $pengajuan, $st);
             $steps[] = _step_penerimaan($penerimaan, $persen_terima, $pengadaan, $st);
             $steps[] = _step_pengeluaran($permintaan, $st);
+
+            // Permintaan dibatalkan (7): langkah hilir setelah titik pembatalan tidak
+            // boleh tampil "sedang berjalan". Penanda aktif diredupkan jadi netral;
+            // fakta (tanggal/PIC/label) tetap ditampilkan apa adanya.
+            if ($st === 7) {
+                for ($k = 2; $k < count($steps); $k++) {
+                    if (($steps[$k]['status'] ?? '') === 'active') {
+                        $steps[$k]['status'] = 'waiting';
+                    }
+                }
+            }
         }
 
         // === Progress label & color ===
@@ -138,17 +149,24 @@ if (!function_exists('get_permintaan_tracking')) {
 if (!function_exists('_step_permintaan_direct')) {
     function _step_permintaan_direct(array $p, int $st): array
     {
-        if ($st === 1) return _s('Permintaan', 'active', 'Draft', $p['tanggal'], $p['nama_pemohon']);
-        if ($st === 3) return _s('Permintaan', 'failed', 'Ditolak', $p['tanggal'], $p['nama_pemohon']);
-        return _s('Permintaan', 'done', 'Diajukan', $p['tanggal'], $p['nama_pemohon']);
+        $tgl = isset($p['tanggal']) ? (string) $p['tanggal'] : null;
+        $pic = isset($p['nama_pemohon']) ? (string) $p['nama_pemohon'] : null;
+        // Timeline = catatan riwayat. Permintaan yang ditolak/dibatalkan tetap
+        // pernah diajukan dan langkah itu berhasil — penolakan/pembatalan hanya
+        // ditandai di langkah Persetujuan.
+        if ($st === 1) return _s('Permintaan', 'active', 'Draft', $tgl, $pic);
+        return _s('Permintaan', 'done', 'Diajukan', $tgl, $pic);
     }
 }
 
 if (!function_exists('_step_persetujuan_direct')) {
     function _step_persetujuan_direct(array $p, int $st): array
     {
-        if (in_array($st, [2, 6])) return _s('Persetujuan', 'done', 'Disetujui & Stok Keluar', $p['tanggal_diproses'], $p['nama_pengelola']);
-        if ($st === 3) return _s('Persetujuan', 'failed', 'Ditolak', $p['tanggal_diproses'], $p['nama_pengelola']);
+        $tgl = isset($p['tanggal_diproses']) ? (string) $p['tanggal_diproses'] : null;
+        $pic = isset($p['nama_pengelola']) ? (string) $p['nama_pengelola'] : null;
+        if (in_array($st, [2, 6])) return _s('Persetujuan', 'done', 'Disetujui & Stok Keluar', $tgl, $pic);
+        if ($st === 3) return _s('Persetujuan', 'failed', 'Ditolak', $tgl, $pic);
+        if ($st === 7) return _s('Persetujuan', 'failed', 'Dibatalkan', $tgl, $pic);
         if ($st === 4) return _s('Persetujuan', 'active', 'Menunggu', null, null);
         return _s('Persetujuan', 'waiting', 'Menunggu', null, null);
     }
@@ -161,16 +179,29 @@ if (!function_exists('_step_persetujuan_direct')) {
 if (!function_exists('_step_permintaan_proc')) {
     function _step_permintaan_proc(array $p, int $st): array
     {
-        if ($st === 1) return _s('Permintaan', 'active', 'Draft', $p['tanggal'], $p['nama_pemohon']);
-        return _s('Permintaan', 'done', 'Diajukan', $p['tanggal'], $p['nama_pemohon']);
+        $tgl = isset($p['tanggal']) ? (string) $p['tanggal'] : null;
+        $pic = isset($p['nama_pemohon']) ? (string) $p['nama_pemohon'] : null;
+        // Timeline = catatan riwayat: langkah Permintaan tetap "Diajukan" walau
+        // header kini Ditolak (3) / Dibatalkan (7).
+        if ($st === 1) return _s('Permintaan', 'active', 'Draft', $tgl, $pic);
+        return _s('Permintaan', 'done', 'Diajukan', $tgl, $pic);
     }
 }
 
 if (!function_exists('_step_persetujuan_proc')) {
     function _step_persetujuan_proc(array $p, int $st): array
     {
-        if (in_array($st, [5, 6])) return _s('Persetujuan', 'done', 'Disetujui', $p['tanggal_diproses'], $p['nama_pengelola']);
-        if ($st === 3) return _s('Persetujuan', 'failed', 'Ditolak', $p['tanggal_diproses'], $p['nama_pengelola']);
+        $tgl = isset($p['tanggal_diproses']) ? (string) $p['tanggal_diproses'] : null;
+        $pic = isset($p['nama_pengelola']) ? (string) $p['nama_pengelola'] : null;
+
+        // Status langkah ini dibaca dari status permintaan yang SEBENARNYA, bukan
+        // dari sekadar keberadaan baris pengajuan. Baris pengajuan yang tertinggal
+        // dari siklus lama tidak boleh membuat langkah ini "Disetujui" padahal
+        // permintaannya sendiri belum lolos persetujuan. Pada alur procurement,
+        // permintaan yang disetujui langsung menjadi status 5 (Menunggu Pengadaan).
+        if ($st === 7) return _s('Persetujuan', 'failed', 'Dibatalkan', $tgl, $pic);
+        if ($st === 3) return _s('Persetujuan', 'failed', 'Ditolak', $tgl, $pic);
+        if (in_array($st, [2, 5, 6], true)) return _s('Persetujuan', 'done', 'Disetujui', $tgl, $pic);
         if ($st === 4) return _s('Persetujuan', 'active', 'Menunggu', null, null);
         return _s('Persetujuan', 'waiting', 'Menunggu', null, null);
     }
@@ -251,8 +282,12 @@ if (!function_exists('_determine_progress')) {
     /** @return array{0:string, 1:string} */
     function _determine_progress(int $st, string $scenario, ?array $pj, ?array $pd, ?array $pn, int $persen): array
     {
+        // Status terminal — kondisi hilir (pengajuan/pengadaan/penerimaan) tidak lagi
+        // relevan, kembalikan langsung tanpa penelusuran.
         if ($st === 6) return ['Selesai', 'green'];
         if ($st === 3) return ['Ditolak', 'red'];
+        if ($st === 7) return ['Dibatalkan', 'red'];
+
         if ($st === 1) return ['Draft', 'gray'];
         if ($st === 4) return ['Menunggu Persetujuan', 'yellow'];
         if ($st === 2 && $scenario === 'direct') return ['Selesai', 'green'];
