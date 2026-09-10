@@ -13,11 +13,12 @@ final class StokOpnameDetailModel extends ModelTemplate
         parent::__construct(
             new StokOpnameDetailDatabase(),
             [
-                'id_detail'   => V::DEFAULT(),
-                'stok_sistem' => V::DEFAULT(),
-                'stok_fisik'  => V::DEFAULT(),
-                'selisih'     => V::DEFAULT(),
-                'catatan'     => V::DEFAULT(),
+                'id_detail'    => V::DEFAULT(),
+                'stok_sistem'  => V::DEFAULT(),
+                'stok_fisik'   => V::DEFAULT(),
+                'selisih'      => V::DEFAULT(),
+                'harga_satuan' => V::DEFAULT(),
+                'catatan'      => V::DEFAULT(),
             ],
             [
                 'id_opname' => [

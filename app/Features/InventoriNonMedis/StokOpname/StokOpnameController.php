@@ -27,12 +27,14 @@ final class StokOpnameController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE,       OPTIONAL, I::INDEX,  'id_opname',             'ID Opname'],
-                [SHOW,       REQUIRED, I::DTIME,  'tanggal',               'Tanggal'],
-                [SHOW,       OPTIONAL, I::SELECT, 'id_status_stok_opname', 'Status'],
-                [SHOW,       REQUIRED, I::SELECT, 'id_petugas',            'Pelaksana'],
-                [TABLE_ONLY, OPTIONAL, I::TEXT,   'total_nominal',         'Total Nominal'],
-                [FORM_ONLY,  REQUIRED, I::TEXT,   'catatan',               'Catatan'],
+                [HIDE,      OPTIONAL, I::INDEX,  'id_opname',             'ID Opname'],
+                [SHOW,      REQUIRED, I::DTIME,  'tanggal',               'Tanggal'],
+                [SHOW,      OPTIONAL, I::SELECT, 'id_status_stok_opname', 'Status'],
+                [SHOW,      REQUIRED, I::SELECT, 'id_petugas',            'Pelaksana'],
+                // total_nominal dihitung runtime di after_read() — disuntik di
+                // get_fields_with_options(), bukan di sini, agar tidak ikut dirender
+                // halaman Audit (tak ada di stok_opname_audit_view).
+                [FORM_ONLY, REQUIRED, I::TEXT,   'catatan',               'Catatan'],
             ],
             // child_path: '/inventori-non-medis/detail-stok-opname',
             // child_fk: 'id_opname',
@@ -43,6 +45,18 @@ final class StokOpnameController extends ControllerTemplate
     protected function before_read(): void
     {
         $this->model->set_order('id_opname', 'DESC');
+    }
+
+    // Kolom hitungan total_nominal hanya untuk daftar & popup, bukan form/Audit.
+    #[\Override]
+    protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
+    {
+        $fields = parent::get_fields_with_options($include_pk, $is_form);
+        if ($is_form)
+            return $fields;
+
+        $fields[] = [TABLE_ONLY, 'Total Nominal', 'total_nominal', 'teks', 0];
+        return $fields;
     }
 
     // narrows the query-result union (bool|Query|BaseResult) that mago infers
@@ -71,8 +85,10 @@ final class StokOpnameController extends ControllerTemplate
                 continue;
             }
 
+            // Nominal memakai harga snapshot di detail; COALESCE ke harga master
+            // untuk baris lama yang snapshot-nya masih null.
             $total = (float) (
-                $this->guarded($db->query('SELECT COALESCE(SUM(d.selisih * COALESCE(b.harga_satuan, 0)), 0) AS total
+                $this->guarded($db->query('SELECT COALESCE(SUM(d.selisih * COALESCE(d.harga_satuan, b.harga_satuan, 0)), 0) AS total
                  FROM inventori_non_medis.stok_opname_detail d
                  LEFT JOIN inventori_non_medis.barang b ON d.id_barang = b.id_barang
                  WHERE d.id_opname = ?', [$id]))->getRowArray()['total'] ?? 0
@@ -123,7 +139,7 @@ final class StokOpnameController extends ControllerTemplate
                 ->join('inventori_non_medis.barang b', 'd.id_barang = b.id_barang', 'left')
                 ->join('inventori_non_medis.satuan s', 'b.id_satuan = s.id_satuan', 'left')
                 ->select(
-                    'd.id_barang, d.stok_sistem, d.stok_fisik, b.kode_barang, b.nama_barang, b.harga_satuan, s.nama_satuan',
+                    'd.id_barang, d.stok_sistem, d.stok_fisik, b.kode_barang, b.nama_barang, COALESCE(d.harga_satuan, b.harga_satuan) AS harga_satuan, s.nama_satuan',
                 )
                 ->where('d.id_opname', (int) $id)
                 ->where('d.id_barang >', 0)
@@ -158,7 +174,7 @@ final class StokOpnameController extends ControllerTemplate
                 ->join('inventori_non_medis.barang b', 'd.id_barang = b.id_barang', 'left')
                 ->join('inventori_non_medis.satuan s', 'b.id_satuan = s.id_satuan', 'left')
                 ->select(
-                    'd.id_barang, d.stok_sistem, d.stok_fisik, b.kode_barang, b.nama_barang, b.harga_satuan, s.nama_satuan',
+                    'd.id_barang, d.stok_sistem, d.stok_fisik, b.kode_barang, b.nama_barang, COALESCE(d.harga_satuan, b.harga_satuan) AS harga_satuan, s.nama_satuan',
                 )
                 ->where('d.id_opname', (int) $id)
                 ->where('d.id_barang >', 0)
@@ -234,18 +250,23 @@ final class StokOpnameController extends ControllerTemplate
                 $id_barang  = (int) ($detail_ids[$i] ?? 0);
                 $stok_fisik = (int) ($detail_stok[$i] ?? 0);
                 if ($id_barang > 0) {
-                    // ambil stok sistem saat ini
+                    // ambil stok sistem + snapshot harga satuan saat ini
                     $row = $this->guarded(
-                        $db->table('inventori_non_medis.barang')->select('stok')->where('id_barang', $id_barang)->get(),
+                        $db
+                            ->table('inventori_non_medis.barang')
+                            ->select('stok, harga_satuan')
+                            ->where('id_barang', $id_barang)
+                            ->get(),
                     )->getRowArray();
                     $stok_sistem = (int) ($row['stok'] ?? 0);
 
                     $db->table('inventori_non_medis.stok_opname_detail')->insert([
-                        'id_opname'   => $id_opname,
-                        'id_barang'   => $id_barang,
-                        'stok_sistem' => $stok_sistem,
-                        'stok_fisik'  => $stok_fisik,
-                        'selisih'     => $stok_fisik - $stok_sistem,
+                        'id_opname'    => $id_opname,
+                        'id_barang'    => $id_barang,
+                        'stok_sistem'  => $stok_sistem,
+                        'stok_fisik'   => $stok_fisik,
+                        'selisih'      => $stok_fisik - $stok_sistem,
+                        'harga_satuan' => $row['harga_satuan'] ?? null,
                     ]);
                 }
             }
@@ -328,16 +349,21 @@ final class StokOpnameController extends ControllerTemplate
                 $stok_fisik = (int) ($detail_stok[$i] ?? 0);
                 if ($id_barang > 0) {
                     $row = $this->guarded(
-                        $db->table('inventori_non_medis.barang')->select('stok')->where('id_barang', $id_barang)->get(),
+                        $db
+                            ->table('inventori_non_medis.barang')
+                            ->select('stok, harga_satuan')
+                            ->where('id_barang', $id_barang)
+                            ->get(),
                     )->getRowArray();
                     $stok_sistem = (int) ($row['stok'] ?? 0);
 
                     $db->table('inventori_non_medis.stok_opname_detail')->insert([
-                        'id_opname'   => (int) $id,
-                        'id_barang'   => $id_barang,
-                        'stok_sistem' => $stok_sistem,
-                        'stok_fisik'  => $stok_fisik,
-                        'selisih'     => $stok_fisik - $stok_sistem,
+                        'id_opname'    => (int) $id,
+                        'id_barang'    => $id_barang,
+                        'stok_sistem'  => $stok_sistem,
+                        'stok_fisik'   => $stok_fisik,
+                        'selisih'      => $stok_fisik - $stok_sistem,
+                        'harga_satuan' => $row['harga_satuan'] ?? null,
                     ]);
                 }
             }

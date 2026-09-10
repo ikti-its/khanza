@@ -1,1 +1,1 @@
-id_detail,id_opname,id_barang,stok_sistem,stok_fisik,selisih,catatan
+id_detail,id_opname,id_barang,stok_sistem,stok_fisik,selisih,harga_satuan,catatan
