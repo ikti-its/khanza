@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PersetujuanPermintaanBarang;
@@ -56,7 +57,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
     #[\Override]
     protected function before_read(): void
     {
-        $this->model->set_filter('id_status_permintaan_barang', [2, 3, 4, 5, 6]);
+        $this->model->set_filter('id_status_permintaan_barang', [2, 3, 4, 5, 6, 7]);
         $this->model->set_order('id_permintaan', 'DESC');
     }
 
@@ -67,6 +68,13 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
     {
         assert($result instanceof \CodeIgniter\Database\BaseResult, 'Query gagal dieksekusi.');
         return $result;
+    }
+
+    // Normalisasi nilai kolom boolean permintaan_barang.boleh_pengiriman_sebagian
+    // (bisa '1'/'t'/'true'/null tergantung driver) menjadi bool. null → false.
+    private function allow_partial_shipment(mixed $value): bool
+    {
+        return in_array(strtolower((string) ($value ?? 'f')), ['1', 't', 'true', 'y', 'yes'], true);
     }
 
     // hanya izinkan transisi ke Disetujui (2) atau Ditolak (3) dari Persetujuan
@@ -128,12 +136,15 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 ->get(),
         )->getResultArray();
 
+        $boleh_sebagian = is_array($baris) ? $baris['boleh_pengiriman_sebagian'] ?? null : null;
+
         return view('admin/inventorinonmedis/detail_persetujuan_permintaan_barang', [
-            'judul'        => 'Detail ' . $this->title,
-            'breadcrumbs'  => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
-            'modul_path'   => $this->get_uri_path(),
-            'baris'        => $baris,
-            'detail_items' => $detail_items,
+            'judul'            => 'Detail ' . $this->title,
+            'breadcrumbs'      => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
+            'modul_path'       => $this->get_uri_path(),
+            'baris'            => $baris,
+            'detail_items'     => $detail_items,
+            'metode_pemenuhan' => $this->allow_partial_shipment($boleh_sebagian) ? 'Boleh Sebagian' : 'Tunggu Lengkap',
         ]);
     }
 
@@ -149,7 +160,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
 
         // redirect ke detail jika sudah Disetujui atau Ditolak
         $status = is_array($baris) ? (int) ($baris['id_status_permintaan_barang'] ?? 0) : 0;
-        if (in_array($status, [2, 3, 5, 6], true)) {
+        if (in_array($status, [2, 3, 6, 7], true)) {
             return $this->detail($id);
         }
 
@@ -171,13 +182,16 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 ->get(),
         )->getResultArray();
 
+        $boleh_sebagian = is_array($baris) ? $baris['boleh_pengiriman_sebagian'] ?? null : null;
+
         return view('admin/inventorinonmedis/ubah_persetujuan_permintaan_barang', [
-            'judul'        => 'Ubah ' . $this->title,
-            'breadcrumbs'  => array_merge($this->breadcrumbs, [['title' => 'Ubah', 'icon' => 'ubah']]),
-            'modul_path'   => $this->get_uri_path(),
-            'form_action'  => '/submitedit/' . $id,
-            'baris'        => $baris,
-            'detail_items' => $detail_items,
+            'judul'            => 'Ubah ' . $this->title,
+            'breadcrumbs'      => array_merge($this->breadcrumbs, [['title' => 'Ubah', 'icon' => 'ubah']]),
+            'modul_path'       => $this->get_uri_path(),
+            'form_action'      => '/submitedit/' . $id,
+            'baris'            => $baris,
+            'detail_items'     => $detail_items,
+            'metode_pemenuhan' => $this->allow_partial_shipment($boleh_sebagian) ? 'Boleh Sebagian' : 'Tunggu Lengkap',
         ]);
     }
 
@@ -194,7 +208,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $current_status = is_array($current) ? (int) ($current['id_status_permintaan_barang'] ?? 0) : 0;
 
         // blokir jika sudah final (Disetujui/Ditolak/Menunggu Pengadaan/Selesai)
-        if (in_array($current_status, [2, 3, 5, 6], true)) {
+        if (in_array($current_status, [2, 3, 6, 7], true)) {
             session()->setFlashdata('error', 'Permintaan yang sudah diproses tidak dapat diubah kembali.');
             return $this->home();
         }
@@ -227,10 +241,10 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         // default: dipakai lagi di luar blok $is_new_approval di bawah tanpa
         // mengubah alur — mago tidak bisa membuktikan kedua blok if ($is_new_approval)
         // selalu berjalan bersamaan, jadi perlu nilai awal yang eksplisit.
-        $has_existing   = false;
-        $has_baru       = false;
-        $baru_items     = [];
-        $existing_items = [];
+        $has_existing      = false;
+        $needs_procurement = false;
+        $procurement_items = [];
+        $existing_items    = [];
 
         if ($is_new_approval) {
             $has_approved_items = $db
@@ -246,8 +260,32 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 return redirect()->back();
             }
 
-            // Register barang baru ke master
-            $this->register_barang_baru((int) $id);
+            // Simpan detail yang memang berasal dari input barang baru sebelum diregistrasikan.
+            $new_detail_rows = $this->guarded(
+                $db
+                    ->table('inventori_non_medis.permintaan_barang_detail')
+                    ->select('id_detail')
+                    ->where('id_permintaan', (int) $id)
+                    ->where('id_barang IS NULL')
+                    ->where('nama_barang_baru IS NOT NULL')
+                    ->where('qty_disetujui >', 0)
+                    ->get(),
+            )->getResultArray();
+            /** @var list<array<string, mixed>> $new_detail_rows */
+            $new_detail_ids = array_map(static fn(array $row): int => (int) $row['id_detail'], $new_detail_rows);
+
+            // Register barang baru ke master. Bila gagal, hentikan persetujuan dan
+            // JANGAN ubah status permintaan — status header belum disentuh di sini.
+            try {
+                $this->register_barang_baru((int) $id);
+            } catch (\Throwable $e) {
+                log_message('error', '[Approval] register_barang_baru: ' . $e->getMessage());
+                session()->setFlashdata(
+                    'error',
+                    'Gagal menyetujui permintaan: ' . $e->getMessage() . ' Status permintaan tidak diubah.',
+                );
+                return redirect()->back();
+            }
 
             // Determine: ada barang baru dan/atau existing?
             $all_details = $this->guarded(
@@ -262,71 +300,89 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             )->getResultArray();
             /** @var list<array<string, mixed>> $all_details */
 
-            $existing_items = [];
-            $baru_items     = [];
+            $allow_partial     = $this->allow_partial_shipment($current['boleh_pengiriman_sebagian'] ?? null);
+            $available_items   = [];
+            $procurement_items = [];
             foreach ($all_details as $d) {
-                if ((int) ($d['stok'] ?? 0) > 0) {
-                    $existing_items[] = $d;
+                if (in_array((int) $d['id_detail'], $new_detail_ids, true)) {
+                    $d['qty_pengadaan']  = (int) $d['qty_disetujui'];
+                    $procurement_items[] = $d;
                 } else {
-                    $baru_items[] = $d; // stok=0 → barang baru yang just registered
-                }
-            }
+                    $stok          = (int) ($d['stok'] ?? 0);
+                    $qty_disetujui = (int) $d['qty_disetujui'];
+                    if ($stok >= $qty_disetujui) {
+                        $d['qty_dikeluarkan'] = $qty_disetujui;
+                        $available_items[]    = $d;
+                        continue;
+                    }
 
-            $has_existing = count($existing_items) > 0;
-            $has_baru     = count($baru_items) > 0;
-
-            // Validasi stok hanya untuk item existing
-            if ($has_existing) {
-                foreach ($existing_items as $d) {
-                    if ((float) $d['qty_disetujui'] > (float) $d['stok']) {
-                        session()->setFlashdata(
-                            'error',
-                            "Stok {$d['nama_barang']} tidak cukup: tersedia {$d['stok']}, diminta {$d['qty_disetujui']}.",
-                        );
-                        return redirect()->back();
+                    $d['qty_pengadaan']  = $qty_disetujui - $stok;
+                    $procurement_items[] = $d;
+                    if ($allow_partial && $stok > 0) {
+                        $d['qty_dikeluarkan'] = $stok;
+                        $available_items[]    = $d;
                     }
                 }
             }
+
+            $needs_procurement = count($procurement_items) > 0;
+            // Tunggu lengkap menahan seluruh permintaan jika ada item yang kurang.
+            $existing_items = !$allow_partial && $needs_procurement ? [] : $available_items;
+            $has_existing   = count($existing_items) > 0;
         }
 
         // Determine final status
         $postData = [
             'petugas_gudang' => $this->request->getPost('petugas_gudang') ?: null,
         ];
+        $no_keluar_baru = null;
 
         if ($is_new_approval) {
             $postData['tanggal_diproses'] = date('Y-m-d H:i:s');
 
-            if ($has_baru && !$has_existing) {
-                // ALL items are barang baru → Menunggu Pengadaan
+            if ($needs_procurement && !$has_existing) {
+                // Semua item membutuhkan pengadaan.
                 $postData['id_status_permintaan_barang'] = 5;
-            } elseif ($has_baru && $has_existing) {
-                // Mixed: proses existing sekarang, barang baru pending
-                // Status tetap "Disetujui" untuk existing, tapi juga trigger pengajuan
-                $postData['id_status_permintaan_barang'] = 5; // pending sampai semua terpenuhi
+            } elseif ($needs_procurement && $has_existing) {
+                // Sebagian tersedia dan sebagian membutuhkan pengadaan.
+                $postData['id_status_permintaan_barang'] = 5;
             } else {
                 // All existing, tidak perlu pengadaan → langsung Selesai (6)
                 $postData['id_status_permintaan_barang'] = 6;
             }
 
-            // Generate no_keluar hanya jika ada existing items yang dikirim
+            // Generate no_keluar hanya jika ada item yang langsung dikirim.
             if ($has_existing) {
                 helper('autonomor');
                 /** @var string|null $lastNo */
-                $lastNo                = $this->get_last(
-                    'inventori_non_medis.permintaan_barang',
-                    'no_keluar',
-                    'id_permintaan',
-                );
-                $postData['no_keluar'] = generateNextNoKeluarBarang($lastNo);
+                $lastNo = $this->get_last('inventori_non_medis.permintaan_barang', 'no_keluar', 'id_permintaan');
+
+                $no_keluar_baru        = generateNextNoKeluarBarang($lastNo);
+                $postData['no_keluar'] = $no_keluar_baru;
                 $this->pending_keluar  = true;
             }
-        } elseif ($new_status === 3) {
-            // Ditolak
-            $postData['id_status_permintaan_barang'] = 3;
+        } elseif (in_array($new_status, [3, 7], true)) {
+            // Ditolak atau dibatalkan tanpa membuat transaksi stok baru.
+            $postData['id_status_permintaan_barang'] = $new_status;
             $postData['tanggal_diproses']            = date('Y-m-d H:i:s');
         } else {
             $postData['id_status_permintaan_barang'] = $new_status;
+        }
+
+        // Buat transaksi stok keluar untuk item existing TERLEBIH DAHULU.
+        // Kalau langkah ini gagal, status header tidak boleh terlanjur berubah.
+        if ($this->pending_keluar && $no_keluar_baru !== null) {
+            $this->pending_keluar = false;
+            try {
+                $this->create_transaksi_stok_keluar_existing((int) $id, $no_keluar_baru, $existing_items);
+            } catch (\Throwable $e) {
+                log_message('error', '[Approval] create_transaksi_stok_keluar: ' . $e->getMessage());
+                session()->setFlashdata(
+                    'error',
+                    'Gagal membuat transaksi stok keluar, permintaan tidak diubah: ' . $e->getMessage(),
+                );
+                return redirect()->back();
+            }
         }
 
         try {
@@ -337,34 +393,13 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             return redirect()->back();
         }
 
-        // Buat transaksi stok keluar untuk item existing
-        if ($this->pending_keluar) {
-            $this->pending_keluar = false;
-            $saved                = $this->model->find((int) $id);
-            if (is_array($saved) && (bool) $saved['no_keluar']) {
-                try {
-                    $this->create_transaksi_stok_keluar_existing(
-                        (int) $id,
-                        (string) $saved['no_keluar'],
-                        $existing_items ?? [],
-                    );
-                } catch (\Throwable $e) {
-                    log_message('error', '[Approval] create_transaksi_stok_keluar: ' . $e->getMessage());
-                    session()->setFlashdata(
-                        'error',
-                        'Status berhasil disetujui, namun gagal membuat transaksi stok: ' . $e->getMessage(),
-                    );
-                }
-            }
-        }
-
         // Auto-create Pengajuan untuk barang baru
-        if ($is_new_approval && $has_baru) {
+        if ($is_new_approval && $needs_procurement) {
             try {
-                $no_pengajuan = $this->auto_create_pengajuan((int) $id, $baru_items);
+                $no_pengajuan = $this->auto_create_pengajuan((int) $id, $procurement_items);
                 session()->setFlashdata(
                     'success',
-                    "Permintaan disetujui. Pengajuan {$no_pengajuan} otomatis dibuat untuk barang baru, menunggu persetujuan atasan logistik.",
+                    "Permintaan disetujui. Pengajuan {$no_pengajuan} otomatis dibuat karena stok belum tersedia, menunggu persetujuan atasan logistik.",
                 );
             } catch (\Throwable $e) {
                 log_message('error', '[AutoPengajuan] ' . $e->getMessage());
@@ -384,6 +419,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
      *
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     * @throws \RuntimeException
      */
     private function register_barang_baru(int $id_permintaan): void
     {
@@ -406,72 +442,74 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
 
         helper('autonomor');
 
-        foreach ($baru_items as $item) {
-            // Generate kode barang otomatis
-            $lastKode = $this->guarded(
-                $db
-                    ->table('inventori_non_medis.barang')
-                    ->select('kode_barang')
-                    ->orderBy('id_barang', 'DESC')
-                    ->limit(1)
-                    ->get(),
-            )->getRowArray();
-            /** @var array<string, mixed>|null $lastKode */
-            $kodeLama = $lastKode['kode_barang'] ?? null;
-            /** @var string|null $kodeLama */
-            $kode = generateNextKodeBarang($kodeLama);
+        // Seluruh loop dibungkus satu transaksi: kegagalan pada item mana pun
+        // tidak boleh meninggalkan barang master yatim (tersimpan tanpa detail
+        // permintaan yang ter-link).
+        $db->transBegin();
 
-            // Insert ke master barang
-            $db->table('inventori_non_medis.barang')->insert([
-                'kode_barang'     => $kode,
-                'nama_barang'     => $item['nama_barang_baru'],
-                'id_satuan'       => (int) ($item['id_satuan_baru'] ?? 0) > 0 ? (int) $item['id_satuan_baru'] : null,
-                'id_jenis_barang' => (int) ($item['id_jenis_barang_baru'] ?? 0) > 0
-                    ? (int) $item['id_jenis_barang_baru']
-                    : null,
-                'stok'            => 0,
-                'stok_minimum'    => 0,
-            ]);
-            $new_id_barang = (int) $db->insertID();
+        try {
+            foreach ($baru_items as $item) {
+                // barang.id_satuan & barang.id_jenis_barang NOT NULL — tolak baris
+                // barang baru yang tak lengkap alih-alih mengirim null ke DB.
+                $id_satuan_baru = (int) ($item['id_satuan_baru'] ?? 0);
+                $id_jenis_baru  = (int) ($item['id_jenis_barang_baru'] ?? 0);
+                $nama_baru      = trim((string) ($item['nama_barang_baru'] ?? ''));
+                if ($nama_baru === '' || $id_satuan_baru <= 0 || $id_jenis_baru <= 0) {
+                    throw new \RuntimeException(
+                        'Barang baru "'
+                        . ($nama_baru !== '' ? $nama_baru : '(tanpa nama)')
+                        . '" tidak memiliki satuan atau jenis barang yang lengkap.',
+                    );
+                }
 
-            // Update detail row — link ke master baru
-            $db
-                ->table('inventori_non_medis.permintaan_barang_detail')
-                ->where('id_detail', (int) $item['id_detail'])
-                ->update([
-                    'id_barang'        => $new_id_barang,
-                    'nama_barang_baru' => null,
+                // Generate kode barang otomatis
+                $lastKode = $this->guarded(
+                    $db
+                        ->table('inventori_non_medis.barang')
+                        ->select('kode_barang')
+                        ->orderBy('id_barang', 'DESC')
+                        ->limit(1)
+                        ->get(),
+                )->getRowArray();
+                /** @var array<string, mixed>|null $lastKode */
+                $kodeLama = $lastKode['kode_barang'] ?? null;
+                /** @var string|null $kodeLama */
+                $kode = generateNextKodeBarang($kodeLama);
+
+                // Insert ke master barang
+                $db->table('inventori_non_medis.barang')->insert([
+                    'kode_barang'     => $kode,
+                    'nama_barang'     => $nama_baru,
+                    'id_satuan'       => $id_satuan_baru,
+                    'id_jenis_barang' => $id_jenis_baru,
+                    'stok'            => 0,
+                    'stok_minimum'    => 0,
                 ]);
-        }
-    }
+                $new_id_barang = (int) $db->insertID();
 
-    // cek stok cukup untuk semua item yang disetujui (unused now, kept for reference)
-    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
-    private function validate_stock(int $id): null|string
-    {
-        $details = $this->guarded(
-            $this
-                ->get_db()
-                ->table('inventori_non_medis.permintaan_barang_detail d')
-                ->join('inventori_non_medis.barang b', 'd.id_barang = b.id_barang', 'left')
-                ->select('d.id_barang, d.qty_disetujui, b.stok, b.nama_barang')
-                ->where('d.id_permintaan', $id)
-                ->where('d.id_barang >', 0)
-                ->where('d.qty_disetujui >', 0)
-                ->get(),
-        )->getResultArray();
-        /** @var list<array<string, mixed>> $details */
-
-        if (count($details) === 0) {
-            return null;
-        }
-
-        foreach ($details as $d) {
-            if ((float) $d['qty_disetujui'] > (float) ($d['stok'] ?? 0)) {
-                return "Stok {$d['nama_barang']} tidak cukup: tersedia {$d['stok']}, diminta {$d['qty_disetujui']}.";
+                // Update detail row — link ke master baru
+                $db
+                    ->table('inventori_non_medis.permintaan_barang_detail')
+                    ->where('id_detail', (int) $item['id_detail'])
+                    ->update([
+                        'id_barang'        => $new_id_barang,
+                        'nama_barang_baru' => null,
+                    ]);
             }
+        } catch (\RuntimeException $e) {
+            $db->transRollback();
+            throw $e;
+        } catch (\Throwable $e) {
+            $db->transRollback();
+            throw new \RuntimeException('Registrasi barang baru gagal: ' . $e->getMessage(), 0, $e);
         }
-        return null;
+
+        if ($db->transStatus() === false) {
+            $db->transRollback();
+            throw new \RuntimeException('Registrasi barang baru gagal, semua perubahan dibatalkan.');
+        }
+
+        $db->transCommit();
     }
 
     /**
@@ -524,7 +562,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $id_transaksi = (int) $db->insertID();
 
         foreach ($existing_items as $d) {
-            $qty          = (int) round((float) $d['qty_disetujui']);
+            $qty          = (int) ($d['qty_dikeluarkan'] ?? 0);
             $stok_sebelum = (int) ($d['stok'] ?? 0);
 
             $harga = $this->guarded(
@@ -557,7 +595,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
     }
 
     /**
-     * Auto-create Pengajuan Barang dari item barang baru yang disetujui.
+     * Auto-create Pengajuan Barang dari item yang membutuhkan kekurangan stok.
      *
      * @param list<array<string, mixed>> $baru_items
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
@@ -612,7 +650,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             $db->table('inventori_non_medis.pengajuan_barang_detail')->insert([
                 'id_pengajuan' => $id_pengajuan,
                 'id_barang'    => (int) $item['id_barang'],
-                'qty'          => (int) $item['qty_disetujui'],
+                'qty'          => (int) ($item['qty_pengadaan'] ?? $item['qty_disetujui']),
                 'harga'        => null,
             ]);
         }

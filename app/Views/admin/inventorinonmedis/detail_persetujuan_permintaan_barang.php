@@ -6,6 +6,12 @@
 
         <?= view('components/form/judul', ['judul' => $judul]) ?>
 
+        <?php
+        // Dipakai oleh timeline progress di bawah.
+        helper('tracking');
+        $tracking = get_permintaan_tracking((int) ($baris['id_permintaan'] ?? 0));
+        ?>
+
         <div class="space-y-1">
 
             <!-- No. Permintaan + Tanggal -->
@@ -32,20 +38,34 @@
                 </div>
             </div>
 
-            <!-- Status + Pengelola -->
+            <?php
+            // Badge Status — hijau 2/6, merah 3/7, biru 5, amber sisanya.
+            $status_id = (int) ($baris['id_status_permintaan_barang'] ?? 0);
+            if (in_array($status_id, [2, 6], true)) {
+                $bg = '#D1FAE5';
+                $color = '#065F46';
+            } elseif (in_array($status_id, [3, 7], true)) {
+                $bg = '#FEE2E2';
+                $color = '#991B1B';
+            } elseif ($status_id === 5) {
+                $bg = '#DBEAFE';
+                $color = '#1E40AF';
+            } else {
+                $bg = '#FEF3C7';
+                $color = '#92400E';
+            }
+
+            // Qty Disetujui hanya bermakna setelah permintaan melewati tahap
+            // persetujuan (status 2/5/6). Pada status 1/4 belum diproses, pada
+            // 3/7 bisa ditolak/dibatalkan sebelum sempat disetujui — angka 0
+            // menyesatkan, tampilkan tanda hubung.
+            $show_qty_disetujui = in_array($status_id, [2, 5, 6], true);
+            ?>
+
+            <!-- Status | Pengelola -->
             <div class="sm:block md:flex items-center py-3">
                 <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Status</span>
                 <div class="w-full lg:w-1/4">
-                    <?php
-                        $status_id = (int) ($baris['id_status_permintaan_barang'] ?? 0);
-                        if (in_array($status_id, [2, 6], true)) {
-                            $bg = '#D1FAE5'; $color = '#065F46';
-                        } elseif ($status_id === 3) {
-                            $bg = '#FEE2E2'; $color = '#991B1B';
-                        } else {
-                            $bg = '#FEF3C7'; $color = '#92400E';
-                        }
-                    ?>
                     <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: <?= $bg ?>; color: <?= $color ?>;">
                         <?= esc($baris['nama_status_permintaan_barang'] ?? '-') ?>
                     </span>
@@ -56,22 +76,22 @@
                 </div>
             </div>
 
-            <!-- No. Keluar -->
+            <!-- No. Keluar | Metode Pemenuhan -->
             <div class="sm:block md:flex items-center py-3">
                 <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">No. Keluar</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['no_keluar'] ?? '-') ?></span>
+                </div>
+                <span class="block mt-4 md:my-0 md:ml-10 mb-1 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Metode Pemenuhan</span>
+                <div class="w-full lg:w-1/4">
+                    <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($metode_pemenuhan ?? '-') ?></span>
                 </div>
             </div>
 
         </div>
 
         <!-- Progress Tracking -->
-        <?php
-        helper('tracking');
-        $tracking = get_permintaan_tracking((int) ($baris['id_permintaan'] ?? 0));
-        if (!empty($tracking['steps'])):
-        ?>
+        <?php if (!empty($tracking['steps'])): ?>
             <?= view('components/tracking/timeline', ['tracking' => $tracking]) ?>
         <?php endif; ?>
 
@@ -79,50 +99,61 @@
         <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
             <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
                 <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
                 </svg>
                 <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">Detail Barang</h4>
             </div>
 
             <?php if (!empty($detail_items)): ?>
-            <table class="w-full text-sm">
-                <thead>
-                    <tr class="text-slate-500 dark:text-slate-400">
-                        <th class="text-left py-2 font-medium">Kode</th>
-                        <th class="text-left py-2 font-medium">Nama Barang</th>
-                        <th class="text-center py-2 font-medium">Satuan</th>
-                        <th class="text-center py-2 font-medium">Stok Saat Ini</th>
-                        <th class="text-center py-2 font-medium">Qty Diminta</th>
-                        <th class="text-center py-2 font-medium">Qty Disetujui</th>
-                    </tr>
-                </thead>
-                <tbody class="text-slate-700 dark:text-slate-300">
-                    <?php foreach ($detail_items as $item): ?>
-                    <?php $isBaru = empty($item['id_barang']) && !empty($item['nama_barang_baru']); ?>
-                    <tr class="border-t border-slate-100 dark:border-slate-700/50">
-                        <td class="py-2 font-mono text-sm">
-                            <?php if ($isBaru): ?>
-                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Baru</span>
-                            <?php else: ?>
-                                <?= esc($item['kode_barang'] ?? '-') ?>
-                            <?php endif; ?>
-                        </td>
-                        <td class="py-2 font-semibold"><?= esc($isBaru ? $item['nama_barang_baru'] : ($item['nama_barang'] ?? '-')) ?></td>
-                        <td class="py-2 text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
-                        <td class="py-2 text-center"><?= isset($item['stok']) ? esc((string) $item['stok']) : '-' ?></td>
-                        <td class="py-2 text-center font-semibold"><?= $item['qty'] ?? 0 ?></td>
-                        <td class="py-2 text-center font-semibold"><?= $item['qty_disetujui'] ?? 0 ?></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-slate-500 dark:text-slate-400">
+                            <th class="text-left py-2 font-medium">Kode</th>
+                            <th class="text-left py-2 font-medium">Nama Barang</th>
+                            <th class="text-center py-2 font-medium">Satuan</th>
+                            <th class="text-center py-2 font-medium">Stok Saat Ini</th>
+                            <th class="text-center py-2 font-medium">Qty Diminta</th>
+                            <th class="text-center py-2 font-medium">Qty Disetujui</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700 dark:text-slate-300">
+                        <?php foreach ($detail_items as $item): ?>
+                            <?php $isBaru = empty($item['id_barang']) && !empty($item['nama_barang_baru']); ?>
+                            <tr class="border-t border-slate-100 dark:border-slate-700/50">
+                                <td class="py-2 font-mono text-sm">
+                                    <?php if ($isBaru): ?>
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Baru</span>
+                                    <?php else: ?>
+                                        <?= esc($item['kode_barang'] ?? '-') ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="py-2 font-semibold"><?= esc($isBaru ? $item['nama_barang_baru'] : ($item['nama_barang'] ?? '-')) ?></td>
+                                <td class="py-2 text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
+                                <td class="py-2 text-center"><?= isset($item['stok']) ? esc((string) $item['stok']) : '-' ?></td>
+                                <td class="py-2 text-center font-semibold"><?= $item['qty'] ?? 0 ?></td>
+                                <td class="py-2 text-center font-semibold"><?= $show_qty_disetujui ? ($item['qty_disetujui'] ?? 0) : '-' ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             <?php else: ?>
-            <p class="text-sm text-slate-400 italic text-center py-4">Tidak ada detail barang.</p>
+                <p class="text-sm text-slate-400 italic text-center py-4">Tidak ada detail barang.</p>
             <?php endif; ?>
         </div>
 
-        <!-- Tombol Kembali -->
+        <!-- Tombol Aksi -->
         <div class="mt-5 pt-5 border-t border-gray-200 dark:border-gray-800 flex justify-end">
+            <?php $canCancel = in_array((int) ($baris['id_status_permintaan_barang'] ?? 0), [4, 5], true); ?>
+            <?php if ($canCancel): ?>
+                <form action="<?= $modul_path . '/submitedit/' . (int) ($baris['id_permintaan'] ?? 0) ?>" method="post" onsubmit="return confirmCancelRequest(event, this);">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="id_status_permintaan_barang" value="7">
+                    <input type="hidden" name="petugas_gudang" value="<?= esc($baris['petugas_gudang'] ?? '') ?>">
+                    <button type="submit" class="py-2 px-4 mr-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100">
+                        Batalkan Permintaan
+                    </button>
+                </form>
+            <?php endif; ?>
             <a href="javascript:history.back()" class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">
                 Kembali
             </a>
@@ -130,5 +161,32 @@
 
     </div>
 </div>
+
+<script>
+    function confirmCancelRequest(event, form) {
+        event.preventDefault();
+
+        Swal.fire({
+            icon: 'warning',
+            title: 'Konfirmasi Pembatalan',
+            text: 'Batalkan permintaan barang ini? Pengadaan yang sudah dipesan tetap berjalan.',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, Batalkan',
+            cancelButtonText: 'Tidak',
+            customClass: {
+                confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2',
+                cancelButton: 'bg-gray-200 text-gray-800 hover:bg-gray-300 font-medium rounded-lg px-4 py-2',
+                actions: 'flex items-center justify-center gap-3'
+            },
+            buttonsStyling: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+
+        return false;
+    }
+</script>
 
 <?= $this->endSection(); ?>
