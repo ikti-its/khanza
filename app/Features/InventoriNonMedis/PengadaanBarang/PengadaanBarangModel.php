@@ -58,6 +58,7 @@ final class PengadaanBarangModel extends ModelTemplate
                     JOIN inventori_non_medis.pengadaan_barang pb ON pbd.id_pengadaan = pb.id_pengadaan
                     WHERE pb.id_pengajuan = pjd.id_pengajuan
                       AND pbd.id_barang = pjd.id_barang
+                      AND pb.id_status_pengadaan_barang <> 3
                   ) < pjd.qty_disetujui
                   AND NOT EXISTS (
                     SELECT 1
