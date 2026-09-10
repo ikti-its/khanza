@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PermintaanBarang;
@@ -23,6 +24,7 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
                 'no_keluar'                   => T::CODE(20)->nullable(),
                 'petugas_gudang'              => T::FK_AUTO()->nullable(),
                 'tanggal_diproses'            => T::DTIME()->nullable(),
+                'boleh_pengiriman_sebagian'   => T::BOOL()->nullable(),
             ],
             'id_permintaan',
             [],

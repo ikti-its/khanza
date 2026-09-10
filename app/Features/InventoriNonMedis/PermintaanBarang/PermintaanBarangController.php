@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PermintaanBarang;
@@ -27,33 +28,21 @@ final class PermintaanBarangController extends ControllerTemplate
                 A::DELETE,
             ],
             [
-                [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID'],
-                [SHOW, OPTIONAL, I::READONLY, 'no_permintaan', 'No. Permintaan'],
-                [SHOW, REQUIRED, I::DTIME, 'tanggal', 'Tanggal Permintaan'],
-                [
-                    SHOW,
-                    REQUIRED,
-                    I::MODAL,
-                    'petugas',
-                    'Pemohon',
-                    ['modal' => 'modalPemohon', 'display_column' => 'nama', 'placeholder' => 'Klik cari pemohon...'],
-                ],
-                [
-                    SHOW,
-                    REQUIRED,
-                    I::MODAL,
-                    'master_ruangan',
-                    'Ruangan',
-                    [
-                        'modal'          => 'modalPilihRuangan',
-                        'display_column' => 'nama_ruangan',
-                        'placeholder'    => 'Klik cari ruangan...',
-                    ],
-                ],
-                [TABLE_ONLY, OPTIONAL, I::SELECT, 'progress', 'Progress'],
-                [FORM_ONLY, OPTIONAL, I::READONLY, 'tanggal_diproses', 'Tanggal Diproses'],
-                [FORM_ONLY, OPTIONAL, I::READONLY, 'petugas_gudang_nama', 'Petugas Gudang'],
-                [FORM_ONLY, OPTIONAL, I::READONLY, 'no_keluar', 'No. Keluar'],
+                [HIDE,      OPTIONAL, I::INDEX,    'id_permintaan',             'ID'],
+                [SHOW,      OPTIONAL, I::READONLY, 'no_permintaan',             'No. Permintaan'],
+                [SHOW,      REQUIRED, I::DTIME,    'tanggal',                   'Tanggal Permintaan'],
+                // petugas & master_ruangan: kolom FK nyata pada tabel. Di daftar
+                // di-ekspansi jadi nama/ruangan lewat join model; form memakai view
+                // kustom (tambah_permintaan_barang). Jenis dibuat READONLY, bukan
+                // MODAL, supaya halaman Audit — yang merender $this->fields apa
+                // adanya — tidak menemui jenis 'modal' yang tak dikenal komponen
+                // sel tabel. Kolom turunan (progress, petugas_gudang_nama) sengaja
+                // tidak didaftarkan di sini; lihat get_fields_with_options().
+                [SHOW,      REQUIRED, I::READONLY, 'petugas',                   'Pemohon'],
+                [SHOW,      REQUIRED, I::READONLY, 'master_ruangan',            'Ruangan'],
+                [FORM_ONLY, OPTIONAL, I::READONLY, 'tanggal_diproses',          'Tanggal Diproses'],
+                [FORM_ONLY, OPTIONAL, I::READONLY, 'no_keluar',                 'No. Keluar'],
+                [SHOW,      REQUIRED, I::SELECT,   'boleh_pengiriman_sebagian', 'Metode Pemenuhan'],
             ],
             // child_path: '/inventori-non-medis/detail-permintaan-barang',
             // child_fk: 'id_permintaan',
@@ -67,6 +56,24 @@ final class PermintaanBarangController extends ControllerTemplate
         $this->model->set_order('id_permintaan', 'DESC');
     }
 
+    // Kolom turunan hanya untuk daftar & popup, BUKAN untuk form maupun Audit.
+    // Halaman Audit merender $this->fields apa adanya (tanpa filter visibilitas
+    // maupun ekspansi join), jadi kolom yang tak ada di permintaan_barang_audit_view
+    // — progress (dihitung di after_read) & petugas_gudang_nama (alias join) —
+    // sengaja tidak didaftarkan di konstruktor, lalu disisipkan di sini dengan
+    // urutan yang sama seperti sebelumnya.
+    #[\Override]
+    protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
+    {
+        $fields = parent::get_fields_with_options($include_pk, $is_form);
+        if ($is_form)
+            return $fields;
+
+        $fields[] = [TABLE_ONLY, 'Progress', 'progress', 'status', 0];
+        $fields[] = [FORM_ONLY, 'Petugas Gudang', 'petugas_gudang_nama', 'teks', 0];
+        return $fields;
+    }
+
     // narrows the query-result union (bool|Query|BaseResult) that mago infers
     // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
@@ -74,6 +81,13 @@ final class PermintaanBarangController extends ControllerTemplate
     {
         assert($result instanceof \CodeIgniter\Database\BaseResult, 'Query gagal dieksekusi.');
         return $result;
+    }
+
+    // Normalisasi nilai kolom boolean permintaan_barang.boleh_pengiriman_sebagian
+    // (bisa '1'/'t'/'true'/null tergantung driver) menjadi bool. null → false.
+    private function allow_partial_shipment(mixed $value): bool
+    {
+        return in_array(strtolower((string) ($value ?? 'f')), ['1', 't', 'true', 'y', 'yes'], true);
     }
 
     // Tambahkan kolom progress badge ke setiap baris di list
@@ -87,6 +101,10 @@ final class PermintaanBarangController extends ControllerTemplate
         helper('tracking');
         foreach ($data_tabel as &$row) {
             /** @var array<string, mixed> $row */
+            $row['boleh_pengiriman_sebagian'] = $this->allow_partial_shipment($row['boleh_pengiriman_sebagian'] ?? null)
+                ? 'Boleh Sebagian'
+                : 'Tunggu Lengkap';
+
             $id = (int) ($row['id_permintaan'] ?? 0);
             if ($id === 0) {
                 $row['progress'] = '-';
@@ -129,7 +147,7 @@ final class PermintaanBarangController extends ControllerTemplate
                 ->join('inventori_non_medis.satuan s', 'b.id_satuan = s.id_satuan', 'left')
                 ->join('inventori_non_medis.satuan s2', 'd.id_satuan_baru = s2.id_satuan', 'left')
                 ->select(
-                    'd.id_detail, d.id_barang, d.qty, d.nama_barang_baru, d.id_satuan_baru, d.id_jenis_barang_baru, b.kode_barang, b.nama_barang, COALESCE(s.nama_satuan, s2.nama_satuan) AS nama_satuan',
+                    'd.id_detail, d.id_barang, d.qty, d.qty_disetujui, d.nama_barang_baru, d.id_satuan_baru, d.id_jenis_barang_baru, b.kode_barang, b.nama_barang, COALESCE(s.nama_satuan, s2.nama_satuan) AS nama_satuan',
                 )
                 ->where('d.id_permintaan', (int) $id)
                 ->groupStart()
@@ -139,12 +157,15 @@ final class PermintaanBarangController extends ControllerTemplate
                 ->get(),
         )->getResultArray();
 
+        $boleh_sebagian = is_array($baris) ? $baris['boleh_pengiriman_sebagian'] ?? null : null;
+
         return view('admin/inventorinonmedis/detail_permintaan_barang', [
-            'judul'        => 'Detail ' . $this->title,
-            'breadcrumbs'  => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
-            'modul_path'   => $this->get_uri_path(),
-            'baris'        => $baris,
-            'detail_items' => $detail_items,
+            'judul'            => 'Detail ' . $this->title,
+            'breadcrumbs'      => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
+            'modul_path'       => $this->get_uri_path(),
+            'baris'            => $baris,
+            'detail_items'     => $detail_items,
+            'metode_pemenuhan' => $this->allow_partial_shipment($boleh_sebagian) ? 'Boleh Sebagian' : 'Tunggu Lengkap',
         ]);
     }
 
@@ -197,9 +218,10 @@ final class PermintaanBarangController extends ControllerTemplate
     public function create(): string|RedirectResponse
     {
         $postData = [
-            'tanggal'        => $this->request->getPost('tanggal'),
-            'petugas'        => $this->request->getPost('petugas') ?: null,
-            'master_ruangan' => $this->request->getPost('master_ruangan') ?: null,
+            'tanggal'                   => $this->request->getPost('tanggal'),
+            'petugas'                   => $this->request->getPost('petugas') ?: null,
+            'master_ruangan'            => $this->request->getPost('master_ruangan') ?: null,
+            'boleh_pengiriman_sebagian' => $this->request->getPost('boleh_pengiriman_sebagian') === '1',
         ];
 
         helper('autonomor');
@@ -290,6 +312,7 @@ final class PermintaanBarangController extends ControllerTemplate
             'petugas'                     => $this->request->getPost('petugas') ?: null,
             'master_ruangan'              => $this->request->getPost('master_ruangan') ?: null,
             'id_status_permintaan_barang' => $this->request->getPost('id_status_permintaan_barang') ?? 1,
+            'boleh_pengiriman_sebagian'   => $this->request->getPost('boleh_pengiriman_sebagian') === '1',
         ];
 
         // validasi status
@@ -342,7 +365,10 @@ final class PermintaanBarangController extends ControllerTemplate
 
     // ========= PRIVATE HELPERS =========
 
-    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \RuntimeException bila baris barang baru tidak lengkap
+     */
     private function save_detail_items(\CodeIgniter\Database\BaseConnection $db, int $id_permintaan): void
     {
         $detail_ids = $this->request->getPost('detail_id_barang') ?? [];
@@ -363,17 +389,34 @@ final class PermintaanBarangController extends ControllerTemplate
             $is_baru = ($detail_is_baru[$i] ?? '0') === '1';
 
             if ($is_baru) {
-                $nama = trim((string) ($detail_nama_baru[$i] ?? ''));
-                if ($nama !== '' && $qty > 0) {
-                    $db->table('inventori_non_medis.permintaan_barang_detail')->insert([
-                        'id_permintaan'        => $id_permintaan,
-                        'id_barang'            => null,
-                        'nama_barang_baru'     => $nama,
-                        'id_satuan_baru'       => (int) ($detail_satuan[$i] ?? 0) > 0 ? (int) $detail_satuan[$i] : null,
-                        'id_jenis_barang_baru' => (int) ($detail_jenis[$i] ?? 0) > 0 ? (int) $detail_jenis[$i] : null,
-                        'qty'                  => $qty,
-                    ]);
+                $nama      = trim((string) ($detail_nama_baru[$i] ?? ''));
+                $id_satuan = (int) ($detail_satuan[$i] ?? 0);
+                $id_jenis  = (int) ($detail_jenis[$i] ?? 0);
+
+                if ($nama === '' && $id_satuan <= 0 && $id_jenis <= 0 && $qty <= 0) {
+                    // baris kosong sepenuhnya — lewati diam-diam
+                    continue;
                 }
+
+                // barang.id_satuan & barang.id_jenis_barang NOT NULL: baris barang
+                // baru hanya sah bila nama, satuan, DAN jenis terisi. Tolak simpan
+                // bila salah satu kosong supaya tidak lolos ke tahap persetujuan.
+                if ($nama === '' || $id_satuan <= 0 || $id_jenis <= 0 || $qty <= 0) {
+                    throw new \RuntimeException(
+                        'Barang baru "'
+                        . ($nama !== '' ? $nama : '(tanpa nama)')
+                        . '" wajib mengisi nama, satuan, jenis barang, dan qty.',
+                    );
+                }
+
+                $db->table('inventori_non_medis.permintaan_barang_detail')->insert([
+                    'id_permintaan'        => $id_permintaan,
+                    'id_barang'            => null,
+                    'nama_barang_baru'     => $nama,
+                    'id_satuan_baru'       => $id_satuan,
+                    'id_jenis_barang_baru' => $id_jenis,
+                    'qty'                  => $qty,
+                ]);
             } else {
                 $id_barang = (int) ($detail_ids[$i] ?? 0);
                 if ($id_barang > 0 && $qty > 0) {

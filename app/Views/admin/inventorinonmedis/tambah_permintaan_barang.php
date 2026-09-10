@@ -28,14 +28,14 @@ $options_jenis       = $options_jenis ?? [];
                     No. Permintaan
                 </label>
                 <input type="text" readonly placeholder="Terisi otomatis..." value="<?= $baris['no_permintaan'] ?? '' ?>"
-                       class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
 
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
                     Tanggal Permintaan<span class="text-red-600">*</span>
                 </label>
                 <input type="datetime-local" name="tanggal" id="tanggal"
-                       value="<?= !empty($baris['tanggal']) ? date('Y-m-d\TH:i', strtotime($baris['tanggal'])) : date('Y-m-d\TH:i') ?>"
-                       class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" required <?= $readonly ? 'disabled' : '' ?>>
+                    value="<?= !empty($baris['tanggal']) ? date('Y-m-d\TH:i', strtotime($baris['tanggal'])) : date('Y-m-d\TH:i') ?>"
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" required <?= $readonly ? 'disabled' : '' ?>>
             </div>
 
             <!-- Pemohon + Ruangan -->
@@ -45,15 +45,15 @@ $options_jenis       = $options_jenis ?? [];
                 </label>
                 <div class="w-full lg:w-1/4 flex gap-x-2">
                     <input type="text" id="petugas_display"
-                           placeholder="Klik cari pemohon..."
-                           value="<?= $baris['nama'] ?? '' ?>"
-                           <?= $readonly ? '' : 'onclick="open_modalPemohon()"' ?>
-                           onkeydown="return false"
-                           class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white <?= $readonly ? 'bg-gray-100 cursor-not-allowed' : 'cursor-pointer bg-white' ?>" <?= $readonly ? 'disabled' : 'required' ?>>
+                        placeholder="Klik cari pemohon..."
+                        value="<?= $baris['nama'] ?? '' ?>"
+                        <?= $readonly ? '' : 'onclick="open_modalPemohon()"' ?>
+                        onkeydown="return false"
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white <?= $readonly ? 'bg-gray-100 cursor-not-allowed' : 'cursor-pointer bg-white' ?>" <?= $readonly ? 'disabled' : 'required' ?>>
                     <button type="button" onclick="open_modalPemohon()"
-                            class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 h-[38px] flex-shrink-0 shadow-sm" <?= $readonly ? 'hidden' : '' ?>>
+                        class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 h-[38px] flex-shrink-0 shadow-sm" <?= $readonly ? 'hidden' : '' ?>>
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </button>
                 </div>
@@ -63,15 +63,15 @@ $options_jenis       = $options_jenis ?? [];
                 </label>
                 <div class="w-full lg:w-1/4 flex gap-x-2">
                     <input type="text" id="master_ruangan_display"
-                           placeholder="Klik cari ruangan..."
-                           value="<?= $baris['nama_ruangan'] ?? '' ?>"
-                           <?= $readonly ? '' : 'onclick="open_modalPilihRuangan()"' ?>
-                           onkeydown="return false"
-                           class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white <?= $readonly ? 'bg-gray-100 cursor-not-allowed' : 'cursor-pointer bg-white' ?>" <?= $readonly ? 'disabled' : 'required' ?>>
+                        placeholder="Klik cari ruangan..."
+                        value="<?= $baris['nama_ruangan'] ?? '' ?>"
+                        <?= $readonly ? '' : 'onclick="open_modalPilihRuangan()"' ?>
+                        onkeydown="return false"
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white <?= $readonly ? 'bg-gray-100 cursor-not-allowed' : 'cursor-pointer bg-white' ?>" <?= $readonly ? 'disabled' : 'required' ?>>
                     <button type="button" onclick="open_modalPilihRuangan()"
-                            class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 h-[38px] flex-shrink-0 shadow-sm" <?= $readonly ? 'hidden' : '' ?>>
+                        class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 h-[38px] flex-shrink-0 shadow-sm" <?= $readonly ? 'hidden' : '' ?>>
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </button>
                 </div>
@@ -84,12 +84,30 @@ $options_jenis       = $options_jenis ?? [];
                 </label>
                 <?php if ($readonly): ?>
                     <input type="text" readonly value="<?= $baris['nama_status_permintaan_barang'] ?? 'Draf' ?>"
-                           class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
                 <?php else: ?>
                     <select name="id_status_permintaan_barang"
-                            class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800">
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800">
                         <option value="1" <?= (($baris['id_status_permintaan_barang'] ?? 1) == 1) ? 'selected' : '' ?>>Draf</option>
                         <option value="4" <?= (($baris['id_status_permintaan_barang'] ?? '') == 4) ? 'selected' : '' ?>>Proses Permintaan</option>
+                    </select>
+                <?php endif; ?>
+            </div>
+
+            <!-- Aturan pemenuhan -->
+            <div class="mb-5 sm:block md:flex items-center">
+                <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
+                    Metode Pemenuhan<span class="text-red-600">*</span>
+                </label>
+                <?php $allowPartial = in_array(strtolower((string) ($baris['boleh_pengiriman_sebagian'] ?? 'f')), ['1', 't', 'true', 'y', 'yes'], true); ?>
+                <?php if ($readonly): ?>
+                    <input type="text" readonly value="<?= $allowPartial ? 'Boleh Sebagian' : 'Tunggu Lengkap' ?>"
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
+                <?php else: ?>
+                    <select name="boleh_pengiriman_sebagian"
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" required>
+                        <option value="0" <?= !$allowPartial ? 'selected' : '' ?>>Tunggu Lengkap</option>
+                        <option value="1" <?= $allowPartial ? 'selected' : '' ?>>Boleh Sebagian</option>
                     </select>
                 <?php endif; ?>
             </div>
@@ -100,16 +118,16 @@ $options_jenis       = $options_jenis ?? [];
                     <h3 class="text-base font-semibold text-gray-800 dark:text-white">Detail Barang <span class="text-red-600">*</span></h3>
                     <div class="flex gap-2 <?= $readonly ? 'hidden' : '' ?>">
                         <button type="button" onclick="open_modalBarang()"
-                                class="inline-flex items-center gap-x-1.5 py-2 px-3 text-sm font-semibold rounded-lg border border-transparent bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] transition-all shadow-sm">
+                            class="inline-flex items-center gap-x-1.5 py-2 px-3 text-sm font-semibold rounded-lg border border-transparent bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] transition-all shadow-sm">
                             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                             </svg>
                             Pilih Item
                         </button>
                         <button type="button" onclick="tambahBarangBaru()"
-                                class="inline-flex items-center gap-x-1.5 py-2 px-3 text-sm font-semibold rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 transition-all shadow-sm">
+                            class="inline-flex items-center gap-x-1.5 py-2 px-3 text-sm font-semibold rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 transition-all shadow-sm">
                             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                             </svg>
                             Barang Baru
                         </button>
@@ -130,40 +148,42 @@ $options_jenis       = $options_jenis ?? [];
                         <tbody id="detailTableBody">
                             <?php if ($isEdit && !empty($detail_items ?? [])): ?>
                                 <?php foreach ($detail_items as $item): ?>
-                                <?php $isBaru = empty($item['id_barang']) && !empty($item['nama_barang_baru']); ?>
-                                <tr data-id="<?= $isBaru ? 'baru_' . ($item['id_detail'] ?? uniqid()) : $item['id_barang'] ?>" data-baru="<?= $isBaru ? '1' : '0' ?>">
-                                    <td class="p-3 border text-center">
-                                        <?php if ($isBaru): ?>
-                                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Baru</span>
-                                            <input type="hidden" name="detail_is_baru[]" value="1">
-                                            <input type="hidden" name="detail_id_barang[]" value="">
-                                            <input type="hidden" name="detail_nama_baru[]" value="<?= esc($item['nama_barang_baru']) ?>">
-                                            <input type="hidden" name="detail_satuan_baru[]" value="<?= $item['id_satuan_baru'] ?? '' ?>">
-                                            <input type="hidden" name="detail_jenis_baru[]" value="<?= $item['id_jenis_barang_baru'] ?? '' ?>">
-                                        <?php else: ?>
-                                            <?= esc($item['kode_barang'] ?? '-') ?>
-                                            <input type="hidden" name="detail_is_baru[]" value="0">
-                                            <input type="hidden" name="detail_id_barang[]" value="<?= $item['id_barang'] ?>">
-                                            <input type="hidden" name="detail_nama_baru[]" value="">
-                                            <input type="hidden" name="detail_satuan_baru[]" value="">
-                                            <input type="hidden" name="detail_jenis_baru[]" value="">
+                                    <?php $isBaru = empty($item['id_barang']) && !empty($item['nama_barang_baru']); ?>
+                                    <tr data-id="<?= $isBaru ? 'baru_' . ($item['id_detail'] ?? uniqid()) : $item['id_barang'] ?>" data-baru="<?= $isBaru ? '1' : '0' ?>">
+                                        <td class="p-3 border text-center">
+                                            <?php if ($isBaru): ?>
+                                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Baru</span>
+                                                <input type="hidden" name="detail_is_baru[]" value="1">
+                                                <input type="hidden" name="detail_id_barang[]" value="">
+                                                <input type="hidden" name="detail_nama_baru[]" value="<?= esc($item['nama_barang_baru']) ?>">
+                                                <input type="hidden" name="detail_satuan_baru[]" value="<?= $item['id_satuan_baru'] ?? '' ?>">
+                                                <input type="hidden" name="detail_jenis_baru[]" value="<?= $item['id_jenis_barang_baru'] ?? '' ?>">
+                                            <?php else: ?>
+                                                <?= esc($item['kode_barang'] ?? '-') ?>
+                                                <input type="hidden" name="detail_is_baru[]" value="0">
+                                                <input type="hidden" name="detail_id_barang[]" value="<?= $item['id_barang'] ?>">
+                                                <input type="hidden" name="detail_nama_baru[]" value="">
+                                                <input type="hidden" name="detail_satuan_baru[]" value="">
+                                                <input type="hidden" name="detail_jenis_baru[]" value="">
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="p-3 border"><?= esc($isBaru ? $item['nama_barang_baru'] : ($item['nama_barang'] ?? '-')) ?></td>
+                                        <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? ($item['nama_satuan_baru'] ?? '-')) ?></td>
+                                        <td class="p-3 border text-center">
+                                            <input type="number" name="detail_qty[]" value="<?= $item['qty'] ?? 1 ?>" min="1"
+                                                class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" required <?= $readonly ? 'disabled' : '' ?>>
+                                        </td>
+                                        <?php if (!$readonly): ?>
+                                            <td class="p-3 border text-center">
+                                                <button type="button" onclick="hapusItem(this)" class="text-red-600 hover:underline text-sm">Hapus</button>
+                                            </td>
                                         <?php endif; ?>
-                                    </td>
-                                    <td class="p-3 border"><?= esc($isBaru ? $item['nama_barang_baru'] : ($item['nama_barang'] ?? '-')) ?></td>
-                                    <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? ($item['nama_satuan_baru'] ?? '-')) ?></td>
-                                    <td class="p-3 border text-center">
-                                        <input type="number" name="detail_qty[]" value="<?= $item['qty'] ?? 1 ?>" min="1"
-                                               class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" required <?= $readonly ? 'disabled' : '' ?>>
-                                    </td>
-                                    <?php if (!$readonly): ?>
-                                    <td class="p-3 border text-center">
-                                        <button type="button" onclick="hapusItem(this)" class="text-red-600 hover:underline text-sm">Hapus</button>
-                                    </td>
-                                    <?php endif; ?>
-                                </tr>
+                                    </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>
-                                <tr id="emptyRow"><td colspan="<?= $readonly ? '4' : '5' ?>" class="p-4 text-center text-gray-400 italic">Belum ada item dipilih</td></tr>
+                                <tr id="emptyRow">
+                                    <td colspan="<?= $readonly ? '4' : '5' ?>" class="p-4 text-center text-gray-400 italic">Belum ada item dipilih</td>
+                                </tr>
                             <?php endif; ?>
                         </tbody>
                     </table>
@@ -171,13 +191,13 @@ $options_jenis       = $options_jenis ?? [];
             </div>
 
             <?php if (!$readonly): ?>
-            <?= view('components/form/submit_button') ?>
+                <?= view('components/form/submit_button') ?>
             <?php else: ?>
-            <div class="mt-5 pt-5 border-t flex justify-end">
-                <a href="javascript:history.back()" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50">
-                    Kembali
-                </a>
-            </div>
+                <div class="mt-5 pt-5 border-t flex justify-end">
+                    <a href="javascript:history.back()" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50">
+                        Kembali
+                    </a>
+                </div>
             <?php endif; ?>
         </form>
     </div>
@@ -201,7 +221,7 @@ $options_jenis       = $options_jenis ?? [];
         }
 
         // Handle modal Barang — tambah item ke tabel
-        var idBarang   = map.id_barang ?? '';
+        var idBarang = map.id_barang ?? '';
         var namaBarang = map.id_barang_display ?? '';
         var namaSatuan = map.nama_satuan ?? '';
         var kodeBarang = map.kode_barang ?? '';
@@ -211,7 +231,16 @@ $options_jenis       = $options_jenis ?? [];
         // Cek duplikat
         var existing = document.querySelector('#detailTableBody tr[data-id="' + idBarang + '"]');
         if (existing) {
-            Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Barang ini sudah ada di daftar.', confirmButtonText: 'Tutup', customClass: { confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2' }, buttonsStyling: false });
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian',
+                text: 'Barang ini sudah ada di daftar.',
+                confirmButtonText: 'Tutup',
+                customClass: {
+                    confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2'
+                },
+                buttonsStyling: false
+            });
             return;
         }
 
@@ -249,34 +278,36 @@ $options_jenis       = $options_jenis ?? [];
 
         container.innerHTML = '<div id="modalBarangBaru" style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">' +
             '<div style="background:white;border-radius:12px;padding:24px;width:100%;max-width:32rem;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);">' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #e5e7eb;padding-bottom:8px;">' +
-                    '<h2 style="font-size:1.1rem;font-weight:700;color:#1f2937;">Tambah Barang Baru</h2>' +
-                    '<button onclick="closeModalBarangBaru()" style="color:#9ca3af;font-size:1.5rem;font-weight:bold;cursor:pointer;border:none;background:none;">&times;</button>' +
-                '</div>' +
-                '<div style="display:flex;flex-direction:column;gap:16px;">' +
-                    '<div><label style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:4px;">Nama Barang *</label>' +
-                    '<input type="text" id="bb_nama" placeholder="Nama barang baru..." style="border:1px solid #d1d5db;border-radius:8px;padding:8px;width:100%;font-size:0.875rem;box-sizing:border-box;"></div>' +
-                    '<div style="position:relative;"><label style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:4px;">Satuan *</label>' +
-                    '<input type="text" id="bb_satuan_search" placeholder="Ketik untuk cari satuan..." autocomplete="off" style="border:1px solid #d1d5db;border-radius:8px;padding:8px;width:100%;font-size:0.875rem;box-sizing:border-box;">' +
-                    '<input type="hidden" id="bb_satuan" value="">' +
-                    '<div id="bb_satuan_dropdown" style="display:none;position:absolute;top:100%;left:0;right:0;max-height:160px;overflow-y:auto;background:white;border:1px solid #d1d5db;border-radius:8px;margin-top:2px;z-index:10;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);"></div></div>' +
-                    '<div style="position:relative;"><label style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:4px;">Jenis Barang *</label>' +
-                    '<input type="text" id="bb_jenis_search" placeholder="Ketik untuk cari jenis..." autocomplete="off" style="border:1px solid #d1d5db;border-radius:8px;padding:8px;width:100%;font-size:0.875rem;box-sizing:border-box;">' +
-                    '<input type="hidden" id="bb_jenis" value="">' +
-                    '<div id="bb_jenis_dropdown" style="display:none;position:absolute;top:100%;left:0;right:0;max-height:160px;overflow-y:auto;background:white;border:1px solid #d1d5db;border-radius:8px;margin-top:2px;z-index:10;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);"></div></div>' +
-                    '<div><label style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:4px;">Qty *</label>' +
-                    '<input type="number" id="bb_qty" value="1" min="1" style="border:1px solid #d1d5db;border-radius:8px;padding:8px;width:100%;font-size:0.875rem;box-sizing:border-box;"></div>' +
-                '</div>' +
-                '<div style="margin-top:24px;display:flex;justify-content:flex-end;gap:8px;">' +
-                    '<button type="button" onclick="closeModalBarangBaru()" style="padding:8px 16px;font-size:0.875rem;border:1px solid #d1d5db;border-radius:8px;background:white;color:#374151;cursor:pointer;">Batal</button>' +
-                    '<button type="button" onclick="submitBarangBaru()" style="padding:8px 16px;font-size:0.875rem;border-radius:8px;background:#0A2D27;color:#ACF2E7;border:none;font-weight:600;cursor:pointer;">Tambahkan</button>' +
-                '</div>' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #e5e7eb;padding-bottom:8px;">' +
+            '<h2 style="font-size:1.1rem;font-weight:700;color:#1f2937;">Tambah Barang Baru</h2>' +
+            '<button onclick="closeModalBarangBaru()" style="color:#9ca3af;font-size:1.5rem;font-weight:bold;cursor:pointer;border:none;background:none;">&times;</button>' +
             '</div>' +
-        '</div>';
+            '<div style="display:flex;flex-direction:column;gap:16px;">' +
+            '<div><label style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:4px;">Nama Barang *</label>' +
+            '<input type="text" id="bb_nama" placeholder="Nama barang baru..." style="border:1px solid #d1d5db;border-radius:8px;padding:8px;width:100%;font-size:0.875rem;box-sizing:border-box;"></div>' +
+            '<div style="position:relative;"><label style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:4px;">Satuan *</label>' +
+            '<input type="text" id="bb_satuan_search" placeholder="Ketik untuk cari satuan..." autocomplete="off" style="border:1px solid #d1d5db;border-radius:8px;padding:8px;width:100%;font-size:0.875rem;box-sizing:border-box;">' +
+            '<input type="hidden" id="bb_satuan" value="">' +
+            '<div id="bb_satuan_dropdown" style="display:none;position:absolute;top:100%;left:0;right:0;max-height:160px;overflow-y:auto;background:white;border:1px solid #d1d5db;border-radius:8px;margin-top:2px;z-index:10;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);"></div></div>' +
+            '<div style="position:relative;"><label style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:4px;">Jenis Barang *</label>' +
+            '<input type="text" id="bb_jenis_search" placeholder="Ketik untuk cari jenis..." autocomplete="off" style="border:1px solid #d1d5db;border-radius:8px;padding:8px;width:100%;font-size:0.875rem;box-sizing:border-box;">' +
+            '<input type="hidden" id="bb_jenis" value="">' +
+            '<div id="bb_jenis_dropdown" style="display:none;position:absolute;top:100%;left:0;right:0;max-height:160px;overflow-y:auto;background:white;border:1px solid #d1d5db;border-radius:8px;margin-top:2px;z-index:10;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);"></div></div>' +
+            '<div><label style="display:block;font-size:0.875rem;font-weight:500;color:#374151;margin-bottom:4px;">Qty *</label>' +
+            '<input type="number" id="bb_qty" value="1" min="1" style="border:1px solid #d1d5db;border-radius:8px;padding:8px;width:100%;font-size:0.875rem;box-sizing:border-box;"></div>' +
+            '</div>' +
+            '<div style="margin-top:24px;display:flex;justify-content:flex-end;gap:8px;">' +
+            '<button type="button" onclick="closeModalBarangBaru()" style="padding:8px 16px;font-size:0.875rem;border:1px solid #d1d5db;border-radius:8px;background:white;color:#374151;cursor:pointer;">Batal</button>' +
+            '<button type="button" onclick="submitBarangBaru()" style="padding:8px 16px;font-size:0.875rem;border-radius:8px;background:#0A2D27;color:#ACF2E7;border:none;font-weight:600;cursor:pointer;">Tambahkan</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
 
         initSearchableSelect('bb_satuan', optionsSatuan, 'id_satuan', 'nama_satuan');
         initSearchableSelect('bb_jenis', optionsJenis, 'id_jenis_barang', 'nama_jenis_barang');
-        setTimeout(function() { document.getElementById('bb_nama').focus(); }, 100);
+        setTimeout(function() {
+            document.getElementById('bb_nama').focus();
+        }, 100);
     }
 
     function initSearchableSelect(prefix, data, valueKey, labelKey) {
@@ -298,7 +329,9 @@ $options_jenis       = $options_jenis ?? [];
             dropdown.style.display = 'block';
         }
 
-        input.addEventListener('focus', function() { renderList(input.value); });
+        input.addEventListener('focus', function() {
+            renderList(input.value);
+        });
         input.addEventListener('input', function() {
             hidden.value = '';
             renderList(input.value);
@@ -325,15 +358,51 @@ $options_jenis       = $options_jenis ?? [];
     }
 
     function submitBarangBaru() {
-        var nama   = document.getElementById('bb_nama').value.trim();
+        var nama = document.getElementById('bb_nama').value.trim();
         var satuanVal = document.getElementById('bb_satuan').value;
         var satuanLabel = document.getElementById('bb_satuan_search').value.trim();
-        var jenis  = document.getElementById('bb_jenis').value;
-        var qty    = document.getElementById('bb_qty').value || '1';
+        var jenis = document.getElementById('bb_jenis').value;
+        var qty = document.getElementById('bb_qty').value || '1';
 
-        if (!nama) { Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Nama barang wajib diisi.', confirmButtonText: 'Tutup', customClass: { confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2' }, buttonsStyling: false }); return; }
-        if (!satuanVal) { Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Satuan wajib dipilih.', confirmButtonText: 'Tutup', customClass: { confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2' }, buttonsStyling: false }); return; }
-        if (!jenis) { Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Jenis barang wajib dipilih.', confirmButtonText: 'Tutup', customClass: { confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2' }, buttonsStyling: false }); return; }
+        if (!nama) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian',
+                text: 'Nama barang wajib diisi.',
+                confirmButtonText: 'Tutup',
+                customClass: {
+                    confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2'
+                },
+                buttonsStyling: false
+            });
+            return;
+        }
+        if (!satuanVal) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian',
+                text: 'Satuan wajib dipilih.',
+                confirmButtonText: 'Tutup',
+                customClass: {
+                    confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2'
+                },
+                buttonsStyling: false
+            });
+            return;
+        }
+        if (!jenis) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian',
+                text: 'Jenis barang wajib dipilih.',
+                confirmButtonText: 'Tutup',
+                customClass: {
+                    confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2'
+                },
+                buttonsStyling: false
+            });
+            return;
+        }
 
         var namaSatuan = satuanLabel;
 
@@ -391,7 +460,16 @@ $options_jenis       = $options_jenis ?? [];
         if (status !== '1') {
             var items = document.querySelectorAll('#detailTableBody tr[data-id]');
             if (items.length === 0) {
-                Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Tambahkan minimal satu item barang sebelum mengajukan permintaan.', confirmButtonText: 'Tutup', customClass: { confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2' }, buttonsStyling: false });
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Perhatian',
+                    text: 'Tambahkan minimal satu item barang sebelum mengajukan permintaan.',
+                    confirmButtonText: 'Tutup',
+                    customClass: {
+                        confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2'
+                    },
+                    buttonsStyling: false
+                });
                 return false;
             }
         }
