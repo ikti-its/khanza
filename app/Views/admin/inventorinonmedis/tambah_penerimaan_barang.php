@@ -25,14 +25,14 @@ $readonly = $readonly ?? false;
                     No. Penerimaan
                 </label>
                 <input type="text" readonly placeholder="Terisi otomatis..." value="<?= $baris['no_penerimaan'] ?? '' ?>"
-                       class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
 
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
                     Tanggal Penerimaan<span class="text-red-600">*</span>
                 </label>
                 <input type="datetime-local" name="tanggal" id="tanggal"
-                       value="<?= !empty($baris['tanggal']) ? date('Y-m-d\TH:i', strtotime($baris['tanggal'])) : date('Y-m-d\TH:i') ?>"
-                       class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" required <?= $readonly ? 'disabled' : '' ?>>
+                    value="<?= !empty($baris['tanggal']) ? date('Y-m-d\TH:i', strtotime($baris['tanggal'])) : date('Y-m-d\TH:i') ?>"
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" required <?= $readonly ? 'disabled' : '' ?>>
             </div>
 
             <!-- No. Pengadaan (modal) + Penerima (modal) -->
@@ -42,15 +42,15 @@ $readonly = $readonly ?? false;
                 </label>
                 <div class="w-full lg:w-1/4 flex gap-x-2">
                     <input type="text" id="id_pengadaan_display"
-                           placeholder="Klik cari pengadaan..."
-                           value="<?= $baris['no_pengadaan'] ?? '' ?>"
-                           onclick="open_modalPengadaan()"
-                           onkeydown="return false"
-                           class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white cursor-pointer bg-white" required>
+                        placeholder="Klik cari pengadaan..."
+                        value="<?= $baris['no_pengadaan'] ?? '' ?>"
+                        onclick="open_modalPengadaan()"
+                        onkeydown="return false"
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white cursor-pointer bg-white" required>
                     <button type="button" onclick="open_modalPengadaan()"
-                            class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 h-[38px] flex-shrink-0 shadow-sm">
+                        class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 h-[38px] flex-shrink-0 shadow-sm">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </button>
                 </div>
@@ -60,15 +60,15 @@ $readonly = $readonly ?? false;
                 </label>
                 <div class="w-full lg:w-1/4 flex gap-x-2">
                     <input type="text" id="petugas_display"
-                           placeholder="Klik cari penerima..."
-                           value="<?= $baris['nama'] ?? '' ?>"
-                           onclick="open_modalPemohon()"
-                           onkeydown="return false"
-                           class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white cursor-pointer bg-white" required>
+                        placeholder="Klik cari penerima..."
+                        value="<?= $baris['nama'] ?? '' ?>"
+                        onclick="open_modalPemohon()"
+                        onkeydown="return false"
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white cursor-pointer bg-white" required>
                     <button type="button" onclick="open_modalPemohon()"
-                            class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 h-[38px] flex-shrink-0 shadow-sm">
+                        class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 h-[38px] flex-shrink-0 shadow-sm">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </button>
                 </div>
@@ -80,7 +80,7 @@ $readonly = $readonly ?? false;
                     Status
                 </label>
                 <select name="id_status_penerimaan_barang"
-                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" required <?= $readonly ? 'disabled' : '' ?>>
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" required <?= $readonly ? 'disabled' : '' ?>>
                     <option value="1" <?= (($baris['id_status_penerimaan_barang'] ?? 1) == 1) ? 'selected' : '' ?>>Proses Penerimaan</option>
                     <option value="2" <?= (($baris['id_status_penerimaan_barang'] ?? '') == 2) ? 'selected' : '' ?>>Diterima</option>
                     <option value="3" <?= (($baris['id_status_penerimaan_barang'] ?? '') == 3) ? 'selected' : '' ?>>Ditolak</option>
@@ -90,8 +90,8 @@ $readonly = $readonly ?? false;
                     Catatan
                 </label>
                 <input type="text" name="catatan" id="catatan" placeholder="Catatan (opsional)..." maxlength="500"
-                       value="<?= $baris['catatan'] ?? '' ?>"
-                       class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" <?= $readonly ? 'disabled' : '' ?>>
+                    value="<?= $baris['catatan'] ?? '' ?>"
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" <?= $readonly ? 'disabled' : '' ?>>
             </div>
 
             <!-- Detail Barang Penerimaan -->
@@ -111,28 +111,35 @@ $readonly = $readonly ?? false;
                                 <th class="p-3 border text-center font-semibold w-24">Sudah Diterima</th>
                                 <th class="p-3 border text-center font-semibold w-20">Sisa</th>
                                 <th class="p-3 border text-center font-semibold w-28">Qty Diterima</th>
+                                <th class="p-3 border text-center font-semibold w-32">Exp Date</th>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
                             <?php if ($isEdit && !empty($detail_items ?? [])): ?>
                                 <?php foreach ($detail_items as $item): ?>
-                                <?php $sisa = max(0, (int)($item['qty_dipesan'] ?? 0) - (int)($item['sudah_diterima'] ?? 0)); ?>
-                                <tr data-id="<?= $item['id_barang'] ?>">
-                                    <td class="p-3 border text-center"><?= esc($item['kode_barang'] ?? '-') ?></td>
-                                    <td class="p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
-                                    <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
-                                    <td class="p-3 border text-center text-gray-500"><?= $item['qty_dipesan'] ?? '-' ?></td>
-                                    <td class="p-3 border text-center text-gray-500"><?= $item['sudah_diterima'] ?? 0 ?></td>
-                                    <td class="p-3 border text-center font-semibold"><?= $sisa ?></td>
-                                    <td class="p-3 border text-center">
-                                        <input type="number" name="detail_qty[]" value="<?= $item['qty_diterima'] ?? 0 ?>" min="0" max="<?= $sisa + (int)($item['qty_diterima'] ?? 0) ?>"
-                                               class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" <?= $readonly ? 'disabled' : '' ?>>
-                                        <input type="hidden" name="detail_id_barang[]" value="<?= $item['id_barang'] ?>">
-                                    </td>
-                                </tr>
+                                    <?php $sisa = max(0, (int)($item['qty_dipesan'] ?? 0) - (int)($item['sudah_diterima'] ?? 0)); ?>
+                                    <tr data-id="<?= $item['id_barang'] ?>">
+                                        <td class="p-3 border text-center"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                                        <td class="p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
+                                        <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
+                                        <td class="p-3 border text-center text-gray-500"><?= $item['qty_dipesan'] ?? '-' ?></td>
+                                        <td class="p-3 border text-center text-gray-500"><?= $item['sudah_diterima'] ?? 0 ?></td>
+                                        <td class="p-3 border text-center font-semibold"><?= $sisa ?></td>
+                                        <td class="p-3 border text-center">
+                                            <input type="number" name="detail_qty[]" value="<?= $item['qty_diterima'] ?? 0 ?>" min="0" max="<?= $sisa + (int)($item['qty_diterima'] ?? 0) ?>"
+                                                class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" <?= $readonly ? 'disabled' : '' ?>>
+                                            <input type="hidden" name="detail_id_barang[]" value="<?= $item['id_barang'] ?>">
+                                        </td>
+                                        <td class="p-3 border text-center">
+                                            <input type="date" name="detail_tanggal_kadaluarsa[]" value="<?= esc($item['tanggal_kadaluarsa'] ?? '') ?>"
+                                                class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" <?= $readonly ? 'disabled' : '' ?>>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>
-                                <tr id="emptyRow"><td colspan="7" class="p-4 text-center text-gray-400 italic">Pilih pengadaan untuk menampilkan item</td></tr>
+                                <tr id="emptyRow">
+                                    <td colspan="8" class="p-4 text-center text-gray-400 italic">Pilih pengadaan untuk menampilkan item</td>
+                                </tr>
                             <?php endif; ?>
                         </tbody>
                     </table>
@@ -140,11 +147,11 @@ $readonly = $readonly ?? false;
             </div>
 
             <?php if (!$readonly): ?>
-            <?= view('components/form/submit_button') ?>
+                <?= view('components/form/submit_button') ?>
             <?php else: ?>
-            <div class="mt-5 pt-5 border-t flex justify-end">
-                <a href="javascript:history.back()" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50">Kembali</a>
-            </div>
+                <div class="mt-5 pt-5 border-t flex justify-end">
+                    <a href="javascript:history.back()" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50">Kembali</a>
+                </div>
             <?php endif; ?>
         </form>
     </div>
@@ -155,14 +162,14 @@ $readonly = $readonly ?? false;
         document.getElementById('id_pengadaan').value = idPengadaan;
 
         var tbody = document.getElementById('detailTableBody');
-        tbody.innerHTML = '<tr><td colspan="7" class="p-4 text-center text-gray-500">Memuat item...</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="8" class="p-4 text-center text-gray-500">Memuat item...</td></tr>';
 
         fetch('<?= site_url('inventori-non-medis/pengadaan-barang/modal/list') ?>?id_pengadaan=' + idPengadaan + '&mode=penerimaan')
             .then(r => r.json())
             .then(json => {
                 var data = json.data || [];
                 if (data.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="7" class="p-4 text-center text-gray-400 italic">Tidak ada item pada pengadaan ini</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="8" class="p-4 text-center text-gray-400 italic">Tidak ada item pada pengadaan ini</td></tr>';
                     return;
                 }
                 tbody.innerHTML = '';
@@ -184,12 +191,16 @@ $readonly = $readonly ?? false;
                             <input type="number" name="detail_qty[]" value="${defaultVal}" min="0" max="${sisa}"
                                    class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm">
                             <input type="hidden" name="detail_id_barang[]" value="${item.id_barang}">
+                        </td>
+                        <td class="p-3 border text-center">
+                            <input type="date" name="detail_tanggal_kadaluarsa[]" value=""
+                                   class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm">
                         </td>`;
                     tbody.appendChild(tr);
                 });
             })
             .catch(() => {
-                tbody.innerHTML = '<tr><td colspan="7" class="p-4 text-center text-red-500">Gagal memuat item</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="8" class="p-4 text-center text-red-500">Gagal memuat item</td></tr>';
             });
     }
 
@@ -198,17 +209,38 @@ $readonly = $readonly ?? false;
         if (!form.reportValidity()) return false;
 
         if (!document.getElementById('id_pengadaan').value) {
-            Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Pilih pengadaan terlebih dahulu.', confirmButtonText: 'Tutup', customClass: { confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2' }, buttonsStyling: false });
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian',
+                text: 'Pilih pengadaan terlebih dahulu.',
+                confirmButtonText: 'Tutup',
+                customClass: {
+                    confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2'
+                },
+                buttonsStyling: false
+            });
             return false;
         }
 
         if (!document.getElementById('petugas').value) {
-            Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Pilih penerima terlebih dahulu.', confirmButtonText: 'Tutup', customClass: { confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2' }, buttonsStyling: false });
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian',
+                text: 'Pilih penerima terlebih dahulu.',
+                confirmButtonText: 'Tutup',
+                customClass: {
+                    confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2'
+                },
+                buttonsStyling: false
+            });
             return false;
         }
 
         var btn = document.getElementById('submitButton');
-        if (btn) { btn.disabled = true; btn.innerHTML = 'Menyimpan...'; }
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = 'Menyimpan...';
+        }
         return true;
     }
 </script>

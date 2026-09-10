@@ -78,34 +78,36 @@
         <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
             <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
                 <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
                 </svg>
                 <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">Detail Barang</h4>
             </div>
 
             <?php if (!empty($detail_items)): ?>
-            <table class="w-full text-sm">
-                <thead>
-                    <tr class="text-slate-500 dark:text-slate-400">
-                        <th class="text-left py-2 font-medium">Kode</th>
-                        <th class="text-left py-2 font-medium">Nama Barang</th>
-                        <th class="text-center py-2 font-medium">Satuan</th>
-                        <th class="text-center py-2 font-medium">Qty Diterima</th>
-                    </tr>
-                </thead>
-                <tbody class="text-slate-700 dark:text-slate-300">
-                    <?php foreach ($detail_items as $item): ?>
-                    <tr class="border-t border-slate-100 dark:border-slate-700/50">
-                        <td class="py-2 font-mono text-sm"><?= esc($item['kode_barang'] ?? '-') ?></td>
-                        <td class="py-2 font-semibold"><?= esc($item['nama_barang'] ?? '-') ?></td>
-                        <td class="py-2 text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
-                        <td class="py-2 text-center font-semibold"><?= $item['qty_diterima'] ?? 0 ?></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-slate-500 dark:text-slate-400">
+                            <th class="text-left py-2 font-medium">Kode</th>
+                            <th class="text-left py-2 font-medium">Nama Barang</th>
+                            <th class="text-center py-2 font-medium">Satuan</th>
+                            <th class="text-center py-2 font-medium">Qty Diterima</th>
+                            <th class="text-center py-2 font-medium">Exp Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700 dark:text-slate-300">
+                        <?php foreach ($detail_items as $item): ?>
+                            <tr class="border-t border-slate-100 dark:border-slate-700/50">
+                                <td class="py-2 font-mono text-sm"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                                <td class="py-2 font-semibold"><?= esc($item['nama_barang'] ?? '-') ?></td>
+                                <td class="py-2 text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
+                                <td class="py-2 text-center font-semibold"><?= $item['qty_diterima'] ?? 0 ?></td>
+                                <td class="py-2 text-center"><?= esc($item['tanggal_kadaluarsa'] ?? '-') ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             <?php else: ?>
-            <p class="text-sm text-slate-400 italic text-center py-4">Tidak ada detail barang.</p>
+                <p class="text-sm text-slate-400 italic text-center py-4">Tidak ada detail barang.</p>
             <?php endif; ?>
         </div>
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PenerimaanBarang;
@@ -57,6 +58,43 @@ final class PenerimaanBarangController extends ControllerTemplate
         return $result;
     }
 
+    // Normalisasi nilai kolom boolean permintaan_barang.boleh_pengiriman_sebagian
+    // (bisa '1'/'t'/'true'/null tergantung driver) menjadi bool. null → false.
+    private function allow_partial_shipment(mixed $value): bool
+    {
+        return in_array(strtolower((string) ($value ?? 'f')), ['1', 't', 'true', 'y', 'yes'], true);
+    }
+
+    // Peta harga_satuan per id_barang dari pengadaan_barang_detail, untuk di-snapshot
+    // ke penerimaan_barang_detail saat penerimaan disimpan.
+    /**
+     * @return array<int, mixed>
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     */
+    private function harga_pengadaan_map(int $id_pengadaan): array
+    {
+        if ($id_pengadaan === 0) {
+            return [];
+        }
+
+        $rows = $this->guarded(
+            $this
+                ->get_db()
+                ->table('inventori_non_medis.pengadaan_barang_detail')
+                ->select('id_barang, harga_satuan')
+                ->where('id_pengadaan', $id_pengadaan)
+                ->where('id_barang >', 0)
+                ->get(),
+        )->getResultArray();
+        /** @var list<array<string, mixed>> $rows */
+
+        $map = [];
+        foreach ($rows as $row) {
+            $map[(int) $row['id_barang']] = $row['harga_satuan'] ?? null;
+        }
+        return $map;
+    }
+
     // form tambah: 1-page header + detail
     #[\Override]
     public function create_page(): string
@@ -84,7 +122,9 @@ final class PenerimaanBarangController extends ControllerTemplate
                 ->table('inventori_non_medis.penerimaan_barang_detail d')
                 ->join('inventori_non_medis.barang b', 'd.id_barang = b.id_barang', 'left')
                 ->join('inventori_non_medis.satuan s', 'b.id_satuan = s.id_satuan', 'left')
-                ->select('d.id_barang, d.qty_diterima, b.kode_barang, b.nama_barang, s.nama_satuan')
+                ->select(
+                    'd.id_barang, d.qty_diterima, d.tanggal_kadaluarsa, b.kode_barang, b.nama_barang, s.nama_satuan',
+                )
                 ->where('d.id_penerimaan', (int) $id)
                 ->where('d.id_barang >', 0)
                 ->get(),
@@ -127,8 +167,8 @@ final class PenerimaanBarangController extends ControllerTemplate
         $id_pengadaan = (int) ($baris['id_pengadaan'] ?? 0);
 
         $detail_items = $this->guarded($this->get_db()->query('
-            SELECT d.id_barang, d.qty_diterima, b.kode_barang, b.nama_barang, s.nama_satuan,
-                   pbd.qty AS qty_dipesan,
+                 SELECT d.id_barang, d.qty_diterima, d.tanggal_kadaluarsa, b.kode_barang, b.nama_barang, s.nama_satuan,
+                     pbd.qty AS qty_dipesan,
                    COALESCE((
                        SELECT SUM(prbd.qty_diterima)
                        FROM inventori_non_medis.penerimaan_barang_detail prbd
@@ -195,11 +235,8 @@ final class PenerimaanBarangController extends ControllerTemplate
         // Generate no_masuk saat langsung Diterima
         if ($new_status === 2) {
             /** @var string|null $lastNoMasuk */
-            $lastNoMasuk          = $this->get_last(
-                'inventori_non_medis.penerimaan_barang',
-                'no_masuk',
-                'id_penerimaan',
-            );
+            $lastNoMasuk = $this->get_last('inventori_non_medis.penerimaan_barang', 'no_masuk', 'id_penerimaan');
+
             $postData['no_masuk'] = generateNextNoMasukBarang($lastNoMasuk);
         }
 
@@ -220,6 +257,8 @@ final class PenerimaanBarangController extends ControllerTemplate
             /** @var array<array-key, mixed> $detail_ids */
             $detail_qty = $this->request->getPost('detail_qty') ?? [];
             /** @var array<array-key, mixed> $detail_qty */
+            $detail_exp = $this->request->getPost('detail_tanggal_kadaluarsa') ?? [];
+            /** @var array<array-key, mixed> $detail_exp */
 
             // Validasi qty tidak melebihi sisa
             $id_pengadaan_val = (int) ($postData['id_pengadaan'] ?? 0);
@@ -285,14 +324,17 @@ final class PenerimaanBarangController extends ControllerTemplate
                 }
             }
 
+            $harga_map = $this->harga_pengadaan_map($id_pengadaan_val);
             for ($i = 0; $i < count($detail_ids); $i++) {
                 $id_barang    = (int) ($detail_ids[$i] ?? 0);
                 $qty_diterima = (int) ($detail_qty[$i] ?? 0);
                 if ($id_barang > 0) {
                     $db->table('inventori_non_medis.penerimaan_barang_detail')->insert([
-                        'id_penerimaan' => $id_penerimaan,
-                        'id_barang'     => $id_barang,
-                        'qty_diterima'  => $qty_diterima,
+                        'id_penerimaan'      => $id_penerimaan,
+                        'id_barang'          => $id_barang,
+                        'qty_diterima'       => $qty_diterima,
+                        'tanggal_kadaluarsa' => ($detail_exp[$i] ?? '') !== '' ? $detail_exp[$i] : null,
+                        'harga_satuan'       => $harga_map[$id_barang] ?? null,
                     ]);
                 }
             }
@@ -355,11 +397,8 @@ final class PenerimaanBarangController extends ControllerTemplate
         if ($new_status === 2 && $current_status !== 2) {
             helper('autonomor');
             /** @var string|null $lastNo */
-            $lastNo               = $this->get_last(
-                'inventori_non_medis.penerimaan_barang',
-                'no_masuk',
-                'id_penerimaan',
-            );
+            $lastNo = $this->get_last('inventori_non_medis.penerimaan_barang', 'no_masuk', 'id_penerimaan');
+
             $postData['no_masuk'] = generateNextNoMasukBarang($lastNo);
             $this->pending_masuk  = true;
         }
@@ -379,6 +418,8 @@ final class PenerimaanBarangController extends ControllerTemplate
             /** @var array<array-key, mixed> $detail_ids */
             $detail_qty = $this->request->getPost('detail_qty') ?? [];
             /** @var array<array-key, mixed> $detail_qty */
+            $detail_exp = $this->request->getPost('detail_tanggal_kadaluarsa') ?? [];
+            /** @var array<array-key, mixed> $detail_exp */
 
             // Validasi qty tidak melebihi sisa
             $id_pengadaan_val = (int) ($current['id_pengadaan'] ?? 0);
@@ -426,14 +467,17 @@ final class PenerimaanBarangController extends ControllerTemplate
                 }
             }
 
+            $harga_map = $this->harga_pengadaan_map($id_pengadaan_val);
             for ($i = 0; $i < count($detail_ids); $i++) {
                 $id_barang    = (int) ($detail_ids[$i] ?? 0);
                 $qty_diterima = (int) ($detail_qty[$i] ?? 0);
                 if ($id_barang > 0) {
                     $db->table('inventori_non_medis.penerimaan_barang_detail')->insert([
-                        'id_penerimaan' => (int) $id,
-                        'id_barang'     => $id_barang,
-                        'qty_diterima'  => $qty_diterima,
+                        'id_penerimaan'      => (int) $id,
+                        'id_barang'          => $id_barang,
+                        'qty_diterima'       => $qty_diterima,
+                        'tanggal_kadaluarsa' => ($detail_exp[$i] ?? '') !== '' ? $detail_exp[$i] : null,
+                        'harga_satuan'       => $harga_map[$id_barang] ?? null,
                     ]);
                 }
             }
@@ -550,11 +594,17 @@ final class PenerimaanBarangController extends ControllerTemplate
                 'stok_sebelum' => $stok_sebelum,
                 'stok_sesudah' => $stok_sebelum + $qty,
             ]);
-            $db
-                ->table('inventori_non_medis.barang')
-                ->where('id_barang', (int) $d['id_barang'])
-                ->set('stok', 'stok + ' . $qty, false)
-                ->update();
+            $barang = $db->table('inventori_non_medis.barang')->where('id_barang', (int) $d['id_barang'])->set(
+                'stok',
+                'stok + ' . $qty,
+                false,
+            );
+            // Kebijakan harga pembelian terakhir: perbarui harga master saat barang
+            // benar-benar diterima, dalam transaksi yang sama dengan pencatatan stok.
+            if (isset($d['harga_satuan']) && (float) $d['harga_satuan'] > 0) {
+                $barang->set('harga_satuan', $d['harga_satuan']);
+            }
+            $barang->update();
         }
 
         $db->transCommit();
@@ -671,7 +721,7 @@ final class PenerimaanBarangController extends ControllerTemplate
             $db
                 ->table('inventori_non_medis.permintaan_barang')
                 ->select(
-                    'id_permintaan, id_status_permintaan_barang, no_permintaan, no_keluar, master_ruangan, petugas, petugas_gudang',
+                    'id_permintaan, id_status_permintaan_barang, no_permintaan, no_keluar, master_ruangan, petugas, petugas_gudang, boleh_pengiriman_sebagian',
                 )
                 ->where('id_permintaan', $id_permintaan)
                 ->where('id_status_permintaan_barang', 5)
@@ -682,19 +732,9 @@ final class PenerimaanBarangController extends ControllerTemplate
             return;
         }
 
-        // Ambil id_barang yang sudah pernah stok keluar untuk permintaan ini
-        // (item existing yang sudah di-fulfill saat approval di Persetujuan)
-        $already_fulfilled = $this->guarded($db->query('
-            SELECT DISTINCT tsd.id_barang
-            FROM inventori_non_medis.transaksi_stok_detail tsd
-            JOIN inventori_non_medis.transaksi_stok ts ON tsd.id_transaksi = ts.id_transaksi
-            WHERE ts.id_permintaan = ?
-              AND ts.id_tipe_transaksi_stok = 2
-        ', [$id_permintaan]))->getResultArray();
-        /** @var list<array<string, mixed>> $already_fulfilled */
-        $fulfilled_ids = array_map(fn($r) => (int) $r['id_barang'], $already_fulfilled);
+        $allow_partial = $this->allow_partial_shipment($permintaan['boleh_pengiriman_sebagian'] ?? null);
 
-        // Ambil detail item yang BELUM pernah stok keluar dan stok sekarang sudah ada
+        // Ambil item pending dan jumlah yang sudah pernah dikeluarkan.
         $builder = $db
             ->table('inventori_non_medis.permintaan_barang_detail d')
             ->join('inventori_non_medis.barang b', 'd.id_barang = b.id_barang', 'left')
@@ -702,10 +742,6 @@ final class PenerimaanBarangController extends ControllerTemplate
             ->where('d.id_permintaan', $id_permintaan)
             ->where('d.id_barang >', 0)
             ->where('d.qty_disetujui >', 0);
-
-        if (count($fulfilled_ids) > 0) {
-            $builder->whereNotIn('d.id_barang', $fulfilled_ids);
-        }
 
         $pending_items = $this->guarded($builder->get())->getResultArray();
         /** @var list<array<string, mixed>> $pending_items */
@@ -715,13 +751,34 @@ final class PenerimaanBarangController extends ControllerTemplate
             return;
         }
 
-        // Filter hanya item yang stok-nya sudah cukup
+        $issued_rows = $this->guarded($db->query('
+            SELECT tsd.id_barang, COALESCE(SUM(tsd.qty), 0) AS qty_dikeluarkan
+            FROM inventori_non_medis.transaksi_stok_detail tsd
+            JOIN inventori_non_medis.transaksi_stok ts ON tsd.id_transaksi = ts.id_transaksi
+            WHERE ts.id_permintaan = ? AND ts.id_tipe_transaksi_stok = 2
+            GROUP BY tsd.id_barang
+        ', [$id_permintaan]))->getResultArray();
+        /** @var list<array<string, mixed>> $issued_rows */
+        $issued_by_barang = [];
+        foreach ($issued_rows as $issued_row) {
+            $issued_by_barang[(int) $issued_row['id_barang']] = (int) $issued_row['qty_dikeluarkan'];
+        }
+
         $items_to_fulfill = [];
         $items_not_ready  = [];
         foreach ($pending_items as $item) {
-            if ((int) $item['stok'] >= (int) $item['qty_disetujui']) {
-                $items_to_fulfill[] = $item;
-            } else {
+            $already_issued = $issued_by_barang[(int) $item['id_barang']] ?? 0;
+            $remaining      = max(0, (int) $item['qty_disetujui'] - $already_issued);
+            $available      = (int) $item['stok'];
+            $qty_to_fulfill = $allow_partial
+                ? min($available, $remaining)
+                : ($available >= $remaining ? $remaining : 0);
+
+            if ($qty_to_fulfill > 0) {
+                $item['qty_dikeluarkan'] = $qty_to_fulfill;
+                $items_to_fulfill[]      = $item;
+            }
+            if ($qty_to_fulfill < $remaining) {
                 $items_not_ready[] = $item;
             }
         }
@@ -764,7 +821,7 @@ final class PenerimaanBarangController extends ControllerTemplate
             (string) ($row['no_permintaan'] ?? ''),
             (string) ($row['nama_ruangan'] ?? '') !== '' ? 'Ruangan ' . (string) $row['nama_ruangan'] : '',
             (string) ($row['nama_pemohon'] ?? '') !== '' ? 'Pemohon: ' . (string) $row['nama_pemohon'] : '',
-            'Auto-fulfill barang baru',
+            'Auto-fulfill permintaan tertunda',
         ])));
 
         $now = date('Y-m-d H:i:s');
@@ -779,7 +836,7 @@ final class PenerimaanBarangController extends ControllerTemplate
         $id_transaksi = (int) $db->insertID();
 
         foreach ($items_to_fulfill as $d) {
-            $qty          = (int) $d['qty_disetujui'];
+            $qty          = (int) $d['qty_dikeluarkan'];
             $stok_sebelum = (int) $d['stok'];
             $db->table('inventori_non_medis.transaksi_stok_detail')->insert([
                 'id_transaksi' => $id_transaksi,
@@ -801,13 +858,15 @@ final class PenerimaanBarangController extends ControllerTemplate
         // Tentukan status akhir permintaan
         if (count($items_not_ready) === 0) {
             // Semua item pending terpenuhi → Selesai (6)
+            $update_permintaan = ['id_status_permintaan_barang' => 6];
+            // Jangan timpa no_keluar yang sudah terisi dari pengeluaran parsial sebelumnya.
+            if ((string) ($permintaan['no_keluar'] ?? '') === '') {
+                $update_permintaan['no_keluar'] = $no_keluar;
+            }
             $db
                 ->table('inventori_non_medis.permintaan_barang')
                 ->where('id_permintaan', $id_permintaan)
-                ->update([
-                    'id_status_permintaan_barang' => 6,
-                    'no_keluar'                   => $no_keluar,
-                ]);
+                ->update($update_permintaan);
             log_message('info', "[fulfill] Permintaan {$id_permintaan} → Selesai (6)");
         } else {
             // Masih ada item yang belum terpenuhi — tetap status 5, tapi simpan no_keluar parsial

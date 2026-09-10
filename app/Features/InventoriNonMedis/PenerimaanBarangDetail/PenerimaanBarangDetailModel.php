@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\PenerimaanBarangDetail;
@@ -15,9 +16,10 @@ final class PenerimaanBarangDetailModel extends ModelTemplate
         parent::__construct(
             new PenerimaanBarangDetailDatabase(),
             [
-                'id_detail'    => V::DEFAULT(),
-                'qty_diterima' => V::DEFAULT(),
-                'harga_satuan' => V::DEFAULT(),
+                'id_detail'          => V::DEFAULT(),
+                'qty_diterima'       => V::DEFAULT(),
+                'harga_satuan'       => V::DEFAULT(),
+                'tanggal_kadaluarsa' => V::DEFAULT(),
             ],
             [
                 'id_penerimaan' => ['tanggal', 'status'],

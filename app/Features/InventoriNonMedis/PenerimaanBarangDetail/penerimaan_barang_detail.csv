@@ -1,2 +1,2 @@
-id_detail,id_penerimaan,id_barang,qty_diterima,harga_satuan
-0,0,0,0,0
+id_detail,id_penerimaan,id_barang,qty_diterima,harga_satuan,tanggal_kadaluarsa
+0,0,0,0,0,
