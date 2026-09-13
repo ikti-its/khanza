@@ -28,7 +28,7 @@ if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses'
     $bg_color   = '#DBEAFE';
     $dot_color  = '#2563EB';
     $text_color = '#1E40AF';
-} elseif (in_array($status_lower, ['pembelian diproses', 'pengajuan diproses', 'menunggu kiriman', 'barang sedang diperiksa'])) {
+} elseif (in_array($status_lower, ['pembelian diproses', 'pengajuan diproses', 'menunggu kiriman', 'barang sedang diperiksa', 'proses pengiriman'])) {
     $bg_color   = '#DBEAFE';
     $dot_color  = '#2563EB';
     $text_color = '#1E40AF';
