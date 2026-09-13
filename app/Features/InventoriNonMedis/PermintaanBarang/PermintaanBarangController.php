@@ -42,7 +42,10 @@ final class PermintaanBarangController extends ControllerTemplate
                 [SHOW,      REQUIRED, I::READONLY, 'master_ruangan',            'Ruangan'],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'tanggal_diproses',          'Tanggal Diproses'],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'no_keluar',                 'No. Keluar'],
-                [SHOW,      REQUIRED, I::SELECT,   'boleh_pengiriman_sebagian', 'Metode Pemenuhan'],
+                // Metode Pemenuhan: hanya di popup detail baris & halaman detail penuh,
+                // bukan kolom tabel daftar. FORM_ONLY = tak lolos filter kolom daftar
+                // (SHOW/TABLE_ONLY), tetap ikut dirender popup (pakai $konfig utuh).
+                [FORM_ONLY, REQUIRED, I::SELECT,   'boleh_pengiriman_sebagian', 'Metode Pemenuhan'],
             ],
             // child_path: '/inventori-non-medis/detail-permintaan-barang',
             // child_fk: 'id_permintaan',

@@ -30,7 +30,18 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID'],
                 [SHOW, OPTIONAL, I::READONLY, 'no_permintaan', 'No. Permintaan'],
                 [TABLE_ONLY, OPTIONAL, I::DTIME, 'tanggal', 'Tanggal Permintaan'],
-                [SHOW, REQUIRED, I::SELECT, 'id_status_permintaan_barang', 'Status'],
+                // HIDE (bukan SHOW): aksi.php TIDAK bergantung pada field ini — ia
+                // memindai $baris mentah langsung (kolom 'nama_status_*' selalu ada
+                // lewat join model, independen dari visibilitas field controller).
+                // HIDE di sini punya tujuan lain: build_modular_columns() mewariskan
+                // visibilitas field ke kolom alias join-nya (nama_status_permintaan_barang)
+                // lewat make_join_column_config() — jadi HIDE mengeluarkannya dari tabel
+                // (kolom 'progress' di bawah, berlabel "Status", sudah menggantikan
+                // tampilannya dengan teks presisi) TAPI tetap membuatnya muncul di popup
+                // detail baris. Tanpa field ini, kolom itu hilang total dari popup.
+                // Label "Status Dokumen" (bukan "Status") supaya di popup tidak bentrok
+                // dengan field 'progress' yang juga berlabel "Status".
+                [HIDE, REQUIRED, I::SELECT, 'id_status_permintaan_barang', 'Status Dokumen'],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'tanggal_diproses', 'Tanggal Diproses'],
                 [TABLE_ONLY, OPTIONAL, I::READONLY, 'petugas', 'Pemohon'],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'nama_ruangan', 'Ruangan'],
@@ -57,7 +68,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
     #[\Override]
     protected function before_read(): void
     {
-        $this->model->set_filter('id_status_permintaan_barang', [2, 3, 4, 5, 6, 7]);
+        $this->model->set_filter('id_status_permintaan_barang', [2, 3, 4, 5, 6, 7, 8]);
         $this->model->set_order('id_permintaan', 'DESC');
     }
 
@@ -77,36 +88,54 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         return in_array(strtolower((string) ($value ?? 'f')), ['1', 't', 'true', 'y', 'yes'], true);
     }
 
-    // hanya izinkan transisi ke Disetujui (2) atau Ditolak (3) dari Persetujuan
+    // Kolom turunan 'Progress' (lihat get_fields_with_options()) diisi di sini dari
+    // get_permintaan_tracking()->progress_label — SUMBER YANG SAMA dipakai
+    // PermintaanBarangController::after_read(), pola identik: kolom BARU, TIDAK
+    // menimpa 'nama_status_permintaan_barang' (kolom mentah hasil join).
+    //
+    // Sempat ditimpa langsung di kolom mentah pada perbaikan sebelumnya — ternyata
+    // components/aksi/aksi.php (shared, tak boleh disentuh) memindai SEMUA kolom
+    // yang mengandung substring 'nama_status' di $baris untuk menentukan tombol
+    // Ubah/Hapus vs "Lihat Detail" (mencocokkan teks mentah terhadap whitelist
+    // seperti 'proses permintaan'). Menimpa kolom itu dengan progress_label
+    // ("Menunggu Persetujuan" dst, tidak ada di whitelist manapun) membuat tombol
+    // Ubah hilang untuk baris yang seharusnya masih bisa diproses. Kolom asli
+    // sekarang dibiarkan apa adanya seperti sebelum perbaikan itu.
     /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
     #[\Override]
-    protected function before_update(array &$postData, int|string $id): void
+    protected function after_read(array &$data_tabel): void
     {
-        $new_status = (int) ($postData['id_status_permintaan_barang'] ?? 0);
-
-        if (!in_array($new_status, [2, 3], true)) {
-            $current                                 = $this->model->find($id);
-            $postData['id_status_permintaan_barang'] = (int) ($current['id_status_permintaan_barang'] ?? 4);
+        if (count($data_tabel) === 0)
             return;
+
+        helper('tracking');
+        foreach ($data_tabel as &$row) {
+            /** @var array<string, mixed> $row */
+            $id = (int) ($row['id_permintaan'] ?? 0);
+            if ($id === 0) {
+                $row['progress'] = '-';
+                continue;
+            }
+
+            $tracking        = get_permintaan_tracking($id);
+            $row['progress'] = $tracking['progress_label'];
         }
+    }
 
-        $current = $this->model->find($id);
-        if (!is_array($current))
-            return;
-        if ((int) ($current['id_status_permintaan_barang'] ?? 0) === 2)
-            return;
+    // Kolom turunan hanya untuk daftar & popup (progress dihitung di after_read()),
+    // BUKAN untuk form maupun Audit. Berlabel "Status" (bukan "Progress") — inilah
+    // SATU-SATUNYA kolom status yang terlihat pengguna di tabel; kolom mentah
+    // 'id_status_permintaan_barang' di atas sengaja HIDE agar tidak dobel di tabel,
+    // tapi tetap muncul di popup (lihat komentar pada deklarasi field-nya).
+    #[\Override]
+    protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
+    {
+        $fields = parent::get_fields_with_options($include_pk, $is_form);
+        if ($is_form)
+            return $fields;
 
-        $postData['tanggal_diproses'] = date('Y-m-d H:i:s');
-
-        if ($new_status !== 2)
-            return;
-
-        // generate no_keluar hanya saat Disetujui
-        helper('autonomor');
-        /** @var string|null $lastNo */
-        $lastNo                = $this->get_last('inventori_non_medis.permintaan_barang', 'no_keluar', 'id_permintaan');
-        $postData['no_keluar'] = generateNextNoKeluarBarang($lastNo);
-        $this->pending_keluar  = true;
+        $fields[] = [TABLE_ONLY, 'Status', 'progress', 'status', 0];
+        return $fields;
     }
 
     // halaman detail (readonly)
@@ -158,9 +187,10 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
 
         $baris = $this->model->find_one($id);
 
-        // redirect ke detail jika sudah Disetujui atau Ditolak
+        // redirect ke detail jika sudah final / read-only (Disetujui, Ditolak,
+        // Selesai, Dibatalkan, atau Proses Pengiriman)
         $status = is_array($baris) ? (int) ($baris['id_status_permintaan_barang'] ?? 0) : 0;
-        if (in_array($status, [2, 3, 6, 7], true)) {
+        if (in_array($status, [2, 3, 6, 7, 8], true)) {
             return $this->detail($id);
         }
 
@@ -206,6 +236,13 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $new_status     = (int) ($this->request->getPost('id_status_permintaan_barang') ?? 0);
         $current        = $this->model->find((int) $id);
         $current_status = is_array($current) ? (int) ($current['id_status_permintaan_barang'] ?? 0) : 0;
+
+        // Proses Pengiriman (8): stok sudah keluar saat status jadi 8. Satu-satunya
+        // transisi sah adalah Konfirmasi Terima → Selesai (6): murni administratif,
+        // tanpa klasifikasi item / transaksi stok apa pun.
+        if ($current_status === 8) {
+            return $this->confirm_terima($id, $new_status);
+        }
 
         // blokir jika sudah final (Disetujui/Ditolak/Menunggu Pengadaan/Selesai)
         if (in_array($current_status, [2, 3, 6, 7], true)) {
@@ -347,8 +384,10 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 // Sebagian tersedia dan sebagian membutuhkan pengadaan.
                 $postData['id_status_permintaan_barang'] = 5;
             } else {
-                // All existing, tidak perlu pengadaan → langsung Selesai (6)
-                $postData['id_status_permintaan_barang'] = 6;
+                // Semua item tersedia dari stok, tidak perlu pengadaan. Stok keluar
+                // dibuat di bawah, lalu permintaan menunggu konfirmasi terima dari
+                // pihak peminta → Proses Pengiriman (8), bukan langsung Selesai (6).
+                $postData['id_status_permintaan_barang'] = 8;
             }
 
             // Generate no_keluar hanya jika ada item yang langsung dikirim.
@@ -408,6 +447,38 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                     'Disetujui, namun gagal membuat pengajuan otomatis: ' . $e->getMessage(),
                 );
             }
+        }
+
+        return $this->home();
+    }
+
+    /**
+     * Konfirmasi Terima: transisi Proses Pengiriman (8) → Selesai (6).
+     * Hanya mencatat penerima + waktu terima; stok sudah keluar saat status jadi 8.
+     */
+    private function confirm_terima(int|string $id, int $new_status): RedirectResponse
+    {
+        if ($new_status !== 6) {
+            session()->setFlashdata('error', 'Permintaan yang sudah diproses tidak dapat diubah kembali.');
+            return $this->home();
+        }
+
+        $petugas_penerima = $this->request->getPost('petugas_penerima') ?: null;
+        if (!$petugas_penerima) {
+            session()->setFlashdata('error', 'Petugas penerima wajib diisi untuk mengonfirmasi penerimaan barang.');
+            return redirect()->back();
+        }
+
+        try {
+            $this->model->update($id, [
+                'id_status_permintaan_barang' => 6,
+                'petugas_penerima'            => $petugas_penerima,
+                'tanggal_diterima'            => date('Y-m-d H:i:s'),
+            ]);
+            session()->setFlashdata('success', 'Penerimaan barang dikonfirmasi. Permintaan selesai.');
+        } catch (\Throwable $e) {
+            session()->setFlashdata('error', 'Gagal mengonfirmasi penerimaan: ' . $e->getMessage());
+            return redirect()->back();
         }
 
         return $this->home();
