@@ -4,18 +4,38 @@ declare(strict_types=1);
 /**
  * Tracking Helper — Progress tracking end-to-end untuk Permintaan Barang.
  *
- * Alur Barang Baru (procurement):
- *   ① Permintaan → ② Persetujuan → ③ Pengajuan → ④ Pengadaan → ⑤ Penerimaan → ⑥ Pengeluaran
+ * Timeline Permintaan (5 langkah, tiap langkah punya sub-baris):
+ *   Alur pengadaan   : Permintaan → Pengajuan → Pengadaan → Penerimaan → Selesai
+ *   Alur stok langsung: Permintaan → Selesai (Pengajuan/Pengadaan/Penerimaan dilewati)
  *
- * Alur Barang Existing (direct):
- *   ① Permintaan → ② Persetujuan (langsung stok keluar)
+ * Struktur `steps` yang dikembalikan get_permintaan_tracking() DIRENDER oleh
+ * app/Views/admin/inventorinonmedis/_timeline_permintaan.php, dan get_pengajuan_tracking()
+ * (pengajuan MANDIRI, 4 langkah) oleh _timeline_pengajuan.php — keduanya partial
+ * modul ini sendiri, BUKAN partial shared components/tracking/timeline.php.
+ * Itu tetap dipakai get_penerimaan_tracking() saja, dengan struktur lama `_s()`.
  */
+
+if (!function_exists('_trow')) {
+    /** Satu sub-baris di dalam sebuah langkah timeline: text + tanggal opsional + tone. */
+    function _trow(string $text, ?string $date = null, ?string $tone = null): array
+    {
+        return compact('text', 'date', 'tone');
+    }
+}
+
+if (!function_exists('_tstep')) {
+    /** Satu langkah timeline: status utama (warna dot) + daftar sub-baris (_trow). */
+    function _tstep(string $label, string $status, array $rows, ?string $link = null): array
+    {
+        return compact('label', 'status', 'rows', 'link');
+    }
+}
 
 if (!function_exists('get_permintaan_tracking')) {
     /**
      * @return array{
      *   scenario: 'direct'|'procurement',
-     *   steps: list<array{key:string, label:string, status:string, status_label:string, date:?string, pic:?string}>,
+     *   steps: list<array<array-key, mixed>>,
      *   progress_label: string,
      *   progress_color: string,
      * }
@@ -32,13 +52,16 @@ if (!function_exists('get_permintaan_tracking')) {
             ->join('person.orang o', 'pt.id_orang = o.id_orang', 'left')
             ->join('role.petugas pg', 'pb.petugas_gudang = pg.id_petugas', 'left')
             ->join('person.orang og', 'pg.id_orang = og.id_orang', 'left')
-            ->select('pb.*, o.nama AS nama_pemohon, og.nama AS nama_pengelola')
+            ->join('role.petugas ppn', 'pb.petugas_penerima = ppn.id_petugas', 'left')
+            ->join('person.orang opn', 'ppn.id_orang = opn.id_orang', 'left')
+            ->select('pb.*, o.nama AS nama_pemohon, og.nama AS nama_pengelola, opn.nama AS nama_penerima')
             ->where('pb.id_permintaan', $id_permintaan)
             ->get()->getRowArray();
 
         if (empty($permintaan)) {
             return ['scenario' => 'direct', 'steps' => [], 'progress_label' => '-', 'progress_color' => 'gray'];
         }
+        assert(is_array($permintaan), 'Baris permintaan harus array.');
 
         $st = (int) ($permintaan['id_status_permintaan_barang'] ?? 0);
 
@@ -51,6 +74,7 @@ if (!function_exists('get_permintaan_tracking')) {
             ->orderBy('pj.id_pengajuan', 'DESC')
             ->limit(1)
             ->get()->getRowArray();
+        assert($pengajuan === null || is_array($pengajuan), 'Baris pengajuan harus array atau null.');
 
         // === Cari Pengadaan dari Pengajuan ===
         $pengadaan = null;
@@ -63,6 +87,7 @@ if (!function_exists('get_permintaan_tracking')) {
                 ->limit(1)
                 ->get()->getRowArray();
         }
+        assert($pengadaan === null || is_array($pengadaan), 'Baris pengadaan harus array atau null.');
 
         // === Cari Penerimaan dari Pengadaan ===
         $penerimaan = null;
@@ -102,35 +127,31 @@ if (!function_exists('get_permintaan_tracking')) {
 
             $persen_terima = $total_pesan > 0 ? min(100, (int) round(($total_terima / $total_pesan) * 100)) : 0;
         }
+        assert($penerimaan === null || is_array($penerimaan), 'Baris penerimaan harus array atau null.');
 
         // === Tentukan Skenario ===
+        // Jalur pengadaan bila permintaan ini memicu pengajuan; selain itu jalur
+        // stok langsung → langkah Pengajuan/Pengadaan/Penerimaan dilewati total.
         $is_procurement = !empty($pengajuan);
         $scenario = $is_procurement ? 'procurement' : 'direct';
 
         // === Build Steps ===
-        $steps = [];
+        $steps = [_step_permintaan($permintaan, $st)];
 
-        if ($scenario === 'direct') {
-            // ① Permintaan → ② Persetujuan (langsung selesai)
-            $steps[] = _step_permintaan_direct($permintaan, $st);
-            $steps[] = _step_persetujuan_direct($permintaan, $st);
-        } else {
-            // ① Permintaan → ② Persetujuan → ③ Pengajuan → ④ Pengadaan → ⑤ Penerimaan → ⑥ Pengeluaran
-            $steps[] = _step_permintaan_proc($permintaan, $st);
-            $steps[] = _step_persetujuan_proc($permintaan, $st);
-            $steps[] = _step_pengajuan($pengajuan, $st);
-            $steps[] = _step_pengadaan($pengadaan, $pengajuan, $st);
-            $steps[] = _step_penerimaan($penerimaan, $persen_terima, $pengadaan, $st);
-            $steps[] = _step_pengeluaran($permintaan, $st);
+        if ($scenario === 'procurement') {
+            $steps[] = _step_pengajuan_row($pengajuan);
+            $steps[] = _step_pengadaan_row($pengadaan, $pengajuan);
+            $steps[] = _step_penerimaan_row($penerimaan, $persen_terima, $pengadaan, $st);
+        }
 
-            // Permintaan dibatalkan (7): langkah hilir setelah titik pembatalan tidak
-            // boleh tampil "sedang berjalan". Penanda aktif diredupkan jadi netral;
-            // fakta (tanggal/PIC/label) tetap ditampilkan apa adanya.
-            if ($st === 7) {
-                for ($k = 2; $k < count($steps); $k++) {
-                    if (($steps[$k]['status'] ?? '') === 'active') {
-                        $steps[$k]['status'] = 'waiting';
-                    }
+        $steps[] = _step_selesai($permintaan, $st);
+
+        // Permintaan dibatalkan (7): langkah hilir yang masih "sedang berjalan"
+        // diredupkan jadi netral; fakta (label/tanggal) tetap apa adanya.
+        if ($st === 7) {
+            for ($k = 1; $k < count($steps); $k++) {
+                if (($steps[$k]['status'] ?? '') === 'active') {
+                    $steps[$k]['status'] = 'waiting';
                 }
             }
         }
@@ -142,128 +163,162 @@ if (!function_exists('get_permintaan_tracking')) {
     }
 }
 
-// ===========================
-// DIRECT SCENARIO STEPS
-// ===========================
+// =====================================================================
+// LANGKAH TIMELINE PERMINTAAN (struktur baru: status utama + sub-baris)
+// =====================================================================
 
-if (!function_exists('_step_permintaan_direct')) {
-    function _step_permintaan_direct(array $p, int $st): array
+if (!function_exists('_step_permintaan')) {
+    // Lebur langkah Permintaan + Persetujuan lama. Dua sub-baris:
+    // "Diajukan oleh {pemohon}" dan keputusan pengelola (setuju/tolak/batal).
+    function _step_permintaan(array $p, int $st): array
     {
-        $tgl = isset($p['tanggal']) ? (string) $p['tanggal'] : null;
-        $pic = isset($p['nama_pemohon']) ? (string) $p['nama_pemohon'] : null;
-        // Timeline = catatan riwayat. Permintaan yang ditolak/dibatalkan tetap
-        // pernah diajukan dan langkah itu berhasil — penolakan/pembatalan hanya
-        // ditandai di langkah Persetujuan.
-        if ($st === 1) return _s('Permintaan', 'active', 'Draft', $tgl, $pic);
-        return _s('Permintaan', 'done', 'Diajukan', $tgl, $pic);
+        $tgl        = isset($p['tanggal']) ? (string) $p['tanggal'] : null;
+        $tgl_proses = isset($p['tanggal_diproses']) ? (string) $p['tanggal_diproses'] : null;
+        $pemohon    = isset($p['nama_pemohon']) ? (string) $p['nama_pemohon'] : '-';
+        $pengelola  = isset($p['nama_pengelola']) ? (string) $p['nama_pengelola'] : '-';
+
+        if ($st === 1) {
+            return _tstep('Permintaan', 'active', [_trow("Draf oleh {$pemohon}", $tgl, 'active')]);
+        }
+
+        $rows = [_trow("Diajukan oleh {$pemohon}", $tgl, 'done')];
+
+        if ($st === 4) {
+            $rows[] = _trow('Menunggu persetujuan pengelola', null, 'active');
+            return _tstep('Permintaan', 'active', $rows);
+        }
+        if ($st === 3) {
+            $rows[] = _trow("Ditolak oleh {$pengelola}", $tgl_proses, 'failed');
+            return _tstep('Permintaan', 'failed', $rows);
+        }
+        if ($st === 7) {
+            $rows[] = _trow('Dibatalkan', $tgl_proses, 'failed');
+            return _tstep('Permintaan', 'failed', $rows);
+        }
+
+        // 2, 5, 6, 8 — sudah disetujui pengelola
+        $rows[] = _trow("Disetujui oleh {$pengelola}", $tgl_proses, 'done');
+        return _tstep('Permintaan', 'done', $rows);
     }
 }
 
-if (!function_exists('_step_persetujuan_direct')) {
-    function _step_persetujuan_direct(array $p, int $st): array
+if (!function_exists('_step_pengajuan_row')) {
+    // Satu status utama + satu baris info. Hanya dirender pada jalur pengadaan.
+    function _step_pengajuan_row(?array $pj): array
     {
-        $tgl = isset($p['tanggal_diproses']) ? (string) $p['tanggal_diproses'] : null;
-        $pic = isset($p['nama_pengelola']) ? (string) $p['nama_pengelola'] : null;
-        if (in_array($st, [2, 6])) return _s('Persetujuan', 'done', 'Disetujui & Stok Keluar', $tgl, $pic);
-        if ($st === 3) return _s('Persetujuan', 'failed', 'Ditolak', $tgl, $pic);
-        if ($st === 7) return _s('Persetujuan', 'failed', 'Dibatalkan', $tgl, $pic);
-        if ($st === 4) return _s('Persetujuan', 'active', 'Menunggu', null, null);
-        return _s('Persetujuan', 'waiting', 'Menunggu', null, null);
+        if (empty($pj)) {
+            return _tstep('Pengajuan', 'waiting', [_trow('Menunggu pengajuan', null, null)]);
+        }
+
+        $link   = '/inventori-non-medis/pengajuan-barang/' . (int) ($pj['id_pengajuan'] ?? 0);
+        $tgl    = isset($pj['tanggal']) ? (string) $pj['tanggal'] : null;
+        $tglp   = isset($pj['tanggal_diproses']) ? (string) $pj['tanggal_diproses'] : $tgl;
+        $atasan = isset($pj['nama_atasan']) ? (string) $pj['nama_atasan'] : '-';
+        $s_pj   = (int) ($pj['id_status_pengajuan_barang'] ?? 0);
+
+        if ($s_pj === 2) {
+            return _tstep('Pengajuan', 'done', [_trow("Disetujui atasan {$atasan}", $tglp, 'done')], $link);
+        }
+        if ($s_pj === 3) {
+            return _tstep('Pengajuan', 'failed', [_trow("Ditolak atasan {$atasan}", $tglp, 'failed')], $link);
+        }
+        if ($s_pj === 4) {
+            // Diselaraskan dengan progress_label "Proses Pengajuan" (lihat
+            // _determine_progress()) untuk kondisi yang sama — bukan lagi
+            // "Menunggu persetujuan atasan" yang berbeda kosakata.
+            return _tstep('Pengajuan', 'active', [_trow('Pengajuan diproses, menunggu atasan', $tgl, 'active')], $link);
+        }
+        return _tstep('Pengajuan', 'active', [_trow('Draf pengajuan', $tgl, 'active')], $link);
     }
 }
 
-// ===========================
-// PROCUREMENT SCENARIO STEPS
-// ===========================
-
-if (!function_exists('_step_permintaan_proc')) {
-    function _step_permintaan_proc(array $p, int $st): array
-    {
-        $tgl = isset($p['tanggal']) ? (string) $p['tanggal'] : null;
-        $pic = isset($p['nama_pemohon']) ? (string) $p['nama_pemohon'] : null;
-        // Timeline = catatan riwayat: langkah Permintaan tetap "Diajukan" walau
-        // header kini Ditolak (3) / Dibatalkan (7).
-        if ($st === 1) return _s('Permintaan', 'active', 'Draft', $tgl, $pic);
-        return _s('Permintaan', 'done', 'Diajukan', $tgl, $pic);
-    }
-}
-
-if (!function_exists('_step_persetujuan_proc')) {
-    function _step_persetujuan_proc(array $p, int $st): array
-    {
-        $tgl = isset($p['tanggal_diproses']) ? (string) $p['tanggal_diproses'] : null;
-        $pic = isset($p['nama_pengelola']) ? (string) $p['nama_pengelola'] : null;
-
-        // Status langkah ini dibaca dari status permintaan yang SEBENARNYA, bukan
-        // dari sekadar keberadaan baris pengajuan. Baris pengajuan yang tertinggal
-        // dari siklus lama tidak boleh membuat langkah ini "Disetujui" padahal
-        // permintaannya sendiri belum lolos persetujuan. Pada alur procurement,
-        // permintaan yang disetujui langsung menjadi status 5 (Menunggu Pengadaan).
-        if ($st === 7) return _s('Persetujuan', 'failed', 'Dibatalkan', $tgl, $pic);
-        if ($st === 3) return _s('Persetujuan', 'failed', 'Ditolak', $tgl, $pic);
-        if (in_array($st, [2, 5, 6], true)) return _s('Persetujuan', 'done', 'Disetujui', $tgl, $pic);
-        if ($st === 4) return _s('Persetujuan', 'active', 'Menunggu', null, null);
-        return _s('Persetujuan', 'waiting', 'Menunggu', null, null);
-    }
-}
-
-if (!function_exists('_step_pengajuan')) {
-    function _step_pengajuan(?array $pj, int $st): array
-    {
-        if (empty($pj)) return _s('Pengajuan', 'waiting', 'Menunggu', null, null);
-
-        $link = '/inventori-non-medis/pengajuan-barang/' . (int) $pj['id_pengajuan'];
-        $s_pj = (int) ($pj['id_status_pengajuan_barang'] ?? 0);
-        if ($s_pj === 2) return _s('Pengajuan', 'done', 'Disetujui Atasan', $pj['tanggal_diproses'] ?? $pj['tanggal'], $pj['nama_atasan'], $link);
-        if ($s_pj === 3) return _s('Pengajuan', 'failed', 'Ditolak Atasan', $pj['tanggal_diproses'] ?? $pj['tanggal'], $pj['nama_atasan'], $link);
-        if ($s_pj === 4) return _s('Pengajuan', 'active', 'Menunggu Persetujuan Atasan', $pj['tanggal'], null, $link);
-        return _s('Pengajuan', 'active', 'Diproses', $pj['tanggal'], null, $link);
-    }
-}
-
-if (!function_exists('_step_pengadaan')) {
-    function _step_pengadaan(?array $pd, ?array $pj, int $st): array
+if (!function_exists('_step_pengadaan_row')) {
+    function _step_pengadaan_row(?array $pd, ?array $pj): array
     {
         if (empty($pd)) {
-            // Pengajuan sudah disetujui tapi belum ada pengadaan
             $pj_done = !empty($pj) && (int) ($pj['id_status_pengajuan_barang'] ?? 0) === 2;
-            if ($pj_done) return _s('Pengadaan', 'active', 'Menunggu PO Dibuat', null, null);
-            return _s('Pengadaan', 'waiting', 'Menunggu', null, null);
+            // Cabang "belum" diselaraskan dengan progress_label "Proses Pengajuan"
+            // untuk kondisi yang sama — bukan lagi "Menunggu persetujuan pengajuan".
+            return $pj_done
+                ? _tstep('Pengadaan', 'active', [_trow('Menunggu pembuatan PO', null, 'active')])
+                : _tstep('Pengadaan', 'waiting', [_trow('Pengajuan masih diproses', null, null)]);
         }
 
-        $link = '/inventori-non-medis/pengadaan-barang/' . (int) $pd['id_pengadaan'];
+        $link = '/inventori-non-medis/pengadaan-barang/' . (int) ($pd['id_pengadaan'] ?? 0);
+        $tgl  = isset($pd['tanggal']) ? (string) $pd['tanggal'] : null;
+        $sup  = isset($pd['nama_suplier']) ? (string) $pd['nama_suplier'] : '-';
         $s_pd = (int) ($pd['id_status_pengadaan_barang'] ?? 0);
-        if ($s_pd === 2) return _s('Pengadaan', 'done', 'Selesai (Dipesan)', $pd['tanggal'], $pd['nama_suplier'], $link);
-        if ($s_pd === 3) return _s('Pengadaan', 'failed', 'Dibatalkan', $pd['tanggal'], $pd['nama_suplier'], $link);
-        return _s('Pengadaan', 'active', 'Pembelian ke Suplier', $pd['tanggal'], $pd['nama_suplier'], $link);
+
+        if ($s_pd === 2) {
+            return _tstep('Pengadaan', 'done', [_trow("Dipesan ke {$sup}", $tgl, 'done')], $link);
+        }
+        if ($s_pd === 3) {
+            return _tstep('Pengadaan', 'failed', [_trow('Dibatalkan', $tgl, 'failed')], $link);
+        }
+        return _tstep('Pengadaan', 'active', [_trow("Pembelian diproses ke {$sup}", $tgl, 'active')], $link);
     }
 }
 
-if (!function_exists('_step_penerimaan')) {
-    function _step_penerimaan(?array $pn, int $persen, ?array $pd, int $st): array
+if (!function_exists('_step_penerimaan_row')) {
+    function _step_penerimaan_row(?array $pn, int $persen, ?array $pd, int $st): array
     {
         if (empty($pn)) {
-            $pd_active = !empty($pd) && in_array((int) ($pd['id_status_pengadaan_barang'] ?? 0), [1, 2]);
-            if ($pd_active) return _s('Penerimaan', 'active', 'Menunggu Kiriman', null, null);
-            return _s('Penerimaan', 'waiting', 'Menunggu', null, null);
+            $pd_active = !empty($pd) && in_array((int) ($pd['id_status_pengadaan_barang'] ?? 0), [1, 2], true);
+            return $pd_active
+                ? _tstep('Penerimaan', 'active', [_trow('Menunggu kiriman dari suplier', null, 'active')])
+                : _tstep('Penerimaan', 'waiting', [_trow('Menunggu pengadaan', null, null)]);
         }
 
-        $link = '/inventori-non-medis/penerimaan-barang/' . (int) $pn['id_penerimaan'];
+        $link = '/inventori-non-medis/penerimaan-barang/' . (int) ($pn['id_penerimaan'] ?? 0);
+        $tgl  = isset($pn['tanggal']) ? (string) $pn['tanggal'] : null;
         $s_pn = (int) ($pn['id_status_penerimaan_barang'] ?? 0);
+
         if ($s_pn === 2) {
-            if ($persen >= 100 || $st === 6) return _s('Penerimaan', 'done', 'Diterima Lengkap', $pn['tanggal'], null, $link);
-            return _s('Penerimaan', 'active', "Diterima {$persen}%", $pn['tanggal'], null, $link);
+            if ($persen >= 100 || $st === 6) {
+                return _tstep('Penerimaan', 'done', [_trow('Diterima lengkap dari suplier', $tgl, 'done')], $link);
+            }
+            return _tstep('Penerimaan', 'active', [_trow("Diterima {$persen}% dari suplier", $tgl, 'active')], $link);
         }
-        if ($s_pn === 3) return _s('Penerimaan', 'failed', 'Ditolak', $pn['tanggal'], null, $link);
-        return _s('Penerimaan', 'active', 'Sedang Diperiksa', $pn['tanggal'], null, $link);
+        if ($s_pn === 3) {
+            return _tstep('Penerimaan', 'failed', [_trow('Penerimaan ditolak', $tgl, 'failed')], $link);
+        }
+        return _tstep('Penerimaan', 'active', [_trow('Barang sedang diperiksa', $tgl, 'active')], $link);
     }
 }
 
-if (!function_exists('_step_pengeluaran')) {
-    function _step_pengeluaran(array $p, int $st): array
+if (!function_exists('_step_selesai')) {
+    // Lebur langkah Pengeluaran + Diterima lama. Dua sub-baris:
+    // "Stok Keluar" dan konfirmasi terima peminta. (No. Keluar sudah tampil
+    // sebagai field terpisah di atas halaman detail — tidak diulang di sini.)
+    function _step_selesai(array $p, int $st): array
     {
-        if ($st === 6) return _s('Pengeluaran', 'done', 'Stok Keluar', $p['tanggal_diproses'], $p['nama_pengelola']);
-        return _s('Pengeluaran', 'waiting', 'Menunggu', null, null);
+        $tgl_proses = isset($p['tanggal_diproses']) ? (string) $p['tanggal_diproses'] : null;
+        $tgl_terima = isset($p['tanggal_diterima']) ? (string) $p['tanggal_diterima'] : null;
+        $penerima   = isset($p['nama_penerima']) ? (string) $p['nama_penerima'] : '-';
+        $keluar_txt = 'Stok Keluar';
+
+        if ($st === 6) {
+            return _tstep('Selesai', 'done', [
+                _trow($keluar_txt, $tgl_proses, 'done'),
+                _trow("Diterima oleh {$penerima}", $tgl_terima, 'done'),
+            ]);
+        }
+        if ($st === 8) {
+            return _tstep('Selesai', 'active', [
+                _trow($keluar_txt, $tgl_proses, 'done'),
+                _trow('Menunggu konfirmasi terima dari peminta', null, 'active'),
+            ]);
+        }
+        if ($st === 2) {
+            return _tstep('Selesai', 'done', [_trow($keluar_txt, $tgl_proses, 'done')]);
+        }
+        if ($st === 3) {
+            return _tstep('Selesai', 'failed', [_trow('Permintaan ditolak', $tgl_proses, 'failed')]);
+        }
+        if ($st === 7) {
+            return _tstep('Selesai', 'failed', [_trow('Permintaan dibatalkan', $tgl_proses, 'failed')]);
+        }
+        return _tstep('Selesai', 'waiting', [_trow('Menunggu barang dikirim', null, null)]);
     }
 }
 
@@ -278,42 +333,146 @@ if (!function_exists('_s')) {
     }
 }
 
+if (!function_exists('_status_component_color')) {
+    /**
+     * Tiruan PERSIS dari logika pencocokan warna di
+     * components/tabel/td/status.php (tidak diimpor, disalin manual supaya
+     * daftar dan detail memakai aturan yang identik tanpa menyentuh file itu).
+     * Urutan cabang, daftar in_array, dan kondisi str_starts_with/str_contains
+     * HARUS tetap sama persis dengan sumbernya — bila status.php berubah,
+     * fungsi ini harus disinkronkan manual lagi.
+     *
+     * Mengembalikan NAMA warna dari palet get_progress_badge_html()
+     * ('green'|'red'|'yellow'|'blue'|'gray'), bukan hex. status.php punya dua
+     * warna (oranye utk 'keluar', ungu utk 'opname') yang tidak punya padanan
+     * nama di get_progress_badge_html — kedua cabang itu tetap disalin demi
+     * kesetiaan urutan, tapi didekati ke 'yellow'/'gray' terdekat; tak pernah
+     * tercapai oleh label modul Permintaan Barang.
+     */
+    function _status_component_color(string $label): string
+    {
+        $status_lower = strtolower(trim($label));
+
+        if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses', 'proses penerimaan', 'proses pengadaan'], true)) {
+            return 'yellow';
+        }
+        if (in_array($status_lower, ['disetujui', 'dikonfirmasi', 'diterima', 'selesai'], true)) {
+            return 'green';
+        }
+        if (in_array($status_lower, ['ditolak', 'dibatalkan'], true)) {
+            return 'red';
+        }
+        if ($status_lower === 'menunggu pengadaan') {
+            return 'blue';
+        }
+        if (in_array($status_lower, ['pembelian diproses', 'pengajuan diproses', 'menunggu kiriman', 'barang sedang diperiksa', 'proses pengiriman'], true)) {
+            return 'blue';
+        }
+        if (str_starts_with($status_lower, 'diterima ') && str_contains($status_lower, '%')) {
+            return 'blue';
+        }
+        if (in_array($status_lower, ['menunggu persetujuan', 'menunggu pengajuan'], true)) {
+            return 'yellow';
+        }
+        if (in_array($status_lower, ['pengadaan dibatalkan', 'pengajuan ditolak'], true)) {
+            return 'red';
+        }
+        if ($status_lower === 'draft') {
+            return 'gray';
+        }
+        if ($status_lower === 'masuk') {
+            return 'blue';
+        }
+        if ($status_lower === 'keluar') {
+            // status.php: oranye (#FED7AA) — tak ada padanan di get_progress_badge_html;
+            // tak pernah tercapai oleh label Permintaan Barang.
+            return 'yellow';
+        }
+        if ($status_lower === 'opname') {
+            // status.php: ungu (#E9D5FF) — tak ada padanan; tak pernah tercapai di sini.
+            return 'gray';
+        }
+        if ($status_lower === '-') {
+            return 'gray';
+        }
+        if (str_starts_with($label, '+') && is_numeric(substr($label, 1))) {
+            return 'blue';
+        }
+        if (is_numeric($label) && (int) $label < 0) {
+            return 'red';
+        }
+
+        return 'gray';
+    }
+}
+
+if (!function_exists('_progress_result')) {
+    /**
+     * @return array{0:string, 1:string}
+     */
+    function _progress_result(string $label): array
+    {
+        return [$label, _status_component_color($label)];
+    }
+}
+
 if (!function_exists('_determine_progress')) {
     /** @return array{0:string, 1:string} */
     function _determine_progress(int $st, string $scenario, ?array $pj, ?array $pd, ?array $pn, int $persen): array
     {
         // Status terminal — kondisi hilir (pengajuan/pengadaan/penerimaan) tidak lagi
-        // relevan, kembalikan langsung tanpa penelusuran.
-        if ($st === 6) return ['Selesai', 'green'];
-        if ($st === 3) return ['Ditolak', 'red'];
-        if ($st === 7) return ['Dibatalkan', 'red'];
+        // relevan, kembalikan langsung tanpa penelusuran. Warna TIDAK lagi
+        // ditentukan di sini — selalu diturunkan dari label lewat
+        // _status_component_color(), sama seperti daftar (status.php).
+        if ($st === 6) return _progress_result('Selesai');
+        if ($st === 3) return _progress_result('Ditolak');
+        if ($st === 7) return _progress_result('Dibatalkan');
+        if ($st === 8) return _progress_result('Proses Pengiriman');
 
-        if ($st === 1) return ['Draft', 'gray'];
-        if ($st === 4) return ['Menunggu Persetujuan', 'yellow'];
-        if ($st === 2 && $scenario === 'direct') return ['Selesai', 'green'];
+        if ($st === 1) return _progress_result('Draf');
+        // "Proses Permintaan" (bukan "Menunggu Persetujuan Permintaan"): exact-match
+        // amber di status.php mensyaratkan persis frasa itu, bukan substring —
+        // "Menunggu Persetujuan Permintaan" jatuh ke abu-abu (dikonfirmasi ke user).
+        if ($st === 4) return _progress_result('Proses Permintaan');
+        if ($st === 2 && $scenario === 'direct') return _progress_result('Selesai');
 
-        // Status 5 — trace hilir
+        // Status 5 — trace hilir. Label dipilih supaya cocok pola exact-match yang
+        // SUDAH ADA di components/tabel/td/status.php (lihat _status_component_color()),
+        // bukan istilah bebas — semuanya diverifikasi persis, bukan substring:
+        //   - pengajuan belum diputuskan atasan       → "Proses Pengajuan" (amber)
+        //   - disetujui, pengadaan belum dibuat        → "Menunggu Pengadaan" (biru)
+        //   - pengadaan dibuat, belum diterima         → "Proses Pengadaan" (amber)
+        //   - barang datang, sedang diperiksa          → "Proses Penerimaan" (amber)
+        //   - diterima sebagian (N%)                   → "Proses Penerimaan" juga —
+        //     persentase TIDAK disertakan di label ini (dikonfirmasi ke user): tidak
+        //     ada bentuk berawalan "Proses Penerimaan" dengan sisipan apa pun yang
+        //     lolos exact-match; satu-satunya pola biru untuk kasus ini mensyaratkan
+        //     diawali kata "diterima " persis, bertentangan dengan mempertahankan
+        //     "Proses Penerimaan" di depan. Detail persentase tetap ada di sub-baris
+        //     timeline (_step_penerimaan_row()), hanya tidak di badge/progress_label ini.
+        // Status kegagalan (Ditolak/Dibatalkan) TIDAK dilebur — itu kondisi
+        // berbeda, bukan variasi istilah dari kondisi menunggu yang sama.
         if (!empty($pn) && (int) ($pn['id_status_penerimaan_barang'] ?? 0) === 2) {
-            if ($persen >= 100) return ['Selesai', 'green'];
-            return ["Diterima {$persen}%", 'blue'];
+            if ($persen >= 100) return _progress_result('Selesai');
+            return _progress_result('Proses Penerimaan');
         }
         if (!empty($pn) && (int) ($pn['id_status_penerimaan_barang'] ?? 0) === 1) {
-            return ['Barang Sedang Diperiksa', 'blue'];
+            return _progress_result('Proses Penerimaan');
         }
         if (!empty($pd)) {
             $s_pd = (int) ($pd['id_status_pengadaan_barang'] ?? 0);
-            if ($s_pd === 3) return ['Pengadaan Dibatalkan', 'red'];
-            if ($s_pd === 2) return ['Menunggu Kiriman', 'blue'];
-            if ($s_pd === 1) return ['Pembelian Diproses', 'blue'];
+            if ($s_pd === 3) return _progress_result('Pengadaan Dibatalkan');
+            if ($s_pd === 2) return _progress_result('Proses Pengadaan');
+            if ($s_pd === 1) return _progress_result('Proses Pengadaan');
         }
         if (!empty($pj)) {
             $s_pj = (int) ($pj['id_status_pengajuan_barang'] ?? 0);
-            if ($s_pj === 3) return ['Pengajuan Ditolak', 'red'];
-            if ($s_pj === 2) return ['Menunggu Pengadaan', 'yellow'];
-            if ($s_pj === 4) return ['Pengajuan Diproses', 'yellow'];
+            if ($s_pj === 3) return _progress_result('Pengajuan Ditolak');
+            if ($s_pj === 2) return _progress_result('Menunggu Pengadaan');
+            if ($s_pj === 4) return _progress_result('Proses Pengajuan');
         }
 
-        return ['Menunggu Pengadaan', 'yellow'];
+        return _progress_result('Proses Pengajuan');
     }
 }
 
@@ -339,8 +498,17 @@ if (!function_exists('get_progress_badge_html')) {
 
 if (!function_exists('get_pengajuan_tracking')) {
     /**
-     * Progress tracking untuk Pengajuan Barang.
-     * Alur: ① Pengajuan → ② Pengadaan → ③ Penerimaan
+     * Progress tracking untuk Pengajuan Barang MANDIRI (bukan dari Permintaan —
+     * untuk itu lihat get_permintaan_tracking()).
+     * Alur: ① Pengajuan → ② Pengadaan → ③ Penerimaan → ④ Selesai
+     *
+     * Struktur `steps` sama seperti get_permintaan_tracking(): tiap langkah
+     * _tstep(label, status, rows[, link]) berisi sub-baris _trow(text, date, tone).
+     * Langkah ② & ③ memanggil ULANG _step_pengadaan_row()/_step_penerimaan_row()
+     * dari get_permintaan_tracking() — kolom $pengadaan/$penerimaan/$pengajuan di
+     * sini identik strukturnya, jadi tidak perlu duplikasi logika.
+     * Dirender oleh app/Views/admin/inventorinonmedis/_timeline_pengajuan.php
+     * (bukan lagi components/tracking/timeline.php).
      */
     function get_pengajuan_tracking(int $id_pengajuan): array
     {
@@ -361,6 +529,7 @@ if (!function_exists('get_pengajuan_tracking')) {
         if (empty($pengajuan)) {
             return ['scenario' => 'pengajuan', 'steps' => [], 'progress_label' => '-', 'progress_color' => 'gray'];
         }
+        assert(is_array($pengajuan), 'Baris pengajuan harus array.');
 
         $st_pj = (int) ($pengajuan['id_status_pengajuan_barang'] ?? 0);
 
@@ -409,42 +578,66 @@ if (!function_exists('get_pengajuan_tracking')) {
 
             $persen_terima = $total_pesan > 0 ? min(100, (int) round(($total_terima / $total_pesan) * 100)) : 0;
         }
+        assert($pengadaan === null || is_array($pengadaan), 'Baris pengadaan harus array atau null.');
+        assert($penerimaan === null || is_array($penerimaan), 'Baris penerimaan harus array atau null.');
 
         // Build steps
         $steps = [];
 
-        // ① Pengajuan
-        if ($st_pj === 2) $steps[] = _s('Pengajuan', 'done', 'Disetujui', $pengajuan['tanggal_diproses'] ?? $pengajuan['tanggal'], $pengajuan['nama_atasan']);
-        elseif ($st_pj === 3) $steps[] = _s('Pengajuan', 'failed', 'Ditolak', $pengajuan['tanggal_diproses'] ?? $pengajuan['tanggal'], $pengajuan['nama_atasan']);
-        elseif ($st_pj === 4) $steps[] = _s('Pengajuan', 'active', 'Menunggu Persetujuan', $pengajuan['tanggal'], $pengajuan['nama_pemohon']);
-        else $steps[] = _s('Pengajuan', 'active', 'Draft', $pengajuan['tanggal'], $pengajuan['nama_pemohon']);
+        // ① Pengajuan — dua sub-baris: diajukan + keputusan atasan, terpisah
+        // (bukan digabung satu baris seperti percobaan sebelumnya). Istilah
+        // disamakan persis dengan _step_permintaan()/_step_pengajuan_row() di
+        // get_permintaan_tracking() supaya konsisten di kedua jenis timeline.
+        $pemohon = (string) ($pengajuan['nama_pemohon'] ?? '-');
+        $atasan  = (string) ($pengajuan['nama_atasan'] ?? '-');
+        $tgl     = isset($pengajuan['tanggal']) ? (string) $pengajuan['tanggal'] : null;
+        $tgl_proses = isset($pengajuan['tanggal_diproses']) ? (string) $pengajuan['tanggal_diproses'] : $tgl;
 
-        // ② Pengadaan
-        if (empty($pengadaan)) {
-            $steps[] = _s('Pengadaan', $st_pj === 2 ? 'active' : 'waiting', $st_pj === 2 ? 'Menunggu PO Dibuat' : 'Menunggu', null, null);
+        if ($st_pj === 1) {
+            $steps[] = _tstep('Pengajuan', 'active', [_trow("Draf oleh {$pemohon}", $tgl, 'active')]);
         } else {
-            $link_pd = '/inventori-non-medis/pengadaan-barang/' . (int) $pengadaan['id_pengadaan'];
-            $s_pd    = (int) ($pengadaan['id_status_pengadaan_barang'] ?? 0);
-            if ($s_pd === 2) $steps[] = _s('Pengadaan', 'done', 'Selesai (Dipesan)', $pengadaan['tanggal'], $pengadaan['nama_suplier'], $link_pd);
-            elseif ($s_pd === 3) $steps[] = _s('Pengadaan', 'failed', 'Dibatalkan', $pengadaan['tanggal'], $pengadaan['nama_suplier'], $link_pd);
-            else $steps[] = _s('Pengadaan', 'active', 'Pembelian ke Suplier', $pengadaan['tanggal'], $pengadaan['nama_suplier'], $link_pd);
-        }
-
-        // ③ Penerimaan
-        if (empty($penerimaan)) {
-            $pd_active = !empty($pengadaan) && in_array((int) ($pengadaan['id_status_pengadaan_barang'] ?? 0), [1, 2]);
-            $steps[] = _s('Penerimaan', $pd_active ? 'active' : 'waiting', $pd_active ? 'Menunggu Kiriman' : 'Menunggu', null, null);
-        } else {
-            $link_pn = '/inventori-non-medis/penerimaan-barang/' . (int) $penerimaan['id_penerimaan'];
-            $s_pn    = (int) ($penerimaan['id_status_penerimaan_barang'] ?? 0);
-            if ($s_pn === 2) {
-                $steps[] = _s('Penerimaan', $persen_terima >= 100 ? 'done' : 'active', $persen_terima >= 100 ? 'Diterima Lengkap' : "Diterima {$persen_terima}%", $penerimaan['tanggal'], null, $link_pn);
-            } elseif ($s_pn === 3) {
-                $steps[] = _s('Penerimaan', 'failed', 'Ditolak', $penerimaan['tanggal'], null, $link_pn);
+            $rows = [_trow("Diajukan oleh {$pemohon}", $tgl, 'done')];
+            if ($st_pj === 2) {
+                $rows[]  = _trow("Disetujui atasan {$atasan}", $tgl_proses, 'done');
+                $steps[] = _tstep('Pengajuan', 'done', $rows);
+            } elseif ($st_pj === 3) {
+                $rows[]  = _trow("Ditolak atasan {$atasan}", $tgl_proses, 'failed');
+                $steps[] = _tstep('Pengajuan', 'failed', $rows);
+            } elseif ($st_pj === 4) {
+                // Kosakata disamakan persis dengan cabang s_pj===4 di
+                // _step_pengajuan_row() — kondisi yang sama harus terbaca sama
+                // di kedua jenis timeline (Permintaan maupun Pengajuan mandiri).
+                $rows[]  = _trow('Pengajuan diproses, menunggu atasan', $tgl, 'active');
+                $steps[] = _tstep('Pengajuan', 'active', $rows);
             } else {
-                $steps[] = _s('Penerimaan', 'active', 'Sedang Diperiksa', $penerimaan['tanggal'], null, $link_pn);
+                $rows[]  = _trow('Menunggu persetujuan atasan', null, 'active');
+                $steps[] = _tstep('Pengajuan', 'active', $rows);
             }
         }
+
+        // ② Pengadaan — dipakai ulang dari get_permintaan_tracking(), kolom
+        // $pengadaan/$pengajuan di sini identik strukturnya.
+        $steps[] = _step_pengadaan_row($pengadaan, $pengajuan);
+
+        // ③ Penerimaan — dipakai ulang juga. Parameter $st (status Permintaan)
+        // diisi 0: pengajuan mandiri tak punya konsep status Permintaan sama
+        // sekali, dan satu-satunya pemakaian $st di dalam fungsi itu adalah
+        // cabang khusus `$st === 6` milik alur Permintaan — 0 tak pernah cocok,
+        // jadi kelengkapan penerimaan di sini murni ditentukan $persen_terima.
+        $steps[] = _step_penerimaan_row($penerimaan, $persen_terima, $pengadaan, 0);
+
+        // ④ Selesai — murni cerminan otomatis status Penerimaan = Diterima lengkap
+        // (100%), BUKAN langkah konfirmasi manusia terpisah: begitu penerimaan
+        // dikonfirmasi Diterima, barang.stok sudah langsung bertambah dalam
+        // transaksi yang sama (lihat
+        // PenerimaanBarangController::create_transaksi_stok_masuk()).
+        $penerimaan_selesai = !empty($penerimaan)
+            && (int) ($penerimaan['id_status_penerimaan_barang'] ?? 0) === 2
+            && $persen_terima >= 100;
+        $tgl_selesai = isset($penerimaan['tanggal']) ? (string) $penerimaan['tanggal'] : null;
+        $steps[]     = $penerimaan_selesai
+            ? _tstep('Selesai', 'done', [_trow('Stok Diperbarui', $tgl_selesai, 'done')])
+            : _tstep('Selesai', 'waiting', [_trow('Menunggu', null, null)]);
 
         // Progress label
         if ($st_pj === 3) { $progress_label = 'Ditolak'; $progress_color = 'red'; }
