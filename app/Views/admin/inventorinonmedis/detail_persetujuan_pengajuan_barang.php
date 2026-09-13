@@ -63,12 +63,20 @@
         </div>
 
         <!-- Progress Tracking -->
-        <?php
-        helper('tracking');
-        $tracking = get_pengajuan_tracking((int) ($baris['id_pengajuan'] ?? 0));
-        if (!empty($tracking['steps'])):
-        ?>
-            <?= view('components/tracking/timeline', ['tracking' => $tracking]) ?>
+        <?php if (!empty($permintaan_asal)): ?>
+            <!-- Pengajuan ini lahir dari sebuah Permintaan — timeline 5-langkah yang sama
+                 seperti halaman Detail Permintaan dipakai di sini, bukan timeline Pengajuan. -->
+            <?php if (!empty($permintaan_asal['tracking']['steps'])): ?>
+                <?= view('admin/inventorinonmedis/_timeline_permintaan', ['tracking' => $permintaan_asal['tracking']]) ?>
+            <?php endif; ?>
+        <?php else: ?>
+            <?php
+            helper('tracking');
+            $tracking = get_pengajuan_tracking((int) ($baris['id_pengajuan'] ?? 0));
+            if (!empty($tracking['steps'])):
+            ?>
+                <?= view('admin/inventorinonmedis/_timeline_pengajuan', ['tracking' => $tracking]) ?>
+            <?php endif; ?>
         <?php endif; ?>
 
         <!-- Detail Barang -->

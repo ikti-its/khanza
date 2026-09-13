@@ -39,37 +39,26 @@
             </div>
 
             <?php
-            // Badge Status — warna berdasarkan id status: hijau 2/6, merah 3/7,
-            // biru 5, amber sisanya (identik dgn detail persetujuan & halaman daftar).
             $status_id = (int) ($baris['id_status_permintaan_barang'] ?? 0);
-            if (in_array($status_id, [2, 6], true)) {
-                $bg = '#D1FAE5';
-                $color = '#065F46';
-            } elseif (in_array($status_id, [3, 7], true)) {
-                $bg = '#FEE2E2';
-                $color = '#991B1B';
-            } elseif ($status_id === 5) {
-                $bg = '#DBEAFE';
-                $color = '#1E40AF';
-            } else {
-                $bg = '#FEF3C7';
-                $color = '#92400E';
-            }
 
             // Qty Disetujui hanya bermakna setelah permintaan melewati tahap
-            // persetujuan (status 2/5/6). Pada status 1/4 belum diproses, pada
+            // persetujuan (status 2/5/6/8). Pada status 1/4 belum diproses, pada
             // 3/7 bisa jadi ditolak/dibatalkan sebelum sempat disetujui — di semua
             // kasus itu angka 0 menyesatkan, tampilkan tanda hubung.
-            $show_qty_disetujui = in_array($status_id, [2, 5, 6], true);
+            $show_qty_disetujui = in_array($status_id, [2, 5, 6, 8], true);
+
+            // Penerima & waktu terima hanya bermakna setelah barang dikonfirmasi
+            // diterima (status 6). Sebelum itu kolomnya kosong — jangan tampilkan.
+            $show_penerima = $status_id === 6
+                && trim((string) ($baris['petugas_penerima_nama'] ?? '')) !== ''
+                && trim((string) ($baris['tanggal_diterima'] ?? '')) !== '';
             ?>
 
-            <!-- Status | Pengelola -->
+            <!-- Status (progress tracking) | Pengelola -->
             <div class="sm:block md:flex items-center py-3">
                 <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Status</span>
                 <div class="w-full lg:w-1/4">
-                    <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: <?= $bg ?>; color: <?= $color ?>;">
-                        <?= esc($baris['nama_status_permintaan_barang'] ?? '-') ?>
-                    </span>
+                    <?= get_progress_badge_html($tracking['progress_label'] ?? '-', $tracking['progress_color'] ?? 'gray') ?>
                 </div>
                 <span class="block mt-4 md:my-0 md:ml-10 mb-1 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Pengelola</span>
                 <div class="w-full lg:w-1/4">
@@ -77,7 +66,7 @@
                 </div>
             </div>
 
-            <!-- Metode Pemenuhan (berdiri sendiri di kolom kiri baris terakhir) -->
+            <!-- Metode Pemenuhan -->
             <div class="sm:block md:flex items-center py-3">
                 <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Metode Pemenuhan</span>
                 <div class="w-full lg:w-1/4">
@@ -85,11 +74,25 @@
                 </div>
             </div>
 
+            <?php if ($show_penerima): ?>
+                <!-- Diterima Oleh | Tanggal Diterima -->
+                <div class="sm:block md:flex items-center py-3">
+                    <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Diterima Oleh</span>
+                    <div class="w-full lg:w-1/4">
+                        <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['petugas_penerima_nama']) ?></span>
+                    </div>
+                    <span class="block mt-4 md:my-0 md:ml-10 mb-1 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Tanggal Diterima</span>
+                    <div class="w-full lg:w-1/4">
+                        <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= date('d/m/Y, H:i', strtotime((string) $baris['tanggal_diterima'])) ?></span>
+                    </div>
+                </div>
+            <?php endif; ?>
+
         </div>
 
         <!-- Progress Tracking -->
         <?php if (!empty($tracking['steps'])): ?>
-            <?= view('components/tracking/timeline', ['tracking' => $tracking]) ?>
+            <?= view('admin/inventorinonmedis/_timeline_permintaan', ['tracking' => $tracking]) ?>
         <?php endif; ?>
 
         <!-- Detail Barang -->

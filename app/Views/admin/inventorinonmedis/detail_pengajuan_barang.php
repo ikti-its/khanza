@@ -28,7 +28,19 @@
                 </div>
                 <span class="block mt-4 md:my-0 md:ml-10 mb-1 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Status</span>
                 <div class="w-full lg:w-1/4">
-                    <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: #FEF3C7; color: #92400E;">
+                    <?php
+                        // Warna Status: hijau 2 (Disetujui), merah 3 (Ditolak), amber sisanya
+                        // (1 Draf, 4 Proses Pengajuan) — sama seperti kolom Status di daftar.
+                        $status_id = (int) ($baris['id_status_pengajuan_barang'] ?? 0);
+                        if ($status_id === 2) {
+                            $bg = '#D1FAE5'; $color = '#065F46';
+                        } elseif ($status_id === 3) {
+                            $bg = '#FEE2E2'; $color = '#991B1B';
+                        } else {
+                            $bg = '#FEF3C7'; $color = '#92400E';
+                        }
+                    ?>
+                    <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: <?= $bg ?>; color: <?= $color ?>;">
                         <?= esc($baris['nama_status_pengajuan_barang'] ?? '-') ?>
                     </span>
                 </div>
@@ -37,12 +49,20 @@
         </div>
 
         <!-- Progress Tracking -->
-        <?php
-        helper('tracking');
-        $tracking = get_pengajuan_tracking((int) ($baris['id_pengajuan'] ?? 0));
-        if (!empty($tracking['steps'])):
-        ?>
-            <?= view('components/tracking/timeline', ['tracking' => $tracking]) ?>
+        <?php if (!empty($permintaan_asal)): ?>
+            <!-- Pengajuan ini lahir dari sebuah Permintaan — timeline 5-langkah yang sama
+                 seperti halaman Detail Permintaan dipakai di sini, bukan timeline Pengajuan. -->
+            <?php if (!empty($permintaan_asal['tracking']['steps'])): ?>
+                <?= view('admin/inventorinonmedis/_timeline_permintaan', ['tracking' => $permintaan_asal['tracking']]) ?>
+            <?php endif; ?>
+        <?php else: ?>
+            <?php
+            helper('tracking');
+            $tracking = get_pengajuan_tracking((int) ($baris['id_pengajuan'] ?? 0));
+            if (!empty($tracking['steps'])):
+            ?>
+                <?= view('admin/inventorinonmedis/_timeline_pengajuan', ['tracking' => $tracking]) ?>
+            <?php endif; ?>
         <?php endif; ?>
 
         <!-- Detail Barang -->

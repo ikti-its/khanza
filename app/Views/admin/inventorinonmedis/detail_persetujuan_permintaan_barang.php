@@ -1,6 +1,19 @@
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
 
+<?php if ((int) ($baris['id_status_permintaan_barang'] ?? 0) === 8): ?>
+    <?= $this->include('components/modal/modalPetugas') ?>
+    <style>
+        /* modal-table.php memakai kelas `z-50` yang tidak ada di build CSS saat ini,
+           sehingga wrapper modal jatuh ke z-index:auto dan tertindih dot timeline
+           Progress Permintaan (position:relative; z-index:1). Angkat modal ini di
+           atas semua konten halaman. Scoped ke #modalPetugas saja. */
+        #modalPetugas {
+            z-index: 9999;
+        }
+    </style>
+<?php endif; ?>
+
 <div class="max-w-[85rem] py-6 lg:py-3 px-8 mx-auto">
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-7 dark:bg-slate-900 dark:border-gray-800">
 
@@ -39,36 +52,25 @@
             </div>
 
             <?php
-            // Badge Status — hijau 2/6, merah 3/7, biru 5, amber sisanya.
             $status_id = (int) ($baris['id_status_permintaan_barang'] ?? 0);
-            if (in_array($status_id, [2, 6], true)) {
-                $bg = '#D1FAE5';
-                $color = '#065F46';
-            } elseif (in_array($status_id, [3, 7], true)) {
-                $bg = '#FEE2E2';
-                $color = '#991B1B';
-            } elseif ($status_id === 5) {
-                $bg = '#DBEAFE';
-                $color = '#1E40AF';
-            } else {
-                $bg = '#FEF3C7';
-                $color = '#92400E';
-            }
 
             // Qty Disetujui hanya bermakna setelah permintaan melewati tahap
-            // persetujuan (status 2/5/6). Pada status 1/4 belum diproses, pada
+            // persetujuan (status 2/5/6/8). Pada status 1/4 belum diproses, pada
             // 3/7 bisa ditolak/dibatalkan sebelum sempat disetujui — angka 0
             // menyesatkan, tampilkan tanda hubung.
-            $show_qty_disetujui = in_array($status_id, [2, 5, 6], true);
+            $show_qty_disetujui = in_array($status_id, [2, 5, 6, 8], true);
+
+            // Penerima & waktu terima hanya tampil setelah dikonfirmasi diterima (6).
+            $show_penerima = $status_id === 6
+                && trim((string) ($baris['petugas_penerima_nama'] ?? '')) !== ''
+                && trim((string) ($baris['tanggal_diterima'] ?? '')) !== '';
             ?>
 
-            <!-- Status | Pengelola -->
+            <!-- Status (progress tracking) | Pengelola -->
             <div class="sm:block md:flex items-center py-3">
                 <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Status</span>
                 <div class="w-full lg:w-1/4">
-                    <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: <?= $bg ?>; color: <?= $color ?>;">
-                        <?= esc($baris['nama_status_permintaan_barang'] ?? '-') ?>
-                    </span>
+                    <?= get_progress_badge_html($tracking['progress_label'] ?? '-', $tracking['progress_color'] ?? 'gray') ?>
                 </div>
                 <span class="block mt-4 md:my-0 md:ml-10 mb-1 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Pengelola</span>
                 <div class="w-full lg:w-1/4">
@@ -88,11 +90,25 @@
                 </div>
             </div>
 
+            <?php if ($show_penerima): ?>
+                <!-- Diterima Oleh | Tanggal Diterima -->
+                <div class="sm:block md:flex items-center py-3">
+                    <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Diterima Oleh</span>
+                    <div class="w-full lg:w-1/4">
+                        <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['petugas_penerima_nama']) ?></span>
+                    </div>
+                    <span class="block mt-4 md:my-0 md:ml-10 mb-1 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Tanggal Diterima</span>
+                    <div class="w-full lg:w-1/4">
+                        <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= date('d/m/Y, H:i', strtotime((string) $baris['tanggal_diterima'])) ?></span>
+                    </div>
+                </div>
+            <?php endif; ?>
+
         </div>
 
         <!-- Progress Tracking -->
         <?php if (!empty($tracking['steps'])): ?>
-            <?= view('components/tracking/timeline', ['tracking' => $tracking]) ?>
+            <?= view('admin/inventorinonmedis/_timeline_permintaan', ['tracking' => $tracking]) ?>
         <?php endif; ?>
 
         <!-- Detail Barang -->
@@ -141,6 +157,39 @@
             <?php endif; ?>
         </div>
 
+        <?php if ($status_id === 8): ?>
+            <!-- Konfirmasi Terima: transisi Proses Pengiriman (8) → Selesai (6).
+                 Warna pakai inline style — kelas emerald-* tidak ada di build CSS. -->
+            <div class="mt-6 rounded-xl p-5 shadow-sm" style="background-color:#ECFDF5; border:1px solid #A7F3D0;">
+                <h4 class="text-xs font-bold uppercase tracking-wider mb-3" style="color:#047857;">Konfirmasi Penerimaan Barang</h4>
+                <form action="<?= $modul_path . '/submitedit/' . (int) ($baris['id_permintaan'] ?? 0) ?>" method="post" onsubmit="return confirmReceiveRequest(event, this);">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="id_status_permintaan_barang" value="6">
+                    <input type="hidden" name="petugas_penerima" id="petugas_penerima" value="">
+                    <div class="sm:block md:flex md:items-center gap-x-3">
+                        <label class="block mb-1 md:mb-0 text-sm font-medium text-gray-600 dark:text-gray-400 md:w-1/4">
+                            Petugas Penerima<span class="text-red-600">*</span>
+                        </label>
+                        <div class="w-full lg:w-1/3 flex gap-x-2">
+                            <input type="text" id="petugas_penerima_display" readonly placeholder="Klik cari petugas penerima..."
+                                onclick="open_modalPetugas()"
+                                class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full bg-white cursor-pointer dark:border-gray-600 dark:text-white">
+                            <button type="button" onclick="open_modalPetugas()"
+                                class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 w-10 h-[38px] flex-shrink-0 shadow-sm">
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <button type="submit"
+                            class="mt-3 md:mt-0 py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
+                            Konfirmasi Terima
+                        </button>
+                    </div>
+                </form>
+            </div>
+        <?php endif; ?>
+
         <!-- Tombol Aksi -->
         <div class="mt-5 pt-5 border-t border-gray-200 dark:border-gray-800 flex justify-end">
             <?php $canCancel = in_array((int) ($baris['id_status_permintaan_barang'] ?? 0), [4, 5], true); ?>
@@ -163,6 +212,50 @@
 </div>
 
 <script>
+    function autofillPetugas(item) {
+        document.getElementById('petugas_penerima').value = item.id_petugas ?? '';
+        document.getElementById('petugas_penerima_display').value = item.nama ?? '';
+    }
+
+    function confirmReceiveRequest(event, form) {
+        event.preventDefault();
+
+        if (!document.getElementById('petugas_penerima').value) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian',
+                text: 'Pilih petugas penerima terlebih dahulu.',
+                confirmButtonText: 'Tutup',
+                customClass: {
+                    confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2'
+                },
+                buttonsStyling: false
+            });
+            return false;
+        }
+
+        Swal.fire({
+            icon: 'question',
+            title: 'Konfirmasi Penerimaan',
+            text: 'Konfirmasi bahwa barang sudah diterima? Permintaan akan ditandai Selesai.',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, Terima',
+            cancelButtonText: 'Batal',
+            customClass: {
+                confirmButton: 'bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] font-medium rounded-lg px-4 py-2',
+                cancelButton: 'bg-gray-200 text-gray-800 hover:bg-gray-300 font-medium rounded-lg px-4 py-2',
+                actions: 'flex items-center justify-center gap-3'
+            },
+            buttonsStyling: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+
+        return false;
+    }
+
     function confirmCancelRequest(event, form) {
         event.preventDefault();
 
