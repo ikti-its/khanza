@@ -20,10 +20,12 @@ final class PersetujuanPermintaanBarangModel extends ModelTemplate
                 'tanggal'          => V::DEFAULT(),
                 'no_keluar'        => V::DEFAULT(),
                 'tanggal_diproses' => V::DEFAULT(),
+                'tanggal_diterima' => V::DEFAULT(),
             ],
             [
                 'petugas_gudang'              => ['id_orang' => ['nama']],
                 'petugas'                     => ['id_orang' => ['nama']],
+                'petugas_penerima'            => ['id_orang' => ['nama']],
                 'master_ruangan'              => ['nama_ruangan'],
                 'id_status_permintaan_barang' => ['nama_status_permintaan_barang'],
             ],

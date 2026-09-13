@@ -22,6 +22,7 @@ final class PermintaanBarangModel extends ModelTemplate
             [
                 'petugas'                     => ['id_orang' => ['nama']],
                 'petugas_gudang'              => ['id_orang' => ['nama']],
+                'petugas_penerima'            => ['id_orang' => ['nama']],
                 'master_ruangan'              => ['nama_ruangan'],
                 'id_status_permintaan_barang' => ['nama_status_permintaan_barang'],
             ],
