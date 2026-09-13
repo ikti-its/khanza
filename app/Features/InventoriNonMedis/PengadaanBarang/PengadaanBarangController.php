@@ -203,7 +203,10 @@ final class PengadaanBarangController extends ControllerTemplate
     }
 
     // halaman detail (readonly) — view terpisah tanpa form
-    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
     public function detail(int|string $id): string|RedirectResponse
     {
         if ($id == 0)
@@ -224,16 +227,61 @@ final class PengadaanBarangController extends ControllerTemplate
         )->getResultArray();
 
         return view('admin/inventorinonmedis/detail_pengadaan_barang', [
-            'judul'        => 'Detail ' . $this->title,
-            'breadcrumbs'  => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
-            'modul_path'   => $this->get_uri_path(),
-            'baris'        => $baris,
-            'detail_items' => $detail_items,
+            'judul'           => 'Detail ' . $this->title,
+            'breadcrumbs'     => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
+            'modul_path'      => $this->get_uri_path(),
+            'baris'           => $baris,
+            'detail_items'    => $detail_items,
+            'permintaan_asal' => $this->resolve_permintaan_asal(
+                is_array($baris) ? (int) ($baris['id_pengajuan'] ?? 0) : 0,
+            ),
         ]);
     }
 
+    /**
+     * Telusuri balik satu hop: pengadaan → pengajuan (id_pengajuan sudah ada di
+     * $baris) → permintaan (JOIN tunggal, sekaligus menyaring pengajuan yang lahir
+     * dari jalur stok minimum — id_permintaan NULL di sana tidak lolos INNER JOIN).
+     * Bila ditemukan, timeline 5-langkah get_permintaan_tracking() dipakai
+     * menggantikan timeline get_pengajuan_tracking() bawaan.
+     *
+     * @return array{id_permintaan: int, no_permintaan: string, tracking: array}|null
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
+    private function resolve_permintaan_asal(int $id_pengajuan): array|null
+    {
+        if ($id_pengajuan <= 0)
+            return null;
+
+        $permintaan = $this->guarded(
+            $this
+                ->get_db()
+                ->table('inventori_non_medis.pengajuan_barang pj')
+                ->join('inventori_non_medis.permintaan_barang pb', 'pj.id_permintaan = pb.id_permintaan', 'inner')
+                ->select('pb.id_permintaan, pb.no_permintaan')
+                ->where('pj.id_pengajuan', $id_pengajuan)
+                ->get(),
+        )->getRowArray();
+        /** @var array<string, mixed>|null $permintaan */
+        $id_permintaan = is_array($permintaan) ? (int) ($permintaan['id_permintaan'] ?? 0) : 0;
+        if ($id_permintaan <= 0)
+            return null;
+
+        helper('tracking');
+
+        return [
+            'id_permintaan' => $id_permintaan,
+            'no_permintaan' => (string) ($permintaan['no_permintaan'] ?? ''),
+            'tracking'      => get_permintaan_tracking($id_permintaan),
+        ];
+    }
+
     // form ubah: 1-page header + detail existing (hanya saat Proses Pengadaan)
-    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
     #[\Override]
     public function update_page(int|string $id): string|RedirectResponse
     {

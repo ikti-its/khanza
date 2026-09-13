@@ -91,7 +91,10 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
     }
 
     // halaman detail (readonly)
-    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
     public function detail(int|string $id): string|RedirectResponse
     {
         if ($id == 0)
@@ -114,16 +117,58 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         )->getResultArray();
 
         return view('admin/inventorinonmedis/detail_persetujuan_pengajuan_barang', [
-            'judul'        => 'Detail ' . $this->title,
-            'breadcrumbs'  => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
-            'modul_path'   => $this->get_uri_path(),
-            'baris'        => $baris,
-            'detail_items' => $detail_items,
+            'judul'           => 'Detail ' . $this->title,
+            'breadcrumbs'     => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
+            'modul_path'      => $this->get_uri_path(),
+            'baris'           => $baris,
+            'detail_items'    => $detail_items,
+            'permintaan_asal' => $this->resolve_permintaan_asal(
+                is_array($baris) ? (int) ($baris['id_permintaan'] ?? 0) : 0,
+            ),
         ]);
     }
 
+    /**
+     * pengajuan_barang.id_permintaan sudah tersedia langsung di $baris (kolom
+     * utama, nullable) — pengajuan dari jalur stok minimum tidak punya ini.
+     * Bila ada, timeline 5-langkah get_permintaan_tracking() dipakai menggantikan
+     * timeline get_pengajuan_tracking() bawaan.
+     *
+     * @return array{id_permintaan: int, no_permintaan: string, tracking: array}|null
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
+    private function resolve_permintaan_asal(int $id_permintaan): array|null
+    {
+        if ($id_permintaan <= 0)
+            return null;
+
+        $permintaan = $this->guarded(
+            $this
+                ->get_db()
+                ->table('inventori_non_medis.permintaan_barang')
+                ->select('no_permintaan')
+                ->where('id_permintaan', $id_permintaan)
+                ->get(),
+        )->getRowArray();
+        /** @var array<string, mixed>|null $permintaan */
+        if (!is_array($permintaan))
+            return null;
+
+        helper('tracking');
+
+        return [
+            'id_permintaan' => $id_permintaan,
+            'no_permintaan' => (string) ($permintaan['no_permintaan'] ?? ''),
+            'tracking'      => get_permintaan_tracking($id_permintaan),
+        ];
+    }
+
     // form ubah: 1-page — redirect jika sudah diproses
-    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
     #[\Override]
     public function update_page(int|string $id): string|RedirectResponse
     {
