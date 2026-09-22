@@ -366,6 +366,49 @@ final class PermintaanBarangController extends ControllerTemplate
         return $this->home();
     }
 
+    // Ajukan Pembatalan — Petugas RS mengajukan dari halaman miliknya sendiri
+    // (bukan lagi membatalkan langsung). Memakai slot route sampel/(:segment)
+    // yang sudah otomatis ter-generate untuk setiap modul (lihat
+    // App\Core\Route\RouteGroup) — TIDAK mendeklarasikan A::SAMPEL di
+    // constructor supaya components/aksi/aksi.php (yang membaca $this->actions
+    // untuk tombol otomatis di tabel daftar) tidak ikut merender
+    // components/aksi/sampel.php versi Laboratorium (field beda modul) di
+    // setiap baris tabel Permintaan Barang. Method ini SENGAJA tidak memanggil
+    // update() sama sekali — gerbang current_status!==1 di update() tidak
+    // relevan di sini (pembatalan justru hanya berlaku saat status 4/5).
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \ReflectionException
+     */
+    public function sampel(int|string $id): RedirectResponse
+    {
+        $current = $this->model->find((int) $id);
+        $status  = is_array($current) ? (int) ($current['id_status_permintaan_barang'] ?? 0) : 0;
+
+        if (!in_array($status, [4, 5], true)) {
+            session()->setFlashdata(
+                'error',
+                'Pembatalan hanya bisa diajukan saat permintaan masih Proses Permintaan atau Menunggu Pengadaan.',
+            );
+            return $this->home();
+        }
+
+        $alasan = trim((string) ($this->request->getPost('alasan_pembatalan') ?? ''));
+        if ($alasan === '') {
+            session()->setFlashdata('error', 'Alasan pembatalan wajib diisi.');
+            return $this->home();
+        }
+
+        $this->model->update($id, [
+            'pengajuan_pembatalan' => true,
+            'alasan_pembatalan'    => $alasan,
+            'tanggal_pembatalan'   => date('Y-m-d H:i:s'),
+        ]);
+        session()->setFlashdata('success', 'Pengajuan pembatalan berhasil dikirim, menunggu keputusan Staf Gudang.');
+
+        return $this->home();
+    }
+
     // ========= PRIVATE HELPERS =========
 
     /**
