@@ -382,7 +382,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 $db
                     ->table('inventori_non_medis.permintaan_barang_detail d')
                     ->join('inventori_non_medis.barang b', 'd.id_barang = b.id_barang', 'left')
-                    ->select('d.id_detail, d.id_barang, d.qty_disetujui, b.stok, b.nama_barang')
+                    ->select('d.id_detail, d.id_barang, d.qty_disetujui, b.stok, b.nama_barang, b.harga_satuan')
                     ->where('d.id_permintaan', (int) $id)
                     ->where('d.id_barang >', 0)
                     ->where('d.qty_disetujui >', 0)
@@ -838,6 +838,17 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         )->getRowArray();
         /** @var array<string, mixed>|null $permintaan */
 
+        // Snapshot harga: barang.harga_satuan SAAT pengajuan lahir, ditulis sekali
+        // ke sini lalu statis — TIDAK ada mekanisme yang menyinkronkan ulang nilai
+        // ini bila barang.harga_satuan berubah belakangan, sama seperti snapshot
+        // harga lain di sistem sejak Gelombang 1.
+        $total_harga = 0.0;
+        foreach ($baru_items as $item) {
+            $qty          = (int) ($item['qty_pengadaan'] ?? $item['qty_disetujui']);
+            $harga_satuan = (float) ($item['harga_satuan'] ?? 0);
+            $total_harga  += $qty * $harga_satuan;
+        }
+
         $db->transBegin();
 
         $db->table('inventori_non_medis.pengajuan_barang')->insert([
@@ -846,15 +857,17 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             'petugas_gudang'             => $permintaan['petugas_gudang'] ?? null,
             'id_status_pengajuan_barang' => 4, // Proses Pengajuan
             'id_permintaan' => $id_permintaan,
+            'total_harga'   => $total_harga > 0 ? $total_harga : null,
         ]);
         $id_pengajuan = (int) $db->insertID();
 
         foreach ($baru_items as $item) {
+            $harga_satuan = (float) ($item['harga_satuan'] ?? 0);
             $db->table('inventori_non_medis.pengajuan_barang_detail')->insert([
                 'id_pengajuan' => $id_pengajuan,
                 'id_barang'    => (int) $item['id_barang'],
                 'qty'          => (int) ($item['qty_pengadaan'] ?? $item['qty_disetujui']),
-                'harga'        => null,
+                'harga'        => $harga_satuan > 0 ? $harga_satuan : null,
             ]);
         }
 
