@@ -83,6 +83,7 @@ final class PengadaanBarangController extends ControllerTemplate
                     b.kode_barang,
                     b.nama_barang,
                     s.nama_satuan,
+                    b.harga_satuan,
                     pjd.qty_disetujui,
                     pjd.harga,
                     COALESCE((

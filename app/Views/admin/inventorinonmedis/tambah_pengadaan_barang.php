@@ -197,6 +197,14 @@ $readonly = $readonly ?? false;
                 tbody.innerHTML = '';
                 data.forEach(item => {
                     var sisa = item.qty_disetujui - item.qty_sudah_dipesan;
+                    // Pre-fill dari barang.harga_satuan (harga master SAAT INI), bukan
+                    // pjd.harga (snapshot di level pengajuan_barang_detail — selalu null
+                    // untuk pengajuan yang lahir otomatis dari Permintaan disetujui).
+                    // Kosong (bukan "0") kalau harga_satuan belum diisi/masih 0 — user
+                    // tetap bebas mengetik ulang, ini murni nilai awal.
+                    var hargaDefault = (item.harga_satuan !== null && item.harga_satuan !== undefined && Number(item.harga_satuan) > 0)
+                        ? item.harga_satuan
+                        : '';
                     var tr = document.createElement('tr');
                     tr.dataset.id = item.id_barang;
                     tr.innerHTML = `
@@ -211,7 +219,7 @@ $readonly = $readonly ?? false;
                             <input type="hidden" name="detail_id_barang[]" value="${item.id_barang}">
                         </td>
                         <td class="p-3 border text-center">
-                            <input type="number" name="detail_harga[]" value="${item.harga ?? 0}" min="0" step="any"
+                            <input type="number" name="detail_harga[]" value="${hargaDefault}" min="0" step="any"
                                    class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm">
                         </td>
                         <td class="p-3 border text-center">
