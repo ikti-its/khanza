@@ -936,7 +936,7 @@ final class PenerimaanBarangController extends ControllerTemplate
             // Semua item pending terpenuhi. Stok keluar sudah dibuat di atas, kini
             // permintaan menunggu konfirmasi terima dari pihak peminta → Proses
             // Pengiriman (8), bukan langsung Selesai (6).
-            $update_permintaan = ['id_status_permintaan_barang' => 8];
+            $update_permintaan = ['id_status_permintaan_barang' => 8, 'pengajuan_pembatalan' => false];
             // Jangan timpa no_keluar yang sudah terisi dari pengeluaran parsial sebelumnya.
             if ((string) ($permintaan['no_keluar'] ?? '') === '') {
                 $update_permintaan['no_keluar'] = $no_keluar;

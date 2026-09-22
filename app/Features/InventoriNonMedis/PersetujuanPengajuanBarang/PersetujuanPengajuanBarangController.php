@@ -366,6 +366,10 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
             ->update([
                 'id_status_permintaan_barang' => 7,
                 'tanggal_diproses'            => date('Y-m-d H:i:s'),
+                // Gelombang 3: bila ada pengajuan pembatalan yang masih menunggu
+                // keputusan Staf Gudang, tutup jadi tidak relevan lagi — permintaan
+                // sudah dibatalkan otomatis lewat jalur ini.
+                'pengajuan_pembatalan' => false,
             ]);
 
         log_message(
