@@ -101,6 +101,17 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
     // ("Menunggu Persetujuan" dst, tidak ada di whitelist manapun) membuat tombol
     // Ubah hilang untuk baris yang seharusnya masih bisa diproses. Kolom asli
     // sekarang dibiarkan apa adanya seperti sebelum perbaikan itu.
+    //
+    // Gelombang 3: 'nama_status_pengajuan_pembatalan' — kunci array BARU LAGI
+    // (bukan kolom asli, tidak dideklarasikan sebagai field apa pun sehingga
+    // tidak pernah dirender sebagai kolom tabel/popup), mengandung substring
+    // 'nama_status' supaya IKUT tersaring oleh pemindaian aksi.php yang sama.
+    // Saat pengajuan_pembatalan=true, nilainya sengaja bukan salah satu kata di
+    // whitelist editable aksi.php ('draf','proses pengadaan', dst, maupun
+    // 'proses permintaan'/'proses pengajuan'/'proses penerimaan' milik modul
+    // persetujuan) — itu membuat aksi.php menganggap baris ini TIDAK draf lagi,
+    // sehingga tombol berganti ke "Lihat Detail", walau nama_status_permintaan_barang
+    // mentahnya tetap "Proses Permintaan"/"Menunggu Pengadaan" apa adanya.
     /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
     #[\Override]
     protected function after_read(array &$data_tabel): void
@@ -119,6 +130,10 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
 
             $tracking        = get_permintaan_tracking($id);
             $row['progress'] = $tracking['progress_label'];
+
+            $row['nama_status_pengajuan_pembatalan'] = pg_bool_is_true($row['pengajuan_pembatalan'] ?? null)
+                ? 'Menunggu Persetujuan Pembatalan'
+                : '-';
         }
     }
 
@@ -178,7 +193,10 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
     }
 
     // form ubah: 1-page — redirect jika sudah diproses
-    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
     #[\Override]
     public function update_page(int|string $id): string|RedirectResponse
     {
@@ -188,9 +206,17 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $baris = $this->model->find_one($id);
 
         // redirect ke detail jika sudah final / read-only (Disetujui, Ditolak,
-        // Selesai, Dibatalkan, atau Proses Pengiriman)
+        // Selesai, Dibatalkan, atau Proses Pengiriman) — ATAU sedang menunggu
+        // keputusan pengajuan pembatalan. Tanpa gerbang ini, Staf Gudang bisa
+        // membuka form Ubah biasa (Setuju/Tolak permintaan asli) sementara
+        // pengajuan pembatalan masih menunggu, dan cabang persetujuan normal di
+        // update() tidak mereset pengajuan_pembatalan — berpotensi membuat
+        // kartu Konfirmasi Terima & Pengajuan Pembatalan tampil bersamaan di
+        // halaman detail. Keputusan pembatalan HARUS lewat keputusan_pembatalan()
+        // dulu (tombol Setujui/Tolak Pembatalan di halaman detail).
+        helper('tracking');
         $status = is_array($baris) ? (int) ($baris['id_status_permintaan_barang'] ?? 0) : 0;
-        if (in_array($status, [2, 3, 6, 7, 8], true)) {
+        if (in_array($status, [2, 3, 6, 7, 8], true) || pg_bool_is_true($baris['pengajuan_pembatalan'] ?? null)) {
             return $this->detail($id);
         }
 
@@ -236,6 +262,33 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $new_status     = (int) ($this->request->getPost('id_status_permintaan_barang') ?? 0);
         $current        = $this->model->find((int) $id);
         $current_status = is_array($current) ? (int) ($current['id_status_permintaan_barang'] ?? 0) : 0;
+
+        // Setujui/Tolak Pengajuan Pembatalan (Gelombang 3): payload pembeda
+        // 'aksi_pembatalan' ('setuju'/'tolak'), TIDAK memakai new_status=7 —
+        // dicek lebih dulu, sebelum blok manapun di bawah, supaya tidak pernah
+        // bercampur dengan alur new_status=3 (Ditolak) yang lama dari form Ubah.
+        // new_status=7 langsung dari jalur ini SEKARANG DITOLAK TOTAL (lihat
+        // cabang elseif ($new_status === 7) di bawah) — satu-satunya jalur sah
+        // ke status 7 adalah keputusan_pembatalan() di sini.
+        helper('tracking');
+        $aksi_pembatalan = (string) ($this->request->getPost('aksi_pembatalan') ?? '');
+        if ($aksi_pembatalan !== '') {
+            return $this->keputusan_pembatalan($id, $aksi_pembatalan, $current, $current_status);
+        }
+
+        // Selain jalur di atas, blokir TOTAL selama pengajuan pembatalan masih
+        // menunggu — mencegah submit langsung ke endpoint ini (bukan hanya
+        // menyembunyikan form-nya di update_page()) menyetujui/menolak
+        // permintaan asli tanpa lebih dulu menuntaskan keputusan pembatalan,
+        // yang akan meninggalkan pengajuan_pembatalan=true menggantung pada
+        // status baru (berpotensi bikin dua kartu aksi tampil bersamaan).
+        if (is_array($current) && pg_bool_is_true($current['pengajuan_pembatalan'] ?? null)) {
+            session()->setFlashdata(
+                'error',
+                'Ada pengajuan pembatalan yang menunggu keputusan — setujui atau tolak dulu sebelum memproses permintaan ini.',
+            );
+            return $this->home();
+        }
 
         // Proses Pengiriman (8): stok sudah keluar saat status jadi 8. Satu-satunya
         // transisi sah adalah Konfirmasi Terima → Selesai (6): murni administratif,
@@ -400,10 +453,19 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 $postData['no_keluar'] = $no_keluar_baru;
                 $this->pending_keluar  = true;
             }
-        } elseif (in_array($new_status, [3, 7], true)) {
-            // Ditolak atau dibatalkan tanpa membuat transaksi stok baru.
+        } elseif ($new_status === 3) {
+            // Ditolak tanpa membuat transaksi stok baru.
             $postData['id_status_permintaan_barang'] = $new_status;
             $postData['tanggal_diproses']            = date('Y-m-d H:i:s');
+        } elseif ($new_status === 7) {
+            // Gelombang 3: Dibatalkan (7) TIDAK LAGI bisa ditulis dari jalur
+            // update() biasa sama sekali — satu-satunya jalur sah sekarang
+            // adalah keputusan_pembatalan() (dua langkah, lihat dispatch
+            // 'aksi_pembatalan' di awal method ini) atau kedua cascade otomatis
+            // (close_stuck_permintaan_on_reject/close_stuck_permintaan_on_cancel,
+            // menulis lewat query builder langsung, tidak lewat sini).
+            session()->setFlashdata('error', 'Pembatalan permintaan harus melalui pengajuan pembatalan dua langkah.');
+            return $this->home();
         } else {
             $postData['id_status_permintaan_barang'] = $new_status;
         }
@@ -479,6 +541,76 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         } catch (\Throwable $e) {
             session()->setFlashdata('error', 'Gagal mengonfirmasi penerimaan: ' . $e->getMessage());
             return redirect()->back();
+        }
+
+        return $this->home();
+    }
+
+    /**
+     * Setujui/Tolak Pengajuan Pembatalan (Gelombang 3) — Petugas RS sudah
+     * mengajukan lewat PermintaanBarangController::sampel(), di sini Staf
+     * Gudang memutuskan. Setuju → tutup permintaan (7), sama seperti tombol
+     * Batalkan langsung yang lama. Tolak → status TETAP seperti semula,
+     * hanya flag pending yang direset; alasan_pembatalan & tanggal_pembatalan
+     * DIBIARKAN tersimpan sebagai jejak riwayat (pernah diajukan lalu ditolak).
+     */
+    /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
+    private function keputusan_pembatalan(
+        int|string $id,
+        string $aksi,
+        mixed $current,
+        int $current_status,
+    ): RedirectResponse {
+        helper('tracking');
+        // pg_bool_is_true() BUKAN (bool)/empty() cast biasa — kolom boolean
+        // Postgres balik sebagai string 't'/'f', dan empty('f')/(bool) 'f'
+        // salah jadi true (string 'f' bukan '', '0', atau 0).
+        if (
+            !in_array($current_status, [4, 5], true)
+            || !is_array($current)
+            || !pg_bool_is_true($current['pengajuan_pembatalan'] ?? null)
+        ) {
+            session()->setFlashdata('error', 'Tidak ada pengajuan pembatalan yang menunggu keputusan.');
+            return $this->home();
+        }
+
+        $petugas_gudang_pembatalan = $this->request->getPost('petugas_gudang_pembatalan') ?: null;
+        if (!$petugas_gudang_pembatalan) {
+            session()->setFlashdata('error', 'Staf gudang wajib diisi untuk memutuskan pengajuan pembatalan.');
+            return redirect()->back();
+        }
+
+        if ($aksi === 'setuju') {
+            try {
+                $this->model->update($id, [
+                    'id_status_permintaan_barang' => 7,
+                    'petugas_gudang_pembatalan'   => $petugas_gudang_pembatalan,
+                    'tanggal_diproses'            => date('Y-m-d H:i:s'),
+                    'pengajuan_pembatalan'        => false,
+                ]);
+                session()->setFlashdata('success', 'Pembatalan disetujui, permintaan ditandai Dibatalkan.');
+            } catch (\Throwable $e) {
+                session()->setFlashdata('error', 'Gagal menyetujui pembatalan: ' . $e->getMessage());
+                return redirect()->back();
+            }
+        } elseif ($aksi === 'tolak') {
+            try {
+                $this->model->update($id, [
+                    'petugas_gudang_pembatalan' => $petugas_gudang_pembatalan,
+                    // Wajib diisi (sebelumnya hilang) supaya kartu Riwayat
+                    // Pengajuan Pembatalan punya tanggal keputusan untuk
+                    // ditampilkan — tanpa ini badge "Ditolak pada" selalu
+                    // jatuh ke "-" walau keputusan sudah benar-benar dibuat.
+                    'tanggal_diproses'     => date('Y-m-d H:i:s'),
+                    'pengajuan_pembatalan' => false,
+                ]);
+                session()->setFlashdata('success', 'Pengajuan pembatalan ditolak, permintaan tetap berjalan.');
+            } catch (\Throwable $e) {
+                session()->setFlashdata('error', 'Gagal menolak pembatalan: ' . $e->getMessage());
+                return redirect()->back();
+            }
+        } else {
+            session()->setFlashdata('error', 'Aksi pembatalan tidak dikenal.');
         }
 
         return $this->home();
