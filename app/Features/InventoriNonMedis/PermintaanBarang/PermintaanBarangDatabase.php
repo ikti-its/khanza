@@ -27,6 +27,10 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
                 'boleh_pengiriman_sebagian'   => T::BOOL()->nullable(),
                 'petugas_penerima'            => T::FK_AUTO()->nullable(),
                 'tanggal_diterima'            => T::DTIME()->nullable(),
+                'pengajuan_pembatalan'        => T::BOOL()->nullable(),
+                'alasan_pembatalan'           => T::NOTE()->nullable(),
+                'petugas_gudang_pembatalan'   => T::FK_AUTO()->nullable(),
+                'tanggal_pembatalan'          => T::DTIME()->nullable(),
             ],
             'id_permintaan',
             [],
@@ -53,6 +57,11 @@ final class PermintaanBarangDatabase extends DatabaseTemplate
                 ],
                 [
                     'petugas_penerima',
+                    \App\Features\Role\Petugas\PetugasDatabase::class,
+                    'id_petugas',
+                ],
+                [
+                    'petugas_gudang_pembatalan',
                     \App\Features\Role\Petugas\PetugasDatabase::class,
                     'id_petugas',
                 ],

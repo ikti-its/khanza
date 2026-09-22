@@ -21,11 +21,15 @@ final class PersetujuanPermintaanBarangModel extends ModelTemplate
                 'no_keluar'        => V::DEFAULT(),
                 'tanggal_diproses' => V::DEFAULT(),
                 'tanggal_diterima' => V::DEFAULT(),
+                // Direset di sini saat Setuju/Tolak Pembatalan (lihat update()) — bukan
+                // diajukan di sini, itu tugas PermintaanBarangController::sampel().
+                'pengajuan_pembatalan' => V::DEFAULT(),
             ],
             [
                 'petugas_gudang'              => ['id_orang' => ['nama']],
                 'petugas'                     => ['id_orang' => ['nama']],
                 'petugas_penerima'            => ['id_orang' => ['nama']],
+                'petugas_gudang_pembatalan'   => ['id_orang' => ['nama']],
                 'master_ruangan'              => ['nama_ruangan'],
                 'id_status_permintaan_barang' => ['nama_status_permintaan_barang'],
             ],
