@@ -15,6 +15,23 @@ declare(strict_types=1);
  * Itu tetap dipakai get_penerimaan_tracking() saja, dengan struktur lama `_s()`.
  */
 
+if (!function_exists('pg_bool_is_true')) {
+    /**
+     * Baca kolom boolean Postgres yang bisa balik sebagai native bool ATAU
+     * string 't'/'f' tergantung driver — `!empty()`/`(bool)` cast SALAH untuk
+     * string 'f' (non-kosong, jadi dianggap truthy oleh keduanya). Pola sama
+     * seperti allow_partial_shipment() di kedua controller Persetujuan/
+     * Permintaan, disatukan di sini supaya dipakai konsisten oleh pembaca flag
+     * pengajuan_pembatalan di kedua view dan controller (BUKAN oleh helper ini
+     * sendiri — _determine_progress() sengaja tidak lagi memeriksa flag ini
+     * sama sekali, lihat keputusan final di komentar get_permintaan_tracking()).
+     */
+    function pg_bool_is_true(mixed $value): bool
+    {
+        return in_array(strtolower((string) ($value ?? 'f')), ['1', 't', 'true', 'y', 'yes'], true);
+    }
+}
+
 if (!function_exists('_trow')) {
     /** Satu sub-baris di dalam sebuah langkah timeline: text + tanggal opsional + tone. */
     function _trow(string $text, ?string $date = null, ?string $tone = null): array
@@ -33,6 +50,14 @@ if (!function_exists('_tstep')) {
 
 if (!function_exists('get_permintaan_tracking')) {
     /**
+     * Keputusan final (setelah beberapa iterasi Gelombang 3): progress_label/
+     * progress_color di sini SENGAJA TIDAK PERNAH dipengaruhi flag
+     * pengajuan_pembatalan — badge Status utama harus selalu murni
+     * mencerminkan id_status_permintaan_barang yang sebenarnya (4/5/6/7/8),
+     * tanpa pengecualian. Info pengajuan pembatalan HANYA muncul lewat panel
+     * terpisah di kedua view detail (dibaca langsung dari $baris via
+     * pg_bool_is_true(), bukan dari struktur ini).
+     *
      * @return array{
      *   scenario: 'direct'|'procurement',
      *   steps: list<array<array-key, mixed>>,
@@ -160,6 +185,61 @@ if (!function_exists('get_permintaan_tracking')) {
         [$progress_label, $progress_color] = _determine_progress($st, $scenario, $pengajuan, $pengadaan, $penerimaan, $persen_terima);
 
         return compact('scenario', 'steps', 'progress_label', 'progress_color');
+    }
+}
+
+if (!function_exists('get_permintaan_pembatalan_cascade_reason')) {
+    /**
+     * Identifikasi PENYEBAB penutupan otomatis suatu permintaan (status 7)
+     * yang terjadi TANPA melalui keputusan_pembatalan() — dipicu cascade
+     * PersetujuanPengajuanBarangController::close_stuck_permintaan_on_reject()
+     * (pengajuan ditolak atasan) atau
+     * PengadaanBarangController::close_stuck_permintaan_on_cancel() (pengadaan
+     * dibatalkan). Kedua cascade itu menutup permintaan TANPA mengisi
+     * petugas_gudang_pembatalan, jadi penyebabnya tidak terekam langsung di
+     * baris permintaan_barang — dua query ringan (bukan join berat, mengikuti
+     * pola pencarian pengajuan/pengadaan "terbaru" yang sama seperti
+     * get_permintaan_tracking() di atas) sudah cukup untuk membedakannya.
+     *
+     * @return 'pengajuan_ditolak'|'pengadaan_dibatalkan'|null null bila tidak
+     *         ada pengajuan/pengadaan terkait, atau tak satu pun berstatus
+     *         ditolak/dibatalkan (penyebab tak dapat ditentukan).
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     */
+    function get_permintaan_pembatalan_cascade_reason(int $id_permintaan): ?string
+    {
+        $config             = (new \Config\Database())->default;
+        $config['database'] = env('database.default.khanza_db');
+        $db                 = \Config\Database::connect($config);
+
+        $pengajuan = $db->table('inventori_non_medis.pengajuan_barang')
+            ->select('id_pengajuan, id_status_pengajuan_barang')
+            ->where('id_permintaan', $id_permintaan)
+            ->orderBy('id_pengajuan', 'DESC')
+            ->limit(1)
+            ->get()->getRowArray();
+
+        if (empty($pengajuan)) {
+            return null;
+        }
+        assert(is_array($pengajuan), 'Baris pengajuan harus array.');
+
+        if ((int) ($pengajuan['id_status_pengajuan_barang'] ?? 0) === 3) {
+            return 'pengajuan_ditolak';
+        }
+
+        $pengadaan = $db->table('inventori_non_medis.pengadaan_barang')
+            ->select('id_status_pengadaan_barang')
+            ->where('id_pengajuan', (int) $pengajuan['id_pengajuan'])
+            ->orderBy('id_pengadaan', 'DESC')
+            ->limit(1)
+            ->get()->getRowArray();
+
+        if (!empty($pengadaan) && (int) ($pengadaan['id_status_pengadaan_barang'] ?? 0) === 3) {
+            return 'pengadaan_dibatalkan';
+        }
+
+        return null;
     }
 }
 
