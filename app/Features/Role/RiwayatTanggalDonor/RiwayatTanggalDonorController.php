@@ -6,6 +6,7 @@ namespace App\Features\Role\RiwayatTanggalDonor;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use CodeIgniter\Database\Exceptions\DatabaseException;
 use CodeIgniter\HTTP\RedirectResponse;
 
 final class RiwayatTanggalDonorController extends ControllerTemplate
@@ -38,6 +39,8 @@ final class RiwayatTanggalDonorController extends ControllerTemplate
 
     /**
      * OVERRIDE: Halaman utama riwayat tanggal donor
+     * 
+     * @throws DatabaseException
      */
     #[\Override]
     final public function index(): string|RedirectResponse
@@ -51,7 +54,8 @@ final class RiwayatTanggalDonorController extends ControllerTemplate
         $page       = min($page, $totalPages);
         $offset     = ($page - 1) * $size;
 
-        $dataTabel = $this->model->get_data_tabel($size, $offset);
+        $riwayatTanggalDonorModel = new RiwayatTanggalDonorModel();
+        $dataTabel                = $riwayatTanggalDonorModel->get_data_tabel($size, $offset);
 
         $konfig = [
             [1, 'Nomor Pendonor', 'nomor_pendonor', 'teks',    0],

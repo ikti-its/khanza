@@ -6,6 +6,7 @@ namespace App\Features\Role\Pendonor;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use CodeIgniter\Database\Exceptions\DatabaseException;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -48,13 +49,20 @@ final class PendonorController extends ControllerTemplate
     public function print(int|string $id): string
     {
         $dataPendonor = $this->model->find($id);
-        if (!$dataPendonor) {
+        if (!is_array($dataPendonor)) {
             throw PageNotFoundException::forPageNotFound('Data Pendonor tidak ditemukan.');
         }
 
         $modelOrang = new \App\Features\Person\Orang\OrangModel();
-        $idOrang    = $dataPendonor['id_orang'] ?? null;
-        $dataOrang  = $idOrang ? $modelOrang->find($idOrang) : [];
+        $idOrang    = !empty($dataPendonor['id_orang']) ? (int) $dataPendonor['id_orang'] : null;
+
+        $dataOrang = [];
+        if ($idOrang !== null) {
+            $orangRow = $modelOrang->find($idOrang);
+            if (is_array($orangRow)) {
+                $dataOrang = $orangRow;
+            }
+        }
 
         $baris = array_merge($dataOrang, $dataPendonor);
 
@@ -63,17 +71,27 @@ final class PendonorController extends ControllerTemplate
         $konfigPendonor  = $this->get_fields_with_options(false, true);
         $konfigGabungan  = array_merge($konfigOrang, $konfigPendonor);
 
-        foreach ($konfigGabungan as $field) {
-            $namaKolom = $field[2];
-            $tipeField = $field[3];
-            $options   = $field[5] ?? [];
+        /** @var list<array<int, mixed>> $fieldsList */
+        $fieldsList = array_values(array_filter($konfigGabungan, 'is_array'));
+
+        foreach ($fieldsList as $field) {
+            if (!isset($field[2])) {
+                continue;
+            }
+
+            $namaKolom = (string) $field[2];
+            $tipeField = (string) ($field[3] ?? '');
+            $options   = is_array($field[5] ?? null) ? $field[5] : [];
 
             if ($tipeField === 'status' && !empty($options) && isset($baris[$namaKolom])) {
-                $idMentah = $baris[$namaKolom];
+                $idMentah = (string) $baris[$namaKolom];
 
-                foreach ($options as $opt) {
-                    if ($opt[1] == $idMentah) {
-                        $baris[$namaKolom] = $opt[0];
+                /** @var list<array<int, mixed>> $optionsList */
+                $optionsList = array_values(array_filter($options, 'is_array'));
+
+                foreach ($optionsList as $opt) {
+                    if ((string) ($opt[1] ?? '') === $idMentah) {
+                        $baris[$namaKolom] = $opt[0] ?? '';
                         break;
                     }
                 }
@@ -92,6 +110,8 @@ final class PendonorController extends ControllerTemplate
 
     /**
      * OVERRIDE: Halaman Utama Pendonor
+     * 
+     * @throws DatabaseException
      */
     #[\Override]
     final public function index(): string
@@ -101,7 +121,9 @@ final class PendonorController extends ControllerTemplate
         $offset      = ($currentPage - 1) * $perPage;
 
         $totalRows  = $this->model->count_filtered();
-        $data_tabel = $this->model->get_data_tabel($perPage, $offset);
+
+        $pendonorModel = new PendonorModel();
+        $data_tabel    = $pendonorModel->get_data_tabel($perPage, $offset);
 
         $konfig = [
             [1, 'Nomor Pendonor', 'nomor_pendonor',         'teks',    0],
@@ -152,7 +174,7 @@ final class PendonorController extends ControllerTemplate
         $terakhir   = $this->model->orderBy($this->model->primaryKey, 'DESC')->first();
         $nextNumber = 1;
         if ($terakhir !== null && isset($terakhir['nomor_pendonor'])) {
-            $cleanNumber = str_replace('UTD', '', $terakhir['nomor_pendonor']);
+            $cleanNumber = str_replace('UTD', '', (string) $terakhir['nomor_pendonor']);
             $nextNumber  = (int) $cleanNumber + 1;
         }
         $nomorPendonorOtomatis = 'UTD' . str_pad((string) $nextNumber, 6, '0', STR_PAD_LEFT);
@@ -220,6 +242,8 @@ final class PendonorController extends ControllerTemplate
     {
         $modelAlamat = new \App\Features\Lokasi\Alamat\AlamatModel();
         $modelOrang  = new \App\Features\Person\Orang\OrangModel();
+
+        /** @var array<string, mixed> $rawPost */
         $rawPost     = $this->request->getPost();
 
         $dataPendonor = $this->get_post_data_custom();
@@ -227,7 +251,8 @@ final class PendonorController extends ControllerTemplate
         $this->model->db->transStart();
 
         try {
-            $this->model->validasiUsiaMinimal($rawPost['tanggal_lahir']);
+            $pendonorModel = new PendonorModel();
+            $pendonorModel->validasiUsiaMinimal((string) ($rawPost['tanggal_lahir'] ?? ''));
 
             $dataAlamat = [
                 'alamat_lengkap' => $rawPost['alamat_lengkap'] ?? null,
@@ -241,11 +266,11 @@ final class PendonorController extends ControllerTemplate
                 throw new \RuntimeException('Sistem gagal memproses data Alamat baru.');
             }
 
-            $idAlamatBaru = $modelAlamat->insertID();
+            $idAlamatBaru = (int) $modelAlamat->getInsertID();
 
             $dataOrang = [];
             foreach ($modelOrang->allowedFields as $field) {
-                $value = $rawPost[$field] ?? '';
+                $value = (string) ($rawPost[$field] ?? '');
 
                 if ($value === '') {
                     $value = null;
@@ -262,15 +287,19 @@ final class PendonorController extends ControllerTemplate
                 throw new \RuntimeException('Sistem gagal menyimpan identitas Orang.');
             }
 
-            $idOrang                  = $modelOrang->insertID();
+            $idOrang                  = (int) $modelOrang->getInsertID();
             $dataPendonor['id_orang'] = $idOrang;
 
             if (!$this->model->insert($dataPendonor)) {
                 throw new \RuntimeException('Sistem gagal menyimpan entitas Pendonor.');
             }
 
-            $idPendonor = $this->model->insertID();
-            $this->model->setTanggalDonorTerakhir($idPendonor, $dataPendonor['tanggal_donor_terakhir'] ?? null);
+            $idPendonor = (int) $this->model->getInsertID();
+
+            $tanggalDonorTerakhir = !empty($dataPendonor['tanggal_donor_terakhir'])
+                ? (string) $dataPendonor['tanggal_donor_terakhir']
+                : null;
+            $pendonorModel->setTanggalDonorTerakhir($idPendonor, $tanggalDonorTerakhir);
 
             $this->model->db->transComplete();
 
@@ -281,23 +310,26 @@ final class PendonorController extends ControllerTemplate
             session()->setFlashdata('success', 'Data pendonor berhasil disimpan.');
         } catch (\Exception $e) {
             $this->model->db->transRollback();
-            $errMsg = $e instanceof \CodeIgniter\Database\Exceptions\DatabaseException
+            $errMsg = $e instanceof DatabaseException
                 ? $this->friendly_db_error($e)
                 : $e->getMessage();
             session()->setFlashdata('error', $errMsg);
             return redirect()->back()->withInput();
         }
 
-        $redirect_to = $this->request->getPost('redirect_to');
-        return $redirect_to ? redirect()->to($redirect_to) : $this->home();
+        $redirectTo = (string) ($this->request->getPost('redirect_to') ?? '');
+        return $redirectTo !== '' ? redirect()->to($redirectTo) : $this->home();
     }
 
     /**
      * CUSTOM HELPER: Menyaring dan mengambil data POST murni untuk kebutuhan tabel Pendonor saja
+     * @return array<string, mixed>
      */
     private function get_post_data_custom(): array
     {
         $postData = [];
+
+        /** @var array<string, mixed> $rawPost */
         $rawPost  = $this->request->getPost();
 
         $fieldsPendonor = $this->fields;
@@ -310,7 +342,7 @@ final class PendonorController extends ControllerTemplate
                 continue;
             }
 
-            $value = $rawPost[$column] ?? '';
+            $value = (string) ($rawPost[$column] ?? '');
 
             if ($value === '') {
                 $value = null;
@@ -326,6 +358,8 @@ final class PendonorController extends ControllerTemplate
 
     /**
      * OVERRIDE: Menampilkan Halaman Ubah Data Form Gabungan
+     * 
+     * @throws DatabaseException
      */
     #[\Override]
     final public function update_page(int|string $id): string
@@ -334,7 +368,7 @@ final class PendonorController extends ControllerTemplate
             return $this->index();
 
         $dataPendonor = $this->model->find($id);
-        if (!$dataPendonor) {
+        if (!is_array($dataPendonor)) {
             $dataPendonor = [];
         }
 
@@ -343,16 +377,19 @@ final class PendonorController extends ControllerTemplate
 
         if (!empty($dataPendonor['id_orang'])) {
             $modelOrang = new \App\Features\Person\Orang\OrangModel();
-            $dataOrang  = $modelOrang->find($dataPendonor['id_orang']) ?? [];
+            $dataOrang  = $modelOrang->find((int) $dataPendonor['id_orang']);
+            if (!is_array($dataOrang)) {
+                $dataOrang = [];
+            }
 
             if (!empty($dataOrang['id_alamat'])) {
                 $modelAlamat = new \App\Features\Lokasi\Alamat\AlamatModel();
-                $dataAlamat  = $modelAlamat->get_detail_wilayah($dataOrang['id_alamat']) ?? [];
+                $dataAlamat  = $modelAlamat->get_detail_wilayah((int) $dataOrang['id_alamat']) ?? [];
             }
 
             if (!empty($dataOrang['tempat_lahir_kota'])) {
                 $modelKotaLahir = new \App\Features\Lokasi\Kota\KotaModel();
-                $kotaLahir      = $modelKotaLahir->find($dataOrang['tempat_lahir_kota']);
+                $kotaLahir      = $modelKotaLahir->find((int) $dataOrang['tempat_lahir_kota']);
                 if ($kotaLahir) {
                     $dataAlamat['nama_kota'] = $kotaLahir['nama_kota'] ?? '';
                 }
@@ -363,12 +400,18 @@ final class PendonorController extends ControllerTemplate
 
         $controllerOrang = new \App\Features\Person\Orang\OrangController();
         $konfigOrang     = $controllerOrang->get_fields_with_options(false, true);
+
+        /** @var list<array<int, mixed>> $konfigPendonor */
         $konfigPendonor  = $this->get_fields_with_options(false, true);
 
         $konfigGabungan = [];
 
         foreach ($konfigPendonor as $field) {
-            $namaKolom = $field[2];
+            if (!isset($field[2])) {
+                continue;
+            }
+
+            $namaKolom = (string) $field[2];
 
             if ($namaKolom === 'id_orang') {
                 $konfigGabungan = array_merge($konfigGabungan, $konfigOrang);
@@ -381,8 +424,7 @@ final class PendonorController extends ControllerTemplate
         }
 
         foreach ($konfigGabungan as $field) {
-            $namaKolom = $field[2];
-
+            $namaKolom = (string) $field[2];
             if (($baris[$namaKolom] ?? null) === null) {
                 $baris[$namaKolom] = '';
             }
@@ -405,6 +447,8 @@ final class PendonorController extends ControllerTemplate
 
     /**
      * OVERRIDE: Mengeksekusi Simpan Perubahan Data Pendonor
+     * 
+     * @throws DatabaseException
      */
     #[\Override]
     final public function update(int|string $id): string|RedirectResponse
@@ -412,21 +456,25 @@ final class PendonorController extends ControllerTemplate
         if ($id == 0)
             return $this->index();
 
+        /** @var array<string, mixed> $rawPost */
         $rawPost = $this->request->getPost();
 
         $dataPendonorLama = $this->model->find($id);
-        $idOrang          = $dataPendonorLama['id_orang'];
+        $idOrang          = isset($dataPendonorLama['id_orang']) ? (int) $dataPendonorLama['id_orang'] : 0;
 
         $modelAlamat = new \App\Features\Lokasi\Alamat\AlamatModel();
         $modelOrang  = new \App\Features\Person\Orang\OrangModel();
 
         $dataOrangLama = $modelOrang->find($idOrang);
-        $idAlamatLama  = $dataOrangLama['id_alamat'] ?? null;
+        $idAlamatLama  = is_array($dataOrangLama) && isset($dataOrangLama['id_alamat'])
+            ? (int) $dataOrangLama['id_alamat']
+            : null;
 
         $this->model->db->transStart();
 
         try {
-            $this->model->validasiUsiaMinimal($rawPost['tanggal_lahir']);
+            $pendonorModel = new PendonorModel();
+            $pendonorModel->validasiUsiaMinimal((string) ($rawPost['tanggal_lahir'] ?? ''));
 
             $dataAlamat = [
                 'alamat_lengkap' => $rawPost['alamat_lengkap'] ?? null,
@@ -441,12 +489,12 @@ final class PendonorController extends ControllerTemplate
                 $idAlamatFinal = $idAlamatLama;
             } else {
                 $modelAlamat->insert($dataAlamat);
-                $idAlamatFinal = $modelAlamat->insertID();
+                $idAlamatFinal = (int) $modelAlamat->getInsertID();
             }
 
             $dataOrang = [];
             foreach ($modelOrang->allowedFields as $field) {
-                $value = $rawPost[$field] ?? '';
+                $value = (string) ($rawPost[$field] ?? '');
 
                 if ($value === '') {
                     $value = null;
@@ -463,13 +511,17 @@ final class PendonorController extends ControllerTemplate
             $dataPendonor             = $this->get_post_data_custom();
             $dataPendonor['id_orang'] = $idOrang;
 
-            $tanggalDonorLama = $dataPendonorLama['tanggal_donor_terakhir'] ?? null;
-            $tanggalDonorBaru = $dataPendonor['tanggal_donor_terakhir'] ?? null;
+            $tanggalDonorLama = !empty($dataPendonorLama['tanggal_donor_terakhir']) 
+                ? (string) $dataPendonorLama['tanggal_donor_terakhir'] 
+                : null;
+            $tanggalDonorBaru = !empty($dataPendonor['tanggal_donor_terakhir'])
+                ? (string) $dataPendonor['tanggal_donor_terakhir']
+                : null;
 
             $this->model->update($id, $dataPendonor);
 
             if (($tanggalDonorLama ?: null) !== ($tanggalDonorBaru ?: null)) {
-                $this->model->setTanggalDonorTerakhir($id, $tanggalDonorBaru);
+                $pendonorModel->setTanggalDonorTerakhir($id, $tanggalDonorBaru);
             }
 
             $this->model->db->transComplete();
@@ -481,7 +533,7 @@ final class PendonorController extends ControllerTemplate
             session()->setFlashdata('success', 'Data ' . $this->title . ' berhasil diperbarui.');
         } catch (\Exception $e) {
             $this->model->db->transRollback();
-            $errMsg = $e instanceof \CodeIgniter\Database\Exceptions\DatabaseException
+            $errMsg = $e instanceof DatabaseException
                 ? $this->friendly_db_error($e)
                 : $e->getMessage();
             session()->setFlashdata('error', $errMsg);
@@ -493,6 +545,8 @@ final class PendonorController extends ControllerTemplate
 
     /**
      * OVERRIDE: Menghapus data pendonor
+     * 
+     * @throws DatabaseException
      */
     #[\Override]
     public function delete(int|string $id): string|RedirectResponse
@@ -515,12 +569,15 @@ final class PendonorController extends ControllerTemplate
             return redirect()->to($this->get_uri_path() . '/data');
         }
 
-        $idOrang = $pendonor['id_orang'] ?? null;
+        $idOrang = isset($pendonor['id_orang']) ? (int) $pendonor['id_orang'] : null;
 
+        $idAlamat = null;
         if (!empty($idOrang)) {
             $modelOrang = new \App\Features\Person\Orang\OrangModel();
             $orangRow   = $modelOrang->find($idOrang);
-            $idAlamat   = $orangRow['id_alamat'] ?? null;
+            if (is_array($orangRow) && isset($orangRow['id_alamat'])) {
+                $idAlamat = (int) $orangRow['id_alamat'];
+            }
         }
 
         $this->model->db->transStart();
@@ -545,11 +602,11 @@ final class PendonorController extends ControllerTemplate
             $this->model->db->transComplete();
 
             if (!$this->model->db->transStatus() ) {
-                throw new \CodeIgniter\Database\Exceptions\DatabaseException('violates foreign key constraint');
+                throw new DatabaseException('violates foreign key constraint');
             }
 
             session()->setFlashdata('success', 'Data pendonor berhasil dihapus.');
-        } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+        } catch (DatabaseException $e) {
             $this->model->db->transRollback();
             session()->setFlashdata('error', $this->friendly_db_error($e));
         } catch (\Exception $e) {
@@ -562,6 +619,8 @@ final class PendonorController extends ControllerTemplate
 
     /**
      * Menampilkan Halaman Detail Pendonor
+     * 
+     * @throws DatabaseException
      */
     public function detail(int|string $id): string
     {
@@ -569,22 +628,28 @@ final class PendonorController extends ControllerTemplate
             return $this->index();
 
         $dataPendonor = $this->model->find($id);
+        if (!is_array($dataPendonor)) {
+            $dataPendonor = [];
+        }
 
         $dataOrang  = [];
         $dataAlamat = [];
 
         if (!empty($dataPendonor['id_orang'])) {
             $modelOrang = new \App\Features\Person\Orang\OrangModel();
-            $dataOrang  = $modelOrang->find($dataPendonor['id_orang']) ?? [];
+            $dataOrang  = $modelOrang->find((int) $dataPendonor['id_orang']);
+            if (!is_array($dataOrang)) {
+                $dataOrang = [];
+            }
 
             if (!empty($dataOrang['id_alamat'])) {
                 $modelAlamat = new \App\Features\Lokasi\Alamat\AlamatModel();
-                $dataAlamat  = $modelAlamat->get_detail_wilayah($dataOrang['id_alamat']) ?? [];
+                $dataAlamat  = $modelAlamat->get_detail_wilayah((int) $dataOrang['id_alamat']) ?? [];
             }
 
             if (!empty($dataOrang['tempat_lahir_kota'])) {
                 $modelKotaLahir = new \App\Features\Lokasi\Kota\KotaModel();
-                $kotaLahir      = $modelKotaLahir->find($dataOrang['tempat_lahir_kota']);
+                $kotaLahir      = $modelKotaLahir->find((int) $dataOrang['tempat_lahir_kota']);
                 if ($kotaLahir) {
                     $dataAlamat['nama_kota_lahir'] = $kotaLahir['nama_kota'] ?? '';
                 }
@@ -598,24 +663,34 @@ final class PendonorController extends ControllerTemplate
         $konfigPendonor  = $this->get_fields_with_options(false, true);
         $konfigGabungan  = array_merge($konfigOrang, $konfigPendonor);
 
-        foreach ($konfigGabungan as $field) {
-            $colName = $field[2];
-            $options = $field[5] ?? [];
+        /** @var list<array<int, mixed>> $fieldsList */
+        $fieldsList = array_values(array_filter($konfigGabungan, 'is_array'));
+
+        foreach ($fieldsList as $field) {
+            if (!isset($field[2])) {
+                continue;
+            }
+
+            $colName = (string) $field[2];
+            $options = is_array($field[5] ?? null) ? $field[5] : [];
 
             if (!empty($options) && isset($baris[$colName])) {
-                $idMentah = $baris[$colName];
+                $idMentah = (string) $baris[$colName];
 
-                foreach ($options as $opt) {
-                    if ((string) $opt[1] === (string) $idMentah) {
-                        $baris[$colName] = $opt[0];
+                /** @var list<array<int, mixed>> $optionsList */
+                $optionsList = array_values(array_filter($options, 'is_array'));
+
+                foreach ($optionsList as $opt) {
+                    if ((string) ($opt[1] ?? '') === $idMentah) {
+                        $baris[$colName] = $opt[0] ?? '';
                         break;
                     }
                 }
             }
         }
 
-        foreach ($baris as $key => $value) {
-            if ($value === null) {
+        foreach (array_keys($baris) as $key) {
+            if ($baris[$key] === null) {
                 $baris[$key] = '';
             }
         }
@@ -634,10 +709,13 @@ final class PendonorController extends ControllerTemplate
 
     /**
      * Menampilkan data modal pendonor
+     * 
+     * @throws DatabaseException
      */
     public function list(): ResponseInterface
     {
-        $data = $this->model->get_data_tabel();
+        $pendonorModel = new PendonorModel();
+        $data          = $pendonorModel->get_data_tabel();
 
         return $this->response->setJSON([
             'data' => $data,

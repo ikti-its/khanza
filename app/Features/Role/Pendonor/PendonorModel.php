@@ -5,6 +5,8 @@ namespace App\Features\Role\Pendonor;
 
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
+use CodeIgniter\Database\Exceptions\DatabaseException;
+use ReflectionException;
 
 final class PendonorModel extends ModelTemplate
 {
@@ -38,6 +40,8 @@ final class PendonorModel extends ModelTemplate
      * @param int|null $limit
      * @param int $offset
      * @return list<array<string, mixed>>
+     * 
+     * @throws DatabaseException
      */
     public function get_data_tabel(null|int $limit = null, int $offset = 0): array
     {
@@ -68,7 +72,12 @@ final class PendonorModel extends ModelTemplate
             $builder->limit($limit, $offset);
         }
 
-        return $builder->get()->getResultArray();
+        $query = $builder->get();
+
+        /** @var list<array<string, mixed>> $result */
+        $result = $query !== false ? $query->getResultArray() : [];
+
+        return $result;
     }
 
     /**
@@ -96,6 +105,9 @@ final class PendonorModel extends ModelTemplate
      * @param int|string $idPendonor
      * @param string|null $tanggalDonor
      * @param string|null $waktuValid
+     * 
+     * @throws DatabaseException
+     * @throws ReflectionException
      */
     public function setTanggalDonorTerakhir(
         int|string $idPendonor,
@@ -116,6 +128,9 @@ final class PendonorModel extends ModelTemplate
      * Mengembalikan tanggal donor terakhir ke riwayat sebelumnya
      * @param int|string $idPendonor
      * @param string|null $waktuValid
+     * 
+     * @throws DatabaseException
+     * @throws ReflectionException
      */
     public function rollbackTanggalDonorTerakhir(int|string $idPendonor, null|string $waktuValid = null): void
     {
@@ -136,6 +151,11 @@ final class PendonorModel extends ModelTemplate
             return null;
         }
 
-        return date('Y-m-d', strtotime($tanggal));
+        $timestamp = strtotime($tanggal);
+        if ($timestamp === false) {
+            return null;
+        }
+
+        return date('Y-m-d', $timestamp);
     }
 }

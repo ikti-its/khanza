@@ -5,6 +5,8 @@ namespace App\Features\Role\RiwayatTanggalDonor;
 
 use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
+use CodeIgniter\Database\Exceptions\DatabaseException;
+use ReflectionException;
 
 final class RiwayatTanggalDonorModel extends ModelTemplate
 {
@@ -32,6 +34,8 @@ final class RiwayatTanggalDonorModel extends ModelTemplate
      * @param int|null $limit
      * @param int $offset
      * @return list<array<string, mixed>>
+     * 
+     * @throws DatabaseException
      */
     public function get_data_tabel(null|int $limit = null, int $offset = 0): array
     {
@@ -56,17 +60,25 @@ final class RiwayatTanggalDonorModel extends ModelTemplate
             $builder->limit($limit, $offset);
         }
 
-        return $builder->get()->getResultArray();
+        $query = $builder->get();
+
+        /** @var list<array<string, mixed>> $result */
+        $result = $query !== false ? $query->getResultArray() : [];
+
+        return $result;
     }
 
     /**
      * Memeriksa apakah pendonor sudah pernah benar-benar donor (punya tanggal_donor)
      * @param int|string $idPendonor
      * @return bool
+     * 
+     * @throws DatabaseException
      */
     public function punyaRiwayat(int|string $idPendonor): bool
     {
-        return $this->builder()
+        return $this->db
+            ->table('role.riwayat_tanggal_donor')
             ->where('id_pendonor', $idPendonor)
             ->where('tanggal_donor IS NOT NULL', null, false)
             ->countAllResults() > 0;
@@ -76,20 +88,28 @@ final class RiwayatTanggalDonorModel extends ModelTemplate
      * Mengambil riwayat tanggal donor yang sedang aktif
      * @param int|string $idPendonor
      * @return array<string, mixed>|null
+     * 
+     * @throws DatabaseException
      */
     public function getRiwayatAktif(int|string $idPendonor): null|array
     {
-        $row = $this
-            ->builder()
+        $query = $this->db
+            ->table('role.riwayat_tanggal_donor')
             ->where('id_pendonor', $idPendonor)
             ->where('end_valid IS NULL', null, false)
             ->orderBy('start_valid', 'DESC')
             ->orderBy('id_riwayat', 'DESC')
             ->limit(1)
-            ->get()
-            ->getRowArray();
+            ->get();
 
-        return $row ?: null;
+        $row = $query !== false ? $query->getRowArray() : null;
+
+        if (!is_array($row)) {
+            return null;
+        }
+
+        /** @var array<string, mixed> $row */
+        return $row;
     }
 
     /**
@@ -97,6 +117,9 @@ final class RiwayatTanggalDonorModel extends ModelTemplate
      * @param int|string $idPendonor
      * @param string|null $tanggalDonor
      * @param string|null $startValid
+     * 
+     * @throws DatabaseException
+     * @throws ReflectionException
      */
     public function catatTanggalDonor(
         int|string $idPendonor,
@@ -106,15 +129,16 @@ final class RiwayatTanggalDonorModel extends ModelTemplate
         $tanggalDonor = $this->normalisasiTanggal($tanggalDonor);
         $startValid   ??= date('Y-m-d H:i:s');
 
-        $riwayatAktif = $this->getRiwayatAktif($idPendonor);
-        $tanggalAktif = $this->normalisasiTanggal($riwayatAktif['tanggal_donor'] ?? null);
+        $riwayatAktif    = $this->getRiwayatAktif($idPendonor);
+        $rawTanggalAktif = isset($riwayatAktif['tanggal_donor']) ? (string) $riwayatAktif['tanggal_donor'] : null;
+        $tanggalAktif    = $this->normalisasiTanggal($rawTanggalAktif);
 
         if (!empty($riwayatAktif) && $tanggalAktif === $tanggalDonor) {
             return;
         }
 
-        $this
-            ->builder()
+        $this->db
+            ->table('role.riwayat_tanggal_donor')
             ->where('id_pendonor', $idPendonor)
             ->where('end_valid IS NULL', null, false)
             ->update(['end_valid' => $startValid]);
@@ -132,6 +156,9 @@ final class RiwayatTanggalDonorModel extends ModelTemplate
      * @param int|string $idPendonor
      * @param string|null $startValid
      * @return string|null
+     * 
+     * @throws DatabaseException
+     * @throws ReflectionException
      */
     public function rollbackKeRiwayatSebelumnya(int|string $idPendonor, null|string $startValid = null): null|string
     {
@@ -142,19 +169,31 @@ final class RiwayatTanggalDonorModel extends ModelTemplate
             return null;
         }
 
-        $this->builder()->where('id_riwayat', $riwayatAktif['id_riwayat'])->update(['end_valid' => $startValid]);
+        $idRiwayatAktif = isset($riwayatAktif['id_riwayat']) ? (int) $riwayatAktif['id_riwayat'] : null;
+        if ($idRiwayatAktif === null) {
+            return null;
+        }
 
-        $riwayatSebelumnya = $this
-            ->builder()
+        $this->db
+            ->table('role.riwayat_tanggal_donor')
+            ->where('id_riwayat', $idRiwayatAktif)
+            ->update(['end_valid' => $startValid]);
+
+        $query = $this->db
+            ->table('role.riwayat_tanggal_donor')
             ->where('id_pendonor', $idPendonor)
-            ->where('id_riwayat !=', $riwayatAktif['id_riwayat'])
+            ->where('id_riwayat !=', $idRiwayatAktif)
             ->orderBy('start_valid', 'DESC')
             ->orderBy('id_riwayat', 'DESC')
             ->limit(1)
-            ->get()
-            ->getRowArray();
+            ->get();
+        
+        $riwayatSebelumnya = $query !== false ? $query->getRowArray() : null;
 
-        $tanggalRollback = $this->normalisasiTanggal($riwayatSebelumnya['tanggal_donor'] ?? null);
+        $rawTanggalRollback = is_array($riwayatSebelumnya) && isset($riwayatSebelumnya['tanggal_donor'])
+            ? (string) $riwayatSebelumnya['tanggal_donor']
+            : null;
+        $tanggalRollback    = $this->normalisasiTanggal($rawTanggalRollback);
 
         $this->insert([
             'id_pendonor'   => $idPendonor,
@@ -175,6 +214,11 @@ final class RiwayatTanggalDonorModel extends ModelTemplate
             return null;
         }
 
-        return date('Y-m-d', strtotime($tanggal));
+        $timestamp = strtotime($tanggal);
+        if ($timestamp === false) {
+            return null;
+        }
+
+        return date('Y-m-d', $timestamp);
     }
 }
