@@ -1,0 +1,5 @@
+id_status_pengembalian_barang,nama_status_pengembalian_barang
+1,Draf
+2,Proses Verifikasi
+3,Selesai
+4,Ditolak
