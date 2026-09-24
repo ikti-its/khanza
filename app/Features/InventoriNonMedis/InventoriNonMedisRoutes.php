@@ -24,6 +24,8 @@ final class InventoriNonMedisRoutes extends RouteTemplate
                 \App\Features\InventoriNonMedis\PengadaanBarangDetail\PengadaanBarangDetailController::class => 'HIDE',
                 \App\Features\InventoriNonMedis\PenerimaanBarang\PenerimaanBarangController::class,
                 \App\Features\InventoriNonMedis\PenerimaanBarangDetail\PenerimaanBarangDetailController::class => 'HIDE',
+                // Urutan mengikuti rantai proses: pengembalian paling akhir; F14 Verifikasi tepat di bawahnya.
+                \App\Features\InventoriNonMedis\PengembalianBarang\PengembalianBarangController::class,
                 \App\Features\InventoriNonMedis\StokOpname\StokOpnameController::class,
                 \App\Features\InventoriNonMedis\StokOpnameDetail\StokOpnameDetailController::class => 'HIDE',
                 \App\Features\InventoriNonMedis\TransaksiStok\TransaksiStokController::class,

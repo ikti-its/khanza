@@ -216,6 +216,33 @@ if (!function_exists('generateNextNoMasukBarang')) {
     }
 }
 
+// AutoNomor untuk No.Pengembalian (Saat ini dipake di fitur Pengembalian Barang)
+if (!function_exists('generateNextNoPengembalianBarang')) {
+    /** Generate nomor pengembalian barang berikutnya.
+     * Format: KMBYYYYMMDDXXXX
+     * Contoh: KMB202506070001
+     * $lastNo harus nomor terbesar dengan prefix tanggal yang sama (bukan
+     * nomor milik baris ber-PK terbesar), lihat
+     * PengembalianBarangController::next_no_pengembalian().
+     */
+    function generateNextNoPengembalianBarang(?string $lastNo, ?string $tanggal = null): string
+    {
+        $tgl    = $tanggal ? strtotime($tanggal) : time();
+        assert(is_int($tgl));
+        $prefix = 'KMB' . date('Ymd', $tgl);
+
+        /** @var list<bool> */
+        $match = [];
+        if (!$lastNo || !preg_match('/^KMB' . date('Ymd', $tgl) . '(\d{4})$/', $lastNo, $match)) {
+            $nomor = 1;
+        } else {
+            $nomor = (int) $match[1] + 1;
+        }
+
+        return $prefix . str_pad((string) $nomor, 4, '0', STR_PAD_LEFT);
+    }
+}
+
 // AutoNomor untuk No.SKL Kelahiran Bayi
 if (!function_exists('generateNextSKL')) {
     /** Generate No. SKL dengan format: 0001/RM-SKL/07/2025 */

@@ -433,7 +433,7 @@ if (!function_exists('_status_component_color')) {
     {
         $status_lower = strtolower(trim($label));
 
-        if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses', 'proses penerimaan', 'proses pengadaan'], true)) {
+        if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses', 'proses penerimaan', 'proses pengadaan', 'proses verifikasi'], true)) {
             return 'yellow';
         }
         if (in_array($status_lower, ['disetujui', 'dikonfirmasi', 'diterima', 'selesai'], true)) {

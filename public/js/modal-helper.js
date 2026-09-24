@@ -44,14 +44,17 @@ function initModalList({
   };
 
   function buildUrl() {
-    if (!serverSearch) return url;
+    // url boleh berupa fungsi supaya dievaluasi ulang setiap modal dibuka
+    // (mis. bergantung pada pilihan lain di form)
+    const base = typeof url === "function" ? url() : url;
+    if (!serverSearch) return base;
     const params = new URLSearchParams();
     Object.entries(searchIds).forEach(([inputId, fieldKey]) => {
       const val = document.getElementById(inputId)?.value?.trim();
       if (val) params.set(fieldKey, val);
     });
     const qs = params.toString();
-    return qs ? `${url}?${qs}` : url;
+    return qs ? `${base}${base.includes("?") ? "&" : "?"}${qs}` : base;
   }
 
   function fetchData() {
