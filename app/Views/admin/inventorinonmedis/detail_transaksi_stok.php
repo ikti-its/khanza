@@ -18,6 +18,7 @@
                     if ($tipe === 'masuk') { $tipe_bg = '#DBEAFE'; $tipe_color = '#1E40AF'; }
                     elseif ($tipe === 'keluar') { $tipe_bg = '#FED7AA'; $tipe_color = '#9A3412'; }
                     elseif ($tipe === 'opname') { $tipe_bg = '#E9D5FF'; $tipe_color = '#5B21B6'; }
+                    elseif ($tipe === 'pengembalian') { $tipe_bg = '#CCFBF1'; $tipe_color = '#115E59'; }
                     ?>
                     <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: <?= $tipe_bg ?>; color: <?= $tipe_color ?>;">
                         <?= esc($baris['nama_tipe_transaksi_stok'] ?? '-') ?>
@@ -35,7 +36,7 @@
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white">
                         <?php
-                        $no_ref = $baris['no_masuk'] ?? $baris['no_keluar'] ?? '-';
+                        $no_ref = $baris['no_masuk'] ?? $baris['no_keluar'] ?? $baris['no_pengembalian'] ?? '-';
                         echo esc($no_ref);
                         ?>
                     </span>

@@ -28,6 +28,7 @@
                 searchNamaBarangPengembalian: 'nama_barang',
             },
             rowsPerPage: 10,
+            emptyText:   'Semua barang dari permintaan ini sudah dikembalikan atau sedang menunggu persetujuan.',
             onSelect: (item) => {
                 if (typeof tambahBarangPengembalian === 'function') {
                     tambahBarangPengembalian(item);

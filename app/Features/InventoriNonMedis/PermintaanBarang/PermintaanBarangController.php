@@ -162,13 +162,21 @@ final class PermintaanBarangController extends ControllerTemplate
 
         $boleh_sebagian = is_array($baris) ? $baris['boleh_pengiriman_sebagian'] ?? null : null;
 
+        // Pengembalian: status permintaan TIDAK berubah karenanya. Eligibilitas &
+        // sisa kuota memakai aturan yang sama dengan modul Pengembalian Barang.
+        $pengembalian = new \App\Features\InventoriNonMedis\PengembalianBarang\PengembalianBarangService($this->get_db());
+        // Aturan sama persis dengan modal pemilihan permintaan di form Pengembalian.
+        $bisa_ajukan_pengembalian = $pengembalian->permintaan_dapat_dikembalikan((int) $id) !== [];
+
         return view('admin/inventorinonmedis/detail_permintaan_barang', [
-            'judul'            => 'Detail ' . $this->title,
-            'breadcrumbs'      => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
-            'modul_path'       => $this->get_uri_path(),
-            'baris'            => $baris,
-            'detail_items'     => $detail_items,
-            'metode_pemenuhan' => $this->allow_partial_shipment($boleh_sebagian) ? 'Boleh Sebagian' : 'Tunggu Lengkap',
+            'judul'                    => 'Detail ' . $this->title,
+            'breadcrumbs'              => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
+            'modul_path'               => $this->get_uri_path(),
+            'baris'                    => $baris,
+            'detail_items'             => $detail_items,
+            'metode_pemenuhan'         => $this->allow_partial_shipment($boleh_sebagian) ? 'Boleh Sebagian' : 'Tunggu Lengkap',
+            'pengembalian_terkait'     => $pengembalian->pengembalian_by_permintaan((int) $id),
+            'bisa_ajukan_pengembalian' => $bisa_ajukan_pengembalian,
         ]);
     }
 

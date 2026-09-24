@@ -226,8 +226,47 @@
             <?php endif; ?>
         </div>
 
+        <?php if (!empty($pengembalian_terkait)): ?>
+            <!-- Pengembalian Terkait — hanya tampil bila ada. Status permintaan tidak
+                 berubah karena pengembalian. -->
+            <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
+                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 border-b border-slate-200 pb-2 dark:text-slate-400">Pengembalian Terkait</h4>
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-slate-500 dark:text-slate-400">
+                            <th class="text-left py-2 font-medium">No. Pengembalian</th>
+                            <th class="text-left py-2 font-medium">Tanggal</th>
+                            <th class="text-center py-2 font-medium">Status</th>
+                            <th class="text-center py-2 font-medium">Total Qty Diajukan</th>
+                            <th class="text-center py-2 font-medium">Total Qty Disetujui</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700 dark:text-slate-300">
+                        <?php foreach ($pengembalian_terkait as $pg): ?>
+                            <?php $pg_status = (string) ($pg['nama_status_pengembalian_barang'] ?? '-'); ?>
+                            <tr class="border-t border-slate-100 dark:border-slate-700/50">
+                                <td class="py-2">
+                                    <a href="/inventori-non-medis/pengembalian-barang/<?= (int) $pg['id_pengembalian'] ?>" class="font-semibold text-blue-600 hover:underline"><?= esc($pg['no_pengembalian']) ?></a>
+                                </td>
+                                <td class="py-2"><?= !empty($pg['tanggal']) ? date('d/m/Y, H:i', strtotime((string) $pg['tanggal'])) : '-' ?></td>
+                                <td class="py-2 text-center"><?= get_progress_badge_html($pg_status, _status_component_color($pg_status)) ?></td>
+                                <td class="py-2 text-center font-semibold"><?= (int) $pg['total_qty_diajukan'] ?></td>
+                                <td class="py-2 text-center font-semibold"><?= (int) $pg['id_status_pengembalian_barang'] === 3 ? (int) $pg['total_qty_diverifikasi'] : '-' ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php endif; ?>
+
         <!-- Tombol Aksi -->
         <div class="mt-5 pt-5 border-t border-gray-200 dark:border-gray-800 flex justify-end">
+            <?php if (!empty($bisa_ajukan_pengembalian)): ?>
+                <a href="/inventori-non-medis/pengembalian-barang/tambah?id_permintaan=<?= (int) ($baris['id_permintaan'] ?? 0) ?>"
+                    class="py-2 px-4 mr-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
+                    Ajukan Pengembalian
+                </a>
+            <?php endif; ?>
             <?php if ($can_ajukan_pembatalan): ?>
                 <form action="<?= $modul_path . '/sampel/' . (int) ($baris['id_permintaan'] ?? 0) ?>" method="post" onsubmit="return confirmAjukanPembatalan(event, this);">
                     <?= csrf_field() ?>

@@ -13,8 +13,8 @@
 ]) ?>
 
 <script>
-    // Hanya permintaan hasil PengembalianBarangController::permintaan_eligible(),
-    // terbaru dulu. Halaman pemakai mendefinisikan pilihPermintaanPengembalian(item).
+    // Hanya permintaan hasil PengembalianBarangService::permintaan_dapat_dikembalikan()
+    // (eligible DAN masih punya sisa kuota), terbaru dulu. Halaman pemakai mendefinisikan pilihPermintaanPengembalian(item).
     document.addEventListener("DOMContentLoaded", function () {
         initModalList({
             modalId:     'modalPermintaanPengembalian',
@@ -26,6 +26,7 @@
                 searchRuanganPermintaanPengembalian: 'nama_ruangan',
             },
             rowsPerPage: 10,
+            emptyText:   'Tidak ada permintaan yang masih memiliki sisa barang untuk dikembalikan.',
             onSelect: (item) => {
                 if (typeof pilihPermintaanPengembalian === 'function') {
                     pilihPermintaanPengembalian(item);

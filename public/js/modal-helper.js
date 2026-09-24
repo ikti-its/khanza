@@ -10,7 +10,9 @@ function initModalList({
   searchIds,
   rowsPerPage = 10,
   onSelect,
-  serverSearch = false
+  serverSearch = false,
+  // Pesan bila server mengembalikan data kosong (bukan karena pencarian).
+  emptyText = "Tidak ada hasil"
 }) {
   let data = [];
   let filtered = [];
@@ -79,7 +81,8 @@ function initModalList({
     const pageData = filtered.slice(start, end);
 
     if (pageData.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="${fields.length + 1}" class="text-center p-4 text-red-500">Tidak ada hasil</td></tr>`;
+      const msg = data.length === 0 ? emptyText : "Tidak ada hasil";
+      tbody.innerHTML = `<tr><td colspan="${fields.length + 1}" class="text-center p-4 text-red-500">${msg}</td></tr>`;
       updatePagination();
       return;
     }

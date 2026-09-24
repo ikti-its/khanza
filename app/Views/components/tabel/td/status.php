@@ -12,7 +12,7 @@ $bg_color  = '#F1F1F1';
 $dot_color = '#535353';
 $text_color = '#374151';
 
-if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses', 'proses penerimaan', 'proses pengadaan', 'proses verifikasi'])) {
+if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses', 'proses penerimaan', 'proses pengadaan', 'proses pengembalian'])) {
     $bg_color   = '#FEF3C7';
     $dot_color  = '#D97706';
     $text_color = '#92400E';
@@ -60,6 +60,11 @@ if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses'
     $bg_color   = '#E9D5FF';
     $dot_color  = '#7C3AED';
     $text_color = '#5B21B6';
+} elseif ($status_lower === 'pengembalian') {
+    // tipe transaksi stok masuk dari pengembalian unit (tidak dipakai modul lain)
+    $bg_color   = '#CCFBF1';
+    $dot_color  = '#0D9488';
+    $text_color = '#115E59';
 } elseif ($status_lower === '-') {
     $bg_color   = 'transparent';
     $dot_color  = 'transparent';

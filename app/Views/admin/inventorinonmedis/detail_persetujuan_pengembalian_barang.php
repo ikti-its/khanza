@@ -3,16 +3,12 @@
 
 <?php
 helper('tracking');
-$detail_items = $detail_items ?? [];
-$kuota        = $kuota ?? [];
-$is_draf      = $is_draf ?? false;
-$status_label = (string) ($baris['nama_status_pengembalian_barang'] ?? '-');
-$status_id    = (int) ($baris['id_status_pengembalian_barang'] ?? 0);
-// Qty Disetujui hanya bermakna setelah pengembalian disetujui gudang (3)
-$show_qty_disetujui = $status_id === 3;
-// Riwayat Persetujuan hanya setelah ada keputusan gudang (3 Selesai / 4 Ditolak)
-$sudah_diputuskan   = in_array($status_id, [3, 4], true);
-$tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', strtotime((string) $baris['tanggal_verifikasi'])) : '-';
+$detail_items    = $detail_items ?? [];
+$status_label    = (string) ($baris['nama_status_pengembalian_barang'] ?? '-');
+$status_id       = (int) ($baris['id_status_pengembalian_barang'] ?? 0);
+$is_pending      = $status_id === 2;
+$is_selesai      = $status_id === 3;
+$tanggal_putusan = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', strtotime((string) $baris['tanggal_verifikasi'])) : '-';
 ?>
 
 <div class="max-w-[85rem] py-6 lg:py-3 px-8 mx-auto">
@@ -62,12 +58,7 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
             <div class="sm:block md:flex items-center py-3">
                 <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Permintaan Asal</span>
                 <div class="w-full lg:w-1/4">
-                    <?php if (!empty($baris['id_permintaan'])): ?>
-                        <a href="/inventori-non-medis/permintaan-barang/<?= (int) $baris['id_permintaan'] ?>"
-                            class="text-sm font-semibold text-blue-600 hover:underline"><?= esc($baris['no_permintaan'] ?? '-') ?></a>
-                    <?php else: ?>
-                        <span class="text-sm font-semibold text-gray-900 dark:text-white">-</span>
-                    <?php endif; ?>
+                    <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['no_permintaan'] ?? '-') ?></span>
                 </div>
             </div>
 
@@ -80,18 +71,22 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
             </div>
         </div>
 
-        <?php if ($sudah_diputuskan): ?>
-            <!-- Riwayat Persetujuan — permanen, warna netral karena bukan kartu aksi.
-                 Pola sama dengan kartu Riwayat Pengajuan Pembatalan di detail Permintaan. -->
+        <?php if (!$is_pending): ?>
+            <!-- Riwayat Persetujuan — permanen, warna netral karena bukan kartu aksi. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
                 <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 dark:text-slate-400">Riwayat Persetujuan</h4>
                 <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold"
-                    style="<?= $status_id === 3 ? 'background-color:#D1FAE5; color:#065F46;' : 'background-color:#FEE2E2; color:#991B1B;' ?>">
-                    <?= esc(($status_id === 3 ? 'Disetujui pada ' : 'Ditolak pada ') . $tanggal_putusan) ?>
+                    style="<?= $is_selesai ? 'background-color:#D1FAE5; color:#065F46;' : 'background-color:#FEE2E2; color:#991B1B;' ?>">
+                    <?= esc(($is_selesai ? 'Disetujui pada ' : 'Ditolak pada ') . $tanggal_putusan) ?>
                 </span>
                 <dl class="mt-3 space-y-1 text-sm text-gray-700 dark:text-gray-300">
-                    <div><dt class="inline font-medium text-gray-500 dark:text-gray-400"><?= $status_id === 3 ? 'Catatan:' : 'Alasan Penolakan:' ?></dt> <dd class="inline"><?= esc($baris['catatan_verifikasi'] ?? '-') ?></dd></div>
+                    <div><dt class="inline font-medium text-gray-500 dark:text-gray-400"><?= $is_selesai ? 'Catatan:' : 'Alasan Penolakan:' ?></dt> <dd class="inline"><?= esc($baris['catatan_verifikasi'] ?? '-') ?></dd></div>
                     <div><dt class="inline font-medium text-gray-500 dark:text-gray-400">Diputuskan oleh:</dt> <dd class="inline"><?= esc($baris['petugas_gudang_nama'] ?? '-') ?></dd></div>
+                    <div><dt class="inline font-medium text-gray-500 dark:text-gray-400">Tanggal Keputusan:</dt> <dd class="inline"><?= esc($tanggal_putusan) ?></dd></div>
+                    <?php if (!empty($transaksi)): ?>
+                        <div><dt class="inline font-medium text-gray-500 dark:text-gray-400">Transaksi Stok:</dt>
+                            <dd class="inline"><a href="/inventori-non-medis/transaksi-stok/<?= (int) $transaksi['id_transaksi'] ?>" class="text-blue-600 hover:underline">Lihat transaksi masuk pengembalian</a></dd></div>
+                    <?php endif; ?>
                 </dl>
             </div>
         <?php endif; ?>
@@ -112,36 +107,26 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
                             <th class="text-left py-2 font-medium">Kode</th>
                             <th class="text-left py-2 font-medium">Nama Barang</th>
                             <th class="text-center py-2 font-medium">Satuan</th>
-                            <?php if ($is_draf): ?>
-                                <th class="text-center py-2 font-medium">Sisa Saat Ini</th>
-                            <?php endif; ?>
                             <th class="text-center py-2 font-medium">Qty Diajukan</th>
                             <th class="text-center py-2 font-medium">Qty Disetujui</th>
-                            <th class="text-left py-2 font-medium" style="padding-left:1rem;">Catatan</th>
+                            <th class="text-left py-2 font-medium" style="padding-left:1rem;">Catatan Unit</th>
                         </tr>
                     </thead>
                     <tbody class="text-slate-700 dark:text-slate-300">
                         <?php foreach ($detail_items as $item): ?>
-                            <?php
-                            $sisa     = (int) ($kuota[(int) $item['id_barang']]['sisa'] ?? 0);
-                            $melebihi = $is_draf && (int) $item['qty_diajukan'] > $sisa;
-                            ?>
                             <tr class="border-t border-slate-100 dark:border-slate-700/50">
                                 <td class="py-2 font-mono text-sm"><?= esc($item['kode_barang'] ?? '-') ?></td>
                                 <td class="py-2 font-semibold"><?= esc($item['nama_barang'] ?? '-') ?></td>
                                 <td class="py-2 text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
-                                <?php if ($is_draf): ?>
-                                    <td class="py-2 text-center <?= $melebihi ? 'text-red-600 font-semibold' : '' ?>"><?= $sisa ?></td>
-                                <?php endif; ?>
-                                <td class="py-2 text-center font-semibold <?= $melebihi ? 'text-red-600' : '' ?>"><?= (int) $item['qty_diajukan'] ?></td>
-                                <td class="py-2 text-center font-semibold"><?= $show_qty_disetujui ? (int) ($item['qty_diverifikasi'] ?? 0) : '-' ?></td>
+                                <td class="py-2 text-center font-semibold"><?= (int) $item['qty_diajukan'] ?></td>
+                                <td class="py-2 text-center font-semibold"><?= $is_selesai ? (int) ($item['qty_diverifikasi'] ?? 0) : '-' ?></td>
                                 <td class="py-2" style="padding-left:1rem;"><?= esc($item['catatan'] ?? '-') ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             <?php else: ?>
-                <p class="text-sm text-slate-400 italic text-center py-4">Belum ada barang.</p>
+                <p class="text-sm text-slate-400 italic text-center py-4">Tidak ada detail barang.</p>
             <?php endif; ?>
         </div>
 

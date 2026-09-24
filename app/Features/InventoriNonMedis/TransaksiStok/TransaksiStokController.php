@@ -29,6 +29,7 @@ final class TransaksiStokController extends ControllerTemplate
                 [SHOW,       REQUIRED, I::DTIME,  'tanggal',                  'Tanggal'],
                 [HIDE,       OPTIONAL, I::TEXT,   'no_keluar',                'No. Keluar'],
                 [HIDE,       OPTIONAL, I::TEXT,   'no_masuk',                 'No. Masuk'],
+                [HIDE,       OPTIONAL, I::TEXT,   'no_pengembalian',          'No. Pengembalian'],
                 [SHOW,       OPTIONAL, I::TEXT,   'keterangan',               'Keterangan'],
             ],
         );
@@ -69,7 +70,8 @@ final class TransaksiStokController extends ControllerTemplate
                 )
                 ->join('inventori_non_medis.penerimaan_barang pnb', 'ts.id_penerimaan = pnb.id_penerimaan', 'left')
                 ->join('inventori_non_medis.permintaan_barang pmb', 'ts.id_permintaan = pmb.id_permintaan', 'left')
-                ->select('ts.*, tts.nama_tipe_transaksi_stok, pnb.no_masuk, pmb.no_keluar')
+                ->join('inventori_non_medis.pengembalian_barang pgb', 'ts.id_pengembalian = pgb.id_pengembalian', 'left')
+                ->select('ts.*, tts.nama_tipe_transaksi_stok, pnb.no_masuk, pmb.no_keluar, pgb.no_pengembalian')
                 ->where('ts.id_transaksi', (int) $id)
                 ->get(),
         )->getRowArray();

@@ -110,7 +110,7 @@
                 foreach ($status_cols as $col) {
                     $val = strtolower(trim((string) ($baris[$col] ?? '')));
                     if ($val !== '' && $val !== '-' && !in_array($val, $editable_statuses)) {
-                        if (str_contains($modul_path, 'persetujuan') && in_array($val, ['proses permintaan', 'proses pengajuan', 'proses penerimaan'])) {
+                        if (str_contains($modul_path, 'persetujuan') && in_array($val, ['proses permintaan', 'proses pengajuan', 'proses penerimaan', 'proses pengembalian'])) {
                             continue;
                         }
                         $is_draf = false;

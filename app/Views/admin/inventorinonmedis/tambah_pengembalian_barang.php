@@ -89,8 +89,13 @@ $kuota        = $kuota ?? [];
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
                     Status
                 </label>
-                <input type="text" readonly value="<?= esc($baris['nama_status_pengembalian_barang'] ?? 'Draf') ?>"
-                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
+                <!-- Pola Permintaan Barang: Draf disimpan saja, Proses Pengembalian = ajukan
+                     sekaligus (kuota divalidasi ulang di server). -->
+                <select name="id_status_pengembalian_barang" id="id_status_pengembalian_barang"
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800">
+                    <option value="1" selected>Draf</option>
+                    <option value="2">Proses Pengembalian</option>
+                </select>
             </div>
 
             <!-- Alasan -->
@@ -308,6 +313,11 @@ $kuota        = $kuota ?? [];
         }
         // reportValidity() juga menegakkan min/max qty terhadap sisa
         if (!document.getElementById('myForm').reportValidity()) {
+            return false;
+        }
+        // Barang wajib hanya bila langsung diajukan (Draf boleh kosong)
+        if (document.getElementById('id_status_pengembalian_barang').value === '2' && jumlahBaris() === 0) {
+            peringatan('Tambahkan minimal satu barang sebelum mengajukan pengembalian.');
             return false;
         }
 
