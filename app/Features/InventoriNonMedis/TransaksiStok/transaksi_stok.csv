@@ -1,2 +1,2 @@
-id_transaksi,id_tipe_transaksi_stok,tanggal,id_penerimaan,id_permintaan,id_opname,keterangan
-0,0,2026-01-01 00:00:00,0,0,0,
+id_transaksi,id_tipe_transaksi_stok,tanggal,id_penerimaan,id_permintaan,id_opname,id_pengembalian,keterangan
+0,0,2026-01-01 00:00:00,0,0,0,,
