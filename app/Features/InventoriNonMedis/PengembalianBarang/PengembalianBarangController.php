@@ -100,13 +100,19 @@ final class PengembalianBarangController extends ControllerTemplate
             return $this->response->setJSON(['data' => $data]);
         }
 
-        $data = array_map(static fn(array $r): array => [
-            'id_permintaan'  => (int) $r['id_permintaan'],
-            'no_permintaan'  => (string) ($r['no_permintaan'] ?? '-'),
-            'tanggal'        => !empty($r['tanggal']) ? date('d/m/Y, H:i', (int) strtotime((string) $r['tanggal'])) : '-',
-            'master_ruangan' => (int) ($r['master_ruangan'] ?? 0),
-            'nama_ruangan'   => (string) ($r['nama_ruangan'] ?? '-'),
-        ], $this->service()->permintaan_dapat_dikembalikan()); // hanya yang masih punya sisa kuota
+        $data = array_map(
+            static fn(array $r): array => [
+                'id_permintaan' => (int) $r['id_permintaan'],
+                'no_permintaan' => (string) ($r['no_permintaan'] ?? '-'),
+                // setara !empty(): kosong bila key tidak ada, null, false, 0, 0.0, '', '0', atau []
+                'tanggal'        => !in_array($r['tanggal'] ?? null, [null, false, 0, 0.0, '', '0', []], true)
+                    ? date('d/m/Y, H:i', (int) strtotime((string) ($r['tanggal'] ?? '')))
+                    : '-',
+                'master_ruangan' => (int) ($r['master_ruangan'] ?? 0),
+                'nama_ruangan'   => (string) ($r['nama_ruangan'] ?? '-'),
+            ],
+            $this->service()->permintaan_dapat_dikembalikan(),
+        ); // hanya yang masih punya sisa kuota
 
         return $this->response->setJSON(['data' => $data]);
     }
@@ -163,7 +169,8 @@ final class PengembalianBarangController extends ControllerTemplate
             'baris'        => $baris,
             'detail_items' => $this->service()->detail_items((int) $id),
             'kuota'        => $this->kuota_by_barang((int) ($baris['id_permintaan'] ?? 0)),
-            'is_draf'      => (int) ($baris['id_status_pengembalian_barang'] ?? 0) === PengembalianBarangService::STATUS_DRAF,
+            'is_draf'      => (int) ($baris['id_status_pengembalian_barang'] ?? 0)
+                === PengembalianBarangService::STATUS_DRAF,
         ]);
     }
 
@@ -228,7 +235,9 @@ final class PengembalianBarangController extends ControllerTemplate
             $header['id_status_pengembalian_barang'] = PengembalianBarangService::STATUS_DRAF;
 
             if ($this->model->insert($header) === false) {
-                throw new \RuntimeException(implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.');
+                throw new \RuntimeException(
+                    implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.',
+                );
             }
             $id_pengembalian = (int) $db->insertID();
 
@@ -299,7 +308,9 @@ final class PengembalianBarangController extends ControllerTemplate
             $db->transException(true)->transBegin();
 
             if ($this->model->update($id, $header) === false) {
-                throw new \RuntimeException(implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.');
+                throw new \RuntimeException(
+                    implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.',
+                );
             }
 
             // sync detail: hapus semua lalu insert ulang
@@ -324,7 +335,9 @@ final class PengembalianBarangController extends ControllerTemplate
 
         session()->setFlashdata(
             'success',
-            $ajukan ? 'Pengembalian diajukan, menunggu persetujuan staf gudang.' : 'Data Pengembalian Barang berhasil diperbarui.',
+            $ajukan
+                ? 'Pengembalian diajukan, menunggu persetujuan staf gudang.'
+                : 'Data Pengembalian Barang berhasil diperbarui.',
         );
         return $this->home();
     }
@@ -334,7 +347,10 @@ final class PengembalianBarangController extends ControllerTemplate
     public function delete(int|string $id): string|RedirectResponse
     {
         $current = $this->model->find((int) $id);
-        if (is_array($current) && (int) ($current['id_status_pengembalian_barang'] ?? 0) !== PengembalianBarangService::STATUS_DRAF) {
+        if (
+            is_array($current)
+            && (int) ($current['id_status_pengembalian_barang'] ?? 0) !== PengembalianBarangService::STATUS_DRAF
+        ) {
             session()->setFlashdata('error', 'Pengembalian yang sudah diajukan tidak dapat dihapus.');
             return $this->home();
         }
@@ -369,6 +385,7 @@ final class PengembalianBarangController extends ControllerTemplate
      * eligible, dan kuota cukup. Melempar RuntimeException bila gagal.
      *
      * @throws \RuntimeException
+     * @throws \ReflectionException
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
     private function ajukan_dalam_transaksi(int $id, int $id_permintaan): void
@@ -395,15 +412,22 @@ final class PengembalianBarangController extends ControllerTemplate
             throw new \RuntimeException($error);
         }
 
-        if ($this->model->update($id, ['id_status_pengembalian_barang' => PengembalianBarangService::STATUS_PROSES_PENGEMBALIAN]) === false) {
-            throw new \RuntimeException(implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.');
+        if (
+            $this->model->update($id, [
+                'id_status_pengembalian_barang' => PengembalianBarangService::STATUS_PROSES_PENGEMBALIAN,
+            ]) === false
+        ) {
+            throw new \RuntimeException(
+                implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.',
+            );
         }
     }
 
     // Status tujuan dari form: hanya Draf (1) atau Proses Pengembalian (2).
     private function status_tujuan(): int
     {
-        return (int) ($this->request->getPost('id_status_pengembalian_barang') ?? 0) === PengembalianBarangService::STATUS_PROSES_PENGEMBALIAN
+        return (int) ($this->request->getPost('id_status_pengembalian_barang') ?? 0)
+        === PengembalianBarangService::STATUS_PROSES_PENGEMBALIAN
             ? PengembalianBarangService::STATUS_PROSES_PENGEMBALIAN
             : PengembalianBarangService::STATUS_DRAF;
     }
@@ -494,7 +518,7 @@ final class PengembalianBarangController extends ControllerTemplate
      * Cek setiap baris terhadap sisa_kuota(). Mengembalikan pesan error pertama,
      * atau null bila semua valid. Qty per barang dijumlahkan lebih dulu.
      *
-     * @param list<array{id_barang: int, qty: int}> $items
+     * @param list<array{id_barang: int, qty: int, ...}> $items
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
     private function validate_kuota(array $items, int $id_permintaan): null|string
@@ -534,6 +558,7 @@ final class PengembalianBarangController extends ControllerTemplate
         if ($ids === [])
             return [];
 
+        /** @var list<array{id_barang: int|string, nama_barang: string|null}> $rows */
         $rows = $this->guarded(
             $this
                 ->get_db()

@@ -17,7 +17,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         parent::__construct(
             new PersetujuanPengembalianBarangModel(),
             [
-                ['Inventori Non Medis',            'inventori_non_medis'],
+                ['Inventori Non Medis',             'inventori_non_medis'],
                 ['Persetujuan Pengembalian Barang', 'persetujuan_pengembalian_barang'],
             ],
             'Persetujuan Pengembalian Barang',
@@ -219,7 +219,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                         "Qty disetujui \"{$item['nama_barang']}\" ({$qty}) melebihi qty diajukan ({$diajukan}).",
                     );
                 }
-                $id_barang                        = (int) $item['id_barang'];
+                $id_barang                       = (int) $item['id_barang'];
                 $diajukan_per_barang[$id_barang] = ($diajukan_per_barang[$id_barang] ?? 0) + $diajukan;
                 $verif_per_barang[$id_barang]    = ($verif_per_barang[$id_barang] ?? 0) + $qty;
             }
@@ -234,7 +234,9 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
             $sisa          = $service->sisa_kuota($id_permintaan);
             foreach ($verif_per_barang as $id_barang => $qty) {
                 if (!array_key_exists($id_barang, $sisa)) {
-                    throw new \RuntimeException("Barang ID {$id_barang} tidak pernah dikeluarkan untuk permintaan asal.");
+                    throw new \RuntimeException(
+                        "Barang ID {$id_barang} tidak pernah dikeluarkan untuk permintaan asal.",
+                    );
                 }
                 $kapasitas = $sisa[$id_barang] + $diajukan_per_barang[$id_barang];
                 if ($qty > $kapasitas) {
@@ -297,7 +299,9 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                 'catatan_verifikasi'            => $catatan !== '' ? $catatan : null,
             ]);
             if ($ok === false) {
-                throw new \RuntimeException(implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.');
+                throw new \RuntimeException(
+                    implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.',
+                );
             }
 
             $db->transCommit();
@@ -348,7 +352,9 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                 'catatan_verifikasi'            => $catatan,
             ]);
             if ($ok === false) {
-                throw new \RuntimeException(implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.');
+                throw new \RuntimeException(
+                    implode(' ', $this->model->errors()) ?: 'Gagal memperbarui dokumen pengembalian.',
+                );
             }
 
             $db->transCommit();
@@ -382,6 +388,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
      */
     private function locked_header(int $id, S $service): array
     {
+        /** @var array{id_pengembalian: int|string, id_permintaan: int|string}|null $header */
         $header = $this->guarded(
             $this
                 ->get_db()
@@ -469,16 +476,14 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         return is_array($row) ? $row['harga_satuan'] : null;
     }
 
-    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    /**
+     * @throws \RuntimeException
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     */
     private function stok_barang(int $id_barang): int
     {
         $row = $this->guarded(
-            $this
-                ->get_db()
-                ->table('inventori_non_medis.barang')
-                ->select('stok')
-                ->where('id_barang', $id_barang)
-                ->get(),
+            $this->get_db()->table('inventori_non_medis.barang')->select('stok')->where('id_barang', $id_barang)->get(),
         )->getRowArray();
         if (!is_array($row)) {
             throw new \RuntimeException("Barang ID {$id_barang} tidak ditemukan.");

@@ -14,10 +14,10 @@ use CodeIgniter\Database\BaseConnection;
 final class PengembalianBarangService
 {
     // id sesuai status_pengembalian_barang.csv
-    public const STATUS_DRAF              = 1;
+    public const STATUS_DRAF                = 1;
     public const STATUS_PROSES_PENGEMBALIAN = 2;
-    public const STATUS_SELESAI           = 3;
-    public const STATUS_DITOLAK           = 4;
+    public const STATUS_SELESAI             = 3;
+    public const STATUS_DITOLAK             = 4;
 
     // tipe_transaksi_stok.csv
     public const TIPE_TRANSAKSI_KELUAR       = 2;
@@ -64,10 +64,7 @@ final class PengembalianBarangService
 
         /** @var list<array<string, mixed>> */
         return $this->guarded(
-            $builder
-                ->orderBy('pb.tanggal', 'DESC')
-                ->orderBy('pb.id_permintaan', 'DESC')
-                ->get(),
+            $builder->orderBy('pb.tanggal', 'DESC')->orderBy('pb.id_permintaan', 'DESC')->get(),
         )->getResultArray();
     }
 
@@ -83,13 +80,17 @@ final class PengembalianBarangService
      */
     public function permintaan_dapat_dikembalikan(null|int $id_permintaan = null): array
     {
-        return array_values(array_filter(
-            $this->permintaan_eligible($id_permintaan),
-            fn(array $p): bool => array_filter(
-                $this->sisa_kuota((int) $p['id_permintaan']),
-                static fn(int $sisa): bool => $sisa > 0,
-            ) !== [],
-        ));
+        // foreach (bukan closure) supaya DatabaseException dari sisa_kuota() tercakup @throws method ini
+        $hasil = [];
+        foreach ($this->permintaan_eligible($id_permintaan) as $p) {
+            if (
+                array_filter($this->sisa_kuota((int) $p['id_permintaan']), static fn(int $sisa): bool => $sisa > 0)
+                !== []
+            ) {
+                $hasil[] = $p;
+            }
+        }
+        return $hasil;
     }
 
     /**
@@ -123,8 +124,7 @@ final class PengembalianBarangService
      */
     public function rincian_kuota(int $id_permintaan): array
     {
-        $rows = $this->guarded($this->db->query(
-            '
+        $rows = $this->guarded($this->db->query('
             WITH keluar AS (
                 SELECT tsd.id_barang, SUM(tsd.qty) AS qty_keluar
                 FROM inventori_non_medis.transaksi_stok ts
@@ -153,18 +153,16 @@ final class PengembalianBarangService
             LEFT JOIN inventori_non_medis.barang b ON b.id_barang = k.id_barang
             LEFT JOIN inventori_non_medis.satuan s ON s.id_satuan = b.id_satuan
             ORDER BY b.nama_barang ASC
-            ',
-            [
-                $id_permintaan,
-                self::TIPE_TRANSAKSI_KELUAR,
-                self::STATUS_SELESAI,
-                $id_permintaan,
-                self::STATUS_SELESAI,
-                self::STATUS_PROSES_PENGEMBALIAN,
-            ],
-        ))->getResultArray();
+            ', [
+            $id_permintaan,
+            self::TIPE_TRANSAKSI_KELUAR,
+            self::STATUS_SELESAI,
+            $id_permintaan,
+            self::STATUS_SELESAI,
+            self::STATUS_PROSES_PENGEMBALIAN,
+        ]))->getResultArray();
 
-        return array_map(static fn(array $r): array => [
+        return array_values(array_map(static fn(array $r): array => [
             'id_barang'          => (int) $r['id_barang'],
             'kode_barang'        => (string) ($r['kode_barang'] ?? '-'),
             'nama_barang'        => (string) ($r['nama_barang'] ?? '-'),
@@ -172,7 +170,7 @@ final class PengembalianBarangService
             'qty_keluar'         => (int) $r['qty_keluar'],
             'sudah_dikembalikan' => (int) $r['sudah_dikembalikan'],
             'sisa'               => (int) $r['sisa'],
-        ], $rows);
+        ], $rows));
     }
 
     /**
@@ -208,8 +206,7 @@ final class PengembalianBarangService
     public function pengembalian_by_permintaan(int $id_permintaan): array
     {
         /** @var list<array<string, mixed>> */
-        return $this->guarded($this->db->query(
-            '
+        return $this->guarded($this->db->query('
             SELECT p.id_pengembalian, p.no_pengembalian, p.tanggal,
                    p.id_status_pengembalian_barang, s.nama_status_pengembalian_barang,
                    COALESCE(SUM(d.qty_diajukan), 0)     AS total_qty_diajukan,
@@ -222,9 +219,7 @@ final class PengembalianBarangService
             GROUP BY p.id_pengembalian, p.no_pengembalian, p.tanggal,
                      p.id_status_pengembalian_barang, s.nama_status_pengembalian_barang
             ORDER BY p.tanggal DESC, p.id_pengembalian DESC
-            ',
-            [$id_permintaan],
-        ))->getResultArray();
+            ', [$id_permintaan]))->getResultArray();
     }
 
     /**
