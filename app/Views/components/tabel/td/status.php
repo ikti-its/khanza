@@ -7,7 +7,7 @@
 // Mapping warna badge berdasarkan teks status
 $status_lower = strtolower(trim($elem));
 
-// Default: abu-abu (Draf/Draft/unknown)
+// Default: abu-abu (Draf/unknown)
 $bg_color  = '#F1F1F1';
 $dot_color = '#535353';
 $text_color = '#374151';
@@ -44,7 +44,7 @@ if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses'
     $bg_color   = '#FEE2E2';
     $dot_color  = '#DC2626';
     $text_color = '#991B1B';
-} elseif ($status_lower === 'draft') {
+} elseif ($status_lower === 'draf') {
     $bg_color   = '#F1F1F1';
     $dot_color  = '#535353';
     $text_color = '#374151';

@@ -457,7 +457,7 @@ if (!function_exists('_status_component_color')) {
         if (in_array($status_lower, ['pengadaan dibatalkan', 'pengajuan ditolak'], true)) {
             return 'red';
         }
-        if ($status_lower === 'draft') {
+        if ($status_lower === 'draf') {
             return 'gray';
         }
         if ($status_lower === 'masuk') {

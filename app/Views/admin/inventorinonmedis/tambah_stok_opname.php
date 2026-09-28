@@ -53,7 +53,7 @@ $readonly = $readonly ?? false;
                 </label>
                 <select name="id_status_stok_opname"
                         class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800" <?= $readonly ? 'disabled' : '' ?>>
-                    <option value="1" <?= (($baris['id_status_stok_opname'] ?? 1) == 1) ? 'selected' : '' ?>>Draft</option>
+                    <option value="1" <?= (($baris['id_status_stok_opname'] ?? 1) == 1) ? 'selected' : '' ?>>Draf</option>
                     <option value="2" <?= (($baris['id_status_stok_opname'] ?? '') == 2) ? 'selected' : '' ?>>Selesai</option>
                 </select>
 

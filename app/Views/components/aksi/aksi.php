@@ -68,7 +68,7 @@
             && array_any($modul_draf_gate, fn($m) => str_contains($modul_path, $m));
 
         if (isset($aksi['cetak'])  && $aksi['cetak']  === true) {
-            // Pengadaan: cetak hanya saat Selesai (bukan Draft/Dibatalkan)
+            // Pengadaan: cetak hanya saat Selesai (bukan Draf/Dibatalkan)
             if ($is_modul_draf && str_contains($modul_path, 'pengadaan-barang')) {
                 $status_cols_c = array_filter(array_keys($baris), fn($k) => str_contains($k, 'nama_status'));
                 $show_cetak = false;
@@ -106,7 +106,7 @@
                 // Cek apakah baris punya status dan bukan Draf — tampilkan "Lihat Detail" (readonly) bukan "Ubah"
                 $status_cols = array_filter(array_keys($baris), fn($k) => str_contains($k, 'nama_status'));
                 $is_draf = true;
-                $editable_statuses = ['draf', 'draft', 'diproses', 'proses pengadaan', 'proses penerimaan'];
+                $editable_statuses = ['draf', 'diproses', 'proses pengadaan', 'proses penerimaan'];
                 foreach ($status_cols as $col) {
                     $val = strtolower(trim((string) ($baris[$col] ?? '')));
                     if ($val !== '' && $val !== '-' && !in_array($val, $editable_statuses)) {
@@ -136,7 +136,7 @@
                 // Sembunyikan hapus jika status bukan Draf
                 $status_cols_h = array_filter(array_keys($baris), fn($k) => str_contains($k, 'nama_status'));
                 $is_draf_h = true;
-                $editable_statuses_h = ['draf', 'draft', 'diproses', 'proses pengadaan', 'proses penerimaan'];
+                $editable_statuses_h = ['draf', 'diproses', 'proses pengadaan', 'proses penerimaan'];
                 foreach ($status_cols_h as $col) {
                     $val = strtolower(trim((string) ($baris[$col] ?? '')));
                     if ($val !== '' && $val !== '-' && !in_array($val, $editable_statuses_h)) {
