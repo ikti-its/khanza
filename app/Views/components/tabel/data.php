@@ -5,6 +5,8 @@ $tabel_ringkas = str_starts_with((string) ($modul_path ?? ''), '/inventori-non-m
     <style>
         .tabel-ringkas td {
             width: auto !important;
+            /* kolom Aksi (div inline-flex) ikut rata tengah seperti header & kolom lain */
+            text-align: center;
         }
 
         .tabel-ringkas td>div {

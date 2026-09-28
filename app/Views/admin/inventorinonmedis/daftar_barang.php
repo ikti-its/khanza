@@ -27,7 +27,7 @@
 
                     <!-- Table — gaya ringkas sama dengan components/tabel/data.php untuk Inventori Non Medis -->
                     <style>
-                        .tabel-ringkas td { width: auto !important; }
+                        .tabel-ringkas td { width: auto !important; text-align: center; }
                         .tabel-ringkas td>div { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
                         .tabel-ringkas td[data-jenis="nama"] { white-space: normal !important; min-width: 7rem; }
                     </style>
