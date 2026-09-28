@@ -20,7 +20,7 @@ class CopyIcon extends BaseCommand
                 CLI::write("Icon file '{$path}' not found");
                 continue;
             }
-            if (explode('.', $path)[1] !== 'svg') {
+            if (strtolower(pathinfo($path, PATHINFO_EXTENSION)) !== 'svg') {
                 CLI::write("Icon file '{$path}' has to be .svg");
                 continue;
             }
