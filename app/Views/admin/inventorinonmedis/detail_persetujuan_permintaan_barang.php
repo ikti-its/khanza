@@ -177,23 +177,27 @@ helper('tracking');
                     <?= csrf_field() ?>
                     <input type="hidden" name="id_status_permintaan_barang" value="6">
                     <input type="hidden" name="petugas_penerima" id="petugas_penerima" value="">
-                    <div class="sm:block md:flex md:items-center gap-x-3">
-                        <label class="block mb-1 md:mb-0 text-sm font-medium text-gray-600 dark:text-gray-400 md:w-1/4">
+                    <!-- Baris input: pola form (label md:w-1/4, input lg:w-1/4) sama dengan ubah_persetujuan_pengembalian_barang -->
+                    <div class="sm:block md:flex items-center">
+                        <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4 flex-shrink-0">
                             Petugas Penerima<span class="text-red-600">*</span>
                         </label>
-                        <div class="w-full lg:w-1/3 flex gap-x-2">
+                        <div class="w-full lg:w-1/4 flex gap-x-2">
                             <input type="text" id="petugas_penerima_display" readonly placeholder="Klik cari petugas penerima..."
                                 onclick="open_modalPetugas()"
-                                class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full bg-white cursor-pointer dark:border-gray-600 dark:text-white">
+                                class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white cursor-pointer bg-white">
                             <button type="button" onclick="open_modalPetugas()"
-                                class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 w-10 h-[38px] flex-shrink-0 shadow-sm">
+                                class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 flex-shrink-0 shadow-sm" style="height:38px;">
                                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </button>
                         </div>
+                    </div>
+                    <!-- Tombol: baris bawah, rata kanan (pola components/form/submit_button) -->
+                    <div class="mt-5 pt-5 border-t flex justify-end gap-x-2" style="border-color:#A7F3D0;">
                         <button type="submit"
-                            class="mt-3 md:mt-0 py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
+                            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
                             Konfirmasi Terima
                         </button>
                     </div>
@@ -212,36 +216,38 @@ helper('tracking');
                 <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: #FEF3C7; color: #92400E;">
                     Menunggu Persetujuan Pembatalan
                 </span>
-                <p class="mt-3 mb-3 text-sm text-gray-700 dark:text-gray-300">Alasan: <?= esc($baris['alasan_pembatalan'] ?? '-') ?></p>
+                <p class="mt-3 mb-5 text-sm text-gray-700 dark:text-gray-300">Alasan: <?= esc($baris['alasan_pembatalan'] ?? '-') ?></p>
                 <form id="formAksiPembatalan" action="<?= $modul_path . '/submitedit/' . (int) ($baris['id_permintaan'] ?? 0) ?>" method="post">
                     <?= csrf_field() ?>
                     <input type="hidden" name="aksi_pembatalan" id="aksi_pembatalan_input" value="">
                     <input type="hidden" name="petugas_gudang_pembatalan" id="petugas_gudang_pembatalan" value="">
-                    <div class="sm:block md:flex md:items-center gap-x-3">
-                        <label class="block mb-1 md:mb-0 text-sm font-medium text-gray-600 dark:text-gray-400 md:w-1/4">
+                    <!-- Baris input: pola form (label md:w-1/4, input lg:w-1/4) sama dengan ubah_persetujuan_pengembalian_barang -->
+                    <div class="sm:block md:flex items-center">
+                        <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4 flex-shrink-0">
                             Staf Gudang<span class="text-red-600">*</span>
                         </label>
-                        <div class="w-full lg:w-1/3 flex gap-x-2">
+                        <div class="w-full lg:w-1/4 flex gap-x-2">
                             <input type="text" id="petugas_gudang_pembatalan_display" readonly placeholder="Klik cari staf gudang..."
                                 onclick="open_modalPetugas()"
-                                class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full bg-white cursor-pointer dark:border-gray-600 dark:text-white">
+                                class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white cursor-pointer bg-white">
                             <button type="button" onclick="open_modalPetugas()"
-                                class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 w-10 h-[38px] flex-shrink-0 shadow-sm">
+                                class="inline-flex justify-center items-center p-2 text-sm font-medium text-white bg-blue-600 rounded-lg border border-transparent hover:bg-blue-700 focus:outline-none transition-all w-10 flex-shrink-0 shadow-sm" style="height:38px;">
                                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </button>
                         </div>
-                        <div class="flex gap-x-2 mt-3 md:mt-0">
-                            <button type="button" onclick="submitAksiPembatalan('tolak')"
-                                class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100" style="background-color:#FEF2F2; border-color:#FECACA; color:#B91C1C;">
-                                Tolak Pembatalan
-                            </button>
-                            <button type="button" onclick="submitAksiPembatalan('setuju')"
-                                class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
-                                Setujui Pembatalan
-                            </button>
-                        </div>
+                    </div>
+                    <!-- Tombol: baris bawah, rata kanan — sama dengan Tolak/Setujui di Persetujuan Pengembalian -->
+                    <div class="mt-5 pt-5 border-t flex justify-end gap-x-2" style="border-color:#FDE68A;">
+                        <button type="button" onclick="submitAksiPembatalan('tolak')"
+                            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100" style="background-color:#FEF2F2; border-color:#FECACA; color:#B91C1C;">
+                            Tolak Pembatalan
+                        </button>
+                        <button type="button" onclick="submitAksiPembatalan('setuju')"
+                            class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
+                            Setujui Pembatalan
+                        </button>
                     </div>
                 </form>
             </div>
