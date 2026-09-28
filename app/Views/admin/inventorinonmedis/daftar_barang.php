@@ -25,8 +25,13 @@
                         </button>
                     </div>
 
-                    <!-- Table -->
-                    <div class="overflow-x-auto w-full" style="max-height: 600px; overflow-y: auto;">
+                    <!-- Table — gaya ringkas sama dengan components/tabel/data.php untuk Inventori Non Medis -->
+                    <style>
+                        .tabel-ringkas td { width: auto !important; }
+                        .tabel-ringkas td>div { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+                        .tabel-ringkas td[data-jenis="nama"] { white-space: normal !important; min-width: 7rem; }
+                    </style>
+                    <div class="overflow-x-auto w-full tabel-ringkas" style="max-height: 600px; overflow-y: auto;">
                         <table id="myTable" class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                             <thead class="sticky top-0 z-10 bg-gray-50 dark:bg-slate-800">
                                 <tr>
@@ -74,7 +79,7 @@
                                             <span class="text-center block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= esc($baris['kode_barang'] ?? '-') ?></span>
                                         </div>
                                     </td>
-                                    <td class="h-px w-64 whitespace-nowrap">
+                                    <td data-jenis="nama" class="h-px w-64 whitespace-nowrap">
                                         <div class="px-6 py-3">
                                             <span class="text-center block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= esc($baris['nama_barang'] ?? '-') ?></span>
                                         </div>

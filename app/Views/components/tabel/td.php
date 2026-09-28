@@ -35,6 +35,12 @@
         }
 
         $jenis_render = in_array($jenis[$i], ['kosong', 'readonly']) ? 'teks' : $jenis[$i];
-        echo view('components/tabel/td/' . $jenis_render, $data);
+        $html_td = view('components/tabel/td/' . $jenis_render, $data);
+        // Inventori Non Medis: tandai jenis sel supaya teks panjang boleh turun baris
+        // (lihat .tabel-ringkas di components/tabel/data.php). Modul lain tidak berubah.
+        if (str_starts_with((string) ($modul_path ?? ''), '/inventori-non-medis/')) {
+            $html_td = preg_replace('/<td\b/', '<td data-jenis="' . $jenis_render . '"', $html_td, 1);
+        }
+        echo $html_td;
     }
 ?>
