@@ -86,20 +86,20 @@
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold">Kode</th>
-                                <th class="p-3 border text-center font-semibold">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold">Satuan</th>
-                                <th class="p-3 border text-center font-semibold w-24">Stok Saat Ini</th>
-                                <th class="p-3 border text-center font-semibold w-24">Qty</th>
-                                <th class="p-3 border text-center font-semibold w-28">Harga</th>
-                                <th class="p-3 border text-center font-semibold w-32">Qty Disetujui</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:6rem;">Stok Saat Ini</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:6rem;">Qty</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:7rem;">Harga</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:8rem;">Qty Disetujui</th>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
                             <?php if (!empty($detail_items ?? [])): ?>
                                 <?php foreach ($detail_items as $item): ?>
                                 <tr>
-                                    <td class="p-3 border text-center"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                                    <td class="p-3 border text-center whitespace-nowrap"><?= esc($item['kode_barang'] ?? '-') ?></td>
                                     <td class="p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
                                     <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
                                     <td class="p-3 border text-center"><?= isset($item['stok']) ? esc((string) $item['stok']) : '-' ?></td>

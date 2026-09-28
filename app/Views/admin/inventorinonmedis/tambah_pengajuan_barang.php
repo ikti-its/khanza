@@ -86,19 +86,19 @@ $readonly = $readonly ?? false;
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold">Kode</th>
-                                <th class="p-3 border text-center font-semibold">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold">Satuan</th>
-                                <th class="p-3 border text-center font-semibold w-28">Qty</th>
-                                <th class="p-3 border text-center font-semibold w-36">Harga</th>
-                                <th class="p-3 border text-center font-semibold w-20">Hapus</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:7rem;">Qty</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:9rem;">Harga</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
                             <?php if (!empty($detail_items ?? [])): ?>
                                 <?php foreach ($detail_items as $item): ?>
                                 <tr data-id="<?= $item['id_barang'] ?>">
-                                    <td class="p-3 border text-center"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                                    <td class="p-3 border text-center whitespace-nowrap"><?= esc($item['kode_barang'] ?? '-') ?></td>
                                     <td class="p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
                                     <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
                                     <td class="p-3 border text-center">
@@ -156,7 +156,7 @@ $readonly = $readonly ?? false;
         var tr = document.createElement('tr');
         tr.dataset.id = idBarang;
         tr.innerHTML = `
-            <td class="p-3 border text-center">${kodeBarang}</td>
+            <td class="p-3 border text-center whitespace-nowrap">${kodeBarang}</td>
             <td class="p-3 border">${namaBarang}</td>
             <td class="p-3 border text-center">${namaSatuan}</td>
             <td class="p-3 border text-center">

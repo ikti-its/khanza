@@ -97,28 +97,28 @@ $readonly = $readonly ?? false;
             <!-- Detail Barang -->
             <div class="mt-8 mb-4 border-t pt-5">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-base font-semibold text-gray-800 dark:text-white">Detail Barang Pengadaan</h3>
+                    <h3 class="text-base font-semibold text-gray-800 dark:text-white">Detail Barang <span class="text-red-600">*</span></h3>
                 </div>
 
                 <div class="border rounded-lg overflow-hidden">
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold">Kode</th>
-                                <th class="p-3 border text-center font-semibold">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold">Satuan</th>
-                                <th class="p-3 border text-center font-semibold w-24">Qty Disetujui</th>
-                                <th class="p-3 border text-center font-semibold w-24">Sudah Dipesan</th>
-                                <th class="p-3 border text-center font-semibold w-28">Qty Pesan</th>
-                                <th class="p-3 border text-center font-semibold w-36">Harga Satuan</th>
-                                <th class="p-3 border text-center font-semibold w-20">Hapus</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:6rem;">Qty Disetujui</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:6rem;">Sudah Dipesan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:7rem;">Qty Pesan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:9rem;">Harga Satuan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
                             <?php if ($isEdit && !empty($detail_items ?? [])): ?>
                                 <?php foreach ($detail_items as $item): ?>
                                 <tr data-id="<?= $item['id_barang'] ?>">
-                                    <td class="p-3 border text-center"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                                    <td class="p-3 border text-center whitespace-nowrap"><?= esc($item['kode_barang'] ?? '-') ?></td>
                                     <td class="p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
                                     <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
                                     <td class="p-3 border text-center text-gray-500">-</td>
@@ -208,7 +208,7 @@ $readonly = $readonly ?? false;
                     var tr = document.createElement('tr');
                     tr.dataset.id = item.id_barang;
                     tr.innerHTML = `
-                        <td class="p-3 border text-center">${item.kode_barang ?? '-'}</td>
+                        <td class="p-3 border text-center whitespace-nowrap">${item.kode_barang ?? '-'}</td>
                         <td class="p-3 border">${item.nama_barang ?? '-'}</td>
                         <td class="p-3 border text-center">${item.nama_satuan ?? '-'}</td>
                         <td class="p-3 border text-center text-gray-500">${item.qty_disetujui}</td>

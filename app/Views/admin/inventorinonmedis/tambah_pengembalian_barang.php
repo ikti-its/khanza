@@ -100,44 +100,41 @@ $kuota        = $kuota ?? [];
 
             <!-- Alasan -->
             <div class="mb-5 sm:block md:flex items-start">
-                <label class="block mb-2 md:mb-0 md:pt-2 text-sm text-gray-900 dark:text-white md:w-1/4">
+                <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4 flex-shrink-0" style="padding-top:0.5rem;">
                     Alasan Pengembalian<span class="text-red-600">*</span>
                 </label>
                 <textarea name="alasan" id="alasan" rows="3" required
                     placeholder="Mengapa barang dikembalikan..."
-                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-3/4 dark:border-gray-600 dark:text-white dark:bg-slate-800"><?= esc($baris['alasan'] ?? '') ?></textarea>
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full flex-1 dark:border-gray-600 dark:text-white dark:bg-slate-800"><?= esc($baris['alasan'] ?? '') ?></textarea>
             </div>
 
             <!-- Detail Barang -->
             <div class="mt-8 mb-4 border-t pt-5">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-base font-semibold text-gray-800 dark:text-white">Barang yang Dikembalikan</h3>
+                    <h3 class="text-base font-semibold text-gray-800 dark:text-white">Detail Barang <span class="text-red-600">*</span></h3>
                     <button type="button" id="btnPilihBarang" onclick="bukaModalBarang()"
                         class="inline-flex items-center gap-x-1.5 py-2 px-3 text-sm font-semibold rounded-lg border border-transparent bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                         <?= empty($baris['id_permintaan']) ? 'disabled' : '' ?>>
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                         </svg>
-                        Pilih Barang
+                        Pilih Item
                     </button>
                 </div>
-                <p class="text-xs text-gray-500 mb-3">
-                    Hanya barang yang benar-benar dikeluarkan untuk permintaan asal. Sisa = qty keluar dikurangi pengembalian yang sudah diajukan atau selesai; draf tidak mengurangi sisa.
-                </p>
 
                 <div class="border rounded-lg overflow-hidden">
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold">Kode</th>
-                                <th class="p-3 border text-center font-semibold">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold">Satuan</th>
-                                <th class="p-3 border text-center font-semibold">Qty Keluar</th>
-                                <th class="p-3 border text-center font-semibold">Sudah Dikembalikan</th>
-                                <th class="p-3 border text-center font-semibold">Sisa</th>
-                                <th class="p-3 border text-center font-semibold w-32">Qty Diajukan</th>
-                                <th class="p-3 border text-center font-semibold">Catatan</th>
-                                <th class="p-3 border text-center font-semibold w-20">Hapus</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Qty Keluar</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Sudah Dikembalikan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" title="Qty keluar dikurangi pengembalian yang sudah diajukan atau selesai (draf tidak mengurangi sisa)">Sisa</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:8rem;">Qty Diajukan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Catatan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
@@ -148,7 +145,7 @@ $kuota        = $kuota ?? [];
                                     $sisa = (int) ($k['sisa'] ?? 0);
                                     ?>
                                     <tr data-id="<?= (int) $item['id_barang'] ?>">
-                                        <td class="p-3 border text-center">
+                                        <td class="p-3 border text-center whitespace-nowrap">
                                             <?= esc($item['kode_barang'] ?? '-') ?>
                                             <input type="hidden" name="detail_id_barang[]" value="<?= (int) $item['id_barang'] ?>">
                                         </td>
@@ -172,7 +169,7 @@ $kuota        = $kuota ?? [];
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr id="emptyRow">
-                                    <td colspan="9" class="p-4 text-center text-gray-400 italic">Belum ada barang dipilih</td>
+                                    <td colspan="9" class="p-4 text-center text-gray-400 italic">Belum ada item dipilih</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
@@ -186,7 +183,7 @@ $kuota        = $kuota ?? [];
 </div>
 
 <script>
-    var EMPTY_ROW = '<tr id="emptyRow"><td colspan="9" class="p-4 text-center text-gray-400 italic">Belum ada barang dipilih</td></tr>';
+    var EMPTY_ROW = '<tr id="emptyRow"><td colspan="9" class="p-4 text-center text-gray-400 italic">Belum ada item dipilih</td></tr>';
 
     function escapeHtml(value) {
         return String(value ?? '').replace(/[&<>"']/g, function (c) {
@@ -272,7 +269,7 @@ $kuota        = $kuota ?? [];
         var tr = document.createElement('tr');
         tr.dataset.id = idBarang;
         tr.innerHTML = `
-            <td class="p-3 border text-center">
+            <td class="p-3 border text-center whitespace-nowrap">
                 ${escapeHtml(item.kode_barang)}
                 <input type="hidden" name="detail_id_barang[]" value="${idBarang}">
             </td>

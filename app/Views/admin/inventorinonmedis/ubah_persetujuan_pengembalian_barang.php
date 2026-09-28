@@ -72,11 +72,11 @@ $detail_items = $detail_items ?? [];
 
             <!-- Alasan dari unit -->
             <div class="mb-5 sm:block md:flex items-start">
-                <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
+                <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4 flex-shrink-0" style="padding-top:0.5rem;">
                     Alasan Pengembalian
                 </label>
                 <textarea readonly rows="2"
-                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed"><?= esc($baris['alasan'] ?? '-') ?></textarea>
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full flex-1 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed"><?= esc($baris['alasan'] ?? '-') ?></textarea>
             </div>
 
             <!-- Staf Gudang -->
@@ -101,42 +101,37 @@ $detail_items = $detail_items ?? [];
 
             <!-- Catatan Persetujuan -->
             <div class="mb-5 sm:block md:flex items-start">
-                <label for="catatan_verifikasi" class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
+                <label for="catatan_verifikasi" class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4 flex-shrink-0" style="padding-top:0.5rem;">
                     Catatan Persetujuan
-                    <span class="block text-xs text-gray-500">Wajib diisi bila menolak</span>
                 </label>
                 <textarea name="catatan_verifikasi" id="catatan_verifikasi" rows="2"
-                    placeholder="Hasil pemeriksaan fisik, atau alasan penolakan..."
-                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white dark:bg-slate-800"></textarea>
+                    placeholder="Hasil pemeriksaan fisik (wajib diisi bila menolak)..."
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full flex-1 dark:border-gray-600 dark:text-white dark:bg-slate-800"></textarea>
             </div>
 
             <!-- Detail Barang -->
-            <div class="mb-4 border-t pt-5" style="margin-top:2rem;">
+            <div class="mt-8 mb-4 border-t pt-5">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-base font-semibold text-gray-800 dark:text-white">Detail Barang</h3>
                 </div>
-                <p class="text-xs text-gray-500 mb-3">
-                    Isi Qty Disetujui sesuai hasil pemeriksaan fisik (0 sampai Qty Diajukan). Hanya Qty Disetujui yang menambah stok gudang;
-                    bila semua 0, pengembalian dicatat sebagai Ditolak.
-                </p>
 
                 <div class="border rounded-lg overflow-hidden">
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold">Kode</th>
-                                <th class="p-3 border text-center font-semibold">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold">Satuan</th>
-                                <th class="p-3 border text-center font-semibold" style="width:7rem;">Qty Diajukan</th>
-                                <th class="p-3 border text-center font-semibold" style="width:8rem;">Qty Disetujui</th>
-                                <th class="p-3 border text-center font-semibold">Catatan Unit</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:7rem;">Qty Diajukan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:8rem;" title="Isi sesuai hasil pemeriksaan fisik (0 sampai Qty Diajukan). Hanya Qty Disetujui yang menambah stok gudang; bila semua 0, pengembalian dicatat sebagai Ditolak.">Qty Disetujui</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Catatan Unit</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if (!empty($detail_items)): ?>
                                 <?php foreach ($detail_items as $item): ?>
                                     <tr>
-                                        <td class="p-3 border text-center"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                                        <td class="p-3 border text-center whitespace-nowrap"><?= esc($item['kode_barang'] ?? '-') ?></td>
                                         <td class="p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
                                         <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
                                         <td class="p-3 border text-center"><?= (int) $item['qty_diajukan'] ?></td>
@@ -151,7 +146,7 @@ $detail_items = $detail_items ?? [];
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="6" class="p-4 text-center text-gray-400">Tidak ada detail barang.</td>
+                                    <td colspan="6" class="p-4 text-center text-gray-400 italic">Tidak ada detail barang.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
@@ -166,7 +161,7 @@ $detail_items = $detail_items ?? [];
                     Kembali
                 </a>
                 <button type="button" onclick="submitKeputusan('tolak')"
-                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100">
+                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100" style="background-color:#FEF2F2; border-color:#FECACA; color:#B91C1C;">
                     Tolak Pengembalian
                 </button>
                 <button type="button" onclick="submitKeputusan('setuju')"

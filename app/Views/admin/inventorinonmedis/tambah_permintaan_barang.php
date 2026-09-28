@@ -138,11 +138,11 @@ $options_jenis       = $options_jenis ?? [];
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold">Kode / Jenis</th>
-                                <th class="p-3 border text-center font-semibold">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold">Satuan</th>
-                                <th class="p-3 border text-center font-semibold w-32">Qty</th>
-                                <?php if (!$readonly): ?><th class="p-3 border text-center font-semibold w-20">Hapus</th><?php endif; ?>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode / Jenis</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:8rem;">Qty</th>
+                                <?php if (!$readonly): ?><th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th><?php endif; ?>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
@@ -150,7 +150,7 @@ $options_jenis       = $options_jenis ?? [];
                                 <?php foreach ($detail_items as $item): ?>
                                     <?php $isBaru = empty($item['id_barang']) && !empty($item['nama_barang_baru']); ?>
                                     <tr data-id="<?= $isBaru ? 'baru_' . ($item['id_detail'] ?? uniqid()) : $item['id_barang'] ?>" data-baru="<?= $isBaru ? '1' : '0' ?>">
-                                        <td class="p-3 border text-center">
+                                        <td class="p-3 border text-center whitespace-nowrap">
                                             <?php if ($isBaru): ?>
                                                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Baru</span>
                                                 <input type="hidden" name="detail_is_baru[]" value="1">
@@ -252,7 +252,7 @@ $options_jenis       = $options_jenis ?? [];
         tr.dataset.id = idBarang;
         tr.dataset.baru = '0';
         tr.innerHTML = `
-            <td class="p-3 border text-center">
+            <td class="p-3 border text-center whitespace-nowrap">
                 ${kodeBarang}
                 <input type="hidden" name="detail_is_baru[]" value="0">
                 <input type="hidden" name="detail_id_barang[]" value="${idBarang}">
@@ -417,7 +417,7 @@ $options_jenis       = $options_jenis ?? [];
         tr.dataset.id = rowId;
         tr.dataset.baru = '1';
         tr.innerHTML = `
-            <td class="p-3 border text-center">
+            <td class="p-3 border text-center whitespace-nowrap">
                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Baru</span>
                 <input type="hidden" name="detail_is_baru[]" value="1">
                 <input type="hidden" name="detail_id_barang[]" value="">

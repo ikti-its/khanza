@@ -68,7 +68,7 @@ $readonly = $readonly ?? false;
             <!-- Detail Barang -->
             <div class="mt-8 mb-4 border-t pt-5">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-base font-semibold text-gray-800 dark:text-white">Detail Stok Opname <span class="text-red-600">*</span></h3>
+                    <h3 class="text-base font-semibold text-gray-800 dark:text-white">Detail Barang <span class="text-red-600">*</span></h3>
                     <button type="button" onclick="open_modalBarang()"
                             class="inline-flex items-center gap-x-1.5 py-2 px-3 text-sm font-semibold rounded-lg border border-transparent bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] transition-all shadow-sm <?= $readonly ? 'hidden' : '' ?>">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -82,19 +82,19 @@ $readonly = $readonly ?? false;
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold">Kode</th>
-                                <th class="p-3 border text-center font-semibold">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold">Satuan</th>
-                                <th class="p-3 border text-center font-semibold w-28">Stok Sistem</th>
-                                <th class="p-3 border text-center font-semibold w-28">Stok Fisik</th>
-                                <th class="p-3 border text-center font-semibold w-20">Hapus</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:7rem;">Stok Sistem</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:7rem;">Stok Fisik</th>
+                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
                             <?php if ($isEdit && !empty($detail_items ?? [])): ?>
                                 <?php foreach ($detail_items as $item): ?>
                                 <tr data-id="<?= $item['id_barang'] ?>">
-                                    <td class="p-3 border text-center"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                                    <td class="p-3 border text-center whitespace-nowrap"><?= esc($item['kode_barang'] ?? '-') ?></td>
                                     <td class="p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
                                     <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
                                     <td class="p-3 border text-center text-gray-500"><?= $item['stok_sistem'] ?? 0 ?></td>
@@ -149,7 +149,7 @@ $readonly = $readonly ?? false;
         var tr = document.createElement('tr');
         tr.dataset.id = idBarang;
         tr.innerHTML = `
-            <td class="p-3 border text-center">${kodeBarang}</td>
+            <td class="p-3 border text-center whitespace-nowrap">${kodeBarang}</td>
             <td class="p-3 border">${namaBarang}</td>
             <td class="p-3 border text-center">${namaSatuan}</td>
             <td class="p-3 border text-center text-gray-500">${stok}</td>
