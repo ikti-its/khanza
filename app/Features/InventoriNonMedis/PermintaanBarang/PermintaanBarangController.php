@@ -164,7 +164,9 @@ final class PermintaanBarangController extends ControllerTemplate
 
         // Pengembalian: status permintaan TIDAK berubah karenanya. Eligibilitas &
         // sisa kuota memakai aturan yang sama dengan modul Pengembalian Barang.
-        $pengembalian = new \App\Features\InventoriNonMedis\PengembalianBarang\PengembalianBarangService($this->get_db());
+        $pengembalian = new \App\Features\InventoriNonMedis\PengembalianBarang\PengembalianBarangService(
+            $this->get_db(),
+        );
         // Aturan sama persis dengan modal pemilihan permintaan di form Pengembalian.
         $bisa_ajukan_pengembalian = $pengembalian->permintaan_dapat_dikembalikan((int) $id) !== [];
 
@@ -174,7 +176,9 @@ final class PermintaanBarangController extends ControllerTemplate
             'modul_path'               => $this->get_uri_path(),
             'baris'                    => $baris,
             'detail_items'             => $detail_items,
-            'metode_pemenuhan'         => $this->allow_partial_shipment($boleh_sebagian) ? 'Boleh Sebagian' : 'Tunggu Lengkap',
+            'metode_pemenuhan'         => $this->allow_partial_shipment($boleh_sebagian)
+                ? 'Boleh Sebagian'
+                : 'Tunggu Lengkap',
             'pengembalian_terkait'     => $pengembalian->pengembalian_by_permintaan((int) $id),
             'bisa_ajukan_pengembalian' => $bisa_ajukan_pengembalian,
         ]);

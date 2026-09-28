@@ -70,7 +70,11 @@ final class TransaksiStokController extends ControllerTemplate
                 )
                 ->join('inventori_non_medis.penerimaan_barang pnb', 'ts.id_penerimaan = pnb.id_penerimaan', 'left')
                 ->join('inventori_non_medis.permintaan_barang pmb', 'ts.id_permintaan = pmb.id_permintaan', 'left')
-                ->join('inventori_non_medis.pengembalian_barang pgb', 'ts.id_pengembalian = pgb.id_pengembalian', 'left')
+                ->join(
+                    'inventori_non_medis.pengembalian_barang pgb',
+                    'ts.id_pengembalian = pgb.id_pengembalian',
+                    'left',
+                )
                 ->select('ts.*, tts.nama_tipe_transaksi_stok, pnb.no_masuk, pmb.no_keluar, pgb.no_pengembalian')
                 ->where('ts.id_transaksi', (int) $id)
                 ->get(),
