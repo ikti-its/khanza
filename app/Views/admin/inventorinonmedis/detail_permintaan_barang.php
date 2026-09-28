@@ -16,7 +16,7 @@
 
             <!-- No. Permintaan + Tanggal -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">No. Permintaan</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">No. Permintaan</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['no_permintaan'] ?? '-') ?></span>
                 </div>
@@ -28,7 +28,7 @@
 
             <!-- Pemohon + Ruangan -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Pemohon</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Pemohon</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['nama'] ?? '-') ?></span>
                 </div>
@@ -112,7 +112,7 @@
 
             <!-- Status (progress tracking) | Pengelola -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Status</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Status</span>
                 <div class="w-full lg:w-1/4">
                     <?= get_progress_badge_html($tracking['progress_label'] ?? '-', $tracking['progress_color'] ?? 'gray') ?>
                 </div>
@@ -124,7 +124,7 @@
 
             <!-- Metode Pemenuhan -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Metode Pemenuhan</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Metode Pemenuhan</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($metode_pemenuhan ?? '-') ?></span>
                 </div>
@@ -133,7 +133,7 @@
             <?php if ($show_penerima): ?>
                 <!-- Diterima Oleh | Tanggal Diterima -->
                 <div class="sm:block md:flex items-center py-3">
-                    <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Diterima Oleh</span>
+                    <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Diterima Oleh</span>
                     <div class="w-full lg:w-1/4">
                         <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['petugas_penerima_nama']) ?></span>
                     </div>
@@ -165,7 +165,12 @@
                  amber) karena bukan kartu aksi. Tampil berdampingan dengan
                  kartu di atas selama masih menunggu keputusan. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
-                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 dark:text-slate-400">Riwayat Pengajuan Pembatalan</h4>
+                <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
+                    <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">Riwayat Pengajuan Pembatalan</h4>
+                </div>
                 <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: <?= $pembatalan_hasil_bg ?>; color: <?= $pembatalan_hasil_text ?>;">
                     <?= esc($pembatalan_hasil_label) ?>
                 </span>
@@ -230,7 +235,12 @@
             <!-- Pengembalian Terkait — hanya tampil bila ada. Status permintaan tidak
                  berubah karena pengembalian. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
-                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 border-b border-slate-200 pb-2 dark:text-slate-400">Pengembalian Terkait</h4>
+                <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
+                    <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                    </svg>
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">Pengembalian Terkait</h4>
+                </div>
                 <table class="w-full text-sm">
                     <thead>
                         <tr class="text-slate-500 dark:text-slate-400">
@@ -259,26 +269,27 @@
             </div>
         <?php endif; ?>
 
-        <!-- Tombol Aksi -->
-        <div class="mt-5 pt-5 border-t border-gray-200 dark:border-gray-800 flex justify-end">
-            <?php if (!empty($bisa_ajukan_pengembalian)): ?>
-                <a href="/inventori-non-medis/pengembalian-barang/tambah?id_permintaan=<?= (int) ($baris['id_permintaan'] ?? 0) ?>"
-                    class="py-2 px-4 mr-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
-                    Ajukan Pengembalian
-                </a>
-            <?php endif; ?>
+        <!-- Tombol Aksi: pola components/form/submit_button — Kembali paling kiri,
+             aksi utama paling kanan. -->
+        <div class="mt-5 pt-5 border-t border-gray-200 dark:border-gray-800 flex justify-end gap-x-2">
+            <a href="javascript:history.back()" class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">
+                Kembali
+            </a>
             <?php if ($can_ajukan_pembatalan): ?>
                 <form action="<?= $modul_path . '/sampel/' . (int) ($baris['id_permintaan'] ?? 0) ?>" method="post" onsubmit="return confirmAjukanPembatalan(event, this);">
                     <?= csrf_field() ?>
                     <input type="hidden" name="alasan_pembatalan" id="alasan_pembatalan_input" value="">
-                    <button type="submit" class="py-2 px-4 mr-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100">
+                    <button type="submit" class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100" style="background-color:#FEF2F2; border-color:#FECACA; color:#B91C1C;">
                         Ajukan Pembatalan
                     </button>
                 </form>
             <?php endif; ?>
-            <a href="javascript:history.back()" class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">
-                Kembali
-            </a>
+            <?php if (!empty($bisa_ajukan_pengembalian)): ?>
+                <a href="/inventori-non-medis/pengembalian-barang/tambah?id_permintaan=<?= (int) ($baris['id_permintaan'] ?? 0) ?>"
+                    class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
+                    Ajukan Pengembalian
+                </a>
+            <?php endif; ?>
         </div>
 
     </div>

@@ -38,7 +38,7 @@ helper('tracking');
 
             <!-- No. Permintaan + Tanggal -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">No. Permintaan</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">No. Permintaan</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['no_permintaan'] ?? '-') ?></span>
                 </div>
@@ -50,7 +50,7 @@ helper('tracking');
 
             <!-- Pemohon + Ruangan -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Pemohon</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Pemohon</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['petugas_nama'] ?? $baris['nama'] ?? '-') ?></span>
                 </div>
@@ -130,7 +130,7 @@ helper('tracking');
 
             <!-- Status (progress tracking) | Pengelola -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Status</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Status</span>
                 <div class="w-full lg:w-1/4">
                     <?= get_progress_badge_html($tracking['progress_label'] ?? '-', $tracking['progress_color'] ?? 'gray') ?>
                 </div>
@@ -142,7 +142,7 @@ helper('tracking');
 
             <!-- No. Keluar | Metode Pemenuhan -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">No. Keluar</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">No. Keluar</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['no_keluar'] ?? '-') ?></span>
                 </div>
@@ -155,7 +155,7 @@ helper('tracking');
             <?php if ($show_penerima): ?>
                 <!-- Diterima Oleh | Tanggal Diterima -->
                 <div class="sm:block md:flex items-center py-3">
-                    <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Diterima Oleh</span>
+                    <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Diterima Oleh</span>
                     <div class="w-full lg:w-1/4">
                         <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['petugas_penerima_nama']) ?></span>
                     </div>
@@ -234,7 +234,7 @@ helper('tracking');
                         </div>
                         <div class="flex gap-x-2 mt-3 md:mt-0">
                             <button type="button" onclick="submitAksiPembatalan('tolak')"
-                                class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100">
+                                class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100" style="background-color:#FEF2F2; border-color:#FECACA; color:#B91C1C;">
                                 Tolak Pembatalan
                             </button>
                             <button type="button" onclick="submitAksiPembatalan('setuju')"
@@ -254,7 +254,12 @@ helper('tracking');
                  dan boleh tampil bersamaan dengan kartu Konfirmasi Terima
                  (status 8) — keduanya cerita berbeda. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
-                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 dark:text-slate-400">Riwayat Pengajuan Pembatalan</h4>
+                <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
+                    <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">Riwayat Pengajuan Pembatalan</h4>
+                </div>
                 <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: <?= $pembatalan_hasil_bg ?>; color: <?= $pembatalan_hasil_text ?>;">
                     <?= esc($pembatalan_hasil_label) ?>
                 </span>

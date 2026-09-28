@@ -10,7 +10,7 @@
 
             <!-- Tipe Transaksi + Tanggal -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Tipe Transaksi</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Tipe Transaksi</span>
                 <div class="w-full lg:w-1/4">
                     <?php
                     $tipe = strtolower(trim($baris['nama_tipe_transaksi_stok'] ?? '-'));
@@ -32,7 +32,7 @@
 
             <!-- No. Masuk / No. Keluar -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">No. Referensi</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">No. Referensi</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white">
                         <?php

@@ -10,7 +10,7 @@
 
             <!-- Tanggal + Pelaksana -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Tanggal</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Tanggal</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= !empty($baris['tanggal']) ? date('d/m/Y, H:i', strtotime($baris['tanggal'])) : '-' ?></span>
                 </div>
@@ -22,11 +22,15 @@
 
             <!-- Status + Catatan -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Status</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Status</span>
                 <div class="w-full lg:w-1/4">
-                    <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: #FEF3C7; color: #92400E;">
-                        <?= esc($baris['nama_status_stok_opname'] ?? '-') ?>
-                    </span>
+                    <?php
+                    // Warna badge mengikuti pemetaan status yang sama dengan modul lain
+                    // (Draf abu-abu, Selesai hijau) — sebelumnya selalu kuning.
+                    helper('tracking');
+                    $nama_status = (string) ($baris['nama_status_stok_opname'] ?? '-');
+                    ?>
+                    <?= get_progress_badge_html($nama_status, _status_component_color($nama_status)) ?>
                 </div>
                 <span class="block mt-4 md:my-0 md:ml-10 mb-1 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Catatan</span>
                 <div class="w-full lg:w-1/4">

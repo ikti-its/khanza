@@ -10,7 +10,7 @@
 
             <!-- No. Penerimaan + Tanggal -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">No. Penerimaan</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">No. Penerimaan</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['no_penerimaan'] ?? '-') ?></span>
                 </div>
@@ -22,7 +22,7 @@
 
             <!-- No. Pengadaan + Penerima -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">No. Pengadaan</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">No. Pengadaan</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['no_pengadaan'] ?? '-') ?></span>
                 </div>
@@ -34,7 +34,7 @@
 
             <!-- Status + No. Masuk -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Status</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Status</span>
                 <div class="w-full lg:w-1/4">
                     <?php
                         // Warna Status: hijau 2 (Diterima), merah 3 (Ditolak), amber sisanya
@@ -60,8 +60,8 @@
 
             <!-- Catatan -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Catatan</span>
-                <div class="w-full lg:w-3/4">
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Catatan</span>
+                <div class="w-full flex-1">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['catatan'] ?? '-') ?></span>
                 </div>
             </div>

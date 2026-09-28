@@ -24,7 +24,7 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
 
             <!-- No. Pengembalian + Tanggal -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">No. Pengembalian</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">No. Pengembalian</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['no_pengembalian'] ?? '-') ?></span>
                 </div>
@@ -36,7 +36,7 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
 
             <!-- Pemohon + Ruangan -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Pemohon</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Pemohon</span>
                 <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['nama'] ?? '-') ?></span>
                 </div>
@@ -48,7 +48,7 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
 
             <!-- Status + Staf Gudang -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Status</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Status</span>
                 <div class="w-full lg:w-1/4">
                     <?= get_progress_badge_html($status_label, _status_component_color($status_label)) ?>
                 </div>
@@ -60,7 +60,7 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
 
             <!-- Permintaan Asal -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Permintaan Asal</span>
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Permintaan Asal</span>
                 <div class="w-full lg:w-1/4">
                     <?php if (!empty($baris['id_permintaan'])): ?>
                         <a href="/inventori-non-medis/permintaan-barang/<?= (int) $baris['id_permintaan'] ?>"
@@ -73,8 +73,8 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
 
             <!-- Alasan -->
             <div class="sm:block md:flex items-start py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Alasan Pengembalian</span>
-                <div class="w-full">
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Alasan Pengembalian</span>
+                <div class="w-full flex-1">
                     <span class="text-sm text-gray-900 dark:text-white" style="white-space:pre-line;"><?= esc($baris['alasan'] ?? '-') ?></span>
                 </div>
             </div>
@@ -84,7 +84,12 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
             <!-- Riwayat Persetujuan — permanen, warna netral karena bukan kartu aksi.
                  Pola sama dengan kartu Riwayat Pengajuan Pembatalan di detail Permintaan. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
-                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 dark:text-slate-400">Riwayat Persetujuan</h4>
+                <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
+                    <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">Riwayat Persetujuan</h4>
+                </div>
                 <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold"
                     style="<?= $status_id === 3 ? 'background-color:#D1FAE5; color:#065F46;' : 'background-color:#FEE2E2; color:#991B1B;' ?>">
                     <?= esc(($status_id === 3 ? 'Disetujui pada ' : 'Ditolak pada ') . $tanggal_putusan) ?>
