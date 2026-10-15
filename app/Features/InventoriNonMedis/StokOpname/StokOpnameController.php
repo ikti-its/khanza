@@ -10,6 +10,9 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class StokOpnameController extends ControllerTemplate
 {
+    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
+    protected array $search_columns = ['nama', 'nama_status_stok_opname'];
+
     public function __construct()
     {
         parent::__construct(

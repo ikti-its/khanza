@@ -11,6 +11,9 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPermintaanBarangDetailController extends ControllerTemplate
 {
+    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
+    protected array $search_columns = ['no_keluar', 'kode_barang', 'nama_barang', 'nama_barang_baru', 'nama_satuan'];
+
     public function __construct()
     {
         parent::__construct(

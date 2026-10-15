@@ -11,6 +11,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 final class SuplierController extends ControllerTemplate
 {
+    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
+    protected array $search_columns = ['kode_suplier', 'nama_suplier', 'nama_akun', 'nama_bank'];
+
     public function __construct()
     {
         parent::__construct(

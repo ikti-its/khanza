@@ -37,6 +37,102 @@ class ModelTemplate extends Model
     protected array $runtime_orders = [];
     private bool $exclude_zero_pk = false;
 
+    /** Pencarian server (opt-in lewat set_search); kosong = tidak ada penyaringan kata kunci. */
+    private string $search_keyword = '';
+    /** @var list<string> kolom tabel utama atau alias hasil join */
+    private array $search_columns = [];
+    /** @var array<string, string> alias SELECT hasil join => "jN.kolom" asalnya */
+    private array $alias_sources = [];
+
+    /**
+     * Saring baris yang salah satu kolomnya mengandung kata kunci (tanpa membedakan
+     * huruf besar-kecil, cocok sebagian). Berlaku untuk count_filtered() dan findAll().
+     *
+     * @param list<string> $columns kolom tabel utama atau alias join (lihat compute_leaf_aliases())
+     */
+    public function set_search(string $keyword, array $columns): static
+    {
+        $this->search_keyword = trim($keyword);
+        $this->search_columns = $columns;
+        return $this;
+    }
+
+    private function search_active(): bool
+    {
+        return $this->search_keyword !== '' && $this->search_columns !== [];
+    }
+
+    /**
+     * Escape wildcard LIKE (%, _) dan karakter escape-nya sendiri pada kata kunci.
+     * like() CodeIgniter memakai binding dan menambahkan "ESCAPE '!'", tetapi TIDAK
+     * meng-escape % dan _ di dalam nilai — tanpa ini "%" akan cocok dengan semua baris.
+     */
+    public function like_keyword(string $keyword): string
+    {
+        $esc = $this->db->likeEscapeChar;
+        return str_replace([$esc, '%', '_'], [$esc . $esc, $esc . '%', $esc . '_'], $keyword);
+    }
+
+    /** ILIKE per kolom (cocok sebagian) digabung OR; nilai lewat parameter binding. */
+    private function apply_search(\CodeIgniter\Database\BaseBuilder $builder, string $main): void
+    {
+        $this->apply_search_mapped($builder, $this->search_sources($main));
+    }
+
+    /**
+     * Kolom pencarian => ekspresi kolom: kolom tabel utama diberi prefix alias tabel,
+     * alias hasil join dipetakan ke "jN.kolom" asalnya.
+     *
+     * @return array<string, string|null>
+     */
+    private function search_sources(string $main): array
+    {
+        $prefix  = $main !== '' ? "{$main}." : '';
+        $sources = [];
+        foreach ($this->search_columns as $col) {
+            $is_main       = array_key_exists($col, $this->database->fields) || $col === $this->primaryKey;
+            $sources[$col] = $is_main ? $prefix . $col : $this->alias_sources[$col] ?? null;
+        }
+        return $sources;
+    }
+
+    /**
+     * Untuk model yang meng-override findAll() dengan query sendiri: terapkan pencarian
+     * aktif (set_search) memakai pemetaan kolom pencarian => ekspresi kolom di query itu.
+     *
+     * @param array<string, string|null> $sources
+     */
+    protected function apply_search_mapped(\CodeIgniter\Database\BaseBuilder $builder, array $sources): void
+    {
+        if (!$this->search_active()) {
+            return;
+        }
+        $keyword = $this->like_keyword($this->search_keyword);
+        $builder->groupStart();
+        foreach ($this->search_columns as $col) {
+            $source = $sources[$col] ?? null;
+            assert($source !== null, "Kolom pencarian '{$col}' tidak dikenal di {$this->table}");
+            $builder->orLike($source, $keyword, 'both', true, true);
+        }
+        $builder->groupEnd();
+    }
+
+    /** Builder tabel utama (alias m) beserta seluruh JOIN, tanpa filter. */
+    private function joined_builder(): \CodeIgniter\Database\BaseBuilder
+    {
+        $this->selected_aliases = [];
+        $this->alias_sources    = [];
+
+        $builder = $this->db->table("{$this->table} m");
+        $builder->select('m.*');
+
+        $idx = 0;
+        foreach ($this->join as $fk_col => $spec) {
+            $this->apply_join_spec($builder, $fk_col, $spec, 'm', $this->database, $idx);
+        }
+        return $builder;
+    }
+
     public function set_filter(string $col, mixed $val): static
     {
         $this->runtime_filters[$col] = $val;
@@ -57,6 +153,21 @@ class ModelTemplate extends Model
 
     public function count_filtered(): int
     {
+        if ($this->search_active()) {
+            // Pencarian bisa menyasar kolom hasil join, jadi hitung dari builder yang sama dengan findAll().
+            $main    = $this->join === [] ? '' : 'm';
+            $builder = $this->join === [] ? $this->db->table($this->table) : $this->joined_builder();
+            foreach ($this->runtime_filters as $col => $val) {
+                $c = $main !== '' ? "{$main}.{$col}" : $col;
+                is_array($val) ? $builder->whereIn($c, $val) : $builder->where($c, $val);
+            }
+            if ($this->exclude_zero_pk) {
+                $builder->where(($main !== '' ? "{$main}." : '') . $this->primaryKey . ' !=', 0);
+            }
+            $this->apply_search($builder, $main);
+            return (int) $builder->countAllResults();
+        }
+
         if (empty($this->runtime_filters) && !$this->exclude_zero_pk) {
             return (int) $this->countAll();
         }
@@ -191,6 +302,7 @@ class ModelTemplate extends Model
             $this->selected_aliases[$col_name] = true;
             $alias                             = $col_name;
         }
+        $this->alias_sources[$alias] = "{$table_alias}.{$col_name}";
         $builder->select("{$table_alias}.{$col_name} AS {$alias}");
     }
 
@@ -396,20 +508,20 @@ class ModelTemplate extends Model
             if ($this->exclude_zero_pk) {
                 $this->where($this->primaryKey . ' !=', 0);
             }
+            if ($this->search_active()) {
+                $keyword = $this->like_keyword($this->search_keyword);
+                $this->groupStart();
+                foreach ($this->search_columns as $col) {
+                    $this->orLike($col, $keyword, 'both', true, true);
+                }
+                $this->groupEnd();
+            }
             /** @var list<array<string, mixed>> */
             return parent::findAll($limit, $offset);
         }
 
-        $this->selected_aliases = [];
-
         $main    = 'm';
-        $builder = $this->db->table("{$this->table} {$main}");
-        $builder->select("{$main}.*");
-
-        $idx = 0;
-        foreach ($this->join as $fk_col => $spec) {
-            $this->apply_join_spec($builder, $fk_col, $spec, $main, $this->database, $idx);
-        }
+        $builder = $this->joined_builder();
 
         foreach ($this->runtime_filters as $col => $val) {
             is_array($val) ? $builder->whereIn("{$main}.{$col}", $val) : $builder->where("{$main}.{$col}", $val);
@@ -420,6 +532,7 @@ class ModelTemplate extends Model
         if ($this->exclude_zero_pk) {
             $builder->where("{$main}.{$this->primaryKey} !=", 0);
         }
+        $this->apply_search($builder, $main);
 
         if ($limit !== null && $limit > 0) {
             $builder->limit($limit, $offset);

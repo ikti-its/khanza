@@ -11,6 +11,9 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PenerimaanBarangController extends ControllerTemplate
 {
+    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
+    protected array $search_columns = ['no_penerimaan', 'no_pengadaan', 'nama_status_penerimaan_barang'];
+
     private bool $pending_masuk = false;
 
     public function __construct()

@@ -42,6 +42,9 @@ final class BarangController extends ControllerTemplate
 
     protected array $row_alert = ['value' => 'stok', 'threshold' => 'stok_minimum'];
 
+    /** Pencarian server (?q=); index() kustom memetakannya ke kolom query di bawah. */
+    protected array $search_columns = ['kode_barang', 'nama_barang', 'nama_satuan', 'nama_jenis_barang'];
+
     // narrows the query-result union (bool|Query|BaseResult) that mago infers
     // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
@@ -67,22 +70,37 @@ final class BarangController extends ControllerTemplate
         $page = max(1, (int) ($this->request->getGet('page') ?? 1));
         $size = max(1, (int) ($this->request->getGet('size') ?? $this->meta_data['size']));
 
-        $this->model->exclude_zero_pk();
-        $total_rows  = $this->model->count_filtered();
+        // Query yang sama dipakai untuk menghitung total dan mengambil halaman, supaya
+        // jumlah halaman mengikuti hasil pencarian. View barang/satuan/jenis = data terdekripsi.
+        $keyword = $this->search_keyword();
+        $builder = $this
+            ->get_db()
+            ->table('inventori_non_medis.barang b')
+            ->join('inventori_non_medis.satuan s', 'b.id_satuan = s.id_satuan', 'left')
+            ->join('inventori_non_medis.jenis_barang j', 'b.id_jenis_barang = j.id_jenis_barang', 'left')
+            ->where('b.id_barang !=', 0);
+        if ($keyword !== '') {
+            // ILIKE cocok sebagian lewat parameter binding; % dan _ di-escape (lihat like_keyword())
+            $kw = $this->model->like_keyword($keyword);
+            $builder
+                ->groupStart()
+                ->orLike('b.kode_barang', $kw, 'both', true, true)
+                ->orLike('b.nama_barang', $kw, 'both', true, true)
+                ->orLike('s.nama_satuan', $kw, 'both', true, true)
+                ->orLike('j.nama_jenis_barang', $kw, 'both', true, true)
+                ->groupEnd();
+        }
+
+        $total_rows  = (int) $builder->countAllResults(false);
         $total_pages = $total_rows > 0 ? (int) ceil($total_rows / $size) : 1;
         $page        = min($page, $total_pages);
         $offset      = ($page - 1) * $size;
 
         $data_tabel = $this->guarded(
-            $this
-                ->get_db()
-                ->table('inventori_non_medis.barang b')
-                ->join('inventori_non_medis.satuan s', 'b.id_satuan = s.id_satuan', 'left')
-                ->join('inventori_non_medis.jenis_barang j', 'b.id_jenis_barang = j.id_jenis_barang', 'left')
+            $builder
                 ->select(
                     'b.id_barang, b.kode_barang, b.nama_barang, s.nama_satuan, j.nama_jenis_barang, b.stok, b.stok_minimum, b.harga_satuan',
                 )
-                ->where('b.id_barang !=', 0)
                 ->orderBy('b.nama_barang', 'ASC')
                 ->limit($size, $offset)
                 ->get(),
@@ -96,6 +114,7 @@ final class BarangController extends ControllerTemplate
             'kolom_id'    => $this->primary_key,
             'aksi'        => $this->actions,
             'tabel'       => $data_tabel,
+            'search_q'    => $keyword,
         ]);
     }
 

@@ -57,6 +57,12 @@ final class PengadaanBarangDetailModel extends ModelTemplate
         foreach ($this->runtime_filters as $col => $val) {
             $builder->where("m.{$col}", $val);
         }
+        // pencarian ?q= (set_search) dipetakan ke alias query kustom ini
+        $this->apply_search_mapped($builder, [
+            'kode_barang' => 'b.kode_barang',
+            'nama_barang' => 'b.nama_barang',
+            'nama_satuan' => 's.nama_satuan',
+        ]);
         if ($limit !== null && $limit > 0) {
             $builder->limit($limit, $offset);
         }

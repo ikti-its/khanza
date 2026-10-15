@@ -51,6 +51,13 @@ class ControllerTemplate extends Controller
     protected array       $home_params   = [];
     protected array       $filters       = [];
     protected null|string $active_filter = null;
+    /**
+     * Opt-in pencarian server pada halaman daftar (?q=). Kosong = kotak pencarian tetap
+     * menyaring baris halaman yang tampil lewat JavaScript seperti sebelumnya.
+     *
+     * @var list<string> kolom tabel utama atau alias join (lihat ModelTemplate::compute_leaf_aliases())
+     */
+    protected array $search_columns = [];
 
     public function __construct(
         null|ModelTemplate $model = null,
@@ -257,6 +264,8 @@ class ControllerTemplate extends Controller
         if ($this->hide_zero_id)
             $this->model->exclude_zero_pk();
 
+        $keyword = $this->apply_search_keyword();
+
         $total_rows  = $this->model->count_filtered();
         $total_pages = $total_rows > 0 ? (int) ceil($total_rows / $size) : 1;
         $page        = min($page, $total_pages);
@@ -276,7 +285,7 @@ class ControllerTemplate extends Controller
                 ? ['path' => $this->child_path, 'fk' => $this->child_fk]
                 : null;
 
-        $extra_params = array_diff_key($this->request->getGet() ?? [], ['page' => null, 'size' => null]);
+        $extra_params = array_diff_key($this->request->getGet() ?? [], ['page' => null, 'size' => null, 'q' => null]);
         $query_string = !empty($extra_params) ? http_build_query($extra_params) : '';
 
         $back_url = null;
@@ -308,7 +317,28 @@ class ControllerTemplate extends Controller
             'back_url'      => $back_url,
             'filters'       => $this->filters,
             'active_filter' => $this->active_filter,
+            'pencarian'     => ['server' => $this->search_columns !== [], 'q' => $keyword],
         ]);
+    }
+
+    /** Teruskan kata kunci ?q= ke model (bila ada) dan kembalikan untuk ditampilkan di kotak pencarian. */
+    private function apply_search_keyword(): string
+    {
+        $keyword = $this->search_keyword();
+        if ($keyword !== '') {
+            $this->model->set_search($keyword, $this->search_columns);
+        }
+        return $keyword;
+    }
+
+    /** Kata kunci ?q= untuk pencarian server; '' bila fitur tidak opt-in atau q bukan string. */
+    protected function search_keyword(): string
+    {
+        if ($this->search_columns === []) {
+            return '';
+        }
+        $raw = $this->request->getGet('q');
+        return is_string($raw) ? trim($raw) : '';
     }
 
     private function build_modular_columns(): array

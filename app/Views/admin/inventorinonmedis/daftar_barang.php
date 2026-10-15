@@ -14,7 +14,7 @@
                             'modul_path' => $modul_path,
                             'aksi'       => $aksi,
                         ]);
-                        echo view('components/header/search_bar');
+                        echo view('components/header/search_bar', ['search_server' => true, 'search_q' => $search_q ?? '']);
                     ?>
 
                     <!-- Aksi cepat: buat Pengajuan Barang dari item yang dicentang -->

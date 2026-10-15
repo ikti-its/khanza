@@ -20,7 +20,10 @@
                             'filters'       => $filters ?? [],
                             'active_filter' => $active_filter ?? null,
                         ]);
-                        echo view('components/header/search_bar');
+                        echo view('components/header/search_bar', [
+                            'search_server' => $pencarian['server'] ?? false,
+                            'search_q'      => $pencarian['q'] ?? '',
+                        ]);
                         
                         echo view('components/tabel/data', [
                             'modul_path' => $modul_path,

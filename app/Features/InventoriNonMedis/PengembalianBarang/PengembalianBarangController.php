@@ -13,6 +13,15 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 final class PengembalianBarangController extends ControllerTemplate
 {
+    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
+    protected array $search_columns = [
+        'no_pengembalian',
+        'no_permintaan',
+        'nama',
+        'nama_ruangan',
+        'nama_status_pengembalian_barang',
+    ];
+
     public function __construct()
     {
         parent::__construct(

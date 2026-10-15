@@ -10,6 +10,15 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class TransaksiStokController extends ControllerTemplate
 {
+    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
+    protected array $search_columns = [
+        'nama_tipe_transaksi_stok',
+        'keterangan',
+        'no_keluar',
+        'no_masuk',
+        'no_pengembalian',
+    ];
+
     public function __construct()
     {
         parent::__construct(

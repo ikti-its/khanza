@@ -9,6 +9,9 @@ use App\Core\Controller\InputType as I;
 
 final class TransaksiStokDetailController extends ControllerTemplate
 {
+    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
+    protected array $search_columns = ['kode_barang', 'nama_barang', 'nama_satuan'];
+
     public function __construct()
     {
         parent::__construct(

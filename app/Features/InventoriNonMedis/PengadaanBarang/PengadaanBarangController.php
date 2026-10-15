@@ -11,6 +11,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 final class PengadaanBarangController extends ControllerTemplate
 {
+    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
+    protected array $search_columns = ['no_pengadaan', 'no_pengajuan', 'nama_suplier', 'nama_status_pengadaan_barang'];
+
     public function __construct()
     {
         parent::__construct(
