@@ -5,9 +5,13 @@
              * @var array{'page':int, 'size':int, 'total':int} $meta_data
              * @var string $modul_path
              */
-            $data = [
-                'meta_data'  => $meta_data,
-                'modul_path' => $modul_path
+            // Parameter GET lain (kata kunci pencarian ?q=, filter induk, dll.) ikut terbawa saat
+            // pindah halaman; http_build_query meng-encode karakter khusus termasuk tanda kutip.
+            $extra = array_diff_key(service('request')->getGet() ?? [], ['page' => null, 'size' => null]);
+            $data  = [
+                'meta_data'   => $meta_data,
+                'modul_path'  => $modul_path,
+                'query_extra' => $extra !== [] ? '&' . http_build_query($extra) : '',
             ];
             echo view('components/footer/prev', $data);
             echo view('components/footer/page', $data);
