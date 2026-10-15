@@ -24,7 +24,7 @@ $search_q      = (string) ($search_q ?? '');
             <div class="relative">
                 <input type="text" id="myInput"
                     <?= $search_server
-                        ? 'name="q" value="' . esc($search_q, 'attr') . '" oninput="kosongkanPencarian(this)" autocomplete="off"'
+                        ? 'name="q" value="' . esc($search_q, 'attr') . '" autocomplete="off"'
                         : 'onkeyup="myFunction()"' ?>
                     class="py-2 px-4 ps-11 block border w-full xl:w-96 border-gray-200
                     rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500
@@ -46,19 +46,49 @@ $search_q      = (string) ($search_q ?? '');
         // Penyaringan dilakukan server (?q=); di sini hanya penyorotan <mark> pada baris yang tampil.
         const KATA_KUNCI_AKTIF = <?= json_encode($search_q, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 
+        // Dikirim otomatis setelah pengetikan berhenti (debounce), Enter mengirim langsung.
+        const JEDA_PENCARIAN_MS = 400;
+        const KUNCI_FOKUS = 'pencarian-fokus:' + location.pathname;
+        let timerPencarian = null;
+        let sedangMengirim = false;
+
         function submitPencarian(form) {
+            clearTimeout(timerPencarian);
+            if (sedangMengirim) return false;
+            sedangMengirim = true;
             const input = form.querySelector('#myInput');
             input.value = input.value.trim();
             if (input.value === '') input.removeAttribute('name'); // daftar utuh tanpa ?q= kosong
+            try { sessionStorage.setItem(KUNCI_FOKUS, '1'); } catch (e) { /* storage diblokir: fokus lewat fallback */ }
+            if (!form.querySelector('input[name]')) {
+                location.assign(location.pathname); // tanpa parameter tersisa: hindari URL berakhiran "?"
+                return false;
+            }
             return true;
         }
 
-        // Kotak dikosongkan setelah ada pencarian aktif → kembali ke daftar utuh.
-        function kosongkanPencarian(input) {
-            if (input.value === '' && KATA_KUNCI_AKTIF !== '') {
-                submitPencarian(input.form);
-                input.form.submit();
+        function jadwalkanPencarian(input) {
+            clearTimeout(timerPencarian);
+            timerPencarian = setTimeout(() => {
+                // Tidak ada perubahan berarti (mis. hanya spasi) → jangan muat ulang.
+                if (input.value.trim() === KATA_KUNCI_AKTIF.trim()) return;
+                if (submitPencarian(input.form)) input.form.submit();
+            }, JEDA_PENCARIAN_MS);
+        }
+
+        // Setelah dimuat ulang karena pencarian: fokus kembali dengan kursor di akhir teks.
+        function pulihkanFokus(input) {
+            let dariPencarian = false;
+            try {
+                dariPencarian = sessionStorage.getItem(KUNCI_FOKUS) === '1';
+                sessionStorage.removeItem(KUNCI_FOKUS);
+            } catch (e) {
+                dariPencarian = KATA_KUNCI_AKTIF !== '';
             }
+            if (!dariPencarian) return;
+            input.focus();
+            const akhir = input.value.length;
+            input.setSelectionRange(akhir, akhir);
         }
 
         function sorotKataKunci(keyword) {
@@ -86,7 +116,19 @@ $search_q      = (string) ($search_q ?? '');
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => sorotKataKunci(KATA_KUNCI_AKTIF));
+        document.addEventListener('DOMContentLoaded', () => {
+            sorotKataKunci(KATA_KUNCI_AKTIF);
+            const input = document.getElementById('myInput');
+            if (!input) return;
+            input.addEventListener('input', (e) => {
+                if (!e.isComposing) jadwalkanPencarian(input);
+            });
+            input.addEventListener('compositionend', () => jadwalkanPencarian(input));
+            pulihkanFokus(input);
+        });
+
+        // Kembali lewat tombol Back (bfcache): izinkan pencarian dikirim lagi.
+        window.addEventListener('pageshow', () => { sedangMengirim = false; });
     </script>
 <?php else: ?>
     <script>
