@@ -59,4 +59,77 @@ final class BarangModel extends ModelTemplate
 
         return $result->getRowArray() !== null;
     }
+
+    /**
+     * Tetapkan kode untuk barang baru: kunci → MAX + 1 → periksa duplikat. Wajib dipanggil
+     * di dalam transaksi yang sama dengan insert-nya, dan insert sebelum commit; kunci
+     * dilepas saat commit/rollback, sehingga penyimpanan berikutnya membaca MAX yang baru.
+     *
+     * @throws \RuntimeException kode ternyata sudah dipakai
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
+    public function tetapkan_kode_barang(): string
+    {
+        $this->kunci_kode_barang();
+        $kode = $this->kode_barang_berikutnya();
+
+        if ($this->kode_barang_terpakai($kode)) {
+            throw new \RuntimeException("Kode Barang {$kode} sudah digunakan. Silakan simpan ulang.");
+        }
+        return $kode;
+    }
+
+    /**
+     * Serialkan penomoran kode barang (pola no_pengembalian di F13): dua penyimpanan
+     * bersamaan menunggu bergantian, jadi tidak bisa membaca MAX yang sama. Pengganti
+     * UNIQUE — constraint di barang_structure tidak tersentuh jalur data nyata (lihat
+     * is_referenced). pg_advisory_xact_lock dilepas otomatis saat commit/rollback.
+     *
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     */
+    private function kunci_kode_barang(): void
+    {
+        $this->db->query('SELECT pg_advisory_xact_lock(hashtext(?))', ['inventori_non_medis.barang.kode_barang']);
+    }
+
+    /**
+     * Kode barang berikutnya = MAX nomor seri BRG + 1. Bukan COUNT atau kode milik
+     * id_barang terbesar: keduanya salah begitu ada barang yang dihapus atau kodenya
+     * diubah (BRG0041 saat ini ada di id_barang 5). Tanpa kunci hanya untuk pratinjau di
+     * form; kode yang disimpan selalu lewat tetapkan_kode_barang().
+     *
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
+    public function kode_barang_berikutnya(): string
+    {
+        helper('autonomor');
+
+        $result = $this->db->query("SELECT MAX(CAST(SUBSTRING(kode_barang FROM 4) AS integer)) AS nomor
+             FROM inventori_non_medis.barang
+             WHERE kode_barang ~ '^BRG[0-9]{4,7}$'");
+        assert($result instanceof \CodeIgniter\Database\BaseResult, 'Query kode_barang_berikutnya gagal dieksekusi.');
+
+        /** @var array{nomor: int|string|null}|null $baris MAX = NULL bila belum ada barang */
+        $baris = $result->getRowArray();
+        $nomor = $baris['nomor'] ?? null;
+        return generateNextKodeBarang($nomor === null ? null : (int) $nomor);
+    }
+
+    /**
+     * Pemeriksaan duplikat saat simpan. Tetap dijalankan walau kode dihasilkan sistem:
+     * basis data tidak menolak kode kembar (lihat kunci_kode_barang).
+     *
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     */
+    private function kode_barang_terpakai(string $kode_barang): bool
+    {
+        $result = $this->db->query('SELECT 1 FROM inventori_non_medis.barang WHERE kode_barang = ? LIMIT 1', [
+            $kode_barang,
+        ]);
+        assert($result instanceof \CodeIgniter\Database\BaseResult, 'Query kode_barang_terpakai gagal dieksekusi.');
+
+        return $result->getRowArray() !== null;
+    }
 }

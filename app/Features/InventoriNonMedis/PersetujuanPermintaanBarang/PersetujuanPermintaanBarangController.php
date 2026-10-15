@@ -646,14 +646,15 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         if (count($baru_items) === 0)
             return;
 
-        helper('autonomor');
-
         // Seluruh loop dibungkus satu transaksi: kegagalan pada item mana pun
         // tidak boleh meninggalkan barang master yatim (tersimpan tanpa detail
         // permintaan yang ter-link).
         $db->transBegin();
 
         try {
+            // Penomoran & kunci yang sama dengan Tambah Barang (koneksi yang sama dengan $db)
+            $barang_model = new \App\Features\InventoriNonMedis\Barang\BarangModel();
+
             foreach ($baru_items as $item) {
                 // barang.id_satuan & barang.id_jenis_barang NOT NULL — tolak baris
                 // barang baru yang tak lengkap alih-alih mengirim null ke DB.
@@ -668,19 +669,8 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                     );
                 }
 
-                // Generate kode barang otomatis
-                $lastKode = $this->guarded(
-                    $db
-                        ->table('inventori_non_medis.barang')
-                        ->select('kode_barang')
-                        ->orderBy('id_barang', 'DESC')
-                        ->limit(1)
-                        ->get(),
-                )->getRowArray();
-                /** @var array<string, mixed>|null $lastKode */
-                $kodeLama = $lastKode['kode_barang'] ?? null;
-                /** @var string|null $kodeLama */
-                $kode = generateNextKodeBarang($kodeLama);
+                // Generate kode barang otomatis (MAX nomor BRG + 1, lihat BarangModel)
+                $kode = $barang_model->tetapkan_kode_barang();
 
                 // Insert ke master barang
                 $db->table('inventori_non_medis.barang')->insert([

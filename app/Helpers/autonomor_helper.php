@@ -407,18 +407,20 @@ if (!function_exists('generateNextNoPermintaanMb')) {
     }
 }
 
+// AutoNomor untuk Kode Barang (Saat ini dipake di fitur Barang dan registrasi barang baru
+// di Persetujuan Permintaan Barang)
 if (!function_exists('generateNextKodeBarang')) {
-    /** Generate kode barang otomatis: BRG-001, BRG-002, dst (sequential dari seluruh data) */
-    function generateNextKodeBarang(?string $lastKode): string
+    /** Generate kode barang berikutnya.
+     * Format: BRGXXXX, berjalan terus tanpa reset periodik (beda dengan nomor dokumen yang reset harian).
+     * Contoh: BRG0041 → BRG0042
+     * $nomorTerbesar harus MAX nomor seri dari kode BRG yang sudah ada (bukan COUNT atau
+     * kode milik baris ber-PK terbesar), lihat BarangModel::kode_barang_berikutnya();
+     * null bila belum ada barang sama sekali → BRG0001.
+     */
+    function generateNextKodeBarang(?int $nomorTerbesar): string
     {
-        $prefix = 'BRG-';
+        $nomor = max(0, $nomorTerbesar ?? 0) + 1;
 
-        if ($lastKode !== null && preg_match('/(\d+)$/', $lastKode, $m)) {
-            $nomor = (int) $m[1] + 1;
-        } else {
-            $nomor = 1;
-        }
-
-        return $prefix . str_pad((string) $nomor, 3, '0', STR_PAD_LEFT);
+        return 'BRG' . str_pad((string) $nomor, 4, '0', STR_PAD_LEFT);
     }
 }

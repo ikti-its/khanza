@@ -118,16 +118,59 @@ final class BarangController extends ControllerTemplate
         ]);
     }
 
-    // form tambah custom dengan modal search satuan dan jenis barang
+    /** Kode yang tampil di form tambah / ditetapkan untuk penyimpanan yang sedang berjalan. */
+    private string $kode_baru = '';
+
+    // form tambah custom dengan modal search satuan dan jenis barang;
+    // kode = pratinjau kode berikutnya (kode final ditetapkan ulang saat simpan)
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
     #[\Override]
     public function create_page(): string
     {
-        return view('admin/inventorinonmedis/tambah_barang', [
-            'judul'       => 'Tambah ' . $this->title,
-            'breadcrumbs' => array_merge($this->breadcrumbs, [['title' => 'Tambah', 'icon' => 'tambah']]),
-            'modul_path'  => $this->get_uri_path(),
-            'form_action' => '/submittambah/',
-        ]);
+        assert($this->model instanceof BarangModel, 'Model harus BarangModel.');
+        $this->kode_baru = $this->model->kode_barang_berikutnya();
+
+        return $this->create_view();
+    }
+
+    // Kode barang dihasilkan sistem: ditetapkan di dalam transaksi yang sama dengan insert,
+    // selama kunci dipegang (pola F13), dan diperiksa duplikatnya sebelum insert.
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
+    #[\Override]
+    public function create(): string|RedirectResponse
+    {
+        assert($this->model instanceof BarangModel, 'Model harus BarangModel.');
+
+        $db = $this->get_db();
+        try {
+            $db->transException(true)->transBegin();
+            $this->kode_baru = $this->model->tetapkan_kode_barang();
+
+            $hasil = parent::create(); // before_create() memasang $this->kode_baru
+            if (!$hasil instanceof RedirectResponse) {
+                $db->transRollback(); // validasi/DB gagal: form sudah dirender ulang dengan pesan error
+                return $hasil;
+            }
+            $db->transCommit();
+        } catch (\Throwable $e) {
+            $db->transRollback();
+            session()->setFlashdata('error', 'Gagal menyimpan: ' . $e->getMessage());
+            $this->kode_baru = $this->model->kode_barang_berikutnya(); // pratinjau baru, setelah rollback
+            /** @var array<string, mixed> $isian isian form yang baru disubmit */
+            $isian = $this->request->getPost();
+            return $this->create_view($isian);
+        } finally {
+            $db->transException(false);
+        }
+
+        session()->setFlashdata('success', "Barang {$this->kode_baru} berhasil disimpan.");
+        return $hasil;
     }
 
     // tampilkan form ubah custom (reuse view tambah)
@@ -174,7 +217,8 @@ final class BarangController extends ControllerTemplate
     #[\Override]
     protected function before_create(array &$postData): void
     {
-        $postData['stok'] = 0;
+        $postData['stok']        = 0;
+        $postData['kode_barang'] = $this->kode_baru; // abaikan kode kiriman form
 
         // convert empty FK modal fields to null
         foreach (['id_satuan', 'id_jenis_barang'] as $fk) {
@@ -188,10 +232,11 @@ final class BarangController extends ControllerTemplate
     // 'stok' bukan bagian dari form ubah (tampil readonly, tanpa name di form),
     // jadi get_post_data() akan mengirim null untuknya kalau tidak dibuang di sini —
     // dan itu melanggar constraint NOT NULL pada kolom stok.
+    // 'kode_barang' juga dibuang: kode tidak boleh berubah setelah dibuat, walau POST dimanipulasi.
     #[\Override]
     protected function before_update(array &$postData, int|string $id): void
     {
-        unset($postData['stok']);
+        unset($postData['stok'], $postData['kode_barang']);
 
         foreach (['id_satuan', 'id_jenis_barang'] as $fk) {
             if (isset($postData[$fk]) && $postData[$fk] === '') {
@@ -200,10 +245,13 @@ final class BarangController extends ControllerTemplate
         }
     }
 
-    // form tambah gagal validasi: render ulang view custom yang sama, bukan layout generik
+    // form tambah (juga saat gagal simpan): view custom yang sama, bukan layout generik.
+    // Kode diambil dari $kode_baru, bukan query ulang: transaksinya mungkin sudah batal.
     #[\Override]
     protected function create_view(array $baris = []): string
     {
+        $baris['kode_barang'] = $this->kode_baru;
+
         return view('admin/inventorinonmedis/tambah_barang', [
             'judul'       => 'Tambah ' . $this->title,
             'breadcrumbs' => array_merge($this->breadcrumbs, [['title' => 'Tambah', 'icon' => 'tambah']]),
