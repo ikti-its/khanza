@@ -11,11 +11,16 @@ if ($kolom === 'password' && $nilai !== '')
 // Nilai bertipe tanggal dari DB berformat ISO (Y-m-d[ H:i:s+tz]); tampilkan sebagai d-m-Y agar konsisten dengan tabel
 if (is_string($nilai) && preg_match('/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2})(?::\d{2}(?:\.\d+)?)?(?:[+-]\d{2}(?::?\d{2})?)?)?$/', $nilai, $m))
     $nilai = "{$m[3]}-{$m[2]}-{$m[1]}" . (isset($m[4]) ? " {$m[4]}:{$m[5]}" : '');
+// Nilai bisa berisi markup tampilan tabel (mis. <span> berwarna di Stok Opname); input hanya
+// menampung teks polos, jadi tag dibuang. Lalu nilai di-escape di bawah: tanpa escape, tanda kutip
+// di nilai memotong atribut value dan sisanya tampil sebagai teks.
+if (is_string($nilai) && preg_match('/<\/?[a-z][^>]*>/i', $nilai))
+    $nilai = html_entity_decode(strip_tags($nilai), ENT_QUOTES, 'UTF-8');
 ?>
 <div class="mb-5 sm:block">
     <label class="block mb-2 text-sm text-gray-900 dark:text-white">
         <?= $label ?>
     </label>
-    <input type="text" value="<?= $nilai ?>"
+    <input type="text" value="<?= esc(trim((string) $nilai), 'attr') ?>"
         class="bg-gray-100 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white" readonly>
 </div>
