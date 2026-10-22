@@ -32,6 +32,7 @@ final class PenerimaanBarangDetailModel extends ModelTemplate
         );
     }
 
+    // query detail beserta nama barang & qty pesan
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function build_query(): BaseBuilder
     {
@@ -51,6 +52,7 @@ final class PenerimaanBarangDetailModel extends ModelTemplate
             );
     }
 
+    // daftar detail sesuai filter & pencarian
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function findAll(int|null $limit = 10, int $offset = 0): array
@@ -59,7 +61,6 @@ final class PenerimaanBarangDetailModel extends ModelTemplate
         foreach ($this->runtime_filters as $col => $val) {
             $builder->where("m.{$col}", $val);
         }
-        // pencarian ?q= (set_search) dipetakan ke alias query kustom ini
         $this->apply_search_mapped($builder, [
             'kode_barang' => 'b.kode_barang',
             'nama_barang' => 'b.nama_barang',
@@ -74,6 +75,7 @@ final class PenerimaanBarangDetailModel extends ModelTemplate
         return $result->getResultArray();
     }
 
+    // ambil satu baris detail
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function find_one(int|string $id): array|null

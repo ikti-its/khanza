@@ -25,7 +25,7 @@ final class PengajuanBarangModel extends ModelTemplate
         );
     }
 
-    // Batasi pilihan status hanya Draf (1) dan Proses Pengajuan (4)
+    // status di form hanya Draf & Proses Pengajuan
     #[\Override]
     public function get_all_options(): array
     {

@@ -10,7 +10,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class StokOpnameController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['nama', 'nama_status_stok_opname'];
 
     public function __construct()
@@ -34,23 +33,19 @@ final class StokOpnameController extends ControllerTemplate
                 [SHOW,      REQUIRED, I::DTIME,  'tanggal',               'Tanggal'],
                 [SHOW,      OPTIONAL, I::SELECT, 'id_status_stok_opname', 'Status'],
                 [SHOW,      REQUIRED, I::SELECT, 'id_petugas',            'Pelaksana'],
-                // total_nominal dihitung runtime di after_read() — disuntik di
-                // get_fields_with_options(), bukan di sini, agar tidak ikut dirender
-                // halaman Audit (tak ada di stok_opname_audit_view).
                 [FORM_ONLY, REQUIRED, I::TEXT,   'catatan',               'Catatan'],
             ],
-            // child_path: '/inventori-non-medis/detail-stok-opname',
-            // child_fk: 'id_opname',
         );
     }
 
+    // urut descending
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_opname', 'DESC');
     }
 
-    // Kolom hitungan total_nominal hanya untuk daftar & popup, bukan form/Audit.
+    // tambah kolom total nominal
     #[\Override]
     protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
     {
@@ -62,8 +57,7 @@ final class StokOpnameController extends ControllerTemplate
         return $fields;
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -71,7 +65,7 @@ final class StokOpnameController extends ControllerTemplate
         return $result;
     }
 
-    // tambahkan kolom total nominal (selisih x harga_satuan) per opname untuk laporan bulanan
+    // hitung total nominal tiap opname
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function after_read(array &$data_tabel): void
@@ -88,8 +82,6 @@ final class StokOpnameController extends ControllerTemplate
                 continue;
             }
 
-            // Nominal memakai harga snapshot di detail; COALESCE ke harga master
-            // untuk baris lama yang snapshot-nya masih null.
             $total = (float) (
                 $this->guarded($db->query('SELECT COALESCE(SUM(d.selisih * COALESCE(d.harga_satuan, b.harga_satuan, 0)), 0) AS total
                  FROM inventori_non_medis.stok_opname_detail d
@@ -102,7 +94,7 @@ final class StokOpnameController extends ControllerTemplate
         unset($row);
     }
 
-    // format nominal rupiah dengan pewarnaan: biru = kelebihan, merah = kekurangan, abu-abu = pas
+    // format rupiah, merah minus biru plus
     private function format_nominal(float $nominal): string
     {
         $formatted = 'Rp ' . number_format(abs($nominal), 0, ',', '.');
@@ -126,7 +118,7 @@ final class StokOpnameController extends ControllerTemplate
         ]);
     }
 
-    // halaman detail (readonly) — view terpisah tanpa form
+    // halaman detail opname + nominal selisih
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function detail(int|string $id): string|RedirectResponse
     {
@@ -158,7 +150,7 @@ final class StokOpnameController extends ControllerTemplate
         ]);
     }
 
-    // form ubah: 1-page header + detail existing (hanya saat Proses)
+    // form ubah header + detail
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update_page(int|string $id): string|RedirectResponse
@@ -276,7 +268,6 @@ final class StokOpnameController extends ControllerTemplate
 
             $db->transCommit();
 
-            // buat transaksi stok opname jika langsung disimpan sebagai Selesai
             if ($new_status === 2) {
                 try {
                     $this->create_transaksi_stok_opname($id_opname);
@@ -299,7 +290,7 @@ final class StokOpnameController extends ControllerTemplate
         return $this->home();
     }
 
-    // update header + sync detail + handle status Selesai
+    // update opname, sesuaikan stok kalau selesai
     #[\Override]
     public function update(int|string $id): string|RedirectResponse
     {
@@ -399,7 +390,7 @@ final class StokOpnameController extends ControllerTemplate
         return $this->home();
     }
 
-    // catat penyesuaian stok, update stok barang ke nilai fisik (hanya yang ada selisih)
+    // samakan stok barang dengan hasil hitung
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function create_transaksi_stok_opname(int $id_opname): void
     {

@@ -11,7 +11,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PermintaanBarangController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['no_permintaan', 'nama', 'nama_ruangan'];
 
     public function __construct()
@@ -34,40 +33,23 @@ final class PermintaanBarangController extends ControllerTemplate
                 [HIDE,      OPTIONAL, I::INDEX,    'id_permintaan',             'ID'],
                 [SHOW,      OPTIONAL, I::READONLY, 'no_permintaan',             'No. Permintaan'],
                 [SHOW,      REQUIRED, I::DTIME,    'tanggal',                   'Tanggal Permintaan'],
-                // petugas & master_ruangan: kolom FK nyata pada tabel. Di daftar
-                // di-ekspansi jadi nama/ruangan lewat join model; form memakai view
-                // kustom (tambah_permintaan_barang). Jenis dibuat READONLY, bukan
-                // MODAL, supaya halaman Audit — yang merender $this->fields apa
-                // adanya — tidak menemui jenis 'modal' yang tak dikenal komponen
-                // sel tabel. Kolom turunan (progress, petugas_gudang_nama) sengaja
-                // tidak didaftarkan di sini; lihat get_fields_with_options().
                 [SHOW,      REQUIRED, I::READONLY, 'petugas',                   'Pemohon'],
                 [SHOW,      REQUIRED, I::READONLY, 'master_ruangan',            'Ruangan'],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'tanggal_diproses',          'Tanggal Diproses'],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'no_keluar',                 'No. Keluar'],
-                // Metode Pemenuhan: hanya di popup detail baris & halaman detail penuh,
-                // bukan kolom tabel daftar. FORM_ONLY = tak lolos filter kolom daftar
-                // (SHOW/TABLE_ONLY), tetap ikut dirender popup (pakai $konfig utuh).
                 [FORM_ONLY, REQUIRED, I::SELECT,   'boleh_pengiriman_sebagian', 'Metode Pemenuhan'],
             ],
-            // child_path: '/inventori-non-medis/detail-permintaan-barang',
-            // child_fk: 'id_permintaan',
         );
     }
 
-    // data terbaru di atas
+    // urut descending
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_permintaan', 'DESC');
     }
 
-    // Kolom turunan hanya untuk daftar & popup, BUKAN untuk form maupun Audit.
-    // Halaman Audit merender $this->fields apa adanya (tanpa filter visibilitas
-    // maupun ekspansi join), jadi kolom yang tak ada di permintaan_barang_audit_view
-    // — progress (dihitung di after_read) & petugas_gudang_nama (alias join) —
-    // sengaja tidak didaftarkan di konstruktor, lalu disisipkan di sini dengan
-    // urutan yang sama seperti sebelumnya.
+    // tambah kolom progress & petugas gudang
     #[\Override]
     protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
     {
@@ -80,8 +62,7 @@ final class PermintaanBarangController extends ControllerTemplate
         return $fields;
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -89,14 +70,13 @@ final class PermintaanBarangController extends ControllerTemplate
         return $result;
     }
 
-    // Normalisasi nilai kolom boolean permintaan_barang.boleh_pengiriman_sebagian
-    // (bisa '1'/'t'/'true'/null tergantung driver) menjadi bool. null → false.
+    // ubah nilai boolean jadi true/false
     private function allow_partial_shipment(mixed $value): bool
     {
         return in_array(strtolower((string) ($value ?? 'f')), ['1', 't', 'true', 'y', 'yes'], true);
     }
 
-    // Tambahkan kolom progress badge ke setiap baris di list
+    // isi metode pemenuhan & progress di tabel
     /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
     #[\Override]
     protected function after_read(array &$data_tabel): void
@@ -136,7 +116,7 @@ final class PermintaanBarangController extends ControllerTemplate
         ]);
     }
 
-    // halaman detail (readonly) — view terpisah tanpa form
+    // halaman detail permintaan + timeline
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function detail(int|string $id): string|RedirectResponse
     {
@@ -165,12 +145,9 @@ final class PermintaanBarangController extends ControllerTemplate
 
         $boleh_sebagian = is_array($baris) ? $baris['boleh_pengiriman_sebagian'] ?? null : null;
 
-        // Pengembalian: status permintaan TIDAK berubah karenanya. Eligibilitas &
-        // sisa kuota memakai aturan yang sama dengan modul Pengembalian Barang.
         $pengembalian = new \App\Features\InventoriNonMedis\PengembalianBarang\PengembalianBarangService(
             $this->get_db(),
         );
-        // Aturan sama persis dengan modal pemilihan permintaan di form Pengembalian.
         $bisa_ajukan_pengembalian = $pengembalian->permintaan_dapat_dikembalikan((int) $id) !== [];
 
         return view('admin/inventorinonmedis/detail_permintaan_barang', [
@@ -187,7 +164,7 @@ final class PermintaanBarangController extends ControllerTemplate
         ]);
     }
 
-    // form ubah: 1-page header + detail existing (hanya saat Draf)
+    // form ubah header + detail
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update_page(int|string $id): string|RedirectResponse
@@ -250,7 +227,6 @@ final class PermintaanBarangController extends ControllerTemplate
         $postData['no_permintaan']               = generateNextNoPermintaanBarang($lastNo, $tanggalPermintaan);
         $postData['id_status_permintaan_barang'] = (int) ($this->request->getPost('id_status_permintaan_barang') ?? 1);
 
-        // validasi: jika status Proses Permintaan (4), item wajib ada
         $detail_ids = $this->request->getPost('detail_id_barang') ?? [];
         /** @var array<array-key, mixed> $detail_ids */
         $detail_baru = $this->request->getPost('detail_is_baru') ?? [];
@@ -381,16 +357,7 @@ final class PermintaanBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    // Ajukan Pembatalan — Petugas RS mengajukan dari halaman miliknya sendiri
-    // (bukan lagi membatalkan langsung). Memakai slot route sampel/(:segment)
-    // yang sudah otomatis ter-generate untuk setiap modul (lihat
-    // App\Core\Route\RouteGroup) — TIDAK mendeklarasikan A::SAMPEL di
-    // constructor supaya components/aksi/aksi.php (yang membaca $this->actions
-    // untuk tombol otomatis di tabel daftar) tidak ikut merender
-    // components/aksi/sampel.php versi Laboratorium (field beda modul) di
-    // setiap baris tabel Permintaan Barang. Method ini SENGAJA tidak memanggil
-    // update() sama sekali — gerbang current_status!==1 di update() tidak
-    // relevan di sini (pembatalan justru hanya berlaku saat status 4/5).
+    // ajukan pembatalan permintaan
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \ReflectionException
@@ -424,8 +391,7 @@ final class PermintaanBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    // ========= PRIVATE HELPERS =========
-
+    // simpan baris detail permintaan
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \RuntimeException bila baris barang baru tidak lengkap
@@ -455,13 +421,10 @@ final class PermintaanBarangController extends ControllerTemplate
                 $id_jenis  = (int) ($detail_jenis[$i] ?? 0);
 
                 if ($nama === '' && $id_satuan <= 0 && $id_jenis <= 0 && $qty <= 0) {
-                    // baris kosong sepenuhnya — lewati diam-diam
+                    // baris kosong sepenuhnya, lewati diam-diam
                     continue;
                 }
 
-                // barang.id_satuan & barang.id_jenis_barang NOT NULL: baris barang
-                // baru hanya sah bila nama, satuan, DAN jenis terisi. Tolak simpan
-                // bila salah satu kosong supaya tidak lolos ke tahap persetujuan.
                 if ($nama === '' || $id_satuan <= 0 || $id_jenis <= 0 || $qty <= 0) {
                     throw new \RuntimeException(
                         'Barang baru "'
@@ -491,6 +454,7 @@ final class PermintaanBarangController extends ControllerTemplate
         }
     }
 
+    // pilihan satuan untuk barang baru
     private function get_options_satuan(): array
     {
         try {
@@ -507,6 +471,7 @@ final class PermintaanBarangController extends ControllerTemplate
         }
     }
 
+    // pilihan jenis untuk barang baru
     private function get_options_jenis(): array
     {
         try {

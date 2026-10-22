@@ -8,9 +8,7 @@ $kuota        = $kuota ?? [];
 $is_draf      = $is_draf ?? false;
 $status_label = (string) ($baris['nama_status_pengembalian_barang'] ?? '-');
 $status_id    = (int) ($baris['id_status_pengembalian_barang'] ?? 0);
-// Qty Disetujui hanya bermakna setelah pengembalian disetujui gudang (3)
 $show_qty_disetujui = $status_id === 3;
-// Riwayat Persetujuan hanya setelah ada keputusan gudang (3 Selesai / 4 Ditolak)
 $sudah_diputuskan   = in_array($status_id, [3, 4], true);
 $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', strtotime((string) $baris['tanggal_verifikasi'])) : '-';
 ?>
@@ -81,8 +79,6 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
         </div>
 
         <?php if ($sudah_diputuskan): ?>
-            <!-- Riwayat Persetujuan — permanen, warna netral karena bukan kartu aksi.
-                 Pola sama dengan kartu Riwayat Pengajuan Pembatalan di detail Permintaan. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
                 <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
                     <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">

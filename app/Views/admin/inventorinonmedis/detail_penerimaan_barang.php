@@ -37,8 +37,6 @@
                 <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Status</span>
                 <div class="w-full lg:w-1/4">
                     <?php
-                        // Warna Status: hijau 2 (Diterima), merah 3 (Ditolak), amber sisanya
-                        // (1 Proses Penerimaan) — sama seperti kolom Status di daftar.
                         $status_id = (int) ($baris['id_status_penerimaan_barang'] ?? 0);
                         if ($status_id === 2) {
                             $bg = '#D1FAE5'; $color = '#065F46';
@@ -70,22 +68,13 @@
 
         <!-- Progress Tracking -->
         <?php if (!empty($permintaan_asal)): ?>
-            <!-- Penerimaan ini bisa ditelusuri balik sampai ke sebuah Permintaan — timeline
-                 5-langkah yang sama seperti halaman Detail Permintaan dipakai di sini. -->
             <?php if (!empty($permintaan_asal['tracking']['steps'])): ?>
                 <?= view('admin/inventorinonmedis/_timeline_permintaan', ['tracking' => $permintaan_asal['tracking']]) ?>
             <?php endif; ?>
         <?php else: ?>
             <?php
             helper('tracking');
-            // id_pengajuan_terkait sudah ditelusuri sekali di controller (dipakai juga untuk
-            // menentukan $permintaan_asal di atas) — tidak query ulang pengadaan→pengajuan di sini.
             $id_pengajuan_track = (int) ($id_pengajuan_terkait ?? 0);
-            // Dua sumber tracking berbeda strukturnya: get_pengajuan_tracking() sudah
-            // dipindah ke struktur baru (_tstep/_trow, partial sendiri), sedangkan
-            // get_penerimaan_tracking() (fallback saat penerimaan sama sekali tidak
-            // tertaut pengadaan/pengajuan) TIDAK diubah — tetap struktur _s() lama,
-            // tetap lewat components/tracking/timeline.php.
             if ($id_pengajuan_track > 0):
                 $tracking = get_pengajuan_tracking($id_pengajuan_track);
                 if (!empty($tracking['steps'])):

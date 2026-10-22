@@ -42,11 +42,9 @@ final class BarangController extends ControllerTemplate
 
     protected array $row_alert = ['value' => 'stok', 'threshold' => 'stok_minimum'];
 
-    /** Pencarian server (?q=); index() kustom memetakannya ke kolom query di bawah. */
     protected array $search_columns = ['kode_barang', 'nama_barang', 'nama_satuan', 'nama_jenis_barang'];
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -61,8 +59,7 @@ final class BarangController extends ControllerTemplate
         $this->model->set_order('nama_barang', 'ASC');
     }
 
-    // tabel kustom: tambah kolom checkbox "pengajuan cepat" untuk barang di bawah stok minimum,
-    // tanpa mengubah components/tabel/data.php atau td.php (dipakai semua modul lain)
+    // daftar barang + checkbox pengajuan cepat
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function index(): string|RedirectResponse
@@ -70,8 +67,6 @@ final class BarangController extends ControllerTemplate
         $page = max(1, (int) ($this->request->getGet('page') ?? 1));
         $size = max(1, (int) ($this->request->getGet('size') ?? $this->meta_data['size']));
 
-        // Query yang sama dipakai untuk menghitung total dan mengambil halaman, supaya
-        // jumlah halaman mengikuti hasil pencarian. View barang/satuan/jenis = data terdekripsi.
         $keyword = $this->search_keyword();
         $builder = $this
             ->get_db()
@@ -80,7 +75,6 @@ final class BarangController extends ControllerTemplate
             ->join('inventori_non_medis.jenis_barang j', 'b.id_jenis_barang = j.id_jenis_barang', 'left')
             ->where('b.id_barang !=', 0);
         if ($keyword !== '') {
-            // ILIKE cocok sebagian lewat parameter binding; % dan _ di-escape (lihat like_keyword())
             $kw = $this->model->like_keyword($keyword);
             $builder
                 ->groupStart()
@@ -118,11 +112,9 @@ final class BarangController extends ControllerTemplate
         ]);
     }
 
-    /** Kode yang tampil di form tambah / ditetapkan untuk penyimpanan yang sedang berjalan. */
     private string $kode_baru = '';
 
-    // form tambah custom dengan modal search satuan dan jenis barang;
-    // kode = pratinjau kode berikutnya (kode final ditetapkan ulang saat simpan)
+    // form tambah barang, kode terisi otomatis
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -136,8 +128,7 @@ final class BarangController extends ControllerTemplate
         return $this->create_view();
     }
 
-    // Kode barang dihasilkan sistem: ditetapkan di dalam transaksi yang sama dengan insert,
-    // selama kunci dipegang (pola F13), dan diperiksa duplikatnya sebelum insert.
+    // simpan barang baru dengan kode BRG otomatis
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -152,17 +143,17 @@ final class BarangController extends ControllerTemplate
             $db->transException(true)->transBegin();
             $this->kode_baru = $this->model->tetapkan_kode_barang();
 
-            $hasil = parent::create(); // before_create() memasang $this->kode_baru
+            $hasil = parent::create();
             if (!$hasil instanceof RedirectResponse) {
-                $db->transRollback(); // validasi/DB gagal: form sudah dirender ulang dengan pesan error
+                $db->transRollback();
                 return $hasil;
             }
             $db->transCommit();
         } catch (\Throwable $e) {
             $db->transRollback();
             session()->setFlashdata('error', 'Gagal menyimpan: ' . $e->getMessage());
-            $this->kode_baru = $this->model->kode_barang_berikutnya(); // pratinjau baru, setelah rollback
-            /** @var array<string, mixed> $isian isian form yang baru disubmit */
+            $this->kode_baru = $this->model->kode_barang_berikutnya();
+            /** @var array<string, mixed> $isian */
             $isian = $this->request->getPost();
             return $this->create_view($isian);
         } finally {
@@ -188,6 +179,7 @@ final class BarangController extends ControllerTemplate
         ]);
     }
 
+    // data barang untuk modal pilih barang
     /**
      * @throws \CodeIgniter\Exceptions\ModelException
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
@@ -228,11 +220,8 @@ final class BarangController extends ControllerTemplate
         }
     }
 
+    // stok & kode barang tidak ikut diubah
     /** @param array<array-key, mixed> $postData */
-    // 'stok' bukan bagian dari form ubah (tampil readonly, tanpa name di form),
-    // jadi get_post_data() akan mengirim null untuknya kalau tidak dibuang di sini —
-    // dan itu melanggar constraint NOT NULL pada kolom stok.
-    // 'kode_barang' juga dibuang: kode tidak boleh berubah setelah dibuat, walau POST dimanipulasi.
     #[\Override]
     protected function before_update(array &$postData, int|string $id): void
     {
@@ -245,8 +234,7 @@ final class BarangController extends ControllerTemplate
         }
     }
 
-    // form tambah (juga saat gagal simpan): view custom yang sama, bukan layout generik.
-    // Kode diambil dari $kode_baru, bukan query ulang: transaksinya mungkin sudah batal.
+    // tampilkan form tambah custom
     #[\Override]
     protected function create_view(array $baris = []): string
     {
@@ -261,7 +249,7 @@ final class BarangController extends ControllerTemplate
         ]);
     }
 
-    // form ubah gagal validasi: render ulang view custom yang sama dengan input yang baru disubmit
+    // tampilkan ulang form ubah kalau gagal
     #[\Override]
     protected function update_error_view(int|string $id, string $msg, array $postData = []): string
     {
@@ -278,9 +266,7 @@ final class BarangController extends ControllerTemplate
         ]);
     }
 
-    // Guard hapus: FK dari tabel detail ke barang tidak aktif di jalur data nyata
-    // (lihat BarangModel::is_referenced), jadi penolakan ditegakkan di sini —
-    // teks pesan disamakan dengan friendly_db_error() untuk pelanggaran FK.
+    // tolak hapus kalau barang masih dipakai
     #[\Override]
     public function delete(int|string $id): string|RedirectResponse
     {
@@ -290,7 +276,7 @@ final class BarangController extends ControllerTemplate
             $referenced = $this->model->is_referenced((int) $id);
         } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
             log_message('error', 'Barang::delete gagal cek referensi: ' . $e->getMessage());
-            $referenced = true; // fail-safe: blokir hapus daripada meninggalkan data yatim
+            $referenced = true;
         }
 
         if ($referenced) {

@@ -11,7 +11,6 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 final class SatuanController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['kode_satuan', 'nama_satuan'];
 
     public function __construct()
@@ -38,8 +37,7 @@ final class SatuanController extends ControllerTemplate
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -47,6 +45,7 @@ final class SatuanController extends ControllerTemplate
         return $result;
     }
 
+    // data satuan untuk modal
     /**
      * @throws \CodeIgniter\Exceptions\ModelException
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
@@ -71,9 +70,7 @@ final class SatuanController extends ControllerTemplate
         $this->model->set_order('nama_satuan', 'ASC');
     }
 
-    // Guard hapus: FK dari barang & permintaan_barang_detail ke satuan tidak aktif
-    // di jalur data nyata (lihat SatuanModel::is_referenced), jadi penolakan
-    // ditegakkan di sini — teks pesan disamakan dengan friendly_db_error().
+    // tolak hapus kalau satuan masih dipakai
     #[\Override]
     public function delete(int|string $id): string|RedirectResponse
     {

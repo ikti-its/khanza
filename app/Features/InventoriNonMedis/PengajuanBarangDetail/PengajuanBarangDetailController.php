@@ -10,7 +10,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PengajuanBarangDetailController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['kode_barang', 'nama_barang', 'nama_barang_baru', 'nama_satuan'];
 
     public function __construct()
@@ -59,8 +58,7 @@ final class PengajuanBarangDetailController extends ControllerTemplate
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -68,7 +66,7 @@ final class PengajuanBarangDetailController extends ControllerTemplate
         return $result;
     }
 
-    // true jika status pengajuan bukan Draf (1) — detail tidak boleh diubah
+    // cek pengajuan sudah bukan Draf
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function is_locked(int $id_pengajuan): bool
     {
@@ -99,7 +97,7 @@ final class PengajuanBarangDetailController extends ControllerTemplate
         $postData['subtotal'] = (float) ($postData['harga'] ?? 0) * (float) ($postData['qty'] ?? 0);
     }
 
-    // lock check + duplikat check + update total_harga setelah tambah
+    // tambah detail, tolak kalau sudah diajukan
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function create(): string|RedirectResponse

@@ -15,14 +15,12 @@ final class PersetujuanPermintaanBarangModel extends ModelTemplate
         parent::__construct(
             new PermintaanBarangDatabase(),
             [
-                'id_permintaan'    => V::DEFAULT(),
-                'no_permintaan'    => V::DEFAULT(),
-                'tanggal'          => V::DEFAULT(),
-                'no_keluar'        => V::DEFAULT(),
-                'tanggal_diproses' => V::DEFAULT(),
-                'tanggal_diterima' => V::DEFAULT(),
-                // Direset di sini saat Setuju/Tolak Pembatalan (lihat update()) — bukan
-                // diajukan di sini, itu tugas PermintaanBarangController::sampel().
+                'id_permintaan'        => V::DEFAULT(),
+                'no_permintaan'        => V::DEFAULT(),
+                'tanggal'              => V::DEFAULT(),
+                'no_keluar'            => V::DEFAULT(),
+                'tanggal_diproses'     => V::DEFAULT(),
+                'tanggal_diterima'     => V::DEFAULT(),
                 'pengajuan_pembatalan' => V::DEFAULT(),
             ],
             [
@@ -36,7 +34,7 @@ final class PersetujuanPermintaanBarangModel extends ModelTemplate
         );
     }
 
-    // Batasi pilihan status: Proses Permintaan (4), Disetujui (2), Ditolak (3) — tanpa Draf
+    // status di form: Disetujui, Ditolak, Proses
     #[\Override]
     public function get_all_options(): array
     {

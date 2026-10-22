@@ -37,8 +37,6 @@
                 <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Status</span>
                 <div class="w-full lg:w-1/4">
                     <?php
-                        // Warna Status: hijau 2 (Selesai/Dipesan), merah 3 (Dibatalkan), amber
-                        // sisanya (1 Proses Pengadaan) — sama seperti kolom Status di daftar.
                         $status_id = (int) ($baris['id_status_pengadaan_barang'] ?? 0);
                         if ($status_id === 2) {
                             $bg = '#D1FAE5'; $color = '#065F46';
@@ -70,8 +68,6 @@
 
         <!-- Progress Tracking -->
         <?php if (!empty($permintaan_asal)): ?>
-            <!-- Pengadaan ini bisa ditelusuri balik sampai ke sebuah Permintaan — timeline
-                 5-langkah yang sama seperti halaman Detail Permintaan dipakai di sini. -->
             <?php if (!empty($permintaan_asal['tracking']['steps'])): ?>
                 <?= view('admin/inventorinonmedis/_timeline_permintaan', ['tracking' => $permintaan_asal['tracking']]) ?>
             <?php endif; ?>

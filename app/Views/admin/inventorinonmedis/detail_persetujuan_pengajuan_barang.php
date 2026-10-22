@@ -45,9 +45,6 @@
                         } else {
                             $bg = '#FEF3C7'; $color = '#92400E';
                         }
-                        // Qty Disetujui hanya bermakna setelah pengajuan Disetujui (2).
-                        // Status 1/4 (belum diproses) atau 3 (ditolak, mungkin sebelum
-                        // sempat disetujui) → angka 0 menyesatkan, tampilkan tanda hubung.
                         $show_qty_disetujui = $status_id === 2;
                     ?>
                     <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: <?= $bg ?>; color: <?= $color ?>;">
@@ -64,8 +61,6 @@
 
         <!-- Progress Tracking -->
         <?php if (!empty($permintaan_asal)): ?>
-            <!-- Pengajuan ini lahir dari sebuah Permintaan — timeline 5-langkah yang sama
-                 seperti halaman Detail Permintaan dipakai di sini, bukan timeline Pengajuan. -->
             <?php if (!empty($permintaan_asal['tracking']['steps'])): ?>
                 <?= view('admin/inventorinonmedis/_timeline_permintaan', ['tracking' => $permintaan_asal['tracking']]) ?>
             <?php endif; ?>

@@ -13,7 +13,6 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 final class PengembalianBarangController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = [
         'no_pengembalian',
         'no_permintaan',
@@ -37,18 +36,11 @@ final class PengembalianBarangController extends ControllerTemplate
                 A::AUDIT,
                 A::UPDATE,
                 A::DELETE,
-                // TANPA A::DETAIL: 'Lihat Detail' datang dari fallback aksi.php yang saling
-                // meniadakan dengan Ubah/Hapus (Draf → Ubah+Hapus, lainnya → Lihat Detail),
-                // sama seperti Permintaan Barang.
             ],
             [
                 [HIDE,      OPTIONAL, I::INDEX,    'id_pengembalian',               'ID'],
                 [SHOW,      OPTIONAL, I::READONLY, 'no_pengembalian',               'No. Pengembalian'],
                 [SHOW,      REQUIRED, I::DTIME,    'tanggal',                       'Tanggal'],
-                // FK di-ekspansi jadi no_permintaan/nama/nama_ruangan/nama_status lewat
-                // join model. READONLY (bukan MODAL) supaya halaman Audit, yang merender
-                // $this->fields apa adanya, tidak menemui jenis 'modal' — sama seperti
-                // PermintaanBarangController. Form memakai view kustom.
                 [SHOW,      REQUIRED, I::READONLY, 'id_permintaan',                 'Permintaan Asal'],
                 [SHOW,      REQUIRED, I::READONLY, 'petugas',                       'Pemohon'],
                 [SHOW,      REQUIRED, I::READONLY, 'master_ruangan',                'Ruangan'],
@@ -68,8 +60,7 @@ final class PengembalianBarangController extends ControllerTemplate
         $this->model->set_order('id_pengembalian', 'DESC');
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -77,22 +68,14 @@ final class PengembalianBarangController extends ControllerTemplate
         return $result;
     }
 
-    // Eligibilitas, rumus kuota, dan kunci per permintaan dipakai bersama F14 &
-    // detail Permintaan — lihat PengembalianBarangService.
+    // aturan pengembalian yang dipakai bersama
     private function service(): PengembalianBarangService
     {
         return new PengembalianBarangService($this->get_db());
     }
 
-    // ========= ENDPOINT MODAL =========
-
-    /**
-     * Endpoint modal/list:
-     * - Tanpa param: permintaan eligible (modal pemilihan permintaan)
-     * - Dengan ?id_permintaan=X: barang yang masih bisa dikembalikan (sisa > 0)
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // data modal: permintaan asal / barang + sisa kuota
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function list(): ResponseInterface
     {
         $id_permintaan = (int) ($this->request->getGet('id_permintaan') ?? 0);
@@ -109,27 +92,20 @@ final class PengembalianBarangController extends ControllerTemplate
             return $this->response->setJSON(['data' => $data]);
         }
 
-        $data = array_map(
-            static fn(array $r): array => [
-                'id_permintaan' => (int) $r['id_permintaan'],
-                'no_permintaan' => (string) ($r['no_permintaan'] ?? '-'),
-                // setara !empty(): kosong bila key tidak ada, null, false, 0, 0.0, '', '0', atau []
-                'tanggal'        => !in_array($r['tanggal'] ?? null, [null, false, 0, 0.0, '', '0', []], true)
-                    ? date('d/m/Y, H:i', (int) strtotime((string) ($r['tanggal'] ?? '')))
-                    : '-',
-                'master_ruangan' => (int) ($r['master_ruangan'] ?? 0),
-                'nama_ruangan'   => (string) ($r['nama_ruangan'] ?? '-'),
-            ],
-            $this->service()->permintaan_dapat_dikembalikan(),
-        ); // hanya yang masih punya sisa kuota
+        $data = array_map(static fn(array $r): array => [
+            'id_permintaan'  => (int) $r['id_permintaan'],
+            'no_permintaan'  => (string) ($r['no_permintaan'] ?? '-'),
+            'tanggal'        => !in_array($r['tanggal'] ?? null, [null, false, 0, 0.0, '', '0', []], true)
+                ? date('d/m/Y, H:i', (int) strtotime((string) ($r['tanggal'] ?? '')))
+                : '-',
+            'master_ruangan' => (int) ($r['master_ruangan'] ?? 0),
+            'nama_ruangan'   => (string) ($r['nama_ruangan'] ?? '-'),
+        ], $this->service()->permintaan_dapat_dikembalikan());
 
         return $this->response->setJSON(['data' => $data]);
     }
 
-    // ========= HALAMAN =========
-
-    // form tambah: 1-page header + detail. ?id_permintaan=X (dari tombol "Ajukan
-    // Pengembalian" di detail Permintaan) mengisi permintaan asal bila eligible.
+    // form tambah pengembalian
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function create_page(): string
@@ -137,7 +113,6 @@ final class PengembalianBarangController extends ControllerTemplate
         $prefill       = [];
         $id_permintaan = (int) ($this->request->getGet('id_permintaan') ?? 0);
         if ($id_permintaan > 0) {
-            // aturan sama dengan tombol di detail Permintaan & modal pemilihan permintaan
             $permintaan = $this->service()->permintaan_dapat_dikembalikan($id_permintaan);
             if ($permintaan !== []) {
                 $prefill = [
@@ -157,7 +132,7 @@ final class PengembalianBarangController extends ControllerTemplate
         ]);
     }
 
-    // halaman detail (readonly) + tombol Ajukan saat Draf
+    // halaman detail pengembalian
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -183,7 +158,7 @@ final class PengembalianBarangController extends ControllerTemplate
         ]);
     }
 
-    // form ubah: hanya saat Draf, selain itu tampilkan detail
+    // form ubah, hanya untuk Draf
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -213,10 +188,7 @@ final class PengembalianBarangController extends ControllerTemplate
         ]);
     }
 
-    // ========= AKSI =========
-
-    // simpan header + detail; Status di form = Draf atau langsung Proses Pengembalian
-    // (pola Permintaan Barang: Draf / Proses Permintaan dipilih di form)
+    // simpan pengembalian sebagai Draf atau langsung ajukan
     /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
     #[\Override]
     public function create(): string|RedirectResponse
@@ -233,11 +205,8 @@ final class PengembalianBarangController extends ControllerTemplate
         $db = $this->get_db();
 
         try {
-            // Error DB di dalam transaksi TIDAK dilempar oleh CI4 secara bawaan
-            // (query hanya mengembalikan false) — aktifkan supaya catch di bawah menangkapnya.
             $db->transException(true)->transBegin();
 
-            // Serialkan penomoran supaya dua simpan bersamaan tidak mendapat nomor sama.
             $db->query('SELECT pg_advisory_xact_lock(hashtext(?))', ['inventori_non_medis.no_pengembalian']);
 
             $header['no_pengembalian']               = $this->next_no_pengembalian((string) $header['tanggal']);
@@ -265,7 +234,6 @@ final class PengembalianBarangController extends ControllerTemplate
             $db->transException(false);
         }
 
-        // Di luar try: data sudah ter-commit, kegagalan di sini tak boleh dilaporkan sebagai gagal simpan.
         session()->setFlashdata(
             'success',
             $ajukan
@@ -275,8 +243,7 @@ final class PengembalianBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    // update header + sync detail (hanya Draf); Status di form bisa langsung Proses
-    // Pengembalian (satu-satunya jalan untuk mengajukan, lihat ajukan_dalam_transaksi()).
+    // ubah pengembalian yang masih Draf
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update(int|string $id): string|RedirectResponse
@@ -287,8 +254,6 @@ final class PengembalianBarangController extends ControllerTemplate
             return $this->home();
         }
 
-        // Form F13 tidak mengirim 'aksi'. Muatan apa pun (termasuk aksi=ajukan lama)
-        // ditolak eksplisit, bukan diam-diam diperlakukan sebagai update biasa.
         $aksi = (string) ($this->request->getPost('aksi') ?? '');
         if ($aksi !== '') {
             session()->setFlashdata('error', 'Aksi tidak dikenal.');
@@ -312,8 +277,6 @@ final class PengembalianBarangController extends ControllerTemplate
         $db = $this->get_db();
 
         try {
-            // Error DB di dalam transaksi TIDAK dilempar oleh CI4 secara bawaan
-            // (query hanya mengembalikan false) — aktifkan supaya catch di bawah menangkapnya.
             $db->transException(true)->transBegin();
 
             if ($this->model->update($id, $header) === false) {
@@ -366,8 +329,6 @@ final class PengembalianBarangController extends ControllerTemplate
 
         $db = $this->get_db();
         try {
-            // Error DB di dalam transaksi TIDAK dilempar oleh CI4 secara bawaan
-            // (query hanya mengembalikan false) — aktifkan supaya catch di bawah menangkapnya.
             $db->transException(true)->transBegin();
             $db
                 ->table('inventori_non_medis.pengembalian_barang_detail')
@@ -387,12 +348,8 @@ final class PengembalianBarangController extends ControllerTemplate
         return $this->home();
     }
 
+    // ajukan ke staf gudang + cek ulang kuota
     /**
-     * Draf → Proses Pengembalian. WAJIB dipanggil di dalam transaksi pemanggil
-     * (create/update). Kunci per permintaan (sama dengan Persetujuan F14),
-     * lalu validasi ulang di dalam kunci: minimal satu barang, permintaan masih
-     * eligible, dan kuota cukup. Melempar RuntimeException bila gagal.
-     *
      * @throws \RuntimeException
      * @throws \ReflectionException
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
@@ -432,7 +389,7 @@ final class PengembalianBarangController extends ControllerTemplate
         }
     }
 
-    // Status tujuan dari form: hanya Draf (1) atau Proses Pengembalian (2).
+    // status yang dipilih: Draf atau Proses
     private function status_tujuan(): int
     {
         return (int) ($this->request->getPost('id_status_pengembalian_barang') ?? 0)
@@ -441,12 +398,8 @@ final class PengembalianBarangController extends ControllerTemplate
             : PengembalianBarangService::STATUS_DRAF;
     }
 
-    // ========= PRIVATE HELPERS =========
-
+    // validasi isian header + detail
     /**
-     * Baca & validasi input form tambah/ubah. master_ruangan diambil dari
-     * permintaan asal di server, bukan dari POST.
-     *
      * @return array{0: array<string, mixed>, 1: list<array{id_barang: int, qty: int, catatan: string|null}>}
      * @throws \RuntimeException pesan validasi untuk pengguna
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
@@ -491,6 +444,7 @@ final class PengembalianBarangController extends ControllerTemplate
         ];
     }
 
+    // ambil baris detail dari form
     /**
      * @return list<array{id_barang: int, qty: int, catatan: string|null}>
      * @throws \RuntimeException
@@ -523,10 +477,8 @@ final class PengembalianBarangController extends ControllerTemplate
         return $items;
     }
 
+    // qty tidak boleh lebih dari sisa kuota
     /**
-     * Cek setiap baris terhadap sisa_kuota(). Mengembalikan pesan error pertama,
-     * atau null bila semua valid. Qty per barang dijumlahkan lebih dulu.
-     *
      * @param list<array{id_barang: int, qty: int, ...}> $items
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
@@ -557,6 +509,7 @@ final class PengembalianBarangController extends ControllerTemplate
         return null;
     }
 
+    // nama barang untuk pesan error
     /**
      * @param list<int> $ids
      * @return array<int, string>
@@ -584,9 +537,8 @@ final class PengembalianBarangController extends ControllerTemplate
         return $map;
     }
 
+    // sisa kuota per barang
     /**
-     * rincian_kuota() diindeks per id_barang, untuk view (kolom Qty Keluar/Sisa).
-     *
      * @return array<int, array<string, int|string>>
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
@@ -602,6 +554,7 @@ final class PengembalianBarangController extends ControllerTemplate
         return $map;
     }
 
+    // simpan baris detail pengembalian
     /**
      * @param list<array{id_barang: int, qty: int, catatan: string|null}> $items
      * @throws \RuntimeException
@@ -623,11 +576,8 @@ final class PengembalianBarangController extends ControllerTemplate
         }
     }
 
+    // nomor pengembalian berikutnya (KMB)
     /**
-     * Nomor berikutnya diambil dari nomor TERBESAR dengan prefix tanggal yang
-     * sama — bukan get_last() (baris ber-PK terbesar), yang bisa memberi nomor
-     * dari tanggal lain dan membuat penomoran mulai ulang dari 0001.
-     *
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
      */

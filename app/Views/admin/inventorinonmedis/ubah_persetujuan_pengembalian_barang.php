@@ -6,16 +6,11 @@ $detail_items = $detail_items ?? [];
 
 <?= $this->include('components/modal/modalpetugas') ?>
 <style>
-    /* modal-table.php memakai kelas z-50 yang tidak ada di build CSS — sama seperti
-       detail_persetujuan_permintaan_barang.php, angkat modal di atas konten. */
     #modalPetugas {
         z-index: 9999;
     }
 </style>
 
-<!-- Struktur form mengikuti ubah_persetujuan_permintaan_barang.php: baris label +
-     input readonly, pemilih petugas, tabel bergaris, tombol di bawah. Keputusan
-     dikirim lewat aksi=setuju / aksi=tolak (bukan select status). -->
 <div class="max-w-[85rem] py-6 lg:py-3 px-8 mx-auto">
     <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
         <?= view('components/form/judul', ['judul' => $judul]) ?>
@@ -154,8 +149,6 @@ $detail_items = $detail_items ?? [];
                 </div>
             </div>
 
-            <!-- Tombol: format components/form/submit_button (Kembali | aksi), dengan
-                 pasangan Tolak/Setujui menggantikan satu tombol Simpan. -->
             <div class="mt-5 pt-5 border-t flex justify-end gap-x-2">
                 <a href="javascript:history.back()" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">
                     Kembali
@@ -211,7 +204,6 @@ $detail_items = $detail_items ?? [];
             teks = 'Tolak pengembalian ini? Stok gudang tidak berubah dan kuota pengembalian kembali tersedia untuk unit.';
             konfirmasi = 'Ya, Tolak';
         } else {
-            // reportValidity() menegakkan 0 <= Qty Disetujui <= Qty Diajukan
             if (!form.reportValidity()) return;
             if (total === 0) {
                 if (!catatan) { peringatan('Semua Qty Disetujui 0 berarti pengembalian ditolak. Isi Catatan Persetujuan sebagai alasan penolakan.'); return; }

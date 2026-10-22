@@ -30,13 +30,8 @@ final class SuplierModel extends ModelTemplate
         );
     }
 
-    /**
-     * Cek apakah id_suplier masih direferensikan oleh pengadaan barang. FK di
-     * *_structure tidak aktif pada jalur data nyata (tabel *_encrypted, kolom FK
-     * bytea), jadi penolakan ditegakkan di lapisan aplikasi.
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // cek suplier masih dipakai pengadaan
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function is_referenced(int $id_suplier): bool
     {
         if ($id_suplier <= 0)

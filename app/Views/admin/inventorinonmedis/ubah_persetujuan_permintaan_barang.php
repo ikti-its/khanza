@@ -53,11 +53,6 @@
                     <option value="2" <?= (($baris['id_status_permintaan_barang'] ?? '') == 2) ? 'selected' : '' ?>>Disetujui</option>
                     <option value="3" <?= (($baris['id_status_permintaan_barang'] ?? '') == 3) ? 'selected' : '' ?>>Ditolak</option>
                 </select>
-                <!-- Gelombang 3: opsi "Dibatalkan" (7) SENGAJA dihapus dari sini — satu-
-                     satunya jalur sah ke status 7 sekarang adalah dua langkah
-                     (PermintaanBarangController::sampel() lalu
-                     PersetujuanPermintaanBarangController::keputusan_pembatalan()),
-                     atau cascade otomatis saat pengajuan/pengadaan turunan gagal. -->
 
                 <label class="block mt-5 md:my-0 md:ml-10 mb-2 text-sm text-gray-900 dark:text-white w-1/5">
                     Metode Pemenuhan

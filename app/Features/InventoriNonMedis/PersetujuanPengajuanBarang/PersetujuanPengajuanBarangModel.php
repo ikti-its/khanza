@@ -28,7 +28,7 @@ final class PersetujuanPengajuanBarangModel extends ModelTemplate
         );
     }
 
-    // Batasi pilihan status: Proses Pengajuan (4), Disetujui (2), Ditolak (3) — tanpa Draf
+    // status di form: Disetujui, Ditolak, Proses
     #[\Override]
     public function get_all_options(): array
     {

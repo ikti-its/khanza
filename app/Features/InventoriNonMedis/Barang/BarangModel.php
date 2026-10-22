@@ -27,18 +27,8 @@ final class BarangModel extends ModelTemplate
         );
     }
 
-    /**
-     * Cek apakah id_barang masih direferensikan oleh salah satu view detail transaksi.
-     *
-     * Pengganti FK: constraint di *_structure tidak aktif pada jalur data nyata
-     * (view ber-INSTEAD OF trigger di atas tabel *_encrypted, kolom id_barang bytea),
-     * sehingga integritas referensial harus ditegakkan di lapisan aplikasi.
-     *
-     * Satu query gabungan dengan OR EXISTS — Postgres berhenti pada EXISTS pertama
-     * yang terpenuhi.
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // cek barang masih dipakai di transaksi
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function is_referenced(int $id_barang): bool
     {
         if ($id_barang <= 0)
@@ -60,11 +50,8 @@ final class BarangModel extends ModelTemplate
         return $result->getRowArray() !== null;
     }
 
+    // ambil kode baru + cek duplikat
     /**
-     * Tetapkan kode untuk barang baru: kunci → MAX + 1 → periksa duplikat. Wajib dipanggil
-     * di dalam transaksi yang sama dengan insert-nya, dan insert sebelum commit; kunci
-     * dilepas saat commit/rollback, sehingga penyimpanan berikutnya membaca MAX yang baru.
-     *
      * @throws \RuntimeException kode ternyata sudah dipakai
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -80,25 +67,15 @@ final class BarangModel extends ModelTemplate
         return $kode;
     }
 
-    /**
-     * Serialkan penomoran kode barang (pola no_pengembalian di F13): dua penyimpanan
-     * bersamaan menunggu bergantian, jadi tidak bisa membaca MAX yang sama. Pengganti
-     * UNIQUE — constraint di barang_structure tidak tersentuh jalur data nyata (lihat
-     * is_referenced). pg_advisory_xact_lock dilepas otomatis saat commit/rollback.
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // kunci supaya kode tidak kembar
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function kunci_kode_barang(): void
     {
         $this->db->query('SELECT pg_advisory_xact_lock(hashtext(?))', ['inventori_non_medis.barang.kode_barang']);
     }
 
+    // kode berikutnya = nomor terbesar + 1
     /**
-     * Kode barang berikutnya = MAX nomor seri BRG + 1. Bukan COUNT atau kode milik
-     * id_barang terbesar: keduanya salah begitu ada barang yang dihapus atau kodenya
-     * diubah (BRG0041 saat ini ada di id_barang 5). Tanpa kunci hanya untuk pratinjau di
-     * form; kode yang disimpan selalu lewat tetapkan_kode_barang().
-     *
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
      */
@@ -111,18 +88,14 @@ final class BarangModel extends ModelTemplate
              WHERE kode_barang ~ '^BRG[0-9]{4,7}$'");
         assert($result instanceof \CodeIgniter\Database\BaseResult, 'Query kode_barang_berikutnya gagal dieksekusi.');
 
-        /** @var array{nomor: int|string|null}|null $baris MAX = NULL bila belum ada barang */
+        /** @var array{nomor: int|string|null}|null $baris */
         $baris = $result->getRowArray();
         $nomor = $baris['nomor'] ?? null;
         return generateNextKodeBarang($nomor === null ? null : (int) $nomor);
     }
 
-    /**
-     * Pemeriksaan duplikat saat simpan. Tetap dijalankan walau kode dihasilkan sistem:
-     * basis data tidak menolak kode kembar (lihat kunci_kode_barang).
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // cek kode sudah dipakai atau belum
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function kode_barang_terpakai(string $kode_barang): bool
     {
         $result = $this->db->query('SELECT 1 FROM inventori_non_medis.barang WHERE kode_barang = ? LIMIT 1', [

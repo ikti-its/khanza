@@ -11,7 +11,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PenerimaanBarangDetailController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['kode_barang', 'nama_barang', 'nama_satuan'];
 
     public function __construct()
@@ -48,8 +47,7 @@ final class PenerimaanBarangDetailController extends ControllerTemplate
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {

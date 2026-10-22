@@ -25,8 +25,6 @@
                 <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Status</span>
                 <div class="w-full lg:w-1/4">
                     <?php
-                    // Warna badge mengikuti pemetaan status yang sama dengan modul lain
-                    // (Draf abu-abu, Selesai hijau) — sebelumnya selalu kuning.
                     helper('tracking');
                     $nama_status = (string) ($baris['nama_status_stok_opname'] ?? '-');
                     ?>

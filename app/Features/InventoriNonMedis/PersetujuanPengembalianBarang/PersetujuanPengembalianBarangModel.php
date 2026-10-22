@@ -8,8 +8,6 @@ use App\Core\Model\ModelTemplate;
 use App\Core\Model\ValidationType as V;
 use App\Features\InventoriNonMedis\PengembalianBarang\PengembalianBarangDatabase;
 
-// Memakai ulang tabel pengembalian_barang, sama seperti PersetujuanPermintaanBarangModel
-// memakai ulang PermintaanBarangDatabase.
 final class PersetujuanPengembalianBarangModel extends ModelTemplate
 {
     public function __construct()
@@ -25,8 +23,6 @@ final class PersetujuanPengembalianBarangModel extends ModelTemplate
                 'catatan_verifikasi' => V::DEFAULT(),
             ],
             [
-                // Urutan sama dengan PengembalianBarangModel: petugas → 'nama',
-                // petugas_gudang → 'petugas_gudang_nama'.
                 'petugas'                       => ['id_orang' => ['nama']],
                 'petugas_gudang'                => ['id_orang' => ['nama']],
                 'id_permintaan'                 => ['no_permintaan'],

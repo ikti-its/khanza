@@ -10,7 +10,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PermintaanBarangDetailController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['kode_barang', 'nama_barang', 'nama_barang_baru', 'nama_satuan'];
 
     public function __construct()
@@ -58,8 +57,7 @@ final class PermintaanBarangDetailController extends ControllerTemplate
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -67,7 +65,7 @@ final class PermintaanBarangDetailController extends ControllerTemplate
         return $result;
     }
 
-    // true jika status permintaan bukan Draf (1) — detail tidak boleh diubah
+    // cek permintaan sudah bukan Draf
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function is_locked(int $id_permintaan): bool
     {
@@ -84,6 +82,7 @@ final class PermintaanBarangDetailController extends ControllerTemplate
         return is_array($row) && (int) ($row['id_status_permintaan_barang'] ?? 0) !== 1;
     }
 
+    // tambah detail, tolak kalau sudah diproses
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function create(): string|RedirectResponse
@@ -116,6 +115,7 @@ final class PermintaanBarangDetailController extends ControllerTemplate
         return parent::create();
     }
 
+    // ubah detail, tolak kalau sudah diproses
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update(int|string $id): string|RedirectResponse
@@ -130,6 +130,7 @@ final class PermintaanBarangDetailController extends ControllerTemplate
         return parent::update($id);
     }
 
+    // hapus detail, tolak kalau sudah diproses
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function delete(int|string $id): string|RedirectResponse

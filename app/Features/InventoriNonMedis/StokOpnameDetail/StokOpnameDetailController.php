@@ -10,7 +10,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class StokOpnameDetailController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['kode_barang', 'nama_barang', 'nama_satuan'];
 
     public function __construct()
@@ -58,8 +57,7 @@ final class StokOpnameDetailController extends ControllerTemplate
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -67,7 +65,7 @@ final class StokOpnameDetailController extends ControllerTemplate
         return $result;
     }
 
-    // format selisih: 0 → "-", positif → "+N", negatif tetap "-N"
+    // tampilkan selisih dengan tanda + / -
     #[\Override]
     protected function after_read(array &$data_tabel): void
     {
@@ -98,7 +96,7 @@ final class StokOpnameDetailController extends ControllerTemplate
         return (int) ($row['id_status_stok_opname'] ?? 0);
     }
 
-    // blok kalau opname induk udah Selesai, atau barang sudah ada
+    // tambah detail, tolak kalau opname selesai
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function create(): string|RedirectResponse

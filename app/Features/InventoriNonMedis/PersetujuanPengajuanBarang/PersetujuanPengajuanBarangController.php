@@ -10,7 +10,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPengajuanBarangController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['no_pengajuan', 'nama', 'nama_status_pengajuan_barang'];
 
     public function __construct()
@@ -47,12 +46,10 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
                     ],
                 ],
             ],
-            // child_path: '/inventori-non-medis/persetujuan-pengajuan-barang-detail',
-            // child_fk: 'id_pengajuan',
         );
     }
 
-    // hanya tampilkan Proses Pengajuan (4), Disetujui (2), Ditolak (3) — bukan Draf
+    // sembunyikan Draf, urut descending
     #[\Override]
     protected function before_read(): void
     {
@@ -60,8 +57,7 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         $this->model->set_order('id_pengajuan', 'DESC');
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -69,7 +65,7 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         return $result;
     }
 
-    // hanya izinkan transisi ke Disetujui (2) atau Ditolak (3) dari Persetujuan
+    // status hanya boleh Disetujui atau Ditolak
     #[\Override]
     protected function before_update(array &$postData, int|string $id): void
     {
@@ -131,12 +127,8 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         ]);
     }
 
+    // cari nomor permintaan asal
     /**
-     * pengajuan_barang.id_permintaan sudah tersedia langsung di $baris (kolom
-     * utama, nullable) — pengajuan dari jalur stok minimum tidak punya ini.
-     * Bila ada, timeline 5-langkah get_permintaan_tracking() dipakai menggantikan
-     * timeline get_pengajuan_tracking() bawaan.
-     *
      * @return array{id_permintaan: int, no_permintaan: string, tracking: array}|null
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -167,7 +159,7 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         ];
     }
 
-    // form ubah: 1-page — redirect jika sudah diproses
+    // form ubah: 1-page, redirect jika sudah diproses
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -180,7 +172,6 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
 
         $baris = $this->model->find_one($id);
 
-        // redirect ke detail jika sudah Disetujui atau Ditolak
         $status = is_array($baris) ? (int) ($baris['id_status_pengajuan_barang'] ?? 0) : 0;
         if (in_array($status, [2, 3], true)) {
             return $this->detail($id);
@@ -210,7 +201,7 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         ]);
     }
 
-    // validasi atasan & qty sebelum approve, sync qty_disetujui
+    // setujui atau tolak pengajuan
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update(int|string $id): string|RedirectResponse
@@ -269,16 +260,8 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
                 session()->setFlashdata('error', 'Isi qty disetujui pada detail pengajuan sebelum menyetujui.');
                 return $this->home();
             }
-
-            // Qty disetujui BOLEH melebihi qty yang diajukan (mis. atasan logistik
-            // memutuskan konsolidasi pembelian untuk stok) — siapa & kapan sudah
-            // otomatis tercatat lewat atasan_logistik & tanggal_diproses, dan qty
-            // vs qty_disetujui sudah cukup transparan tanpa perlu alasan tertulis.
-            // Ini satu-satunya titik otoritas yang boleh menaikkan qty — Pengadaan
-            // hanya boleh mengeksekusi sebesar yang disetujui di sini.
         }
 
-        // update header — hanya field yang relevan
         $postData = [
             'id_status_pengajuan_barang' => $new_status,
             'atasan_logistik'            => $this->request->getPost('atasan_logistik') ?: null,
@@ -293,9 +276,6 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
 
             $this->model->update($id, $postData);
 
-            // Pengajuan ditolak → tutup permintaan asal yang menjadi buntu.
-            // Dijalankan di dalam transaksi yang sama supaya atomik dengan
-            // perubahan status pengajuan.
             if ($new_status === 3) {
                 $this->close_stuck_permintaan_on_reject((int) $id);
             }
@@ -311,18 +291,8 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    /**
-     * Saat sebuah pengajuan ditolak atasan, permintaan asal yang memicunya
-     * menjadi buntu: tetap berstatus 5 (Menunggu Pengadaan) tanpa jalur maju,
-     * karena tidak ada pengadaan yang akan lahir dari pengajuan yang gagal.
-     * Tutup permintaan tersebut menjadi 7 (Dibatalkan) — hanya bila semua
-     * pengaman lolos. Dipanggil di dalam transaksi update() agar atomik.
-     *
-     * Bentuknya sengaja dibuat konsisten dengan
-     * PengadaanBarangController::close_stuck_permintaan_on_cancel().
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // pengajuan ditolak, tutup permintaan asalnya
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function close_stuck_permintaan_on_reject(int $id_pengajuan_ditolak): void
     {
         if ($id_pengajuan_ditolak <= 0)
@@ -330,7 +300,7 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
 
         $db = $this->get_db();
 
-        // Telusuri balik: pengajuan → permintaan asal.
+        // Telusuri balik: pengajuan → permintaan asal
         $pengajuan = $this->guarded(
             $db
                 ->table('inventori_non_medis.pengajuan_barang')
@@ -340,12 +310,10 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         )->getRowArray();
         /** @var array<string, mixed>|null $pengajuan */
 
-        // Syarat (a): pengajuan lahir dari permintaan, bukan jalur stok minimum.
         $id_permintaan = is_array($pengajuan) ? (int) ($pengajuan['id_permintaan'] ?? 0) : 0;
         if ($id_permintaan <= 0)
             return;
 
-        // Syarat (b): permintaan masih berstatus 5 (Menunggu Pengadaan).
         $permintaan = $this->guarded(
             $db
                 ->table('inventori_non_medis.permintaan_barang')
@@ -358,21 +326,13 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
         if ($status_permintaan !== 5)
             return;
 
-        // Pengaman "tidak ada pengadaan sibling hidup" TIDAK diperlukan di sini:
-        // pengadaan hanya bisa dibuat dari pengajuan berstatus 2 (lihat
-        // PengadaanBarangModel::get_all_options), dan transisi 2 → 3 diblokir di
-        // update() — jadi pengajuan berstatus 3 dijamin tak pernah punya pengadaan.
-
         $db
             ->table('inventori_non_medis.permintaan_barang')
             ->where('id_permintaan', $id_permintaan)
             ->update([
                 'id_status_permintaan_barang' => 7,
                 'tanggal_diproses'            => date('Y-m-d H:i:s'),
-                // Gelombang 3: bila ada pengajuan pembatalan yang masih menunggu
-                // keputusan Staf Gudang, tutup jadi tidak relevan lagi — permintaan
-                // sudah dibatalkan otomatis lewat jalur ini.
-                'pengajuan_pembatalan' => false,
+                'pengajuan_pembatalan'        => false,
             ]);
 
         log_message(

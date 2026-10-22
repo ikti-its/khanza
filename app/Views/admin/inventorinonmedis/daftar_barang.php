@@ -1,8 +1,6 @@
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
 
-<!-- Tabel Barang kustom: kolom checkbox "pengajuan cepat" untuk item di bawah stok minimum.
-     Sengaja tidak reuse components/tabel/data.php & td.php (dipakai semua modul lain). -->
 <div class="max-w-[85rem] py-6 lg:py-3 mx-auto">
     <div class="flex flex-col">
         <div class="-m-1.5 overflow-y-hidden">
@@ -17,7 +15,6 @@
                         echo view('components/header/search_bar', ['search_server' => true, 'search_q' => $search_q ?? '']);
                     ?>
 
-                    <!-- Aksi cepat: buat Pengajuan Barang dari item yang dicentang -->
                     <div class="py-2 flex justify-end">
                         <button type="button" id="btnAjukanPengajuan" onclick="ajukanPengajuanCepat()" disabled
                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E] disabled:opacity-50 disabled:pointer-events-none transition-all shadow-sm">
@@ -25,7 +22,6 @@
                         </button>
                     </div>
 
-                    <!-- Table — gaya ringkas sama dengan components/tabel/data.php untuk Inventori Non Medis -->
                     <style>
                         .tabel-ringkas td { width: auto !important; text-align: center; }
                         .tabel-ringkas td>div { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }

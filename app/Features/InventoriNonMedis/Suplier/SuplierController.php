@@ -11,7 +11,6 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 final class SuplierController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['kode_suplier', 'nama_suplier', 'nama_akun', 'nama_bank'];
 
     public function __construct()
@@ -44,8 +43,7 @@ final class SuplierController extends ControllerTemplate
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -53,7 +51,7 @@ final class SuplierController extends ControllerTemplate
         return $result;
     }
 
-    // inject pilihan bank ke field id_bank pas render form
+    // tambah pilihan bank di form
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
@@ -79,11 +77,8 @@ final class SuplierController extends ControllerTemplate
         return $fields;
     }
 
-    /**
-     * Ambil data suplier + nama kota & data rekening (bank, nomor, nama akun) untuk prefill form custom
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // ambil suplier beserta data rekening
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function get_baris_with_relasi(int|string $id): array|null
     {
         $data = $this->model->find($id);
@@ -124,7 +119,7 @@ final class SuplierController extends ControllerTemplate
         return $data;
     }
 
-    // custom view yang sama dengan tambah, dengan modal kota & bank (bukan dropdown generik)
+    // form ubah suplier
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update_page(int|string $id): string|RedirectResponse
@@ -141,7 +136,7 @@ final class SuplierController extends ControllerTemplate
         ]);
     }
 
-    // form tambah gagal validasi: render ulang view custom yang sama, bukan layout generik
+    // tampilkan form tambah custom
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function create_view(array $baris = []): string
@@ -156,7 +151,7 @@ final class SuplierController extends ControllerTemplate
         ]);
     }
 
-    // form ubah gagal validasi: render ulang view custom yang sama dengan input yang baru disubmit
+    // tampilkan ulang form ubah kalau gagal
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function update_error_view(int|string $id, string $msg, array $postData = []): string
@@ -195,9 +190,7 @@ final class SuplierController extends ControllerTemplate
         $this->model->set_order('nama_suplier', 'ASC');
     }
 
-    // Guard hapus: FK dari pengadaan_barang ke suplier tidak aktif di jalur data
-    // nyata (lihat SuplierModel::is_referenced), jadi penolakan ditegakkan di sini —
-    // teks pesan disamakan dengan friendly_db_error().
+    // tolak hapus kalau suplier dipakai pengadaan
     #[\Override]
     public function delete(int|string $id): string|RedirectResponse
     {
@@ -218,7 +211,7 @@ final class SuplierController extends ControllerTemplate
         return parent::delete($id);
     }
 
-    // pre-fill kode_suplier dengan kode otomatis, custom view dengan modal kota
+    // form tambah suplier, kode terisi otomatis
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function create_page(): string
@@ -243,6 +236,7 @@ final class SuplierController extends ControllerTemplate
         ]);
     }
 
+    // data suplier untuk modal
     /**
      * @throws \CodeIgniter\Exceptions\ModelException
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
@@ -260,7 +254,7 @@ final class SuplierController extends ControllerTemplate
         return $this->response->setJSON(['data' => $data]);
     }
 
-    // simpan rekening baru ke finansial.rekening, link id_rekening ke suplier
+    // simpan rekening dulu sebelum suplier
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_create(array &$postData): void
@@ -283,7 +277,7 @@ final class SuplierController extends ControllerTemplate
         $postData['id_rekening'] = $db->insertID();
     }
 
-    // update rekening yang sudah ada, atau insert baru kalau belum punya rekening
+    // update atau buat rekening suplier
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_update(array &$postData, int|string $id): void

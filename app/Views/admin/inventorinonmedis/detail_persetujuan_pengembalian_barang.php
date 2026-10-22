@@ -72,7 +72,6 @@ $tanggal_putusan = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', str
         </div>
 
         <?php if (!$is_pending): ?>
-            <!-- Riwayat Persetujuan — permanen, warna netral karena bukan kartu aksi. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
                 <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
                     <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">

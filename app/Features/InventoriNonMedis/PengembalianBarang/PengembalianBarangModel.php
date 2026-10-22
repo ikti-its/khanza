@@ -22,9 +22,6 @@ final class PengembalianBarangModel extends ModelTemplate
                 'catatan_verifikasi' => V::DEFAULT(),
             ],
             [
-                // Urutan menentukan alias kolom 'nama' hasil join (lihat
-                // ModelTemplate::compute_leaf_aliases()): petugas → 'nama',
-                // petugas_gudang → 'petugas_gudang_nama'.
                 'petugas'                       => ['id_orang' => ['nama']],
                 'petugas_gudang'                => ['id_orang' => ['nama']],
                 'id_permintaan'                 => ['no_permintaan'],

@@ -10,7 +10,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPengajuanBarangDetailController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['no_pengajuan', 'kode_barang', 'nama_barang', 'nama_barang_baru', 'nama_satuan'];
 
     public function __construct()
@@ -50,8 +49,7 @@ final class PersetujuanPengajuanBarangDetailController extends ControllerTemplat
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -59,7 +57,7 @@ final class PersetujuanPengajuanBarangDetailController extends ControllerTemplat
         return $result;
     }
 
-    // true jika pengajuan sudah Disetujui (2) atau Ditolak (3) — qty tidak bisa diubah lagi
+    // cek pengajuan sudah final
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function is_locked(int $id_pengajuan): bool
     {
@@ -76,7 +74,7 @@ final class PersetujuanPengajuanBarangDetailController extends ControllerTemplat
         return is_array($row) && in_array((int) ($row['id_status_pengajuan_barang'] ?? 0), [2, 3], true);
     }
 
-    // jika id_barang sudah terpetakan, tampilkan nama_barang (readonly) bukan SELECT pemetaan
+    // form ubah detail, barang tampil sebagai nama
     #[\Override]
     public function update_page(int|string $id): string|RedirectResponse
     {
@@ -109,8 +107,7 @@ final class PersetujuanPengajuanBarangDetailController extends ControllerTemplat
         ]);
     }
 
-    // hitung ulang subtotal pakai harga existing × qty_disetujui
-    // konversi id_barang SELECT kosong (0) → NULL, jangan overwrite jika sudah terpetakan
+    // barang yang sudah dipetakan tidak diubah
     #[\Override]
     protected function before_update(array &$postData, int|string $id): void
     {
@@ -118,7 +115,6 @@ final class PersetujuanPengajuanBarangDetailController extends ControllerTemplat
         if (!is_array($existing))
             return;
 
-        // jika id_barang sudah terpetakan, form tidak mengirim field ini — jangan overwrite
         if ((int) ($existing['id_barang'] ?? 0) > 0) {
             unset($postData['id_barang']);
         } elseif (array_key_exists('id_barang', $postData) && (int) $postData['id_barang'] === 0) {
@@ -131,8 +127,7 @@ final class PersetujuanPengajuanBarangDetailController extends ControllerTemplat
         $postData['subtotal'] = $harga * $qty_disetujui;
     }
 
-    // lock check: baris yang belum dipetakan (id_barang IS NULL) dikecualikan dari lock
-    // update total setelah simpan
+    // ubah qty disetujui + update total harga
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update(int|string $id): string|RedirectResponse
@@ -146,10 +141,6 @@ final class PersetujuanPengajuanBarangDetailController extends ControllerTemplat
             session()->setFlashdata('error', 'Pengajuan yang sudah diproses tidak dapat diubah detailnya.');
             return $this->home();
         }
-
-        // Catatan: qty_disetujui boleh melebihi qty pengajuan (mis. konsolidasi
-        // pembelian untuk stok) — validasi alasan dilakukan di aksi approve
-        // pada PersetujuanPengajuanBarangController, bukan di editor per-baris ini.
 
         $result = parent::update($id);
         if ($result instanceof RedirectResponse && $id_pengajuan > 0) {

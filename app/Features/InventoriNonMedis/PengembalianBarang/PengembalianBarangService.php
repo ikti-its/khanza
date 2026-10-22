@@ -6,11 +6,6 @@ namespace App\Features\InventoriNonMedis\PengembalianBarang;
 
 use CodeIgniter\Database\BaseConnection;
 
-/**
- * Aturan pengembalian yang dipakai bersama oleh F13 (PengembalianBarangController),
- * F14 (PersetujuanPengembalianBarangController) dan halaman detail Permintaan.
- * Eligibilitas permintaan dan rumus kuota HANYA ditulis di sini.
- */
 final class PengembalianBarangService
 {
     // id sesuai status_pengembalian_barang.csv
@@ -23,16 +18,13 @@ final class PengembalianBarangService
     public const TIPE_TRANSAKSI_KELUAR       = 2;
     public const TIPE_TRANSAKSI_PENGEMBALIAN = 4;
 
-    // status_permintaan_barang yang boleh dijadikan sumber pengembalian (6 = Selesai),
-    // hanya dibaca oleh permintaan_eligible()
     private const STATUS_PERMINTAAN_ELIGIBLE = [6];
 
     public function __construct(
         private BaseConnection $db,
     ) {}
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -40,12 +32,8 @@ final class PengembalianBarangService
         return $result;
     }
 
+    // permintaan selesai yang boleh dikembalikan
     /**
-     * Permintaan yang boleh dijadikan sumber pengembalian, terbaru dulu.
-     * SATU-SATUNYA tempat aturan eligibilitas: menambah status lain cukup lewat
-     * STATUS_PERMINTAAN_ELIGIBLE, batas waktu cukup ditambahkan sebagai where
-     * di sini (mis. pada pb.tanggal_diterima).
-     *
      * @return list<array<string, mixed>>
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
@@ -68,19 +56,13 @@ final class PengembalianBarangService
         )->getResultArray();
     }
 
+    // permintaan yang masih punya sisa kuota
     /**
-     * Permintaan yang SAAT INI benar-benar bisa diajukan pengembaliannya:
-     * eligible (permintaan_eligible()) DAN masih punya sisa_kuota() > 0 pada
-     * minimal satu barang. SATU-SATUNYA aturan untuk modal pemilihan permintaan
-     * (F13) dan tombol "Ajukan Pengembalian" di detail Permintaan, supaya pengguna
-     * tidak diarahkan ke permintaan yang kuotanya sudah habis.
-     *
      * @return list<array<string, mixed>>
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
     public function permintaan_dapat_dikembalikan(null|int $id_permintaan = null): array
     {
-        // foreach (bukan closure) supaya DatabaseException dari sisa_kuota() tercakup @throws method ini
         $hasil = [];
         foreach ($this->permintaan_eligible($id_permintaan) as $p) {
             if (
@@ -93,9 +75,8 @@ final class PengembalianBarangService
         return $hasil;
     }
 
+    // sisa kuota per barang
     /**
-     * Sisa kuota pengembalian per barang untuk satu permintaan.
-     *
      * @return array<int, int> id_barang => sisa
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
@@ -108,17 +89,8 @@ final class PengembalianBarangService
         return $sisa;
     }
 
+    // qty keluar, sudah kembali, dan sisa
     /**
-     * Rumus kuota — hanya ditulis di sini:
-     *   sisa = SUM(qty transaksi_stok tipe Keluar untuk permintaan ini)
-     *        - SUM(qty_diverifikasi pengembalian Selesai)
-     *        - SUM(qty_diajukan pengembalian Proses Pengembalian)
-     * Sumbernya transaksi_stok, BUKAN qty_disetujui: permintaan bisa berstatus
-     * Selesai tanpa transaksi keluar sama sekali. Semua transaksi keluar
-     * permintaan ini dijumlahkan (persetujuan awal + auto-fulfill). Draf dan
-     * Ditolak tidak mengurangi kuota; kedua sisi diagregasi per barang lebih
-     * dulu supaya join tidak menggandakan angka.
-     *
      * @return list<array{id_barang: int, kode_barang: string, nama_barang: string, nama_satuan: string, qty_keluar: int, sudah_dikembalikan: int, sisa: int}>
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
@@ -173,9 +145,8 @@ final class PengembalianBarangService
         ], $rows));
     }
 
+    // rincian barang satu pengembalian
     /**
-     * Baris detail satu dokumen pengembalian beserta kode/nama/satuan barang.
-     *
      * @return list<array<string, mixed>>
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
@@ -196,10 +167,8 @@ final class PengembalianBarangService
         )->getResultArray();
     }
 
+    // daftar pengembalian dari satu permintaan
     /**
-     * Semua dokumen pengembalian untuk satu permintaan (kartu "Pengembalian
-     * Terkait" di detail Permintaan), terbaru dulu, beserta total qty.
-     *
      * @return list<array<string, mixed>>
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
@@ -222,13 +191,8 @@ final class PengembalianBarangService
             ', [$id_permintaan]))->getResultArray();
     }
 
-    /**
-     * Kunci per permintaan untuk Ajukan (F13) dan Persetujuan (F14) — kunci yang
-     * SAMA supaya keduanya saling serial. Wajib dipanggil di dalam transaksi
-     * (pg_advisory_xact_lock dilepas otomatis saat commit/rollback).
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // kunci per permintaan supaya tidak bentrok
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function lock_permintaan(int $id_permintaan): void
     {
         $this->db->query('SELECT pg_advisory_xact_lock(hashtext(?))', [

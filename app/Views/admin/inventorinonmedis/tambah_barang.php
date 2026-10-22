@@ -22,7 +22,6 @@
                 <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
                     Kode Barang
                 </label>
-                <!-- Dihasilkan sistem (tambah) / tetap (ubah): tanpa name, server yang menetapkan kode -->
                 <input type="text" id="kode_barang" readonly tabindex="-1"
                        value="<?= esc($baris['kode_barang'] ?? '', 'attr') ?>"
                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white bg-gray-100 cursor-not-allowed">
@@ -74,7 +73,6 @@
                 </div>
             </div>
 
-            <!-- Stok (auto) + Stok Minimum (input) — sejajar karena berhubungan -->
             <div class="mb-5 sm:block md:flex items-center">
                 <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4">
                     Stok

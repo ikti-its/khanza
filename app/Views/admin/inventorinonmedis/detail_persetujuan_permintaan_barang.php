@@ -2,21 +2,11 @@
 <?= $this->section('content'); ?>
 
 <?php
-// Dimuat di sini juga (bukan hanya di bawah) karena pg_bool_is_true() dipakai
-// sebelum blok helper('tracking') utama di bawah.
 helper('tracking');
 ?>
 <?php if ((int) ($baris['id_status_permintaan_barang'] ?? 0) === 8 || pg_bool_is_true($baris['pengajuan_pembatalan'] ?? null)): ?>
     <?= $this->include('components/modal/modalPetugas') ?>
     <style>
-        /* modal-table.php memakai kelas `z-50` yang tidak ada di build CSS saat ini,
-           sehingga wrapper modal jatuh ke z-index:auto dan tertindih dot timeline
-           Progress Permintaan (position:relative; z-index:1). Angkat modal ini di
-           atas semua konten halaman. Scoped ke #modalPetugas saja. Dipakai baik
-           untuk Konfirmasi Terima (petugas_penerima) maupun Setujui/Tolak
-           Pembatalan (petugas_gudang_pembatalan) — dua kondisi ini tidak pernah
-           terjadi bersamaan (status 8 vs pengajuan_pembatalan hanya berlaku di
-           status 4/5), jadi satu modal boleh dipakai bergantian. */
         #modalPetugas {
             z-index: 9999;
         }
@@ -29,7 +19,7 @@ helper('tracking');
         <?= view('components/form/judul', ['judul' => $judul]) ?>
 
         <?php
-        // Dipakai oleh timeline progress di bawah.
+        // Dipakai oleh timeline progress di bawah
         helper('tracking');
         $tracking = get_permintaan_tracking((int) ($baris['id_permintaan'] ?? 0));
         ?>
@@ -63,36 +53,18 @@ helper('tracking');
             <?php
             $status_id = (int) ($baris['id_status_permintaan_barang'] ?? 0);
 
-            // Qty Disetujui hanya bermakna setelah permintaan melewati tahap
-            // persetujuan (status 2/5/6/8). Pada status 1/4 belum diproses, pada
-            // 3/7 bisa ditolak/dibatalkan sebelum sempat disetujui — angka 0
-            // menyesatkan, tampilkan tanda hubung.
             $show_qty_disetujui = in_array($status_id, [2, 5, 6, 8], true);
 
-            // Penerima & waktu terima hanya tampil setelah dikonfirmasi diterima (6).
             $show_penerima = $status_id === 6
                 && trim((string) ($baris['petugas_penerima_nama'] ?? '')) !== ''
                 && trim((string) ($baris['tanggal_diterima'] ?? '')) !== '';
 
-            // Gelombang 3: Petugas RS sudah mengajukan pembatalan (dari halaman
-            // Permintaan) — di sini Staf Gudang menyetujui/menolaknya.
-            // pg_bool_is_true() BUKAN (bool) cast biasa — kolom boolean Postgres
-            // balik sebagai string 't'/'f', dan (bool) 'f' salah jadi true.
             $pengajuan_pembatalan = pg_bool_is_true($baris['pengajuan_pembatalan'] ?? null);
 
-            // Kartu Riwayat Pengajuan Pembatalan — independen dari flag
-            // pengajuan_pembatalan (yang balik ke false setelah keputusan).
-            // Dipicu murni oleh tanggal_pembatalan supaya jejak pengajuan
-            // pembatalan tetap tampil permanen walau sudah diputuskan.
             $has_pembatalan_history      = !empty($baris['tanggal_pembatalan']);
             $pembatalan_diputuskan_oleh  = trim((string) ($baris['petugas_gudang_pembatalan_nama'] ?? ''));
             $pembatalan_sudah_diputuskan = !empty($baris['petugas_gudang_pembatalan']);
 
-            // tanggal_diproses adalah tanggal keputusan yang seharusnya selalu
-            // terisi begitu petugas_gudang_pembatalan ada (lihat perbaikan di
-            // keputusan_pembatalan() di bawah). Fallback ke tanggal_pembatalan
-            // HANYA untuk baris lama yang sempat tersimpan sebelum perbaikan
-            // itu, supaya tidak pernah tampil "-" selama datanya memang ada.
             $pembatalan_tanggal_diproses = match (true) {
                 !empty($baris['tanggal_diproses'])  => date('d/m/Y, H:i', strtotime((string) $baris['tanggal_diproses'])),
                 !empty($baris['tanggal_pembatalan']) => date('d/m/Y, H:i', strtotime((string) $baris['tanggal_pembatalan'])),
@@ -112,11 +84,6 @@ helper('tracking');
                 $pembatalan_hasil_bg    = '#FEE2E2';
                 $pembatalan_hasil_text  = '#991B1B';
             } else {
-                // status ditutup 7 lewat cascade otomatis (pengajuan ditolak
-                // atasan / pengadaan dibatalkan) sebelum Staf Gudang sempat
-                // memutuskan pengajuan pembatalan ini sendiri — lihat
-                // get_permintaan_pembatalan_cascade_reason() untuk detail
-                // pembedaan penyebabnya.
                 $pembatalan_cascade_reason = get_permintaan_pembatalan_cascade_reason((int) ($baris['id_permintaan'] ?? 0));
                 $pembatalan_hasil_label    = match ($pembatalan_cascade_reason) {
                     'pengajuan_ditolak'    => 'Permintaan otomatis dibatalkan karena pengajuan ditolak atasan pada ' . $pembatalan_tanggal_diproses,
@@ -169,15 +136,12 @@ helper('tracking');
         </div>
 
         <?php if ($status_id === 8): ?>
-            <!-- Konfirmasi Terima: transisi Proses Pengiriman (8) → Selesai (6).
-                 Warna pakai inline style — kelas emerald-* tidak ada di build CSS. -->
             <div class="mt-6 rounded-xl p-5 shadow-sm" style="background-color:#ECFDF5; border:1px solid #A7F3D0;">
                 <h4 class="text-xs font-bold uppercase tracking-wider mb-3" style="color:#047857;">Konfirmasi Penerimaan Barang</h4>
                 <form action="<?= $modul_path . '/submitedit/' . (int) ($baris['id_permintaan'] ?? 0) ?>" method="post" onsubmit="return confirmReceiveRequest(event, this);">
                     <?= csrf_field() ?>
                     <input type="hidden" name="id_status_permintaan_barang" value="6">
                     <input type="hidden" name="petugas_penerima" id="petugas_penerima" value="">
-                    <!-- Baris input: pola form (label md:w-1/4, input lg:w-1/4) sama dengan ubah_persetujuan_pengembalian_barang -->
                     <div class="sm:block md:flex items-center">
                         <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4 flex-shrink-0">
                             Petugas Penerima<span class="text-red-600">*</span>
@@ -194,7 +158,6 @@ helper('tracking');
                             </button>
                         </div>
                     </div>
-                    <!-- Tombol: baris bawah, rata kanan (pola components/form/submit_button) -->
                     <div class="mt-5 pt-5 border-t flex justify-end gap-x-2" style="border-color:#A7F3D0;">
                         <button type="submit"
                             class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
@@ -206,11 +169,6 @@ helper('tracking');
         <?php endif; ?>
 
         <?php if ($pengajuan_pembatalan): ?>
-            <!-- Gelombang 3: Setujui/Tolak Pengajuan Pembatalan — dua langkah,
-                 bukan lagi Batalkan langsung. Satu form, dua tombol submit
-                 (dibedakan lewat aksi_pembatalan) supaya picker Staf Gudang
-                 tidak perlu diduplikasi. Warna amber — permintaan pembatalan
-                 belum jadi keputusan final. -->
             <div class="mt-6 rounded-xl p-5 shadow-sm" style="background-color:#FFFBEB; border:1px solid #FDE68A;">
                 <h4 class="text-xs font-bold uppercase tracking-wider mb-3" style="color:#92400E;">Pengajuan Pembatalan</h4>
                 <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: #FEF3C7; color: #92400E;">
@@ -221,7 +179,6 @@ helper('tracking');
                     <?= csrf_field() ?>
                     <input type="hidden" name="aksi_pembatalan" id="aksi_pembatalan_input" value="">
                     <input type="hidden" name="petugas_gudang_pembatalan" id="petugas_gudang_pembatalan" value="">
-                    <!-- Baris input: pola form (label md:w-1/4, input lg:w-1/4) sama dengan ubah_persetujuan_pengembalian_barang -->
                     <div class="sm:block md:flex items-center">
                         <label class="block mb-2 md:mb-0 text-sm text-gray-900 dark:text-white md:w-1/4 flex-shrink-0">
                             Staf Gudang<span class="text-red-600">*</span>
@@ -238,7 +195,6 @@ helper('tracking');
                             </button>
                         </div>
                     </div>
-                    <!-- Tombol: baris bawah, rata kanan — sama dengan Tolak/Setujui di Persetujuan Pengembalian -->
                     <div class="mt-5 pt-5 border-t flex justify-end gap-x-2" style="border-color:#FDE68A;">
                         <button type="button" onclick="submitAksiPembatalan('tolak')"
                             class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-200 bg-red-50 text-red-700 shadow-sm hover:bg-red-100" style="background-color:#FEF2F2; border-color:#FECACA; color:#B91C1C;">
@@ -254,11 +210,6 @@ helper('tracking');
         <?php endif; ?>
 
         <?php if ($has_pembatalan_history): ?>
-            <!-- Riwayat Pengajuan Pembatalan — permanen, warna netral (bukan
-                 amber) karena bukan kartu aksi. Tampil berdampingan dengan
-                 kartu Setujui/Tolak di atas selama masih menunggu keputusan,
-                 dan boleh tampil bersamaan dengan kartu Konfirmasi Terima
-                 (status 8) — keduanya cerita berbeda. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
                 <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
                     <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -340,9 +291,6 @@ helper('tracking');
 
 <script>
     function autofillPetugas(item) {
-        // Modal ini dipakai bergantian oleh dua konteks yang tidak pernah aktif
-        // bersamaan (Konfirmasi Terima di status 8, Setujui/Tolak Pembatalan
-        // saat pengajuan_pembatalan) — isi field mana pun yang ada di DOM.
         const penerima = document.getElementById('petugas_penerima');
         if (penerima) {
             penerima.value = item.id_petugas ?? '';

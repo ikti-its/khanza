@@ -11,7 +11,6 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 final class PengajuanBarangController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['no_pengajuan', 'nama', 'nama_status_pengajuan_barang'];
 
     public function __construct()
@@ -39,24 +38,18 @@ final class PengajuanBarangController extends ControllerTemplate
                 [TABLE_ONLY, OPTIONAL, I::MONEY,    'total_harga',                'Total Harga'],
                 [SHOW,       OPTIONAL, I::SELECT,   'id_status_pengajuan_barang', 'Status'],
                 [FORM_ONLY,  OPTIONAL, I::READONLY, 'tanggal_diproses',           'Tanggal Diproses'],
-                // atasan_logistik_nama (alias join) disuntik di get_fields_with_options()
-                // — bukan di sini — agar tak ikut dirender halaman Audit sebagai kolom
-                // yang tidak ada di pengajuan_barang_audit_view.
             ],
-            // child_path: '/inventori-non-medis/detail-pengajuan-barang',
-            // child_fk: 'id_pengajuan',
         );
     }
 
+    // urut descending
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_pengajuan', 'DESC');
     }
 
-    // Kolom alias join hanya untuk daftar & popup, bukan form maupun Audit.
-    // Halaman Audit merender $this->fields apa adanya, jadi atasan_logistik_nama
-    // (tidak ada di pengajuan_barang_audit_view) disisipkan di sini saja.
+    // tambah kolom atasan logistik
     #[\Override]
     protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
     {
@@ -68,8 +61,7 @@ final class PengajuanBarangController extends ControllerTemplate
         return $fields;
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -77,7 +69,7 @@ final class PengajuanBarangController extends ControllerTemplate
         return $result;
     }
 
-    // endpoint modal: pengajuan yang sudah disetujui dan masih punya sisa qty
+    // pengajuan disetujui untuk modal pengadaan
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function list(): ResponseInterface
     {
@@ -110,9 +102,7 @@ final class PengajuanBarangController extends ControllerTemplate
         return $this->response->setJSON(['data' => $data]);
     }
 
-    // form tambah: 1-page header + detail
-    // (opsional: detail_items ter-prefill dari checkbox "Ajukan Pengajuan" di halaman Barang,
-    // lewat query param prefill_barang — lihat get_prefill_items())
+    // form tambah, bisa terisi dari pengajuan cepat
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function create_page(): string
@@ -126,7 +116,7 @@ final class PengajuanBarangController extends ControllerTemplate
         ]);
     }
 
-    // ambil barang dari query param prefill_barang (id_barang dipisah koma), qty default = selisih ke stok_minimum
+    // ambil barang dari pengajuan cepat
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function get_prefill_items(): array
     {
@@ -169,7 +159,7 @@ final class PengajuanBarangController extends ControllerTemplate
         }, $rows);
     }
 
-    // halaman detail (readonly) — view terpisah tanpa form
+    // halaman detail pengajuan
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -205,12 +195,8 @@ final class PengajuanBarangController extends ControllerTemplate
         ]);
     }
 
+    // cari nomor permintaan asal
     /**
-     * pengajuan_barang.id_permintaan sudah tersedia langsung di $baris (kolom
-     * utama, nullable) — pengajuan dari jalur stok minimum tidak punya ini.
-     * Bila ada, timeline 5-langkah get_permintaan_tracking() dipakai menggantikan
-     * timeline get_pengajuan_tracking() bawaan (lihat detail_pengajuan_barang.php).
-     *
      * @return array{id_permintaan: int, no_permintaan: string, tracking: array}|null
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -241,7 +227,7 @@ final class PengajuanBarangController extends ControllerTemplate
         ];
     }
 
-    // form ubah: 1-page header + detail existing (hanya saat Draf)
+    // form ubah header + detail
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException

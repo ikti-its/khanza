@@ -11,7 +11,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PenerimaanBarangController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['no_penerimaan', 'no_pengadaan', 'nama_status_penerimaan_barang'];
 
     private bool $pending_masuk = false;
@@ -41,19 +40,17 @@ final class PenerimaanBarangController extends ControllerTemplate
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'no_masuk',                    'No. Masuk'],
                 [FORM_ONLY, OPTIONAL, I::TEXT,     'catatan',                     'Catatan'],
             ],
-            // child_path: '/inventori-non-medis/penerimaan-barang-detail',
-            // child_fk: 'id_penerimaan',
         );
     }
 
+    // urut descending
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_penerimaan', 'DESC');
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -61,15 +58,13 @@ final class PenerimaanBarangController extends ControllerTemplate
         return $result;
     }
 
-    // Normalisasi nilai kolom boolean permintaan_barang.boleh_pengiriman_sebagian
-    // (bisa '1'/'t'/'true'/null tergantung driver) menjadi bool. null → false.
+    // ubah nilai boolean jadi true/false
     private function allow_partial_shipment(mixed $value): bool
     {
         return in_array(strtolower((string) ($value ?? 'f')), ['1', 't', 'true', 'y', 'yes'], true);
     }
 
-    // Peta harga_satuan per id_barang dari pengadaan_barang_detail, untuk di-snapshot
-    // ke penerimaan_barang_detail saat penerimaan disimpan.
+    // harga satuan per barang dari pengadaan
     /**
      * @return array<int, mixed>
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
@@ -110,7 +105,7 @@ final class PenerimaanBarangController extends ControllerTemplate
         ]);
     }
 
-    // halaman detail (readonly) — view terpisah tanpa form
+    // halaman detail penerimaan
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -139,25 +134,18 @@ final class PenerimaanBarangController extends ControllerTemplate
         $id_pengajuan_terkait = $this->trace_id_pengajuan(is_array($baris) ? (int) ($baris['id_pengadaan'] ?? 0) : 0);
 
         return view('admin/inventorinonmedis/detail_penerimaan_barang', [
-            'judul'        => 'Detail ' . $this->title,
-            'breadcrumbs'  => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
-            'modul_path'   => $this->get_uri_path(),
-            'baris'        => $baris,
-            'detail_items' => $detail_items,
-            // Diteruskan supaya blok fallback timeline yang sudah ada di view (lihat
-            // detail_penerimaan_barang.php) tidak perlu query ulang pengadaan→pengajuan.
+            'judul'                => 'Detail ' . $this->title,
+            'breadcrumbs'          => array_merge($this->breadcrumbs, [['title' => 'Detail', 'icon' => 'detail']]),
+            'modul_path'           => $this->get_uri_path(),
+            'baris'                => $baris,
+            'detail_items'         => $detail_items,
             'id_pengajuan_terkait' => $id_pengajuan_terkait,
             'permintaan_asal'      => $this->resolve_permintaan_asal($id_pengajuan_terkait),
         ]);
     }
 
-    /**
-     * Telusuri balik: penerimaan → pengadaan (id_pengadaan sudah ada di $baris) →
-     * pengajuan. Sama seperti trace pertama di fulfill_pending_permintaan(), tapi
-     * hanya sampai id_pengajuan (dipakai juga oleh view untuk fallback lama).
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // cari pengajuan dari pengadaan
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function trace_id_pengajuan(int $id_pengadaan): int
     {
         if ($id_pengadaan <= 0)
@@ -176,13 +164,8 @@ final class PenerimaanBarangController extends ControllerTemplate
         return is_array($pengadaan) ? (int) ($pengadaan['id_pengajuan'] ?? 0) : 0;
     }
 
+    // cari permintaan asal lewat pengajuan
     /**
-     * Lanjutan trace_id_pengajuan(): pengajuan → permintaan (JOIN tunggal, sekaligus
-     * menyaring pengajuan dari jalur stok minimum — id_permintaan NULL di sana tidak
-     * lolos INNER JOIN). Bila ditemukan, timeline 5-langkah get_permintaan_tracking()
-     * dipakai menggantikan timeline get_pengajuan_tracking()/get_penerimaan_tracking()
-     * bawaan.
-     *
      * @return array{id_permintaan: int, no_permintaan: string, tracking: array}|null
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -225,7 +208,6 @@ final class PenerimaanBarangController extends ControllerTemplate
     {
         $baris = $this->model->find_one($id);
 
-        // redirect ke detail jika Diterima (2) atau Ditolak (3)
         if (is_array($baris) && in_array((int) ($baris['id_status_penerimaan_barang'] ?? 0), [2, 3], true)) {
             return $this->detail($id);
         }
@@ -384,7 +366,6 @@ final class PenerimaanBarangController extends ControllerTemplate
                 }
             }
 
-            // Validasi: harus ada item dengan qty > 0 saat Diterima
             if ($new_status === 2) {
                 $has_items = false;
                 for ($i = 0; $i < count($detail_ids); $i++) {
@@ -420,7 +401,6 @@ final class PenerimaanBarangController extends ControllerTemplate
 
             $db->transCommit();
 
-            // Jika langsung Diterima: buat transaksi stok masuk + update pengadaan + fulfill pending
             if ($new_status === 2) {
                 try {
                     $this->create_transaksi_stok_masuk($id_penerimaan, (string) $postData['no_masuk']);
@@ -445,7 +425,7 @@ final class PenerimaanBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    // update header + sync detail + handle status transitions
+    // update penerimaan, tambah stok kalau diterima
     /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
     #[\Override]
     public function update(int|string $id): string|RedirectResponse
@@ -678,8 +658,6 @@ final class PenerimaanBarangController extends ControllerTemplate
                 'stok + ' . $qty,
                 false,
             );
-            // Kebijakan harga pembelian terakhir: perbarui harga master saat barang
-            // benar-benar diterima, dalam transaksi yang sama dengan pencatatan stok.
             if (isset($d['harga_satuan']) && (float) $d['harga_satuan'] > 0) {
                 $barang->set('harga_satuan', $d['harga_satuan']);
             }
@@ -689,7 +667,7 @@ final class PenerimaanBarangController extends ControllerTemplate
         $db->transCommit();
     }
 
-    // kalau semua item sudah diterima penuh, set status pengadaan → Selesai (2)
+    // pengadaan selesai kalau semua sudah diterima
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function update_pengadaan_status(int $id_pengadaan): void
     {
@@ -739,13 +717,8 @@ final class PenerimaanBarangController extends ControllerTemplate
             ->update();
     }
 
+    // penuhi permintaan yang menunggu pengadaan
     /**
-     * Auto-fulfill pending permintaan barang baru setelah penerimaan dikonfirmasi.
-     *
-     * Trace: penerimaan → pengadaan → pengajuan (yang punya id_permintaan) → permintaan status 5.
-     * Hanya item yang BELUM pernah stok keluar untuk permintaan ini yang di-fulfill.
-     * Jika semua item pending terpenuhi → status permintaan → Selesai (6).
-     *
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
      */
@@ -781,7 +754,6 @@ final class PenerimaanBarangController extends ControllerTemplate
             return;
         }
 
-        // Trace: pengajuan → permintaan (hanya pengajuan auto-created yang punya id_permintaan)
         $pengajuan = $this->guarded(
             $db
                 ->table('inventori_non_medis.pengajuan_barang')
@@ -795,7 +767,6 @@ final class PenerimaanBarangController extends ControllerTemplate
             return;
         }
 
-        // Cek apakah permintaan ini masih status Menunggu Pengadaan (5)
         $permintaan = $this->guarded(
             $db
                 ->table('inventori_non_medis.permintaan_barang')
@@ -813,7 +784,6 @@ final class PenerimaanBarangController extends ControllerTemplate
 
         $allow_partial = $this->allow_partial_shipment($permintaan['boleh_pengiriman_sebagian'] ?? null);
 
-        // Ambil item pending dan jumlah yang sudah pernah dikeluarkan.
         $builder = $db
             ->table('inventori_non_medis.permintaan_barang_detail d')
             ->join('inventori_non_medis.barang b', 'd.id_barang = b.id_barang', 'left')
@@ -936,11 +906,7 @@ final class PenerimaanBarangController extends ControllerTemplate
 
         // Tentukan status akhir permintaan
         if (count($items_not_ready) === 0) {
-            // Semua item pending terpenuhi. Stok keluar sudah dibuat di atas, kini
-            // permintaan menunggu konfirmasi terima dari pihak peminta → Proses
-            // Pengiriman (8), bukan langsung Selesai (6).
             $update_permintaan = ['id_status_permintaan_barang' => 8, 'pengajuan_pembatalan' => false];
-            // Jangan timpa no_keluar yang sudah terisi dari pengeluaran parsial sebelumnya.
             if ((string) ($permintaan['no_keluar'] ?? '') === '') {
                 $update_permintaan['no_keluar'] = $no_keluar;
             }
@@ -950,8 +916,6 @@ final class PenerimaanBarangController extends ControllerTemplate
                 ->update($update_permintaan);
             log_message('info', "[fulfill] Permintaan {$id_permintaan} → Proses Pengiriman (8)");
         } else {
-            // Masih ada item yang belum terpenuhi — tetap status 5, tapi simpan no_keluar parsial
-            // no_keluar belum di-set karena belum selesai sepenuhnya
             log_message(
                 'info',
                 "[fulfill] Permintaan {$id_permintaan} partial fulfill, masih ada "

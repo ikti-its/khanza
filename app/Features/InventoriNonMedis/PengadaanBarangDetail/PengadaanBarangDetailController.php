@@ -10,7 +10,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PengadaanBarangDetailController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['kode_barang', 'nama_barang', 'nama_satuan'];
 
     public function __construct()
@@ -45,8 +44,7 @@ final class PengadaanBarangDetailController extends ControllerTemplate
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -63,7 +61,7 @@ final class PengadaanBarangDetailController extends ControllerTemplate
         $postData['subtotal'] = $harga * $qty;
     }
 
-    // validasi total qty seluruh pengadaan ≤ qty disetujui pengajuan, update total_harga pengadaan
+    // ubah detail + update total harga
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update(int|string $id): string|RedirectResponse
@@ -95,7 +93,6 @@ final class PengadaanBarangDetailController extends ControllerTemplate
                     $qty_new       = (float) ($this->request->getPost('qty') ?? 0);
 
                     if ($qty_disetujui > 0 && $id_pengajuan > 0) {
-                        // total qty di semua pengadaan lain untuk pengajuan+barang yang sama
                         $already = (float) (
                             $this->guarded(
                                 $db

@@ -10,7 +10,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class TransaksiStokController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = [
         'nama_tipe_transaksi_stok',
         'keterangan',
@@ -51,8 +50,7 @@ final class TransaksiStokController extends ControllerTemplate
         $this->model->set_order('id_transaksi', 'DESC');
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -60,7 +58,7 @@ final class TransaksiStokController extends ControllerTemplate
         return $result;
     }
 
-    // halaman detail (readonly) — custom view konsisten dengan modul lain
+    // halaman detail transaksi + rincian barang
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function detail(int|string $id): string|RedirectResponse
     {

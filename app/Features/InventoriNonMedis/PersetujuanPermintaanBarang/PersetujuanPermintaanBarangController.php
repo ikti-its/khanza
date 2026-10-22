@@ -11,7 +11,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPermintaanBarangController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['no_permintaan', 'petugas_nama', 'nama_ruangan'];
 
     private bool $pending_keluar = false;
@@ -33,17 +32,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 [HIDE, OPTIONAL, I::INDEX, 'id_permintaan', 'ID'],
                 [SHOW, OPTIONAL, I::READONLY, 'no_permintaan', 'No. Permintaan'],
                 [TABLE_ONLY, OPTIONAL, I::DTIME, 'tanggal', 'Tanggal Permintaan'],
-                // HIDE (bukan SHOW): aksi.php TIDAK bergantung pada field ini — ia
-                // memindai $baris mentah langsung (kolom 'nama_status_*' selalu ada
-                // lewat join model, independen dari visibilitas field controller).
-                // HIDE di sini punya tujuan lain: build_modular_columns() mewariskan
-                // visibilitas field ke kolom alias join-nya (nama_status_permintaan_barang)
-                // lewat make_join_column_config() — jadi HIDE mengeluarkannya dari tabel
-                // (kolom 'progress' di bawah, berlabel "Status", sudah menggantikan
-                // tampilannya dengan teks presisi) TAPI tetap membuatnya muncul di popup
-                // detail baris. Tanpa field ini, kolom itu hilang total dari popup.
-                // Label "Status Dokumen" (bukan "Status") supaya di popup tidak bentrok
-                // dengan field 'progress' yang juga berlabel "Status".
                 [HIDE, REQUIRED, I::SELECT, 'id_status_permintaan_barang', 'Status Dokumen'],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'tanggal_diproses', 'Tanggal Diproses'],
                 [TABLE_ONLY, OPTIONAL, I::READONLY, 'petugas', 'Pemohon'],
@@ -62,12 +50,10 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 ],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'no_keluar', 'No. Keluar'],
             ],
-            // child_path: '/inventori-non-medis/persetujuan-permintaan-barang-detail',
-            // child_fk: 'id_permintaan',
         );
     }
 
-    // hanya tampilkan Proses Permintaan (4), Disetujui (2), Ditolak (3) — bukan Draf
+    // sembunyikan Draf, urut descending
     #[\Override]
     protected function before_read(): void
     {
@@ -75,8 +61,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $this->model->set_order('id_permintaan', 'DESC');
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -84,37 +69,13 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         return $result;
     }
 
-    // Normalisasi nilai kolom boolean permintaan_barang.boleh_pengiriman_sebagian
-    // (bisa '1'/'t'/'true'/null tergantung driver) menjadi bool. null → false.
+    // ubah nilai boolean jadi true/false
     private function allow_partial_shipment(mixed $value): bool
     {
         return in_array(strtolower((string) ($value ?? 'f')), ['1', 't', 'true', 'y', 'yes'], true);
     }
 
-    // Kolom turunan 'Progress' (lihat get_fields_with_options()) diisi di sini dari
-    // get_permintaan_tracking()->progress_label — SUMBER YANG SAMA dipakai
-    // PermintaanBarangController::after_read(), pola identik: kolom BARU, TIDAK
-    // menimpa 'nama_status_permintaan_barang' (kolom mentah hasil join).
-    //
-    // Sempat ditimpa langsung di kolom mentah pada perbaikan sebelumnya — ternyata
-    // components/aksi/aksi.php (shared, tak boleh disentuh) memindai SEMUA kolom
-    // yang mengandung substring 'nama_status' di $baris untuk menentukan tombol
-    // Ubah/Hapus vs "Lihat Detail" (mencocokkan teks mentah terhadap whitelist
-    // seperti 'proses permintaan'). Menimpa kolom itu dengan progress_label
-    // ("Menunggu Persetujuan" dst, tidak ada di whitelist manapun) membuat tombol
-    // Ubah hilang untuk baris yang seharusnya masih bisa diproses. Kolom asli
-    // sekarang dibiarkan apa adanya seperti sebelum perbaikan itu.
-    //
-    // Gelombang 3: 'nama_status_pengajuan_pembatalan' — kunci array BARU LAGI
-    // (bukan kolom asli, tidak dideklarasikan sebagai field apa pun sehingga
-    // tidak pernah dirender sebagai kolom tabel/popup), mengandung substring
-    // 'nama_status' supaya IKUT tersaring oleh pemindaian aksi.php yang sama.
-    // Saat pengajuan_pembatalan=true, nilainya sengaja bukan salah satu kata di
-    // whitelist editable aksi.php ('draf','proses pengadaan', dst, maupun
-    // 'proses permintaan'/'proses pengajuan'/'proses penerimaan' milik modul
-    // persetujuan) — itu membuat aksi.php menganggap baris ini TIDAK draf lagi,
-    // sehingga tombol berganti ke "Lihat Detail", walau nama_status_permintaan_barang
-    // mentahnya tetap "Proses Permintaan"/"Menunggu Pengadaan" apa adanya.
+    // isi kolom progress di tabel
     /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
     #[\Override]
     protected function after_read(array &$data_tabel): void
@@ -140,11 +101,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         }
     }
 
-    // Kolom turunan hanya untuk daftar & popup (progress dihitung di after_read()),
-    // BUKAN untuk form maupun Audit. Berlabel "Status" (bukan "Progress") — inilah
-    // SATU-SATUNYA kolom status yang terlihat pengguna di tabel; kolom mentah
-    // 'id_status_permintaan_barang' di atas sengaja HIDE agar tidak dobel di tabel,
-    // tapi tetap muncul di popup (lihat komentar pada deklarasi field-nya).
+    // tambah kolom status progress
     #[\Override]
     protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
     {
@@ -195,7 +152,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         ]);
     }
 
-    // form ubah: 1-page — redirect jika sudah diproses
+    // form ubah: 1-page, redirect jika sudah diproses
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -208,15 +165,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
 
         $baris = $this->model->find_one($id);
 
-        // redirect ke detail jika sudah final / read-only (Disetujui, Ditolak,
-        // Selesai, Dibatalkan, atau Proses Pengiriman) — ATAU sedang menunggu
-        // keputusan pengajuan pembatalan. Tanpa gerbang ini, Staf Gudang bisa
-        // membuka form Ubah biasa (Setuju/Tolak permintaan asli) sementara
-        // pengajuan pembatalan masih menunggu, dan cabang persetujuan normal di
-        // update() tidak mereset pengajuan_pembatalan — berpotensi membuat
-        // kartu Konfirmasi Terima & Pengajuan Pembatalan tampil bersamaan di
-        // halaman detail. Keputusan pembatalan HARUS lewat keputusan_pembatalan()
-        // dulu (tombol Setujui/Tolak Pembatalan di halaman detail).
         helper('tracking');
         $status = is_array($baris) ? (int) ($baris['id_status_permintaan_barang'] ?? 0) : 0;
         if (in_array($status, [2, 3, 6, 7, 8], true) || pg_bool_is_true($baris['pengajuan_pembatalan'] ?? null)) {
@@ -254,7 +202,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         ]);
     }
 
-    // validasi petugas, qty & stok sebelum approve, sync qty_disetujui, buat transaksi keluar setelah
+    // setujui/tolak permintaan, keluarkan stok, buat pengajuan
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -266,25 +214,12 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $current        = $this->model->find((int) $id);
         $current_status = is_array($current) ? (int) ($current['id_status_permintaan_barang'] ?? 0) : 0;
 
-        // Setujui/Tolak Pengajuan Pembatalan (Gelombang 3): payload pembeda
-        // 'aksi_pembatalan' ('setuju'/'tolak'), TIDAK memakai new_status=7 —
-        // dicek lebih dulu, sebelum blok manapun di bawah, supaya tidak pernah
-        // bercampur dengan alur new_status=3 (Ditolak) yang lama dari form Ubah.
-        // new_status=7 langsung dari jalur ini SEKARANG DITOLAK TOTAL (lihat
-        // cabang elseif ($new_status === 7) di bawah) — satu-satunya jalur sah
-        // ke status 7 adalah keputusan_pembatalan() di sini.
         helper('tracking');
         $aksi_pembatalan = (string) ($this->request->getPost('aksi_pembatalan') ?? '');
         if ($aksi_pembatalan !== '') {
             return $this->keputusan_pembatalan($id, $aksi_pembatalan, $current, $current_status);
         }
 
-        // Selain jalur di atas, blokir TOTAL selama pengajuan pembatalan masih
-        // menunggu — mencegah submit langsung ke endpoint ini (bukan hanya
-        // menyembunyikan form-nya di update_page()) menyetujui/menolak
-        // permintaan asli tanpa lebih dulu menuntaskan keputusan pembatalan,
-        // yang akan meninggalkan pengajuan_pembatalan=true menggantung pada
-        // status baru (berpotensi bikin dua kartu aksi tampil bersamaan).
         if (is_array($current) && pg_bool_is_true($current['pengajuan_pembatalan'] ?? null)) {
             session()->setFlashdata(
                 'error',
@@ -293,14 +228,10 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             return $this->home();
         }
 
-        // Proses Pengiriman (8): stok sudah keluar saat status jadi 8. Satu-satunya
-        // transisi sah adalah Konfirmasi Terima → Selesai (6): murni administratif,
-        // tanpa klasifikasi item / transaksi stok apa pun.
         if ($current_status === 8) {
             return $this->confirm_terima($id, $new_status);
         }
 
-        // blokir jika sudah final (Disetujui/Ditolak/Menunggu Pengadaan/Selesai)
         if (in_array($current_status, [2, 3, 6, 7], true)) {
             session()->setFlashdata('error', 'Permintaan yang sudah diproses tidak dapat diubah kembali.');
             return $this->home();
@@ -315,7 +246,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             }
         }
 
-        // sync qty_disetujui from form (by id_detail for both existing and baru items)
         $detail_id_detail     = (array) ($this->request->getPost('detail_id_detail') ?? []);
         $detail_qty_disetujui = (array) ($this->request->getPost('detail_qty_disetujui') ?? []);
 
@@ -331,9 +261,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             }
         }
 
-        // default: dipakai lagi di luar blok $is_new_approval di bawah tanpa
-        // mengubah alur — mago tidak bisa membuktikan kedua blok if ($is_new_approval)
-        // selalu berjalan bersamaan, jadi perlu nilai awal yang eksplisit.
         $has_existing      = false;
         $needs_procurement = false;
         $procurement_items = [];
@@ -353,7 +280,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 return redirect()->back();
             }
 
-            // Simpan detail yang memang berasal dari input barang baru sebelum diregistrasikan.
             $new_detail_rows = $this->guarded(
                 $db
                     ->table('inventori_non_medis.permintaan_barang_detail')
@@ -367,8 +293,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             /** @var list<array<string, mixed>> $new_detail_rows */
             $new_detail_ids = array_map(static fn(array $row): int => (int) $row['id_detail'], $new_detail_rows);
 
-            // Register barang baru ke master. Bila gagal, hentikan persetujuan dan
-            // JANGAN ubah status permintaan — status header belum disentuh di sini.
             try {
                 $this->register_barang_baru((int) $id);
             } catch (\Throwable $e) {
@@ -419,9 +343,8 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             }
 
             $needs_procurement = count($procurement_items) > 0;
-            // Tunggu lengkap menahan seluruh permintaan jika ada item yang kurang.
-            $existing_items = !$allow_partial && $needs_procurement ? [] : $available_items;
-            $has_existing   = count($existing_items) > 0;
+            $existing_items    = !$allow_partial && $needs_procurement ? [] : $available_items;
+            $has_existing      = count($existing_items) > 0;
         }
 
         // Determine final status
@@ -434,19 +357,14 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             $postData['tanggal_diproses'] = date('Y-m-d H:i:s');
 
             if ($needs_procurement && !$has_existing) {
-                // Semua item membutuhkan pengadaan.
+                // Semua item membutuhkan pengadaan
                 $postData['id_status_permintaan_barang'] = 5;
             } elseif ($needs_procurement && $has_existing) {
-                // Sebagian tersedia dan sebagian membutuhkan pengadaan.
                 $postData['id_status_permintaan_barang'] = 5;
             } else {
-                // Semua item tersedia dari stok, tidak perlu pengadaan. Stok keluar
-                // dibuat di bawah, lalu permintaan menunggu konfirmasi terima dari
-                // pihak peminta → Proses Pengiriman (8), bukan langsung Selesai (6).
                 $postData['id_status_permintaan_barang'] = 8;
             }
 
-            // Generate no_keluar hanya jika ada item yang langsung dikirim.
             if ($has_existing) {
                 helper('autonomor');
                 /** @var string|null $lastNo */
@@ -457,24 +375,16 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 $this->pending_keluar  = true;
             }
         } elseif ($new_status === 3) {
-            // Ditolak tanpa membuat transaksi stok baru.
+            // Ditolak tanpa membuat transaksi stok baru
             $postData['id_status_permintaan_barang'] = $new_status;
             $postData['tanggal_diproses']            = date('Y-m-d H:i:s');
         } elseif ($new_status === 7) {
-            // Gelombang 3: Dibatalkan (7) TIDAK LAGI bisa ditulis dari jalur
-            // update() biasa sama sekali — satu-satunya jalur sah sekarang
-            // adalah keputusan_pembatalan() (dua langkah, lihat dispatch
-            // 'aksi_pembatalan' di awal method ini) atau kedua cascade otomatis
-            // (close_stuck_permintaan_on_reject/close_stuck_permintaan_on_cancel,
-            // menulis lewat query builder langsung, tidak lewat sini).
             session()->setFlashdata('error', 'Pembatalan permintaan harus melalui pengajuan pembatalan dua langkah.');
             return $this->home();
         } else {
             $postData['id_status_permintaan_barang'] = $new_status;
         }
 
-        // Buat transaksi stok keluar untuk item existing TERLEBIH DAHULU.
-        // Kalau langkah ini gagal, status header tidak boleh terlanjur berubah.
         if ($this->pending_keluar && $no_keluar_baru !== null) {
             $this->pending_keluar = false;
             try {
@@ -517,10 +427,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    /**
-     * Konfirmasi Terima: transisi Proses Pengiriman (8) → Selesai (6).
-     * Hanya mencatat penerima + waktu terima; stok sudah keluar saat status jadi 8.
-     */
+    // konfirmasi terima: proses pengiriman jadi selesai
     private function confirm_terima(int|string $id, int $new_status): RedirectResponse
     {
         if ($new_status !== 6) {
@@ -549,14 +456,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    /**
-     * Setujui/Tolak Pengajuan Pembatalan (Gelombang 3) — Petugas RS sudah
-     * mengajukan lewat PermintaanBarangController::sampel(), di sini Staf
-     * Gudang memutuskan. Setuju → tutup permintaan (7), sama seperti tombol
-     * Batalkan langsung yang lama. Tolak → status TETAP seperti semula,
-     * hanya flag pending yang direset; alasan_pembatalan & tanggal_pembatalan
-     * DIBIARKAN tersimpan sebagai jejak riwayat (pernah diajukan lalu ditolak).
-     */
+    // setujui atau tolak pengajuan pembatalan
     /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
     private function keputusan_pembatalan(
         int|string $id,
@@ -565,9 +465,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         int $current_status,
     ): RedirectResponse {
         helper('tracking');
-        // pg_bool_is_true() BUKAN (bool)/empty() cast biasa — kolom boolean
-        // Postgres balik sebagai string 't'/'f', dan empty('f')/(bool) 'f'
-        // salah jadi true (string 'f' bukan '', '0', atau 0).
         if (
             !in_array($current_status, [4, 5], true)
             || !is_array($current)
@@ -600,12 +497,8 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
             try {
                 $this->model->update($id, [
                     'petugas_gudang_pembatalan' => $petugas_gudang_pembatalan,
-                    // Wajib diisi (sebelumnya hilang) supaya kartu Riwayat
-                    // Pengajuan Pembatalan punya tanggal keputusan untuk
-                    // ditampilkan — tanpa ini badge "Ditolak pada" selalu
-                    // jatuh ke "-" walau keputusan sudah benar-benar dibuat.
-                    'tanggal_diproses'     => date('Y-m-d H:i:s'),
-                    'pengajuan_pembatalan' => false,
+                    'tanggal_diproses'          => date('Y-m-d H:i:s'),
+                    'pengajuan_pembatalan'      => false,
                 ]);
                 session()->setFlashdata('success', 'Pengajuan pembatalan ditolak, permintaan tetap berjalan.');
             } catch (\Throwable $e) {
@@ -619,10 +512,8 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         return $this->home();
     }
 
+    // daftarkan barang baru ke master barang
     /**
-     * Auto-insert barang baru ke master saat disetujui.
-     * Update detail row: set id_barang = id baru, clear nama_barang_baru.
-     *
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
      * @throws \RuntimeException
@@ -646,18 +537,12 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         if (count($baru_items) === 0)
             return;
 
-        // Seluruh loop dibungkus satu transaksi: kegagalan pada item mana pun
-        // tidak boleh meninggalkan barang master yatim (tersimpan tanpa detail
-        // permintaan yang ter-link).
         $db->transBegin();
 
         try {
-            // Penomoran & kunci yang sama dengan Tambah Barang (koneksi yang sama dengan $db)
             $barang_model = new \App\Features\InventoriNonMedis\Barang\BarangModel();
 
             foreach ($baru_items as $item) {
-                // barang.id_satuan & barang.id_jenis_barang NOT NULL — tolak baris
-                // barang baru yang tak lengkap alih-alih mengirim null ke DB.
                 $id_satuan_baru = (int) ($item['id_satuan_baru'] ?? 0);
                 $id_jenis_baru  = (int) ($item['id_jenis_barang_baru'] ?? 0);
                 $nama_baru      = trim((string) ($item['nama_barang_baru'] ?? ''));
@@ -669,7 +554,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                     );
                 }
 
-                // Generate kode barang otomatis (MAX nomor BRG + 1, lihat BarangModel)
                 $kode = $barang_model->tetapkan_kode_barang();
 
                 // Insert ke master barang
@@ -683,7 +567,7 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
                 ]);
                 $new_id_barang = (int) $db->insertID();
 
-                // Update detail row — link ke master baru
+                // Update detail row, link ke master baru
                 $db
                     ->table('inventori_non_medis.permintaan_barang_detail')
                     ->where('id_detail', (int) $item['id_detail'])
@@ -708,9 +592,8 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $db->transCommit();
     }
 
+    // catat stok keluar untuk barang yang tersedia
     /**
-     * Transaksi stok keluar HANYA untuk item existing (stok > 0).
-     *
      * @param list<array<string, mixed>> $existing_items
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
@@ -790,9 +673,8 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $db->transCommit();
     }
 
+    // buat pengajuan otomatis dari kekurangan stok
     /**
-     * Auto-create Pengajuan Barang dari item yang membutuhkan kekurangan stok.
-     *
      * @param list<array<string, mixed>> $baru_items
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -831,10 +713,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         )->getRowArray();
         /** @var array<string, mixed>|null $permintaan */
 
-        // Snapshot harga: barang.harga_satuan SAAT pengajuan lahir, ditulis sekali
-        // ke sini lalu statis — TIDAK ada mekanisme yang menyinkronkan ulang nilai
-        // ini bila barang.harga_satuan berubah belakangan, sama seperti snapshot
-        // harga lain di sistem sejak Gelombang 1.
         $total_harga = 0.0;
         foreach ($baru_items as $item) {
             $qty          = (int) ($item['qty_pengadaan'] ?? $item['qty_disetujui']);

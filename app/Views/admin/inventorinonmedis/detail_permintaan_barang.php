@@ -7,7 +7,7 @@
         <?= view('components/form/judul', ['judul' => $judul]) ?>
 
         <?php
-        // Dipakai oleh timeline progress di bawah.
+        // Dipakai oleh timeline progress di bawah
         helper('tracking');
         $tracking = get_permintaan_tracking((int) ($baris['id_permintaan'] ?? 0));
         ?>
@@ -41,40 +41,19 @@
             <?php
             $status_id = (int) ($baris['id_status_permintaan_barang'] ?? 0);
 
-            // Qty Disetujui hanya bermakna setelah permintaan melewati tahap
-            // persetujuan (status 2/5/6/8). Pada status 1/4 belum diproses, pada
-            // 3/7 bisa jadi ditolak/dibatalkan sebelum sempat disetujui — di semua
-            // kasus itu angka 0 menyesatkan, tampilkan tanda hubung.
             $show_qty_disetujui = in_array($status_id, [2, 5, 6, 8], true);
 
-            // Penerima & waktu terima hanya bermakna setelah barang dikonfirmasi
-            // diterima (status 6). Sebelum itu kolomnya kosong — jangan tampilkan.
             $show_penerima = $status_id === 6
                 && trim((string) ($baris['petugas_penerima_nama'] ?? '')) !== ''
                 && trim((string) ($baris['tanggal_diterima'] ?? '')) !== '';
 
-            // Gelombang 3: pembatalan dua langkah. Petugas RS mengajukan dari
-            // halaman ini (flag pengajuan_pembatalan, TIDAK mengubah status),
-            // Staf Gudang menyetujui/menolak dari halaman Persetujuan.
-            // pg_bool_is_true() BUKAN (bool) cast biasa — kolom boolean Postgres
-            // balik sebagai string 't'/'f', dan (bool) 'f' salah jadi true.
             $pengajuan_pembatalan  = pg_bool_is_true($baris['pengajuan_pembatalan'] ?? null);
             $can_ajukan_pembatalan = in_array($status_id, [4, 5], true) && !$pengajuan_pembatalan;
 
-            // Kartu Riwayat Pengajuan Pembatalan — independen dari flag
-            // pengajuan_pembatalan (yang balik ke false setelah keputusan).
-            // Dipicu murni oleh tanggal_pembatalan supaya jejak pengajuan
-            // pembatalan tetap tampil permanen walau sudah diputuskan.
             $has_pembatalan_history      = !empty($baris['tanggal_pembatalan']);
             $pembatalan_diputuskan_oleh  = trim((string) ($baris['petugas_gudang_pembatalan_nama'] ?? ''));
             $pembatalan_sudah_diputuskan = !empty($baris['petugas_gudang_pembatalan']);
 
-            // tanggal_diproses adalah tanggal keputusan yang seharusnya selalu
-            // terisi begitu petugas_gudang_pembatalan ada (lihat perbaikan di
-            // PersetujuanPermintaanBarangController::keputusan_pembatalan()).
-            // Fallback ke tanggal_pembatalan HANYA untuk baris lama yang
-            // sempat tersimpan sebelum perbaikan itu, supaya tidak pernah
-            // tampil "-" selama datanya memang ada.
             $pembatalan_tanggal_diproses = match (true) {
                 !empty($baris['tanggal_diproses'])  => date('d/m/Y, H:i', strtotime((string) $baris['tanggal_diproses'])),
                 !empty($baris['tanggal_pembatalan']) => date('d/m/Y, H:i', strtotime((string) $baris['tanggal_pembatalan'])),
@@ -94,11 +73,6 @@
                 $pembatalan_hasil_bg    = '#FEE2E2';
                 $pembatalan_hasil_text  = '#991B1B';
             } else {
-                // status ditutup 7 lewat cascade otomatis (pengajuan ditolak
-                // atasan / pengadaan dibatalkan) sebelum Staf Gudang sempat
-                // memutuskan pengajuan pembatalan ini sendiri — lihat
-                // get_permintaan_pembatalan_cascade_reason() untuk detail
-                // pembedaan penyebabnya.
                 $pembatalan_cascade_reason = get_permintaan_pembatalan_cascade_reason((int) ($baris['id_permintaan'] ?? 0));
                 $pembatalan_hasil_label    = match ($pembatalan_cascade_reason) {
                     'pengajuan_ditolak'    => 'Permintaan otomatis dibatalkan karena pengajuan ditolak atasan pada ' . $pembatalan_tanggal_diproses,
@@ -147,10 +121,6 @@
         </div>
 
         <?php if ($pengajuan_pembatalan): ?>
-            <!-- Pengajuan Pembatalan — panel tersendiri (bukan baris tabel info
-                 dua-kolom), meniru gaya panel Konfirmasi Terima. Badge di sini
-                 khusus status pembatalan itu sendiri, TERPISAH dari badge Status
-                 utama di atas (yang selalu murni id_status_permintaan_barang). -->
             <div class="mt-6 rounded-xl p-5 shadow-sm" style="background-color:#FFFBEB; border:1px solid #FDE68A;">
                 <h4 class="text-xs font-bold uppercase tracking-wider mb-3" style="color:#92400E;">Pengajuan Pembatalan</h4>
                 <span class="inline-flex items-center py-1 px-2.5 rounded-full text-xs font-semibold" style="background-color: #FEF3C7; color: #92400E;">
@@ -161,9 +131,6 @@
         <?php endif; ?>
 
         <?php if ($has_pembatalan_history): ?>
-            <!-- Riwayat Pengajuan Pembatalan — permanen, warna netral (bukan
-                 amber) karena bukan kartu aksi. Tampil berdampingan dengan
-                 kartu di atas selama masih menunggu keputusan. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
                 <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
                     <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -232,8 +199,6 @@
         </div>
 
         <?php if (!empty($pengembalian_terkait)): ?>
-            <!-- Pengembalian Terkait — hanya tampil bila ada. Status permintaan tidak
-                 berubah karena pengembalian. -->
             <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
                 <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
                     <svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -269,8 +234,6 @@
             </div>
         <?php endif; ?>
 
-        <!-- Tombol Aksi: pola components/form/submit_button — Kembali paling kiri,
-             aksi utama paling kanan. -->
         <div class="mt-5 pt-5 border-t border-gray-200 dark:border-gray-800 flex justify-end gap-x-2">
             <a href="javascript:history.back()" class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">
                 Kembali

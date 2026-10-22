@@ -28,8 +28,7 @@ final class PenerimaanBarangModel extends ModelTemplate
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -37,7 +36,7 @@ final class PenerimaanBarangModel extends ModelTemplate
         return $result;
     }
 
-    // hanya tampilkan pengadaan yang masih punya sisa qty belum diterima (status Lengkap = 2)
+    // pilihan pengadaan yang belum diterima semua
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function get_all_options(): array

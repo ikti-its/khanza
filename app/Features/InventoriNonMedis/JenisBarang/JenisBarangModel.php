@@ -21,13 +21,8 @@ final class JenisBarangModel extends ModelTemplate
         );
     }
 
-    /**
-     * Cek apakah id_jenis_barang masih direferensikan. FK di *_structure tidak aktif
-     * pada jalur data nyata (tabel *_encrypted, kolom FK bytea), jadi penolakan
-     * ditegakkan di lapisan aplikasi.
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // cek jenis masih dipakai barang/permintaan
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function is_referenced(int $id_jenis_barang): bool
     {
         if ($id_jenis_barang <= 0)

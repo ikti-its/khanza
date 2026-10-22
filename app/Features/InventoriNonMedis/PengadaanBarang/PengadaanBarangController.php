@@ -11,7 +11,6 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 final class PengadaanBarangController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['no_pengadaan', 'no_pengajuan', 'nama_suplier', 'nama_status_pengadaan_barang'];
 
     public function __construct()
@@ -33,9 +32,6 @@ final class PengadaanBarangController extends ControllerTemplate
             ],
             [
                 [HIDE,       OPTIONAL, I::INDEX,    'id_pengadaan',               'ID'],
-                // no_pengajuan: alias join dari id_pengajuan (di bawah). Entri HIDE
-                // manual dihapus — redundan dengan ekspansi join, dan bikin halaman
-                // Audit tersandung kolom yang tak ada di pengadaan_barang_audit_view.
                 [FORM_ONLY,  REQUIRED, I::SELECT,   'id_pengajuan',               'Pengajuan'],
                 [SHOW,       OPTIONAL, I::READONLY, 'no_pengadaan',               'No. Pengadaan'],
                 [TABLE_ONLY, OPTIONAL, I::MONEY,    'total_harga',                'Total Harga'],
@@ -44,19 +40,17 @@ final class PengadaanBarangController extends ControllerTemplate
                 [TABLE_ONLY, OPTIONAL, I::SELECT,   'id_status_pengadaan_barang', 'Status'],
                 [FORM_ONLY,  OPTIONAL, I::TEXT,     'catatan',                    'Catatan'],
             ],
-            // child_path: '/inventori-non-medis/detail-pengadaan-barang',
-            // child_fk: 'id_pengadaan',
         );
     }
 
+    // urut descending
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_pengadaan', 'DESC');
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -64,21 +58,14 @@ final class PengadaanBarangController extends ControllerTemplate
         return $result;
     }
 
-    /**
-     * Endpoint modal/list:
-     * - Tanpa param: return list pengadaan (untuk modal penerimaan)
-     * - Dengan ?id_pengajuan=X: return detail items dari pengajuan (untuk preview saat buat pengadaan)
-     * - Dengan ?id_pengadaan=X: return detail items dari pengadaan (untuk preview saat buat penerimaan)
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // data untuk modal: barang pengajuan / pengadaan
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function list(): ResponseInterface
     {
         $id_pengajuan = (int) ($this->request->getGet('id_pengajuan') ?? 0);
         $id_pengadaan = (int) ($this->request->getGet('id_pengadaan') ?? 0);
 
         if ($id_pengajuan > 0) {
-            // Return items dari pengajuan beserta sisa qty yang belum dipesan
             $data = $this->guarded($this->get_db()->query(
                 '
                 SELECT
@@ -110,7 +97,6 @@ final class PengadaanBarangController extends ControllerTemplate
         }
 
         if ($id_pengadaan > 0) {
-            // Return items dari pengadaan (untuk penerimaan) dengan info sudah diterima
             $data = $this->guarded($this->get_db()->query('
                 SELECT d.id_barang, b.kode_barang, b.nama_barang, s.nama_satuan,
                        d.qty, d.harga_satuan,
@@ -141,11 +127,9 @@ final class PengadaanBarangController extends ControllerTemplate
             return $this->response->setJSON(['data' => $data]);
         }
 
-        // Default: return list pengadaan (untuk modal penerimaan)
         $mode = $this->request->getGet('mode') ?? '';
 
         if ($mode === 'available') {
-            // Hanya pengadaan yang masih punya sisa qty belum diterima (status Proses/Selesai, bukan Dibatalkan)
             $data = $this->guarded($this->get_db()->query("
                 SELECT pb.id_pengadaan, pb.no_pengadaan,
                        TO_CHAR(pb.tanggal, 'YYYY-MM-DD HH24:MI') AS tanggal,
@@ -206,7 +190,7 @@ final class PengadaanBarangController extends ControllerTemplate
         ]);
     }
 
-    // halaman detail (readonly) — view terpisah tanpa form
+    // halaman detail pengadaan
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -242,13 +226,8 @@ final class PengadaanBarangController extends ControllerTemplate
         ]);
     }
 
+    // cari permintaan asal lewat pengajuan
     /**
-     * Telusuri balik satu hop: pengadaan → pengajuan (id_pengajuan sudah ada di
-     * $baris) → permintaan (JOIN tunggal, sekaligus menyaring pengajuan yang lahir
-     * dari jalur stok minimum — id_permintaan NULL di sana tidak lolos INNER JOIN).
-     * Bila ditemukan, timeline 5-langkah get_permintaan_tracking() dipakai
-     * menggantikan timeline get_pengajuan_tracking() bawaan.
-     *
      * @return array{id_permintaan: int, no_permintaan: string, tracking: array}|null
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -281,7 +260,7 @@ final class PengadaanBarangController extends ControllerTemplate
         ];
     }
 
-    // form ubah: 1-page header + detail existing (hanya saat Proses Pengadaan)
+    // form ubah header + detail
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -347,9 +326,7 @@ final class PengadaanBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    // Qty pengadaan tidak boleh melebihi sisa qty_disetujui di Pengajuan terkait
-    // (dikurangi yang sudah dipesan di pengadaan lain untuk pengajuan yang sama).
-    // Pengadaan murni tahap eksekusi — kenaikan qty hanya sah lewat approval Pengajuan.
+    // qty pengadaan tidak boleh lebih dari sisa pengajuan
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function validate_qty_terhadap_pengajuan(
         int $id_pengajuan,
@@ -388,7 +365,6 @@ final class PengadaanBarangController extends ControllerTemplate
                         ->where('pb.id_pengajuan', $id_pengajuan)
                         ->where('pbd.id_barang', $id_barang)
                         ->where('pb.id_pengadaan !=', $exclude_id_pengadaan)
-                        // Pengadaan yang dibatalkan (3) tidak menahan kuota pengajuan.
                         ->where('pb.id_status_pengadaan_barang !=', 3)
                         ->get(),
                 )->getRowArray()['total'] ?? 0
@@ -460,7 +436,6 @@ final class PengadaanBarangController extends ControllerTemplate
             }
             $id_pengadaan = (int) $db->insertID();
 
-            // Simpan detail item (termasuk saat Dibatalkan — item tetap dipertahankan)
             $total_harga = 0;
 
             for ($i = 0; $i < count($detail_ids); $i++) {
@@ -540,7 +515,6 @@ final class PengadaanBarangController extends ControllerTemplate
         try {
             $db->transBegin();
 
-            // Jika Dibatalkan (3), hanya update header — pertahankan detail item
             if ($new_status === 3) {
                 // detail tetap ada, tidak dihapus
             } else {
@@ -574,9 +548,6 @@ final class PengadaanBarangController extends ControllerTemplate
 
             $this->model->update($id, $postData);
 
-            // Pengadaan dibatalkan → tutup permintaan asal yang menjadi buntu.
-            // Dijalankan di dalam transaksi yang sama supaya atomik dengan
-            // perubahan status pengadaan.
             if ($new_status === 3) {
                 $this->close_stuck_permintaan_on_cancel($id_pengajuan, (int) $id);
             }
@@ -591,14 +562,8 @@ final class PengadaanBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    /**
-     * Saat sebuah pengadaan dibatalkan, permintaan asal yang memicunya bisa
-     * menjadi buntu: kuota pengajuan terkunci dan tidak ada jalur maju. Tutup
-     * permintaan tersebut menjadi 7 (Dibatalkan) — hanya bila SEMUA pengaman
-     * lolos. Dipanggil di dalam transaksi update() agar atomik.
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // pengadaan batal, tutup permintaan yang menunggu
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function close_stuck_permintaan_on_cancel(int $id_pengajuan, int $id_pengadaan_dibatalkan): void
     {
         if ($id_pengajuan <= 0)
@@ -606,7 +571,7 @@ final class PengadaanBarangController extends ControllerTemplate
 
         $db = $this->get_db();
 
-        // Telusuri balik: pengajuan → permintaan asal.
+        // Telusuri balik: pengajuan → permintaan asal
         $pengajuan = $this->guarded(
             $db
                 ->table('inventori_non_medis.pengajuan_barang')
@@ -616,12 +581,10 @@ final class PengadaanBarangController extends ControllerTemplate
         )->getRowArray();
         /** @var array<string, mixed>|null $pengajuan */
 
-        // Syarat (a): pengajuan lahir dari permintaan, bukan jalur stok minimum.
         $id_permintaan = is_array($pengajuan) ? (int) ($pengajuan['id_permintaan'] ?? 0) : 0;
         if ($id_permintaan <= 0)
             return;
 
-        // Syarat (b): permintaan masih berstatus 5 (Menunggu Pengadaan).
         $permintaan = $this->guarded(
             $db
                 ->table('inventori_non_medis.permintaan_barang')
@@ -634,8 +597,6 @@ final class PengadaanBarangController extends ControllerTemplate
         if ($status_permintaan !== 5)
             return;
 
-        // Syarat (c): tidak ada pengadaan lain dari pengajuan yang sama yang masih
-        // berstatus 1/2 — kalau ada, jalur pemenuhan masih hidup, jangan ditutup.
         $pengadaan_hidup = $db
             ->table('inventori_non_medis.pengadaan_barang')
             ->where('id_pengajuan', $id_pengajuan)
@@ -645,17 +606,14 @@ final class PengadaanBarangController extends ControllerTemplate
         if ($pengadaan_hidup > 0)
             return;
 
-        // Semua pengaman lolos → tutup permintaan.
+        // Semua pengaman lolos → tutup permintaan
         $db
             ->table('inventori_non_medis.permintaan_barang')
             ->where('id_permintaan', $id_permintaan)
             ->update([
                 'id_status_permintaan_barang' => 7,
                 'tanggal_diproses'            => date('Y-m-d H:i:s'),
-                // Gelombang 3: bila ada pengajuan pembatalan yang masih menunggu
-                // keputusan Staf Gudang, tutup jadi tidak relevan lagi — permintaan
-                // sudah dibatalkan otomatis lewat jalur ini.
-                'pengajuan_pembatalan' => false,
+                'pengajuan_pembatalan'        => false,
             ]);
 
         log_message(

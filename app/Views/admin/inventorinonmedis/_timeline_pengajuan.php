@@ -1,18 +1,5 @@
 <?php
-/**
- * Timeline Pengajuan Barang MANDIRI — partial khusus modul Inventori Non-Medis.
- *
- * Merender struktur BARU dari get_pengajuan_tracking(): tiap langkah punya
- * `status` utama (warna dot) + `rows` (daftar sub-baris: text, date, tone) —
- * struktur & gaya visual identik dengan _timeline_permintaan.php, hanya beda
- * jumlah langkah (4, bukan 5) dan judul header.
- *
- * Dibuat terpisah dari components/tracking/timeline.php (yang tetap dipakai
- * get_penerimaan_tracking() dengan struktur lama) supaya perubahan struktur
- * ini tidak menyentuh komponen shared.
- *
- * @var array $tracking — output get_pengajuan_tracking()
- */
+/** @var array $tracking */
 
 $steps = $tracking['steps'] ?? [];
 if (empty($steps)) {

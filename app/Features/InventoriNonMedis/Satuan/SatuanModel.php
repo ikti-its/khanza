@@ -21,13 +21,8 @@ final class SatuanModel extends ModelTemplate
         );
     }
 
-    /**
-     * Cek apakah id_satuan masih direferensikan. FK di *_structure tidak aktif pada
-     * jalur data nyata (tabel *_encrypted, kolom FK bytea), jadi penolakan ditegakkan
-     * di lapisan aplikasi.
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // cek satuan masih dipakai barang/permintaan
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     public function is_referenced(int $id_satuan): bool
     {
         if ($id_satuan <= 0)

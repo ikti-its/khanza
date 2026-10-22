@@ -1,17 +1,5 @@
 <?php
-/**
- * Timeline Permintaan Barang — partial khusus modul Inventori Non-Medis.
- *
- * Merender struktur BARU dari get_permintaan_tracking(): tiap langkah punya
- * `status` utama (warna dot) + `rows` (daftar sub-baris: text, date, tone).
- *
- * Dibuat terpisah dari components/tracking/timeline.php (yang tetap dipakai
- * get_penerimaan_tracking() dengan struktur lama; get_pengajuan_tracking() kini
- * punya partial sejenis sendiri, lihat _timeline_pengajuan.php) supaya
- * perubahan struktur ini tidak menyentuh komponen shared.
- *
- * @var array $tracking — output get_permintaan_tracking()
- */
+/** @var array $tracking */
 
 $steps = $tracking['steps'] ?? [];
 if (empty($steps)) {

@@ -12,7 +12,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPengembalianBarangController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = [
         'no_pengembalian',
         'no_permintaan',
@@ -34,8 +33,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                 A::READ,
                 A::UPDATE,
                 A::AUDIT,
-                // TANPA A::DETAIL: status 2 → Ubah, sudah diputuskan → 'Lihat Detail' (fallback
-                // aksi.php), sama seperti Persetujuan Permintaan Barang.
             ],
             [
                 [HIDE,      OPTIONAL, I::INDEX,    'id_pengembalian',               'ID'],
@@ -53,10 +50,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         );
     }
 
-    // Draf milik unit tidak terlihat gudang. Proses Pengembalian (2) di atas,
-    // lalu yang sudah diputuskan (3 Selesai, 4 Ditolak), terbaru dulu.
-    // Prefix 'm.' wajib: tabel status yang di-join punya kolom bernama sama,
-    // dan ModelTemplate::findAll() memasang orderBy tanpa alias.
+    // sembunyikan Draf, yang menunggu di atas
     #[\Override]
     protected function before_read(): void
     {
@@ -69,8 +63,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         $this->model->set_order('m.id_pengembalian', 'DESC');
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -78,14 +71,13 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         return $result;
     }
 
+    // aturan pengembalian yang dipakai bersama
     private function service(): S
     {
         return new S($this->get_db());
     }
 
-    // ========= HALAMAN =========
-
-    // halaman baca: untuk dokumen yang sudah diputuskan (juga dipakai status 2)
+    // halaman detail persetujuan pengembalian
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -119,7 +111,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         ]);
     }
 
-    // form persetujuan: hanya saat Proses Pengembalian (status 2), selain itu tampilkan detail
+    // form persetujuan, hanya yang menunggu
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
@@ -148,10 +140,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         ]);
     }
 
-    // ========= AKSI =========
-
-    // Hanya dua aksi sah lewat submitedit: aksi=setuju (F14-2) dan aksi=tolak (F14-3),
-    // pola setuju/tolak yang sama dengan keputusan pembatalan permintaan.
+    // arahkan ke setuju atau tolak
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update(int|string $id): string|RedirectResponse
@@ -175,10 +164,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         return $this->setuju((int) $id, $petugas_gudang, $catatan);
     }
 
-    /**
-     * F14-2 Setujui: posting stok masuk dari pengembalian. Transaksi stok, penambahan
-     * stok, qty_diverifikasi, dan status header ditulis dalam SATU transaksi.
-     */
+    // setujui pengembalian, stok bertambah
     private function setuju(int $id, int $petugas_gudang, string $catatan): RedirectResponse
     {
         try {
@@ -188,8 +174,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
             return redirect()->back();
         }
 
-        // Semua baris 0 = tidak ada barang yang diterima: perlakukan sebagai
-        // penolakan (status 4), bukan Selesai dengan nol barang masuk.
         if ($qty_input !== [] && array_sum($qty_input) === 0) {
             return $this->tolak($id, $petugas_gudang, $catatan, true);
         }
@@ -198,8 +182,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         $service = $this->service();
 
         try {
-            // Error DB di dalam transaksi TIDAK dilempar oleh CI4 secara bawaan
-            // (query hanya mengembalikan false) — aktifkan supaya catch di bawah menangkapnya.
             $db->transException(true)->transBegin();
 
             $header = $this->locked_header($id, $service);
@@ -208,7 +190,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                 throw new \RuntimeException('Dokumen pengembalian tidak memiliki baris barang.');
             }
 
-            // Setiap baris dokumen wajib punya input; tidak boleh ada baris asing.
             $ids_dokumen = array_map(static fn(array $r): int => (int) $r['id_detail'], $items);
             if (array_diff(array_keys($qty_input), $ids_dokumen) !== []) {
                 throw new \RuntimeException('Terdapat baris yang bukan milik dokumen ini.');
@@ -236,9 +217,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                 throw new \RuntimeException('Semua qty disetujui 0 — gunakan Tolak.');
             }
 
-            // Validasi ULANG kuota. Dokumen ini berstatus 2 sehingga qty_diajukan-nya
-            // sudah terpotong di sisa_kuota(); kapasitas untuknya = sisa + qty_diajukan
-            // sendiri. Ini menangkap kuota yang sudah tidak konsisten (mis. sisa negatif).
             $id_permintaan = (int) $header['id_permintaan'];
             $sisa          = $service->sisa_kuota($id_permintaan);
             foreach ($verif_per_barang as $id_barang => $qty) {
@@ -255,7 +233,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                 }
             }
 
-            // 1. header transaksi stok tipe Pengembalian — id_permintaan/penerimaan/opname dibiarkan NULL
             $db->table('inventori_non_medis.transaksi_stok')->insert([
                 'id_tipe_transaksi_stok' => S::TIPE_TRANSAKSI_PENGEMBALIAN,
                 'tanggal'                => date('Y-m-d H:i:s'),
@@ -275,7 +252,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                     $id_barang    = (int) $item['id_barang'];
                     $stok_sebelum = $this->stok_barang($id_barang);
 
-                    // 2. detail transaksi, harga dari transaksi keluar asal (bukan master)
                     $db->table('inventori_non_medis.transaksi_stok_detail')->insert([
                         'id_transaksi' => $id_transaksi,
                         'id_barang'    => $id_barang,
@@ -285,8 +261,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                         'stok_sesudah' => $stok_sebelum + $qty,
                     ]);
 
-                    // 3. stok bertambah (relatif). harga_satuan master SENGAJA tidak
-                    //    disentuh: pengembalian bukan pembelian baru.
                     $db
                         ->table('inventori_non_medis.barang')
                         ->where('id_barang', $id_barang)
@@ -300,7 +274,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                     ->update(['qty_diverifikasi' => $qty]);
             }
 
-            // 4. header dokumen
             $ok = $this->model->update($id, [
                 'id_status_pengembalian_barang' => S::STATUS_SELESAI,
                 'petugas_gudang'                => $petugas_gudang,
@@ -329,10 +302,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    /**
-     * F14-3 Tolak. Tidak ada transaksi stok; kuota kembali tersedia karena
-     * sisa_kuota() hanya menghitung status 2 dan 3.
-     */
+    // tolak pengembalian, stok tidak berubah
     private function tolak(int $id, int $petugas_gudang, string $catatan, bool $dari_semua_nol): RedirectResponse
     {
         if ($catatan === '') {
@@ -348,8 +318,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         $db = $this->get_db();
 
         try {
-            // Error DB di dalam transaksi TIDAK dilempar oleh CI4 secara bawaan
-            // (query hanya mengembalikan false) — aktifkan supaya catch di bawah menangkapnya.
             $db->transException(true)->transBegin();
 
             $this->locked_header($id, $this->service());
@@ -384,13 +352,8 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         return $this->home();
     }
 
-    // ========= PRIVATE HELPERS =========
-
+    // kunci lalu baca ulang data pengembalian
     /**
-     * Kunci per permintaan (kunci yang sama dengan Ajukan di F13), lalu baca ulang
-     * header DI DALAM kunci: dua keputusan bersamaan atas dokumen yang sama tidak
-     * bisa sama-sama lolos.
-     *
      * @return array<string, mixed>
      * @throws \RuntimeException
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
@@ -427,9 +390,8 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         return $header;
     }
 
+    // ambil qty disetujui dari form
     /**
-     * id_detail => qty_diverifikasi dari form. Tiap nilai wajib bilangan bulat >= 0.
-     *
      * @return array<int, int>
      * @throws \RuntimeException
      */
@@ -457,14 +419,8 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         return $map;
     }
 
-    /**
-     * Harga satuan dari transaksi keluar asal barang ini (tipe Keluar untuk
-     * permintaan asal). Bila keluar beberapa kali dengan harga berbeda, dipakai
-     * transaksi keluar TERAKHIR yang punya harga. Null bila tak ketemu — sengaja
-     * TIDAK jatuh ke barang.harga_satuan.
-     *
-     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
-     */
+    // harga saat barang dulu dikeluarkan
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function harga_keluar_asal(int $id_permintaan, int $id_barang): mixed
     {
         $row = $this->guarded($this->get_db()->query(
@@ -485,6 +441,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         return is_array($row) ? $row['harga_satuan'] : null;
     }
 
+    // stok barang saat ini
     /**
      * @throws \RuntimeException
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
@@ -500,8 +457,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         return (int) $row['stok'];
     }
 
-    // Keterangan transaksi mengikuti pola yang ada: nomor dokumen, ruangan,
-    // pemohon, petugas gudang.
+    // keterangan untuk transaksi stok
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function keterangan(int $id, int $petugas_gudang): string
     {
@@ -517,7 +473,6 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
                 ->get(),
         )->getRowArray();
 
-        // petugas_gudang belum tersimpan di header saat ini, jadi dibaca terpisah
         $gudang = $this->guarded(
             $this
                 ->get_db()

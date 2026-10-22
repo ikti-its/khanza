@@ -211,7 +211,6 @@ $options_jenis       = $options_jenis ?? [];
     var optionsSatuan = <?= json_encode($options_satuan) ?>;
     var optionsJenis = <?= json_encode($options_jenis) ?>;
 
-    // Override callback modal barang untuk menambah item ke tabel
     function autofillFields(map) {
         // Handle modal Ruangan
         if (map.master_ruangan !== undefined) {
@@ -220,7 +219,7 @@ $options_jenis       = $options_jenis ?? [];
             return;
         }
 
-        // Handle modal Barang — tambah item ke tabel
+        // Handle modal Barang, tambah item ke tabel
         var idBarang = map.id_barang ?? '';
         var namaBarang = map.id_barang_display ?? '';
         var namaSatuan = map.nama_satuan ?? '';

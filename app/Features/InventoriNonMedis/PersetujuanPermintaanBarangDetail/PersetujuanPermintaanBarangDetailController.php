@@ -11,7 +11,6 @@ use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPermintaanBarangDetailController extends ControllerTemplate
 {
-    /** Pencarian server di halaman daftar (?q=): kode/nomor, nama, dan nama hasil join lookup. */
     protected array $search_columns = ['no_keluar', 'kode_barang', 'nama_barang', 'nama_barang_baru', 'nama_satuan'];
 
     public function __construct()
@@ -48,8 +47,7 @@ final class PersetujuanPermintaanBarangDetailController extends ControllerTempla
         );
     }
 
-    // narrows the query-result union (bool|Query|BaseResult) that mago infers
-    // for ->get()/->query(), matching ModelTemplate::guarded_get() convention.
+    // pastikan hasil query valid
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function guarded(mixed $result): \CodeIgniter\Database\BaseResult
     {
@@ -57,7 +55,7 @@ final class PersetujuanPermintaanBarangDetailController extends ControllerTempla
         return $result;
     }
 
-    // true jika permintaan sudah final: Disetujui (2, legacy)/Ditolak (3)/Menunggu Pengadaan (5)/Selesai (6) — qty tidak bisa diubah lagi
+    // cek permintaan sudah final
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     private function is_locked(int $id_permintaan): bool
     {
@@ -74,7 +72,7 @@ final class PersetujuanPermintaanBarangDetailController extends ControllerTempla
         return is_array($row) && in_array((int) ($row['id_status_permintaan_barang'] ?? 0), [2, 3, 5, 6], true);
     }
 
-    // qty_disetujui tidak bisa diubah jika sudah diproses, dan tidak boleh melebihi qty diminta
+    // ubah qty disetujui, tolak kalau sudah final
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function update(int|string $id): string|RedirectResponse

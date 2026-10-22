@@ -159,7 +159,6 @@ $readonly = $readonly ?? false;
 </div>
 
 <script>
-    // Override autofillFields untuk modal Pengajuan — fetch detail items
     var _originalAutofillFields = window.autofillFields;
     window.autofillFields = function(map) {
         // Pengajuan selected
@@ -197,11 +196,7 @@ $readonly = $readonly ?? false;
                 tbody.innerHTML = '';
                 data.forEach(item => {
                     var sisa = item.qty_disetujui - item.qty_sudah_dipesan;
-                    // Pre-fill dari barang.harga_satuan (harga master SAAT INI), bukan
-                    // pjd.harga (snapshot di level pengajuan_barang_detail — selalu null
-                    // untuk pengajuan yang lahir otomatis dari Permintaan disetujui).
-                    // Kosong (bukan "0") kalau harga_satuan belum diisi/masih 0 — user
-                    // tetap bebas mengetik ulang, ini murni nilai awal.
+                    // tetap bebas mengetik ulang, ini murni nilai awal
                     var hargaDefault = (item.harga_satuan !== null && item.harga_satuan !== undefined && Number(item.harga_satuan) > 0)
                         ? item.harga_satuan
                         : '';
@@ -251,7 +246,6 @@ $readonly = $readonly ?? false;
             return false;
         }
 
-        // Jika status Dibatalkan (3), tidak perlu validasi item
         var statusSelect = document.querySelector('select[name="id_status_pengadaan_barang"]');
         var isCancelled = statusSelect && statusSelect.value === '3';
 
