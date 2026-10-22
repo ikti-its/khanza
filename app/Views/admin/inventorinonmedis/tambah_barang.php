@@ -94,7 +94,7 @@
                     Harga Satuan
                 </label>
                 <input type="number" name="harga_satuan" id="harga_satuan" placeholder="0" min="0" max="999999999999" step="any"
-                       value="<?= $baris['harga_satuan'] ?? '' ?>"
+                       value="<?= isset($baris['harga_satuan']) && $baris['harga_satuan'] !== '' ? (float) $baris['harga_satuan'] : '' ?>"
                        class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full lg:w-1/4 dark:border-gray-600 dark:text-white dark:bg-slate-800">
             </div>
 

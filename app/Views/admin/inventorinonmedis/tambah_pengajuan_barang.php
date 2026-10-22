@@ -107,7 +107,7 @@ $readonly = $readonly ?? false;
                                         <input type="hidden" name="detail_id_barang[]" value="<?= $item['id_barang'] ?>">
                                     </td>
                                     <td class="p-3 border text-center">
-                                        <input type="number" name="detail_harga[]" value="<?= $item['harga'] ?? 0 ?>" min="0" step="any"
+                                        <input type="number" name="detail_harga[]" value="<?= (float) ($item['harga'] ?? 0) ?>" min="0" step="any"
                                                class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" <?= $readonly ? 'disabled' : '' ?>>
                                     </td>
                                     <td class="p-3 border text-center">
@@ -142,7 +142,7 @@ $readonly = $readonly ?? false;
         var namaBarang = map.id_barang_display ?? '';
         var namaSatuan = map.nama_satuan ?? '';
         var kodeBarang = map.kode_barang ?? '';
-        var harga      = map.harga ?? '0';
+        var harga      = Number(map.harga ?? 0);
 
         if (!idBarang) return;
 

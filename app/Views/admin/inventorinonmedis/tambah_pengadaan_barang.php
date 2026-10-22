@@ -129,7 +129,7 @@ $readonly = $readonly ?? false;
                                         <input type="hidden" name="detail_id_barang[]" value="<?= $item['id_barang'] ?>">
                                     </td>
                                     <td class="p-3 border text-center">
-                                        <input type="number" name="detail_harga[]" value="<?= $item['harga_satuan'] ?? 0 ?>" min="0" step="any"
+                                        <input type="number" name="detail_harga[]" value="<?= (float) ($item['harga_satuan'] ?? 0) ?>" min="0" step="any"
                                                class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" <?= $readonly ? 'disabled' : '' ?>>
                                     </td>
                                     <td class="p-3 border text-center">
@@ -198,7 +198,7 @@ $readonly = $readonly ?? false;
                     var sisa = item.qty_disetujui - item.qty_sudah_dipesan;
                     // tetap bebas mengetik ulang, ini murni nilai awal
                     var hargaDefault = (item.harga_satuan !== null && item.harga_satuan !== undefined && Number(item.harga_satuan) > 0)
-                        ? item.harga_satuan
+                        ? Number(item.harga_satuan)
                         : '';
                     var tr = document.createElement('tr');
                     tr.dataset.id = item.id_barang;
