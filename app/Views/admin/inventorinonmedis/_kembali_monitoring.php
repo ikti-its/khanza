@@ -1,5 +1,5 @@
 <?php
-// Tombol mengambang "Kembali ke Monitoring". Alamat monitoring disimpan saat
+// Tombol "Kembali ke Monitoring" di bawah breadcrumb. Alamat monitoring disimpan saat
 // pengguna mengklik tombol di detail Monitoring Transaksi (lihat data-monitoring
 // di detail_monitoring_transaksi.php), jadi tetap ada walau form sudah disimpan
 // dan halaman dialihkan ke daftar. Hanya dimuat di halaman /inventori-non-medis/.
@@ -35,33 +35,37 @@ $di_monitoring = str_starts_with(uri_string(), 'inventori-non-medis/monitoring-t
         if (!simpan || typeof simpan.url !== 'string' || simpan.url.indexOf('/inventori-non-medis/monitoring-transaksi/') !== 0) return;
 
         document.addEventListener('DOMContentLoaded', function() {
+            // diletakkan tepat di bawah breadcrumb, di atas kartu konten
+            var breadcrumb = document.querySelector('nav[aria-label="breadcrumb"]');
+            var baris = breadcrumb ? breadcrumb.parentElement : null;
+            if (!baris) return;
+
             var wadah = document.createElement('div');
-            wadah.style.cssText = 'position:fixed; right:24px; bottom:24px; z-index:60; display:flex; align-items:center; border-radius:9999px; box-shadow:0 4px 12px rgba(0,0,0,0.2); background:#0A2D27; overflow:hidden;';
+            wadah.style.cssText = 'padding:0 40px 8px; display:flex; align-items:center; gap:6px;';
 
             var tombol = document.createElement('a');
             tombol.href = simpan.url;
-            tombol.style.cssText = 'display:inline-flex; align-items:center; gap:8px; padding:10px 8px 10px 16px; font-size:14px; font-weight:600; color:#ACF2E7; text-decoration:none;';
-            tombol.innerHTML = '<svg style="width:16px; height:16px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>';
+            tombol.style.cssText = 'display:inline-flex; align-items:center; gap:6px; padding:4px 10px; font-size:13px; font-weight:500; color:#374151; background:#fff; border:1px solid #e5e7eb; border-radius:8px; text-decoration:none;';
+            tombol.innerHTML = '<svg style="width:14px; height:14px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>';
             tombol.appendChild(document.createTextNode('Kembali ke Monitoring' + (simpan.label ? ' (' + simpan.label + ')' : '')));
+            tombol.addEventListener('mouseenter', function() { tombol.style.background = '#f9fafb'; });
+            tombol.addEventListener('mouseleave', function() { tombol.style.background = '#fff'; });
 
             var tutup = document.createElement('button');
             tutup.type = 'button';
-            tutup.title = 'Tutup';
+            tutup.title = 'Sembunyikan';
             tutup.textContent = '×';
-            tutup.style.cssText = 'padding:8px 14px 8px 8px; font-size:18px; line-height:1; color:#ACF2E7; background:transparent; border:0; cursor:pointer;';
+            tutup.style.cssText = 'padding:2px 6px; font-size:16px; line-height:1; color:#9ca3af; background:transparent; border:0; cursor:pointer;';
             tutup.addEventListener('click', function() {
                 try {
                     sessionStorage.removeItem(KUNCI);
                 } catch (err) {}
                 wadah.remove();
-                document.body.style.paddingBottom = '';
             });
 
             wadah.appendChild(tombol);
             wadah.appendChild(tutup);
-            document.body.appendChild(wadah);
-            // beri ruang supaya tombol Simpan di bawah form tidak tertutup
-            document.body.style.paddingBottom = '80px';
+            baris.insertAdjacentElement('afterend', wadah);
         });
     })();
 </script>
