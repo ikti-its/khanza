@@ -398,7 +398,7 @@ if (!function_exists('_step_selesai')) {
         if ($st === 7) {
             return _tstep('Selesai', 'failed', [_trow('Permintaan dibatalkan', $tgl_proses, 'failed')]);
         }
-        return _tstep('Selesai', 'waiting', [_trow('Menunggu barang dikirim', null, null)]);
+        return _tstep('Selesai', 'waiting', []);
     }
 }
 
@@ -717,7 +717,7 @@ if (!function_exists('get_pengajuan_tracking')) {
         $tgl_selesai = isset($penerimaan['tanggal']) ? (string) $penerimaan['tanggal'] : null;
         $steps[]     = $penerimaan_selesai
             ? _tstep('Selesai', 'done', [_trow('Stok Diperbarui', $tgl_selesai, 'done')])
-            : _tstep('Selesai', 'waiting', [_trow('Menunggu', null, null)]);
+            : _tstep('Selesai', 'waiting', []);
 
         // Progress label
         if ($st_pj === 3) { $progress_label = 'Ditolak'; $progress_color = 'red'; }
