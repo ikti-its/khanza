@@ -53,7 +53,7 @@ final class StokOpnameController extends ControllerTemplate
         if ($is_form)
             return $fields;
 
-        $fields[] = [TABLE_ONLY, 'Total Nominal', 'total_nominal', 'teks', 0];
+        $fields[] = [TABLE_ONLY, 'Total Nominal (Rp)', 'total_nominal', 'uang', 0];
         return $fields;
     }
 
@@ -97,7 +97,7 @@ final class StokOpnameController extends ControllerTemplate
     // format rupiah, merah minus biru plus
     private function format_nominal(float $nominal): string
     {
-        $formatted = 'Rp ' . number_format(abs($nominal), 0, ',', '.');
+        $formatted = number_format(abs($nominal), 0, ',', '.');
 
         if ($nominal > 0)
             return '<span class="text-blue-600 font-semibold">+' . $formatted . '</span>';

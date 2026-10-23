@@ -36,9 +36,9 @@
                                             <span class="text-xs tracking-wide text-[#666] dark:text-gray-200">Pilih</span>
                                         </div>
                                     </th>
-                                    <?php foreach (['Kode Barang', 'Nama Barang', 'Satuan', 'Jenis', 'Stok', 'Harga Satuan'] as $h): ?>
+                                    <?php foreach (['Kode Barang' => 'left', 'Nama Barang' => 'left', 'Satuan' => 'left', 'Jenis' => 'left', 'Stok' => 'right', 'Harga Satuan (Rp)' => 'right'] as $h => $rata): ?>
                                     <th scope="col" class="px-6 py-3" style="position: sticky; top: 0; background-color: white; padding: 8px;">
-                                        <div class="flex justify-center gap-x-2">
+                                        <div class="flex gap-x-2" style="justify-content: <?= $rata === 'right' ? 'flex-end' : 'flex-start' ?>;">
                                             <span class="text-xs tracking-wide text-[#666] dark:text-gray-200"><?= esc($h) ?></span>
                                         </div>
                                     </th>
@@ -72,32 +72,32 @@
                                     </td>
                                     <td class="h-px w-40 whitespace-nowrap">
                                         <div class="px-6 py-3">
-                                            <span class="text-center block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= esc($baris['kode_barang'] ?? '-') ?></span>
+                                            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200" style="text-align: left;"><?= esc($baris['kode_barang'] ?? '-') ?></span>
                                         </div>
                                     </td>
                                     <td data-jenis="nama" class="h-px w-64 whitespace-nowrap">
                                         <div class="px-6 py-3">
-                                            <span class="text-center block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= esc($baris['nama_barang'] ?? '-') ?></span>
+                                            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200" style="text-align: left;"><?= esc($baris['nama_barang'] ?? '-') ?></span>
                                         </div>
                                     </td>
                                     <td class="h-px w-40 whitespace-nowrap">
                                         <div class="px-6 py-3">
-                                            <span class="text-center block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= esc($baris['nama_satuan'] ?? '-') ?></span>
+                                            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200" style="text-align: left;"><?= esc($baris['nama_satuan'] ?? '-') ?></span>
                                         </div>
                                     </td>
                                     <td class="h-px w-40 whitespace-nowrap">
                                         <div class="px-6 py-3">
-                                            <span class="text-center block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= esc($baris['nama_jenis_barang'] ?? '-') ?></span>
+                                            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200" style="text-align: left;"><?= esc($baris['nama_jenis_barang'] ?? '-') ?></span>
                                         </div>
                                     </td>
                                     <td class="h-px w-28 whitespace-nowrap">
                                         <div class="px-6 py-3">
-                                            <span class="text-center block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= (int) $stok ?></span>
+                                            <span class="text-right block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= (int) $stok ?></span>
                                         </div>
                                     </td>
                                     <td class="h-px w-40 whitespace-nowrap">
                                         <div class="px-6 py-3">
-                                            <span class="text-center block text-sm font-semibold text-gray-800 dark:text-gray-200">Rp <?= number_format((float) ($baris['harga_satuan'] ?? 0), 0, ',', '.') ?></span>
+                                            <span class="text-right block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= number_format((float) ($baris['harga_satuan'] ?? 0), 0, ',', '.') ?></span>
                                         </div>
                                     </td>
                                     <?php if (!empty($aksi)): ?>

@@ -20,6 +20,29 @@ $tabel_ringkas = str_starts_with((string) ($modul_path ?? ''), '/inventori-non-m
             white-space: normal !important;
             min-width: 7rem;
         }
+
+        /* teks rata kiri, angka rata kanan, sisanya (tanggal, status, aksi) tetap di tengah */
+        .tabel-ringkas td[data-jenis="teks"] span,
+        .tabel-ringkas td[data-jenis="nama"] span {
+            text-align: left !important;
+        }
+
+        .tabel-ringkas td[data-jenis="uang"] span,
+        .tabel-ringkas td[data-jenis="jumlah"] span,
+        .tabel-ringkas td[data-jenis="desimal"] span {
+            text-align: right !important;
+        }
+
+        .tabel-ringkas th[data-jenis="teks"]>div,
+        .tabel-ringkas th[data-jenis="nama"]>div {
+            justify-content: flex-start !important;
+        }
+
+        .tabel-ringkas th[data-jenis="uang"]>div,
+        .tabel-ringkas th[data-jenis="jumlah"]>div,
+        .tabel-ringkas th[data-jenis="desimal"]>div {
+            justify-content: flex-end !important;
+        }
     </style>
 <?php endif; ?>
 <!-- Table -->
@@ -41,7 +64,12 @@ $tabel_ringkas = str_starts_with((string) ($modul_path ?? ''), '/inventori-non-m
 
         $kolom_header = array_column($data_visible, $DISPLAY);
         if (!empty($aksi) || $has_child_link) $kolom_header[] = 'Aksi';
-        echo view('components/tabel/thead', ['kolom' => $kolom_header]);
+        echo view('components/tabel/thead', [
+            'kolom' => $kolom_header,
+            'jenis' => $tabel_ringkas
+                ? array_map(fn($j) => in_array($j, ['kosong', 'readonly']) ? 'teks' : $j, array_column($data_visible, $JENIS))
+                : [],
+        ]);
 
         echo '<tbody class="divide-y divide-gray-200 dark:divide-gray-700">';
         if (gettype($tabel) === 'array') {

@@ -40,7 +40,7 @@ final class PenerimaanBarangDetailController extends ControllerTemplate
                 [TABLE_ONLY, OPTIONAL, I::NUMBER,   'qty_pengadaan',      'Qty Pengadaan'],
                 [FORM_ONLY,  OPTIONAL, I::READONLY, 'qty_pengadaan',      'Qty Pengadaan'],
                 [SHOW,       REQUIRED, I::NUMBER,   'qty_diterima',       'Qty Diterima'],
-                [SHOW,       OPTIONAL, I::MONEY,    'harga_satuan',       'Harga Satuan'],
+                [SHOW,       OPTIONAL, I::MONEY,    'harga_satuan',       'Harga Satuan (Rp)'],
                 [SHOW,       OPTIONAL, I::DATE,     'tanggal_kadaluarsa', 'Exp Date'],
             ],
             parent_fk: 'id_penerimaan',

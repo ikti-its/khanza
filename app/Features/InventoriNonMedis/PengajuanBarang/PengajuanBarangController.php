@@ -35,7 +35,7 @@ final class PengajuanBarangController extends ControllerTemplate
                 [SHOW,       OPTIONAL, I::READONLY, 'no_pengajuan',               'No. Pengajuan'],
                 [SHOW,       REQUIRED, I::DTIME,    'tanggal',                    'Tanggal Pengajuan'],
                 [SHOW,       REQUIRED, I::SELECT,   'petugas_gudang',             'Pemohon'],
-                [TABLE_ONLY, OPTIONAL, I::MONEY,    'total_harga',                'Total Harga'],
+                [TABLE_ONLY, OPTIONAL, I::MONEY,    'total_harga',                'Total Harga (Rp)'],
                 [SHOW,       OPTIONAL, I::SELECT,   'id_status_pengajuan_barang', 'Status'],
                 [FORM_ONLY,  OPTIONAL, I::READONLY, 'tanggal_diproses',           'Tanggal Diproses'],
             ],

@@ -36,9 +36,13 @@
 
         $jenis_render = in_array($jenis[$i], ['kosong', 'readonly']) ? 'teks' : $jenis[$i];
         $html_td = view('components/tabel/td/' . $jenis_render, $data);
-        // Inventori Non Medis: tandai jenis sel supaya teks panjang boleh turun baris
+        // Inventori Non Medis: tandai jenis sel untuk perataan & turun baris
         // (lihat .tabel-ringkas di components/tabel/data.php). Modul lain tidak berubah.
         if (str_starts_with((string) ($modul_path ?? ''), '/inventori-non-medis/')) {
+            // uang tanpa "Rp", satuannya ditulis di judul kolom
+            if ($jenis_render === 'uang') {
+                $html_td = view('components/tabel/td/' . (is_numeric($elem) ? 'jumlah' : 'teks'), $data);
+            }
             $html_td = preg_replace('/<td\b/', '<td data-jenis="' . $jenis_render . '"', $html_td, 1);
         }
         echo $html_td;
