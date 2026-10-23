@@ -720,7 +720,8 @@ if (!function_exists('get_pengajuan_tracking')) {
             : _tstep('Selesai', 'waiting', []);
 
         // Progress label
-        if ($st_pj === 3) { $progress_label = 'Ditolak'; $progress_color = 'red'; }
+        if ($st_pj === 1) { $progress_label = 'Draf'; $progress_color = 'gray'; }
+        elseif ($st_pj === 3) { $progress_label = 'Ditolak'; $progress_color = 'red'; }
         elseif ($st_pj === 4) { $progress_label = 'Menunggu Persetujuan'; $progress_color = 'yellow'; }
         elseif (!empty($penerimaan) && (int) ($penerimaan['id_status_penerimaan_barang'] ?? 0) === 2 && $persen_terima >= 100) { $progress_label = 'Selesai'; $progress_color = 'green'; }
         elseif (!empty($penerimaan) && (int) ($penerimaan['id_status_penerimaan_barang'] ?? 0) === 2) { $progress_label = "Diterima {$persen_terima}%"; $progress_color = 'blue'; }

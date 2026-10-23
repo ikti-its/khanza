@@ -31,7 +31,7 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
                 [TABLE_ONLY, OPTIONAL, I::DTIME, 'tanggal', 'Tanggal Pengajuan'],
                 [TABLE_ONLY, OPTIONAL, I::READONLY, 'petugas_gudang', 'Pemohon'],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'total_harga', 'Total Harga'],
-                [SHOW, REQUIRED, I::SELECT, 'id_status_pengajuan_barang', 'Status'],
+                [HIDE, REQUIRED, I::SELECT, 'id_status_pengajuan_barang', 'Status Dokumen'],
                 [FORM_ONLY, OPTIONAL, I::READONLY, 'tanggal_diproses', 'Tanggal Diproses'],
                 [
                     FORM_ONLY,
@@ -55,6 +55,31 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
     {
         $this->model->set_filter('id_status_pengajuan_barang', [2, 3, 4]);
         $this->model->set_order('id_pengajuan', 'DESC');
+    }
+
+    // status di tabel diganti progress seperti persetujuan permintaan
+    #[\Override]
+    protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
+    {
+        $fields = parent::get_fields_with_options($include_pk, $is_form);
+        if ($is_form)
+            return $fields;
+
+        $fields[] = [TABLE_ONLY, 'Status', 'progress', 'status', 0];
+        return $fields;
+    }
+
+    // isi kolom progress di tabel
+    /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
+    #[\Override]
+    protected function after_read(array &$data_tabel): void
+    {
+        helper('tracking');
+        foreach ($data_tabel as &$row) {
+            /** @var array<string, mixed> $row */
+            $id              = (int) ($row['id_pengajuan'] ?? 0);
+            $row['progress'] = $id === 0 ? '-' : get_pengajuan_tracking($id)['progress_label'];
+        }
     }
 
     // pastikan hasil query valid

@@ -37,7 +37,7 @@ final class PengadaanBarangController extends ControllerTemplate
                 [TABLE_ONLY, OPTIONAL, I::MONEY,    'total_harga',                'Total Harga (Rp)'],
                 [SHOW,       OPTIONAL, I::SELECT,   'id_suplier',                 'Suplier'],
                 [SHOW,       REQUIRED, I::DTIME,    'tanggal',                    'Tanggal Pengadaan'],
-                [TABLE_ONLY, OPTIONAL, I::SELECT,   'id_status_pengadaan_barang', 'Status'],
+                [HIDE,       OPTIONAL, I::SELECT,   'id_status_pengadaan_barang', 'Status'],
                 [FORM_ONLY,  OPTIONAL, I::TEXT,     'catatan',                    'Catatan'],
             ],
         );
@@ -48,6 +48,53 @@ final class PengadaanBarangController extends ControllerTemplate
     protected function before_read(): void
     {
         $this->model->set_order('id_pengadaan', 'DESC');
+    }
+
+    // status di tabel diganti progress penerimaan
+    #[\Override]
+    protected function get_fields_with_options(bool $include_pk = false, bool $is_form = false): array
+    {
+        $fields = parent::get_fields_with_options($include_pk, $is_form);
+        if ($is_form)
+            return $fields;
+
+        $fields[] = [TABLE_ONLY, 'Progress', 'progress', 'status', 0];
+        return $fields;
+    }
+
+    // isi kolom progress: dibatalkan, proses, menunggu kiriman, diterima sebagian, selesai
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    #[\Override]
+    protected function after_read(array &$data_tabel): void
+    {
+        foreach ($data_tabel as &$row) {
+            /** @var array<string, mixed> $row */
+            $id = (int) ($row['id_pengadaan'] ?? 0);
+            if ($id === 0) {
+                $row['progress'] = '-';
+                continue;
+            }
+
+            $qty = $this->guarded($this->get_db()->query('
+                SELECT
+                    (SELECT COALESCE(SUM(qty), 0) FROM inventori_non_medis.pengadaan_barang_detail
+                     WHERE id_pengadaan = ? AND id_barang > 0) AS pesan,
+                    (SELECT COALESCE(SUM(d.qty_diterima), 0) FROM inventori_non_medis.penerimaan_barang_detail d
+                     JOIN inventori_non_medis.penerimaan_barang p ON d.id_penerimaan = p.id_penerimaan
+                     WHERE p.id_pengadaan = ? AND p.id_status_penerimaan_barang = 2) AS terima
+            ', [$id, $id]))->getRowArray() ?? [];
+            $pesan  = (int) ($qty['pesan'] ?? 0);
+            $terima = (int) ($qty['terima'] ?? 0);
+            $status = (int) ($row['id_status_pengadaan_barang'] ?? 0);
+
+            $row['progress'] = match (true) {
+                $status === 3 => 'Dibatalkan',
+                $pesan > 0 && $terima >= $pesan => 'Selesai',
+                $terima > 0 => 'Diterima ' . (int) round(($terima / max(1, $pesan)) * 100) . '%',
+                $status === 1 => 'Proses Pengadaan',
+                default => 'Menunggu Kiriman',
+            };
+        }
     }
 
     // pastikan hasil query valid
