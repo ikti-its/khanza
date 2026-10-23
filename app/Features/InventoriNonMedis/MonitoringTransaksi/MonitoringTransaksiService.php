@@ -219,7 +219,7 @@ final class MonitoringTransaksiService
                     $this->tgl($kl['tanggal'] ?? null) . ' (' . (int) $kl['qty'] . ' barang)',
                 ];
                 $dokumen[] = [
-                    'label' => 'Transaksi Stok ' . ($k + 1),
+                    'label' => 'Lihat Transaksi Stok ' . ($k + 1),
                     'url'   => self::PATH . 'transaksi-stok/' . (int) $kl['id_transaksi'],
                 ];
             }

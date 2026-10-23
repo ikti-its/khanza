@@ -112,13 +112,23 @@ $label_status = static fn(string $s): array => match ($s) {
                         <?php endif; ?>
 
                         <?php if ($l['dokumen'] !== [] || $l['aksi'] !== []): ?>
-                            <div style="margin-top:8px; display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px;">
+                            <div style="margin-top:10px; display:flex; flex-wrap:wrap; align-items:center; gap:8px;">
                                 <?php foreach ($l['dokumen'] as $d): ?>
-                                    <a href="<?= base_url($d['url']) ?>" class="text-sm font-semibold text-blue-600 hover:underline"><?= esc($d['label']) ?></a>
+                                    <!-- tombol garis: buka dokumen; tombol gelap di sebelahnya: aksi lanjutan -->
+                                    <a href="<?= base_url($d['url']) ?>"
+                                        style="padding:6px 12px;" class="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">
+                                        <svg style="width:14px; height:14px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                        </svg>
+                                        <?= esc($d['label']) ?>
+                                    </a>
                                 <?php endforeach; ?>
                                 <?php foreach ($l['aksi'] as $a): ?>
                                     <a href="<?= base_url($a['url']) ?>"
-                                        class="py-1.5 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
+                                        style="padding:6px 12px;" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
+                                        <svg style="width:14px; height:14px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                        </svg>
                                         <?= esc($a['label']) ?>
                                     </a>
                                 <?php endforeach; ?>
