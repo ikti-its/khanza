@@ -106,7 +106,7 @@
     </script>
 
     <!-- SweetAlert Flash Message -->
-    <?= view('components/alerts') ?>
+    <?= view('components/alerts') ?><?= str_starts_with(uri_string(), 'inventori-non-medis/') ? view('admin/inventorinonmedis/_kembali_monitoring') : '' ?>
 </body>
 
 </html>
