@@ -1,5 +1,6 @@
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
+<?= $this->include('admin/inventorinonmedis/_gaya_tabel') ?>
 
 <?php
 helper('tracking');
@@ -248,28 +249,28 @@ helper('tracking');
                         <tr class="text-slate-500 dark:text-slate-400">
                             <th class="text-left py-2 font-medium">Kode</th>
                             <th class="text-left py-2 font-medium">Nama Barang</th>
-                            <th class="text-center py-2 font-medium">Satuan</th>
-                            <th class="text-center py-2 font-medium">Stok Saat Ini</th>
-                            <th class="text-center py-2 font-medium">Qty Diminta</th>
-                            <th class="text-center py-2 font-medium">Qty Disetujui</th>
+                            <th class="text-left py-2 font-medium">Satuan</th>
+                            <th class="text-right py-2 font-medium">Stok Saat Ini</th>
+                            <th class="text-right py-2 font-medium">Qty Diminta</th>
+                            <th class="text-right py-2 font-medium">Qty Disetujui</th>
                         </tr>
                     </thead>
                     <tbody class="text-slate-700 dark:text-slate-300">
                         <?php foreach ($detail_items as $item): ?>
                             <?php $isBaru = empty($item['id_barang']) && !empty($item['nama_barang_baru']); ?>
                             <tr class="border-t border-slate-100 dark:border-slate-700/50">
-                                <td class="py-2 font-mono text-sm">
+                                <td class="text-left py-2 font-mono text-sm">
                                     <?php if ($isBaru): ?>
                                         <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Baru</span>
                                     <?php else: ?>
                                         <?= esc($item['kode_barang'] ?? '-') ?>
                                     <?php endif; ?>
                                 </td>
-                                <td class="py-2 font-semibold"><?= esc($isBaru ? $item['nama_barang_baru'] : ($item['nama_barang'] ?? '-')) ?></td>
-                                <td class="py-2 text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
-                                <td class="py-2 text-center"><?= isset($item['stok']) ? esc((string) $item['stok']) : '-' ?></td>
-                                <td class="py-2 text-center font-semibold"><?= $item['qty'] ?? 0 ?></td>
-                                <td class="py-2 text-center font-semibold"><?= $show_qty_disetujui ? ($item['qty_disetujui'] ?? 0) : '-' ?></td>
+                                <td class="text-left py-2 font-semibold"><?= esc($isBaru ? $item['nama_barang_baru'] : ($item['nama_barang'] ?? '-')) ?></td>
+                                <td class="text-left py-2"><?= esc($item['nama_satuan'] ?? '-') ?></td>
+                                <td class="text-right py-2"><?= isset($item['stok']) ? esc((string) $item['stok']) : '-' ?></td>
+                                <td class="text-right py-2 font-semibold"><?= $item['qty'] ?? 0 ?></td>
+                                <td class="text-right py-2 font-semibold"><?= $show_qty_disetujui ? ($item['qty_disetujui'] ?? 0) : '-' ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

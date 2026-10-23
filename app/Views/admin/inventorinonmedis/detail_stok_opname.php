@@ -1,5 +1,6 @@
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
+<?= $this->include('admin/inventorinonmedis/_gaya_tabel') ?>
 
 <div class="max-w-[85rem] py-6 lg:py-3 px-8 mx-auto">
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-7 dark:bg-slate-900 dark:border-gray-800">
@@ -54,11 +55,11 @@
                     <tr class="text-slate-500 dark:text-slate-400">
                         <th class="text-left py-2 font-medium">Kode</th>
                         <th class="text-left py-2 font-medium">Nama Barang</th>
-                        <th class="text-center py-2 font-medium">Satuan</th>
-                        <th class="text-center py-2 font-medium">Stok Sistem</th>
-                        <th class="text-center py-2 font-medium">Stok Fisik</th>
-                        <th class="text-center py-2 font-medium">Selisih</th>
-                        <th class="text-right py-2 font-medium">Nominal</th>
+                        <th class="text-left py-2 font-medium">Satuan</th>
+                        <th class="text-right py-2 font-medium">Stok Sistem</th>
+                        <th class="text-right py-2 font-medium">Stok Fisik</th>
+                        <th class="text-right py-2 font-medium">Selisih</th>
+                        <th class="text-right py-2 font-medium">Nominal (Rp)</th>
                     </tr>
                 </thead>
                 <tbody class="text-slate-700 dark:text-slate-300">
@@ -76,13 +77,13 @@
                         }
                     ?>
                     <tr class="border-t border-slate-100 dark:border-slate-700/50">
-                        <td class="py-2 font-mono text-sm"><?= esc($item['kode_barang'] ?? '-') ?></td>
-                        <td class="py-2 font-semibold"><?= esc($item['nama_barang'] ?? '-') ?></td>
-                        <td class="py-2 text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
-                        <td class="py-2 text-center font-semibold"><?= $item['stok_sistem'] ?? 0 ?></td>
-                        <td class="py-2 text-center font-semibold"><?= $item['stok_fisik'] ?? 0 ?></td>
-                        <td class="py-2 text-center <?= $selisih_class ?>"><?= $selisih > 0 ? '+' . $selisih : $selisih ?></td>
-                        <td class="py-2 text-right <?= $selisih_class ?>"><?= ($nominal > 0 ? '+' : ($nominal < 0 ? '-' : '')) . 'Rp ' . number_format(abs($nominal), 0, ',', '.') ?></td>
+                        <td class="text-left py-2 font-mono text-sm"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                        <td class="text-left py-2 font-semibold"><?= esc($item['nama_barang'] ?? '-') ?></td>
+                        <td class="text-left py-2"><?= esc($item['nama_satuan'] ?? '-') ?></td>
+                        <td class="text-right py-2 font-semibold"><?= $item['stok_sistem'] ?? 0 ?></td>
+                        <td class="text-right py-2 font-semibold"><?= $item['stok_fisik'] ?? 0 ?></td>
+                        <td class="py-2 text-right <?= $selisih_class ?>"><?= $selisih > 0 ? '+' . $selisih : $selisih ?></td>
+                        <td class="text-right py-2 text-right <?= $selisih_class ?>"><?= ($nominal > 0 ? '+' : ($nominal < 0 ? '-' : '')) . number_format(abs($nominal), 0, ',', '.') ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -90,7 +91,7 @@
                     <tr class="border-t-2 border-slate-300 dark:border-slate-600">
                         <td colspan="6" class="py-2 text-right font-semibold text-slate-600 dark:text-slate-300">Total Nominal</td>
                         <td class="py-2 text-right font-bold <?= $total_nominal < 0 ? 'text-red-600' : ($total_nominal > 0 ? 'text-blue-600' : 'text-gray-400') ?>">
-                            <?= ($total_nominal > 0 ? '+' : ($total_nominal < 0 ? '-' : '')) . 'Rp ' . number_format(abs($total_nominal), 0, ',', '.') ?>
+                            <?= ($total_nominal > 0 ? '+' : ($total_nominal < 0 ? '-' : '')) . number_format(abs($total_nominal), 0, ',', '.') ?>
                         </td>
                     </tr>
                 </tfoot>

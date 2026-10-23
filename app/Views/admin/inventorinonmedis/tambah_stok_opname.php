@@ -5,6 +5,7 @@ $readonly = $readonly ?? false;
 ?>
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
+<?= $this->include('admin/inventorinonmedis/_gaya_tabel') ?>
 
 <?= $this->include('components/modal/modalPemohon') ?>
 <?= $this->include('components/modal/modalbarang') ?>
@@ -82,28 +83,28 @@ $readonly = $readonly ?? false;
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:7rem;">Stok Sistem</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:7rem;">Stok Fisik</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Kode</th>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="text-right p-3 border font-semibold whitespace-nowrap" style="width:7rem;">Stok Sistem</th>
+                                <th class="text-right p-3 border font-semibold whitespace-nowrap" style="width:7rem;">Stok Fisik</th>
+                                <th class="text-center p-3 border font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
                             <?php if ($isEdit && !empty($detail_items ?? [])): ?>
                                 <?php foreach ($detail_items as $item): ?>
                                 <tr data-id="<?= $item['id_barang'] ?>">
-                                    <td class="p-3 border text-center whitespace-nowrap"><?= esc($item['kode_barang'] ?? '-') ?></td>
-                                    <td class="p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
-                                    <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
-                                    <td class="p-3 border text-center text-gray-500"><?= $item['stok_sistem'] ?? 0 ?></td>
-                                    <td class="p-3 border text-center">
+                                    <td class="text-left p-3 border whitespace-nowrap"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                                    <td class="text-left p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
+                                    <td class="text-left p-3 border"><?= esc($item['nama_satuan'] ?? '-') ?></td>
+                                    <td class="text-right p-3 border text-gray-500"><?= $item['stok_sistem'] ?? 0 ?></td>
+                                    <td class="text-right p-3 border">
                                         <input type="number" name="detail_stok_fisik[]" value="<?= $item['stok_fisik'] ?? 0 ?>" min="0"
-                                               class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" required <?= $readonly ? 'disabled' : '' ?>>
+                                               class="border border-gray-300 rounded-lg p-1 w-full text-right text-sm" required <?= $readonly ? 'disabled' : '' ?>>
                                         <input type="hidden" name="detail_id_barang[]" value="<?= $item['id_barang'] ?>">
                                     </td>
-                                    <td class="p-3 border text-center">
+                                    <td class="text-center p-3 border">
                                         <?php if (!$readonly): ?>
                                         <button type="button" onclick="hapusItem(this)" class="text-red-600 hover:underline text-sm">Hapus</button>
                                         <?php endif; ?>
@@ -149,16 +150,16 @@ $readonly = $readonly ?? false;
         var tr = document.createElement('tr');
         tr.dataset.id = idBarang;
         tr.innerHTML = `
-            <td class="p-3 border text-center whitespace-nowrap">${kodeBarang}</td>
-            <td class="p-3 border">${namaBarang}</td>
-            <td class="p-3 border text-center">${namaSatuan}</td>
-            <td class="p-3 border text-center text-gray-500">${stok}</td>
-            <td class="p-3 border text-center">
+            <td class="text-left p-3 border whitespace-nowrap">${kodeBarang}</td>
+            <td class="text-left p-3 border">${namaBarang}</td>
+            <td class="text-left p-3 border">${namaSatuan}</td>
+            <td class="text-right p-3 border text-gray-500">${stok}</td>
+            <td class="text-right p-3 border">
                 <input type="number" name="detail_stok_fisik[]" value="" min="0" placeholder="0"
-                       class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" required>
+                       class="border border-gray-300 rounded-lg p-1 w-full text-right text-sm" required>
                 <input type="hidden" name="detail_id_barang[]" value="${idBarang}">
             </td>
-            <td class="p-3 border text-center">
+            <td class="text-center p-3 border">
                 <button type="button" onclick="hapusItem(this)" class="text-red-600 hover:underline text-sm">Hapus</button>
             </td>`;
         tbody.appendChild(tr);

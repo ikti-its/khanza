@@ -7,6 +7,7 @@ $options_jenis       = $options_jenis ?? [];
 ?>
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
+<?= $this->include('admin/inventorinonmedis/_gaya_tabel') ?>
 
 <?= $this->include('components/modal/modalPemohon') ?>
 <?= $this->include('components/modal/modalPilihRuangan') ?>
@@ -138,11 +139,11 @@ $options_jenis       = $options_jenis ?? [];
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode / Jenis</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:8rem;">Qty</th>
-                                <?php if (!$readonly): ?><th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th><?php endif; ?>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Kode / Jenis</th>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="text-right p-3 border font-semibold whitespace-nowrap" style="width:8rem;">Qty</th>
+                                <?php if (!$readonly): ?><th class="text-center p-3 border font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th><?php endif; ?>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
@@ -150,7 +151,7 @@ $options_jenis       = $options_jenis ?? [];
                                 <?php foreach ($detail_items as $item): ?>
                                     <?php $isBaru = empty($item['id_barang']) && !empty($item['nama_barang_baru']); ?>
                                     <tr data-id="<?= $isBaru ? 'baru_' . ($item['id_detail'] ?? uniqid()) : $item['id_barang'] ?>" data-baru="<?= $isBaru ? '1' : '0' ?>">
-                                        <td class="p-3 border text-center whitespace-nowrap">
+                                        <td class="text-left p-3 border whitespace-nowrap">
                                             <?php if ($isBaru): ?>
                                                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Baru</span>
                                                 <input type="hidden" name="detail_is_baru[]" value="1">
@@ -167,14 +168,14 @@ $options_jenis       = $options_jenis ?? [];
                                                 <input type="hidden" name="detail_jenis_baru[]" value="">
                                             <?php endif; ?>
                                         </td>
-                                        <td class="p-3 border"><?= esc($isBaru ? $item['nama_barang_baru'] : ($item['nama_barang'] ?? '-')) ?></td>
-                                        <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? ($item['nama_satuan_baru'] ?? '-')) ?></td>
-                                        <td class="p-3 border text-center">
+                                        <td class="text-left p-3 border"><?= esc($isBaru ? $item['nama_barang_baru'] : ($item['nama_barang'] ?? '-')) ?></td>
+                                        <td class="text-left p-3 border"><?= esc($item['nama_satuan'] ?? ($item['nama_satuan_baru'] ?? '-')) ?></td>
+                                        <td class="text-right p-3 border">
                                             <input type="number" name="detail_qty[]" value="<?= $item['qty'] ?? 1 ?>" min="1"
-                                                class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" required <?= $readonly ? 'disabled' : '' ?>>
+                                                class="border border-gray-300 rounded-lg p-1 w-full text-right text-sm" required <?= $readonly ? 'disabled' : '' ?>>
                                         </td>
                                         <?php if (!$readonly): ?>
-                                            <td class="p-3 border text-center">
+                                            <td class="text-center p-3 border">
                                                 <button type="button" onclick="hapusItem(this)" class="text-red-600 hover:underline text-sm">Hapus</button>
                                             </td>
                                         <?php endif; ?>
@@ -251,7 +252,7 @@ $options_jenis       = $options_jenis ?? [];
         tr.dataset.id = idBarang;
         tr.dataset.baru = '0';
         tr.innerHTML = `
-            <td class="p-3 border text-center whitespace-nowrap">
+            <td class="text-left p-3 border whitespace-nowrap">
                 ${kodeBarang}
                 <input type="hidden" name="detail_is_baru[]" value="0">
                 <input type="hidden" name="detail_id_barang[]" value="${idBarang}">
@@ -259,13 +260,13 @@ $options_jenis       = $options_jenis ?? [];
                 <input type="hidden" name="detail_satuan_baru[]" value="">
                 <input type="hidden" name="detail_jenis_baru[]" value="">
             </td>
-            <td class="p-3 border">${namaBarang}</td>
-            <td class="p-3 border text-center">${namaSatuan}</td>
-            <td class="p-3 border text-center">
+            <td class="text-left p-3 border">${namaBarang}</td>
+            <td class="text-left p-3 border">${namaSatuan}</td>
+            <td class="text-right p-3 border">
                 <input type="number" name="detail_qty[]" value="1" min="1"
-                       class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" required>
+                       class="border border-gray-300 rounded-lg p-1 w-full text-right text-sm" required>
             </td>
-            <td class="p-3 border text-center">
+            <td class="text-center p-3 border">
                 <button type="button" onclick="hapusItem(this)" class="text-red-600 hover:underline text-sm">Hapus</button>
             </td>`;
         tbody.appendChild(tr);
@@ -416,7 +417,7 @@ $options_jenis       = $options_jenis ?? [];
         tr.dataset.id = rowId;
         tr.dataset.baru = '1';
         tr.innerHTML = `
-            <td class="p-3 border text-center whitespace-nowrap">
+            <td class="text-left p-3 border whitespace-nowrap">
                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Baru</span>
                 <input type="hidden" name="detail_is_baru[]" value="1">
                 <input type="hidden" name="detail_id_barang[]" value="">
@@ -424,13 +425,13 @@ $options_jenis       = $options_jenis ?? [];
                 <input type="hidden" name="detail_satuan_baru[]" value="${satuanVal}">
                 <input type="hidden" name="detail_jenis_baru[]" value="${jenis}">
             </td>
-            <td class="p-3 border">${nama}</td>
-            <td class="p-3 border text-center">${namaSatuan}</td>
-            <td class="p-3 border text-center">
+            <td class="text-left p-3 border">${nama}</td>
+            <td class="text-left p-3 border">${namaSatuan}</td>
+            <td class="text-right p-3 border">
                 <input type="number" name="detail_qty[]" value="${qty}" min="1"
-                       class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" required>
+                       class="border border-gray-300 rounded-lg p-1 w-full text-right text-sm" required>
             </td>
-            <td class="p-3 border text-center">
+            <td class="text-center p-3 border">
                 <button type="button" onclick="hapusItem(this)" class="text-red-600 hover:underline text-sm">Hapus</button>
             </td>`;
         tbody.appendChild(tr);

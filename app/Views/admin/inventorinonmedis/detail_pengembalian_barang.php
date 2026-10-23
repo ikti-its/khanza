@@ -1,5 +1,6 @@
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
+<?= $this->include('admin/inventorinonmedis/_gaya_tabel') ?>
 
 <?php
 helper('tracking');
@@ -112,12 +113,12 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
                         <tr class="text-slate-500 dark:text-slate-400">
                             <th class="text-left py-2 font-medium">Kode</th>
                             <th class="text-left py-2 font-medium">Nama Barang</th>
-                            <th class="text-center py-2 font-medium">Satuan</th>
+                            <th class="text-left py-2 font-medium">Satuan</th>
                             <?php if ($is_draf): ?>
-                                <th class="text-center py-2 font-medium">Sisa Saat Ini</th>
+                                <th class="text-right py-2 font-medium">Sisa Saat Ini</th>
                             <?php endif; ?>
-                            <th class="text-center py-2 font-medium">Qty Diajukan</th>
-                            <th class="text-center py-2 font-medium">Qty Disetujui</th>
+                            <th class="text-right py-2 font-medium">Qty Diajukan</th>
+                            <th class="text-right py-2 font-medium">Qty Disetujui</th>
                             <th class="text-left py-2 font-medium" style="padding-left:1rem;">Catatan</th>
                         </tr>
                     </thead>
@@ -128,15 +129,15 @@ $tanggal_putusan    = !empty($baris['tanggal_verifikasi']) ? date('d/m/Y, H:i', 
                             $melebihi = $is_draf && (int) $item['qty_diajukan'] > $sisa;
                             ?>
                             <tr class="border-t border-slate-100 dark:border-slate-700/50">
-                                <td class="py-2 font-mono text-sm"><?= esc($item['kode_barang'] ?? '-') ?></td>
-                                <td class="py-2 font-semibold"><?= esc($item['nama_barang'] ?? '-') ?></td>
-                                <td class="py-2 text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
+                                <td class="text-left py-2 font-mono text-sm"><?= esc($item['kode_barang'] ?? '-') ?></td>
+                                <td class="text-left py-2 font-semibold"><?= esc($item['nama_barang'] ?? '-') ?></td>
+                                <td class="text-left py-2"><?= esc($item['nama_satuan'] ?? '-') ?></td>
                                 <?php if ($is_draf): ?>
-                                    <td class="py-2 text-center <?= $melebihi ? 'text-red-600 font-semibold' : '' ?>"><?= $sisa ?></td>
+                                    <td class="py-2 text-right <?= $melebihi ? 'text-red-600 font-semibold' : '' ?>"><?= $sisa ?></td>
                                 <?php endif; ?>
-                                <td class="py-2 text-center font-semibold <?= $melebihi ? 'text-red-600' : '' ?>"><?= (int) $item['qty_diajukan'] ?></td>
-                                <td class="py-2 text-center font-semibold"><?= $show_qty_disetujui ? (int) ($item['qty_diverifikasi'] ?? 0) : '-' ?></td>
-                                <td class="py-2" style="padding-left:1rem;"><?= esc($item['catatan'] ?? '-') ?></td>
+                                <td class="py-2 text-right font-semibold <?= $melebihi ? 'text-red-600' : '' ?>"><?= (int) $item['qty_diajukan'] ?></td>
+                                <td class="text-right py-2 font-semibold"><?= $show_qty_disetujui ? (int) ($item['qty_diverifikasi'] ?? 0) : '-' ?></td>
+                                <td class="text-left py-2" style="padding-left:1rem;"><?= esc($item['catatan'] ?? '-') ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

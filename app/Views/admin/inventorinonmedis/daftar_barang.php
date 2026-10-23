@@ -92,7 +92,7 @@
                                     </td>
                                     <td class="h-px w-28 whitespace-nowrap">
                                         <div class="px-6 py-3">
-                                            <span class="text-right block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= (int) $stok ?></span>
+                                            <span class="text-right block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= number_format($stok, 0, ',', '.') ?></span>
                                         </div>
                                     </td>
                                     <td class="h-px w-40 whitespace-nowrap">

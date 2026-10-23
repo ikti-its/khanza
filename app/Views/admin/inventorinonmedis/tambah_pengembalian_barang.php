@@ -6,6 +6,7 @@ $kuota        = $kuota ?? [];
 ?>
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
+<?= $this->include('admin/inventorinonmedis/_gaya_tabel') ?>
 
 <?= $this->include('components/modal/modalPemohon') ?>
 <?= $this->include('components/modal/modalPermintaanPengembalian') ?>
@@ -123,15 +124,15 @@ $kuota        = $kuota ?? [];
                     <table class="w-full text-sm text-gray-700 dark:text-gray-300">
                         <thead style="background-color: #E6F2EF;">
                             <tr>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Kode</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Nama Barang</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Satuan</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Qty Keluar</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Sudah Dikembalikan</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap" title="Qty keluar dikurangi pengembalian yang sudah diajukan atau selesai (draf tidak mengurangi sisa)">Sisa</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:8rem;">Qty Diajukan</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap">Catatan</th>
-                                <th class="p-3 border text-center font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Kode</th>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Nama Barang</th>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Satuan</th>
+                                <th class="text-right p-3 border font-semibold whitespace-nowrap">Qty Keluar</th>
+                                <th class="text-right p-3 border font-semibold whitespace-nowrap">Sudah Dikembalikan</th>
+                                <th class="text-right p-3 border font-semibold whitespace-nowrap" title="Qty keluar dikurangi pengembalian yang sudah diajukan atau selesai (draf tidak mengurangi sisa)">Sisa</th>
+                                <th class="text-right p-3 border font-semibold whitespace-nowrap" style="width:8rem;">Qty Diajukan</th>
+                                <th class="text-left p-3 border font-semibold whitespace-nowrap">Catatan</th>
+                                <th class="text-center p-3 border font-semibold whitespace-nowrap" style="width:5rem;">Hapus</th>
                             </tr>
                         </thead>
                         <tbody id="detailTableBody">
@@ -142,24 +143,24 @@ $kuota        = $kuota ?? [];
                                     $sisa = (int) ($k['sisa'] ?? 0);
                                     ?>
                                     <tr data-id="<?= (int) $item['id_barang'] ?>">
-                                        <td class="p-3 border text-center whitespace-nowrap">
+                                        <td class="text-left p-3 border whitespace-nowrap">
                                             <?= esc($item['kode_barang'] ?? '-') ?>
                                             <input type="hidden" name="detail_id_barang[]" value="<?= (int) $item['id_barang'] ?>">
                                         </td>
-                                        <td class="p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
-                                        <td class="p-3 border text-center"><?= esc($item['nama_satuan'] ?? '-') ?></td>
-                                        <td class="p-3 border text-center"><?= (int) ($k['qty_keluar'] ?? 0) ?></td>
-                                        <td class="p-3 border text-center"><?= (int) ($k['sudah_dikembalikan'] ?? 0) ?></td>
-                                        <td class="p-3 border text-center font-semibold"><?= $sisa ?></td>
-                                        <td class="p-3 border text-center">
+                                        <td class="text-left p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
+                                        <td class="text-left p-3 border"><?= esc($item['nama_satuan'] ?? '-') ?></td>
+                                        <td class="text-right p-3 border"><?= (int) ($k['qty_keluar'] ?? 0) ?></td>
+                                        <td class="text-right p-3 border"><?= (int) ($k['sudah_dikembalikan'] ?? 0) ?></td>
+                                        <td class="text-right p-3 border font-semibold"><?= $sisa ?></td>
+                                        <td class="text-right p-3 border">
                                             <input type="number" name="detail_qty[]" value="<?= (int) $item['qty_diajukan'] ?>" min="1" max="<?= $sisa ?>"
-                                                class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" required>
+                                                class="border border-gray-300 rounded-lg p-1 w-full text-right text-sm" required>
                                         </td>
-                                        <td class="p-3 border text-center">
+                                        <td class="text-left p-3 border">
                                             <input type="text" name="detail_catatan[]" value="<?= esc($item['catatan'] ?? '') ?>" placeholder="Opsional"
                                                 class="border border-gray-300 rounded-lg p-1 w-full text-sm">
                                         </td>
-                                        <td class="p-3 border text-center">
+                                        <td class="text-center p-3 border">
                                             <button type="button" onclick="hapusItem(this)" class="text-red-600 hover:underline text-sm">Hapus</button>
                                         </td>
                                     </tr>
@@ -264,24 +265,24 @@ $kuota        = $kuota ?? [];
         var tr = document.createElement('tr');
         tr.dataset.id = idBarang;
         tr.innerHTML = `
-            <td class="p-3 border text-center whitespace-nowrap">
+            <td class="text-left p-3 border whitespace-nowrap">
                 ${escapeHtml(item.kode_barang)}
                 <input type="hidden" name="detail_id_barang[]" value="${idBarang}">
             </td>
-            <td class="p-3 border">${escapeHtml(item.nama_barang)}</td>
-            <td class="p-3 border text-center">${escapeHtml(item.nama_satuan)}</td>
-            <td class="p-3 border text-center">${parseInt(item.qty_keluar, 10) || 0}</td>
-            <td class="p-3 border text-center">${parseInt(item.sudah_dikembalikan, 10) || 0}</td>
-            <td class="p-3 border text-center font-semibold">${sisa}</td>
-            <td class="p-3 border text-center">
+            <td class="text-left p-3 border">${escapeHtml(item.nama_barang)}</td>
+            <td class="text-left p-3 border">${escapeHtml(item.nama_satuan)}</td>
+            <td class="text-right p-3 border">${parseInt(item.qty_keluar, 10) || 0}</td>
+            <td class="text-right p-3 border">${parseInt(item.sudah_dikembalikan, 10) || 0}</td>
+            <td class="text-right p-3 border font-semibold">${sisa}</td>
+            <td class="text-right p-3 border">
                 <input type="number" name="detail_qty[]" value="1" min="1" max="${sisa}"
-                       class="border border-gray-300 rounded-lg p-1 w-full text-center text-sm" required>
+                       class="border border-gray-300 rounded-lg p-1 w-full text-right text-sm" required>
             </td>
-            <td class="p-3 border text-center">
+            <td class="text-left p-3 border">
                 <input type="text" name="detail_catatan[]" value="" placeholder="Opsional"
                        class="border border-gray-300 rounded-lg p-1 w-full text-sm">
             </td>
-            <td class="p-3 border text-center">
+            <td class="text-center p-3 border">
                 <button type="button" onclick="hapusItem(this)" class="text-red-600 hover:underline text-sm">Hapus</button>
             </td>`;
         document.getElementById('detailTableBody').appendChild(tr);
