@@ -2,6 +2,8 @@
 $isEdit   = !empty($baris ?? []);
 $baris    = $baris ?? [];
 $readonly = $readonly ?? false;
+// pengajuan dari pintasan Monitoring Transaksi
+$prefill  = $isEdit ? [] : ($prefill ?? []);
 ?>
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
@@ -17,7 +19,7 @@ $readonly = $readonly ?? false;
         <form action="<?= $modul_path . $form_action ?>" id="myForm" onsubmit="return validateForm()" method="post">
             <?= csrf_field() ?>
 
-            <input type="hidden" name="id_pengajuan" id="id_pengajuan" value="<?= $baris['id_pengajuan'] ?? '' ?>">
+            <input type="hidden" name="id_pengajuan" id="id_pengajuan" value="<?= $baris['id_pengajuan'] ?? $prefill['id_pengajuan'] ?? '' ?>">
             <input type="hidden" name="id_suplier" id="id_suplier" value="<?= $baris['id_suplier'] ?? '' ?>">
 
             <!-- No. Pengadaan (auto) + Tanggal Pengadaan (input) -->
@@ -44,7 +46,7 @@ $readonly = $readonly ?? false;
                 <div class="w-full lg:w-1/4 flex gap-x-2">
                     <input type="text" id="id_pengajuan_display"
                            placeholder="Klik cari pengajuan..."
-                           value="<?= $baris['no_pengajuan'] ?? '' ?>"
+                           value="<?= esc($baris['no_pengajuan'] ?? $prefill['no_pengajuan'] ?? '') ?>"
                            onclick="open_modalPengajuan()"
                            onkeydown="return false"
                            class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white cursor-pointer bg-white" required>
@@ -265,6 +267,13 @@ $readonly = $readonly ?? false;
         if (btn) { btn.disabled = true; btn.innerHTML = 'Menyimpan...'; }
         return true;
     }
+
+    <?php if (!empty($prefill['id_pengajuan'])): ?>
+    // pengajuan sudah dipilih dari pintasan, langsung tampilkan barangnya
+    document.addEventListener('DOMContentLoaded', function() {
+        loadPengajuanItems(<?= (int) $prefill['id_pengajuan'] ?>);
+    });
+    <?php endif; ?>
 </script>
 
 <?= $this->endSection(); ?>

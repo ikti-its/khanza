@@ -2,6 +2,8 @@
 $isEdit   = !empty($baris ?? []);
 $baris    = $baris ?? [];
 $readonly = $readonly ?? false;
+// pengadaan dari pintasan Monitoring Transaksi
+$prefill  = $isEdit ? [] : ($prefill ?? []);
 ?>
 <?= $this->extend('layouts/template'); ?>
 <?= $this->section('content'); ?>
@@ -18,7 +20,7 @@ $readonly = $readonly ?? false;
             <?= csrf_field() ?>
 
             <input type="hidden" name="petugas" id="petugas" value="<?= $baris['petugas'] ?? '' ?>">
-            <input type="hidden" name="id_pengadaan" id="id_pengadaan" value="<?= $baris['id_pengadaan'] ?? '' ?>">
+            <input type="hidden" name="id_pengadaan" id="id_pengadaan" value="<?= $baris['id_pengadaan'] ?? $prefill['id_pengadaan'] ?? '' ?>">
 
             <!-- No. Penerimaan (auto) + Tanggal Penerimaan (input) -->
             <div class="mb-5 sm:block md:flex items-center">
@@ -44,7 +46,7 @@ $readonly = $readonly ?? false;
                 <div class="w-full lg:w-1/4 flex gap-x-2">
                     <input type="text" id="id_pengadaan_display"
                         placeholder="Klik cari pengadaan..."
-                        value="<?= $baris['no_pengadaan'] ?? '' ?>"
+                        value="<?= esc($baris['no_pengadaan'] ?? $prefill['no_pengadaan'] ?? '') ?>"
                         onclick="open_modalPengadaan()"
                         onkeydown="return false"
                         class="border border-gray-300 text-gray-900 text-sm rounded-lg p-2 w-full dark:border-gray-600 dark:text-white cursor-pointer bg-white" required>
@@ -244,6 +246,13 @@ $readonly = $readonly ?? false;
         }
         return true;
     }
+
+    <?php if (!empty($prefill['id_pengadaan'])): ?>
+    // pengadaan sudah dipilih dari pintasan, langsung tampilkan barangnya
+    document.addEventListener('DOMContentLoaded', function() {
+        loadPengadaanItems(<?= (int) $prefill['id_pengadaan'] ?>);
+    });
+    <?php endif; ?>
 </script>
 
 <?= $this->endSection(); ?>

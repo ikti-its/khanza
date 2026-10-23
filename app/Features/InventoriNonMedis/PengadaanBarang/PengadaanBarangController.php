@@ -226,6 +226,7 @@ final class PengadaanBarangController extends ControllerTemplate
     }
 
     // form tambah: 1-page header + detail preview
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function create_page(): string
     {
@@ -234,7 +235,25 @@ final class PengadaanBarangController extends ControllerTemplate
             'breadcrumbs' => array_merge($this->breadcrumbs, [['title' => 'Tambah', 'icon' => 'tambah']]),
             'modul_path'  => $this->get_uri_path(),
             'form_action' => '/submittambah/',
+            'prefill'     => $this->prefill_pengajuan(),
         ]);
+    }
+
+    // pengajuan terisi otomatis dari pintasan (?id_pengajuan=), hanya yang sudah disetujui
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    private function prefill_pengajuan(): array
+    {
+        $id = (int) ($this->request->getGet('id_pengajuan') ?? 0);
+        if ($id <= 0)
+            return [];
+
+        $row = $this->guarded($this->get_db()->query('
+            SELECT id_pengajuan, no_pengajuan
+            FROM inventori_non_medis.pengajuan_barang
+            WHERE id_pengajuan = ? AND id_status_pengajuan_barang = 2
+        ', [$id]))->getRowArray();
+
+        return is_array($row) ? $row : [];
     }
 
     // halaman detail pengadaan
