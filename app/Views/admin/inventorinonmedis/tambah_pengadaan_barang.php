@@ -120,14 +120,15 @@ $prefill  = $isEdit ? [] : ($prefill ?? []);
                         <tbody id="detailTableBody">
                             <?php if ($isEdit && !empty($detail_items ?? [])): ?>
                                 <?php foreach ($detail_items as $item): ?>
+                                <?php $sisa_pesan = max(0, (int) ($item['qty_disetujui'] ?? 0) - (int) ($item['qty_sudah_dipesan'] ?? 0)); ?>
                                 <tr data-id="<?= $item['id_barang'] ?>">
                                     <td class="text-left p-3 border whitespace-nowrap"><?= esc($item['kode_barang'] ?? '-') ?></td>
                                     <td class="text-left p-3 border"><?= esc($item['nama_barang'] ?? '-') ?></td>
                                     <td class="text-left p-3 border"><?= esc($item['nama_satuan'] ?? '-') ?></td>
-                                    <td class="text-right p-3 border text-gray-500">-</td>
-                                    <td class="text-right p-3 border text-gray-500">-</td>
+                                    <td class="text-right p-3 border text-gray-500"><?= (int) ($item['qty_disetujui'] ?? 0) ?></td>
+                                    <td class="text-right p-3 border text-gray-500"><?= (int) ($item['qty_sudah_dipesan'] ?? 0) ?></td>
                                     <td class="text-right p-3 border">
-                                        <input type="number" name="detail_qty[]" value="<?= $item['qty'] ?? 0 ?>" min="0"
+                                        <input type="number" name="detail_qty[]" value="<?= $item['qty'] ?? 0 ?>" min="0" max="<?= $sisa_pesan ?>"
                                                class="border border-gray-300 rounded-lg p-1 w-full text-right text-sm" <?= $readonly ? 'disabled' : '' ?>>
                                         <input type="hidden" name="detail_id_barang[]" value="<?= $item['id_barang'] ?>">
                                     </td>

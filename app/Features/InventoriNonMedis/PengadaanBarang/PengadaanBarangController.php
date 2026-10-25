@@ -128,6 +128,7 @@ final class PengadaanBarangController extends ControllerTemplate
                         FROM inventori_non_medis.pengadaan_barang_detail pbd
                         JOIN inventori_non_medis.pengadaan_barang pb ON pbd.id_pengadaan = pb.id_pengadaan
                         WHERE pb.id_pengajuan = ? AND pbd.id_barang = pjd.id_barang
+                          AND pb.id_status_pengadaan_barang <> 3
                     ), 0) AS qty_sudah_dipesan
                 FROM inventori_non_medis.pengajuan_barang_detail pjd
                 JOIN inventori_non_medis.barang b ON pjd.id_barang = b.id_barang
@@ -341,17 +342,25 @@ final class PengadaanBarangController extends ControllerTemplate
             return $this->detail($id);
         }
 
-        $detail_items = $this->guarded(
-            $this
-                ->get_db()
-                ->table('inventori_non_medis.pengadaan_barang_detail d')
-                ->join('inventori_non_medis.barang b', 'd.id_barang = b.id_barang', 'left')
-                ->join('inventori_non_medis.satuan s', 'b.id_satuan = s.id_satuan', 'left')
-                ->select('d.id_barang, d.qty, d.harga_satuan, b.kode_barang, b.nama_barang, s.nama_satuan')
-                ->where('d.id_pengadaan', (int) $id)
-                ->where('d.id_barang >', 0)
-                ->get(),
-        )->getResultArray();
+        // qty disetujui & sudah dipesan dihitung sama seperti validate_qty_terhadap_pengajuan()
+        $detail_items = $this->guarded($this->get_db()->query('
+            SELECT d.id_barang, d.qty, d.harga_satuan, b.kode_barang, b.nama_barang, s.nama_satuan,
+                   COALESCE((
+                       SELECT SUM(pjd.qty_disetujui) FROM inventori_non_medis.pengajuan_barang_detail pjd
+                       WHERE pjd.id_pengajuan = pb.id_pengajuan AND pjd.id_barang = d.id_barang
+                   ), 0) AS qty_disetujui,
+                   COALESCE((
+                       SELECT SUM(lain.qty) FROM inventori_non_medis.pengadaan_barang_detail lain
+                       JOIN inventori_non_medis.pengadaan_barang pl ON lain.id_pengadaan = pl.id_pengadaan
+                       WHERE pl.id_pengajuan = pb.id_pengajuan AND lain.id_barang = d.id_barang
+                         AND pl.id_pengadaan <> pb.id_pengadaan AND pl.id_status_pengadaan_barang <> 3
+                   ), 0) AS qty_sudah_dipesan
+            FROM inventori_non_medis.pengadaan_barang_detail d
+            JOIN inventori_non_medis.pengadaan_barang pb ON d.id_pengadaan = pb.id_pengadaan
+            LEFT JOIN inventori_non_medis.barang b ON d.id_barang = b.id_barang
+            LEFT JOIN inventori_non_medis.satuan s ON b.id_satuan = s.id_satuan
+            WHERE d.id_pengadaan = ? AND d.id_barang > 0
+        ', [(int) $id]))->getResultArray();
 
         return view('admin/inventorinonmedis/tambah_pengadaan_barang', [
             'judul'        => 'Ubah ' . $this->title,
