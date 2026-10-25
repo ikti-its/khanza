@@ -16,6 +16,7 @@ final class PengajuanBarangModel extends ModelTemplate
                 'id_pengajuan' => V::DEFAULT(),
                 'no_pengajuan' => V::DEFAULT(),
                 'tanggal'      => V::DEFAULT(),
+                'total_harga'  => V::DEFAULT(),
             ],
             [
                 'petugas_gudang'             => ['id_orang' => ['nama']],
