@@ -1,2 +1,18 @@
 id_transaksi,id_tipe_transaksi_stok,tanggal,id_penerimaan,id_permintaan,id_opname,id_pengembalian,keterangan
-0,0,2026-01-01 00:00:00,0,0,0,,
+2,3,2026-09-23 08:00:00+07,,,2,,Stok Opname #2
+3,1,2026-09-24 14:00:00+07,2,,,,"PNR202609240001, Suplier PT Lab Utama Sejahtera, Penerima: Arif Setiawan"
+4,2,2026-09-29 11:00:00+07,,2,,,"PRM202609290001, Ruangan Ruang Periksa / Konsultasi Umum, Pemohon: Budi Hartono"
+5,1,2026-10-02 14:00:00+07,3,,,,"PNR202610020001, Suplier PT Teknologi Kantor Indonesia, Penerima: Arif Setiawan"
+6,2,2026-10-02 14:00:00+07,,5,,,"PRM202610020001, Ruangan Depo Farmasi Rawat Jalan, Pemohon: Agung Prabowo, Auto-fulfill permintaan tertunda"
+7,1,2026-10-03 14:00:00+07,4,,,,"PNR202610030001, Suplier PT Sumber Makmur Abadi, Penerima: Arif Setiawan"
+8,2,2026-10-03 14:00:00+07,,6,,,"PRM202610030001, Ruangan Depo Farmasi Rawat Inap, Pemohon: Nurul Hidayah, Auto-fulfill permintaan tertunda"
+9,1,2026-10-04 14:00:00+07,5,,,,"PNR202610040001, Suplier PT Lab Utama Sejahtera, Penerima: Arif Setiawan"
+10,2,2026-10-04 14:00:00+07,,7,,,"PRM202610040001, Ruangan Ruang Laboratorium Utama (Analisis), Pemohon: Eka Sulistyawati, Auto-fulfill permintaan tertunda"
+11,1,2026-10-06 15:00:00+07,6,,,,"PNR202610060001, Suplier PT Teknologi Kantor Indonesia, Penerima: Arif Setiawan"
+12,2,2026-10-06 15:00:00+07,,9,,,"PRM202610060001, Ruangan Ruang Triase, Pemohon: Sarah Hanum, Auto-fulfill permintaan tertunda"
+13,2,2026-10-07 09:00:00+07,,10,,,"PRM202610070001, Ruangan Ruang Radiografi (X-Ray rontgen), Pemohon: Fitri Handayani"
+14,1,2026-10-08 15:00:00+07,7,,,,"PNR202610080001, Suplier PT Sumber Makmur Abadi, Penerima: Arif Setiawan"
+15,2,2026-10-16 09:00:00+07,,19,,,"PRM202610160001, Ruangan Pos Perawat (Nurse Station Ranap), Pemohon: Desi Ratnasari"
+16,2,2026-10-17 09:00:00+07,,20,,,"PRM202610170001, Ruangan Ruang Periksa / Konsultasi Umum, Pemohon: Budi Hartono"
+17,4,2026-10-22 10:00:00+07,,,,3,"KMB202610220001, Ruangan Pos Perawat (Nurse Station Ranap), Pemohon: Desi Ratnasari, Petugas Gudang: Martha Nuraini"
+18,4,2026-10-23 10:00:00+07,,,,4,"KMB202610230001, Ruangan Pos Perawat (Nurse Station Ranap), Pemohon: Desi Ratnasari, Petugas Gudang: Bambang Sutrisno"

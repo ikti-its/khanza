@@ -1,1 +1,6 @@
 id_pengembalian,no_pengembalian,tanggal,id_permintaan,petugas,master_ruangan,id_status_pengembalian_barang,alasan,petugas_gudang,tanggal_verifikasi,catatan_verifikasi
+2,KMB202610210001,2026-10-21 08:00:00+07,6,18,37,4,Kertas resep berlebih,9,2026-10-21 10:00:00+07,Kemasan sudah terbuka
+3,KMB202610220001,2026-10-22 08:00:00+07,19,22,19,3,Pemakaian tisu lebih sedikit dari perkiraan,9,2026-10-22 10:00:00+07,4 gulung sudah terbuka
+4,KMB202610230001,2026-10-23 08:00:00+07,19,22,19,3,Stok kantong sampah unit berlebih,24,2026-10-23 10:00:00+07,
+5,KMB202610240001,2026-10-24 08:00:00+07,6,18,37,2,Kertas resep tidak terpakai,,,
+6,KMB202610250001,2026-10-25 08:00:00+07,19,22,19,1,Rencana pengembalian sisa tisu,,,

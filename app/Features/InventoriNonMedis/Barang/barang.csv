@@ -1,41 +1,42 @@
 id_barang,kode_barang,nama_barang,id_satuan,id_jenis_barang,stok,stok_minimum,harga_satuan
-11,BRG0001,Kertas HVS A4 80 gsm,38,1,120,30,62000
-12,BRG0002,Kertas HVS F4 70 gsm,38,1,85,25,58000
-13,BRG0003,Tinta Printer Hitam 664,4,1,40,12,85000
-14,BRG0004,Pulpen Standar Biru,33,1,300,60,3000
-15,BRG0005,Spidol Whiteboard Hitam,33,1,75,20,11000
-16,BRG0006,Map Snelhecter Plastik,33,1,180,40,3500
-17,BRG0007,Binder Clip Nomor 155,6,1,60,15,12000
-18,BRG0008,Isi Stapler Nomor 10,6,1,95,25,4500
-19,BRG0009,Amplop Kop Rumah Sakit,23,8,900,200,700
-20,BRG0010,Formulir Rekam Medis Rawat Jalan,23,8,2400,500,450
-21,BRG0011,Formulir Permintaan Laboratorium,23,8,1800,400,400
-22,BRG0012,Kertas Resep Dokter,6,8,55,15,38000
-23,BRG0013,Gelang Identitas Pasien Biru,33,8,650,150,2800
-24,BRG0014,Karbol Pembersih Lantai 5 Liter,4,9,48,12,68000
-25,BRG0015,Sabun Cuci Tangan Cair 5 Liter,4,9,52,15,76000
-26,BRG0016,Pembersih Kaca 500 ml,4,9,36,10,22000
-27,BRG0017,Pengharum Ruangan Semprot,18,9,64,20,28000
-28,BRG0018,Kain Pel Microfiber,33,9,42,12,18000
-29,BRG0019,Tisu Gulung Toilet,48,10,420,100,6500
-30,BRG0020,Tisu Wajah Kotak,6,10,110,30,14000
-31,BRG0021,Kantong Sampah Medis Kuning,31,10,85,25,48000
-32,BRG0022,Kantong Sampah Domestik Hitam,31,10,120,30,35000
-33,BRG0023,Air Minum Galon 19 Liter,33,10,75,20,22000
-34,BRG0024,Pot Sampel Urine 60 ml,33,11,850,200,1500
-35,BRG0025,Pot Sampel Dahak Sekrup,33,11,420,100,2200
-36,BRG0026,Label Barcode Spesimen,48,11,65,20,42000
-37,BRG0027,Kertas Termal Printer Hasil Lab,48,11,80,25,16000
-38,BRG0028,Tisu Lensa Mikroskop,6,11,28,8,35000
-39,BRG0029,Film Rontgen 24 x 30 cm,23,7,240,60,26000
-40,BRG0030,Amplop Film Rontgen,23,7,380,100,1800
-41,BRG0031,Cairan Developer Rontgen 5 Liter,4,7,18,6,185000
-42,BRG0032,Cairan Fixer Rontgen 5 Liter,4,7,18,6,175000
-43,BRG0033,Lampu LED 12 Watt,33,12,140,35,34000
-44,BRG0034,Lampu TL LED 18 Watt,33,12,95,25,58000
-45,BRG0035,Baterai Alkaline AA,31,12,70,20,13000
-47,BRG0037,Filter AC Split 1 PK,33,13,26,8,65000
-48,BRG0038,Oli Kompresor 1 Liter,24,13,22,6,95000
-49,BRG0039,Seal Kran Air Set,41,13,48,15,12000
-50,BRG0040,"Kabel NYM 2 x 1,5 mm",48,13,14,4,420000
-5,BRG0041,Sarung Tangan Latex,6,3,30,50,15000
+5,BRG0041,Sarung Tangan Latex,6,3,80,50,15000
+11,BRG0001,Kertas HVS A4 80 gsm,38,1,90,30,62000.0000
+12,BRG0002,Kertas HVS F4 70 gsm,38,1,85,25,58000.0000
+13,BRG0003,Tinta Printer Hitam 664,4,1,40,12,85000.0000
+14,BRG0004,Pulpen Standar Biru,33,1,246,60,3000.0000
+15,BRG0005,Spidol Whiteboard Hitam,33,1,74,20,11000.0000
+16,BRG0006,Map Snelhecter Plastik,33,1,180,40,3500.0000
+17,BRG0007,Binder Clip Nomor 155,6,1,60,15,12000.0000
+18,BRG0008,Isi Stapler Nomor 10,6,1,97,25,4500.0000
+19,BRG0009,Amplop Kop Rumah Sakit,23,8,900,200,700.0000
+20,BRG0010,Formulir Rekam Medis Rawat Jalan,23,8,2400,500,450.0000
+21,BRG0011,Formulir Permintaan Laboratorium,23,8,1800,400,400.0000
+22,BRG0012,Kertas Resep Dokter,6,8,0,15,38000
+23,BRG0013,Gelang Identitas Pasien Biru,33,8,650,150,2800.0000
+24,BRG0014,Karbol Pembersih Lantai 5 Liter,4,9,48,12,68000.0000
+25,BRG0015,Sabun Cuci Tangan Cair 5 Liter,4,9,52,15,76000.0000
+26,BRG0016,Pembersih Kaca 500 ml,4,9,36,10,22000.0000
+27,BRG0017,Pengharum Ruangan Semprot,18,9,64,20,28000.0000
+28,BRG0018,Kain Pel Microfiber,33,9,42,12,18000.0000
+29,BRG0019,Tisu Gulung Toilet,48,10,366,100,6500.0000
+30,BRG0020,Tisu Wajah Kotak,6,10,100,30,14000.0000
+31,BRG0021,Kantong Sampah Medis Kuning,31,10,85,25,48000.0000
+32,BRG0022,Kantong Sampah Domestik Hitam,31,10,105,30,35000.0000
+33,BRG0023,Air Minum Galon 19 Liter,33,10,75,20,22000.0000
+34,BRG0024,Pot Sampel Urine 60 ml,33,11,850,200,1500.0000
+35,BRG0025,Pot Sampel Dahak Sekrup,33,11,420,100,2200.0000
+36,BRG0026,Label Barcode Spesimen,48,11,65,20,42000.0000
+37,BRG0027,Kertas Termal Printer Hasil Lab,48,11,80,25,16000.0000
+38,BRG0028,Tisu Lensa Mikroskop,6,11,0,8,35000
+39,BRG0029,Film Rontgen 24 x 30 cm,23,7,240,60,26000.0000
+40,BRG0030,Amplop Film Rontgen,23,7,380,100,1800.0000
+41,BRG0031,Cairan Developer Rontgen 5 Liter,4,7,0,6,185000.0000
+42,BRG0032,Cairan Fixer Rontgen 5 Liter,4,7,23,6,175000
+43,BRG0033,Lampu LED 12 Watt,33,12,140,35,34000.0000
+44,BRG0034,Lampu TL LED 18 Watt,33,12,0,25,58000
+45,BRG0035,Baterai Alkaline AA,31,12,70,20,13000.0000
+47,BRG0037,Filter AC Split 1 PK,33,13,26,8,65000.0000
+48,BRG0038,Oli Kompresor 1 Liter,24,13,22,6,95000.0000
+49,BRG0039,Seal Kran Air Set,41,13,48,15,12000.0000
+50,BRG0040,"Kabel NYM 2 x 1,5 mm",48,13,14,4,420000.0000
+51,BRG0042,Lakban Bening 2 Inci,48,1,0,0,12500

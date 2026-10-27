@@ -1,2 +1,9 @@
-id_penerimaan,id_pengadaan,tanggal,status,catatan,id_status_penerimaan_barang,no_penerimaan,no_masuk,tanggal_diterima
-0,0,2026-01-01 00:00:00,-,,0,,,
+id_penerimaan,id_pengadaan,tanggal,status,catatan,id_status_penerimaan_barang,petugas,no_penerimaan,no_masuk
+2,2,2026-09-24 14:00:00+07,-,,2,28,PNR202609240001,SM202609240001
+3,3,2026-10-02 14:00:00+07,-,,2,28,PNR202610020001,SM202610020001
+4,4,2026-10-03 14:00:00+07,-,,2,28,PNR202610030001,SM202610030001
+5,5,2026-10-04 14:00:00+07,-,,2,28,PNR202610040001,SM202610040001
+6,7,2026-10-06 15:00:00+07,-,,2,28,PNR202610060001,SM202610060001
+7,10,2026-10-08 15:00:00+07,-,Kiriman tahap pertama,2,28,PNR202610080001,SM202610080001
+8,11,2026-10-09 15:00:00+07,-,"Gulungan basah terkena air, dikembalikan ke suplier",3,28,PNR202610090001,
+9,12,2026-10-10 15:00:00+07,-,Sedang dicek jumlah dan kondisi,1,28,PNR202610100001,
