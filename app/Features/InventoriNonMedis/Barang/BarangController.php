@@ -90,6 +90,9 @@ final class BarangController extends ControllerTemplate
         $page        = min($page, $total_pages);
         $offset      = ($page - 1) * $size;
 
+        // barang di bawah stok minimum selalu tampil paling atas, sisanya urut nama
+        $builder->orderBy('CASE WHEN b.stok < b.stok_minimum THEN 0 ELSE 1 END', 'ASC', false);
+
         $data_tabel = $this->guarded(
             $builder
                 ->select(

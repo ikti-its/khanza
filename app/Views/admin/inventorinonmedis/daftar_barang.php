@@ -26,6 +26,7 @@
                         .tabel-ringkas td { width: auto !important; text-align: center; }
                         .tabel-ringkas td>div { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
                         .tabel-ringkas td[data-jenis="nama"] { white-space: normal !important; min-width: 7rem; }
+                        .tabel-ringkas tr.stok-kurang span.teks-stok { color: #b91c1c !important; font-weight: 700 !important; }
                     </style>
                     <div class="overflow-x-auto w-full tabel-ringkas" style="max-height: 600px; overflow-y: auto;">
                         <table id="myTable" class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
@@ -62,7 +63,7 @@
                                         ? 'background-color:#fff7ed; border-left:4px solid #f97316;'
                                         : 'border-left:4px solid transparent;';
                                 ?>
-                                <tr style="<?= $tr_style ?>">
+                                <tr style="<?= $tr_style ?>"<?= $eligible ? ' class="stok-kurang"' : '' ?>>
                                     <td class="h-px w-16 whitespace-nowrap">
                                         <div class="px-6 py-3 text-center">
                                             <?php if ($eligible): ?>
@@ -92,7 +93,7 @@
                                     </td>
                                     <td class="h-px w-28 whitespace-nowrap">
                                         <div class="px-6 py-3">
-                                            <span class="text-right block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= number_format($stok, 0, ',', '.') ?></span>
+                                            <span class="teks-stok text-right block text-sm font-semibold text-gray-800 dark:text-gray-200"><?= number_format($stok, 0, ',', '.') ?></span>
                                         </div>
                                     </td>
                                     <td class="h-px w-40 whitespace-nowrap">
@@ -113,6 +114,13 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="pt-3 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                        <span style="flex-shrink:0; padding:1px 8px; background-color:#fff7ed; border-left:4px solid #f97316; color:#b91c1c; font-weight:700;">5</span>
+                        <span>
+                            Keterangan: angka stok berwarna <b style="color:#b91c1c;">merah</b> menandakan stok barang <b>di bawah stok minimum</b> dan perlu diajukan pengadaan.
+                        </span>
                     </div>
 
                     <?= view('components/footer/footer', ['meta_data' => $meta_data, 'modul_path' => $modul_path]) ?>
