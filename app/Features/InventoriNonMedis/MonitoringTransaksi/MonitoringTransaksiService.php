@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\MonitoringTransaksi;
 
-use App\Features\InventoriNonMedis\PengembalianBarang\PengembalianBarangService;
 use CodeIgniter\Database\BaseConnection;
 use CodeIgniter\Database\BaseResult;
 
@@ -141,7 +140,7 @@ final class MonitoringTransaksiService
     /**
      * Seluruh tahap satu permintaan dari diajukan sampai selesai.
      *
-     * @return array{header: array<string, mixed>, langkah: list<Langkah>, status: string, tahap: string, warna: string, progres: string, peringatan: list<Tautan>, pengembalian: list<array<string, mixed>>}|null
+     * @return array{header: array<string, mixed>, langkah: list<Langkah>, status: string, tahap: string, warna: string, progres: string, peringatan: list<Tautan>}|null
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
     public function alur_permintaan(int $id): null|array
@@ -315,18 +314,102 @@ final class MonitoringTransaksiService
             ];
         }
 
-        $pengembalian = (new PengembalianBarangService($this->db))->pengembalian_by_permintaan($id);
+        // pengembalian dari unit menjadi tahap terakhir; status permintaan tetap dihitung dari alur utamanya
+        $ringkasan = $this->ringkasan($langkah);
+        $kembali   = $this->langkah_pengembalian($id);
+        if ($kembali !== null) {
+            $langkah[] = $kembali;
+            if ($kembali['status'] === 'active') {
+                $ringkasan['tahap'] .= ', pengembalian menunggu persetujuan';
+            }
+        }
 
-        return (
-            ['header' => $p, 'langkah' => $langkah, 'peringatan' => $peringatan, 'pengembalian' => $pengembalian]
-            + $this->ringkasan($langkah)
-        );
+        return ['header' => $p, 'langkah' => $langkah, 'peringatan' => $peringatan] + $ringkasan;
+    }
+
+    /**
+     * Tahap pengembalian barang dari unit untuk satu permintaan, atau null bila tidak ada pengembalian.
+     *
+     * @return Langkah|null
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     */
+    private function langkah_pengembalian(int $id_permintaan): null|array
+    {
+        $rows = $this->rows('
+            SELECT k.id_pengembalian, k.no_pengembalian, k.tanggal, k.tanggal_verifikasi,
+                   k.id_status_pengembalian_barang AS st, op.nama AS pengaju, og.nama AS staf,
+                   (SELECT COALESCE(SUM(d.qty_diajukan), 0) FROM inventori_non_medis.pengembalian_barang_detail d
+                    WHERE d.id_pengembalian = k.id_pengembalian) AS diajukan,
+                   (SELECT COALESCE(SUM(d.qty_diverifikasi), 0) FROM inventori_non_medis.pengembalian_barang_detail d
+                    WHERE d.id_pengembalian = k.id_pengembalian) AS disetujui
+            FROM inventori_non_medis.pengembalian_barang k
+            LEFT JOIN role.petugas pp ON k.petugas = pp.id_petugas
+            LEFT JOIN person.orang op ON pp.id_orang = op.id_orang
+            LEFT JOIN role.petugas pg ON k.petugas_gudang = pg.id_petugas
+            LEFT JOIN person.orang og ON pg.id_orang = og.id_orang
+            WHERE k.id_permintaan = ?
+            ORDER BY k.id_pengembalian
+        ', [$id_permintaan]);
+        if ($rows === [])
+            return null;
+
+        $info    = [];
+        $dokumen = [];
+        $aksi    = [];
+        foreach ($rows as $k) {
+            $id_k     = (int) $k['id_pengembalian'];
+            $diajukan = (int) $k['diajukan'];
+            $staf     = (string) ($k['staf'] ?? '-');
+            $info[]   = [
+                (string) $k['no_pengembalian'],
+                $this->tgl($k['tanggal'] ?? null)
+                    . ', '
+                    . $diajukan
+                    . ' barang diajukan oleh '
+                    . (string) ($k['pengaju'] ?? '-'),
+            ];
+            $info[] = match ((int) $k['st']) {
+                1       => ['Status', 'Draf (belum diajukan)'],
+                2       => ['Status', 'Menunggu persetujuan Staf Gudang'],
+                3 => [
+                    'Disetujui',
+                    (int) $k['disetujui']
+                        . "/{$diajukan} barang oleh {$staf}, "
+                        . $this->tgl($k['tanggal_verifikasi'] ?? null),
+                ],
+                default => ['Ditolak', "oleh {$staf}, " . $this->tgl($k['tanggal_verifikasi'] ?? null)],
+            };
+            $dokumen[] = [
+                'label' => 'Lihat ' . (string) $k['no_pengembalian'],
+                'url'   => self::PATH . 'pengembalian-barang/' . $id_k,
+            ];
+            if ((int) $k['st'] === 2) {
+                $aksi[] = [
+                    'label' => 'Proses Persetujuan Pengembalian',
+                    'url'   => self::PATH . 'persetujuan-pengembalian-barang/edit/' . $id_k,
+                ];
+            }
+        }
+
+        $status_semua = array_map(fn(array $k): int => (int) $k['st'], $rows);
+        $status       = match (true) {
+            in_array(2, $status_semua, true) => 'active',
+            array_intersect([3, 4], $status_semua) !== [] => 'done',
+            default => 'waiting',
+        };
+
+        return $this->langkah('Pengembalian Barang', $status, [
+            'tahap'   => $status === 'active' ? 'Menunggu persetujuan pengembalian' : '',
+            'info'    => $info,
+            'dokumen' => $dokumen,
+            'aksi'    => $aksi,
+        ]);
     }
 
     // ========= ALUR PENGAJUAN (DARI GUDANG) =========
 
     /**
-     * @return array{header: array<string, mixed>, langkah: list<Langkah>, status: string, tahap: string, warna: string, progres: string, peringatan: list<Tautan>, pengembalian: list<array<string, mixed>>}|null
+     * @return array{header: array<string, mixed>, langkah: list<Langkah>, status: string, tahap: string, warna: string, progres: string, peringatan: list<Tautan>}|null
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
     public function alur_pengajuan(int $id): null|array
@@ -355,10 +438,7 @@ final class MonitoringTransaksiService
             default        => $this->langkah('Selesai', 'waiting'),
         };
 
-        return (
-            ['header' => $pj, 'langkah' => $langkah, 'peringatan' => [], 'pengembalian' => []]
-            + $this->ringkasan($langkah)
-        );
+        return ['header' => $pj, 'langkah' => $langkah, 'peringatan' => []] + $this->ringkasan($langkah);
     }
 
     // ========= TAHAP PENGAJUAN → PENGADAAN → PENERIMAAN =========

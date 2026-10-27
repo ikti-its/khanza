@@ -7,7 +7,6 @@ helper('tracking');
 $header       = $alur['header'] ?? [];
 $langkah      = $alur['langkah'] ?? [];
 $peringatan   = $alur['peringatan'] ?? [];
-$pengembalian = $alur['pengembalian'] ?? [];
 $is_permintaan = $jenis === 'permintaan';
 $no_dokumen    = (string) ($is_permintaan ? ($header['no_permintaan'] ?? '-') : ($header['no_pengajuan'] ?? '-'));
 
@@ -138,40 +137,6 @@ $label_status = static fn(string $s): array => match ($s) {
                 </div>
             <?php endforeach; ?>
         </div>
-
-        <?php if ($pengembalian !== []): ?>
-            <!-- Pengembalian dari unit -->
-            <div class="mt-6" style="border:1px solid #e5e7eb; border-radius:12px; padding:20px;">
-                <div style="border-bottom:1px solid #e5e7eb; padding-bottom:12px; margin-bottom:8px;">
-                    <span style="font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.05em;">Pengembalian Barang</span>
-                </div>
-                <table class="w-full text-sm">
-                    <thead>
-                        <tr class="text-slate-500 dark:text-slate-400">
-                            <th class="text-left py-2 font-medium">No. Pengembalian</th>
-                            <th class="text-center py-2 font-medium">Tanggal</th>
-                            <th class="text-right py-2 font-medium">Qty Diajukan</th>
-                            <th class="text-right py-2 font-medium">Qty Disetujui</th>
-                            <th class="text-center py-2 font-medium">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-slate-700 dark:text-slate-300">
-                        <?php foreach ($pengembalian as $pg): ?>
-                            <?php $status_pg = (string) ($pg['nama_status_pengembalian_barang'] ?? '-'); ?>
-                            <tr class="border-t border-slate-100 dark:border-slate-700/50">
-                                <td class="text-left py-2">
-                                    <a href="/inventori-non-medis/pengembalian-barang/<?= (int) $pg['id_pengembalian'] ?>" data-monitoring="<?= esc($no_dokumen) ?>" class="font-semibold text-blue-600 hover:underline"><?= esc($pg['no_pengembalian'] ?? '-') ?></a>
-                                </td>
-                                <td class="text-center py-2"><?= !empty($pg['tanggal']) ? date('d/m/Y, H:i', strtotime((string) $pg['tanggal'])) : '-' ?></td>
-                                <td class="text-right py-2"><?= (int) $pg['total_qty_diajukan'] ?></td>
-                                <td class="text-right py-2"><?= (int) ($pg['id_status_pengembalian_barang'] ?? 0) === 3 ? (int) $pg['total_qty_diverifikasi'] : '-' ?></td>
-                                <td class="text-center py-2"><?= get_progress_badge_html($status_pg, _status_component_color($status_pg)) ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        <?php endif; ?>
 
         <!-- Tombol Aksi -->
         <div class="mt-5 pt-5 border-t border-gray-200 dark:border-gray-800 flex justify-end">
