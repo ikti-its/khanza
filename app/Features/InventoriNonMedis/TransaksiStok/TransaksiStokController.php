@@ -6,10 +6,13 @@ namespace App\Features\InventoriNonMedis\TransaksiStok;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use CodeIgniter\HTTP\RedirectResponse;
 
 final class TransaksiStokController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = [
         'nama_tipe_transaksi_stok',
         'keterangan',
@@ -43,11 +46,13 @@ final class TransaksiStokController extends ControllerTemplate
         );
     }
 
-    // data terbaru di atas
+    // data terbaru di atas + filter tanggal
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_transaksi', 'DESC');
+        $this->atur_daftar('transaksi_stok');
     }
 
     // pastikan hasil query valid

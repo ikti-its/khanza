@@ -32,7 +32,11 @@ if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses'
     $bg_color   = '#DBEAFE';
     $dot_color  = '#2563EB';
     $text_color = '#1E40AF';
-} elseif (str_starts_with($status_lower, 'diterima ') && str_contains($status_lower, '%')) {
+} elseif (
+    (str_starts_with($status_lower, 'diterima ') && str_contains($status_lower, '%'))
+    || preg_match('/^[a-z ]+ \d+\/\d+$/', $status_lower) === 1
+) {
+    // sedang berjalan dengan jumlah, mis. "Diterima 6/10"
     $bg_color   = '#DBEAFE';
     $dot_color  = '#2563EB';
     $text_color = '#1E40AF';

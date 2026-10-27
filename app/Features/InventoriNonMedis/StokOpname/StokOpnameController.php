@@ -6,10 +6,13 @@ namespace App\Features\InventoriNonMedis\StokOpname;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use CodeIgniter\HTTP\RedirectResponse;
 
 final class StokOpnameController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = ['nama', 'nama_status_stok_opname'];
 
     public function __construct()
@@ -39,10 +42,15 @@ final class StokOpnameController extends ControllerTemplate
     }
 
     // urut descending
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_opname', 'DESC');
+        $this->atur_daftar('stok_opname', [
+            't.id_status_stok_opname = 1',
+            't.id_status_stok_opname = 2',
+        ]);
     }
 
     // tambah kolom total nominal

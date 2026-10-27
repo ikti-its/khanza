@@ -7,10 +7,13 @@ namespace App\Features\InventoriNonMedis\PermintaanBarang;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use CodeIgniter\HTTP\RedirectResponse;
 
 final class PermintaanBarangController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = ['no_permintaan', 'nama', 'nama_ruangan'];
 
     public function __construct()
@@ -43,10 +46,12 @@ final class PermintaanBarangController extends ControllerTemplate
     }
 
     // urut descending
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_permintaan', 'DESC');
+        $this->atur_daftar('permintaan_barang', self::urutan_permintaan());
     }
 
     // tambah kolom progress & petugas gudang

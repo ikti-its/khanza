@@ -7,10 +7,13 @@ namespace App\Features\InventoriNonMedis\PersetujuanPermintaanBarang;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPermintaanBarangController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = ['no_permintaan', 'petugas_nama', 'nama_ruangan'];
 
     private bool $pending_keluar = false;
@@ -54,11 +57,13 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
     }
 
     // sembunyikan Draf, urut descending
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_filter('id_status_permintaan_barang', [2, 3, 4, 5, 6, 7, 8]);
         $this->model->set_order('id_permintaan', 'DESC');
+        $this->atur_daftar('permintaan_barang', self::urutan_permintaan());
     }
 
     // pastikan hasil query valid

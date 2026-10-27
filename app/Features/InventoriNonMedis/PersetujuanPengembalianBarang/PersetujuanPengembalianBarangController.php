@@ -7,11 +7,14 @@ namespace App\Features\InventoriNonMedis\PersetujuanPengembalianBarang;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use App\Features\InventoriNonMedis\PengembalianBarang\PengembalianBarangService as S;
 use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPengembalianBarangController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = [
         'no_pengembalian',
         'no_permintaan',
@@ -51,6 +54,7 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
     }
 
     // sembunyikan Draf, yang menunggu di atas
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
@@ -61,6 +65,11 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         ]);
         $this->model->set_order('m.id_status_pengembalian_barang', 'ASC');
         $this->model->set_order('m.id_pengembalian', 'DESC');
+        $this->atur_daftar('pengembalian_barang', [
+            't.id_status_pengembalian_barang = 2',
+            't.id_status_pengembalian_barang = 3',
+            't.id_status_pengembalian_barang = 4',
+        ]);
     }
 
     // pastikan hasil query valid

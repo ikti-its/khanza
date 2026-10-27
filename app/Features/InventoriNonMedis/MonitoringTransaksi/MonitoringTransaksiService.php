@@ -83,28 +83,45 @@ final class MonitoringTransaksiService
     }
 
     /**
-     * Daftar alur transaksi, terbaru di atas, beserta tahap saat ini.
+     * Daftar alur transaksi beserta tahap saat ini, diurutkan Proses - Selesai - Dibatalkan lalu terbaru di atas.
+     * Status dihitung dari alur, jadi semua baris ditelusuri dulu lalu dipotong per halaman.
+     * Tanggal (Y-m-d) boleh kosong.
      *
      * @return array{rows: list<array<string, mixed>>, total: int}
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
-    public function daftar(int $page, int $size, string $keyword): array
+    public function daftar(int $page, int $size, string $keyword, string $dari = '', string $sampai = ''): array
     {
         $kw     = '%' . addcslashes($keyword, '%_\\') . '%';
-        $filter = "WHERE (? = '' OR t.no_dokumen ILIKE ? OR t.pemohon ILIKE ? OR t.unit ILIKE ?)";
-        $binds  = [$keyword, $kw, $kw, $kw];
+        $filter = "WHERE (? = '' OR t.no_dokumen ILIKE ? OR t.pemohon ILIKE ? OR t.unit ILIKE ?)
+            AND (? = '' OR t.tanggal::date >= NULLIF(?, '')::date)
+            AND (? = '' OR t.tanggal::date <= NULLIF(?, '')::date)";
+        $binds = [$keyword, $kw, $kw, $kw, $dari, $dari, $sampai, $sampai];
 
-        $total = (int) (
-            $this->row('SELECT count(*) AS n FROM (' . $this->sumber_alur() . ") t {$filter}", $binds)['n'] ?? 0
-        );
+        $semua = $this->lengkapi($this->rows(
+            'SELECT * FROM (' . $this->sumber_alur() . ") t {$filter} ORDER BY t.tanggal DESC, t.id DESC",
+            $binds,
+        ));
+        $peringkat = static fn(array $r): int => match ($r['status']) {
+            'Diproses' => 1,
+            'Selesai'  => 2,
+            default    => 3,
+        };
+        // usort stabil sejak PHP 8, urutan terbaru di dalam tiap kelompok tetap
+        usort($semua, static fn(array $a, array $b): int => $peringkat($a) <=> $peringkat($b));
 
-        $rows = $this->rows(
-            'SELECT * FROM ('
-            . $this->sumber_alur()
-            . ") t {$filter} ORDER BY t.tanggal DESC, t.id DESC LIMIT ? OFFSET ?",
-            [...$binds, $size, ($page - 1) * $size],
-        );
+        return ['rows' => array_slice($semua, ($page - 1) * $size, $size), 'total' => count($semua)];
+    }
 
+    /**
+     * Tambahkan kunci, jenis, status, dan tahap saat ini ke tiap baris daftar.
+     *
+     * @param list<array<string, mixed>> $rows
+     * @return list<array<string, mixed>>
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     */
+    private function lengkapi(array $rows): array
+    {
         foreach ($rows as &$row) {
             $alur = $row['jenis'] === 'permintaan'
                 ? $this->alur_permintaan((int) $row['id'])
@@ -116,7 +133,7 @@ final class MonitoringTransaksiService
         }
         unset($row);
 
-        return ['rows' => $rows, 'total' => $total];
+        return $rows;
     }
 
     // ========= ALUR PERMINTAAN =========
@@ -149,6 +166,13 @@ final class MonitoringTransaksiService
         $url_p  = self::PATH . 'permintaan-barang/' . $id;
         $url_pp = self::PATH . 'persetujuan-permintaan-barang/' . $id;
 
+        $qty = $this->row('
+            SELECT COALESCE(SUM(qty), 0) AS diminta, COALESCE(SUM(qty_disetujui), 0) AS disetujui
+            FROM inventori_non_medis.permintaan_barang_detail WHERE id_permintaan = ?
+        ', [$id]);
+        $diminta   = (int) ($qty['diminta'] ?? 0);
+        $disetujui = (int) ($qty['disetujui'] ?? 0);
+
         $langkah   = [];
         $langkah[] = $this->langkah('Permintaan Diajukan', 'done', [
             'info'    => [
@@ -156,6 +180,7 @@ final class MonitoringTransaksiService
                 ['Tanggal', $this->tgl($p['tanggal'] ?? null)],
                 ['Pemohon', (string) ($p['nama_pemohon'] ?? '-')],
                 ['Ruangan', (string) ($p['nama_ruangan'] ?? '-')],
+                ['Jumlah Diminta', $diminta . ' barang'],
                 [
                     'Metode Pemenuhan',
                     $this->boleh_sebagian($p['boleh_pengiriman_sebagian'] ?? null)
@@ -183,6 +208,9 @@ final class MonitoringTransaksiService
                 ['Tanggal', $this->tgl($p['tanggal_diproses'] ?? null)],
                 ['Staf Gudang', (string) ($p['nama_pengelola'] ?? '-')],
             ];
+            if ($st !== 3) {
+                $info[] = ['Jumlah Disetujui', "{$disetujui}/{$diminta} barang"];
+            }
             $langkah[] = $this->langkah('Persetujuan Staf Gudang', $st === 3 ? 'failed' : 'done', [
                 'info'    => $info,
                 'dokumen' => [
@@ -211,19 +239,37 @@ final class MonitoringTransaksiService
             ORDER BY ts.id_transaksi
         ', [$id, self::TIPE_KELUAR]);
         if ($keluar !== []) {
-            $info    = [['No. Keluar', (string) ($p['no_keluar'] ?? '-')]];
-            $dokumen = [];
+            $total_kirim = (int) array_sum(array_map(fn(array $kl): int => (int) $kl['qty'], $keluar));
+            $info        = [
+                ['No. Keluar', (string) ($p['no_keluar'] ?? '-')],
+                ['Total Dikirim', "{$total_kirim}/{$disetujui} barang"],
+            ];
+            $dokumen   = [];
+            $kumulatif = 0;
             foreach ($keluar as $k => $kl) {
-                $info[] = [
+                $kumulatif += (int) $kl['qty'];
+                $info[]    = [
                     'Pengiriman ' . ($k + 1),
-                    $this->tgl($kl['tanggal'] ?? null) . ' (' . (int) $kl['qty'] . ' barang)',
+                    $this->tgl($kl['tanggal'] ?? null)
+                        . ' ('
+                        . (int) $kl['qty']
+                        . " barang, total {$kumulatif}/{$disetujui})",
                 ];
                 $dokumen[] = [
                     'label' => 'Lihat Transaksi Stok ' . ($k + 1),
                     'url'   => self::PATH . 'transaksi-stok/' . (int) $kl['id_transaksi'],
                 ];
             }
-            $langkah[] = $this->langkah('Barang Dikirim ke Unit', 'done', ['info' => $info, 'dokumen' => $dokumen]);
+            // belum lengkap = masih berjalan (biru), kecuali permintaan sudah selesai
+            $kurang = $total_kirim < $disetujui && $st !== 6;
+            if ($kurang) {
+                $info[] = ['Belum Dikirim', ($disetujui - $total_kirim) . ' barang (menunggu barang dari pengadaan)'];
+            }
+            $langkah[] = $this->langkah('Barang Dikirim ke Unit', $kurang ? 'active' : 'done', [
+                'tahap'   => $kurang ? "Dikirim sebagian ({$total_kirim}/{$disetujui})" : '',
+                'info'    => $info,
+                'dokumen' => $dokumen,
+            ]);
         } elseif (!in_array($st, [3, 7], true)) {
             $langkah[] = $this->langkah('Barang Dikirim ke Unit', 'waiting');
         }
@@ -338,11 +384,19 @@ final class MonitoringTransaksiService
         $st      = (int) ($pj['id_status_pengajuan_barang'] ?? 0);
         $langkah = [];
 
+        $qty_pj = $this->row('
+            SELECT COALESCE(SUM(qty), 0) AS diajukan, COALESCE(SUM(qty_disetujui), 0) AS disetujui
+            FROM inventori_non_medis.pengajuan_barang_detail WHERE id_pengajuan = ?
+        ', [$id_pengajuan]);
+        $diajukan  = (int) ($qty_pj['diajukan'] ?? 0);
+        $disetujui = (int) ($qty_pj['disetujui'] ?? 0);
+
         $langkah[] = $this->langkah('Pengajuan Barang Dibuat', 'done', [
             'info'    => [
                 ['No. Pengajuan', (string) ($pj['no_pengajuan'] ?? '-')],
                 ['Tanggal', $this->tgl($pj['tanggal'] ?? null)],
                 ['Dibuat Oleh', (string) ($pj['nama_pemohon'] ?? '-')],
+                ['Jumlah Diajukan', $diajukan . ' barang'],
             ],
             'dokumen' => [['label' => 'Lihat Pengajuan', 'url' => self::PATH . 'pengajuan-barang/' . $id_pengajuan]],
         ]);
@@ -362,12 +416,16 @@ final class MonitoringTransaksiService
             $langkah[] = $this->langkah('Penerimaan Barang', 'waiting');
             return $langkah;
         }
+        $info_setuju = [
+            ['Keputusan', $st === 3 ? 'Ditolak' : 'Disetujui'],
+            ['Tanggal', $this->tgl($pj['tanggal_diproses'] ?? null)],
+            ['Atasan Logistik', (string) ($pj['nama_atasan'] ?? '-')],
+        ];
+        if ($st !== 3) {
+            $info_setuju[] = ['Jumlah Disetujui', "{$disetujui}/{$diajukan} barang"];
+        }
         $langkah[] = $this->langkah('Persetujuan Atasan Logistik', $st === 3 ? 'failed' : 'done', [
-            'info'    => [
-                ['Keputusan', $st === 3 ? 'Ditolak' : 'Disetujui'],
-                ['Tanggal', $this->tgl($pj['tanggal_diproses'] ?? null)],
-                ['Atasan Logistik', (string) ($pj['nama_atasan'] ?? '-')],
-            ],
+            'info'    => $info_setuju,
             'dokumen' => [[
                 'label' => 'Lihat Persetujuan',
                 'url'   => self::PATH . 'persetujuan-pengajuan-barang/' . $id_pengajuan,
@@ -378,15 +436,21 @@ final class MonitoringTransaksiService
 
         // pengadaan
         $pengadaan = $this->rows('
-            SELECT pd.id_pengadaan, pd.no_pengadaan, pd.tanggal, pd.id_status_pengadaan_barang AS st, s.nama_suplier
+            SELECT pd.id_pengadaan, pd.no_pengadaan, pd.tanggal, pd.id_status_pengadaan_barang AS st, s.nama_suplier,
+                   o.nama AS nama_petugas,
+                   (SELECT COALESCE(SUM(d.qty), 0) FROM inventori_non_medis.pengadaan_barang_detail d
+                    WHERE d.id_pengadaan = pd.id_pengadaan AND d.id_barang > 0) AS qty
             FROM inventori_non_medis.pengadaan_barang pd
             LEFT JOIN inventori_non_medis.suplier s ON pd.id_suplier = s.id_suplier
+            LEFT JOIN role.petugas pt ON pd.petugas = pt.id_petugas
+            LEFT JOIN person.orang o ON pt.id_orang = o.id_orang
             WHERE pd.id_pengajuan = ?
             ORDER BY pd.id_pengadaan
         ', [$id_pengajuan]);
         $sisa_pesan = $this->sisa_pengajuan($id_pengajuan);
         $info       = [];
         $dokumen    = [];
+        $dipesan    = 0;
         foreach ($pengadaan as $pd) {
             $status_pd = match ((int) $pd['st']) {
                 1       => 'Proses Pengadaan',
@@ -394,7 +458,20 @@ final class MonitoringTransaksiService
                 3       => 'Dibatalkan',
                 default => '-',
             };
-            $info[]    = [(string) $pd['no_pengadaan'], (string) ($pd['nama_suplier'] ?? '-') . ', ' . $status_pd];
+            if ((int) $pd['st'] !== 3) {
+                $dipesan += (int) $pd['qty'];
+            }
+            $info[] = [
+                (string) $pd['no_pengadaan'],
+                $this->tgl($pd['tanggal'] ?? null)
+                    . ', '
+                    . (string) ($pd['nama_suplier'] ?? '-')
+                    . ', '
+                    . (int) $pd['qty']
+                    . ' barang, '
+                    . $status_pd,
+            ];
+            $info[]    = ['Petugas Pengadaan', (string) ($pd['nama_petugas'] ?? '-')];
             $dokumen[] = [
                 'label' => 'Lihat ' . (string) $pd['no_pengadaan'],
                 'url'   => self::PATH . 'pengadaan-barang/' . (int) $pd['id_pengadaan'],
@@ -423,6 +500,7 @@ final class MonitoringTransaksiService
             $langkah[] = $this->langkah('Penerimaan Barang', 'waiting');
             return $langkah;
         }
+        array_unshift($info, ['Total Dipesan', "{$dipesan}/{$disetujui} barang"]);
         if ($sisa_pesan > 0) {
             $info[] = ['Belum Dipesan', $sisa_pesan . ' barang'];
         }
@@ -481,10 +559,14 @@ final class MonitoringTransaksiService
             $total_terima += $terima;
 
             $penerimaan = $this->rows('
-                SELECT id_penerimaan, no_penerimaan, tanggal, id_status_penerimaan_barang AS st
-                FROM inventori_non_medis.penerimaan_barang
-                WHERE id_pengadaan = ?
-                ORDER BY id_penerimaan
+                SELECT p.id_penerimaan, p.no_penerimaan, p.tanggal, p.id_status_penerimaan_barang AS st, o.nama AS nama_penerima,
+                       (SELECT COALESCE(SUM(d.qty_diterima), 0) FROM inventori_non_medis.penerimaan_barang_detail d
+                        WHERE d.id_penerimaan = p.id_penerimaan) AS qty
+                FROM inventori_non_medis.penerimaan_barang p
+                LEFT JOIN role.petugas pt ON p.petugas = pt.id_petugas
+                LEFT JOIN person.orang o ON pt.id_orang = o.id_orang
+                WHERE p.id_pengadaan = ?
+                ORDER BY p.id_penerimaan
             ', [$id_pd]);
             $sedang_diproses = null;
             foreach ($penerimaan as $pn) {
@@ -496,8 +578,15 @@ final class MonitoringTransaksiService
                 };
                 $info[] = [
                     (string) ($pn['no_penerimaan'] ?? '-'),
-                    $this->tgl($pn['tanggal'] ?? null) . ', ' . $status_pn,
+                    $this->tgl($pn['tanggal'] ?? null)
+                        . ', '
+                        . (int) $pn['qty']
+                        . ' barang dari '
+                        . (string) $pd['no_pengadaan']
+                        . ', '
+                        . $status_pn,
                 ];
+                $info[]    = ['Penerima', (string) ($pn['nama_penerima'] ?? '-')];
                 $dokumen[] = [
                     'label' => 'Lihat ' . (string) ($pn['no_penerimaan'] ?? 'Penerimaan'),
                     'url'   => self::PATH . 'penerimaan-barang/' . (int) $pn['id_penerimaan'],
@@ -520,7 +609,7 @@ final class MonitoringTransaksiService
             }
         }
 
-        array_unshift($info, ['Diterima', $total_terima . ' dari ' . $total_pesan . ' barang']);
+        array_unshift($info, ['Total Diterima', "{$total_terima}/{$total_pesan} barang"]);
         $lengkap = $total_pesan > 0 && $total_terima >= $total_pesan;
 
         return $this->langkah('Penerimaan Barang', $lengkap ? 'done' : 'active', [

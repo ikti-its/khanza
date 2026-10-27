@@ -7,10 +7,13 @@ namespace App\Features\InventoriNonMedis\PenerimaanBarang;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use CodeIgniter\HTTP\RedirectResponse;
 
 final class PenerimaanBarangController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = ['no_penerimaan', 'no_pengadaan', 'nama_status_penerimaan_barang'];
 
     private bool $pending_masuk = false;
@@ -44,10 +47,16 @@ final class PenerimaanBarangController extends ControllerTemplate
     }
 
     // urut descending
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_penerimaan', 'DESC');
+        $this->atur_daftar('penerimaan_barang', [
+            't.id_status_penerimaan_barang = 1',
+            't.id_status_penerimaan_barang = 2',
+            't.id_status_penerimaan_barang = 3',
+        ]);
     }
 
     // pastikan hasil query valid

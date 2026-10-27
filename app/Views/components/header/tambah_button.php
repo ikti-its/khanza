@@ -8,6 +8,7 @@
             hover:bg-[#13594E] disabled:opacity-50 disabled:pointer-events-none 
             dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
         <img src="<?= base_url('svg/header/tambah_button_icon.svg') ?>">
-        Tambah
+        <?= esc($label ?? 'Tambah') ?>
+
     </a>
 </div>

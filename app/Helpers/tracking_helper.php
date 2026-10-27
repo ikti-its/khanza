@@ -48,6 +48,106 @@ if (!function_exists('_tstep')) {
     }
 }
 
+if (!function_exists('_qty_permintaan')) {
+    /**
+     * Jumlah barang diminta, disetujui, dan sudah dikirim ke unit untuk keterangan x/y.
+     *
+     * @return array{qty_diminta: int, qty_disetujui: int, qty_dikirim: int}
+     */
+    function _qty_permintaan(\CodeIgniter\Database\BaseConnection $db, int $id_permintaan): array
+    {
+        $row = $db->query('
+            SELECT
+                (SELECT COALESCE(SUM(qty), 0) FROM inventori_non_medis.permintaan_barang_detail
+                 WHERE id_permintaan = ?) AS diminta,
+                (SELECT COALESCE(SUM(qty_disetujui), 0) FROM inventori_non_medis.permintaan_barang_detail
+                 WHERE id_permintaan = ?) AS disetujui,
+                (SELECT COALESCE(SUM(d.qty), 0) FROM inventori_non_medis.transaksi_stok_detail d
+                 JOIN inventori_non_medis.transaksi_stok ts ON d.id_transaksi = ts.id_transaksi
+                 WHERE ts.id_permintaan = ? AND ts.id_tipe_transaksi_stok = 2) AS dikirim
+        ', [$id_permintaan, $id_permintaan, $id_permintaan])->getRowArray() ?? [];
+
+        return [
+            'qty_diminta'   => (int) ($row['diminta'] ?? 0),
+            'qty_disetujui' => (int) ($row['disetujui'] ?? 0),
+            'qty_dikirim'   => (int) ($row['dikirim'] ?? 0),
+        ];
+    }
+}
+
+if (!function_exists('_qty_pengajuan')) {
+    /**
+     * Jumlah barang diajukan, disetujui atasan, dan sudah dipesan (pengadaan tidak dibatalkan).
+     *
+     * @return array{qty_diajukan: int, qty_disetujui_pj: int, qty_dipesan: int}
+     */
+    function _qty_pengajuan(\CodeIgniter\Database\BaseConnection $db, int $id_pengajuan): array
+    {
+        $row = $db->query('
+            SELECT
+                (SELECT COALESCE(SUM(qty), 0) FROM inventori_non_medis.pengajuan_barang_detail
+                 WHERE id_pengajuan = ?) AS diajukan,
+                (SELECT COALESCE(SUM(qty_disetujui), 0) FROM inventori_non_medis.pengajuan_barang_detail
+                 WHERE id_pengajuan = ?) AS disetujui,
+                (SELECT COALESCE(SUM(d.qty), 0) FROM inventori_non_medis.pengadaan_barang_detail d
+                 JOIN inventori_non_medis.pengadaan_barang p ON d.id_pengadaan = p.id_pengadaan
+                 WHERE p.id_pengajuan = ? AND p.id_status_pengadaan_barang <> 3 AND d.id_barang > 0) AS dipesan
+        ', [$id_pengajuan, $id_pengajuan, $id_pengajuan])->getRowArray() ?? [];
+
+        return [
+            'qty_diajukan'     => (int) ($row['diajukan'] ?? 0),
+            'qty_disetujui_pj' => (int) ($row['disetujui'] ?? 0),
+            'qty_dipesan'      => (int) ($row['dipesan'] ?? 0),
+        ];
+    }
+}
+
+if (!function_exists('_pengadaan_terakhir')) {
+    /** Pengadaan terbaru sebuah pengajuan beserta suplier, petugas, dan jumlah dipesan/disetujui. */
+    function _pengadaan_terakhir(\CodeIgniter\Database\BaseConnection $db, array $pengajuan): ?array
+    {
+        $pd = $db->table('inventori_non_medis.pengadaan_barang pd')
+            ->join('inventori_non_medis.suplier s', 'pd.id_suplier = s.id_suplier', 'left')
+            ->join('role.petugas pp', 'pd.petugas = pp.id_petugas', 'left')
+            ->join('person.orang op', 'pp.id_orang = op.id_orang', 'left')
+            ->select('pd.id_pengadaan, pd.no_pengadaan, pd.tanggal, pd.id_status_pengadaan_barang, s.nama_suplier, op.nama AS nama_petugas')
+            ->where('pd.id_pengajuan', (int) $pengajuan['id_pengajuan'])
+            ->orderBy('pd.id_pengadaan', 'DESC')
+            ->limit(1)
+            ->get()->getRowArray();
+        if (!is_array($pd)) {
+            return null;
+        }
+
+        return $pd + [
+            'qty_dipesan'      => (int) ($pengajuan['qty_dipesan'] ?? 0),
+            'qty_disetujui_pj' => (int) ($pengajuan['qty_disetujui_pj'] ?? 0),
+        ];
+    }
+}
+
+if (!function_exists('_penerimaan_terakhir')) {
+    /** Penerimaan berstatus Diterima terbaru (atau yang terbaru bila belum ada) beserta nama penerima. */
+    function _penerimaan_terakhir(\CodeIgniter\Database\BaseConnection $db, int $id_pengadaan): ?array
+    {
+        foreach ([true, false] as $hanya_diterima) {
+            $q = $db->table('inventori_non_medis.penerimaan_barang p')
+                ->join('role.petugas pt', 'p.petugas = pt.id_petugas', 'left')
+                ->join('person.orang o', 'pt.id_orang = o.id_orang', 'left')
+                ->select('p.id_penerimaan, p.no_penerimaan, p.tanggal, p.id_status_penerimaan_barang, o.nama AS nama_penerima')
+                ->where('p.id_pengadaan', $id_pengadaan);
+            if ($hanya_diterima) {
+                $q->where('p.id_status_penerimaan_barang', 2);
+            }
+            $pn = $q->orderBy('p.id_penerimaan', 'DESC')->limit(1)->get()->getRowArray();
+            if (is_array($pn)) {
+                return $pn;
+            }
+        }
+        return null;
+    }
+}
+
 if (!function_exists('get_permintaan_tracking')) {
     /**
      * Keputusan final (setelah beberapa iterasi Gelombang 3): progress_label/
@@ -89,28 +189,28 @@ if (!function_exists('get_permintaan_tracking')) {
         assert(is_array($permintaan), 'Baris permintaan harus array.');
 
         $st = (int) ($permintaan['id_status_permintaan_barang'] ?? 0);
+        $permintaan += _qty_permintaan($db, $id_permintaan);
 
         // === Cari Pengajuan linked ===
         $pengajuan = $db->table('inventori_non_medis.pengajuan_barang pj')
             ->join('role.petugas pt', 'pj.atasan_logistik = pt.id_petugas', 'left')
             ->join('person.orang o', 'pt.id_orang = o.id_orang', 'left')
-            ->select('pj.id_pengajuan, pj.no_pengajuan, pj.tanggal, pj.id_status_pengajuan_barang, pj.tanggal_diproses, o.nama AS nama_atasan')
+            ->join('role.petugas pg', 'pj.petugas_gudang = pg.id_petugas', 'left')
+            ->join('person.orang og', 'pg.id_orang = og.id_orang', 'left')
+            ->select('pj.id_pengajuan, pj.no_pengajuan, pj.tanggal, pj.id_status_pengajuan_barang, pj.tanggal_diproses, o.nama AS nama_atasan, og.nama AS nama_pemohon')
             ->where('pj.id_permintaan', $id_permintaan)
             ->orderBy('pj.id_pengajuan', 'DESC')
             ->limit(1)
             ->get()->getRowArray();
         assert($pengajuan === null || is_array($pengajuan), 'Baris pengajuan harus array atau null.');
+        if (!empty($pengajuan)) {
+            $pengajuan += _qty_pengajuan($db, (int) $pengajuan['id_pengajuan']);
+        }
 
         // === Cari Pengadaan dari Pengajuan ===
         $pengadaan = null;
         if (!empty($pengajuan)) {
-            $pengadaan = $db->table('inventori_non_medis.pengadaan_barang pd')
-                ->join('inventori_non_medis.suplier s', 'pd.id_suplier = s.id_suplier', 'left')
-                ->select('pd.id_pengadaan, pd.no_pengadaan, pd.tanggal, pd.id_status_pengadaan_barang, s.nama_suplier')
-                ->where('pd.id_pengajuan', (int) $pengajuan['id_pengajuan'])
-                ->orderBy('pd.id_pengadaan', 'DESC')
-                ->limit(1)
-                ->get()->getRowArray();
+            $pengadaan = _pengadaan_terakhir($db, $pengajuan);
         }
         assert($pengadaan === null || is_array($pengadaan), 'Baris pengadaan harus array atau null.');
 
@@ -118,23 +218,7 @@ if (!function_exists('get_permintaan_tracking')) {
         $penerimaan = null;
         $persen_terima = 0;
         if (!empty($pengadaan)) {
-            $penerimaan = $db->table('inventori_non_medis.penerimaan_barang')
-                ->select('id_penerimaan, no_penerimaan, tanggal, id_status_penerimaan_barang')
-                ->where('id_pengadaan', (int) $pengadaan['id_pengadaan'])
-                ->where('id_status_penerimaan_barang', 2)
-                ->orderBy('id_penerimaan', 'DESC')
-                ->limit(1)
-                ->get()->getRowArray();
-
-            // Jika belum ada yang Diterima, ambil yang terbaru
-            if (empty($penerimaan)) {
-                $penerimaan = $db->table('inventori_non_medis.penerimaan_barang')
-                    ->select('id_penerimaan, no_penerimaan, tanggal, id_status_penerimaan_barang')
-                    ->where('id_pengadaan', (int) $pengadaan['id_pengadaan'])
-                    ->orderBy('id_penerimaan', 'DESC')
-                    ->limit(1)
-                    ->get()->getRowArray();
-            }
+            $penerimaan = _penerimaan_terakhir($db, (int) $pengadaan['id_pengadaan']);
 
             // Hitung % penerimaan
             $total_pesan = (int) ($db->table('inventori_non_medis.pengadaan_barang_detail')
@@ -151,6 +235,9 @@ if (!function_exists('get_permintaan_tracking')) {
             ", [(int) $pengadaan['id_pengadaan']])->getRowArray()['total'] ?? 0);
 
             $persen_terima = $total_pesan > 0 ? min(100, (int) round(($total_terima / $total_pesan) * 100)) : 0;
+            if (is_array($penerimaan)) {
+                $penerimaan += ['qty_terima' => $total_terima, 'qty_pesan' => $total_pesan];
+            }
         }
         assert($penerimaan === null || is_array($penerimaan), 'Baris penerimaan harus array atau null.');
 
@@ -183,6 +270,13 @@ if (!function_exists('get_permintaan_tracking')) {
 
         // === Progress label & color ===
         [$progress_label, $progress_color] = _determine_progress($st, $scenario, $pengajuan, $pengadaan, $penerimaan, $persen_terima);
+
+        // dikirim sebagian ke unit, sisanya masih menunggu
+        $dikirim = (int) $permintaan['qty_dikirim'];
+        $target  = max((int) $permintaan['qty_disetujui'], 0);
+        if ($st === 5 && $dikirim > 0 && $dikirim < $target) {
+            [$progress_label, $progress_color] = _progress_result("Dikirim {$dikirim}/{$target}");
+        }
 
         return compact('scenario', 'steps', 'progress_label', 'progress_color');
     }
@@ -261,7 +355,9 @@ if (!function_exists('_step_permintaan')) {
             return _tstep('Permintaan', 'active', [_trow("Draf oleh {$pemohon}", $tgl, 'active')]);
         }
 
-        $rows = [_trow("Diajukan oleh {$pemohon}", $tgl, 'done')];
+        $diminta   = (int) ($p['qty_diminta'] ?? 0);
+        $disetujui = (int) ($p['qty_disetujui'] ?? 0);
+        $rows      = [_trow("Diajukan oleh {$pemohon} ({$diminta} barang)", $tgl, 'done')];
 
         if ($st === 4) {
             $rows[] = _trow('Menunggu persetujuan pengelola', null, 'active');
@@ -277,7 +373,7 @@ if (!function_exists('_step_permintaan')) {
         }
 
         // 2, 5, 6, 8 — sudah disetujui pengelola
-        $rows[] = _trow("Disetujui oleh {$pengelola}", $tgl_proses, 'done');
+        $rows[] = _trow("Disetujui oleh {$pengelola} ({$disetujui}/{$diminta} barang)", $tgl_proses, 'done');
         return _tstep('Permintaan', 'done', $rows);
     }
 }
@@ -293,22 +389,29 @@ if (!function_exists('_step_pengajuan_row')) {
         $link   = '/inventori-non-medis/pengajuan-barang/' . (int) ($pj['id_pengajuan'] ?? 0);
         $tgl    = isset($pj['tanggal']) ? (string) $pj['tanggal'] : null;
         $tglp   = isset($pj['tanggal_diproses']) ? (string) $pj['tanggal_diproses'] : $tgl;
-        $atasan = isset($pj['nama_atasan']) ? (string) $pj['nama_atasan'] : '-';
-        $s_pj   = (int) ($pj['id_status_pengajuan_barang'] ?? 0);
+        $atasan  = isset($pj['nama_atasan']) ? (string) $pj['nama_atasan'] : '-';
+        $pemohon = isset($pj['nama_pemohon']) ? (string) $pj['nama_pemohon'] : '-';
+        $s_pj    = (int) ($pj['id_status_pengajuan_barang'] ?? 0);
+        $diajukan  = (int) ($pj['qty_diajukan'] ?? 0);
+        $disetujui = (int) ($pj['qty_disetujui_pj'] ?? 0);
+        $dibuat    = _trow("Diajukan oleh {$pemohon} ({$diajukan} barang)", $tgl, 'done');
 
         if ($s_pj === 2) {
-            return _tstep('Pengajuan', 'done', [_trow("Disetujui atasan {$atasan}", $tglp, 'done')], $link);
+            return _tstep('Pengajuan', 'done', [
+                $dibuat,
+                _trow("Disetujui atasan {$atasan} ({$disetujui}/{$diajukan} barang)", $tglp, 'done'),
+            ], $link);
         }
         if ($s_pj === 3) {
-            return _tstep('Pengajuan', 'failed', [_trow("Ditolak atasan {$atasan}", $tglp, 'failed')], $link);
+            return _tstep('Pengajuan', 'failed', [$dibuat, _trow("Ditolak atasan {$atasan}", $tglp, 'failed')], $link);
         }
         if ($s_pj === 4) {
             // Diselaraskan dengan progress_label "Proses Pengajuan" (lihat
             // _determine_progress()) untuk kondisi yang sama — bukan lagi
             // "Menunggu persetujuan atasan" yang berbeda kosakata.
-            return _tstep('Pengajuan', 'active', [_trow('Pengajuan diproses, menunggu atasan', $tgl, 'active')], $link);
+            return _tstep('Pengajuan', 'active', [$dibuat, _trow('Pengajuan diproses, menunggu atasan', null, 'active')], $link);
         }
-        return _tstep('Pengajuan', 'active', [_trow('Draf pengajuan', $tgl, 'active')], $link);
+        return _tstep('Pengajuan', 'active', [_trow("Draf oleh {$pemohon}", $tgl, 'active')], $link);
     }
 }
 
@@ -326,16 +429,23 @@ if (!function_exists('_step_pengadaan_row')) {
 
         $link = '/inventori-non-medis/pengadaan-barang/' . (int) ($pd['id_pengadaan'] ?? 0);
         $tgl  = isset($pd['tanggal']) ? (string) $pd['tanggal'] : null;
-        $sup  = isset($pd['nama_suplier']) ? (string) $pd['nama_suplier'] : '-';
-        $s_pd = (int) ($pd['id_status_pengadaan_barang'] ?? 0);
+        $sup     = isset($pd['nama_suplier']) ? (string) $pd['nama_suplier'] : '-';
+        $petugas = isset($pd['nama_petugas']) ? (string) $pd['nama_petugas'] : '-';
+        $s_pd    = (int) ($pd['id_status_pengadaan_barang'] ?? 0);
+        $dipesan = (int) ($pd['qty_dipesan'] ?? 0);
+        $target  = (int) ($pd['qty_disetujui_pj'] ?? 0);
+        $oleh    = _trow("Oleh {$petugas}", null, null);
+        $jumlah  = _trow("Dipesan {$dipesan}/{$target} barang", null, $dipesan < $target ? 'active' : 'done');
 
         if ($s_pd === 2) {
-            return _tstep('Pengadaan', 'done', [_trow("Dipesan ke {$sup}", $tgl, 'done')], $link);
+            // masih ada barang disetujui yang belum dipesan: tetap biru
+            $status = $dipesan < $target ? 'active' : 'done';
+            return _tstep('Pengadaan', $status, [_trow("Dipesan ke {$sup}", $tgl, 'done'), $oleh, $jumlah], $link);
         }
         if ($s_pd === 3) {
-            return _tstep('Pengadaan', 'failed', [_trow('Dibatalkan', $tgl, 'failed')], $link);
+            return _tstep('Pengadaan', 'failed', [_trow('Dibatalkan', $tgl, 'failed'), $oleh], $link);
         }
-        return _tstep('Pengadaan', 'active', [_trow("Pembelian diproses ke {$sup}", $tgl, 'active')], $link);
+        return _tstep('Pengadaan', 'active', [_trow("Pembelian diproses ke {$sup}", $tgl, 'active'), $oleh, $jumlah], $link);
     }
 }
 
@@ -351,18 +461,21 @@ if (!function_exists('_step_penerimaan_row')) {
 
         $link = '/inventori-non-medis/penerimaan-barang/' . (int) ($pn['id_penerimaan'] ?? 0);
         $tgl  = isset($pn['tanggal']) ? (string) $pn['tanggal'] : null;
-        $s_pn = (int) ($pn['id_status_penerimaan_barang'] ?? 0);
+        $s_pn     = (int) ($pn['id_status_penerimaan_barang'] ?? 0);
+        $terima   = (int) ($pn['qty_terima'] ?? 0);
+        $pesan    = (int) ($pn['qty_pesan'] ?? 0);
+        $penerima = _trow('Penerima: ' . (string) ($pn['nama_penerima'] ?? '-'), null, null);
 
         if ($s_pn === 2) {
             if ($persen >= 100 || $st === 6) {
-                return _tstep('Penerimaan', 'done', [_trow('Diterima lengkap dari suplier', $tgl, 'done')], $link);
+                return _tstep('Penerimaan', 'done', [_trow("Diterima lengkap {$terima}/{$pesan} barang", $tgl, 'done'), $penerima], $link);
             }
-            return _tstep('Penerimaan', 'active', [_trow("Diterima {$persen}% dari suplier", $tgl, 'active')], $link);
+            return _tstep('Penerimaan', 'active', [_trow("Diterima {$terima}/{$pesan} barang", $tgl, 'active'), $penerima], $link);
         }
         if ($s_pn === 3) {
-            return _tstep('Penerimaan', 'failed', [_trow('Penerimaan ditolak', $tgl, 'failed')], $link);
+            return _tstep('Penerimaan', 'failed', [_trow('Penerimaan ditolak', $tgl, 'failed'), $penerima], $link);
         }
-        return _tstep('Penerimaan', 'active', [_trow('Barang sedang diperiksa', $tgl, 'active')], $link);
+        return _tstep('Penerimaan', 'active', [_trow("Barang sedang diperiksa (diterima {$terima}/{$pesan})", $tgl, 'active'), $penerima], $link);
     }
 }
 
@@ -375,7 +488,17 @@ if (!function_exists('_step_selesai')) {
         $tgl_proses = isset($p['tanggal_diproses']) ? (string) $p['tanggal_diproses'] : null;
         $tgl_terima = isset($p['tanggal_diterima']) ? (string) $p['tanggal_diterima'] : null;
         $penerima   = isset($p['nama_penerima']) ? (string) $p['nama_penerima'] : '-';
-        $keluar_txt = 'Stok Keluar';
+        $dikirim    = (int) ($p['qty_dikirim'] ?? 0);
+        $target     = (int) ($p['qty_disetujui'] ?? 0);
+        $keluar_txt = "Dikirim ke unit {$dikirim}/{$target} barang";
+
+        // dikirim sebagian, sisanya menunggu pengadaan: tahap masih berjalan (biru)
+        if ($st === 5 && $dikirim > 0) {
+            return _tstep('Selesai', 'active', [
+                _trow($keluar_txt, null, 'active'),
+                _trow('Sisa ' . max(0, $target - $dikirim) . ' barang menunggu pengadaan', null, 'active'),
+            ]);
+        }
 
         if ($st === 6) {
             return _tstep('Selesai', 'done', [
@@ -448,7 +571,10 @@ if (!function_exists('_status_component_color')) {
         if (in_array($status_lower, ['pembelian diproses', 'pengajuan diproses', 'menunggu kiriman', 'barang sedang diperiksa', 'proses pengiriman'], true)) {
             return 'blue';
         }
-        if (str_starts_with($status_lower, 'diterima ') && str_contains($status_lower, '%')) {
+        if (
+            (str_starts_with($status_lower, 'diterima ') && str_contains($status_lower, '%'))
+            || preg_match('/^[a-z ]+ \d+\/\d+$/', $status_lower) === 1
+        ) {
             return 'blue';
         }
         if (in_array($status_lower, ['menunggu persetujuan', 'menunggu pengajuan'], true)) {
@@ -534,7 +660,8 @@ if (!function_exists('_determine_progress')) {
         // berbeda, bukan variasi istilah dari kondisi menunggu yang sama.
         if (!empty($pn) && (int) ($pn['id_status_penerimaan_barang'] ?? 0) === 2) {
             if ($persen >= 100) return _progress_result('Selesai');
-            return _progress_result('Proses Penerimaan');
+            // revisi bimbingan: tampilkan jumlah, mis. "Diterima 6/10" (biru)
+            return _progress_result('Diterima ' . (int) ($pn['qty_terima'] ?? 0) . '/' . (int) ($pn['qty_pesan'] ?? 0));
         }
         if (!empty($pn) && (int) ($pn['id_status_penerimaan_barang'] ?? 0) === 1) {
             return _progress_result('Proses Penerimaan');
@@ -612,36 +739,18 @@ if (!function_exists('get_pengajuan_tracking')) {
         assert(is_array($pengajuan), 'Baris pengajuan harus array.');
 
         $st_pj = (int) ($pengajuan['id_status_pengajuan_barang'] ?? 0);
+        $pengajuan += _qty_pengajuan($db, $id_pengajuan);
 
         // Cari pengadaan
-        $pengadaan = $db->table('inventori_non_medis.pengadaan_barang pd')
-            ->join('inventori_non_medis.suplier s', 'pd.id_suplier = s.id_suplier', 'left')
-            ->select('pd.id_pengadaan, pd.no_pengadaan, pd.tanggal, pd.id_status_pengadaan_barang, s.nama_suplier')
-            ->where('pd.id_pengajuan', $id_pengajuan)
-            ->orderBy('pd.id_pengadaan', 'DESC')
-            ->limit(1)
-            ->get()->getRowArray();
+        $pengadaan = _pengadaan_terakhir($db, $pengajuan);
 
         // Cari penerimaan
         $penerimaan = null;
         $persen_terima = 0;
+        $total_pesan  = 0;
+        $total_terima = 0;
         if (!empty($pengadaan)) {
-            $penerimaan = $db->table('inventori_non_medis.penerimaan_barang')
-                ->select('id_penerimaan, no_penerimaan, tanggal, id_status_penerimaan_barang')
-                ->where('id_pengadaan', (int) $pengadaan['id_pengadaan'])
-                ->where('id_status_penerimaan_barang', 2)
-                ->orderBy('id_penerimaan', 'DESC')
-                ->limit(1)
-                ->get()->getRowArray();
-
-            if (empty($penerimaan)) {
-                $penerimaan = $db->table('inventori_non_medis.penerimaan_barang')
-                    ->select('id_penerimaan, no_penerimaan, tanggal, id_status_penerimaan_barang')
-                    ->where('id_pengadaan', (int) $pengadaan['id_pengadaan'])
-                    ->orderBy('id_penerimaan', 'DESC')
-                    ->limit(1)
-                    ->get()->getRowArray();
-            }
+            $penerimaan = _penerimaan_terakhir($db, (int) $pengadaan['id_pengadaan']);
 
             $total_pesan = (int) ($db->table('inventori_non_medis.pengadaan_barang_detail')
                 ->selectSum('qty', 'total')
@@ -657,6 +766,9 @@ if (!function_exists('get_pengajuan_tracking')) {
             ", [(int) $pengadaan['id_pengadaan']])->getRowArray()['total'] ?? 0);
 
             $persen_terima = $total_pesan > 0 ? min(100, (int) round(($total_terima / $total_pesan) * 100)) : 0;
+            if (is_array($penerimaan)) {
+                $penerimaan += ['qty_terima' => $total_terima, 'qty_pesan' => $total_pesan];
+            }
         }
         assert($pengadaan === null || is_array($pengadaan), 'Baris pengadaan harus array atau null.');
         assert($penerimaan === null || is_array($penerimaan), 'Baris penerimaan harus array atau null.');
@@ -676,9 +788,11 @@ if (!function_exists('get_pengajuan_tracking')) {
         if ($st_pj === 1) {
             $steps[] = _tstep('Pengajuan', 'active', [_trow("Draf oleh {$pemohon}", $tgl, 'active')]);
         } else {
-            $rows = [_trow("Diajukan oleh {$pemohon}", $tgl, 'done')];
+            $diajukan  = (int) $pengajuan['qty_diajukan'];
+            $disetujui = (int) $pengajuan['qty_disetujui_pj'];
+            $rows      = [_trow("Diajukan oleh {$pemohon} ({$diajukan} barang)", $tgl, 'done')];
             if ($st_pj === 2) {
-                $rows[]  = _trow("Disetujui atasan {$atasan}", $tgl_proses, 'done');
+                $rows[]  = _trow("Disetujui atasan {$atasan} ({$disetujui}/{$diajukan} barang)", $tgl_proses, 'done');
                 $steps[] = _tstep('Pengajuan', 'done', $rows);
             } elseif ($st_pj === 3) {
                 $rows[]  = _trow("Ditolak atasan {$atasan}", $tgl_proses, 'failed');
@@ -724,7 +838,7 @@ if (!function_exists('get_pengajuan_tracking')) {
         elseif ($st_pj === 3) { $progress_label = 'Ditolak'; $progress_color = 'red'; }
         elseif ($st_pj === 4) { $progress_label = 'Menunggu Persetujuan'; $progress_color = 'yellow'; }
         elseif (!empty($penerimaan) && (int) ($penerimaan['id_status_penerimaan_barang'] ?? 0) === 2 && $persen_terima >= 100) { $progress_label = 'Selesai'; $progress_color = 'green'; }
-        elseif (!empty($penerimaan) && (int) ($penerimaan['id_status_penerimaan_barang'] ?? 0) === 2) { $progress_label = "Diterima {$persen_terima}%"; $progress_color = 'blue'; }
+        elseif (!empty($penerimaan) && (int) ($penerimaan['id_status_penerimaan_barang'] ?? 0) === 2) { $progress_label = "Diterima {$total_terima}/{$total_pesan}"; $progress_color = 'blue'; }
         elseif (!empty($pengadaan) && (int) ($pengadaan['id_status_pengadaan_barang'] ?? 0) === 3) { $progress_label = 'Pengadaan Dibatalkan'; $progress_color = 'red'; }
         elseif (!empty($pengadaan)) { $progress_label = 'Pembelian Diproses'; $progress_color = 'blue'; }
         elseif ($st_pj === 2) { $progress_label = 'Menunggu Pengadaan'; $progress_color = 'yellow'; }

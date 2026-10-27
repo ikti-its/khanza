@@ -51,6 +51,8 @@ class ControllerTemplate extends Controller
     protected array       $home_params   = [];
     protected array       $filters       = [];
     protected null|string $active_filter = null;
+    /** @var array{dari: string, sampai: string}|null isian filter tanggal di header (null = tidak tampil) */
+    protected null|array $filter_tanggal = null;
     /**
      * Opt-in pencarian server pada halaman daftar (?q=). Kosong = kotak pencarian tetap
      * menyaring baris halaman yang tampil lewat JavaScript seperti sebelumnya.
@@ -303,21 +305,22 @@ class ControllerTemplate extends Controller
         $this->after_read($data_tabel);
 
         return view('/layouts/data', [
-            'judul'         => $this->title,
-            'breadcrumbs'   => $this->breadcrumbs,
-            'meta_data'     => $meta_data,
-            'modul_path'    => $this->get_uri_path(),
-            'kolom_id'      => $this->primary_key,
-            'konfig'        => $konfig_kolom,
-            'aksi'          => $this->actions,
-            'tabel'         => $data_tabel,
-            'row_alert'     => $this->row_alert,
-            'child_link'    => $child_link,
-            'query_string'  => $query_string,
-            'back_url'      => $back_url,
-            'filters'       => $this->filters,
-            'active_filter' => $this->active_filter,
-            'pencarian'     => ['server' => $this->search_columns !== [], 'q' => $keyword],
+            'judul'          => $this->title,
+            'breadcrumbs'    => $this->breadcrumbs,
+            'meta_data'      => $meta_data,
+            'modul_path'     => $this->get_uri_path(),
+            'kolom_id'       => $this->primary_key,
+            'konfig'         => $konfig_kolom,
+            'aksi'           => $this->actions,
+            'tabel'          => $data_tabel,
+            'row_alert'      => $this->row_alert,
+            'child_link'     => $child_link,
+            'query_string'   => $query_string,
+            'back_url'       => $back_url,
+            'filters'        => $this->filters,
+            'active_filter'  => $this->active_filter,
+            'filter_tanggal' => $this->filter_tanggal,
+            'pencarian'      => ['server' => $this->search_columns !== [], 'q' => $keyword],
         ]);
     }
 

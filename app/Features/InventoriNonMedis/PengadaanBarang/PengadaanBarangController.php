@@ -6,11 +6,14 @@ namespace App\Features\InventoriNonMedis\PengadaanBarang;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 final class PengadaanBarangController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = ['no_pengadaan', 'no_pengajuan', 'nama_suplier', 'nama_status_pengadaan_barang'];
 
     public function __construct()
@@ -44,11 +47,24 @@ final class PengadaanBarangController extends ControllerTemplate
         );
     }
 
-    // urut descending
+    // urut status (proses, selesai = semua barang dipesan sudah diterima, dibatalkan) + filter tanggal
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_pengadaan', 'DESC');
+
+        $pesan = '(SELECT COALESCE(SUM(qty), 0) FROM inventori_non_medis.pengadaan_barang_detail
+            WHERE id_pengadaan = t.id_pengadaan AND id_barang > 0)';
+        $terima = '(SELECT COALESCE(SUM(d.qty_diterima), 0) FROM inventori_non_medis.penerimaan_barang_detail d
+            JOIN inventori_non_medis.penerimaan_barang p ON d.id_penerimaan = p.id_penerimaan
+            WHERE p.id_pengadaan = t.id_pengadaan AND p.id_status_penerimaan_barang = 2)';
+        $selesai = "(t.id_status_pengadaan_barang <> 3 AND {$pesan} > 0 AND {$terima} >= {$pesan})";
+        $this->atur_daftar('pengadaan_barang', [
+            "(t.id_status_pengadaan_barang <> 3 AND NOT {$selesai})",
+            $selesai,
+            't.id_status_pengadaan_barang = 3',
+        ]);
     }
 
     // status di tabel diganti progress penerimaan
@@ -91,7 +107,7 @@ final class PengadaanBarangController extends ControllerTemplate
             $row['progress'] = match (true) {
                 $status === 3 => 'Dibatalkan',
                 $pesan > 0 && $terima >= $pesan => 'Selesai',
-                $terima > 0 => 'Diterima ' . (int) round(($terima / max(1, $pesan)) * 100) . '%',
+                $terima > 0 => "Diterima {$terima}/{$pesan}",
                 $status === 1 => 'Proses Pengadaan',
                 default => 'Menunggu Kiriman',
             };

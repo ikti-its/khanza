@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Features\InventoriNonMedis\MonitoringTransaksi;
 
+use App\Core\Auth\AccessMatrix;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use App\Features\InventoriNonMedis\PermintaanBarang\PermintaanBarangModel;
 use CodeIgniter\HTTP\RedirectResponse;
 
@@ -17,6 +19,8 @@ use CodeIgniter\HTTP\RedirectResponse;
  */
 final class MonitoringTransaksiController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = ['no_dokumen', 'pemohon', 'unit'];
 
     // kolom tabel daftar; bukan field model, jadi tidak ikut halaman audit
@@ -64,23 +68,31 @@ final class MonitoringTransaksiController extends ControllerTemplate
         $size    = max(1, (int) ($this->request->getGet('size') ?? 10));
         $keyword = $this->search_keyword();
 
-        $hasil       = $this->service()->daftar($page, $size, $keyword);
+        $dari   = $this->tanggal_get('dari');
+        $sampai = $this->tanggal_get('sampai');
+
+        $hasil       = $this->service()->daftar($page, $size, $keyword, $dari, $sampai);
         $total_pages = max(1, (int) ceil($hasil['total'] / $size));
         if ($page > $total_pages) {
             $page  = $total_pages;
-            $hasil = $this->service()->daftar($page, $size, $keyword);
+            $hasil = $this->service()->daftar($page, $size, $keyword, $dari, $sampai);
         }
 
         return view('/layouts/data', [
-            'judul'       => $this->title,
-            'breadcrumbs' => $this->breadcrumbs,
-            'meta_data'   => ['page' => $page, 'size' => $size, 'total' => $total_pages],
-            'modul_path'  => $this->get_uri_path(),
-            'kolom_id'    => 'kunci',
-            'konfig'      => self::KOLOM,
-            'aksi'        => [A::DETAIL->value => true],
-            'tabel'       => $hasil['rows'],
-            'pencarian'   => ['server' => true, 'q' => $keyword],
+            'judul'          => $this->title,
+            'breadcrumbs'    => $this->breadcrumbs,
+            'meta_data'      => ['page' => $page, 'size' => $size, 'total' => $total_pages],
+            'modul_path'     => $this->get_uri_path(),
+            'kolom_id'       => 'kunci',
+            'konfig'         => self::KOLOM,
+            'aksi'           => [A::DETAIL->value => true],
+            'filter_tanggal' => ['dari' => $dari, 'sampai' => $sampai],
+            'tabel'          => $hasil['rows'],
+            'pencarian'      => ['server' => true, 'q' => $keyword],
+            // pintasan langsung ke form pengadaan, seperti tombol Tambah di menu lain
+            'pintasan' => AccessMatrix::can_write('inventori-non-medis')
+                ? [['label' => 'Buat Pengadaan', 'link' => '/inventori-non-medis/pengadaan-barang/tambah']]
+                : [],
         ]);
     }
 

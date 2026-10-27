@@ -19,11 +19,15 @@
                             'back_url'      => $back_url ?? null,
                             'filters'       => $filters ?? [],
                             'active_filter' => $active_filter ?? null,
+                            'pintasan'      => $pintasan ?? [],
                         ]);
+                        // filter tanggal (opsional) sejajar dengan kotak pencarian
+                        if (!empty($filter_tanggal)) echo '<div class="flex flex-wrap items-center justify-between gap-x-4">';
                         echo view('components/header/search_bar', [
                             'search_server' => $pencarian['server'] ?? false,
                             'search_q'      => $pencarian['q'] ?? '',
                         ]);
+                        if (!empty($filter_tanggal)) echo view('components/header/filter_tanggal', $filter_tanggal) . '</div>';
                         
                         echo view('components/tabel/data', [
                             'modul_path' => $modul_path,

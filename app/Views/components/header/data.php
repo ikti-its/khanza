@@ -25,6 +25,10 @@
                     'active_filter' => $active_filter ?? null,
                 ]);
             }
+            // tombol pintasan tambahan (opsional), mis. "Buat Pengadaan" di Monitoring Transaksi
+            foreach (($pintasan ?? []) as $p) {
+                echo view('components/header/tambah_button', ['link' => $p['link'], 'label' => $p['label']]);
+            }
             if(isset($aksi['tambah']) && $aksi['tambah'] === true){
                 $qs = (!empty($query_string)) ? '?' . $query_string : '';
                 echo view('components/header/tambah_button', [

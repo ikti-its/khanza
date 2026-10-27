@@ -7,12 +7,15 @@ namespace App\Features\InventoriNonMedis\PengembalianBarang;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use App\Features\InventoriNonMedis\PengembalianBarangDetail\PengembalianBarangDetailModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 final class PengembalianBarangController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = [
         'no_pengembalian',
         'no_permintaan',
@@ -54,10 +57,17 @@ final class PengembalianBarangController extends ControllerTemplate
     }
 
     // data terbaru di atas
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_pengembalian', 'DESC');
+        $this->atur_daftar('pengembalian_barang', [
+            't.id_status_pengembalian_barang = 1',
+            't.id_status_pengembalian_barang = 2',
+            't.id_status_pengembalian_barang = 3',
+            't.id_status_pengembalian_barang = 4',
+        ]);
     }
 
     // pastikan hasil query valid

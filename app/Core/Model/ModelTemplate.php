@@ -35,6 +35,8 @@ class ModelTemplate extends Model
     protected array $runtime_filters = [];
     /** @var array<string, string> */
     protected array $runtime_orders = [];
+    /** @var list<int> */
+    protected array $runtime_order_ids = [];
     private bool $exclude_zero_pk = false;
 
     /** Pencarian server (opt-in lewat set_search); kosong = tidak ada penyaringan kata kunci. */
@@ -143,6 +145,33 @@ class ModelTemplate extends Model
     {
         $this->runtime_orders[$col] = $dir;
         return $this;
+    }
+
+    /**
+     * Urutan baris mengikuti daftar primary key ini (didahulukan sebelum set_order).
+     *
+     * @param list<int> $ids
+     */
+    public function set_order_ids(array $ids): static
+    {
+        $this->runtime_order_ids = array_map(intval(...), $ids);
+        return $this;
+    }
+
+    /**
+     * Urutan set_order_ids (bila ada) lalu set_order, diteruskan ke orderBy() model atau builder query daftar.
+     *
+     * @param \Closure(string, string, null|bool): mixed $order_by
+     */
+    private function apply_orders(\Closure $order_by, string $pk): void
+    {
+        if ($this->runtime_order_ids !== []) {
+            $ids = implode(',', $this->runtime_order_ids);
+            $order_by("array_position(ARRAY[{$ids}]::int[], {$pk}::int)", 'ASC', false);
+        }
+        foreach ($this->runtime_orders as $col => $dir) {
+            $order_by($col, $dir, null);
+        }
     }
 
     public function exclude_zero_pk(): static
@@ -502,9 +531,7 @@ class ModelTemplate extends Model
             foreach ($this->runtime_filters as $col => $val) {
                 is_array($val) ? $this->whereIn($col, $val) : $this->where($col, $val);
             }
-            foreach ($this->runtime_orders as $col => $dir) {
-                $this->orderBy($col, $dir);
-            }
+            $this->apply_orders($this->orderBy(...), $this->primaryKey);
             if ($this->exclude_zero_pk) {
                 $this->where($this->primaryKey . ' !=', 0);
             }
@@ -526,9 +553,7 @@ class ModelTemplate extends Model
         foreach ($this->runtime_filters as $col => $val) {
             is_array($val) ? $builder->whereIn("{$main}.{$col}", $val) : $builder->where("{$main}.{$col}", $val);
         }
-        foreach ($this->runtime_orders as $col => $dir) {
-            $builder->orderBy($col, $dir);
-        }
+        $this->apply_orders($builder->orderBy(...), "{$main}.{$this->primaryKey}");
         if ($this->exclude_zero_pk) {
             $builder->where("{$main}.{$this->primaryKey} !=", 0);
         }

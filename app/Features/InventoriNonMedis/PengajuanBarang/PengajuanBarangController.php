@@ -6,11 +6,14 @@ namespace App\Features\InventoriNonMedis\PengajuanBarang;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\ResponseInterface;
 
 final class PengajuanBarangController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = ['no_pengajuan', 'nama', 'nama_status_pengajuan_barang'];
 
     public function __construct()
@@ -43,10 +46,12 @@ final class PengajuanBarangController extends ControllerTemplate
     }
 
     // urut descending
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_order('id_pengajuan', 'DESC');
+        $this->atur_daftar('pengajuan_barang', self::urutan_pengajuan());
     }
 
     // tambah kolom atasan logistik, status di tabel diganti progress

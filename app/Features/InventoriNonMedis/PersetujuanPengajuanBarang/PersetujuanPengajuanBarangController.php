@@ -6,10 +6,13 @@ namespace App\Features\InventoriNonMedis\PersetujuanPengajuanBarang;
 use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
+use App\Features\InventoriNonMedis\DaftarTransaksi;
 use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPengajuanBarangController extends ControllerTemplate
 {
+    use DaftarTransaksi;
+
     protected array $search_columns = ['no_pengajuan', 'nama', 'nama_status_pengajuan_barang'];
 
     public function __construct()
@@ -50,11 +53,13 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
     }
 
     // sembunyikan Draf, urut descending
+    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     protected function before_read(): void
     {
         $this->model->set_filter('id_status_pengajuan_barang', [2, 3, 4]);
         $this->model->set_order('id_pengajuan', 'DESC');
+        $this->atur_daftar('pengajuan_barang', self::urutan_pengajuan());
     }
 
     // status di tabel diganti progress seperti persetujuan permintaan
