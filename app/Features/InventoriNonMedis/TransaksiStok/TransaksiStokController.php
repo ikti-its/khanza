@@ -63,8 +63,11 @@ final class TransaksiStokController extends ControllerTemplate
         return $result;
     }
 
-    // halaman detail transaksi + rincian barang
-    /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
+    // halaman detail transaksi + rincian barang + alur dokumen asal
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
     public function detail(int|string $id): string|RedirectResponse
     {
         if ($id == 0)
@@ -113,6 +116,7 @@ final class TransaksiStokController extends ControllerTemplate
             'modul_path'   => $this->get_uri_path(),
             'baris'        => $baris,
             'detail_items' => $detail_items,
+            'alur'         => (new TransaksiStokService($db))->alur((int) $id),
         ]);
     }
 }

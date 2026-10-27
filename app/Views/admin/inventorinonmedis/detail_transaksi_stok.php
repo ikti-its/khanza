@@ -50,6 +50,40 @@
 
         </div>
 
+        <?php if (!empty($alur['dokumen'])): ?>
+            <!-- Dokumen terkait: tombol garis membuka dokumen, tombol gelap membuka alur lengkap di Monitoring -->
+            <div class="sm:block md:flex items-start py-3">
+                <span class="block mb-2 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Dokumen Terkait</span>
+                <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    <?php foreach ($alur['dokumen'] as [$label, $link]): ?>
+                        <a href="<?= base_url($link) ?>" style="padding:6px 12px;"
+                            class="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800">
+                            <svg style="width:14px; height:14px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                            </svg>
+                            <?= esc($label) ?>
+                        </a>
+                    <?php endforeach; ?>
+                    <?php if (!empty($alur['monitoring'])): ?>
+                        <a href="<?= base_url($alur['monitoring']) ?>" style="padding:6px 12px;"
+                            class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
+                            <svg style="width:14px; height:14px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                            Lihat Alur di Monitoring
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($alur['tracking']['steps'])): ?>
+            <!-- Lini masa dokumen asal -->
+            <?= $alur['jenis'] === 'permintaan'
+                ? view('admin/inventorinonmedis/_timeline_permintaan', ['tracking' => $alur['tracking']])
+                : view('admin/inventorinonmedis/_timeline_pengajuan', ['tracking' => $alur['tracking']]) ?>
+        <?php endif; ?>
+
         <!-- Detail Items -->
         <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5 dark:bg-slate-800 dark:border-slate-700 shadow-sm">
             <div class="flex items-center gap-x-2 mb-3 border-b border-slate-200 pb-2 dark:border-slate-700">
