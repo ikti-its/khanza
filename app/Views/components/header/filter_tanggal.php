@@ -8,8 +8,19 @@
  */
 $lain  = array_diff_key(service('request')->getGet() ?? [], ['dari' => null, 'sampai' => null, 'page' => null]);
 $aktif = $dari !== '' || $sampai !== '';
-$input = 'border:0; outline:none; background:transparent; padding:0; font-size:14px; color:#1f2937; width:8.5rem;';
 ?>
+<style>
+    .filter-periode input[type="date"] {
+        border: 0; outline: none; background: transparent; padding: 0;
+        width: calc(11ch + 24px); /* teks dd/mm/yyyy + ikon kalender, ikut lebar karakter font aktif */
+        font-size: 14px; color: #1f2937; font-variant-numeric: tabular-nums;
+    }
+    .filter-periode input[type="date"]::-webkit-calendar-picker-indicator {
+        margin-left: 6px; cursor: pointer; opacity: 0.55;
+    }
+    .filter-periode input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+    .filter-periode:focus-within { border-color: #0A2D27 !important; }
+</style>
 <form method="get" action="" class="py-4" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
     <?php foreach ($lain as $k => $v): ?>
         <?php if (is_string($v)): ?>
@@ -17,15 +28,16 @@ $input = 'border:0; outline:none; background:transparent; padding:0; font-size:1
         <?php endif; ?>
     <?php endforeach; ?>
 
-    <div class="dark:bg-slate-900 dark:border-gray-700"
-        style="display:flex; align-items:center; gap:10px; height:38px; padding:0 12px; border:1px solid <?= $aktif ? '#0A2D27' : '#e5e7eb' ?>; border-radius:8px; background:#fff;">
-        <svg style="width:16px; height:16px; color:#6b7280; flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-        </svg>
-        <span style="font-size:13px; color:#6b7280;">Periode</span>
-        <input type="date" name="dari" value="<?= esc($dari, 'attr') ?>" aria-label="Dari tanggal" style="<?= $input ?>">
-        <span style="color:#9ca3af;">–</span>
-        <input type="date" name="sampai" value="<?= esc($sampai, 'attr') ?>" aria-label="Sampai tanggal" style="<?= $input ?>">
+    <div class="filter-periode"
+        style="display:flex; align-items:stretch; height:38px; border:1px solid <?= $aktif ? '#0A2D27' : '#d1d5db' ?>; border-radius:8px; background:#fff; overflow:hidden;">
+        <span style="display:flex; align-items:center; padding:0 12px; background:#f3f4f6; border-right:1px solid #e5e7eb; font-size:13px; font-weight:600; color:#374151;">
+            Periode
+        </span>
+        <div style="display:flex; align-items:center; gap:10px; padding:0 12px;">
+            <input type="date" name="dari" value="<?= esc($dari, 'attr') ?>" aria-label="Dari tanggal">
+            <span style="color:#9ca3af; font-size:13px;">s.d.</span>
+            <input type="date" name="sampai" value="<?= esc($sampai, 'attr') ?>" aria-label="Sampai tanggal">
+        </div>
     </div>
 
     <button type="submit" class="bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]"
