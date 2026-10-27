@@ -57,10 +57,14 @@
                 </div>
             </div>
 
-            <!-- Catatan -->
+            <!-- Petugas + Catatan -->
             <div class="sm:block md:flex items-center py-3">
-                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Catatan</span>
-                <div class="w-full flex-1">
+                <span class="block mb-1 md:mb-0 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4 flex-shrink-0">Petugas Pengadaan</span>
+                <div class="w-full lg:w-1/4">
+                    <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['nama'] ?? '-') ?></span>
+                </div>
+                <span class="block mt-4 md:my-0 md:ml-10 mb-1 text-sm font-medium text-gray-500 dark:text-gray-500 md:w-1/4">Catatan</span>
+                <div class="w-full lg:w-1/4">
                     <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= esc($baris['catatan'] ?? '-') ?></span>
                 </div>
             </div>
@@ -98,7 +102,8 @@
                         <th class="text-left py-2 font-medium">Kode</th>
                         <th class="text-left py-2 font-medium">Nama Barang</th>
                         <th class="text-left py-2 font-medium">Satuan</th>
-                        <th class="text-right py-2 font-medium">Qty</th>
+                        <th class="text-right py-2 font-medium">Qty Dipesan</th>
+                        <th class="text-right py-2 font-medium">Diterima</th>
                         <th class="text-right py-2 font-medium">Harga Satuan (Rp)</th>
                     </tr>
                 </thead>
@@ -109,6 +114,8 @@
                         <td class="text-left py-2 font-semibold"><?= esc($item['nama_barang'] ?? '-') ?></td>
                         <td class="text-left py-2"><?= esc($item['nama_satuan'] ?? '-') ?></td>
                         <td class="text-right py-2 font-semibold"><?= $item['qty'] ?? 0 ?></td>
+                        <?php $kurang = (int) ($item['sudah_diterima'] ?? 0) < (int) ($item['qty'] ?? 0); ?>
+                        <td class="text-right py-2 font-semibold" style="color:<?= $kurang ? '#1d4ed8' : '#047857' ?>;"><?= (int) ($item['sudah_diterima'] ?? 0) ?>/<?= (int) ($item['qty'] ?? 0) ?></td>
                         <td class="text-right py-2 font-semibold"><?= number_format((float)($item['harga_satuan'] ?? 0), 0, ',', '.') ?></td>
                     </tr>
                     <?php endforeach; ?>

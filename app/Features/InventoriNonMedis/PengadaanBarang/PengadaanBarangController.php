@@ -36,6 +36,7 @@ final class PengadaanBarangController extends ControllerTemplate
                 [SHOW,       OPTIONAL, I::READONLY, 'no_pengadaan',               'No. Pengadaan'],
                 [TABLE_ONLY, OPTIONAL, I::MONEY,    'total_harga',                'Total Harga (Rp)'],
                 [SHOW,       OPTIONAL, I::SELECT,   'id_suplier',                 'Suplier'],
+                [SHOW,       REQUIRED, I::SELECT,   'petugas',                    'Petugas Pengadaan'],
                 [SHOW,       REQUIRED, I::DTIME,    'tanggal',                    'Tanggal Pengadaan'],
                 [HIDE,       OPTIONAL, I::SELECT,   'id_status_pengadaan_barang', 'Status'],
                 [FORM_ONLY,  OPTIONAL, I::TEXT,     'catatan',                    'Catatan'],
@@ -269,17 +270,20 @@ final class PengadaanBarangController extends ControllerTemplate
 
         $baris = $this->model->find_one($id);
 
-        $detail_items = $this->guarded(
-            $this
-                ->get_db()
-                ->table('inventori_non_medis.pengadaan_barang_detail d')
-                ->join('inventori_non_medis.barang b', 'd.id_barang = b.id_barang', 'left')
-                ->join('inventori_non_medis.satuan s', 'b.id_satuan = s.id_satuan', 'left')
-                ->select('d.id_barang, d.qty, d.harga_satuan, b.kode_barang, b.nama_barang, s.nama_satuan')
-                ->where('d.id_pengadaan', (int) $id)
-                ->where('d.id_barang >', 0)
-                ->get(),
-        )->getResultArray();
+        // qty diterima per barang dari penerimaan berstatus Diterima
+        $detail_items = $this->guarded($this->get_db()->query('
+            SELECT d.id_barang, d.qty, d.harga_satuan, b.kode_barang, b.nama_barang, s.nama_satuan,
+                   COALESCE((
+                       SELECT SUM(prd.qty_diterima) FROM inventori_non_medis.penerimaan_barang_detail prd
+                       JOIN inventori_non_medis.penerimaan_barang pr ON prd.id_penerimaan = pr.id_penerimaan
+                       WHERE pr.id_pengadaan = d.id_pengadaan AND prd.id_barang = d.id_barang
+                         AND pr.id_status_penerimaan_barang = 2
+                   ), 0) AS sudah_diterima
+            FROM inventori_non_medis.pengadaan_barang_detail d
+            LEFT JOIN inventori_non_medis.barang b ON d.id_barang = b.id_barang
+            LEFT JOIN inventori_non_medis.satuan s ON b.id_satuan = s.id_satuan
+            WHERE d.id_pengadaan = ? AND d.id_barang > 0
+        ', [(int) $id]))->getResultArray();
 
         return view('admin/inventorinonmedis/detail_pengadaan_barang', [
             'judul'           => 'Detail ' . $this->title,
@@ -488,7 +492,13 @@ final class PengadaanBarangController extends ControllerTemplate
                 ? (int) $this->request->getPost('id_suplier')
                 : 0,
             'catatan'      => $this->request->getPost('catatan') ?: null,
+            'petugas'      => $this->request->getPost('petugas') ?: null,
         ];
+
+        if (!$postData['petugas']) {
+            session()->setFlashdata('error', 'Petugas pengadaan wajib diisi.');
+            return redirect()->back();
+        }
 
         helper('autonomor');
         /** @var string|null $lastNo */
@@ -582,6 +592,7 @@ final class PengadaanBarangController extends ControllerTemplate
                 ? (int) $this->request->getPost('id_suplier')
                 : 0,
             'catatan'                    => $this->request->getPost('catatan') ?: null,
+            'petugas'                    => $this->request->getPost('petugas') ?: $current['petugas'] ?? null,
             'id_status_pengadaan_barang' => $new_status,
         ];
 
@@ -712,7 +723,7 @@ final class PengadaanBarangController extends ControllerTemplate
                 ->join('finansial.rekening r', 's.id_rekening = r.id_rekening', 'left')
                 ->join('finansial.bank bk', 'r.bank = bk.id_bank', 'left')
                 ->join('inventori_non_medis.pengajuan_barang pj', 'pb.id_pengajuan = pj.id_pengajuan', 'left')
-                ->join('role.petugas pt', 'pj.petugas_gudang = pt.id_petugas', 'left')
+                ->join('role.petugas pt', 'COALESCE(pb.petugas, pj.petugas_gudang) = pt.id_petugas', 'left')
                 ->join('person.orang o', 'pt.id_orang = o.id_orang', 'left')
                 ->select('pb.no_pengadaan, pb.tanggal, pb.catatan,
                       s.nama_suplier, s.no_telp, s.alamat,

@@ -23,6 +23,7 @@ final class PengadaanBarangModel extends ModelTemplate
                 'id_pengajuan'               => ['no_pengajuan'],
                 'id_suplier'                 => ['nama_suplier'],
                 'id_status_pengadaan_barang' => ['nama_status_pengadaan_barang'],
+                'petugas'                    => ['id_orang' => ['nama']],
             ],
         );
     }
