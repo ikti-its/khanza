@@ -69,6 +69,16 @@ if (in_array($status_lower, ['proses permintaan', 'proses pengajuan', 'diproses'
     $bg_color   = '#CCFBF1';
     $dot_color  = '#0D9488';
     $text_color = '#115E59';
+} elseif ($status_lower === 'pengajuan pembatalan') {
+    // permintaan yang sedang diajukan pembatalan oleh unit
+    $bg_color   = '#FED7AA';
+    $dot_color  = '#EA580C';
+    $text_color = '#9A3412';
+} elseif ($status_lower === 'pengajuan pengembalian') {
+    // permintaan yang barangnya sedang diajukan pengembalian oleh unit
+    $bg_color   = '#E9D5FF';
+    $dot_color  = '#7C3AED';
+    $text_color = '#5B21B6';
 } elseif ($status_lower === '-') {
     $bg_color   = 'transparent';
     $dot_color  = 'transparent';

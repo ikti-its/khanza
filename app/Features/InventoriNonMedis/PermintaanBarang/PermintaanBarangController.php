@@ -82,7 +82,10 @@ final class PermintaanBarangController extends ControllerTemplate
     }
 
     // isi metode pemenuhan & progress di tabel
-    /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
     #[\Override]
     protected function after_read(array &$data_tabel): void
     {
@@ -105,6 +108,11 @@ final class PermintaanBarangController extends ControllerTemplate
             $tracking        = get_permintaan_tracking($id);
             $row['progress'] = $tracking['progress_label'];
         }
+        unset($row);
+
+        // badge pengajuan pembatalan/pengembalian dari unit
+        (new PengajuanUnitService($this->get_db()))->tandai($data_tabel);
+        $this->keterangan_status = PengajuanUnitService::KETERANGAN;
     }
 
     // form tambah: 1-page header + detail

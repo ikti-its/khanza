@@ -8,6 +8,7 @@ use App\Core\Controller\ActionType as A;
 use App\Core\Controller\ControllerTemplate;
 use App\Core\Controller\InputType as I;
 use App\Features\InventoriNonMedis\DaftarTransaksi;
+use App\Features\InventoriNonMedis\PermintaanBarang\PengajuanUnitService;
 use CodeIgniter\HTTP\RedirectResponse;
 
 final class PersetujuanPermintaanBarangController extends ControllerTemplate
@@ -63,7 +64,11 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
     {
         $this->model->set_filter('id_status_permintaan_barang', [2, 3, 4, 5, 6, 7, 8]);
         $this->model->set_order('id_permintaan', 'DESC');
-        $this->atur_daftar('permintaan_barang', self::urutan_permintaan());
+        // pengajuan pembatalan paling atas: harus diputuskan sebelum permintaan bisa diproses
+        $this->atur_daftar('permintaan_barang', [
+            't.pengajuan_pembatalan IS TRUE AND t.id_status_permintaan_barang IN (4, 5)',
+            ...self::urutan_permintaan(),
+        ]);
     }
 
     // pastikan hasil query valid
@@ -81,7 +86,10 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
     }
 
     // isi kolom progress di tabel
-    /** @throws \CodeIgniter\Files\Exceptions\FileNotFoundException */
+    /**
+     * @throws \CodeIgniter\Database\Exceptions\DatabaseException
+     * @throws \CodeIgniter\Files\Exceptions\FileNotFoundException
+     */
     #[\Override]
     protected function after_read(array &$data_tabel): void
     {
@@ -99,11 +107,12 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
 
             $tracking        = get_permintaan_tracking($id);
             $row['progress'] = $tracking['progress_label'];
-
-            $row['nama_status_pengajuan_pembatalan'] = pg_bool_is_true($row['pengajuan_pembatalan'] ?? null)
-                ? 'Menunggu Persetujuan Pembatalan'
-                : '-';
         }
+        unset($row);
+
+        // badge pengajuan pembatalan/pengembalian dari unit
+        (new PengajuanUnitService($this->get_db()))->tandai($data_tabel);
+        $this->keterangan_status = PengajuanUnitService::KETERANGAN;
     }
 
     // tambah kolom status progress

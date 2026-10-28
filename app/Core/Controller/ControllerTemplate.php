@@ -53,6 +53,8 @@ class ControllerTemplate extends Controller
     protected null|string $active_filter = null;
     /** @var array{dari: string, sampai: string}|null isian filter tanggal di header (null = tidak tampil) */
     protected null|array $filter_tanggal = null;
+    /** @var list<array{0: string, 1: string}> keterangan badge status di bawah tabel: [label, arti] */
+    protected array $keterangan_status = [];
     /**
      * Opt-in pencarian server pada halaman daftar (?q=). Kosong = kotak pencarian tetap
      * menyaring baris halaman yang tampil lewat JavaScript seperti sebelumnya.
@@ -320,6 +322,7 @@ class ControllerTemplate extends Controller
             'filters'        => $this->filters,
             'active_filter'  => $this->active_filter,
             'filter_tanggal' => $this->filter_tanggal,
+            'keterangan'     => $this->keterangan_status,
             'pencarian'      => ['server' => $this->search_columns !== [], 'q' => $keyword],
         ]);
     }
