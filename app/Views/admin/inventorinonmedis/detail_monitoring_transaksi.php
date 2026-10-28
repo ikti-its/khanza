@@ -6,7 +6,7 @@
 helper('tracking');
 $header       = $alur['header'] ?? [];
 $langkah      = $alur['langkah'] ?? [];
-$peringatan   = $alur['peringatan'] ?? [];
+$pembatalan   = $alur['pembatalan'] ?? null;
 $is_permintaan = $jenis === 'permintaan';
 $no_dokumen    = (string) ($is_permintaan ? ($header['no_permintaan'] ?? '-') : ($header['no_pengajuan'] ?? '-'));
 
@@ -54,12 +54,48 @@ $label_status = static fn(string $s): array => match ($s) {
             </div>
         </div>
 
-        <?php foreach ($peringatan as $p): ?>
-            <div class="mt-4" style="background:#FEF3C7; border:1px solid #FDE68A; border-radius:8px; padding:10px 14px; font-size:13px; color:#92400E;">
-                <?= esc($p['label']) ?>.
-                <a href="<?= base_url($p['url']) ?>" data-monitoring="<?= esc($no_dokumen) ?>" style="font-weight:600; text-decoration:underline;">Buka</a>
+        <?php if ($pembatalan !== null): ?>
+            <?php
+            // oranye = menunggu keputusan, merah = disetujui (dibatalkan), abu-abu = ditolak
+            [$bg, $garis, $teks] = match ($pembatalan['status']) {
+                'menunggu'  => ['#FFF7ED', '#F97316', '#9A3412'],
+                'disetujui' => ['#FEF2F2', '#EF4444', '#991B1B'],
+                default     => ['#F9FAFB', '#9CA3AF', '#374151'],
+            };
+            ?>
+            <div class="mt-4" style="background:<?= $bg ?>; border:1px solid <?= $garis ?>; border-left:5px solid <?= $garis ?>; border-radius:10px; padding:14px 18px;">
+                <div style="display:flex; align-items:center; gap:8px; font-size:14px; font-weight:700; color:<?= $teks ?>;">
+                    <svg style="width:18px; height:18px; flex-shrink:0;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>
+                    <?= esc($pembatalan['judul']) ?>
+                </div>
+                <table style="margin-top:8px; font-size:13px;">
+                    <?php foreach ($pembatalan['info'] as [$label, $nilai]): ?>
+                        <tr>
+                            <td class="text-left" style="padding:2px 16px 2px 0; color:#6b7280; white-space:nowrap; vertical-align:top;"><?= esc($label) ?></td>
+                            <td class="text-left" style="padding:2px 0; color:#111827; font-weight:500;"><?= esc($nilai) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+                <div style="margin-top:10px;">
+                    <?php if ($pembatalan['status'] === 'menunggu'): ?>
+                        <a href="<?= base_url($pembatalan['url']) ?>" data-monitoring="<?= esc($no_dokumen) ?>"
+                            style="padding:6px 12px;" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent shadow-sm bg-[#0A2D27] text-[#ACF2E7] hover:bg-[#13594E]">
+                            <svg style="width:14px; height:14px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                            Putuskan Pembatalan
+                        </a>
+                    <?php else: ?>
+                        <a href="<?= base_url($pembatalan['url']) ?>" data-monitoring="<?= esc($no_dokumen) ?>"
+                            style="padding:6px 12px;" class="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50">
+                            Lihat Persetujuan
+                        </a>
+                    <?php endif; ?>
+                </div>
             </div>
-        <?php endforeach; ?>
+        <?php endif; ?>
 
         <!-- Tahapan -->
         <div class="mt-6" style="border:1px solid #e5e7eb; border-radius:12px; padding:20px;">

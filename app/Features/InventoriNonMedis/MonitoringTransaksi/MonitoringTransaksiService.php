@@ -17,6 +17,7 @@ use CodeIgniter\Database\BaseResult;
  *   dokumen: list<Tautan>,
  *   aksi: list<Tautan>,
  * }
+ * @phpstan-type Pembatalan array{status: string, judul: string, info: list<array{0: string, 1: string}>, url: string}
  */
 final class MonitoringTransaksiService
 {
@@ -140,14 +141,14 @@ final class MonitoringTransaksiService
     /**
      * Seluruh tahap satu permintaan dari diajukan sampai selesai.
      *
-     * @return array{header: array<string, mixed>, langkah: list<Langkah>, status: string, tahap: string, warna: string, progres: string, peringatan: list<Tautan>}|null
+     * @return array{header: array<string, mixed>, langkah: list<Langkah>, status: string, tahap: string, warna: string, progres: string, pembatalan: Pembatalan|null}|null
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
     public function alur_permintaan(int $id): null|array
     {
         $p = $this->row('
             SELECT pb.*, o.nama AS nama_pemohon, og.nama AS nama_pengelola, opn.nama AS nama_penerima,
-                   r.nama_ruangan
+                   obt.nama AS nama_pembatal, r.nama_ruangan
             FROM inventori_non_medis.permintaan_barang pb
             LEFT JOIN role.petugas pt ON pb.petugas = pt.id_petugas
             LEFT JOIN person.orang o ON pt.id_orang = o.id_orang
@@ -155,6 +156,8 @@ final class MonitoringTransaksiService
             LEFT JOIN person.orang og ON pg.id_orang = og.id_orang
             LEFT JOIN role.petugas ppn ON pb.petugas_penerima = ppn.id_petugas
             LEFT JOIN person.orang opn ON ppn.id_orang = opn.id_orang
+            LEFT JOIN role.petugas pbt ON pb.petugas_gudang_pembatalan = pbt.id_petugas
+            LEFT JOIN person.orang obt ON pbt.id_orang = obt.id_orang
             LEFT JOIN ruangan.ruangan r ON pb.master_ruangan = r.id_ruangan
             WHERE pb.id_permintaan = ?
         ', [$id]);
@@ -190,8 +193,8 @@ final class MonitoringTransaksiService
             'dokumen' => [['label' => 'Lihat Permintaan', 'url' => $url_p]],
         ]);
 
-        // persetujuan staf gudang
-        if ($st === 4) {
+        // persetujuan staf gudang (dibatalkan sebelum disetujui = berhenti di tahap ini)
+        if ($st === 4 || $st === 7 && (int) ($p['petugas_gudang'] ?? 0) === 0) {
             $langkah[] = $this->langkah('Persetujuan Staf Gudang', 'active', [
                 'tahap' => 'Menunggu persetujuan Staf Gudang',
                 'aksi'  => [
@@ -298,25 +301,18 @@ final class MonitoringTransaksiService
             7       => $this->langkah('Dibatalkan', 'failed'),
             default => $this->langkah('Selesai', 'waiting'),
         };
+        // pengajuan pembatalan dari unit; dibaca sebelum redupkan supaya tahap saat diajukan masih aktif
+        $pembatalan = $this->pembatalan($p, $st, $langkah, $url_pp);
         if ($st === 7) {
             $langkah = $this->redupkan($langkah);
         }
 
-        // pengajuan pembatalan yang belum diputuskan
-        $peringatan = [];
-        if (
-            in_array(strtolower((string) ($p['pengajuan_pembatalan'] ?? '')), ['t', '1', 'true'], true)
-            && in_array($st, [4, 5], true)
-        ) {
-            $peringatan[] = [
-                'label' => 'Ada pengajuan pembatalan yang menunggu keputusan Staf Gudang',
-                'url'   => $url_pp,
-            ];
-        }
-
         // pengembalian dari unit menjadi tahap terakhir; status permintaan tetap dihitung dari alur utamanya
         $ringkasan = $this->ringkasan($langkah);
-        $kembali   = $this->langkah_pengembalian($id);
+        if (($pembatalan['status'] ?? '') === 'menunggu') {
+            $ringkasan['tahap'] .= ', pembatalan menunggu keputusan';
+        }
+        $kembali = $this->langkah_pengembalian($id);
         if ($kembali !== null) {
             $langkah[] = $kembali;
             if ($kembali['status'] === 'active') {
@@ -324,7 +320,7 @@ final class MonitoringTransaksiService
             }
         }
 
-        return ['header' => $p, 'langkah' => $langkah, 'peringatan' => $peringatan] + $ringkasan;
+        return ['header' => $p, 'langkah' => $langkah, 'pembatalan' => $pembatalan] + $ringkasan;
     }
 
     /**
@@ -409,7 +405,7 @@ final class MonitoringTransaksiService
     // ========= ALUR PENGAJUAN (DARI GUDANG) =========
 
     /**
-     * @return array{header: array<string, mixed>, langkah: list<Langkah>, status: string, tahap: string, warna: string, progres: string, peringatan: list<Tautan>}|null
+     * @return array{header: array<string, mixed>, langkah: list<Langkah>, status: string, tahap: string, warna: string, progres: string, pembatalan: Pembatalan|null}|null
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
     public function alur_pengajuan(int $id): null|array
@@ -438,7 +434,7 @@ final class MonitoringTransaksiService
             default        => $this->langkah('Selesai', 'waiting'),
         };
 
-        return ['header' => $pj, 'langkah' => $langkah, 'peringatan' => []] + $this->ringkasan($langkah);
+        return ['header' => $pj, 'langkah' => $langkah, 'pembatalan' => null] + $this->ringkasan($langkah);
     }
 
     // ========= TAHAP PENGAJUAN → PENGADAAN → PENERIMAAN =========
@@ -765,6 +761,61 @@ final class MonitoringTransaksiService
             }
         }
         return ['status' => 'Diproses', 'tahap' => 'Diproses', 'warna' => 'yellow', 'progres' => $progres];
+    }
+
+    /**
+     * Ringkasan pengajuan pembatalan dari unit beserta tahap saat diajukan. Pengajuan yang masih menunggu
+     * juga ditandai pada tahap yang sedang berjalan di lini masa.
+     *
+     * @param array<string, mixed> $p
+     * @param list<Langkah> $langkah
+     * @return Pembatalan|null
+     */
+    private function pembatalan(array $p, int $st, array &$langkah, string $url): null|array
+    {
+        $alasan = (string) ($p['alasan_pembatalan'] ?? '');
+        if ($alasan === '')
+            return null;
+
+        $diajukan = $this->tgl($p['tanggal_pembatalan'] ?? null);
+        $menunggu = in_array(strtolower((string) ($p['pengajuan_pembatalan'] ?? '')), ['t', '1', 'true'], true)
+        && in_array($st, [4, 5], true);
+        $info = [
+            ['Diajukan', $diajukan],
+            ['Alasan',   $alasan],
+        ];
+
+        // tahap yang sedang berjalan saat pembatalan diajukan (menunggu) atau saat dibatalkan
+        foreach ($langkah as &$l) {
+            if ($l['status'] !== 'active' || !$menunggu && $st !== 7)
+                continue;
+            $info[] = ['Diajukan Pada Tahap', $l['judul'] . ($l['tahap'] !== '' ? ' (' . $l['tahap'] . ')' : '')];
+            if ($menunggu)
+                $l['info'][] = ['Pengajuan Pembatalan', "Diajukan {$diajukan}, menunggu keputusan Staf Gudang"];
+            break;
+        }
+        unset($l);
+
+        if ($menunggu) {
+            return [
+                'status' => 'menunggu',
+                'judul'  => 'Pengajuan Pembatalan Menunggu Keputusan Staf Gudang',
+                'info'   => $info,
+                'url'    => $url,
+            ];
+        }
+
+        $info[] = ['Diputuskan Oleh', (string) ($p['nama_pembatal'] ?? '-')];
+        return (
+            $st === 7
+                ? ['status' => 'disetujui', 'judul' => 'Pengajuan Pembatalan Disetujui', 'info' => $info, 'url' => $url]
+                : [
+                    'status' => 'ditolak',
+                    'judul'  => 'Pengajuan Pembatalan Ditolak, Permintaan Tetap Berjalan',
+                    'info'   => $info,
+                    'url'    => $url,
+                ]
+        );
     }
 
     // permintaan dibatalkan: tahap yang masih berjalan tidak lagi aktif
