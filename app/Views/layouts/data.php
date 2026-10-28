@@ -38,10 +38,7 @@
                             'row_alert'  => $row_alert ?? [],
                             'child_link' => $child_link ?? null,
                         ]);
-
-                        // keterangan badge status (opsional)
-                        if (!empty($keterangan)) echo view('components/footer/keterangan_status', ['keterangan' => $keterangan]);
-
+                        
                         echo view('components/footer/footer', [
                             'meta_data'  => $meta_data,
                             'modul_path' => $modul_path

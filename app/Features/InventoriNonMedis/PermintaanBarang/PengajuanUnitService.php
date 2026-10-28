@@ -16,12 +16,6 @@ final class PengajuanUnitService
     public const string PEMBATALAN   = 'Pengajuan Pembatalan';
     public const string PENGEMBALIAN = 'Pengajuan Pengembalian';
 
-    /** @var list<array{0: string, 1: string}> */
-    public const array KETERANGAN = [
-        [self::PEMBATALAN, 'menunggu keputusan pembatalan oleh Staf Gudang'],
-        [self::PENGEMBALIAN, 'menunggu verifikasi pengembalian oleh Staf Gudang'],
-    ];
-
     // pembatalan hanya bisa diputuskan saat Proses Permintaan / Menunggu Pengadaan; pengembalian saat Proses Pengembalian
     private const string SQL = '
         SELECT p.id_permintaan,

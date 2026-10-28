@@ -112,7 +112,6 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
 
         // badge pengajuan pembatalan/pengembalian dari unit
         (new PengajuanUnitService($this->get_db()))->tandai($data_tabel);
-        $this->keterangan_status = PengajuanUnitService::KETERANGAN;
     }
 
     // tambah kolom status progress
