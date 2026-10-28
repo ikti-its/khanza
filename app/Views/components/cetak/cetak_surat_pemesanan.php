@@ -182,7 +182,7 @@
       <?php endif; ?>
       <?php if (!empty($header['nama_petugas'])): ?>
       <div class="info-baris">
-        <span class="info-label">Petugas Gudang</span>
+        <span class="info-label">Petugas Pengadaan</span>
         <span class="info-titik">:</span>
         <span><?= esc($header['nama_petugas']) ?></span>
       </div>

@@ -116,11 +116,8 @@
                         </table>
                     </div>
 
-                    <div class="pt-3 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-                        <span style="flex-shrink:0; padding:1px 8px; background-color:#fff7ed; border-left:4px solid #f97316; color:#b91c1c; font-weight:700;">5</span>
-                        <span>
-                            Keterangan: angka stok berwarna <b style="color:#b91c1c;">merah</b> menandakan stok barang <b>di bawah stok minimum</b> dan perlu diajukan pengadaan.
-                        </span>
+                    <div class="pt-3 text-sm text-gray-600 dark:text-gray-300">
+                        Keterangan: angka stok berwarna <b style="color:#b91c1c;">merah</b> menandakan stok barang <b>di bawah stok minimum</b> dan perlu diajukan pengadaan.
                     </div>
 
                     <?= view('components/footer/footer', ['meta_data' => $meta_data, 'modul_path' => $modul_path]) ?>
