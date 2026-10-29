@@ -70,12 +70,14 @@ final class MonitoringTransaksiController extends ControllerTemplate
 
         $dari   = $this->tanggal_get('dari');
         $sampai = $this->tanggal_get('sampai');
+        $status = $this->status_get(MonitoringTransaksiService::STATUS);
+        $saring = ['dari' => $dari, 'sampai' => $sampai, 'status' => $status];
 
-        $hasil       = $this->service()->daftar($page, $size, $keyword, $dari, $sampai);
+        $hasil       = $this->service()->daftar($page, $size, $keyword, $saring);
         $total_pages = max(1, (int) ceil($hasil['total'] / $size));
         if ($page > $total_pages) {
             $page  = $total_pages;
-            $hasil = $this->service()->daftar($page, $size, $keyword, $dari, $sampai);
+            $hasil = $this->service()->daftar($page, $size, $keyword, $saring);
         }
 
         return view('/layouts/data', [
@@ -86,7 +88,12 @@ final class MonitoringTransaksiController extends ControllerTemplate
             'kolom_id'       => 'kunci',
             'konfig'         => self::KOLOM,
             'aksi'           => [A::DETAIL->value => true],
-            'filter_tanggal' => ['dari' => $dari, 'sampai' => $sampai],
+            'filter_tanggal' => [
+                'dari'        => $dari,
+                'sampai'      => $sampai,
+                'status_opsi' => MonitoringTransaksiService::STATUS,
+                'status'      => $status,
+            ],
             'tabel'          => $hasil['rows'],
             'pencarian'      => ['server' => true, 'q' => $keyword],
             // pintasan langsung ke form pengadaan, seperti tombol Tambah di menu lain

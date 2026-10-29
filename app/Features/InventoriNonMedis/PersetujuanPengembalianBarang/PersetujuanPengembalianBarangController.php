@@ -66,9 +66,9 @@ final class PersetujuanPengembalianBarangController extends ControllerTemplate
         $this->model->set_order('m.id_status_pengembalian_barang', 'ASC');
         $this->model->set_order('m.id_pengembalian', 'DESC');
         $this->atur_daftar('pengembalian_barang', [
-            't.id_status_pengembalian_barang = 2',
-            't.id_status_pengembalian_barang = 3',
-            't.id_status_pengembalian_barang = 4',
+            'Proses'  => 't.id_status_pengembalian_barang = 2',
+            'Selesai' => 't.id_status_pengembalian_barang = 3',
+            'Ditolak' => 't.id_status_pengembalian_barang = 4',
         ]);
     }
 

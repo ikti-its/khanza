@@ -25,6 +25,9 @@ final class MonitoringTransaksiService
 
     private const TIPE_KELUAR = 2;
 
+    /** kelompok status pada filter checkbox, sesuai urutan daftar */
+    public const STATUS = ['Proses', 'Selesai', 'Ditolak/Dibatalkan'];
+
     public function __construct(
         private BaseConnection $db,
     ) {}
@@ -85,13 +88,15 @@ final class MonitoringTransaksiService
     /**
      * Daftar alur transaksi beserta tahap saat ini, diurutkan Proses - Selesai - Dibatalkan lalu terbaru di atas.
      * Status dihitung dari alur, jadi semua baris ditelusuri dulu lalu dipotong per halaman.
-     * Tanggal (Y-m-d) boleh kosong.
+     * Tanggal (Y-m-d) dan kelompok status (lihat STATUS) boleh kosong.
      *
+     * @param array{dari: string, sampai: string, status: list<string>} $saring
      * @return array{rows: list<array<string, mixed>>, total: int}
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
-    public function daftar(int $page, int $size, string $keyword, string $dari = '', string $sampai = ''): array
+    public function daftar(int $page, int $size, string $keyword, array $saring): array
     {
+        ['dari' => $dari, 'sampai' => $sampai, 'status' => $status] = $saring;
         $kw     = '%' . addcslashes($keyword, '%_\\') . '%';
         $filter = "WHERE (? = '' OR t.no_dokumen ILIKE ? OR t.pemohon ILIKE ? OR t.unit ILIKE ?)
             AND (? = '' OR t.tanggal::date >= NULLIF(?, '')::date)
@@ -109,6 +114,13 @@ final class MonitoringTransaksiService
         };
         // usort stabil sejak PHP 8, urutan terbaru di dalam tiap kelompok tetap
         usort($semua, static fn(array $a, array $b): int => $peringkat($a) <=> $peringkat($b));
+        if ($status !== []) {
+            $semua = array_values(array_filter($semua, static fn(array $r): bool => in_array(
+                self::STATUS[$peringkat($r) - 1],
+                $status,
+                true,
+            )));
+        }
 
         return ['rows' => array_slice($semua, ($page - 1) * $size, $size), 'total' => count($semua)];
     }

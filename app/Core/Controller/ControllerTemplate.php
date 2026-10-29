@@ -51,7 +51,7 @@ class ControllerTemplate extends Controller
     protected array       $home_params   = [];
     protected array       $filters       = [];
     protected null|string $active_filter = null;
-    /** @var array{dari: string, sampai: string}|null isian filter tanggal di header (null = tidak tampil) */
+    /** @var array{dari: string, sampai: string, status_opsi?: list<string>, status?: list<string>}|null isian filter periode & status di header (null = tidak tampil) */
     protected null|array $filter_tanggal = null;
     /**
      * Opt-in pencarian server pada halaman daftar (?q=). Kosong = kotak pencarian tetap

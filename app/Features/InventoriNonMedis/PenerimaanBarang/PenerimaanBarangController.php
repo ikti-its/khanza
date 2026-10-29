@@ -53,9 +53,9 @@ final class PenerimaanBarangController extends ControllerTemplate
     {
         $this->model->set_order('id_penerimaan', 'DESC');
         $this->atur_daftar('penerimaan_barang', [
-            't.id_status_penerimaan_barang = 1',
-            't.id_status_penerimaan_barang = 2',
-            't.id_status_penerimaan_barang = 3',
+            'Proses'   => 't.id_status_penerimaan_barang = 1',
+            'Diterima' => 't.id_status_penerimaan_barang = 2',
+            'Ditolak'  => 't.id_status_penerimaan_barang = 3',
         ]);
     }
 

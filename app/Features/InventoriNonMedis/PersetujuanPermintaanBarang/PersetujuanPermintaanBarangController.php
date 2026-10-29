@@ -66,8 +66,8 @@ final class PersetujuanPermintaanBarangController extends ControllerTemplate
         $this->model->set_order('id_permintaan', 'DESC');
         // pengajuan pembatalan paling atas: harus diputuskan sebelum permintaan bisa diproses
         $this->atur_daftar('permintaan_barang', [
-            't.pengajuan_pembatalan IS TRUE AND t.id_status_permintaan_barang IN (4, 5)',
-            ...self::urutan_permintaan(),
+            'Pengajuan Pembatalan' => 't.pengajuan_pembatalan IS TRUE AND t.id_status_permintaan_barang IN (4, 5)',
+            ...array_diff_key(self::urutan_permintaan(), ['Draf' => true]),
         ]);
     }
 

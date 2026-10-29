@@ -59,7 +59,7 @@ final class PersetujuanPengajuanBarangController extends ControllerTemplate
     {
         $this->model->set_filter('id_status_pengajuan_barang', [2, 3, 4]);
         $this->model->set_order('id_pengajuan', 'DESC');
-        $this->atur_daftar('pengajuan_barang', self::urutan_pengajuan());
+        $this->atur_daftar('pengajuan_barang', array_diff_key(self::urutan_pengajuan(), ['Draf' => true]));
     }
 
     // status di tabel diganti progress seperti persetujuan permintaan

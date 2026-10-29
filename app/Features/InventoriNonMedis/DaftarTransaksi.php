@@ -6,7 +6,8 @@ namespace App\Features\InventoriNonMedis;
 
 /**
  * Halaman daftar transaksi: baris diurutkan otomatis per kelompok status (Draf - Proses - Selesai - Dibatalkan,
- * lalu terbaru di atas) dan dapat disaring rentang tanggal dokumen (?dari=&sampai=, format Y-m-d).
+ * lalu terbaru di atas) dan dapat disaring rentang tanggal dokumen (?dari=&sampai=, format Y-m-d) serta
+ * kelompok status lewat checkbox (?status[]=Proses&status[]=Selesai).
  * Kelompok status berupa kondisi SQL atas alias t (tabel utama); hasil urutan/filter diteruskan ke model
  * lewat primary key supaya tidak menimpa set_filter status yang sudah ada di halaman persetujuan.
  *
@@ -15,14 +16,17 @@ namespace App\Features\InventoriNonMedis;
 trait DaftarTransaksi
 {
     /**
-     * @param list<string> $urutan_status kondisi SQL tiap kelompok status sesuai urutan tampil
+     * @param array<string, string> $urutan_status label kelompok => kondisi SQL, sesuai urutan tampil
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
     protected function atur_daftar(string $tabel, array $urutan_status = []): void
     {
-        $dari                 = $this->tanggal_get('dari');
-        $sampai               = $this->tanggal_get('sampai');
-        $this->filter_tanggal = ['dari' => $dari, 'sampai' => $sampai];
+        $dari   = $this->tanggal_get('dari');
+        $sampai = $this->tanggal_get('sampai');
+        $label  = array_keys($urutan_status);
+        $pilih  = $this->status_get($label);
+
+        $this->filter_tanggal = ['dari' => $dari, 'sampai' => $sampai, 'status_opsi' => $label, 'status' => $pilih];
 
         $pk    = $this->primary_key;
         $where = ["t.{$pk} > 0"];
@@ -37,10 +41,22 @@ trait DaftarTransaksi
         }
 
         $kelompok = '';
-        foreach ($urutan_status as $i => $kondisi) {
+        foreach (array_values($urutan_status) as $i => $kondisi) {
             $kelompok .= ' WHEN ' . $kondisi . ' THEN ' . ($i + 1);
         }
-        $order = $kelompok !== '' ? "CASE{$kelompok} ELSE 99 END, t.{$pk} DESC" : "t.{$pk} DESC";
+        $nomor = "CASE{$kelompok} ELSE 99 END";
+        $order = $kelompok !== '' ? "{$nomor}, t.{$pk} DESC" : "t.{$pk} DESC";
+
+        // satu baris masuk tepat satu kelompok (kondisi pertama yang cocok), sama dengan urutannya
+        if ($pilih !== []) {
+            $where[] =
+                "{$nomor} IN ("
+                . implode(', ', array_map(
+                    static fn(string $l): int => (int) array_search($l, $label, true) + 1,
+                    $pilih,
+                ))
+                . ')';
+        }
 
         $result = $this->get_db()->query(
             "SELECT t.{$pk} AS id FROM inventori_non_medis.{$tabel} t WHERE "
@@ -51,7 +67,7 @@ trait DaftarTransaksi
         assert($result instanceof \CodeIgniter\Database\BaseResult, 'Query gagal dieksekusi.');
         $ids = array_values(array_map(fn(array $r): int => (int) $r['id'], $result->getResultArray()));
 
-        if ($dari !== '' || $sampai !== '') {
+        if ($dari !== '' || $sampai !== '' || $pilih !== []) {
             $this->model->set_filter($pk, $ids === [] ? [-1] : $ids);
         }
         if ($ids !== []) {
@@ -68,20 +84,34 @@ trait DaftarTransaksi
         return checkdate((int) $m[2], (int) $m[3], (int) $m[1]) ? $nilai : '';
     }
 
+    /**
+     * Kelompok status yang dicentang (?status[]=...), hanya yang tersedia di halaman, sesuai urutan opsi.
+     *
+     * @param list<string> $opsi
+     * @return list<string>
+     */
+    private function status_get(array $opsi): array
+    {
+        $nilai = $this->request->getGet('status');
+        if (!is_array($nilai))
+            return [];
+        return array_values(array_filter($opsi, static fn(string $o): bool => in_array($o, $nilai, true)));
+    }
+
     // urutan status permintaan: dipakai daftar permintaan & persetujuan permintaan
-    /** @return list<string> */
+    /** @return array<string, string> */
     protected static function urutan_permintaan(): array
     {
         return [
-            't.id_status_permintaan_barang = 1',
-            't.id_status_permintaan_barang IN (2, 4, 5, 8)',
-            't.id_status_permintaan_barang = 6',
-            't.id_status_permintaan_barang IN (3, 7)',
+            'Draf'               => 't.id_status_permintaan_barang = 1',
+            'Proses'             => 't.id_status_permintaan_barang IN (2, 4, 5, 8)',
+            'Selesai'            => 't.id_status_permintaan_barang = 6',
+            'Ditolak/Dibatalkan' => 't.id_status_permintaan_barang IN (3, 7)',
         ];
     }
 
     // urutan status pengajuan: selesai bila semua qty disetujui sudah diterima gudang
-    /** @return list<string> */
+    /** @return array<string, string> */
     protected static function urutan_pengajuan(): array
     {
         $disetujui = '(SELECT COALESCE(SUM(qty_disetujui), 0) FROM inventori_non_medis.pengajuan_barang_detail
@@ -95,11 +125,11 @@ trait DaftarTransaksi
                 WHERE g.id_pengajuan = t.id_pengajuan AND g.id_status_pengadaan_barang <> 3))';
 
         return [
-            't.id_status_pengajuan_barang = 1',
-            "(t.id_status_pengajuan_barang = 4 OR (t.id_status_pengajuan_barang = 2 AND NOT {$pd_batal}"
+            'Draf'               => 't.id_status_pengajuan_barang = 1',
+            'Proses'             => "(t.id_status_pengajuan_barang = 4 OR (t.id_status_pengajuan_barang = 2 AND NOT {$pd_batal}"
                 . " AND NOT ({$disetujui} > 0 AND {$diterima} >= {$disetujui})))",
-            "(t.id_status_pengajuan_barang = 2 AND {$disetujui} > 0 AND {$diterima} >= {$disetujui})",
-            "(t.id_status_pengajuan_barang = 3 OR (t.id_status_pengajuan_barang = 2 AND {$pd_batal}))",
+            'Selesai'            => "(t.id_status_pengajuan_barang = 2 AND {$disetujui} > 0 AND {$diterima} >= {$disetujui})",
+            'Ditolak/Dibatalkan' => "(t.id_status_pengajuan_barang = 3 OR (t.id_status_pengajuan_barang = 2 AND {$pd_batal}))",
         ];
     }
 }

@@ -48,8 +48,8 @@ final class StokOpnameController extends ControllerTemplate
     {
         $this->model->set_order('id_opname', 'DESC');
         $this->atur_daftar('stok_opname', [
-            't.id_status_stok_opname = 1',
-            't.id_status_stok_opname = 2',
+            'Draf'    => 't.id_status_stok_opname = 1',
+            'Selesai' => 't.id_status_stok_opname = 2',
         ]);
     }
 

@@ -61,9 +61,9 @@ final class PengadaanBarangController extends ControllerTemplate
             WHERE p.id_pengadaan = t.id_pengadaan AND p.id_status_penerimaan_barang = 2)';
         $selesai = "(t.id_status_pengadaan_barang <> 3 AND {$pesan} > 0 AND {$terima} >= {$pesan})";
         $this->atur_daftar('pengadaan_barang', [
-            "(t.id_status_pengadaan_barang <> 3 AND NOT {$selesai})",
-            $selesai,
-            't.id_status_pengadaan_barang = 3',
+            'Proses'     => "(t.id_status_pengadaan_barang <> 3 AND NOT {$selesai})",
+            'Selesai'    => $selesai,
+            'Dibatalkan' => 't.id_status_pengadaan_barang = 3',
         ]);
     }
 

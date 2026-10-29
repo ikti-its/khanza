@@ -63,10 +63,10 @@ final class PengembalianBarangController extends ControllerTemplate
     {
         $this->model->set_order('id_pengembalian', 'DESC');
         $this->atur_daftar('pengembalian_barang', [
-            't.id_status_pengembalian_barang = 1',
-            't.id_status_pengembalian_barang = 2',
-            't.id_status_pengembalian_barang = 3',
-            't.id_status_pengembalian_barang = 4',
+            'Draf'    => 't.id_status_pengembalian_barang = 1',
+            'Proses'  => 't.id_status_pengembalian_barang = 2',
+            'Selesai' => 't.id_status_pengembalian_barang = 3',
+            'Ditolak' => 't.id_status_pengembalian_barang = 4',
         ]);
     }
 
