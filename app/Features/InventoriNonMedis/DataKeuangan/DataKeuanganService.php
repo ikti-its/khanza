@@ -85,25 +85,27 @@ final class DataKeuanganService
         ]);
 
         return array_map(fn(array $r): array => array_merge($this->angka($r, ['total_harga', 'nilai_diterima']), [
-            'sisa_nilai' => max(0.0, (float) $r['total_harga'] - (float) $r['nilai_diterima']),
+            'id_pengadaan' => (int) $r['id_pengadaan'],
+            'sisa_nilai'   => max(0.0, (float) $r['total_harga'] - (float) $r['nilai_diterima']),
         ]), $rows);
     }
 
     /**
      * Satu pengadaan beserta rincian barang: qty, harga, subtotal, qty dan nilai yang sudah diterima.
+     * Pengadaan dicari dengan id (13) atau nomor dokumen yang tertera di Surat Pemesanan (PGD202610110001).
      *
      * @return array<string, mixed>|null
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      */
-    public function detail_pengadaan(int $id_pengadaan): null|array
+    public function detail_pengadaan(int|string $pengadaan): null|array
     {
         $header =
-            array_values(array_filter(
-                $this->pengadaan(),
-                fn(array $r): bool => (int) $r['id_pengadaan'] === $id_pengadaan,
-            ))[0] ?? null;
+            array_values(array_filter($this->pengadaan(), fn(array $r): bool => is_int($pengadaan)
+                ? $r['id_pengadaan'] === $pengadaan
+                : strcasecmp((string) $r['no_pengadaan'], $pengadaan) === 0))[0] ?? null;
         if ($header === null)
             return null;
+        $id_pengadaan = (int) $header['id_pengadaan'];
 
         $barang = $this->rows('
             SELECT b.kode_barang, b.nama_barang, sat.nama_satuan, d.qty,
@@ -165,7 +167,8 @@ final class DataKeuanganService
         ]);
 
         return array_map(fn(array $r): array => array_merge($this->angka($r, ['nilai']), [
-            'qty_diterima' => (int) $r['qty_diterima'],
+            'id_penerimaan' => (int) $r['id_penerimaan'],
+            'qty_diterima'  => (int) $r['qty_diterima'],
         ]), $rows);
     }
 
@@ -188,6 +191,7 @@ final class DataKeuanganService
         ');
 
         return array_map(fn(array $r): array => array_merge($this->angka($r, ['harga_satuan']), [
+            'id_barang'        => (int) $r['id_barang'],
             'stok'             => (int) $r['stok'],
             'nilai_persediaan' => (int) $r['stok'] * (float) $r['harga_satuan'],
         ]), $rows);

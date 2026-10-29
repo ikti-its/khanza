@@ -16,7 +16,7 @@ use CodeIgniter\HTTP\ResponseInterface;
  * hak baca grup Inventori Non-Medis:
  *   GET /inventori-non-medis/data-keuangan/data               daftar endpoint + ringkasan nilai
  *   GET /inventori-non-medis/data-keuangan/pengadaan          pengadaan, total harga, nilai diterima, rekening suplier
- *   GET /inventori-non-medis/data-keuangan/pengadaan-{id}     rincian barang satu pengadaan
+ *   GET /inventori-non-medis/data-keuangan/pengadaan-{id|no}  rincian barang satu pengadaan (id atau no. PGD...)
  *   GET /inventori-non-medis/data-keuangan/penerimaan         penerimaan Diterima beserta nilainya
  *   GET /inventori-non-medis/data-keuangan/barang             data barang, stok, harga, nilai persediaan
  *   GET /inventori-non-medis/data-keuangan/ringkasan          total nilai pengadaan, diterima, persediaan
@@ -53,31 +53,50 @@ final class DataKeuanganController extends ControllerTemplate
             : null;
     }
 
-    // daftar endpoint + ringkasan
+    // daftar endpoint beserta keterangan & contoh, lalu ringkasan seluruh pengadaan
     /** @throws \CodeIgniter\Database\Exceptions\DatabaseException */
     #[\Override]
     public function index(): string|RedirectResponse
     {
-        $dasar = site_url('inventori-non-medis/data-keuangan');
+        $dasar   = site_url('inventori-non-medis/data-keuangan');
+        $service = new DataKeuanganService($this->get_db());
+        $contoh  = (string) ($service->pengadaan()[0]['no_pengadaan'] ?? 'PGD...');
         $this->response->setContentType('application/json');
 
         return (string) json_encode([
-            'endpoint'  => [
-                'pengadaan'        => "{$dasar}/pengadaan",
-                'detail_pengadaan' => "{$dasar}/pengadaan-{id_pengadaan}",
-                'penerimaan'       => "{$dasar}/penerimaan",
-                'barang'           => "{$dasar}/barang",
-                'ringkasan'        => "{$dasar}/ringkasan",
+            'keterangan'                  => 'API hanya-baca data Inventori Non-Medis untuk modul keuangan.',
+            'endpoint'                    => [
+                [
+                    'url' => "{$dasar}/pengadaan",
+                    'isi' => 'Daftar pengadaan, satu baris per pengadaan: suplier, rekening, total harga, nilai diterima, sisa nilai.',
+                ],
+                [
+                    'url'    => "{$dasar}/pengadaan-{id_pengadaan atau no_pengadaan}",
+                    'contoh' => "{$dasar}/pengadaan-{$contoh}",
+                    'isi'    => 'Satu pengadaan beserta rincian barang yang dipesan dan yang sudah diterima.',
+                ],
+                [
+                    'url' => "{$dasar}/penerimaan",
+                    'isi' => 'Penerimaan barang berstatus Diterima beserta nilainya, dasar pencatatan hutang ke suplier.',
+                ],
+                [
+                    'url' => "{$dasar}/barang",
+                    'isi' => 'Stok, harga satuan, dan nilai persediaan setiap barang.',
+                ],
+                [
+                    'url' => "{$dasar}/ringkasan",
+                    'isi' => 'Total nilai pengadaan, nilai diterima, dan nilai persediaan.',
+                ],
             ],
-            'parameter' => ['dari' => 'YYYY-MM-DD (opsional)', 'sampai' => 'YYYY-MM-DD (opsional)'],
-            'data'      => (new DataKeuanganService($this->get_db()))->ringkasan(
-                $this->tanggal('dari'),
-                $this->tanggal('sampai'),
-            ),
-        ], JSON_UNESCAPED_SLASHES);
+            'parameter'                   => [
+                'dari'   => 'YYYY-MM-DD (opsional, untuk pengadaan, penerimaan, ringkasan)',
+                'sampai' => 'YYYY-MM-DD (opsional, untuk pengadaan, penerimaan, ringkasan)',
+            ],
+            'ringkasan_seluruh_pengadaan' => $service->ringkasan($this->tanggal('dari'), $this->tanggal('sampai')),
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
 
-    // satu jenis data: pengadaan, pengadaan-{id}, penerimaan, barang, ringkasan
+    // satu jenis data: pengadaan, pengadaan-{id|no}, penerimaan, barang, ringkasan
     /**
      * @throws \CodeIgniter\Database\Exceptions\DatabaseException
      * @throws \CodeIgniter\HTTP\Exceptions\HTTPException
@@ -89,8 +108,9 @@ final class DataKeuanganController extends ControllerTemplate
         $jenis   = (string) $id;
         $service = new DataKeuanganService($this->get_db());
 
-        if (preg_match('/^pengadaan-(\d+)$/', $jenis, $m) === 1) {
-            $data = $service->detail_pengadaan((int) $m[1]) ?? [
+        // pengadaan-13 (id) atau pengadaan-PGD202610110001 (nomor di Surat Pemesanan)
+        if (preg_match('/^pengadaan-(.+)$/', $jenis, $m) === 1) {
+            $data = $service->detail_pengadaan(ctype_digit($m[1]) ? (int) $m[1] : $m[1]) ?? [
                 'pesan' => 'Pengadaan tidak ditemukan atau dibatalkan.',
             ];
         } else {
